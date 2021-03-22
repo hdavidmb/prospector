@@ -1,4 +1,4 @@
-package com.example.prospector
+package com.prospectorapp.prospector
 
 import io.flutter.embedding.android.FlutterActivity
 
