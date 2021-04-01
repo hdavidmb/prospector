@@ -3,10 +3,10 @@ import 'package:prospector/src/core/shared_prefs/shared_prefs.dart';
 
 export 'theme_constants.dart';
 
-class ThemeProvider with ChangeNotifier {
+class ThemeNotifier with ChangeNotifier {
   final UserSharedPreferences _prefs;
 
-  ThemeProvider(this._prefs) {
+  ThemeNotifier(this._prefs) {
     switch (_prefs.userThemePrefs) {
       case 0: //system
         _lightModeSwitch = false;

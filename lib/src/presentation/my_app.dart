@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/theme/providers.dart';
 
-import 'theme/theme_provider.dart';
+import 'theme/theme_notifier.dart';
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ScopedReader watch) {
     final currentThemeMode =
-        Provider.of<ThemeProvider>(context).currentThemeMode;
+        watch(themeNotifierProvider).currentThemeMode;
 
     // * Temporal
-    final themeProvider = Provider.of<ThemeProvider>(context);
+    final themeProvider = watch(themeNotifierProvider);
     final Brightness brightness = SchedulerBinding.instance.window.platformBrightness;
     final bool darkModeOn = brightness == Brightness.dark;
     // * Temporal 
