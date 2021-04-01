@@ -5,3 +5,8 @@ analyzer:
     missing_required_param: error
     missing_return: error
     sort_pub_dependencies: ignore
+    todo: info
+  
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
