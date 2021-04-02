@@ -1,10 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/core/shared_prefs/shared_prefs.dart';
 
 import 'src/app.dart';
-import 'src/presentation/theme/theme_provider.dart';
+import 'src/core/shared_prefs/shared_prefs.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,6 +11,6 @@ Future<void> main() async {
   final prefs = UserSharedPreferences();
   await prefs.initPrefs();
   runApp(
-    ProviderScope(child: MyApp(),),
+    ProviderScope(child: App(),),
   );
 }

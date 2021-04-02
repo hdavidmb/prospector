@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/src/presentation/theme/providers.dart';
+import 'package:prospector/src/presentation/theme/theme_constants.dart';
 
-import 'theme/theme_notifier.dart';
-
-class MyApp extends ConsumerWidget {
+class App extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final currentThemeMode =
