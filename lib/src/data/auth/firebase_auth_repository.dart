@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:meta/meta.dart';
 import 'package:prospector/src/domain/auth/auth_failure.dart';
 import 'package:prospector/src/domain/auth/i_auth_repository.dart';
 
@@ -12,20 +13,38 @@ class FirebaseAuthRepository implements IAuthRepository {
       : assert(_firebaseAuthInstance != null, _googleSignIn != null);
 
   @override
-  Stream<bool> get isUserAuthenticated => _firebaseAuthInstance.authStateChanges().map((user) => user != null);
+  Stream<bool> get isUserAuthenticated =>
+      _firebaseAuthInstance.authStateChanges().map((User user) => user != null);
 
   @override
-  Future<Either<AuthFailure, Unit>> googleSignIn() {
-    // TODO: implement googleSignIn
-    throw UnimplementedError();
+  Future<Either<AuthFailure, Unit>> googleSignIn() async {
+    try {
+      final googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) {
+        return left(const AuthFailure.cancelledByUser());
+      }
+
+      final googleAuthentication = await googleUser.authentication;
+
+      final authCredential = GoogleAuthProvider.credential(
+        idToken: googleAuthentication.idToken,
+        accessToken: googleAuthentication.accessToken,
+      );
+
+      await _firebaseAuthInstance.signInWithCredential(authCredential);
+      return right(unit);
+    } on FirebaseAuthException catch (_) {
+      return left(const AuthFailure.serverError());
+    }
   }
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword(
-      {String email, String password}) async {
+      {@required String email, @required String password}) async {
     try {
-      await _firebaseAuthInstance.createUserWithEmailAndPassword(email: email, password: password);
-      return right(unit); //TODO: return user entity
+      await _firebaseAuthInstance.createUserWithEmailAndPassword(
+          email: email, password: password);
+      return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
         return left(const AuthFailure.emailAlreadyInUse());
@@ -37,14 +56,12 @@ class FirebaseAuthRepository implements IAuthRepository {
 
   @override
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword(
-      {String email, String password}) async {
-    // TODO: implement signInWithEmailAndPassword
+      {@required String email, @required String password}) async {
     try {
       await _firebaseAuthInstance.signInWithEmailAndPassword(
-              email: email,
-              password:
-                  password); // TODO: transform user credential to User Entity
-      return right(unit); //TODO: return user entity
+          email: email,
+          password: password);
+      return right(unit); 
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found' || e.code == 'wrong-password') {
         return left(const AuthFailure.invalidEmailAndPasswordCombination());
@@ -55,7 +72,8 @@ class FirebaseAuthRepository implements IAuthRepository {
   }
 
   @override
-  Future<void> signOut() async {
-    await _firebaseAuthInstance.signOut();
-  }
+  Future<void> signOut() => Future.wait([
+    _googleSignIn.signOut(),
+    _firebaseAuthInstance.signOut(),
+  ]);
 }

@@ -19,11 +19,6 @@ class _$AuthStateTearOff {
   }
 
 // ignore: unused_element
-  Loading loading() {
-    return const Loading();
-  }
-
-// ignore: unused_element
   Authenticated authenticated() {
     return const Authenticated();
   }
@@ -43,14 +38,12 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult loading(),
     @required TResult authenticated(),
     @required TResult unauthenticated(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult loading(),
     TResult authenticated(),
     TResult unauthenticated(),
     @required TResult orElse(),
@@ -58,14 +51,12 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(Initial value),
-    @required TResult loading(Loading value),
     @required TResult authenticated(Authenticated value),
     @required TResult unauthenticated(Unauthenticated value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(Initial value),
-    TResult loading(Loading value),
     TResult authenticated(Authenticated value),
     TResult unauthenticated(Unauthenticated value),
     @required TResult orElse(),
@@ -124,12 +115,10 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult loading(),
     @required TResult authenticated(),
     @required TResult unauthenticated(),
   }) {
     assert(initial != null);
-    assert(loading != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
     return initial();
@@ -139,7 +128,6 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult loading(),
     TResult authenticated(),
     TResult unauthenticated(),
     @required TResult orElse(),
@@ -155,12 +143,10 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(Initial value),
-    @required TResult loading(Loading value),
     @required TResult authenticated(Authenticated value),
     @required TResult unauthenticated(Unauthenticated value),
   }) {
     assert(initial != null);
-    assert(loading != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
     return initial(this);
@@ -170,7 +156,6 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(Initial value),
-    TResult loading(Loading value),
     TResult authenticated(Authenticated value),
     TResult unauthenticated(Unauthenticated value),
     @required TResult orElse(),
@@ -185,106 +170,6 @@ class _$Initial implements Initial {
 
 abstract class Initial implements AuthState {
   const factory Initial() = _$Initial;
-}
-
-/// @nodoc
-abstract class $LoadingCopyWith<$Res> {
-  factory $LoadingCopyWith(Loading value, $Res Function(Loading) then) =
-      _$LoadingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$LoadingCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements $LoadingCopyWith<$Res> {
-  _$LoadingCopyWithImpl(Loading _value, $Res Function(Loading) _then)
-      : super(_value, (v) => _then(v as Loading));
-
-  @override
-  Loading get _value => super._value as Loading;
-}
-
-/// @nodoc
-class _$Loading implements Loading {
-  const _$Loading();
-
-  @override
-  String toString() {
-    return 'AuthState.loading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Loading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult authenticated(),
-    @required TResult unauthenticated(),
-  }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(authenticated != null);
-    assert(unauthenticated != null);
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult authenticated(),
-    TResult unauthenticated(),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(Initial value),
-    @required TResult loading(Loading value),
-    @required TResult authenticated(Authenticated value),
-    @required TResult unauthenticated(Unauthenticated value),
-  }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(authenticated != null);
-    assert(unauthenticated != null);
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(Initial value),
-    TResult loading(Loading value),
-    TResult authenticated(Authenticated value),
-    TResult unauthenticated(Unauthenticated value),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Loading implements AuthState {
-  const factory Loading() = _$Loading;
 }
 
 /// @nodoc
@@ -326,12 +211,10 @@ class _$Authenticated implements Authenticated {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult loading(),
     @required TResult authenticated(),
     @required TResult unauthenticated(),
   }) {
     assert(initial != null);
-    assert(loading != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
     return authenticated();
@@ -341,7 +224,6 @@ class _$Authenticated implements Authenticated {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult loading(),
     TResult authenticated(),
     TResult unauthenticated(),
     @required TResult orElse(),
@@ -357,12 +239,10 @@ class _$Authenticated implements Authenticated {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(Initial value),
-    @required TResult loading(Loading value),
     @required TResult authenticated(Authenticated value),
     @required TResult unauthenticated(Unauthenticated value),
   }) {
     assert(initial != null);
-    assert(loading != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
     return authenticated(this);
@@ -372,7 +252,6 @@ class _$Authenticated implements Authenticated {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(Initial value),
-    TResult loading(Loading value),
     TResult authenticated(Authenticated value),
     TResult unauthenticated(Unauthenticated value),
     @required TResult orElse(),
@@ -428,12 +307,10 @@ class _$Unauthenticated implements Unauthenticated {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult loading(),
     @required TResult authenticated(),
     @required TResult unauthenticated(),
   }) {
     assert(initial != null);
-    assert(loading != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
     return unauthenticated();
@@ -443,7 +320,6 @@ class _$Unauthenticated implements Unauthenticated {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult loading(),
     TResult authenticated(),
     TResult unauthenticated(),
     @required TResult orElse(),
@@ -459,12 +335,10 @@ class _$Unauthenticated implements Unauthenticated {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(Initial value),
-    @required TResult loading(Loading value),
     @required TResult authenticated(Authenticated value),
     @required TResult unauthenticated(Unauthenticated value),
   }) {
     assert(initial != null);
-    assert(loading != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
     return unauthenticated(this);
@@ -474,7 +348,6 @@ class _$Unauthenticated implements Unauthenticated {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(Initial value),
-    TResult loading(Loading value),
     TResult authenticated(Authenticated value),
     TResult unauthenticated(Unauthenticated value),
     @required TResult orElse(),
