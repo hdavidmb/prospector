@@ -2,9 +2,9 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meta/meta.dart';
 
-import 'package:prospector/src/application/auth/auth_state.dart';
-import 'package:prospector/src/domain/auth/auth_failure.dart';
-import 'package:prospector/src/domain/auth/i_auth_repository.dart';
+import 'package:prospector/src/features/auth/application/auth_state.dart';
+import 'package:prospector/src/features/auth/domain/auth_failure.dart';
+import 'package:prospector/src/features/auth/domain/i_auth_repository.dart';
 
 class AuthStateNotifier extends StateNotifier<AuthState> {
   final IAuthRepository _authRepository;

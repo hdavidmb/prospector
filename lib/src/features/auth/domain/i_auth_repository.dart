@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:prospector/src/domain/auth/auth_failure.dart';
+import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 
 abstract class IAuthRepository {
 

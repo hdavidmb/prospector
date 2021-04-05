@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:prospector/src/application/auth/auth_state_notifier.dart';
-import 'package:prospector/src/data/auth/firebase_auth_repository.dart';
-import 'package:prospector/src/domain/auth/i_auth_repository.dart';
+
+import 'package:prospector/src/features/auth/application/auth_state_notifier.dart';
+import 'package:prospector/src/features/auth/data/firebase_auth_repository.dart';
+import 'package:prospector/src/features/auth/domain/i_auth_repository.dart';
 
 
 final _firebaseAuthRepositoryProvider = Provider<IAuthRepository>((ref) {

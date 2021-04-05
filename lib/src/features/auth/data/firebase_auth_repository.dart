@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
-import 'package:prospector/src/domain/auth/auth_failure.dart';
-import 'package:prospector/src/domain/auth/i_auth_repository.dart';
+import 'package:prospector/src/features/auth/domain/auth_failure.dart';
+import 'package:prospector/src/features/auth/domain/i_auth_repository.dart';
 
 class FirebaseAuthRepository implements IAuthRepository {
   final FirebaseAuth _firebaseAuthInstance;
