@@ -50,7 +50,7 @@ class FirebaseAuthRepository implements IAuthRepository {
         return left(const AuthFailure.emailAlreadyInUse());
       } else {
         return left(const AuthFailure.serverError());
-      } // TODO: implement week password failure
+      } // TODO: implement weak password failure
     }
   }
 
