@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:prospector/src/presentation/pages/sign_in/logic/sign_in_form_provider.dart';
 import 'package:prospector/src/presentation/pages/sign_in/logic/sign_in_form_state.dart';
 
@@ -11,18 +15,21 @@ class SignInForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, watch, child) {
-      final bool showErrorMessages =
-          watch(signInFormProvider.state).showErrorMessages;
+      final SignInFormState formState = watch(signInFormProvider.state);
+      final bool showErrorMessages = formState.showErrorMessages;
+      const double socialButtonsSize = 45.0;
       return ProviderListener<SignInFormState>(
         provider: signInFormProvider.state,
         onChange: (context, state) {
           state.authFailureOption.fold(
               () {},
               (failure) => failure.when(
+                  //TODO implement snackbars (Flushbar package)
                   cancelledByUser: () => debugPrint('Snackbar: Canceled'),
                   serverError: () => debugPrint('Snackbar: Server error'),
                   emailAlreadyInUse: () {},
-                  invalidEmailAndPasswordCombination: () => debugPrint('Snackbar: Invalid email and password combination')));
+                  invalidEmailAndPasswordCombination: () => debugPrint(
+                      'Snackbar: Invalid email and password combination')));
         },
         child: Form(
           autovalidateMode: showErrorMessages
@@ -66,10 +73,94 @@ class SignInForm extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed:
-                      context.read(signInFormProvider).signInButtonPressed,
-                  child: const Text('Sign In'), //TODO localize
+                  onPressed: formState.isSubmitting
+                      ? null
+                      : context.read(signInFormProvider).signInButtonPressed,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Sign In'), //TODO localize
+                      if (formState.isSubmitting) ...const [
+                        SizedBox(width: 8.0),
+                        CircularProgressIndicator.adaptive(),
+                      ],
+                    ],
+                  ),
                 ),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap),
+                  onPressed: () {},
+                  child: const Text('Forgot your password?', style: TextStyle(color: Colors.black87)), //TODO localize
+                ),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap
+                      ),
+                  onPressed: () {},
+                  child: const Text('Register', style: TextStyle(color: Colors.black87)), //TODO localize
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 8.0),
+                child: Text('- or continue with - ',
+                    style: Theme.of(context).textTheme.subtitle1),
+              ), //TODO localize
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (Platform.isIOS) ...[
+                    SizedBox(
+                      height: socialButtonsSize,
+                      width: socialButtonsSize,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.white,
+                            padding: const EdgeInsets.all(8.0)),
+                        onPressed: () {},
+                        child: const FaIcon(
+                          FontAwesomeIcons.apple,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 10.0),
+                  ],
+                  SizedBox(
+                    height: socialButtonsSize,
+                    width: socialButtonsSize,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.white,
+                          padding: const EdgeInsets.all(8.0)),
+                      onPressed: formState.isSubmitting
+                          ? null
+                          : context
+                              .read(signInFormProvider)
+                              .googleSignInButtonPressed,
+                      child: const Image(
+                          image: AssetImage('assets/icons/google_logo.png')),
+                    ),
+                  ),
+                  const SizedBox(width: 10.0),
+                  SizedBox(
+                    height: socialButtonsSize,
+                    width: socialButtonsSize,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: const Color(0xff3b5998),
+                          padding: const EdgeInsets.all(8.0)),
+                      onPressed: () {},
+                      child: const FaIcon(FontAwesomeIcons.facebookF),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

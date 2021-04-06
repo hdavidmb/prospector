@@ -4,5 +4,6 @@ import 'package:prospector/src/presentation/pages/sign_in/logic/sign_in_form_sta
 
 final signInFormProvider = StateNotifierProvider<SignInFormStateNotifier>((ref) {
   final _signInWithEmailAndPassword = ref.watch(signInWithEmailAndPassword);
-    return SignInFormStateNotifier(signInWithEmailAndPassword: _signInWithEmailAndPassword);
+  final _signInWithGoogle = ref.watch(signInWithGoogle);
+    return SignInFormStateNotifier(signInWithGoogle: _signInWithGoogle, signInWithEmailAndPassword: _signInWithEmailAndPassword);
 });

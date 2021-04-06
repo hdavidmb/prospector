@@ -17,7 +17,39 @@ class FirebaseAuthRepository implements IAuthRepository {
       _firebaseAuthInstance.authStateChanges().map((User user) => user != null);
 
   @override
-  Future<Either<AuthFailure, Unit>> googleSignIn() async {
+  Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword(
+      {@required String email, @required String password}) async {
+    try {
+      await _firebaseAuthInstance.createUserWithEmailAndPassword(
+          email: email, password: password);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'email-already-in-use') {
+        return left(const AuthFailure.emailAlreadyInUse());
+      } else {
+        return left(const AuthFailure.serverError());
+      } // TODO: implement weak password failure
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword(
+      {@required String email, @required String password}) async {
+    try {
+      await _firebaseAuthInstance.signInWithEmailAndPassword(
+          email: email, password: password);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found' || e.code == 'wrong-password') {
+        return left(const AuthFailure.invalidEmailAndPasswordCombination());
+      } else {
+        return left(const AuthFailure.serverError());
+      }
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
     try {
       final googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
@@ -39,41 +71,20 @@ class FirebaseAuthRepository implements IAuthRepository {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword(
-      {@required String email, @required String password}) async {
-    try {
-      await _firebaseAuthInstance.createUserWithEmailAndPassword(
-          email: email, password: password);
-      return right(unit);
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'email-already-in-use') {
-        return left(const AuthFailure.emailAlreadyInUse());
-      } else {
-        return left(const AuthFailure.serverError());
-      } // TODO: implement weak password failure
-    }
+  Future<Either<AuthFailure, Unit>> signInWithApple() {
+    // TODO: implement signInWithApple
+    return null;
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword(
-      {@required String email, @required String password}) async {
-    try {
-      await _firebaseAuthInstance.signInWithEmailAndPassword(
-          email: email,
-          password: password);
-      return right(unit); 
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found' || e.code == 'wrong-password') {
-        return left(const AuthFailure.invalidEmailAndPasswordCombination());
-      } else {
-        return left(const AuthFailure.serverError());
-      }
-    }
+  Future<Either<AuthFailure, Unit>> signInWithFacebook() {
+    // TODO: implement signInWithFacebook
+    return null;
   }
 
   @override
   Future<void> signOut() => Future.wait([
-    _googleSignIn.signOut(),
-    _firebaseAuthInstance.signOut(),
-  ]);
+        _googleSignIn.signOut(),
+        _firebaseAuthInstance.signOut(),
+      ]);
 }
