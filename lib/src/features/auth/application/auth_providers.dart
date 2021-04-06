@@ -5,22 +5,31 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:prospector/src/features/auth/application/auth_state_notifier.dart';
 import 'package:prospector/src/features/auth/data/firebase_auth_repository.dart';
 import 'package:prospector/src/features/auth/domain/i_auth_repository.dart';
+import 'package:prospector/src/features/auth/domain/use_cases/auth_use_cases.dart';
 
-
-final _firebaseAuthRepositoryProvider = Provider<IAuthRepository>((ref) {
+final _authRepositoryProvider = Provider<IAuthRepository>((ref) {
   return FirebaseAuthRepository(FirebaseAuth.instance, GoogleSignIn());
 });
 
+// * Use cases
 final _isAuthenticatedStreamProvider = StreamProvider<bool>((ref) {
-  final _authRepository = ref.watch(_firebaseAuthRepositoryProvider);
-    return _authRepository.isUserAuthenticated;
+  final _authRepository = ref.watch(_authRepositoryProvider);
+  return _authRepository.isUserAuthenticated;
 });
 
+final signInWithEmailAndPassword = Provider<SignInWithEmailAndPassword>((ref) {
+  final _authRepository = ref.watch(_authRepositoryProvider);
+  return SignInWithEmailAndPassword(authRepository: _authRepository);
+});
+
+final signOut = Provider<SignOut>((ref) {
+  final _authRepository = ref.watch(_authRepositoryProvider);
+  return SignOut(authRepository: _authRepository);
+});
+
+// * Auth State provider
 final authStateNotifierProvider =
     StateNotifierProvider<AuthStateNotifier>((ref) {
-  final _authRepository = ref.watch(_firebaseAuthRepositoryProvider);
   final _isAuthenticated = ref.watch(_isAuthenticatedStreamProvider);
-  return AuthStateNotifier(_authRepository, _isAuthenticated);
+  return AuthStateNotifier(isAuthenticated: _isAuthenticated);
 });
-
-

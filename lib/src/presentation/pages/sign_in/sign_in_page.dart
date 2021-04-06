@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/auth/application/auth_providers.dart';
+import 'package:prospector/src/features/auth/application/auth_state.dart';
+import 'package:prospector/src/presentation/pages/home/home_page.dart';
 import 'package:prospector/src/presentation/pages/sign_in/widgets/sign_in_form.dart';
 
 class SignInPage extends StatelessWidget {
@@ -7,9 +10,15 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      body: ProviderListener(
-        provider: null,
-        onChange: (context, value) {},
+      body: ProviderListener<AuthState>(
+        provider: authStateNotifierProvider.state,
+        onChange: (context, authState) {
+          authState.maybeWhen(
+            authenticated: () => Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => HomePage())), //TODO implement proper navigation or routing
+            orElse: () {},
+          );
+        },
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Container(
@@ -18,9 +27,12 @@ class SignInPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
-                Text('Welcome to', style: TextStyle(fontSize: 30.0)), //TODO localize
+                Hero(tag: 'prospector_logo', child: Icon(Icons.account_circle, size: 100.0,)), //TODO place prospector logo
+                Text('Welcome to',
+                    style: TextStyle(fontSize: 30.0)), //TODO localize
                 SizedBox(height: 8.0),
-                Text('Prospector', style: TextStyle(fontSize: 60.0)), //TODO localize
+                Text('Prospector',
+                    style: TextStyle(fontSize: 60.0)), //TODO localize
                 SizedBox(height: 30.0),
                 SignInForm(),
               ],
