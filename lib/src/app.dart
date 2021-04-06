@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/pages/wrapper.dart';
+import 'package:prospector/src/presentation/pages/splash/splash_screen_page.dart';
 
 import 'package:prospector/src/presentation/theme/theme_providers.dart';
 
@@ -16,7 +16,7 @@ class App extends ConsumerWidget {
       themeMode: currentThemeMode,
       theme: kLightTheme,
       darkTheme: kDarkTheme,
-      home: Wrapper(), // TODO implement proper routing
+      home: SplashScreenPage(), // TODO implement proper routing
     );
   }
 }
