@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -6,10 +7,9 @@ import 'package:prospector/src/features/auth/application/auth_state_notifier.dar
 import 'package:prospector/src/features/auth/data/firebase_auth_repository.dart';
 import 'package:prospector/src/features/auth/domain/i_auth_repository.dart';
 import 'package:prospector/src/features/auth/domain/use_cases/auth_use_cases.dart';
-import 'package:prospector/src/features/auth/domain/use_cases/sign_in_with_google.dart';
 
 final _authRepositoryProvider = Provider<IAuthRepository>((ref) {
-  return FirebaseAuthRepository(FirebaseAuth.instance, GoogleSignIn());
+  return FirebaseAuthRepository(firebaseAuthInstance: FirebaseAuth.instance, googleSignIn: GoogleSignIn(), facebookAuth: FacebookAuth.instance);
 });
 
 // * Use cases
@@ -26,6 +26,11 @@ final signInWithEmailAndPassword = Provider<SignInWithEmailAndPassword>((ref) {
 final signInWithGoogle = Provider<SignInWithGoogle>((ref) {
   final _authRepository = ref.watch(_authRepositoryProvider);
     return SignInWithGoogle(authRepository: _authRepository);
+});
+
+final signInWithFacebook = Provider<SignInWithFacebook>((ref) {
+  final _authRepository = ref.watch(_authRepositoryProvider);
+    return SignInWithFacebook(authRepository: _authRepository);
 });
 
 final signOut = Provider<SignOut>((ref) {

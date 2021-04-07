@@ -22,14 +22,18 @@ class SignInForm extends StatelessWidget {
         provider: signInFormProvider.state,
         onChange: (context, state) {
           state.authFailureOption.fold(
-              () {},
-              (failure) => failure.when(
-                  //TODO implement snackbars (Flushbar package)
-                  cancelledByUser: () => debugPrint('Snackbar: Canceled'),
-                  serverError: () => debugPrint('Snackbar: Server error'),
-                  emailAlreadyInUse: () {},
-                  invalidEmailAndPasswordCombination: () => debugPrint(
-                      'Snackbar: Invalid email and password combination')));
+            () {},
+            (failure) => failure.when(
+              //TODO implement snackbars (Flushbar package)
+              cancelledByUser: () => debugPrint('Snackbar: Canceled'),
+              serverError: () => debugPrint('Snackbar: Server error'),
+              emailAlreadyInUse: () {},
+              invalidEmailAndPasswordCombination: () => debugPrint(
+                  'Snackbar: Invalid email and password combination'),
+              accountExistsWithDifferentCredential: () => debugPrint(
+                  'Snackbar: Account exists with different credential')
+            ),
+          );
         },
         child: Form(
           autovalidateMode: showErrorMessages
@@ -94,17 +98,18 @@ class SignInForm extends StatelessWidget {
                   style: TextButton.styleFrom(
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                   onPressed: () {},
-                  child: const Text('Forgot your password?', style: TextStyle(color: Colors.black87)), //TODO localize
+                  child: const Text('Forgot your password?',
+                      style: TextStyle(color: Colors.black87)), //TODO localize
                 ),
               ),
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   style: TextButton.styleFrom(
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap
-                      ),
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                   onPressed: () {},
-                  child: const Text('Register', style: TextStyle(color: Colors.black87)), //TODO localize
+                  child: const Text('Register',
+                      style: TextStyle(color: Colors.black87)), //TODO localize
                 ),
               ),
               Padding(
@@ -121,12 +126,14 @@ class SignInForm extends StatelessWidget {
                       width: socialButtonsSize,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.white,
-                            padding: const EdgeInsets.all(8.0)),
+                          primary: Colors.white,
+                          padding: EdgeInsets.zero,
+                        ),
                         onPressed: () {},
                         child: const FaIcon(
                           FontAwesomeIcons.apple,
                           color: Colors.black,
+                          size: 28.0,
                         ),
                       ),
                     ),
@@ -138,7 +145,7 @@ class SignInForm extends StatelessWidget {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           primary: Colors.white,
-                          padding: const EdgeInsets.all(8.0)),
+                          padding: const EdgeInsets.all(9.0)),
                       onPressed: formState.isSubmitting
                           ? null
                           : context
@@ -154,9 +161,10 @@ class SignInForm extends StatelessWidget {
                     width: socialButtonsSize,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: const Color(0xff3b5998),
-                          padding: const EdgeInsets.all(8.0)),
-                      onPressed: () {},
+                          primary: const Color(0xff3b5998)),
+                      onPressed: formState.isSubmitting
+                          ? null
+                          : context.read(signInFormProvider).facebookSignInButtonPressed,
                       child: const FaIcon(FontAwesomeIcons.facebookF),
                     ),
                   ),
