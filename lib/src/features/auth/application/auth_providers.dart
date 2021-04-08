@@ -5,17 +5,29 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:prospector/src/features/auth/application/auth_state_notifier.dart';
 import 'package:prospector/src/features/auth/data/firebase_auth_repository.dart';
+import 'package:prospector/src/features/auth/data/helpers/sign_in_with_apple_helper.dart';
 import 'package:prospector/src/features/auth/domain/i_auth_repository.dart';
 import 'package:prospector/src/features/auth/domain/use_cases/auth_use_cases.dart';
 
 final _authRepositoryProvider = Provider<IAuthRepository>((ref) {
-  return FirebaseAuthRepository(firebaseAuthInstance: FirebaseAuth.instance, googleSignIn: GoogleSignIn(), facebookAuth: FacebookAuth.instance);
+  return FirebaseAuthRepository(
+    firebaseAuthInstance: FirebaseAuth.instance,
+    googleSignIn: GoogleSignIn(),
+    facebookAuth: FacebookAuth.instance,
+    signInWithApple: SignInWithAppleHelper(),
+  );
 });
 
 // * Use cases
 final _isAuthenticatedStreamProvider = StreamProvider<bool>((ref) {
   final _authRepository = ref.watch(_authRepositoryProvider);
   return _authRepository.isUserAuthenticated;
+});
+
+final registerWithEmailAndPassword =
+    Provider<RegisterWithEmailAndPassword>((ref) {
+  final _authRepository = ref.watch(_authRepositoryProvider);
+  return RegisterWithEmailAndPassword(authRepository: _authRepository);
 });
 
 final signInWithEmailAndPassword = Provider<SignInWithEmailAndPassword>((ref) {
@@ -25,12 +37,17 @@ final signInWithEmailAndPassword = Provider<SignInWithEmailAndPassword>((ref) {
 
 final signInWithGoogle = Provider<SignInWithGoogle>((ref) {
   final _authRepository = ref.watch(_authRepositoryProvider);
-    return SignInWithGoogle(authRepository: _authRepository);
+  return SignInWithGoogle(authRepository: _authRepository);
 });
 
 final signInWithFacebook = Provider<SignInWithFacebook>((ref) {
   final _authRepository = ref.watch(_authRepositoryProvider);
-    return SignInWithFacebook(authRepository: _authRepository);
+  return SignInWithFacebook(authRepository: _authRepository);
+});
+
+final appleSignIn = Provider<AppleSignIn>((ref) {
+  final _authRepository = ref.watch(_authRepositoryProvider);
+  return AppleSignIn(authRepository: _authRepository);
 });
 
 final signOut = Provider<SignOut>((ref) {

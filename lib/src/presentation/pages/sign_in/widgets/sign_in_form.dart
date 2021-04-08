@@ -18,6 +18,8 @@ class SignInForm extends StatelessWidget {
       final SignInFormState formState = watch(signInFormProvider.state);
       final bool showErrorMessages = formState.showErrorMessages;
       const double socialButtonsSize = 45.0;
+      final bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+
       return ProviderListener<SignInFormState>(
         provider: signInFormProvider.state,
         onChange: (context, state) {
@@ -98,8 +100,8 @@ class SignInForm extends StatelessWidget {
                   style: TextButton.styleFrom(
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                   onPressed: () {},
-                  child: const Text('Forgot your password?',
-                      style: TextStyle(color: Colors.black87)), //TODO localize
+                  child: Text('Forgot your password?',
+                      style: TextStyle(color: isDarkTheme ? Colors.white70 : Colors.black87)), //TODO localize
                 ),
               ),
               Align(
@@ -108,8 +110,8 @@ class SignInForm extends StatelessWidget {
                   style: TextButton.styleFrom(
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                   onPressed: () {},
-                  child: const Text('Register',
-                      style: TextStyle(color: Colors.black87)), //TODO localize
+                  child: Text('Register',
+                      style: TextStyle(color: isDarkTheme ? Colors.white70 : Colors.black87)), //TODO localize
                 ),
               ),
               Padding(
@@ -129,7 +131,9 @@ class SignInForm extends StatelessWidget {
                           primary: Colors.white,
                           padding: EdgeInsets.zero,
                         ),
-                        onPressed: () {},
+                        onPressed: formState.isSubmitting
+                          ? null
+                          : context.read(signInFormProvider).appleSignInButtonPressed,
                         child: const FaIcon(
                           FontAwesomeIcons.apple,
                           color: Colors.black,

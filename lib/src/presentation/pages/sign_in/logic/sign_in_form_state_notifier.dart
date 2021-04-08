@@ -11,11 +11,16 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
   final SignInWithEmailAndPassword signInWithEmailAndPassword;
   final SignInWithGoogle signInWithGoogle;
   final SignInWithFacebook signInWithFacebook;
+  final AppleSignIn appleSignIn;
   SignInFormStateNotifier({
     @required this.signInWithGoogle,
     @required this.signInWithEmailAndPassword,
     @required this.signInWithFacebook,
-  }) : assert(signInWithGoogle != null, signInWithEmailAndPassword != null),
+    @required this.appleSignIn,
+  })  : assert(signInWithGoogle != null),
+        assert(signInWithEmailAndPassword != null),
+        assert(signInWithFacebook != null),
+        assert(appleSignIn != null),
         super(SignInFormState.initial());
 
   void reset() => state = SignInFormState.initial();
@@ -62,7 +67,7 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
     );
 
     AuthFailure authFailure;
-    final Either<AuthFailure, Unit> result = await signInWithGoogle();
+    final Either<AuthFailure, Unit> result = await signInWithGoogle(); //TODO: optimize code
 
     result.fold((failure) => authFailure = failure, (_) {});
 
@@ -80,7 +85,27 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
     );
 
     AuthFailure authFailure;
-    final Either<AuthFailure, Unit> result = await signInWithFacebook();
+    final Either<AuthFailure, Unit> result = await signInWithFacebook();  //TODO: optimize code
+
+
+    result.fold((failure) => authFailure = failure, (_) {});
+
+    state = state.copyWith(
+      isSubmitting: false,
+      showErrorMessages: true,
+      authFailureOption: optionOf(authFailure),
+    );
+  }
+
+  Future<void> appleSignInButtonPressed() async {
+    state = state.copyWith(
+      isSubmitting: true,
+      authFailureOption: none(),
+    );
+
+    AuthFailure authFailure;
+    final Either<AuthFailure, Unit> result = await appleSignIn();  //TODO: optimize code
+
 
     result.fold((failure) => authFailure = failure, (_) {});
 

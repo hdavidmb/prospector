@@ -13,7 +13,7 @@ abstract class IAuthRepository {
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({@required String email, @required String password});
   Future<Either<AuthFailure, Unit>> signInWithGoogle();
   Future<Either<AuthFailure, Unit>> signInWithFacebook();
-  Future<Either<AuthFailure, Unit>> signInWithApple();
+  Future<Either<AuthFailure, Unit>> appleSignIn();
   Future<void> signOut();
 
 } 

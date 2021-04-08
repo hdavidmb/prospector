@@ -28,11 +28,12 @@ dependencies:
   firebase_auth: ^1.0.2
   firebase_core: ^1.0.3
   flutter_facebook_auth: ^3.3.2
-  flutter_riverpod: ^0.12.4 # * Version to work without nullsafety
+  flutter_riverpod: ^0.12.4
   font_awesome_flutter: ^9.0.0
-  freezed_annotation: ^0.12.0 # * Version to work without nullsafety
+  freezed_annotation: ^0.12.0
   google_sign_in: ^5.0.1
   shared_preferences: ^2.0.5
+  sign_in_with_apple: ^3.0.0
 
 dev_dependencies:
   flutter_test:
