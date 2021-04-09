@@ -4,13 +4,12 @@ import 'package:meta/meta.dart';
 class SignInWithAppleHelper {
   Future<AuthorizationCredentialAppleID> getAppleIDCredential({@required List<AppleIDAuthorizationScopes> scopes}) {
     try {
-      return SignInWithApple.getAppleIDCredential( //TODO test response on cancelled
+      return SignInWithApple.getAppleIDCredential(
         scopes: [
           AppleIDAuthorizationScopes.email,
           AppleIDAuthorizationScopes.fullName,
         ],
       );
-      
     } on SignInWithAppleException catch (_) {
       rethrow;
     }

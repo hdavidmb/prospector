@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/pages/register/logic/register_form_provider.dart';
 import 'package:prospector/src/presentation/pages/sign_in/sign_in_page.dart';
 
@@ -24,15 +25,19 @@ class RegisterForm extends StatelessWidget {
         onChange: (context, state) {
           state.authFailureOption.fold(
             () {},
-            (failure) => failure.when(
-                //TODO implement snackbars (Flushbar package)
-                cancelledByUser: () => debugPrint('Snackbar: Canceled'),
-                serverError: () => debugPrint('Snackbar: Server error'),
-                emailAlreadyInUse: () {},
-                invalidEmailAndPasswordCombination: () => debugPrint(
-                    'Snackbar: Invalid email and password combination'),
-                accountExistsWithDifferentCredential: () => debugPrint(
-                    'Snackbar: Account exists with different credential')),
+            (failure) => showSnackBar(
+              context: context,
+              message: failure.when(
+                //TODO localize
+                cancelledByUser: () => 'Canceled',
+                serverError: () => 'Server error',
+                emailAlreadyInUse: () => 'Email already in use',
+                invalidEmailAndPasswordCombination: () =>
+                    'Invalid email and password combination',
+                accountExistsWithDifferentCredential: () =>
+                    'Account exists with different credential',
+              ),
+            ),
           );
         },
         child: Form(
@@ -88,7 +93,7 @@ class RegisterForm extends StatelessWidget {
                   return isNotEmpty
                       ? isStrongEnough
                           ? null
-                          : 'Weak Password'
+                          : 'Weak Password. \n It must be at least 8 characters long and contain: \n - 1 uppercase letter \n - 1 lowercase letter \n - 1 number'
                       : 'Enter password'; //TODO localize
                 },
               ),
@@ -159,7 +164,7 @@ class RegisterForm extends StatelessWidget {
                               : Colors.black87)), //TODO localize
                 ),
               ),
-               Padding(
+              Padding(
                 padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 8.0),
                 child: Text('- or continue with -',
                     style: Theme.of(context).textTheme.subtitle1),
@@ -177,8 +182,10 @@ class RegisterForm extends StatelessWidget {
                           padding: EdgeInsets.zero,
                         ),
                         onPressed: formState.isSubmitting
-                          ? null
-                          : context.read(registerFormProvider).appleSignInButtonPressed,
+                            ? null
+                            : context
+                                .read(registerFormProvider)
+                                .appleSignInButtonPressed,
                         child: const FaIcon(
                           FontAwesomeIcons.apple,
                           color: Colors.black,
@@ -213,7 +220,9 @@ class RegisterForm extends StatelessWidget {
                           primary: const Color(0xff3b5998)),
                       onPressed: formState.isSubmitting
                           ? null
-                          : context.read(registerFormProvider).facebookSignInButtonPressed,
+                          : context
+                              .read(registerFormProvider)
+                              .facebookSignInButtonPressed,
                       child: const FaIcon(FontAwesomeIcons.facebookF),
                     ),
                   ),

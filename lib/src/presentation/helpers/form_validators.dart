@@ -14,12 +14,11 @@ class FormValidators {
 // Minimum 1 Upper case
 // Minimum 1 lowercase
 // Minimum 1 Numeric Number
-// Minimum 1 Special Character
-// Common Allow Character ( ! @ # $ & * ~ )
+// Minimum 8 characters long
 
     const Pattern pattern =
         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
-    final RegExp regExp = RegExp(pattern.toString()); //TODO test
+    final RegExp regExp = RegExp(pattern.toString());
     return regExp.hasMatch(password);
   }
 

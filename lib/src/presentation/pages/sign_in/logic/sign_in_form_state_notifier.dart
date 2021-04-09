@@ -82,7 +82,7 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
 
     AuthFailure authFailure;
 
-    final Either<AuthFailure, Unit> result = await callBack(); //TODO: test
+    final Either<AuthFailure, Unit> result = await callBack();
 
     result.fold((failure) => authFailure = failure, (_) {});
 

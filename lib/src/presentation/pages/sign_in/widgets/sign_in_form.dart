@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/pages/register/register_page.dart';
 
 import 'package:prospector/src/presentation/pages/sign_in/logic/sign_in_form_provider.dart';
@@ -26,15 +27,18 @@ class SignInForm extends StatelessWidget {
         onChange: (context, state) {
           state.authFailureOption.fold(
             () {},
-            (failure) => failure.when(
-              //TODO implement snackbars (Flushbar package)
-              cancelledByUser: () => debugPrint('Snackbar: Canceled'),
-              serverError: () => debugPrint('Snackbar: Server error'),
-              emailAlreadyInUse: () {},
-              invalidEmailAndPasswordCombination: () => debugPrint(
-                  'Snackbar: Invalid email and password combination'),
-              accountExistsWithDifferentCredential: () => debugPrint(
-                  'Snackbar: Account exists with different credential')
+            (failure) => showSnackBar(
+              context: context,
+              message: failure.when(
+                //TODO localize
+                cancelledByUser: () => 'Canceled',
+                serverError: () => 'Server error',
+                emailAlreadyInUse: () => '',
+                invalidEmailAndPasswordCombination: () =>
+                    'Invalid email and password combination',
+                accountExistsWithDifferentCredential: () =>
+                    'Account exists with different credential',
+              ),
             ),
           );
         },
@@ -100,7 +104,10 @@ class SignInForm extends StatelessWidget {
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                   onPressed: () {},
                   child: Text('Forgot your password?',
-                      style: TextStyle(color: isDarkTheme ? Colors.white70 : Colors.black87)), //TODO localize
+                      style: TextStyle(
+                          color: isDarkTheme
+                              ? Colors.white70
+                              : Colors.black87)), //TODO localize
                 ),
               ),
               Align(
@@ -109,10 +116,15 @@ class SignInForm extends StatelessWidget {
                   style: TextButton.styleFrom(
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => RegisterPage())); //TODO: implement proper routing
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) =>
+                            RegisterPage())); //TODO: implement proper routing
                   },
                   child: Text('Register',
-                      style: TextStyle(color: isDarkTheme ? Colors.white70 : Colors.black87)), //TODO localize
+                      style: TextStyle(
+                          color: isDarkTheme
+                              ? Colors.white70
+                              : Colors.black87)), //TODO localize
                 ),
               ),
               Padding(
@@ -133,8 +145,10 @@ class SignInForm extends StatelessWidget {
                           padding: EdgeInsets.zero,
                         ),
                         onPressed: formState.isSubmitting
-                          ? null
-                          : context.read(signInFormProvider).appleSignInButtonPressed,
+                            ? null
+                            : context
+                                .read(signInFormProvider)
+                                .appleSignInButtonPressed,
                         child: const FaIcon(
                           FontAwesomeIcons.apple,
                           color: Colors.black,
@@ -169,7 +183,9 @@ class SignInForm extends StatelessWidget {
                           primary: const Color(0xff3b5998)),
                       onPressed: formState.isSubmitting
                           ? null
-                          : context.read(signInFormProvider).facebookSignInButtonPressed,
+                          : context
+                              .read(signInFormProvider)
+                              .facebookSignInButtonPressed,
                       child: const FaIcon(FontAwesomeIcons.facebookF),
                     ),
                   ),
