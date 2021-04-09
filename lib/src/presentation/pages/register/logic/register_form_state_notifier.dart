@@ -1,30 +1,35 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meta/meta.dart';
 import 'package:prospector/src/features/auth/domain/auth_failure.dart';
+
 import 'package:prospector/src/features/auth/domain/use_cases/auth_use_cases.dart';
 import 'package:prospector/src/presentation/helpers/form_validators.dart';
-import 'package:prospector/src/presentation/pages/sign_in/logic/sign_in_form_state.dart';
-import 'package:meta/meta.dart';
+import 'package:prospector/src/presentation/pages/register/logic/register_form_state.dart';
 
-class SignInFormStateNotifier extends StateNotifier<SignInFormState>
-    with FormValidators {
-  final SignInWithEmailAndPassword signInWithEmailAndPassword;
+class RegisterFormStateNotifier extends StateNotifier<RegisterFormState> with FormValidators {
+  final RegisterWithEmailAndPassword registerWithEmailAndPassword;
   final SignInWithGoogle signInWithGoogle;
   final SignInWithFacebook signInWithFacebook;
   final AppleSignIn appleSignIn;
-  SignInFormStateNotifier({
-    @required this.signInWithEmailAndPassword,
+
+  RegisterFormStateNotifier({
+    @required this.registerWithEmailAndPassword,
     @required this.signInWithGoogle,
     @required this.signInWithFacebook,
     @required this.appleSignIn,
-  })  : assert(signInWithEmailAndPassword != null),
+    }) : assert(registerWithEmailAndPassword != null),
         assert(signInWithGoogle != null),
         assert(signInWithFacebook != null),
         assert(appleSignIn != null),
-        super(SignInFormState.initial());
+        super(RegisterFormState.initial());
 
-  void reset() => state = SignInFormState.initial();
+
+  void reset() => state = RegisterFormState.initial();
+
+  void nameChanged(String value) {
+    state = state.copyWith(name: value, authFailureOption: none());
+  }
 
   void emailChanged(String value) {
     state = state.copyWith(email: value, authFailureOption: none());
@@ -34,18 +39,25 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
     state = state.copyWith(password: value, authFailureOption: none());
   }
 
-  Future<void> signInButtonPressed() async {
+  void confirmPasswordChanged(String value) {
+    state = state.copyWith(confirmPassword: value, authFailureOption: none());
+  }
+  
+  Future<void> registerButtonPressed() async {
+    final bool isNameValid = validateFieldIsNotEmpty(state.name);
     final bool isEmailValid = validateEmail(state.email);
-    final bool isPasswordValid = validateFieldIsNotEmpty(state.password);
+    final bool isPasswordValid = validateFieldIsNotEmpty(state.password) && validatePasswordStrength(state.password);
+    final bool isConfirmPasswordValid = validateFieldIsNotEmpty(state.confirmPassword) && validatePasswordsMatch(state.password, state.confirmPassword);
 
     AuthFailure _authFailure;
 
-    if (isEmailValid && isPasswordValid) {
+    if (isNameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid) {
       state = state.copyWith(
         isSubmitting: true,
         authFailureOption: none(),
       );
-      final Either<AuthFailure, Unit> result = await signInWithEmailAndPassword(
+      //TODO register user on db
+      final Either<AuthFailure, Unit> result = await registerWithEmailAndPassword(
           email: state.email, password: state.password);
 
       result.fold(
@@ -91,4 +103,6 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
       authFailureOption: optionOf(authFailure),
     );
   }
+
+
 }

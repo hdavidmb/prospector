@@ -6,8 +6,8 @@ class FormValidators {
     return regExp.hasMatch(email);
   }
 
-  bool validatePasswordInput(String password) {
-    return password.isNotEmpty;
+  bool validateFieldIsNotEmpty(String input) {
+    return input.isNotEmpty;
   }
 
   bool validatePasswordStrength(String password) {
@@ -18,8 +18,12 @@ class FormValidators {
 // Common Allow Character ( ! @ # $ & * ~ )
 
     const Pattern pattern =
-        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@%?#\$&*~]).{8,}$';
+        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
     final RegExp regExp = RegExp(pattern.toString()); //TODO test
     return regExp.hasMatch(password);
+  }
+
+  bool validatePasswordsMatch(String password, String confirmPassword) {
+    return password == confirmPassword;
   }
 }

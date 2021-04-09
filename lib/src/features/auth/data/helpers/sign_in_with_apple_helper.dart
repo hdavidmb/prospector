@@ -11,7 +11,7 @@ class SignInWithAppleHelper {
         ],
       );
       
-    } on SignInWithAppleException catch (e) {
+    } on SignInWithAppleException catch (_) {
       rethrow;
     }
   }
