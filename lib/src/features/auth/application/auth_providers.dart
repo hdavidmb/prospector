@@ -9,6 +9,9 @@ import 'package:prospector/src/features/auth/data/helpers/sign_in_with_apple_hel
 import 'package:prospector/src/features/auth/domain/i_auth_repository.dart';
 import 'package:prospector/src/features/auth/domain/use_cases/auth_use_cases.dart';
 
+
+export 'package:prospector/src/features/auth/application/auth_state.dart';
+
 final _authRepositoryProvider = Provider<IAuthRepository>((ref) {
   return FirebaseAuthRepository(
     firebaseAuthInstance: FirebaseAuth.instance,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:prospector/src/features/auth/application/auth_providers.dart';
-import 'package:prospector/src/features/auth/application/auth_state.dart';
 import 'package:prospector/src/presentation/pages/home/home_page.dart';
 import 'package:prospector/src/presentation/pages/sign_in/widgets/sign_in_form.dart';
 
@@ -27,7 +27,7 @@ class SignInPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
-                Hero(tag: 'prospector_logo', child: Icon(Icons.account_circle, size: 100.0,)), //TODO place prospector logo
+                Hero(tag: 'prospector_logo', child: Image(image: AssetImage('assets/images/prospector_logo.png'), width: 100.0)),
                 Text('Welcome to',
                     style: TextStyle(fontSize: 30.0)), //TODO localize
                 SizedBox(height: 8.0),

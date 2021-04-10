@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:prospector/src/features/auth/application/auth_providers.dart';
-import 'package:prospector/src/features/auth/application/auth_state.dart';
 import 'package:prospector/src/presentation/pages/home/home_page.dart';
 import 'package:prospector/src/presentation/pages/register/widgets/register_form.dart';
 
