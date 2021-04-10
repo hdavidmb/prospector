@@ -31,6 +31,7 @@ class RegisterForm extends StatelessWidget {
                   'Invalid email and password combination',
               accountExistsWithDifferentCredential: () =>
                   'Account exists with different credential',
+              userNotFoundResetPassword: () => "We haven't found any account associated with this email address. Please confirm your email.",
             ),
           ),
         );

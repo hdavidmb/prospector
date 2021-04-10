@@ -10,10 +10,12 @@ final signInFormProvider =
   final _signInWithGoogle = ref.watch(signInWithGoogle);
   final _signInWithFacebook = ref.watch(signInWithFacebook);
   final _appleSignIn = ref.watch(appleSignIn);
+  final _resetPassword = ref.watch(resetPassword);
   return SignInFormStateNotifier(
     signInWithEmailAndPassword: _signInWithEmailAndPassword,
     signInWithGoogle: _signInWithGoogle,
     signInWithFacebook: _signInWithFacebook,
     appleSignIn: _appleSignIn,
+    resetPassword: _resetPassword,
   );
 });

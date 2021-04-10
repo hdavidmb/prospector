@@ -26,15 +26,15 @@ class SignInPage extends StatelessWidget {
             height: screenSize.height,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Hero(tag: 'prospector_logo', child: Image(image: AssetImage('assets/images/prospector_logo.png'), width: 100.0)),
+              children: [
+                const Hero(tag: 'prospector_logo', child: Image(image: AssetImage('assets/images/prospector_logo.png'), width: 100.0)),
                 Text('Welcome to',
-                    style: TextStyle(fontSize: 30.0)), //TODO localize
-                SizedBox(height: 8.0),
+                    style: Theme.of(context).textTheme.headline5), //TODO localize
+                const SizedBox(height: 8.0),
                 Text('Prospector',
-                    style: TextStyle(fontSize: 60.0)), //TODO localize
-                SizedBox(height: 30.0),
-                SignInForm(),
+                    style: Theme.of(context).textTheme.headline3), //TODO localize
+                const SizedBox(height: 30.0),
+                const SignInForm(),
               ],
             ),
           ),

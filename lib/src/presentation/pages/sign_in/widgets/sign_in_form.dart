@@ -31,6 +31,7 @@ class SignInForm extends StatelessWidget {
                   'Invalid email and password combination',
               accountExistsWithDifferentCredential: () =>
                   'Account exists with different credential',
+              userNotFoundResetPassword: () => "We haven't found any account associated with this email address. Please confirm your email.",
             ),
           ),
         );
@@ -45,7 +46,7 @@ class SignInForm extends StatelessWidget {
 
           return Form(
             autovalidateMode: showErrorMessages
-                ? AutovalidateMode.onUserInteraction
+                ? AutovalidateMode.always
                 : AutovalidateMode.disabled,
             child: Column(
               children: [
@@ -103,7 +104,17 @@ class SignInForm extends StatelessWidget {
                   child: TextButton(
                     style: TextButton.styleFrom(
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                    onPressed: () {},
+                    onPressed: formState.isSubmitting
+                        ? null
+                        : () {
+                            // Init reset password email with current email value
+                            final String currentEmail =
+                                context.read(signInFormProvider.state).email;
+                            context
+                                .read(signInFormProvider)
+                                .resetPasswordEmailChanged(currentEmail);
+                            showResetPasswordDialog(context);
+                          },
                     child: Text('Forgot your password?',
                         style: TextStyle(
                             color: isDarkTheme

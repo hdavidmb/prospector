@@ -11,6 +11,7 @@ abstract class IAuthRepository {
 
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword({@required String email, @required String password});
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({@required String email, @required String password});
+  Future<Either<AuthFailure, Unit>> resetPassword({@required String email});
   Future<Either<AuthFailure, Unit>> signInWithGoogle();
   Future<Either<AuthFailure, Unit>> signInWithFacebook();
   Future<Either<AuthFailure, Unit>> appleSignIn();

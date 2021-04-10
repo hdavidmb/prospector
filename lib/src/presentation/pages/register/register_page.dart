@@ -27,7 +27,7 @@ class RegisterPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
-                // Hero(tag: 'prospector_logo', child: Icon(Icons.account_circle, size: 100.0,)), //TODO place prospector logo
+                Hero(tag: 'prospector_logo', child: Image(image: AssetImage('assets/images/prospector_logo.png'), width: 100.0)),
                 Text('Register',
                     style: TextStyle(fontSize: 30.0)), //TODO localize
                 SizedBox(height: 8.0),

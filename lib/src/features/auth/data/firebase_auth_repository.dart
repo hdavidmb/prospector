@@ -117,7 +117,7 @@ class FirebaseAuthRepository implements IAuthRepository {
       return manageFirebaseAuthExceptions(errorCode: e.code);
     } on SignInWithAppleAuthorizationException catch (e) {
       return manageFirebaseAuthExceptions(errorCode: e.code.toString());
-    } catch (e) {
+    } catch (_) {
       return left(const AuthFailure.serverError());
     }
   }
@@ -142,8 +142,20 @@ class FirebaseAuthRepository implements IAuthRepository {
         return left(const AuthFailure.accountExistsWithDifferentCredential());
       case 'AuthorizationErrorCode.canceled':
         return left(const AuthFailure.cancelledByUser());
+      case 'user-not-found-reset-password':
+        return left(const AuthFailure.userNotFoundResetPassword());
       default:
         return left(const AuthFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> resetPassword({String email}) async {
+    try {
+      await firebaseAuthInstance.sendPasswordResetEmail(email: email);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      return manageFirebaseAuthExceptions(errorCode: '${e.code}-reset-password');
     }
   }
 }

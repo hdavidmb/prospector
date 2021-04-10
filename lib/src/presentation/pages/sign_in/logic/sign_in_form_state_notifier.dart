@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 import 'package:prospector/src/features/auth/domain/use_cases/auth_use_cases.dart';
+import 'package:prospector/src/features/auth/domain/use_cases/reset_password.dart';
 import 'package:prospector/src/presentation/helpers/form_validators.dart';
 import 'package:prospector/src/presentation/pages/sign_in/logic/sign_in_form_state.dart';
 import 'package:meta/meta.dart';
@@ -13,15 +14,18 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
   final SignInWithGoogle signInWithGoogle;
   final SignInWithFacebook signInWithFacebook;
   final AppleSignIn appleSignIn;
+  final ResetPassword resetPassword;
   SignInFormStateNotifier({
     @required this.signInWithEmailAndPassword,
     @required this.signInWithGoogle,
     @required this.signInWithFacebook,
     @required this.appleSignIn,
+    @required this.resetPassword,
   })  : assert(signInWithEmailAndPassword != null),
         assert(signInWithGoogle != null),
         assert(signInWithFacebook != null),
         assert(appleSignIn != null),
+        assert(resetPassword != null),
         super(SignInFormState.initial());
 
   void reset() => state = SignInFormState.initial();
@@ -32,6 +36,11 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
 
   void passwordChanged(String value) {
     state = state.copyWith(password: value, authFailureOption: none());
+  }
+
+  void resetPasswordEmailChanged(String value) {
+    state =
+        state.copyWith(resetPasswordEmail: value, authFailureOption: none());
   }
 
   Future<void> signInButtonPressed() async {
@@ -80,15 +89,44 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
       authFailureOption: none(),
     );
 
-    AuthFailure authFailure;
+    AuthFailure _authFailure;
 
     final Either<AuthFailure, Unit> result = await callBack();
 
-    result.fold((failure) => authFailure = failure, (_) {});
+    result.fold((failure) => _authFailure = failure, (_) {});
 
     state = state.copyWith(
       isSubmitting: false,
-      authFailureOption: optionOf(authFailure),
+      authFailureOption: optionOf(_authFailure),
     );
+  }
+
+  Future<bool> forgotPasswordButtonPressed() async {
+    AuthFailure _authFailure;
+    bool _success = false;
+
+    final bool isResetPasswordEmailValid =
+        validateEmail(state.resetPasswordEmail);
+
+    if (isResetPasswordEmailValid) {
+      state = state.copyWith(
+        isSubmitting: true,
+        authFailureOption: none(),
+      );
+
+      final Either<AuthFailure, Unit> result =
+          await resetPassword(email: state.resetPasswordEmail);
+      result.fold((failure) => _authFailure = failure, (_) {
+        _success = true;
+      });
+    }
+
+    state = state.copyWith(
+      isSubmitting: false,
+      showResetPasswordEmailError: !_success,
+      authFailureOption: optionOf(_authFailure),
+    );
+
+    return _success;
   }
 }
