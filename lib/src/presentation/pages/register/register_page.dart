@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:prospector/src/features/auth/application/auth_providers.dart';
 import 'package:prospector/src/presentation/pages/home/home_page.dart';
@@ -8,7 +9,6 @@ import 'package:prospector/src/presentation/pages/register/widgets/register_form
 class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       body: ProviderListener<AuthState>(
         provider: authStateNotifierProvider.state,
@@ -19,23 +19,22 @@ class RegisterPage extends StatelessWidget {
             orElse: () {},
           );
         },
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            height: screenSize.height,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Hero(tag: 'prospector_logo', child: Image(image: AssetImage('assets/images/prospector_logo.png'), width: 100.0)),
-                Text('Register',
-                    style: TextStyle(fontSize: 30.0)), //TODO localize
-                SizedBox(height: 8.0),
-                // Text('Prospector',
-                //     style: TextStyle(fontSize: 60.0)), //TODO localize
-                SizedBox(height: 30.0),
-                RegisterForm(),
-              ],
+        child: Center(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Container(
+              padding: const EdgeInsets.all(20.0),
+              // height: screenSize.height,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Hero(tag: 'prospector_logo', child: Image(image: AssetImage('assets/images/prospector_logo.png'), width: 100.0)),
+                  Text(AppLocalizations.of(context).register,
+                      style: const TextStyle(fontSize: 30.0)),
+                  const SizedBox(height: 30.0),
+                  const RegisterForm(),
+                ],
+              ),
             ),
           ),
         ),

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/pages/register/logic/register_form_provider.dart';
@@ -20,20 +21,13 @@ class RegisterForm extends StatelessWidget {
       onChange: (context, state) {
         state.authFailureOption.fold(
           () {},
-          (failure) => showSnackBar(
-            context: context,
-            message: failure.when(
-              //TODO localize
-              cancelledByUser: () => 'Canceled',
-              serverError: () => 'Server error',
-              emailAlreadyInUse: () => 'Email already in use',
-              invalidEmailAndPasswordCombination: () =>
-                  'Invalid email and password combination',
+          (failure) => failure.maybeWhen(
+              serverError: () => showSnackBar(context: context, message: AppLocalizations.of(context).serverError),
+              emailAlreadyInUse: () => showSnackBar(context: context, message: AppLocalizations.of(context).emailAlreadyInUse),
               accountExistsWithDifferentCredential: () =>
-                  'Account exists with different credential',
-              userNotFoundResetPassword: () => "We haven't found any account associated with this email address. Please confirm your email.",
+                  showSnackBar(context: context, message: AppLocalizations.of(context).accountWithDifferentCredentials),
+              orElse: () {}
             ),
-          ),
         );
       },
       child: Consumer(
@@ -53,8 +47,9 @@ class RegisterForm extends StatelessWidget {
                 TextFormField(
                   keyboardType: TextInputType.text,
                   textCapitalization: TextCapitalization.words,
-                  decoration: const InputDecoration(
-                    hintText: 'Name', //TODO localize
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.account_circle),
+                    hintText: AppLocalizations.of(context).name,
                   ),
                   textInputAction: TextInputAction.next,
                   onChanged: context.read(registerFormProvider).nameChanged,
@@ -62,27 +57,29 @@ class RegisterForm extends StatelessWidget {
                     final bool isValid = context
                         .read(registerFormProvider)
                         .validateFieldIsNotEmpty(value);
-                    return isValid ? null : 'Enter your name'; //TODO localize
+                    return isValid ? null : AppLocalizations.of(context).enterYourName;
                   },
                 ),
                 const SizedBox(height: 10.0),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                    hintText: 'Email', //TODO localize
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.email),
+                    hintText: AppLocalizations.of(context).email,
                   ),
                   textInputAction: TextInputAction.next,
                   onChanged: context.read(registerFormProvider).emailChanged,
                   validator: (value) {
                     final bool isValid =
                         context.read(registerFormProvider).validateEmail(value);
-                    return isValid ? null : 'Invalid Email'; //TODO localize
+                    return isValid ? null : AppLocalizations.of(context).invalidEmail;
                   },
                 ),
                 const SizedBox(height: 10.0),
                 TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: 'Password', //TODO localize
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.lock),
+                    hintText: AppLocalizations.of(context).password,
                   ),
                   textInputAction: TextInputAction.next,
                   obscureText: true,
@@ -97,14 +94,15 @@ class RegisterForm extends StatelessWidget {
                     return isNotEmpty
                         ? isStrongEnough
                             ? null
-                            : 'Weak Password. \n It must be at least 8 characters long and contain: \n - 1 uppercase letter \n - 1 lowercase letter \n - 1 number'
-                        : 'Enter password'; //TODO localize
+                            : AppLocalizations.of(context).weakPassword
+                        : AppLocalizations.of(context).enterAPassword;
                   },
                 ),
                 const SizedBox(height: 10.0),
                 TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: 'Confirm Password', //TODO localize
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.lock),
+                    hintText: AppLocalizations.of(context).confirmPassword,
                   ),
                   textInputAction: TextInputAction.done,
                   obscureText: true,
@@ -124,8 +122,8 @@ class RegisterForm extends StatelessWidget {
                     return isNotEmpty
                         ? passwordsMatch
                             ? null
-                            : "Passwords don't match"
-                        : 'Enter password'; //TODO localize
+                            : AppLocalizations.of(context).passwordsDontMatch
+                        : AppLocalizations.of(context).enterAPassword;
                   },
                   onFieldSubmitted: (_) => context
                       .read(registerFormProvider)
@@ -143,7 +141,7 @@ class RegisterForm extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('Register'), //TODO localize
+                        Text(AppLocalizations.of(context).registerButton),
                         if (formState.isSubmitting) ...const [
                           SizedBox(width: 8.0),
                           CircularProgressIndicator.adaptive(),
@@ -162,18 +160,18 @@ class RegisterForm extends StatelessWidget {
                           builder: (context) =>
                               SignInPage())); //TODO: implement proper routing
                     },
-                    child: Text('Sign In',
+                    child: Text(AppLocalizations.of(context).signIn,
                         style: TextStyle(
                             color: isDarkTheme
                                 ? Colors.white70
-                                : Colors.black87)), //TODO localize
+                                : Colors.black87)),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 8.0),
-                  child: Text('- or continue with -',
+                  child: Text(AppLocalizations.of(context).orContinueWith,
                       style: Theme.of(context).textTheme.subtitle1),
-                ), //TODO localize
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

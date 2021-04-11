@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/pages/register/register_page.dart';
@@ -20,20 +21,15 @@ class SignInForm extends StatelessWidget {
       onChange: (context, state) {
         state.authFailureOption.fold(
           () {},
-          (failure) => showSnackBar(
-            context: context,
-            message: failure.when(
-              //TODO localize
-              cancelledByUser: () => 'Canceled',
-              serverError: () => 'Server error',
-              emailAlreadyInUse: () => '',
+          (failure) => failure.maybeWhen(
+              serverError: () => showSnackBar(context: context, message: AppLocalizations.of(context).serverError),
               invalidEmailAndPasswordCombination: () =>
-                  'Invalid email and password combination',
+                  showSnackBar(context: context, message: AppLocalizations.of(context).invalidEmailAndPassword),
               accountExistsWithDifferentCredential: () =>
-                  'Account exists with different credential',
-              userNotFoundResetPassword: () => "We haven't found any account associated with this email address. Please confirm your email.",
+                  showSnackBar(context: context, message: AppLocalizations.of(context).accountWithDifferentCredentials),
+              userNotFoundResetPassword: () => showSnackBar(context: context, message: AppLocalizations.of(context).userNotFoundResetPassword),
+              orElse: () {},
             ),
-          ),
         );
       },
       child: Consumer(
@@ -52,21 +48,23 @@ class SignInForm extends StatelessWidget {
               children: [
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                    hintText: 'Email', //TODO localize
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.email),
+                    hintText: AppLocalizations.of(context).email,
                   ),
                   textInputAction: TextInputAction.next,
                   onChanged: context.read(signInFormProvider).emailChanged,
                   validator: (value) {
                     final bool isValid =
                         context.read(signInFormProvider).validateEmail(value);
-                    return isValid ? null : 'Invalid Email'; //TODO localize
+                    return isValid ? null : AppLocalizations.of(context).invalidEmail;
                   },
                 ),
                 const SizedBox(height: 10.0),
                 TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: 'Password', //TODO localize
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.lock),
+                    hintText: AppLocalizations.of(context).password,
                   ),
                   textInputAction: TextInputAction.done,
                   obscureText: true,
@@ -75,7 +73,7 @@ class SignInForm extends StatelessWidget {
                     final bool isValid = context
                         .read(signInFormProvider)
                         .validateFieldIsNotEmpty(value);
-                    return isValid ? null : 'Enter password'; //TODO localize
+                    return isValid ? null : AppLocalizations.of(context).enterAPassword;
                   },
                   onFieldSubmitted: (_) =>
                       context.read(signInFormProvider).signInButtonPressed(),
@@ -90,8 +88,8 @@ class SignInForm extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('Sign In'), //TODO localize
-                        if (formState.isSubmitting) ...const [
+                        Text(AppLocalizations.of(context).signIn),
+                        if (formState.isSubmitting) ... const [
                           SizedBox(width: 8.0),
                           CircularProgressIndicator.adaptive(),
                         ],
@@ -115,11 +113,11 @@ class SignInForm extends StatelessWidget {
                                 .resetPasswordEmailChanged(currentEmail);
                             showResetPasswordDialog(context);
                           },
-                    child: Text('Forgot your password?',
+                    child: Text(AppLocalizations.of(context).forgotPassword,
                         style: TextStyle(
                             color: isDarkTheme
                                 ? Colors.white70
-                                : Colors.black87)), //TODO localize
+                                : Colors.black87)),
                   ),
                 ),
                 Align(
@@ -132,18 +130,18 @@ class SignInForm extends StatelessWidget {
                           builder: (context) =>
                               RegisterPage())); //TODO: implement proper routing
                     },
-                    child: Text('Register',
+                    child: Text(AppLocalizations.of(context).register,
                         style: TextStyle(
                             color: isDarkTheme
                                 ? Colors.white70
-                                : Colors.black87)), //TODO localize
+                                : Colors.black87)),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 8.0),
-                  child: Text('- or continue with -',
+                  child: Text(AppLocalizations.of(context).orContinueWith,
                       style: Theme.of(context).textTheme.subtitle1),
-                ), //TODO localize
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

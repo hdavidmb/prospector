@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/pages/splash/splash_screen_page.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'package:prospector/src/presentation/pages/splash/splash_screen_page.dart';
 import 'package:prospector/src/presentation/theme/theme_providers.dart';
 
 class App extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final currentThemeMode =
-        watch(themeNotifierProvider).currentThemeMode;
+    final currentThemeMode = watch(themeNotifierProvider).currentThemeMode;
 
-        return MaterialApp(
-      debugShowCheckedModeBanner: false,
+    return MaterialApp(
       title: 'Prospector',
+      debugShowCheckedModeBanner: false,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations
+          .supportedLocales, //! Add .arb file on lib/l10n - also modify info.plist localizations
       themeMode: currentThemeMode,
       theme: kLightTheme,
       darkTheme: kDarkTheme,

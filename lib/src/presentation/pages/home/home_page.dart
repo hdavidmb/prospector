@@ -8,7 +8,7 @@ import 'package:prospector/src/presentation/pages/sign_in/sign_in_page.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // * This provider listener mus always be at the top of the home widget tree
+    // * This provider listener must always be at the top of the home widget tree
     return ProviderListener<AuthState>( 
         provider: authStateNotifierProvider.state,
         onChange: (context, authState) {

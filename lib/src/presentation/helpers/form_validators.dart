@@ -11,11 +11,6 @@ class FormValidators {
   }
 
   bool validatePasswordStrength(String password) {
-// Minimum 1 Upper case
-// Minimum 1 lowercase
-// Minimum 1 Numeric Number
-// Minimum 8 characters long
-
     const Pattern pattern =
         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
     final RegExp regExp = RegExp(pattern.toString());

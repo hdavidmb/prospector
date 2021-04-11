@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:prospector/src/features/auth/application/auth_providers.dart';
 import 'package:prospector/src/presentation/pages/home/home_page.dart';
@@ -24,9 +25,7 @@ class SplashScreenPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Hero(tag: 'prospector_logo', child: Image(image: AssetImage('assets/images/prospector_logo.png'), width: 200.0)),
-              // const SizedBox(height: 20.0),
-              Text('Prospector', style: Theme.of(context).textTheme.headline3), //TODO: localize
-              const SizedBox(height: 20.0, width: double.infinity),
+              Text(AppLocalizations.of(context).prospector, style: Theme.of(context).textTheme.headline3.copyWith(color: Colors.black87)),
               const CircularProgressIndicator.adaptive()
             ]),
       ),

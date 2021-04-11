@@ -1,6 +1,8 @@
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:prospector/src/presentation/pages/sign_in/logic/sign_in_form_provider.dart';
 
 void showSnackBar({@required BuildContext context, @required String message}) {
@@ -35,15 +37,13 @@ void showResetPasswordDialog(BuildContext context) {
           final bool showErrorMessages =
               watch(signInFormProvider.state).showResetPasswordEmailError;
           return AlertDialog(
-            title: Text(
-              'Reset password', //TODO localize
+            title: Text(AppLocalizations.of(context).resetPassword,
               style: Theme.of(context).textTheme.headline6,
             ),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text(
-                    'Enter the email address you used to create your account'), //TODO localize
+                Text(AppLocalizations.of(context).resetPasswordDialogMessage),
                 const SizedBox(height: 10.0),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
@@ -51,8 +51,8 @@ void showResetPasswordDialog(BuildContext context) {
                   initialValue:
                       context.read(signInFormProvider.state).resetPasswordEmail,
                       autofocus: true,
-                  decoration: const InputDecoration(
-                    hintText: 'Email', //TODO localize
+                  decoration: InputDecoration(
+                    hintText: AppLocalizations.of(context).email,
                   ),
                   autovalidateMode: showErrorMessages
                       ? AutovalidateMode.always
@@ -63,7 +63,7 @@ void showResetPasswordDialog(BuildContext context) {
                   validator: (value) {
                     final bool isValid =
                         context.read(signInFormProvider).validateEmail(value);
-                    return isValid ? null : 'Invalid Email'; //TODO localize
+                    return isValid ? null : AppLocalizations.of(context).invalidEmail;
                   },
                 ),
               ],
@@ -71,7 +71,7 @@ void showResetPasswordDialog(BuildContext context) {
             actions: [
               TextButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: const Text('Cancel')), //TODO localize
+                  child: Text(AppLocalizations.of(context).cancel)),
               TextButton(
                 onPressed: () async {
                   final bool success = await context
@@ -82,10 +82,10 @@ void showResetPasswordDialog(BuildContext context) {
                     showMessageDialog(
                         context: context,
                         message:
-                            'We have sent you an email with the steps to reset your password. Please check your email inbox'); //TODO localize
+                            AppLocalizations.of(context).resetPasswordEmailSent);
                   }
                 },
-                child: const Text('Send'), //TODO localize
+                child: Text(AppLocalizations.of(context).send),
               ),
             ],
           );
@@ -106,7 +106,7 @@ void showMessageDialog(
         actions: [
           TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Ok')), //TODO localize
+              child: Text(AppLocalizations.of(context).ok)),
         ],
       );
     },

@@ -48,8 +48,6 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<!-- TODO Replace this value: -->
-				<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
 				<string>com.googleusercontent.apps.110299102218-6t3ct050kjo0ffpvc68cepn4f4ciifu0</string>
 				<string>fb2264793907089214</string>
 			</array>
@@ -76,6 +74,11 @@
 		<string>fb-messenger-share-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
+	</array>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>es</string>
 	</array>
 </dict>
 </plist>
