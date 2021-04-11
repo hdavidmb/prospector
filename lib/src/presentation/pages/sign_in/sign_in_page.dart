@@ -9,6 +9,7 @@ import 'package:prospector/src/presentation/pages/sign_in/widgets/sign_in_form.d
 class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       body: ProviderListener<AuthState>(
         provider: authStateNotifierProvider.state,
@@ -32,7 +33,7 @@ class SignInPage extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline5),
                   const SizedBox(height: 8.0),
                   Text(AppLocalizations.of(context).prospector,
-                      style: Theme.of(context).textTheme.headline3. copyWith(color: Colors.black87)),
+                      style: Theme.of(context).textTheme.headline3. copyWith(color: isDarkTheme ? Colors.white70 : Colors.black87)),
                   const SizedBox(height: 30.0),
                   const SignInForm(),
                 ],

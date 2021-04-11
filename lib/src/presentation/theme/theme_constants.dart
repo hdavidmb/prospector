@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 final Color kPrimaryColor = Colors.red[600];
+final Color kAccentColor = kPrimaryColor;
 
 const InputDecorationTheme kInputDecorationTheme = InputDecorationTheme(
     filled: true,
@@ -19,12 +20,14 @@ final ElevatedButtonThemeData kElevatedButtonTheme = ElevatedButtonThemeData(
 // * Themes
 final kLightTheme = ThemeData.light().copyWith(
   primaryColor: kPrimaryColor,
+  accentColor: kAccentColor,
   inputDecorationTheme: kInputDecorationTheme,
   elevatedButtonTheme: kElevatedButtonTheme,
 );
 
 final kDarkTheme = ThemeData.dark().copyWith(
   primaryColor: kPrimaryColor,
+  accentColor: kAccentColor,
   inputDecorationTheme: kInputDecorationTheme,
   elevatedButtonTheme: kElevatedButtonTheme,
 );
