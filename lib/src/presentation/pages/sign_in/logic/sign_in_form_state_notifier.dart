@@ -1,12 +1,11 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 import 'package:prospector/src/features/auth/domain/use_cases/auth_use_cases.dart';
 import 'package:prospector/src/features/auth/domain/use_cases/reset_password.dart';
 import 'package:prospector/src/presentation/helpers/form_validators.dart';
 import 'package:prospector/src/presentation/pages/sign_in/logic/sign_in_form_state.dart';
-import 'package:meta/meta.dart';
 
 class SignInFormStateNotifier extends StateNotifier<SignInFormState>
     with FormValidators {
@@ -16,17 +15,12 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
   final AppleSignIn appleSignIn;
   final ResetPassword resetPassword;
   SignInFormStateNotifier({
-    @required this.signInWithEmailAndPassword,
-    @required this.signInWithGoogle,
-    @required this.signInWithFacebook,
-    @required this.appleSignIn,
-    @required this.resetPassword,
-  })  : assert(signInWithEmailAndPassword != null),
-        assert(signInWithGoogle != null),
-        assert(signInWithFacebook != null),
-        assert(appleSignIn != null),
-        assert(resetPassword != null),
-        super(SignInFormState.initial());
+    required this.signInWithEmailAndPassword,
+    required this.signInWithGoogle,
+    required this.signInWithFacebook,
+    required this.appleSignIn,
+    required this.resetPassword,
+  })  : super(SignInFormState.initial());
 
   void reset() => state = SignInFormState.initial();
 
@@ -47,7 +41,7 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
     final bool isEmailValid = validateEmail(state.email);
     final bool isPasswordValid = validateFieldIsNotEmpty(state.password);
 
-    AuthFailure _authFailure;
+    AuthFailure? _authFailure;
 
     if (isEmailValid && isPasswordValid) {
       state = state.copyWith(
@@ -71,15 +65,15 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
   }
 
   Future<void> googleSignInButtonPressed() async {
-    await _socialSignIn(signInWithGoogle);
+    await _socialSignIn(signInWithGoogle as Future<Either<AuthFailure, Unit>> Function());
   }
 
   Future<void> facebookSignInButtonPressed() async {
-    await _socialSignIn(signInWithFacebook);
+    await _socialSignIn(signInWithFacebook as Future<Either<AuthFailure, Unit>> Function());
   }
 
   Future<void> appleSignInButtonPressed() async {
-    await _socialSignIn(appleSignIn);
+    await _socialSignIn(appleSignIn as Future<Either<AuthFailure, Unit>> Function());
   }
 
   Future<void> _socialSignIn(
@@ -89,7 +83,7 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
       authFailureOption: none(),
     );
 
-    AuthFailure _authFailure;
+    AuthFailure? _authFailure;
 
     final Either<AuthFailure, Unit> result = await callBack();
 
@@ -102,7 +96,7 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
   }
 
   Future<bool> forgotPasswordButtonPressed() async {
-    AuthFailure _authFailure;
+    AuthFailure? _authFailure;
     bool _success = false;
 
     final bool isResetPasswordEmailValid =

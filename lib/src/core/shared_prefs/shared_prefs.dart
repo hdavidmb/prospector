@@ -9,7 +9,7 @@ class UserSharedPreferences {
 
   UserSharedPreferences._internal();
 
-  SharedPreferences _prefs;
+  late SharedPreferences _prefs;
 
   Future<void> initPrefs() async {
     _prefs = await SharedPreferences.getInstance();

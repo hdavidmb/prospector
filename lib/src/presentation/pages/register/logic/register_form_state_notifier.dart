@@ -1,8 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meta/meta.dart';
-import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 
+import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 import 'package:prospector/src/features/auth/domain/use_cases/auth_use_cases.dart';
 import 'package:prospector/src/presentation/helpers/form_validators.dart';
 import 'package:prospector/src/presentation/pages/register/logic/register_form_state.dart';
@@ -14,15 +13,11 @@ class RegisterFormStateNotifier extends StateNotifier<RegisterFormState> with Fo
   final AppleSignIn appleSignIn;
 
   RegisterFormStateNotifier({
-    @required this.registerWithEmailAndPassword,
-    @required this.signInWithGoogle,
-    @required this.signInWithFacebook,
-    @required this.appleSignIn,
-    }) : assert(registerWithEmailAndPassword != null),
-        assert(signInWithGoogle != null),
-        assert(signInWithFacebook != null),
-        assert(appleSignIn != null),
-        super(RegisterFormState.initial());
+    required this.registerWithEmailAndPassword,
+    required this.signInWithGoogle,
+    required this.signInWithFacebook,
+    required this.appleSignIn,
+    }) : super(RegisterFormState.initial());
 
 
   void reset() => state = RegisterFormState.initial();
@@ -49,7 +44,7 @@ class RegisterFormStateNotifier extends StateNotifier<RegisterFormState> with Fo
     final bool isPasswordValid = validateFieldIsNotEmpty(state.password) && validatePasswordStrength(state.password);
     final bool isConfirmPasswordValid = validateFieldIsNotEmpty(state.confirmPassword) && validatePasswordsMatch(state.password, state.confirmPassword);
 
-    AuthFailure _authFailure;
+    AuthFailure? _authFailure;
 
     if (isNameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid) {
       state = state.copyWith(
@@ -74,15 +69,15 @@ class RegisterFormStateNotifier extends StateNotifier<RegisterFormState> with Fo
   }
 
   Future<void> googleSignInButtonPressed() async {
-    await _socialSignIn(signInWithGoogle);
+    await _socialSignIn(signInWithGoogle as Future<Either<AuthFailure, Unit>> Function());
   }
 
   Future<void> facebookSignInButtonPressed() async {
-    await _socialSignIn(signInWithFacebook);
+    await _socialSignIn(signInWithFacebook as Future<Either<AuthFailure, Unit>> Function());
   }
 
   Future<void> appleSignInButtonPressed() async {
-    await _socialSignIn(appleSignIn);
+    await _socialSignIn(appleSignIn as Future<Either<AuthFailure, Unit>> Function());
   }
 
   Future<void> _socialSignIn(
@@ -92,7 +87,7 @@ class RegisterFormStateNotifier extends StateNotifier<RegisterFormState> with Fo
       authFailureOption: none(),
     );
 
-    AuthFailure authFailure;
+    AuthFailure? authFailure;
 
     final Either<AuthFailure, Unit> result = await callBack();
 

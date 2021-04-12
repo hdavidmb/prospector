@@ -11,28 +11,40 @@ import 'package:prospector/src/presentation/pages/sign_in/sign_in_page.dart';
 
 class RegisterForm extends StatelessWidget {
   const RegisterForm({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ProviderListener<RegisterFormState>(
-      provider: registerFormProvider.state,
+      provider: registerFormProvider,
       onChange: (context, state) {
         state.authFailureOption.fold(
           () {},
           (failure) => failure.maybeWhen(
-              serverError: () => showSnackBar(context: context, message: AppLocalizations.of(context).serverError),
-              emailAlreadyInUse: () => showSnackBar(context: context, message: AppLocalizations.of(context).emailAlreadyInUse),
-              accountExistsWithDifferentCredential: () =>
-                  showSnackBar(context: context, message: AppLocalizations.of(context).accountWithDifferentCredentials),
-              orElse: () {}
-            ),
+            serverError: () {
+              showSnackBar(
+                  context: context,
+                  message: AppLocalizations.of(context)!.serverError);
+            },
+            emailAlreadyInUse: () {
+              showSnackBar(
+                  context: context,
+                  message: AppLocalizations.of(context)!.emailAlreadyInUse);
+            },
+            accountExistsWithDifferentCredential: () {
+              showSnackBar(
+                  context: context,
+                  message: AppLocalizations.of(context)!
+                      .accountWithDifferentCredentials);
+            },
+            orElse: () {},
+          ),
         );
       },
       child: Consumer(
         builder: (context, watch, child) {
-          final RegisterFormState formState = watch(registerFormProvider.state);
+          final RegisterFormState formState = watch(registerFormProvider);
           final bool showErrorMessages = formState.showErrorMessages;
           const double socialButtonsSize = 45.0;
           final bool isDarkTheme =
@@ -49,15 +61,18 @@ class RegisterForm extends StatelessWidget {
                   textCapitalization: TextCapitalization.words,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.account_circle),
-                    hintText: AppLocalizations.of(context).name,
+                    hintText: AppLocalizations.of(context)!.name,
                   ),
                   textInputAction: TextInputAction.next,
-                  onChanged: context.read(registerFormProvider).nameChanged,
+                  onChanged:
+                      context.read(registerFormProvider.notifier).nameChanged,
                   validator: (value) {
                     final bool isValid = context
-                        .read(registerFormProvider)
-                        .validateFieldIsNotEmpty(value);
-                    return isValid ? null : AppLocalizations.of(context).enterYourName;
+                        .read(registerFormProvider.notifier)
+                        .validateFieldIsNotEmpty(value!);
+                    return isValid
+                        ? null
+                        : AppLocalizations.of(context)!.enterYourName;
                   },
                 ),
                 const SizedBox(height: 10.0),
@@ -65,68 +80,74 @@ class RegisterForm extends StatelessWidget {
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.email),
-                    hintText: AppLocalizations.of(context).email,
+                    hintText: AppLocalizations.of(context)!.email,
                   ),
                   textInputAction: TextInputAction.next,
-                  onChanged: context.read(registerFormProvider).emailChanged,
+                  onChanged:
+                      context.read(registerFormProvider.notifier).emailChanged,
                   validator: (value) {
-                    final bool isValid =
-                        context.read(registerFormProvider).validateEmail(value);
-                    return isValid ? null : AppLocalizations.of(context).invalidEmail;
+                    final bool isValid = context
+                        .read(registerFormProvider.notifier)
+                        .validateEmail(value!);
+                    return isValid
+                        ? null
+                        : AppLocalizations.of(context)!.invalidEmail;
                   },
                 ),
                 const SizedBox(height: 10.0),
                 TextFormField(
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.lock),
-                    hintText: AppLocalizations.of(context).password,
+                    hintText: AppLocalizations.of(context)!.password,
                   ),
                   textInputAction: TextInputAction.next,
                   obscureText: true,
-                  onChanged: context.read(registerFormProvider).passwordChanged,
+                  onChanged: context
+                      .read(registerFormProvider.notifier)
+                      .passwordChanged,
                   validator: (value) {
                     final bool isNotEmpty = context
-                        .read(registerFormProvider)
-                        .validateFieldIsNotEmpty(value);
+                        .read(registerFormProvider.notifier)
+                        .validateFieldIsNotEmpty(value!);
                     final bool isStrongEnough = context
-                        .read(registerFormProvider)
+                        .read(registerFormProvider.notifier)
                         .validatePasswordStrength(value);
                     return isNotEmpty
                         ? isStrongEnough
                             ? null
-                            : AppLocalizations.of(context).weakPassword
-                        : AppLocalizations.of(context).enterAPassword;
+                            : AppLocalizations.of(context)!.weakPassword
+                        : AppLocalizations.of(context)!.enterAPassword;
                   },
                 ),
                 const SizedBox(height: 10.0),
                 TextFormField(
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.lock),
-                    hintText: AppLocalizations.of(context).confirmPassword,
+                    hintText: AppLocalizations.of(context)!.confirmPassword,
                   ),
                   textInputAction: TextInputAction.done,
                   obscureText: true,
                   onChanged: (value) => context
-                      .read(registerFormProvider)
+                      .read(registerFormProvider.notifier)
                       .confirmPasswordChanged(value),
                   validator: (value) {
                     final RegisterFormState _registerFormState =
-                        context.read(registerFormProvider.state);
+                        context.read(registerFormProvider);
                     final bool isNotEmpty = context
-                        .read(registerFormProvider)
-                        .validateFieldIsNotEmpty(value);
+                        .read(registerFormProvider.notifier)
+                        .validateFieldIsNotEmpty(value!);
                     final bool passwordsMatch = context
-                        .read(registerFormProvider)
+                        .read(registerFormProvider.notifier)
                         .validatePasswordsMatch(
                             _registerFormState.password, value);
                     return isNotEmpty
                         ? passwordsMatch
                             ? null
-                            : AppLocalizations.of(context).passwordsDontMatch
-                        : AppLocalizations.of(context).enterAPassword;
+                            : AppLocalizations.of(context)!.passwordsDontMatch
+                        : AppLocalizations.of(context)!.enterAPassword;
                   },
                   onFieldSubmitted: (_) => context
-                      .read(registerFormProvider)
+                      .read(registerFormProvider.notifier)
                       .registerButtonPressed(),
                 ),
                 const SizedBox(height: 10.0),
@@ -136,12 +157,12 @@ class RegisterForm extends StatelessWidget {
                     onPressed: formState.isSubmitting
                         ? null
                         : context
-                            .read(registerFormProvider)
+                            .read(registerFormProvider.notifier)
                             .registerButtonPressed,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(AppLocalizations.of(context).registerButton),
+                        Text(AppLocalizations.of(context)!.registerButton),
                         if (formState.isSubmitting) ...const [
                           SizedBox(width: 8.0),
                           CircularProgressIndicator.adaptive(),
@@ -160,16 +181,15 @@ class RegisterForm extends StatelessWidget {
                           builder: (context) =>
                               SignInPage())); //TODO: implement proper routing
                     },
-                    child: Text(AppLocalizations.of(context).signIn,
+                    child: Text(AppLocalizations.of(context)!.signIn,
                         style: TextStyle(
-                            color: isDarkTheme
-                                ? Colors.white70
-                                : Colors.black87)),
+                            color:
+                                isDarkTheme ? Colors.white70 : Colors.black87)),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 8.0),
-                  child: Text(AppLocalizations.of(context).orContinueWith,
+                  child: Text(AppLocalizations.of(context)!.orContinueWith,
                       style: Theme.of(context).textTheme.subtitle1),
                 ),
                 Row(
@@ -187,7 +207,7 @@ class RegisterForm extends StatelessWidget {
                           onPressed: formState.isSubmitting
                               ? null
                               : context
-                                  .read(registerFormProvider)
+                                  .read(registerFormProvider.notifier)
                                   .appleSignInButtonPressed,
                           child: const FaIcon(
                             FontAwesomeIcons.apple,
@@ -208,7 +228,7 @@ class RegisterForm extends StatelessWidget {
                         onPressed: formState.isSubmitting
                             ? null
                             : context
-                                .read(registerFormProvider)
+                                .read(registerFormProvider.notifier)
                                 .googleSignInButtonPressed,
                         child: const Image(
                             image: AssetImage('assets/icons/google_logo.png')),
@@ -224,7 +244,7 @@ class RegisterForm extends StatelessWidget {
                         onPressed: formState.isSubmitting
                             ? null
                             : context
-                                .read(registerFormProvider)
+                                .read(registerFormProvider.notifier)
                                 .facebookSignInButtonPressed,
                         child: const FaIcon(FontAwesomeIcons.facebookF),
                       ),

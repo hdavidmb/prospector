@@ -7,13 +7,13 @@ part 'sign_in_form_state.freezed.dart';
 @freezed
 abstract class SignInFormState with _$SignInFormState {
   const factory SignInFormState({
-    @required String email,
-    @required String password,
-    @required String resetPasswordEmail,
-    @required bool showErrorMessages,
-    @required bool showResetPasswordEmailError,
-    @required bool isSubmitting,
-    @required Option<AuthFailure> authFailureOption,
+    required String email,
+    required String password,
+    required String resetPasswordEmail,
+    required bool showErrorMessages,
+    required bool showResetPasswordEmailError,
+    required bool isSubmitting,
+    required Option<AuthFailure> authFailureOption,
   }) = _SignInFormState;
 
   factory SignInFormState.initial() => SignInFormState(

@@ -5,7 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:prospector/src/presentation/pages/sign_in/logic/sign_in_form_provider.dart';
 
-void showSnackBar({@required BuildContext context, @required String message}) {
+void showSnackBar({required BuildContext context, required String message}) {
   showFlash(
     context: context,
     duration: const Duration(milliseconds: 4000),
@@ -35,35 +35,35 @@ void showResetPasswordDialog(BuildContext context) {
       return Consumer(
         builder: (context, watch, child) {
           final bool showErrorMessages =
-              watch(signInFormProvider.state).showResetPasswordEmailError;
+              watch(signInFormProvider).showResetPasswordEmailError;
           return AlertDialog(
-            title: Text(AppLocalizations.of(context).resetPassword,
+            title: Text(AppLocalizations.of(context)!.resetPassword,
               style: Theme.of(context).textTheme.headline6,
             ),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(AppLocalizations.of(context).resetPasswordDialogMessage),
+                Text(AppLocalizations.of(context)!.resetPasswordDialogMessage),
                 const SizedBox(height: 10.0),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.send,
                   initialValue:
-                      context.read(signInFormProvider.state).resetPasswordEmail,
+                      context.read(signInFormProvider).resetPasswordEmail,
                       autofocus: true,
                   decoration: InputDecoration(
-                    hintText: AppLocalizations.of(context).email,
+                    hintText: AppLocalizations.of(context)!.email,
                   ),
                   autovalidateMode: showErrorMessages
                       ? AutovalidateMode.always
                       : AutovalidateMode.disabled,
                   onChanged: context
-                      .read(signInFormProvider)
+                      .read(signInFormProvider.notifier)
                       .resetPasswordEmailChanged,
                   validator: (value) {
                     final bool isValid =
-                        context.read(signInFormProvider).validateEmail(value);
-                    return isValid ? null : AppLocalizations.of(context).invalidEmail;
+                        context.read(signInFormProvider.notifier).validateEmail(value!);
+                    return isValid ? null : AppLocalizations.of(context)!.invalidEmail;
                   },
                 ),
               ],
@@ -71,21 +71,21 @@ void showResetPasswordDialog(BuildContext context) {
             actions: [
               TextButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: Text(AppLocalizations.of(context).cancel)),
+                  child: Text(AppLocalizations.of(context)!.cancel)),
               TextButton(
                 onPressed: () async {
                   final bool success = await context
-                      .read(signInFormProvider)
+                      .read(signInFormProvider.notifier)
                       .forgotPasswordButtonPressed();
                   if (success) {
                     Navigator.of(context).pop();
                     showMessageDialog(
                         context: context,
                         message:
-                            AppLocalizations.of(context).resetPasswordEmailSent);
+                            AppLocalizations.of(context)!.resetPasswordEmailSent);
                   }
                 },
-                child: Text(AppLocalizations.of(context).send),
+                child: Text(AppLocalizations.of(context)!.send),
               ),
             ],
           );
@@ -96,7 +96,7 @@ void showResetPasswordDialog(BuildContext context) {
 }
 
 void showMessageDialog(
-    {@required BuildContext context, String title, @required String message}) {
+    {required BuildContext context, String? title, required String message}) {
   showDialog(
     context: context,
     builder: (context) {
@@ -106,7 +106,7 @@ void showMessageDialog(
         actions: [
           TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text(AppLocalizations.of(context).ok)),
+              child: Text(AppLocalizations.of(context)!.ok)),
         ],
       );
     },

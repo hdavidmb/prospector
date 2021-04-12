@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'register_form_state.dart';
 
@@ -9,19 +9,21 @@ part of 'register_form_state.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$RegisterFormStateTearOff {
   const _$RegisterFormStateTearOff();
 
-// ignore: unused_element
   _RegisterFormState call(
-      {@required String name,
-      @required String email,
-      @required String password,
-      @required String confirmPassword,
-      @required bool showErrorMessages,
-      @required bool isSubmitting,
-      @required Option<AuthFailure> authFailureOption}) {
+      {required String name,
+      required String email,
+      required String password,
+      required String confirmPassword,
+      required bool showErrorMessages,
+      required bool isSubmitting,
+      required Option<AuthFailure> authFailureOption}) {
     return _RegisterFormState(
       name: name,
       email: email,
@@ -35,21 +37,22 @@ class _$RegisterFormStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $RegisterFormState = _$RegisterFormStateTearOff();
 
 /// @nodoc
 mixin _$RegisterFormState {
-  String get name;
-  String get email;
-  String get password;
-  String get confirmPassword;
-  bool get showErrorMessages;
-  bool get isSubmitting;
-  Option<AuthFailure> get authFailureOption;
+  String get name => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+  String get confirmPassword => throw _privateConstructorUsedError;
+  bool get showErrorMessages => throw _privateConstructorUsedError;
+  bool get isSubmitting => throw _privateConstructorUsedError;
+  Option<AuthFailure> get authFailureOption =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RegisterFormStateCopyWith<RegisterFormState> get copyWith;
+  $RegisterFormStateCopyWith<RegisterFormState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -78,29 +81,43 @@ class _$RegisterFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object name = freezed,
-    Object email = freezed,
-    Object password = freezed,
-    Object confirmPassword = freezed,
-    Object showErrorMessages = freezed,
-    Object isSubmitting = freezed,
-    Object authFailureOption = freezed,
+    Object? name = freezed,
+    Object? email = freezed,
+    Object? password = freezed,
+    Object? confirmPassword = freezed,
+    Object? showErrorMessages = freezed,
+    Object? isSubmitting = freezed,
+    Object? authFailureOption = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed ? _value.name : name as String,
-      email: email == freezed ? _value.email : email as String,
-      password: password == freezed ? _value.password : password as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: password == freezed
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
       confirmPassword: confirmPassword == freezed
           ? _value.confirmPassword
-          : confirmPassword as String,
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
+              as String,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
-          : showErrorMessages as bool,
-      isSubmitting:
-          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+          : showErrorMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSubmitting: isSubmitting == freezed
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
       authFailureOption: authFailureOption == freezed
           ? _value.authFailureOption
-          : authFailureOption as Option<AuthFailure>,
+          : authFailureOption // ignore: cast_nullable_to_non_nullable
+              as Option<AuthFailure>,
     ));
   }
 }
@@ -135,29 +152,43 @@ class __$RegisterFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object name = freezed,
-    Object email = freezed,
-    Object password = freezed,
-    Object confirmPassword = freezed,
-    Object showErrorMessages = freezed,
-    Object isSubmitting = freezed,
-    Object authFailureOption = freezed,
+    Object? name = freezed,
+    Object? email = freezed,
+    Object? password = freezed,
+    Object? confirmPassword = freezed,
+    Object? showErrorMessages = freezed,
+    Object? isSubmitting = freezed,
+    Object? authFailureOption = freezed,
   }) {
     return _then(_RegisterFormState(
-      name: name == freezed ? _value.name : name as String,
-      email: email == freezed ? _value.email : email as String,
-      password: password == freezed ? _value.password : password as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: password == freezed
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
       confirmPassword: confirmPassword == freezed
           ? _value.confirmPassword
-          : confirmPassword as String,
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
+              as String,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
-          : showErrorMessages as bool,
-      isSubmitting:
-          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+          : showErrorMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSubmitting: isSubmitting == freezed
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
       authFailureOption: authFailureOption == freezed
           ? _value.authFailureOption
-          : authFailureOption as Option<AuthFailure>,
+          : authFailureOption // ignore: cast_nullable_to_non_nullable
+              as Option<AuthFailure>,
     ));
   }
 }
@@ -165,20 +196,13 @@ class __$RegisterFormStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_RegisterFormState implements _RegisterFormState {
   const _$_RegisterFormState(
-      {@required this.name,
-      @required this.email,
-      @required this.password,
-      @required this.confirmPassword,
-      @required this.showErrorMessages,
-      @required this.isSubmitting,
-      @required this.authFailureOption})
-      : assert(name != null),
-        assert(email != null),
-        assert(password != null),
-        assert(confirmPassword != null),
-        assert(showErrorMessages != null),
-        assert(isSubmitting != null),
-        assert(authFailureOption != null);
+      {required this.name,
+      required this.email,
+      required this.password,
+      required this.confirmPassword,
+      required this.showErrorMessages,
+      required this.isSubmitting,
+      required this.authFailureOption});
 
   @override
   final String name;
@@ -244,29 +268,31 @@ class _$_RegisterFormState implements _RegisterFormState {
 
 abstract class _RegisterFormState implements RegisterFormState {
   const factory _RegisterFormState(
-      {@required String name,
-      @required String email,
-      @required String password,
-      @required String confirmPassword,
-      @required bool showErrorMessages,
-      @required bool isSubmitting,
-      @required Option<AuthFailure> authFailureOption}) = _$_RegisterFormState;
+      {required String name,
+      required String email,
+      required String password,
+      required String confirmPassword,
+      required bool showErrorMessages,
+      required bool isSubmitting,
+      required Option<AuthFailure> authFailureOption}) = _$_RegisterFormState;
 
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  String get email;
+  String get email => throw _privateConstructorUsedError;
   @override
-  String get password;
+  String get password => throw _privateConstructorUsedError;
   @override
-  String get confirmPassword;
+  String get confirmPassword => throw _privateConstructorUsedError;
   @override
-  bool get showErrorMessages;
+  bool get showErrorMessages => throw _privateConstructorUsedError;
   @override
-  bool get isSubmitting;
+  bool get isSubmitting => throw _privateConstructorUsedError;
   @override
-  Option<AuthFailure> get authFailureOption;
+  Option<AuthFailure> get authFailureOption =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RegisterFormStateCopyWith<_RegisterFormState> get copyWith;
+  _$RegisterFormStateCopyWith<_RegisterFormState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -9,13 +9,13 @@ part 'register_form_state.freezed.dart';
 abstract class RegisterFormState with _$RegisterFormState{
   const factory RegisterFormState({
 
-    @required String name,
-    @required String email,
-    @required String password,
-    @required String confirmPassword,
-    @required bool showErrorMessages,
-    @required bool isSubmitting,
-    @required Option<AuthFailure> authFailureOption,
+    required String name,
+    required String email,
+    required String password,
+    required String confirmPassword,
+    required bool showErrorMessages,
+    required bool isSubmitting,
+    required Option<AuthFailure> authFailureOption,
   }) = _RegisterFormState;
 
   factory RegisterFormState.initial() => RegisterFormState(

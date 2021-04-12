@@ -11,11 +11,12 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ProviderListener<AuthState>(
-        provider: authStateNotifierProvider.state,
+        provider: authStateNotifierProvider,
         onChange: (context, authState) {
           authState.maybeWhen(
-            authenticated: () => Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => HomePage())), //TODO implement proper navigation or routing
+            authenticated: () {Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => HomePage()));
+              }, //TODO implement proper navigation or routing
             orElse: () {},
           );
         },
@@ -29,7 +30,7 @@ class RegisterPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Hero(tag: 'prospector_logo', child: Image(image: AssetImage('assets/images/prospector_logo.png'), width: 100.0)),
-                  Text(AppLocalizations.of(context).register,
+                  Text(AppLocalizations.of(context)!.register,
                       style: const TextStyle(fontSize: 30.0)),
                   const SizedBox(height: 30.0),
                   const RegisterForm(),

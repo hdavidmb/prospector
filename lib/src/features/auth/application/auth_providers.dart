@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:prospector/src/features/auth/application/auth_state.dart';
 
 import 'package:prospector/src/features/auth/application/auth_state_notifier.dart';
 import 'package:prospector/src/features/auth/data/firebase_auth_repository.dart';
@@ -65,7 +66,7 @@ final resetPassword =
 
 // * Auth State provider
 final authStateNotifierProvider =
-    StateNotifierProvider<AuthStateNotifier>((ref) {
+    StateNotifierProvider<AuthStateNotifier, AuthState>((ref) {
   final _isAuthenticated = ref.watch(_isAuthenticatedStreamProvider);
   return AuthStateNotifier(isAuthenticated: _isAuthenticated);
 });

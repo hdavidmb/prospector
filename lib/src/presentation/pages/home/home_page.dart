@@ -10,13 +10,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // * This provider listener must always be at the top of the home widget tree
     return ProviderListener<AuthState>( 
-        provider: authStateNotifierProvider.state,
+        provider: authStateNotifierProvider,
         onChange: (context, authState) {
           authState.maybeWhen(
             unauthenticated: () {
-              context.read(signInFormProvider).reset();
+              context.read(signInFormProvider.notifier).reset();
               Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => SignInPage()));}, //TODO implement proper navigation or routing
+              context, MaterialPageRoute(builder: (context) => SignInPage()));
+              }, //TODO implement proper navigation or routing
             orElse: () {},
           );
         },

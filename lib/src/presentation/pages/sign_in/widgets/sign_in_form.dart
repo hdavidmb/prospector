@@ -11,30 +11,47 @@ import 'package:prospector/src/presentation/pages/sign_in/logic/sign_in_form_pro
 
 class SignInForm extends StatelessWidget {
   const SignInForm({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ProviderListener<SignInFormState>(
-      provider: signInFormProvider.state,
+      provider: signInFormProvider,
       onChange: (context, state) {
         state.authFailureOption.fold(
           () {},
           (failure) => failure.maybeWhen(
-              serverError: () => showSnackBar(context: context, message: AppLocalizations.of(context).serverError),
-              invalidEmailAndPasswordCombination: () =>
-                  showSnackBar(context: context, message: AppLocalizations.of(context).invalidEmailAndPassword),
-              accountExistsWithDifferentCredential: () =>
-                  showSnackBar(context: context, message: AppLocalizations.of(context).accountWithDifferentCredentials),
-              userNotFoundResetPassword: () => showSnackBar(context: context, message: AppLocalizations.of(context).userNotFoundResetPassword),
-              orElse: () {},
-            ),
+            serverError: () {
+              showSnackBar(
+                  context: context,
+                  message: AppLocalizations.of(context)!.serverError);
+            },
+            invalidEmailAndPasswordCombination: () {
+              showSnackBar(
+                  context: context,
+                  message:
+                      AppLocalizations.of(context)!.invalidEmailAndPassword);
+            },
+            accountExistsWithDifferentCredential: () {
+              showSnackBar(
+                  context: context,
+                  message: AppLocalizations.of(context)!
+                      .accountWithDifferentCredentials);
+            },
+            userNotFoundResetPassword: () {
+              showSnackBar(
+                  context: context,
+                  message:
+                      AppLocalizations.of(context)!.userNotFoundResetPassword);
+            },
+            orElse: () {},
+          ),
         );
       },
       child: Consumer(
         builder: (context, watch, child) {
-          final SignInFormState formState = watch(signInFormProvider.state);
+          final SignInFormState formState = watch(signInFormProvider);
           final bool showErrorMessages = formState.showErrorMessages;
           const double socialButtonsSize = 45.0;
           final bool isDarkTheme =
@@ -50,33 +67,41 @@ class SignInForm extends StatelessWidget {
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.email),
-                    hintText: AppLocalizations.of(context).email,
+                    hintText: AppLocalizations.of(context)!.email,
                   ),
                   textInputAction: TextInputAction.next,
-                  onChanged: context.read(signInFormProvider).emailChanged,
+                  onChanged:
+                      context.read(signInFormProvider.notifier).emailChanged,
                   validator: (value) {
-                    final bool isValid =
-                        context.read(signInFormProvider).validateEmail(value);
-                    return isValid ? null : AppLocalizations.of(context).invalidEmail;
+                    final bool isValid = context
+                        .read(signInFormProvider.notifier)
+                        .validateEmail(value!);
+                    return isValid
+                        ? null
+                        : AppLocalizations.of(context)!.invalidEmail;
                   },
                 ),
                 const SizedBox(height: 10.0),
                 TextFormField(
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.lock),
-                    hintText: AppLocalizations.of(context).password,
+                    hintText: AppLocalizations.of(context)!.password,
                   ),
                   textInputAction: TextInputAction.done,
                   obscureText: true,
-                  onChanged: context.read(signInFormProvider).passwordChanged,
+                  onChanged:
+                      context.read(signInFormProvider.notifier).passwordChanged,
                   validator: (value) {
                     final bool isValid = context
-                        .read(signInFormProvider)
-                        .validateFieldIsNotEmpty(value);
-                    return isValid ? null : AppLocalizations.of(context).enterAPassword;
+                        .read(signInFormProvider.notifier)
+                        .validateFieldIsNotEmpty(value!);
+                    return isValid
+                        ? null
+                        : AppLocalizations.of(context)!.enterAPassword;
                   },
-                  onFieldSubmitted: (_) =>
-                      context.read(signInFormProvider).signInButtonPressed(),
+                  onFieldSubmitted: (_) => context
+                      .read(signInFormProvider.notifier)
+                      .signInButtonPressed(),
                 ),
                 const SizedBox(height: 10.0),
                 SizedBox(
@@ -84,12 +109,14 @@ class SignInForm extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: formState.isSubmitting
                         ? null
-                        : context.read(signInFormProvider).signInButtonPressed,
+                        : context
+                            .read(signInFormProvider.notifier)
+                            .signInButtonPressed,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(AppLocalizations.of(context).signIn),
-                        if (formState.isSubmitting) ... const [
+                        Text(AppLocalizations.of(context)!.signIn),
+                        if (formState.isSubmitting) ...const [
                           SizedBox(width: 8.0),
                           CircularProgressIndicator.adaptive(),
                         ],
@@ -107,17 +134,16 @@ class SignInForm extends StatelessWidget {
                         : () {
                             // Init reset password email with current email value
                             final String currentEmail =
-                                context.read(signInFormProvider.state).email;
+                                context.read(signInFormProvider).email;
                             context
-                                .read(signInFormProvider)
+                                .read(signInFormProvider.notifier)
                                 .resetPasswordEmailChanged(currentEmail);
                             showResetPasswordDialog(context);
                           },
-                    child: Text(AppLocalizations.of(context).forgotPassword,
+                    child: Text(AppLocalizations.of(context)!.forgotPassword,
                         style: TextStyle(
-                            color: isDarkTheme
-                                ? Colors.white70
-                                : Colors.black87)),
+                            color:
+                                isDarkTheme ? Colors.white70 : Colors.black87)),
                   ),
                 ),
                 Align(
@@ -130,16 +156,15 @@ class SignInForm extends StatelessWidget {
                           builder: (context) =>
                               RegisterPage())); //TODO: implement proper routing
                     },
-                    child: Text(AppLocalizations.of(context).register,
+                    child: Text(AppLocalizations.of(context)!.register,
                         style: TextStyle(
-                            color: isDarkTheme
-                                ? Colors.white70
-                                : Colors.black87)),
+                            color:
+                                isDarkTheme ? Colors.white70 : Colors.black87)),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 8.0),
-                  child: Text(AppLocalizations.of(context).orContinueWith,
+                  child: Text(AppLocalizations.of(context)!.orContinueWith,
                       style: Theme.of(context).textTheme.subtitle1),
                 ),
                 Row(
@@ -157,7 +182,7 @@ class SignInForm extends StatelessWidget {
                           onPressed: formState.isSubmitting
                               ? null
                               : context
-                                  .read(signInFormProvider)
+                                  .read(signInFormProvider.notifier)
                                   .appleSignInButtonPressed,
                           child: const FaIcon(
                             FontAwesomeIcons.apple,
@@ -178,7 +203,7 @@ class SignInForm extends StatelessWidget {
                         onPressed: formState.isSubmitting
                             ? null
                             : context
-                                .read(signInFormProvider)
+                                .read(signInFormProvider.notifier)
                                 .googleSignInButtonPressed,
                         child: const Image(
                             image: AssetImage('assets/icons/google_logo.png')),
@@ -194,7 +219,7 @@ class SignInForm extends StatelessWidget {
                         onPressed: formState.isSubmitting
                             ? null
                             : context
-                                .read(signInFormProvider)
+                                .read(signInFormProvider.notifier)
                                 .facebookSignInButtonPressed,
                         child: const FaIcon(FontAwesomeIcons.facebookF),
                       ),

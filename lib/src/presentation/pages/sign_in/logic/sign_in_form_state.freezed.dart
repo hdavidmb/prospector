@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'sign_in_form_state.dart';
 
@@ -9,19 +9,21 @@ part of 'sign_in_form_state.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$SignInFormStateTearOff {
   const _$SignInFormStateTearOff();
 
-// ignore: unused_element
   _SignInFormState call(
-      {@required String email,
-      @required String password,
-      @required String resetPasswordEmail,
-      @required bool showErrorMessages,
-      @required bool showResetPasswordEmailError,
-      @required bool isSubmitting,
-      @required Option<AuthFailure> authFailureOption}) {
+      {required String email,
+      required String password,
+      required String resetPasswordEmail,
+      required bool showErrorMessages,
+      required bool showResetPasswordEmailError,
+      required bool isSubmitting,
+      required Option<AuthFailure> authFailureOption}) {
     return _SignInFormState(
       email: email,
       password: password,
@@ -35,21 +37,22 @@ class _$SignInFormStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $SignInFormState = _$SignInFormStateTearOff();
 
 /// @nodoc
 mixin _$SignInFormState {
-  String get email;
-  String get password;
-  String get resetPasswordEmail;
-  bool get showErrorMessages;
-  bool get showResetPasswordEmailError;
-  bool get isSubmitting;
-  Option<AuthFailure> get authFailureOption;
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+  String get resetPasswordEmail => throw _privateConstructorUsedError;
+  bool get showErrorMessages => throw _privateConstructorUsedError;
+  bool get showResetPasswordEmailError => throw _privateConstructorUsedError;
+  bool get isSubmitting => throw _privateConstructorUsedError;
+  Option<AuthFailure> get authFailureOption =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SignInFormStateCopyWith<SignInFormState> get copyWith;
+  $SignInFormStateCopyWith<SignInFormState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -78,31 +81,43 @@ class _$SignInFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object email = freezed,
-    Object password = freezed,
-    Object resetPasswordEmail = freezed,
-    Object showErrorMessages = freezed,
-    Object showResetPasswordEmailError = freezed,
-    Object isSubmitting = freezed,
-    Object authFailureOption = freezed,
+    Object? email = freezed,
+    Object? password = freezed,
+    Object? resetPasswordEmail = freezed,
+    Object? showErrorMessages = freezed,
+    Object? showResetPasswordEmailError = freezed,
+    Object? isSubmitting = freezed,
+    Object? authFailureOption = freezed,
   }) {
     return _then(_value.copyWith(
-      email: email == freezed ? _value.email : email as String,
-      password: password == freezed ? _value.password : password as String,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: password == freezed
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
       resetPasswordEmail: resetPasswordEmail == freezed
           ? _value.resetPasswordEmail
-          : resetPasswordEmail as String,
+          : resetPasswordEmail // ignore: cast_nullable_to_non_nullable
+              as String,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
-          : showErrorMessages as bool,
+          : showErrorMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
       showResetPasswordEmailError: showResetPasswordEmailError == freezed
           ? _value.showResetPasswordEmailError
-          : showResetPasswordEmailError as bool,
-      isSubmitting:
-          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+          : showResetPasswordEmailError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSubmitting: isSubmitting == freezed
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
       authFailureOption: authFailureOption == freezed
           ? _value.authFailureOption
-          : authFailureOption as Option<AuthFailure>,
+          : authFailureOption // ignore: cast_nullable_to_non_nullable
+              as Option<AuthFailure>,
     ));
   }
 }
@@ -137,31 +152,43 @@ class __$SignInFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object email = freezed,
-    Object password = freezed,
-    Object resetPasswordEmail = freezed,
-    Object showErrorMessages = freezed,
-    Object showResetPasswordEmailError = freezed,
-    Object isSubmitting = freezed,
-    Object authFailureOption = freezed,
+    Object? email = freezed,
+    Object? password = freezed,
+    Object? resetPasswordEmail = freezed,
+    Object? showErrorMessages = freezed,
+    Object? showResetPasswordEmailError = freezed,
+    Object? isSubmitting = freezed,
+    Object? authFailureOption = freezed,
   }) {
     return _then(_SignInFormState(
-      email: email == freezed ? _value.email : email as String,
-      password: password == freezed ? _value.password : password as String,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: password == freezed
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
       resetPasswordEmail: resetPasswordEmail == freezed
           ? _value.resetPasswordEmail
-          : resetPasswordEmail as String,
+          : resetPasswordEmail // ignore: cast_nullable_to_non_nullable
+              as String,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
-          : showErrorMessages as bool,
+          : showErrorMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
       showResetPasswordEmailError: showResetPasswordEmailError == freezed
           ? _value.showResetPasswordEmailError
-          : showResetPasswordEmailError as bool,
-      isSubmitting:
-          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+          : showResetPasswordEmailError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSubmitting: isSubmitting == freezed
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
       authFailureOption: authFailureOption == freezed
           ? _value.authFailureOption
-          : authFailureOption as Option<AuthFailure>,
+          : authFailureOption // ignore: cast_nullable_to_non_nullable
+              as Option<AuthFailure>,
     ));
   }
 }
@@ -169,20 +196,13 @@ class __$SignInFormStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_SignInFormState implements _SignInFormState {
   const _$_SignInFormState(
-      {@required this.email,
-      @required this.password,
-      @required this.resetPasswordEmail,
-      @required this.showErrorMessages,
-      @required this.showResetPasswordEmailError,
-      @required this.isSubmitting,
-      @required this.authFailureOption})
-      : assert(email != null),
-        assert(password != null),
-        assert(resetPasswordEmail != null),
-        assert(showErrorMessages != null),
-        assert(showResetPasswordEmailError != null),
-        assert(isSubmitting != null),
-        assert(authFailureOption != null);
+      {required this.email,
+      required this.password,
+      required this.resetPasswordEmail,
+      required this.showErrorMessages,
+      required this.showResetPasswordEmailError,
+      required this.isSubmitting,
+      required this.authFailureOption});
 
   @override
   final String email;
@@ -251,29 +271,31 @@ class _$_SignInFormState implements _SignInFormState {
 
 abstract class _SignInFormState implements SignInFormState {
   const factory _SignInFormState(
-      {@required String email,
-      @required String password,
-      @required String resetPasswordEmail,
-      @required bool showErrorMessages,
-      @required bool showResetPasswordEmailError,
-      @required bool isSubmitting,
-      @required Option<AuthFailure> authFailureOption}) = _$_SignInFormState;
+      {required String email,
+      required String password,
+      required String resetPasswordEmail,
+      required bool showErrorMessages,
+      required bool showResetPasswordEmailError,
+      required bool isSubmitting,
+      required Option<AuthFailure> authFailureOption}) = _$_SignInFormState;
 
   @override
-  String get email;
+  String get email => throw _privateConstructorUsedError;
   @override
-  String get password;
+  String get password => throw _privateConstructorUsedError;
   @override
-  String get resetPasswordEmail;
+  String get resetPasswordEmail => throw _privateConstructorUsedError;
   @override
-  bool get showErrorMessages;
+  bool get showErrorMessages => throw _privateConstructorUsedError;
   @override
-  bool get showResetPasswordEmailError;
+  bool get showResetPasswordEmailError => throw _privateConstructorUsedError;
   @override
-  bool get isSubmitting;
+  bool get isSubmitting => throw _privateConstructorUsedError;
   @override
-  Option<AuthFailure> get authFailureOption;
+  Option<AuthFailure> get authFailureOption =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SignInFormStateCopyWith<_SignInFormState> get copyWith;
+  _$SignInFormStateCopyWith<_SignInFormState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
