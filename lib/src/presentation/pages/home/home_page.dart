@@ -12,14 +12,12 @@ class HomePage extends StatelessWidget {
     return ProviderListener<AuthState>( 
         provider: authStateNotifierProvider,
         onChange: (context, authState) {
-          authState.maybeWhen(
-            unauthenticated: () {
-              context.read(signInFormProvider.notifier).reset();
+          if (authState == const AuthState.unauthenticated()) {
+            context.read(signInFormProvider.notifier).reset();
               Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => SignInPage()));
-              }, //TODO implement proper navigation or routing
-            orElse: () {},
-          );
+              context, MaterialPageRoute(
+                builder: (context) => SignInPage()));
+          }
         },
           child: Scaffold(
         appBar: AppBar(

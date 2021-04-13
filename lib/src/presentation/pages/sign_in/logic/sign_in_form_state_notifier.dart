@@ -65,15 +65,15 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
   }
 
   Future<void> googleSignInButtonPressed() async {
-    await _socialSignIn(signInWithGoogle as Future<Either<AuthFailure, Unit>> Function());
+    await _socialSignIn(signInWithGoogle);
   }
 
   Future<void> facebookSignInButtonPressed() async {
-    await _socialSignIn(signInWithFacebook as Future<Either<AuthFailure, Unit>> Function());
+    await _socialSignIn(signInWithFacebook);
   }
 
   Future<void> appleSignInButtonPressed() async {
-    await _socialSignIn(appleSignIn as Future<Either<AuthFailure, Unit>> Function());
+    await _socialSignIn(appleSignIn);
   }
 
   Future<void> _socialSignIn(

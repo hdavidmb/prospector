@@ -7,14 +7,14 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
   // The value passed into the super constructor is the initial state
   AuthStateNotifier({required this.isAuthenticated})
       : super(const AuthState.initial()) {
-    isAuthenticated.when(
+    state = isAuthenticated.when(
       data: (isAuthenticated) {
-        state = isAuthenticated
+        return isAuthenticated
             ? const AuthState.authenticated()
             : const AuthState.unauthenticated();
       },
-      loading: () {},
-      error: (error, stack) {},
+      loading: () => const AuthState.unauthenticated(),
+      error: (_, __) => const AuthState.unauthenticated(),
     );
   }
 }

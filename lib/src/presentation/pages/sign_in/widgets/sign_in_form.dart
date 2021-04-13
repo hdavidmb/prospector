@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:prospector/src/presentation/core/dialogs.dart';
+import 'package:prospector/src/presentation/helpers/process_auth_failure.dart';
 import 'package:prospector/src/presentation/pages/register/register_page.dart';
 import 'package:prospector/src/presentation/pages/sign_in/logic/sign_in_form_provider.dart';
 
@@ -21,32 +22,7 @@ class SignInForm extends StatelessWidget {
       onChange: (context, state) {
         state.authFailureOption.fold(
           () {},
-          (failure) => failure.maybeWhen(
-            serverError: () {
-              showSnackBar(
-                  context: context,
-                  message: AppLocalizations.of(context)!.serverError);
-            },
-            invalidEmailAndPasswordCombination: () {
-              showSnackBar(
-                  context: context,
-                  message:
-                      AppLocalizations.of(context)!.invalidEmailAndPassword);
-            },
-            accountExistsWithDifferentCredential: () {
-              showSnackBar(
-                  context: context,
-                  message: AppLocalizations.of(context)!
-                      .accountWithDifferentCredentials);
-            },
-            userNotFoundResetPassword: () {
-              showSnackBar(
-                  context: context,
-                  message:
-                      AppLocalizations.of(context)!.userNotFoundResetPassword);
-            },
-            orElse: () {},
-          ),
+          (failure) => showAuthFailureSnackbar(context, failure),
         );
       },
       child: Consumer(
@@ -153,8 +129,9 @@ class SignInForm extends StatelessWidget {
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                     onPressed: () {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        fullscreenDialog: true,
                           builder: (context) =>
-                              RegisterPage())); //TODO: implement proper routing
+                              RegisterPage()));
                     },
                     child: Text(AppLocalizations.of(context)!.register,
                         style: TextStyle(

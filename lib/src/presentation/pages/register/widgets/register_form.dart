@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'package:prospector/src/presentation/core/dialogs.dart';
+import 'package:prospector/src/presentation/helpers/process_auth_failure.dart';
 import 'package:prospector/src/presentation/pages/register/logic/register_form_provider.dart';
 import 'package:prospector/src/presentation/pages/sign_in/sign_in_page.dart';
 
@@ -21,25 +21,7 @@ class RegisterForm extends StatelessWidget {
       onChange: (context, state) {
         state.authFailureOption.fold(
           () {},
-          (failure) => failure.maybeWhen(
-            serverError: () {
-              showSnackBar(
-                  context: context,
-                  message: AppLocalizations.of(context)!.serverError);
-            },
-            emailAlreadyInUse: () {
-              showSnackBar(
-                  context: context,
-                  message: AppLocalizations.of(context)!.emailAlreadyInUse);
-            },
-            accountExistsWithDifferentCredential: () {
-              showSnackBar(
-                  context: context,
-                  message: AppLocalizations.of(context)!
-                      .accountWithDifferentCredentials);
-            },
-            orElse: () {},
-          ),
+          (failure) => showAuthFailureSnackbar(context, failure),
         );
       },
       child: Consumer(
@@ -178,8 +160,9 @@ class RegisterForm extends StatelessWidget {
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                     onPressed: () {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        fullscreenDialog: true,
                           builder: (context) =>
-                              SignInPage())); //TODO: implement proper routing
+                              SignInPage()));
                     },
                     child: Text(AppLocalizations.of(context)!.signIn,
                         style: TextStyle(

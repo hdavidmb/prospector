@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -13,12 +14,10 @@ class RegisterPage extends StatelessWidget {
       body: ProviderListener<AuthState>(
         provider: authStateNotifierProvider,
         onChange: (context, authState) {
-          authState.maybeWhen(
-            authenticated: () {Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => HomePage()));
-              }, //TODO implement proper navigation or routing
-            orElse: () {},
-          );
+          if (authState == const AuthState.authenticated()) {
+            Navigator.pushReplacement(
+              context, CupertinoPageRoute(builder: (context) => HomePage()));
+          }
         },
         child: Center(
           child: SingleChildScrollView(
