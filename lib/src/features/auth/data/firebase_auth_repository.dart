@@ -32,7 +32,7 @@ class FirebaseAuthRepository implements IAuthRepository {
       final credentials = await firebaseAuthInstance.createUserWithEmailAndPassword(
           email: email, password: password);
       
-      credentials.user!.updateProfile(displayName: displayName);
+      credentials.user!.updateProfile(displayName: displayName); //TODO test
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -125,6 +125,7 @@ class FirebaseAuthRepository implements IAuthRepository {
   Future<void> signOut() => Future.wait(
         [
           googleSignIn.signOut(),
+          facebookAuth.logOut(),
           firebaseAuthInstance.signOut(),
         ],
       );
