@@ -24,12 +24,7 @@ class HomePage extends StatelessWidget {
           title: const Text('Home')
         ),
         body: Center(
-          child: Consumer(
-            builder: (context, watch, child) {
-
-              return ElevatedButton(onPressed: context.read(signOut).call, child: const Text('Sign out'));
-            }
-          ),
+          child: ElevatedButton(onPressed: context.read(signOut).call, child: const Text('Sign out'))
           
       )
       ),

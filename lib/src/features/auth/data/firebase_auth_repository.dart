@@ -27,10 +27,13 @@ class FirebaseAuthRepository implements IAuthRepository {
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword(
-      {required String email, required String password}) async {
+      {required String email, required String password, required String displayName}) async {
     try {
-      await firebaseAuthInstance.createUserWithEmailAndPassword(
+      final credentials = await firebaseAuthInstance.createUserWithEmailAndPassword(
           email: email, password: password);
+      
+      credentials.user!.updateProfile(displayName: displayName);
+
       return right(unit);
     } on FirebaseAuthException catch (e) {
       return manageFirebaseAuthExceptions(errorCode: e.code);

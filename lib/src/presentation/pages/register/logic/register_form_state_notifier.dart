@@ -53,7 +53,7 @@ class RegisterFormStateNotifier extends StateNotifier<RegisterFormState> with Fo
       );
       //TODO register user on db
       final Either<AuthFailure, Unit> result = await registerWithEmailAndPassword(
-          email: state.email, password: state.password);
+          email: state.email, password: state.password, displayName: state.name);
 
       result.fold(
         (AuthFailure failure) => _authFailure = failure,
