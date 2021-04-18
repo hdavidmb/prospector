@@ -1,6 +1,14 @@
+import 'package:hive/hive.dart';
+
+part 'subscription_entity.g.dart';
+
+@HiveType(typeId: 1)
 class Subscription {
+  @HiveField(0)
   final String key;
+  @HiveField(1)
   final String id;
+  @HiveField(2)
   final DateTime created;
 
   Subscription({

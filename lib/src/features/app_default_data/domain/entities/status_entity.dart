@@ -1,6 +1,14 @@
+import 'package:hive/hive.dart';
+
+part 'status_entity.g.dart';
+
+@HiveType(typeId: 0)
 class Status {
+  @HiveField(0)
   final String id;
+  @HiveField(1)
   final String key;
+  @HiveField(2)
   final DateTime created;
 
   Status({

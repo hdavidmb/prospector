@@ -5,7 +5,7 @@ import 'package:prospector/src/features/app_default_data/domain/entities/status_
 import 'package:prospector/src/features/app_default_data/domain/entities/subscription_entity.dart';
 
 
-abstract class IAppDefaultDataRepository {
+abstract class IAppDefaultDataRemoteRepository {
   Future<Either<DatabaseFailure, List<Status>>> getStatusList();
   Future<Either<DatabaseFailure, List<Subscription>>> getSubscriptionList();
 }

@@ -6,13 +6,13 @@ import 'package:prospector/src/features/app_default_data/domain/entities/status_
 import 'package:prospector/src/features/app_default_data/domain/entities/subscription_entity.dart';
 import 'package:prospector/src/features/app_default_data/domain/interface/i_app_default_data_repository.dart';
 
-class FirestoreAppDefaultDataRepository implements IAppDefaultDataRepository {
+class FirestoreAppDefaultDataRepository implements IAppDefaultDataRemoteRepository {
   final FirebaseFirestore firestoreInstance;
 
   FirestoreAppDefaultDataRepository({required this.firestoreInstance});
 
   @override
-  Future<Either<DatabaseFailure, List<Status>>> getStatusList() async { //TODO test
+  Future<Either<DatabaseFailure, List<Status>>> getStatusList() async {
     try {
       final QuerySnapshot querySnapshot =
           await firestoreInstance.collection('statuses').get();
@@ -29,7 +29,7 @@ class FirestoreAppDefaultDataRepository implements IAppDefaultDataRepository {
   }
 
   @override
-  Future<Either<DatabaseFailure, List<Subscription>>> getSubscriptionList() async { //TODO test
+  Future<Either<DatabaseFailure, List<Subscription>>> getSubscriptionList() async {
     try {
       final QuerySnapshot querySnapshot =
           await firestoreInstance.collection('subscriptions').get();
