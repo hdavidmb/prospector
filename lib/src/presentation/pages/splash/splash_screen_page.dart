@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 
 import 'package:prospector/src/presentation/core/app_state/app_state.dart';
 import 'package:prospector/src/presentation/core/app_state/app_state_provider.dart';
+import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/pages/home/home_page.dart';
 import 'package:prospector/src/presentation/pages/sign_in/sign_in_page.dart';
 
@@ -19,21 +21,24 @@ class SplashScreenPage extends StatelessWidget {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  fullscreenDialog: true,
-                    builder: (context) =>
-                        HomePage()));
+                    fullscreenDialog: true, builder: (context) => HomePage()));
           } else if (appState == const AppState.unauthenticatedReady()) {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  fullscreenDialog: true,
-                    builder: (context) =>
-                        SignInPage()));
+                    fullscreenDialog: true,
+                    builder: (context) => SignInPage()));
+          } else
+          if (appState == const AppState.error()) {
+            showMessageDialog(
+                context: context,
+                message: AppLocalizations.of(context)!.appStateError);
           }
         });
       },
-      child: Scaffold(
-        body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      child: Scaffold(body: Consumer(builder: (context, watch, child) {
+        final AppState _appState = watch(appStateNotifierProvider);
+        return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           const Hero(
               tag: 'prospector_logo',
               child: Image(
@@ -48,9 +53,18 @@ class SplashScreenPage extends StatelessWidget {
             width: double.infinity,
             height: 20.0,
           ),
-          const CircularProgressIndicator.adaptive()
-        ]),
-      ),
+          if (_appState != const AppState.error())
+            const CircularProgressIndicator.adaptive()
+          else
+            ElevatedButton(
+              onPressed: () {
+                context.read(appStateNotifierProvider.notifier).reset();
+                context.read(appDefaultDataProvider).getDefaultData();
+              },
+              child: Text(AppLocalizations.of(context)!.tryAgain),
+            ),
+        ]);
+      })),
     );
   }
 }

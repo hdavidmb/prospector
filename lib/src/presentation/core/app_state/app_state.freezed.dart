@@ -27,6 +27,10 @@ class _$AppStateTearOff {
   AthenticatedReady authenticatedReady() {
     return const AthenticatedReady();
   }
+
+  Error error() {
+    return const Error();
+  }
 }
 
 /// @nodoc
@@ -39,6 +43,7 @@ mixin _$AppState {
     required TResult Function() initial,
     required TResult Function() unauthenticatedReady,
     required TResult Function() authenticatedReady,
+    required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +51,7 @@ mixin _$AppState {
     TResult Function()? initial,
     TResult Function()? unauthenticatedReady,
     TResult Function()? authenticatedReady,
+    TResult Function()? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +60,7 @@ mixin _$AppState {
     required TResult Function(Initial value) initial,
     required TResult Function(UnathenticatedReady value) unauthenticatedReady,
     required TResult Function(AthenticatedReady value) authenticatedReady,
+    required TResult Function(Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +68,7 @@ mixin _$AppState {
     TResult Function(Initial value)? initial,
     TResult Function(UnathenticatedReady value)? unauthenticatedReady,
     TResult Function(AthenticatedReady value)? authenticatedReady,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +128,7 @@ class _$Initial implements Initial {
     required TResult Function() initial,
     required TResult Function() unauthenticatedReady,
     required TResult Function() authenticatedReady,
+    required TResult Function() error,
   }) {
     return initial();
   }
@@ -130,6 +139,7 @@ class _$Initial implements Initial {
     TResult Function()? initial,
     TResult Function()? unauthenticatedReady,
     TResult Function()? authenticatedReady,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -144,6 +154,7 @@ class _$Initial implements Initial {
     required TResult Function(Initial value) initial,
     required TResult Function(UnathenticatedReady value) unauthenticatedReady,
     required TResult Function(AthenticatedReady value) authenticatedReady,
+    required TResult Function(Error value) error,
   }) {
     return initial(this);
   }
@@ -154,6 +165,7 @@ class _$Initial implements Initial {
     TResult Function(Initial value)? initial,
     TResult Function(UnathenticatedReady value)? unauthenticatedReady,
     TResult Function(AthenticatedReady value)? authenticatedReady,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -209,6 +221,7 @@ class _$UnathenticatedReady implements UnathenticatedReady {
     required TResult Function() initial,
     required TResult Function() unauthenticatedReady,
     required TResult Function() authenticatedReady,
+    required TResult Function() error,
   }) {
     return unauthenticatedReady();
   }
@@ -219,6 +232,7 @@ class _$UnathenticatedReady implements UnathenticatedReady {
     TResult Function()? initial,
     TResult Function()? unauthenticatedReady,
     TResult Function()? authenticatedReady,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (unauthenticatedReady != null) {
@@ -233,6 +247,7 @@ class _$UnathenticatedReady implements UnathenticatedReady {
     required TResult Function(Initial value) initial,
     required TResult Function(UnathenticatedReady value) unauthenticatedReady,
     required TResult Function(AthenticatedReady value) authenticatedReady,
+    required TResult Function(Error value) error,
   }) {
     return unauthenticatedReady(this);
   }
@@ -243,6 +258,7 @@ class _$UnathenticatedReady implements UnathenticatedReady {
     TResult Function(Initial value)? initial,
     TResult Function(UnathenticatedReady value)? unauthenticatedReady,
     TResult Function(AthenticatedReady value)? authenticatedReady,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
     if (unauthenticatedReady != null) {
@@ -297,6 +313,7 @@ class _$AthenticatedReady implements AthenticatedReady {
     required TResult Function() initial,
     required TResult Function() unauthenticatedReady,
     required TResult Function() authenticatedReady,
+    required TResult Function() error,
   }) {
     return authenticatedReady();
   }
@@ -307,6 +324,7 @@ class _$AthenticatedReady implements AthenticatedReady {
     TResult Function()? initial,
     TResult Function()? unauthenticatedReady,
     TResult Function()? authenticatedReady,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (authenticatedReady != null) {
@@ -321,6 +339,7 @@ class _$AthenticatedReady implements AthenticatedReady {
     required TResult Function(Initial value) initial,
     required TResult Function(UnathenticatedReady value) unauthenticatedReady,
     required TResult Function(AthenticatedReady value) authenticatedReady,
+    required TResult Function(Error value) error,
   }) {
     return authenticatedReady(this);
   }
@@ -331,6 +350,7 @@ class _$AthenticatedReady implements AthenticatedReady {
     TResult Function(Initial value)? initial,
     TResult Function(UnathenticatedReady value)? unauthenticatedReady,
     TResult Function(AthenticatedReady value)? authenticatedReady,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
     if (authenticatedReady != null) {
@@ -342,4 +362,94 @@ class _$AthenticatedReady implements AthenticatedReady {
 
 abstract class AthenticatedReady implements AppState {
   const factory AthenticatedReady() = _$AthenticatedReady;
+}
+
+/// @nodoc
+abstract class $ErrorCopyWith<$Res> {
+  factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
+      _$ErrorCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ErrorCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
+    implements $ErrorCopyWith<$Res> {
+  _$ErrorCopyWithImpl(Error _value, $Res Function(Error) _then)
+      : super(_value, (v) => _then(v as Error));
+
+  @override
+  Error get _value => super._value as Error;
+}
+
+/// @nodoc
+class _$Error implements Error {
+  const _$Error();
+
+  @override
+  String toString() {
+    return 'AppState.error()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is Error);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() unauthenticatedReady,
+    required TResult Function() authenticatedReady,
+    required TResult Function() error,
+  }) {
+    return error();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? unauthenticatedReady,
+    TResult Function()? authenticatedReady,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(UnathenticatedReady value) unauthenticatedReady,
+    required TResult Function(AthenticatedReady value) authenticatedReady,
+    required TResult Function(Error value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(UnathenticatedReady value)? unauthenticatedReady,
+    TResult Function(AthenticatedReady value)? authenticatedReady,
+    TResult Function(Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Error implements AppState {
+  const factory Error() = _$Error;
 }

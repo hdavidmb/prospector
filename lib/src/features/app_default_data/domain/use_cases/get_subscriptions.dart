@@ -17,12 +17,13 @@ class GetSubscriptions {
     final localExists = await localRepository.subscriptionsExists();
     if (!localExists) {
       final result = await remoteRepository.getSubscriptionList();
-      result.fold(
+      return result.fold(
         (failure) {
           return left(failure);
         },
-        (subscriptions) async {
-          await localRepository.saveSubscriptions(subscriptions: subscriptions);
+        (subscriptions) {
+          localRepository.saveSubscriptions(subscriptions: subscriptions);
+          return right(subscriptions);
         },
       );
     }

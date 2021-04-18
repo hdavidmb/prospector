@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:prospector/src/features/app_default_data/application/app_default_data_state.dart';
 import 'package:prospector/src/features/app_default_data/domain/entities/status_entity.dart';
 import 'package:prospector/src/features/app_default_data/domain/entities/subscription_entity.dart';
 import 'package:prospector/src/features/app_default_data/domain/use_cases/get_statuses.dart';
@@ -12,13 +13,13 @@ class AppDefaultDataNotifier extends ChangeNotifier {
     required this.getSubscriptions,
   });
 
-  bool _defaultDataReady = false;
+  AppDefaultDataState _defaultDataState = const AppDefaultDataState.initial();
   late List<Status> _statuses;
   late List<Subscription> _subscriptions;
 
   List<Status> get statuses => _statuses;
   List<Subscription> get subscriptions => _subscriptions;
-  bool get defaultDataReady => _defaultDataReady;
+  AppDefaultDataState get defaultDataState => _defaultDataState;
 
   Future<void> getDefaultData() async {
     bool statusesReady = false;
@@ -26,7 +27,7 @@ class AppDefaultDataNotifier extends ChangeNotifier {
 
     final statusesResult = await getStatuses();
     statusesResult.fold(
-      (_) {}, //TODO show error
+      (_) => _defaultDataState = const AppDefaultDataState.error(),
       (statuses) {
         _statuses = statuses;
         statusesReady = true;
@@ -35,14 +36,14 @@ class AppDefaultDataNotifier extends ChangeNotifier {
 
     final subscriptionsResult = await getSubscriptions();
     subscriptionsResult.fold(
-      (_) {}, //TODO show error
+      (_) => _defaultDataState = const AppDefaultDataState.error(),
       (subscriptions) {
         _subscriptions = subscriptions;
         subscriptionsReady = true;
       },
     );
 
-    _defaultDataReady = statusesReady && subscriptionsReady;
+    if (statusesReady && subscriptionsReady) _defaultDataState = const AppDefaultDataState.ready();
     notifyListeners();
   }
 }

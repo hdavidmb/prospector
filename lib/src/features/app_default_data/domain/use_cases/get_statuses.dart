@@ -17,12 +17,13 @@ class GetStatuses {
     final localExists = await localRepository.statusesExists();
     if (!localExists) {
       final result = await remoteRepository.getStatusList();
-      result.fold(
+      return result.fold(
         (failure) {
           return left(failure);
         },
-        (statuses) async {
-          await localRepository.saveStatuses(statuses: statuses);
+        (statuses) {
+          localRepository.saveStatuses(statuses: statuses);
+          return right(statuses);
         },
       );
     }

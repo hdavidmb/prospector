@@ -7,4 +7,5 @@ abstract class AppState with _$AppState{
   const factory AppState.initial() = Initial;
   const factory AppState.unauthenticatedReady() = UnathenticatedReady;
   const factory AppState.authenticatedReady() = AthenticatedReady;
+  const factory AppState.error() = Error;
 }

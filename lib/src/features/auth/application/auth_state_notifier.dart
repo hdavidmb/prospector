@@ -14,7 +14,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
             : const AuthState.unauthenticated();
       },
       loading: () => const AuthState.initial(),
-      error: (_, __) => const AuthState.unauthenticated(), //TODO should return error
+      error: (_, __) => const AuthState.error(),
     );
   }
 }

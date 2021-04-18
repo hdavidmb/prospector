@@ -25,5 +25,7 @@
     "cancel": "Cancel",
     "send": "Send",
     "resetPasswordEmailSent": "We have sent you an email with the steps to reset your password. \nPlease check your email inbox",
-    "ok": "Ok"
+    "ok": "Ok",
+    "appStateError": "There's been an error initializing the app. Please check your internet connection and try again later.",
+    "tryAgain": "Try again"
 }
