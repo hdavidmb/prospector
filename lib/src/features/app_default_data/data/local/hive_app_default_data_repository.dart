@@ -9,29 +9,33 @@ class HiveDefaultDataRepository implements IAppDefaultDataLocalRepository {
   final String _subscriptionsBoxName = 'subscriptions';
 
   @override
-  Future<bool> statusesExists() async {
-    final bool exists = await Hive.boxExists(_statusesBoxName);
-    await Hive.openBox<Status>(_statusesBoxName);
-    return exists;
+  Future<bool> statusesExists() => Hive.boxExists(_statusesBoxName);
+
+  @override
+  Future<bool> subscriptionsExists() => Hive.boxExists(_subscriptionsBoxName);
+
+  @override
+  Future<List<Status>> getStatuses() async {
+    if (!Hive.isBoxOpen(_statusesBoxName)) await Hive.openBox<Status>(_statusesBoxName);
+    return Hive.box<Status>(_statusesBoxName).values.toList();
   }
 
   @override
-  Future<bool> subscriptionsExists() async {
-    final bool exists = await Hive.boxExists(_subscriptionsBoxName);
-    await Hive.openBox<Subscription>(_subscriptionsBoxName);
-    return exists;
+  Future<List<Subscription>> getSubscriptions() async {
+    if (!Hive.isBoxOpen(_subscriptionsBoxName)) await Hive.openBox<Subscription>(_subscriptionsBoxName);
+    return Hive.box<Subscription>(_subscriptionsBoxName).values.toList();
   }
 
   @override
-  List<Status> getStatuses() => Hive.box<Status>(_statusesBoxName).values.toList();
+  Future<void> saveStatuses({required List<Status> statuses}) async {
+    if (!Hive.isBoxOpen(_statusesBoxName)) await Hive.openBox<Status>(_statusesBoxName);
+    Hive.box<Status>(_statusesBoxName).addAll(statuses);
+  }
 
   @override
-  List<Subscription> getSubscriptions() => Hive.box<Subscription>(_subscriptionsBoxName).values.toList();
-
-  @override
-  void saveStatuses({required List<Status> statuses}) => Hive.box<Status>(_statusesBoxName).addAll(statuses);
-
-  @override
-  void saveSubscriptions({required List<Subscription> subscriptions}) => Hive.box<Subscription>(_subscriptionsBoxName).addAll(subscriptions);
+  Future<void> saveSubscriptions({required List<Subscription> subscriptions}) async {
+    if (!Hive.isBoxOpen(_subscriptionsBoxName)) await Hive.openBox<Subscription>(_subscriptionsBoxName);
+    Hive.box<Subscription>(_subscriptionsBoxName).addAll(subscriptions);
+  }
 
 }

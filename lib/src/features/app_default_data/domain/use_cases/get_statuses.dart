@@ -13,19 +13,20 @@ class GetStatuses {
     required this.localRepository,
   });
 
-  Future<Either<DatabaseFailure, List<Status>>> call() async { //TODO test
-    final localExists = await localRepository.statusesExists(); // TODO check if local data is empty
+  Future<Either<DatabaseFailure, List<Status>>> call() async {
+    final localExists = await localRepository.statusesExists();
     if (!localExists) {
       final result = await remoteRepository.getStatusList();
       result.fold(
         (failure) {
           return left(failure);
         },
-        (statuses) {
-          localRepository.saveStatuses(statuses: statuses);
+        (statuses) async {
+          await localRepository.saveStatuses(statuses: statuses);
         },
       );
     }
-    return right(localRepository.getStatuses());
+    final statuses = await localRepository.getStatuses();
+    return right(statuses);
   }
 }

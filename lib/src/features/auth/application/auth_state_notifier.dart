@@ -13,7 +13,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
             ? const AuthState.authenticated()
             : const AuthState.unauthenticated();
       },
-      loading: () => const AuthState.initial(), //TODO should stay initial
+      loading: () => const AuthState.initial(),
       error: (_, __) => const AuthState.unauthenticated(), //TODO should return error
     );
   }

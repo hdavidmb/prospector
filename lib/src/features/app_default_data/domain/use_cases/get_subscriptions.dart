@@ -21,11 +21,12 @@ class GetSubscriptions {
         (failure) {
           return left(failure);
         },
-        (subscriptions) {
-          localRepository.saveSubscriptions(subscriptions: subscriptions);
+        (subscriptions) async {
+          await localRepository.saveSubscriptions(subscriptions: subscriptions);
         },
       );
     }
-    return right(localRepository.getSubscriptions());
+    final subscriptions = await localRepository.getSubscriptions();
+    return right(subscriptions);
   }
 }

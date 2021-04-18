@@ -5,10 +5,10 @@ abstract class IAppDefaultDataLocalRepository {
   Future<bool> statusesExists();
   Future<bool> subscriptionsExists();
 
-  List<Status> getStatuses();
-  List<Subscription> getSubscriptions();
+  Future<List<Status>> getStatuses();
+  Future<List<Subscription>> getSubscriptions();
 
-  void saveStatuses({required List<Status> statuses});
-  void saveSubscriptions({required List<Subscription> subscriptions});
+  Future<void> saveStatuses({required List<Status> statuses});
+  Future<void> saveSubscriptions({required List<Subscription> subscriptions});
 
 }
