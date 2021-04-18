@@ -25,5 +25,7 @@
     "cancel": "Cancelar",
     "send": "Enviar",
     "resetPasswordEmailSent": "Te hemos enviado un correo con las instrucciones para restablecer tu contraseña. \nPor favor revisa tu bandeja de entrada.",
-    "ok": "Ok"
+    "ok": "Ok",
+    "appStateError": "Ha habido un error al iniciar la aplicación. Comprueba tu conexión a internet y vuelve a intentarlo más tarde.",
+    "tryAgain": "Reintentar"
 }
