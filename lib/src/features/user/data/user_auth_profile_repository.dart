@@ -13,7 +13,7 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
   });
 
   @override
-  Future<Either<AuthFailure, Unit>> changePassword({required String newPassword}) async {
+  Future<Either<AuthFailure, Unit>> changePassword({required String newPassword}) async { //TODO test
     final user = firebaseAuthInstance.currentUser!;
     try {
       await user.updatePassword(newPassword);
@@ -25,7 +25,7 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> changeUserEmail({required String newEmail}) async {
+  Future<Either<AuthFailure, Unit>> changeUserEmail({required String newEmail}) async { //TODO test
     final user = firebaseAuthInstance.currentUser!;
     try {
       await user.updateEmail(newEmail);
@@ -37,7 +37,7 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> deleteAccount() async {
+  Future<Either<AuthFailure, Unit>> deleteAccount() async { //TODO test
     final user = firebaseAuthInstance.currentUser!; // TODO test without connection
     try {
       await user.delete();
@@ -50,7 +50,7 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
 
   @override
   Future<Either<AuthFailure, Unit>> updateUserProfile(
-      {String? displayName, String? photoURL}) async {
+      {String? displayName, String? photoURL}) async { //TODO test
      final user = firebaseAuthInstance.currentUser!;
     try {
       await user.updateProfile(displayName: displayName, photoURL: photoURL); //TODO test without connection
@@ -62,19 +62,19 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
   }
 
   @override
-  String currentUserID() => firebaseAuthInstance.currentUser!.uid;
+  String currentUserID() => firebaseAuthInstance.currentUser!.uid; //TODO test
 
   @override
   String userDisplayName() =>
-      firebaseAuthInstance.currentUser!.displayName ?? '';
+      firebaseAuthInstance.currentUser!.displayName ?? ''; //TODO test
 
   @override
-  String userEmail() => firebaseAuthInstance.currentUser!.email ?? '';
+  String userEmail() => firebaseAuthInstance.currentUser!.email ?? ''; //TODO test
 
   @override
-  String userPhotoURL() => firebaseAuthInstance.currentUser!.photoURL ?? '';
+  String userPhotoURL() => firebaseAuthInstance.currentUser!.photoURL ?? ''; //TODO test
 
   @override
   String userProvider() =>
-      firebaseAuthInstance.currentUser!.providerData.last.providerId;
+      firebaseAuthInstance.currentUser!.providerData.last.providerId; //TODO test
 }
