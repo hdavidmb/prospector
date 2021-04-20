@@ -19,7 +19,6 @@ class _AppState extends State<App> {
     context.read(appDefaultDataProvider).getDefaultData();
   }
 
-<<<<<<< HEAD
   @override
   void dispose() {
     Hive.close();
@@ -42,18 +41,5 @@ class _AppState extends State<App> {
         home: SplashScreenPage(),
       );
     });
-=======
-    return MaterialApp(
-      title: 'Prospector',
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations
-          .supportedLocales, //! Add .arb file on lib/l10n - also modify info.plist localizations
-      themeMode: currentThemeMode,
-      theme: kLightTheme,
-      darkTheme: kDarkTheme,
-      home: SplashScreenPage(),
-    );
->>>>>>> Modified registerWithEmailAndPassword to save the user's displayName
   }
 }

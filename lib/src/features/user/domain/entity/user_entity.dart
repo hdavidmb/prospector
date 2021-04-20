@@ -28,35 +28,36 @@ class UserEntity {
   });
 
   Map<String, dynamic> toMap() { //TODO organice properly given the required and optional fields
-    return {
+    final Map<String, dynamic> userMap = {
       'uid': uid,
       'name': name,
       'subscription': subscription,
       'expiry_date': expiryDate.millisecondsSinceEpoch,
       'created': created.millisecondsSinceEpoch,
       'modified': modified.millisecondsSinceEpoch,
-      'email': email,
-      'photo_url': photoURL,
-      'subscription_sku': subscriptionSKU,
-      'country_code': countryCode,
-      'dial_code': dialCode,
     };
+    if (email != null) userMap['email'] = email;
+    if (photoURL != null) userMap['photoURL'] = photoURL;
+    if (subscriptionSKU != null) userMap['subscription_sku'] = subscriptionSKU;
+    if (countryCode != null) userMap['country_code'] = countryCode;
+    if (dialCode != null) userMap['dial_code'] = dialCode;
+    return userMap;
   }
 
   factory UserEntity.fromMap(Map<String, dynamic> map) { //TODO organice properly given the required and optional fields
     return UserEntity(
       uid: map['uid'] as String,
-      email: map['email'] as String,
       name: map['name'] as String,
-      photoURL: map['photo_url'] as String,
       subscription: map['subscription'] as String,
-      subscriptionSKU: map['subscription_sku'] as String,
-      countryCode: map['country_code'] as String,
-      dialCode: map['dial_code'] as String,
       expiryDate:
           DateTime.fromMillisecondsSinceEpoch(map['expiry_date'] as int),
       created: DateTime.fromMillisecondsSinceEpoch(map['created'] as int),
       modified: DateTime.fromMillisecondsSinceEpoch(map['modified'] as int),
+      email: map['email'] as String? ?? '',
+      photoURL: map['photo_url'] as String? ?? '',
+      subscriptionSKU: map['subscription_sku'] as String? ?? '',
+      countryCode: map['country_code'] as String? ?? '',
+      dialCode: map['dial_code'] as String? ?? '',
     );
   }
 

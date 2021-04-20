@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:prospector/src/core/auth/auth_helpers.dart';
 
 import 'package:prospector/src/features/auth/data/helpers/sign_in_with_apple_helper.dart';
 import 'package:prospector/src/features/auth/domain/auth_failure.dart';
@@ -129,25 +130,6 @@ class FirebaseAuthRepository implements IAuthRepository {
           firebaseAuthInstance.signOut(),
         ],
       );
-
-  Either<AuthFailure, Unit> manageFirebaseAuthExceptions(
-      {required String errorCode}) {
-    switch (errorCode) {
-      case 'email-already-in-use':
-        return left(const AuthFailure.emailAlreadyInUse());
-      case 'user-not-found':
-      case 'wrong-password':
-        return left(const AuthFailure.invalidEmailAndPasswordCombination());
-      case 'account-exists-with-different-credential':
-        return left(const AuthFailure.accountExistsWithDifferentCredential());
-      case 'AuthorizationErrorCode.canceled':
-        return left(const AuthFailure.cancelledByUser());
-      case 'user-not-found-reset-password':
-        return left(const AuthFailure.userNotFoundResetPassword());
-      default:
-        return left(const AuthFailure.serverError());
-    }
-  }
 
   @override
   Future<Either<AuthFailure, Unit>> resetPassword({required String email}) async {

@@ -12,20 +12,12 @@ import 'package:prospector/src/presentation/pages/sign_in/sign_in_page.dart';
 class SplashScreenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     return ProviderListener<AppState>(
       provider: appStateNotifierProvider,
       onChange: (context, appState) {
         // TODO this is being called twice
         Future.delayed(const Duration(milliseconds: 200), () {
           if (appState == const AppState.authenticatedReady()) {
-=======
-    return ProviderListener<AuthState>(
-      provider: authStateNotifierProvider,
-      onChange: (context, authState) {
-        Future.delayed(const Duration(milliseconds: 400), () {
-          if (authState == const AuthState.authenticated()) {
->>>>>>> Modified registerWithEmailAndPassword to save the user's displayName
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
