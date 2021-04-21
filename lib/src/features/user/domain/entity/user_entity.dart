@@ -1,16 +1,32 @@
 import 'dart:convert';
 
+import 'package:hive/hive.dart';
+
+part 'user_entity.g.dart';
+
+@HiveType(typeId: 2)
 class UserEntity {
+  @HiveField(0)
   final String uid;
+  @HiveField(1)
   final String name;
+  @HiveField(2)
   final String subscription;
+  @HiveField(3)
   final DateTime expiryDate;
+  @HiveField(4)
   final DateTime created;
+  @HiveField(5)
   final DateTime modified;
+  @HiveField(6)
   final String? email;
+  @HiveField(7)
   final String? photoURL;
+  @HiveField(8)
   final String? subscriptionSKU;
+  @HiveField(9)
   final String? countryCode;
+  @HiveField(10)
   final String? dialCode;
 
   UserEntity({
