@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/src/features/auth/application/auth_providers.dart';
 import 'package:prospector/src/features/auth/application/auth_state.dart';
 import 'package:prospector/src/features/user/application/user_info_providers.dart';
-import 'package:prospector/src/presentation/pages/register/logic/register_form_provider.dart';
-import 'package:prospector/src/presentation/pages/sign_in/logic/sign_in_form_provider.dart';
-import 'package:prospector/src/presentation/pages/sign_in/sign_in_page.dart';
+import 'package:prospector/src/presentation/pages/auth/register/logic/register_form_provider.dart';
+import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
+import 'package:prospector/src/presentation/pages/auth/sign_in/sign_in_page.dart';
 
 class HomePage extends StatelessWidget {
   @override

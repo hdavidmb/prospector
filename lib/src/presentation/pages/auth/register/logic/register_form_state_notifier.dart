@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 import 'package:prospector/src/features/auth/domain/use_cases/auth_use_cases.dart';
 import 'package:prospector/src/presentation/helpers/form_validators.dart';
-import 'package:prospector/src/presentation/pages/register/logic/register_form_state.dart';
+import 'package:prospector/src/presentation/pages/auth/register/logic/register_form_state.dart';
 
 class RegisterFormStateNotifier extends StateNotifier<RegisterFormState> with FormValidators {
   final RegisterWithEmailAndPassword registerWithEmailAndPassword;

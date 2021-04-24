@@ -6,8 +6,8 @@ import 'package:prospector/src/features/app_default_data/application/app_default
 import 'package:prospector/src/presentation/core/app_state/app_state.dart';
 import 'package:prospector/src/presentation/core/app_state/app_state_provider.dart';
 import 'package:prospector/src/presentation/core/dialogs.dart';
-import 'package:prospector/src/presentation/pages/home/home_page.dart';
-import 'package:prospector/src/presentation/pages/sign_in/sign_in_page.dart';
+import 'package:prospector/src/presentation/pages/user_panel/home/home_page.dart';
+import 'package:prospector/src/presentation/pages/auth/sign_in/sign_in_page.dart';
 
 class SplashScreenPage extends StatelessWidget {
   @override

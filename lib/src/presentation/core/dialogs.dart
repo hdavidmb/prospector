@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'package:prospector/src/presentation/pages/sign_in/logic/sign_in_form_provider.dart';
+import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
 
 void showSnackBar({required BuildContext context, required String message}) {
   showFlash(

@@ -5,19 +5,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/helpers/process_auth_failure.dart';
-import 'package:prospector/src/presentation/pages/register/logic/register_form_provider.dart';
-import 'package:prospector/src/presentation/pages/sign_in/sign_in_page.dart';
+import 'package:prospector/src/presentation/pages/auth/register/register_page.dart';
+import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
 
-class RegisterForm extends StatelessWidget {
-  const RegisterForm({
+class SignInForm extends StatelessWidget {
+  const SignInForm({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ProviderListener<RegisterFormState>(
-      provider: registerFormProvider,
+    return ProviderListener<SignInFormState>(
+      provider: signInFormProvider,
       onChange: (context, state) {
         state.authFailureOption.fold(
           () {},
@@ -26,7 +27,7 @@ class RegisterForm extends StatelessWidget {
       },
       child: Consumer(
         builder: (context, watch, child) {
-          final RegisterFormState formState = watch(registerFormProvider);
+          final SignInFormState formState = watch(signInFormProvider);
           final bool showErrorMessages = formState.showErrorMessages;
           const double socialButtonsSize = 45.0;
           final bool isDarkTheme =
@@ -34,30 +35,10 @@ class RegisterForm extends StatelessWidget {
 
           return Form(
             autovalidateMode: showErrorMessages
-                ? AutovalidateMode.onUserInteraction
+                ? AutovalidateMode.always
                 : AutovalidateMode.disabled,
             child: Column(
               children: [
-                TextFormField(
-                  keyboardType: TextInputType.text,
-                  textCapitalization: TextCapitalization.words,
-                  decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.account_circle),
-                    hintText: AppLocalizations.of(context)!.name,
-                  ),
-                  textInputAction: TextInputAction.next,
-                  onChanged:
-                      context.read(registerFormProvider.notifier).nameChanged,
-                  validator: (value) {
-                    final bool isValid = context
-                        .read(registerFormProvider.notifier)
-                        .validateFieldIsNotEmpty(value!);
-                    return isValid
-                        ? null
-                        : AppLocalizations.of(context)!.enterYourName;
-                  },
-                ),
-                const SizedBox(height: 10.0),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
@@ -66,10 +47,10 @@ class RegisterForm extends StatelessWidget {
                   ),
                   textInputAction: TextInputAction.next,
                   onChanged:
-                      context.read(registerFormProvider.notifier).emailChanged,
+                      context.read(signInFormProvider.notifier).emailChanged,
                   validator: (value) {
                     final bool isValid = context
-                        .read(registerFormProvider.notifier)
+                        .read(signInFormProvider.notifier)
                         .validateEmail(value!);
                     return isValid
                         ? null
@@ -82,55 +63,21 @@ class RegisterForm extends StatelessWidget {
                     prefixIcon: const Icon(Icons.lock),
                     hintText: AppLocalizations.of(context)!.password,
                   ),
-                  textInputAction: TextInputAction.next,
-                  obscureText: true,
-                  onChanged: context
-                      .read(registerFormProvider.notifier)
-                      .passwordChanged,
-                  validator: (value) {
-                    final bool isNotEmpty = context
-                        .read(registerFormProvider.notifier)
-                        .validateFieldIsNotEmpty(value!);
-                    final bool isStrongEnough = context
-                        .read(registerFormProvider.notifier)
-                        .validatePasswordStrength(value);
-                    return isNotEmpty
-                        ? isStrongEnough
-                            ? null
-                            : AppLocalizations.of(context)!.weakPassword
-                        : AppLocalizations.of(context)!.enterAPassword;
-                  },
-                ),
-                const SizedBox(height: 10.0),
-                TextFormField(
-                  decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.lock),
-                    hintText: AppLocalizations.of(context)!.confirmPassword,
-                  ),
                   textInputAction: TextInputAction.done,
                   obscureText: true,
-                  onChanged: (value) => context
-                      .read(registerFormProvider.notifier)
-                      .confirmPasswordChanged(value),
+                  onChanged:
+                      context.read(signInFormProvider.notifier).passwordChanged,
                   validator: (value) {
-                    final RegisterFormState _registerFormState =
-                        context.read(registerFormProvider);
-                    final bool isNotEmpty = context
-                        .read(registerFormProvider.notifier)
+                    final bool isValid = context
+                        .read(signInFormProvider.notifier)
                         .validateFieldIsNotEmpty(value!);
-                    final bool passwordsMatch = context
-                        .read(registerFormProvider.notifier)
-                        .validatePasswordsMatch(
-                            _registerFormState.password, value);
-                    return isNotEmpty
-                        ? passwordsMatch
-                            ? null
-                            : AppLocalizations.of(context)!.passwordsDontMatch
+                    return isValid
+                        ? null
                         : AppLocalizations.of(context)!.enterAPassword;
                   },
                   onFieldSubmitted: (_) => context
-                      .read(registerFormProvider.notifier)
-                      .registerButtonPressed(),
+                      .read(signInFormProvider.notifier)
+                      .signInButtonPressed(),
                 ),
                 const SizedBox(height: 10.0),
                 SizedBox(
@@ -139,12 +86,12 @@ class RegisterForm extends StatelessWidget {
                     onPressed: formState.isSubmitting
                         ? null
                         : context
-                            .read(registerFormProvider.notifier)
-                            .registerButtonPressed,
+                            .read(signInFormProvider.notifier)
+                            .signInButtonPressed,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(AppLocalizations.of(context)!.registerButton),
+                        Text(AppLocalizations.of(context)!.signIn),
                         if (formState.isSubmitting) ...const [
                           SizedBox(width: 8.0),
                           CircularProgressIndicator.adaptive(),
@@ -158,13 +105,35 @@ class RegisterForm extends StatelessWidget {
                   child: TextButton(
                     style: TextButton.styleFrom(
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap),
+                    onPressed: formState.isSubmitting
+                        ? null
+                        : () {
+                            // Init reset password email with current email value
+                            final String currentEmail =
+                                context.read(signInFormProvider).email;
+                            context
+                                .read(signInFormProvider.notifier)
+                                .resetPasswordEmailChanged(currentEmail);
+                            showResetPasswordDialog(context);
+                          },
+                    child: Text(AppLocalizations.of(context)!.forgotPassword,
+                        style: TextStyle(
+                            color:
+                                isDarkTheme ? Colors.white70 : Colors.black87)),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                     onPressed: () {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                         fullscreenDialog: true,
                           builder: (context) =>
-                              SignInPage()));
+                              RegisterPage()));
                     },
-                    child: Text(AppLocalizations.of(context)!.signIn,
+                    child: Text(AppLocalizations.of(context)!.register,
                         style: TextStyle(
                             color:
                                 isDarkTheme ? Colors.white70 : Colors.black87)),
@@ -190,7 +159,7 @@ class RegisterForm extends StatelessWidget {
                           onPressed: formState.isSubmitting
                               ? null
                               : context
-                                  .read(registerFormProvider.notifier)
+                                  .read(signInFormProvider.notifier)
                                   .appleSignInButtonPressed,
                           child: const FaIcon(
                             FontAwesomeIcons.apple,
@@ -211,7 +180,7 @@ class RegisterForm extends StatelessWidget {
                         onPressed: formState.isSubmitting
                             ? null
                             : context
-                                .read(registerFormProvider.notifier)
+                                .read(signInFormProvider.notifier)
                                 .googleSignInButtonPressed,
                         child: const Image(
                             image: AssetImage('assets/icons/google_logo.png')),
@@ -227,7 +196,7 @@ class RegisterForm extends StatelessWidget {
                         onPressed: formState.isSubmitting
                             ? null
                             : context
-                                .read(registerFormProvider.notifier)
+                                .read(signInFormProvider.notifier)
                                 .facebookSignInButtonPressed,
                         child: const FaIcon(FontAwesomeIcons.facebookF),
                       ),
