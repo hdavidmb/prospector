@@ -4,7 +4,8 @@ import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
 
 abstract class IUserInfoRepository {
   Future<Either<DatabaseFailure, bool>> userDocumentExists({required String uid});
-  //TODO CRUD
+  
+  // CRUD
   Future<Either<DatabaseFailure, Unit>> createUserDocument(UserEntity user);
   Future<Either<DatabaseFailure, UserEntity>> readUserDocument({required String uid});
   Future<Either<DatabaseFailure, Unit>> updateUserDocument(UserEntity user);

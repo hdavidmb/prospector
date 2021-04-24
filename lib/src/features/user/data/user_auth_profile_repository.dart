@@ -19,7 +19,6 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
       await user.updatePassword(newPassword);
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      //TODO return AuthFailure (weakPassword)
       return manageFirebaseAuthExceptions(errorCode: e.code);
     }
   }
@@ -31,7 +30,6 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
       await user.updateEmail(newEmail);
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      //TODO return AuthFailure
       return manageFirebaseAuthExceptions(errorCode: e.code);
     }
   }
@@ -43,7 +41,6 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
       await user.delete();
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      //TODO return AuthFailure
       return manageFirebaseAuthExceptions(errorCode: e.code);
     }
   }
@@ -56,23 +53,22 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
       await user.updateProfile(displayName: displayName, photoURL: photoURL); //TODO test without connection
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      //TODO return AuthFailure
       return manageFirebaseAuthExceptions(errorCode: e.code);
     }
   }
 
   @override
-  String currentUserID() => firebaseAuthInstance.currentUser!.uid; //TODO test
+  String currentUserID() => firebaseAuthInstance.currentUser!.uid;
 
   @override
   String userDisplayName() =>
-      firebaseAuthInstance.currentUser!.displayName ?? ''; //TODO test
+      firebaseAuthInstance.currentUser!.displayName ?? '';
 
   @override
-  String userEmail() => firebaseAuthInstance.currentUser!.email ?? ''; //TODO test
+  String userEmail() => firebaseAuthInstance.currentUser!.email ?? '';
 
   @override
-  String userPhotoURL() => firebaseAuthInstance.currentUser!.photoURL ?? ''; //TODO test
+  String userPhotoURL() => firebaseAuthInstance.currentUser!.photoURL ?? '';
 
   @override
   String userProvider() =>

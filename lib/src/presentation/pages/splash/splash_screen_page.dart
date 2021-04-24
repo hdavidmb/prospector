@@ -20,7 +20,7 @@ class SplashScreenPage extends StatelessWidget {
           if (appState == const AppState.authenticatedReady()) {
             Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(
+                MaterialPageRoute(// TODO implement fade in transition
                     fullscreenDialog: true, builder: (context) => HomePage()));
           } else if (appState == const AppState.unauthenticatedReady()) {
             Navigator.pushReplacement(

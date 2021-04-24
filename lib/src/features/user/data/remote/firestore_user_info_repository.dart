@@ -5,16 +5,15 @@ import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:prospector/src/features/user/domain/interfaces/i_user_info_repository.dart';
 
-class FirebaseUserInfoRepository implements IUserInfoRepository {
+class FirestoreUserInfoRepository implements IUserInfoRepository {
   final FirebaseFirestore firestoreInstance;
-  FirebaseUserInfoRepository({
+  FirestoreUserInfoRepository({
     required this.firestoreInstance,
   });
 
   @override
   Future<Either<DatabaseFailure, Unit>> createUserDocument(
       UserEntity user) async {
-    //TODO test
     final String uid = user.uid;
     final Map<String, dynamic> userMap = user.toMap();
     try {
@@ -40,14 +39,18 @@ class FirebaseUserInfoRepository implements IUserInfoRepository {
   @override
   Future<Either<DatabaseFailure, UserEntity>> readUserDocument(
       {required String uid}) async {
-    //TODO test
     final bool isConnected = await checkConnection();
     if (!isConnected) return left(const DatabaseFailure.serverError());
     try {
       final DocumentSnapshot userDocSnapshot =
           await firestoreInstance.collection('users').doc(uid).get();
+      // * Transform timestamps into millisecondsSinceEpoch and complete with required info
       final userMap = userDocSnapshot.data()!;
       userMap['uid'] = userDocSnapshot.id;
+      userMap['name'] = userMap['name'] ?? '';
+      userMap['expiry_date'] = userMap['expiry_date'] != null ? (userMap['expiry_date'] as Timestamp).millisecondsSinceEpoch : DateTime.now().subtract(const Duration(days: 30)).millisecondsSinceEpoch;
+      userMap['created'] = userMap['created'] != null ? (userMap['created'] as Timestamp).millisecondsSinceEpoch : DateTime.now().millisecondsSinceEpoch;
+      userMap['modified'] = userMap['modified'] != null ? (userMap['modified'] as Timestamp).millisecondsSinceEpoch : DateTime.now().millisecondsSinceEpoch;
       return right(UserEntity.fromMap(userMap));
     } catch (e) {
       return left(const DatabaseFailure.serverError());
@@ -71,7 +74,6 @@ class FirebaseUserInfoRepository implements IUserInfoRepository {
   @override
   Future<Either<DatabaseFailure, bool>> userDocumentExists(
       {required String uid}) async {
-    //TODO test
     final bool isConnected = await checkConnection();
     if (!isConnected) return left(const DatabaseFailure.serverError());
     try {

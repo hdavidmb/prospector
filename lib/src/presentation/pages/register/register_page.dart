@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'package:prospector/src/features/auth/application/auth_providers.dart';
+import 'package:prospector/src/presentation/core/app_state/app_state.dart';
+import 'package:prospector/src/presentation/core/app_state/app_state_provider.dart';
 import 'package:prospector/src/presentation/pages/home/home_page.dart';
 import 'package:prospector/src/presentation/pages/register/widgets/register_form.dart';
 
@@ -11,10 +12,10 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ProviderListener<AuthState>(
-        provider: authStateNotifierProvider,
-        onChange: (context, authState) {
-          if (authState == const AuthState.authenticated()) {
+      body: ProviderListener<AppState>(
+        provider: appStateNotifierProvider,
+        onChange: (context, appState) {
+          if (appState == const AppState.authenticatedReady()) {
             Navigator.pushReplacement(
               context, CupertinoPageRoute(builder: (context) => HomePage()));
           }

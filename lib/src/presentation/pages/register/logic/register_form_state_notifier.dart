@@ -51,7 +51,6 @@ class RegisterFormStateNotifier extends StateNotifier<RegisterFormState> with Fo
         isSubmitting: true,
         authFailureOption: none(),
       );
-      //TODO register user on db
       final Either<AuthFailure, Unit> result = await registerWithEmailAndPassword(
           email: state.email, password: state.password, displayName: state.name);
 

@@ -9,25 +9,25 @@ class UserEntity {
   @HiveField(0)
   final String uid;
   @HiveField(1)
-  final String name;
+  String name;
   @HiveField(2)
-  final String subscription;
+  String subscription;
   @HiveField(3)
-  final DateTime expiryDate;
+  DateTime expiryDate;
   @HiveField(4)
-  final DateTime created;
+  DateTime created;
   @HiveField(5)
-  final DateTime modified;
+  DateTime modified;
   @HiveField(6)
-  final String? email;
+  String? email;
   @HiveField(7)
-  final String? photoURL;
+  String? photoURL;
   @HiveField(8)
-  final String? subscriptionSKU;
+  String? subscriptionSKU;
   @HiveField(9)
-  final String? countryCode;
+  String? countryCode;
   @HiveField(10)
-  final String? dialCode;
+  String? dialCode;
 
   UserEntity({
     required this.uid,
@@ -43,7 +43,7 @@ class UserEntity {
     this.dialCode,
   });
 
-  Map<String, dynamic> toMap() { //TODO organice properly given the required and optional fields
+  Map<String, dynamic> toMap() {
     final Map<String, dynamic> userMap = {
       'uid': uid,
       'name': name,
@@ -60,7 +60,7 @@ class UserEntity {
     return userMap;
   }
 
-  factory UserEntity.fromMap(Map<String, dynamic> map) { //TODO organice properly given the required and optional fields
+  factory UserEntity.fromMap(Map<String, dynamic> map) {
     return UserEntity(
       uid: map['uid'] as String,
       name: map['name'] as String,
@@ -70,7 +70,7 @@ class UserEntity {
       created: DateTime.fromMillisecondsSinceEpoch(map['created'] as int),
       modified: DateTime.fromMillisecondsSinceEpoch(map['modified'] as int),
       email: map['email'] as String? ?? '',
-      photoURL: map['photo_url'] as String? ?? '',
+      photoURL: map['photoURL'] as String? ?? '',
       subscriptionSKU: map['subscription_sku'] as String? ?? '',
       countryCode: map['country_code'] as String? ?? '',
       dialCode: map['dial_code'] as String? ?? '',

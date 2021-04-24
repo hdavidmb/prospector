@@ -6,7 +6,7 @@ import 'package:prospector/src/features/user/domain/interfaces/i_user_info_repos
 
 class HiveUserInfoRepository implements IUserInfoRepository {
   @override
-  Future<Either<DatabaseFailure, Unit>> createUserDocument(UserEntity user) => saveUser(user); //TODO test
+  Future<Either<DatabaseFailure, Unit>> createUserDocument(UserEntity user) => saveUser(user);
 
   @override
   Future<Either<DatabaseFailure, Unit>> deleteUserDocument(
@@ -22,7 +22,7 @@ class HiveUserInfoRepository implements IUserInfoRepository {
 
   @override
   Future<Either<DatabaseFailure, UserEntity>> readUserDocument(
-      {required String uid}) async { //TODO test
+      {required String uid}) async {
     try {
       if (!Hive.isBoxOpen(uid)) await Hive.openBox<UserEntity>(uid);
       final user = Hive.box<UserEntity>(uid).get(uid)!;
@@ -37,7 +37,7 @@ class HiveUserInfoRepository implements IUserInfoRepository {
 
   @override
   Future<Either<DatabaseFailure, bool>> userDocumentExists(
-      {required String uid}) async { //TODO test
+      {required String uid}) async {
     try {
       final bool exists = await Hive.boxExists(uid);
       return right(exists);

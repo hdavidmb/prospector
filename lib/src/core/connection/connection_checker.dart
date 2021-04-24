@@ -1,7 +1,6 @@
 import 'dart:io';
 
 Future<bool> checkConnection() async {
-  //TODO extract on a common file
   bool _isConnected = false;
 // use try-catch to do this operation, so that to get the control over this
 // operation better
