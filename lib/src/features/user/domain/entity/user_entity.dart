@@ -69,11 +69,11 @@ class UserEntity {
           DateTime.fromMillisecondsSinceEpoch(map['expiry_date'] as int),
       created: DateTime.fromMillisecondsSinceEpoch(map['created'] as int),
       modified: DateTime.fromMillisecondsSinceEpoch(map['modified'] as int),
-      email: map['email'] as String? ?? '',
-      photoURL: map['photoURL'] as String? ?? '',
-      subscriptionSKU: map['subscription_sku'] as String? ?? '',
-      countryCode: map['country_code'] as String? ?? '',
-      dialCode: map['dial_code'] as String? ?? '',
+      email: map['email'] as String?,
+      photoURL: map['photoURL'] as String?,
+      subscriptionSKU: map['subscription_sku'] as String?,
+      countryCode: map['country_code'] as String?,
+      dialCode: map['dial_code'] as String?,
     );
   }
 

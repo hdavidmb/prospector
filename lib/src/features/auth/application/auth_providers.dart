@@ -57,7 +57,7 @@ final appleSignIn = Provider<AppleSignIn>((ref) {
 
 final signOut = Provider<SignOut>((ref) {
   final _authRepository = ref.watch(_authRepositoryProvider);
-  return SignOut(authRepository: _authRepository, read: ref.read);
+  return SignOut(authRepository: _authRepository);
 });
 
 final resetPassword =

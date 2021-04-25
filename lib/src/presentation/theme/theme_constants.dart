@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 final Color? kPrimaryColor = Colors.red[600];
 final Color? kAccentColor = kPrimaryColor;
+const Color kPremiumColor = Color(0xffD4AF37);
 
 const InputDecorationTheme kInputDecorationTheme = InputDecorationTheme(
     filled: true,

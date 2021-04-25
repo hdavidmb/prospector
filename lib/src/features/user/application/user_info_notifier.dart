@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:prospector/src/features/user/application/user_info_state.dart';
 import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
-
 import 'package:prospector/src/features/user/domain/use_cases/get_or_create_user_info.dart';
 
 class UserInfoNotifier extends ChangeNotifier {

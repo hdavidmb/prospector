@@ -27,5 +27,9 @@
     "resetPasswordEmailSent": "We have sent you an email with the steps to reset your password. \nPlease check your email inbox",
     "ok": "Ok",
     "appStateError": "There's been an error initializing the app. Please check your internet connection and try again later.",
-    "tryAgain": "Try again"
+    "tryAgain": "Try again",
+    "settings": "Settings",
+    "premiumCap": "PREMIUM",
+    "until": "until",
+    "profile": "Profile"
 }

@@ -21,6 +21,9 @@ class AppDefaultDataNotifier extends ChangeNotifier {
   List<Subscription> get subscriptions => _subscriptions;
   AppDefaultDataState get defaultDataState => _defaultDataState;
 
+  String get premiumSubID => _subscriptions.firstWhere((sub) => sub.key == 'premium').id; //TODO test
+  String get freeSubID => _subscriptions.firstWhere((sub) => sub.key == 'free').id;
+
   Future<void> getDefaultData() async {
     bool statusesReady = false;
     bool subscriptionsReady = false;
