@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:prospector/src/features/user/application/user_info_state.dart';
 import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
 import 'package:prospector/src/features/user/domain/use_cases/get_or_create_user_info.dart';
+import 'package:prospector/src/features/user/domain/use_cases/get_user_auth_provider.dart';
 
 class UserInfoNotifier extends ChangeNotifier {
   final GetOrCreateUserInfo getOrCreateUserInfo;
+  final GetUserAuthProvider getUserAuthProvider;
   UserInfoNotifier({
     required this.getOrCreateUserInfo,
+    required this.getUserAuthProvider, 
   });
 
   UserInfoState _userInfoState = const UserInfoState.initial();
@@ -30,6 +33,8 @@ class UserInfoNotifier extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  String getUserProvider() => getUserAuthProvider();
 
   void reset() {
     _userInfoState = const UserInfoState.initial();

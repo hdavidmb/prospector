@@ -8,6 +8,7 @@ import 'package:prospector/src/features/user/data/user_auth_profile_repository.d
 import 'package:prospector/src/features/user/domain/interfaces/i_user_auth_profile_repository.dart';
 import 'package:prospector/src/features/user/domain/interfaces/i_user_info_repository.dart';
 import 'package:prospector/src/features/user/domain/use_cases/get_or_create_user_info.dart';
+import 'package:prospector/src/features/user/domain/use_cases/get_user_auth_provider.dart';
 
 final remoteUserInfoRepository = Provider<IUserInfoRepository>((ref) {
   return FirestoreUserInfoRepository(
@@ -36,8 +37,14 @@ final _userAuthProfileRepository = ref.watch(userAuthProfileRepository);
   );
 });
 
+final getUserAuthProvider = Provider<GetUserAuthProvider>((ref) {
+  final _userAuthProfileRepository = ref.watch(userAuthProfileRepository);
+    return GetUserAuthProvider(userAuthProfileRepository: _userAuthProfileRepository);
+}); 
+
 // * Notifier
 final userInfoNotifierProvider = ChangeNotifierProvider<UserInfoNotifier>((ref) {
   final _getOrCreateUserInfo = ref.watch(getOrCreateUserInfo);
-    return UserInfoNotifier(getOrCreateUserInfo: _getOrCreateUserInfo);
+  final _getUserAuthProvider = ref.watch(getUserAuthProvider);
+    return UserInfoNotifier(getOrCreateUserInfo: _getOrCreateUserInfo, getUserAuthProvider: _getUserAuthProvider);
 });

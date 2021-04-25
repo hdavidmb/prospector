@@ -31,5 +31,12 @@
     "settings": "Settings",
     "premiumCap": "PREMIUM",
     "until": "until",
-    "profile": "Profile"
+    "profile": "Profile",
+    "save": "Save",
+    "editImage": "Edit image",
+    "changeEmail": "Change email",
+    "changePassword": "Change password",
+    "loggedInWith": "Logged in with",
+    "logOut": "Log out",
+    "deleteAccount": "Delete account"
 }
