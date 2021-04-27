@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
@@ -23,7 +24,7 @@ class UserAvatar extends ConsumerWidget {
         radius: size / 2 - 3,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(size/2 - 5),
+          borderRadius: BorderRadius.circular(size / 2 - 5),
           child: Container(
             color: Colors.white60,
             child: (user.photoURL == null || user.photoURL!.isEmpty)
@@ -33,12 +34,15 @@ class UserAvatar extends ConsumerWidget {
                     height: size - 10,
                     fit: BoxFit.cover,
                   )
-                : FadeInImage(
+                : CachedNetworkImage(
                     fit: BoxFit.cover,
                     height: size - 10,
                     width: size - 10,
-                    placeholder: const AssetImage('assets/images/loading.gif'),
-                    image: NetworkImage(user.photoURL!),
+                    imageUrl: user.photoURL!,
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
           ),
         ),
