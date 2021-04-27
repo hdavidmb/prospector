@@ -38,5 +38,13 @@
     "changePassword": "Cambiar contraseña",
     "loggedInWith": "Iniciaste sesión con",
     "logOut": "Cerrar sesión",
-    "deleteAccount": "Eliminar cuenta"
+    "deleteAccount": "Eliminar cuenta",
+    "areYouSureDeleteAccount": "Confirma que deseas eliminar tu cuenta.",
+    "thisAcctionCannotBeUndone": "Esta acción no se puede deshacer.",
+    "enterYourPasswordToConfirm": "Ingresa tu contraseña para confirmar",
+    "typeTheWord": "Ingresa la palabra",
+    "deleteCap": "ELIMINAR",
+    "toConfirm": "para confirmar",
+    "typeHere": "Escribe aqui",
+    "continueString": "Continuar"
 }

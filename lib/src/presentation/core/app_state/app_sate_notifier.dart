@@ -17,23 +17,24 @@ class AppStateNotifier extends StateNotifier<AppState> {
     required this.userInfoState,
     required this.read,
   }) : super(const AppState.initial()) {
-    if (authState == const AuthState.authenticated()) {
-      //TODO get user data
-      if (userInfoState == const UserInfoState.ready()) {
-        state = const AppState.authenticatedReady();
-      } else if (userInfoState == const UserInfoState.initial()) {
-        read(userInfoNotifierProvider).getOrCreateUser();
+    if (defaultDataState == const AppDefaultDataState.ready()) {
+      if (authState == const AuthState.authenticated()) {
+        if (userInfoState == const UserInfoState.ready()) {
+          state = const AppState.authenticatedReady();
+        } else if (userInfoState == const UserInfoState.initial()) {
+          Future.delayed(const Duration(milliseconds: 300),
+              () => read(userInfoNotifierProvider).getOrCreateUser());
+        }
+      } else if (authState == const AuthState.unauthenticated()) {
+        state = const AppState.unauthenticatedReady();
       }
     }
-    if (authState == const AuthState.unauthenticated() &&
-        defaultDataState == const AppDefaultDataState.ready()) {
-      state = const AppState.unauthenticatedReady();
-    }
-    if (authState == const AuthState.error() || defaultDataState == const AppDefaultDataState.error() || userInfoState == const UserInfoState.error()) {
+    if (authState == const AuthState.error() ||
+        defaultDataState == const AppDefaultDataState.error() ||
+        userInfoState == const UserInfoState.error()) {
       state = const AppState.error();
     }
   }
 
   void reset() => state = const AppState.initial();
-
 }

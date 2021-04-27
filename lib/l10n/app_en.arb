@@ -38,5 +38,13 @@
     "changePassword": "Change password",
     "loggedInWith": "Logged in with",
     "logOut": "Log out",
-    "deleteAccount": "Delete account"
+    "deleteAccount": "Delete account",
+    "areYouSureDeleteAccount": "Are you sure you want to delete your account?",
+    "thisAcctionCannotBeUndone": "This action cannot be undone.",
+    "enterYourPasswordToConfirm": "Enter your password to confirm",
+    "typeTheWord": "Type the word",
+    "deleteCap": "DELETE",
+    "toConfirm": "to confirm",
+    "typeHere": "Type here",
+    "continueString": "Continue"
 }

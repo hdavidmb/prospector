@@ -35,8 +35,8 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> deleteAccount() async { //TODO test
-    final user = firebaseAuthInstance.currentUser!; // TODO test without connection
+  Future<Either<AuthFailure, Unit>> deleteAccount() async {
+    final user = firebaseAuthInstance.currentUser!;
     try {
       await user.delete();
       return right(unit);
@@ -72,5 +72,5 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
 
   @override
   String userProvider() =>
-      firebaseAuthInstance.currentUser!.providerData.last.providerId; //TODO test
+      firebaseAuthInstance.currentUser!.providerData.last.providerId;
 }

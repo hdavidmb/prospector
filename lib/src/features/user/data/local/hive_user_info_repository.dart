@@ -10,7 +10,7 @@ class HiveUserInfoRepository implements IUserInfoRepository {
 
   @override
   Future<Either<DatabaseFailure, Unit>> deleteUserDocument(
-      {required String uid}) async { //TODO test
+      {required String uid}) async {
     try {
       if (!Hive.isBoxOpen(uid)) await Hive.openBox<UserEntity>(uid);
       Hive.box<UserEntity>(uid).deleteFromDisk();

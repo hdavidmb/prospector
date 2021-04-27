@@ -48,9 +48,9 @@ class UserEntity {
       'uid': uid,
       'name': name,
       'subscription': subscription,
-      'expiry_date': expiryDate.millisecondsSinceEpoch,
-      'created': created.millisecondsSinceEpoch,
-      'modified': modified.millisecondsSinceEpoch,
+      'expiry_date': expiryDate,
+      'created': created,
+      'modified': modified,
     };
     if (email != null) userMap['email'] = email;
     if (photoURL != null) userMap['photoURL'] = photoURL;

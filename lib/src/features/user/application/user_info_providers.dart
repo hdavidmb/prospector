@@ -7,6 +7,7 @@ import 'package:prospector/src/features/user/data/remote/firestore_user_info_rep
 import 'package:prospector/src/features/user/data/user_auth_profile_repository.dart';
 import 'package:prospector/src/features/user/domain/interfaces/i_user_auth_profile_repository.dart';
 import 'package:prospector/src/features/user/domain/interfaces/i_user_info_repository.dart';
+import 'package:prospector/src/features/user/domain/use_cases/delete_user_account.dart';
 import 'package:prospector/src/features/user/domain/use_cases/get_or_create_user_info.dart';
 import 'package:prospector/src/features/user/domain/use_cases/get_user_auth_provider.dart';
 
@@ -26,9 +27,9 @@ final userAuthProfileRepository = Provider<IUserAuthProfileRepository>((ref) {
 
 // * Use cases
 final getOrCreateUserInfo = Provider<GetOrCreateUserInfo>((ref) {
-    final _localUserInfoRepository = ref.watch(localUserInfoRepository);
-final _remoteUserInfoRepository = ref.watch(remoteUserInfoRepository);
-final _userAuthProfileRepository = ref.watch(userAuthProfileRepository);
+  final _localUserInfoRepository = ref.watch(localUserInfoRepository);
+  final _remoteUserInfoRepository = ref.watch(remoteUserInfoRepository);
+  final _userAuthProfileRepository = ref.watch(userAuthProfileRepository);
   return GetOrCreateUserInfo(
     localUserInfoRepository: _localUserInfoRepository,
     remoteUserInfoRepository: _remoteUserInfoRepository,
@@ -39,12 +40,27 @@ final _userAuthProfileRepository = ref.watch(userAuthProfileRepository);
 
 final getUserAuthProvider = Provider<GetUserAuthProvider>((ref) {
   final _userAuthProfileRepository = ref.watch(userAuthProfileRepository);
-    return GetUserAuthProvider(userAuthProfileRepository: _userAuthProfileRepository);
-}); 
+  return GetUserAuthProvider(
+      userAuthProfileRepository: _userAuthProfileRepository);
+});
+
+final deleteUserAccount = Provider<DeleteUserAccount>((ref) {
+  final _userAuthProfileRepository = ref.watch(userAuthProfileRepository);
+  final _localUserInfoRepository = ref.watch(localUserInfoRepository);
+  final _remoteUserInfoRepository = ref.watch(remoteUserInfoRepository);
+  return DeleteUserAccount(
+    userAuthProfileRepository: _userAuthProfileRepository,
+    localUserInfoRepository: _localUserInfoRepository,
+    remoteUserInfoRepository: _remoteUserInfoRepository,
+  );
+});
 
 // * Notifier
-final userInfoNotifierProvider = ChangeNotifierProvider<UserInfoNotifier>((ref) {
+final userInfoNotifierProvider =
+    ChangeNotifierProvider<UserInfoNotifier>((ref) {
   final _getOrCreateUserInfo = ref.watch(getOrCreateUserInfo);
   final _getUserAuthProvider = ref.watch(getUserAuthProvider);
-    return UserInfoNotifier(getOrCreateUserInfo: _getOrCreateUserInfo, getUserAuthProvider: _getUserAuthProvider);
+  return UserInfoNotifier(
+      getOrCreateUserInfo: _getOrCreateUserInfo,
+      getUserAuthProvider: _getUserAuthProvider);
 });

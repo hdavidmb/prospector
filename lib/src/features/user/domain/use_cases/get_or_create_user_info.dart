@@ -85,7 +85,7 @@ class GetOrCreateUserInfo {
 
   Future<Either<DatabaseFailure, UserEntity>> createNewUser(
       {required String currentUserID}) async {
-    final String freeSubID = read(appDefaultDataProvider).freeSubID; //TODO test
+    final String freeSubID = read(appDefaultDataProvider).freeSubID;
     final UserEntity user = UserEntity(
       uid: currentUserID,
       name: userAuthProfileRepository.userDisplayName(),

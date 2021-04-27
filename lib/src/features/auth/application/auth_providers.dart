@@ -66,6 +66,11 @@ final resetPassword =
   return ResetPassword(authRepository: _authRepository);
 });
 
+final reloginUser = Provider<ReloginUser>((ref) {
+  final _authRepository = ref.watch(_authRepositoryProvider);
+  return ReloginUser(authRepository: _authRepository);
+});
+
 // * Auth State provider
 final authStateNotifierProvider =
     StateNotifierProvider<AuthStateNotifier, AuthState>((ref) {

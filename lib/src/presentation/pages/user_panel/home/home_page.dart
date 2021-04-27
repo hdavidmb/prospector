@@ -11,8 +11,6 @@ import 'package:prospector/src/presentation/pages/user_panel/settings/settings_m
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO * Temporary
-    final user = context.read(userInfoNotifierProvider).user;
     // * This provider listener must always be at the top of the home widget tree
     return ProviderListener<AuthState>(
       provider: authStateNotifierProvider,
@@ -21,11 +19,10 @@ class HomePage extends StatelessWidget {
           context.read(signInFormProvider.notifier).reset();
           context.read(registerFormProvider.notifier).reset();
           context.read(userInfoNotifierProvider).reset();
-          Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  //TODO implement fade in transition
-                  builder: (context) => SignInPage()));
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => SignInPage()),
+              (Route<dynamic> route) => false);
+          //         //TODO implement fade in transition
         }
       },
       child: SettingsMenuPage(),

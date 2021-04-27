@@ -12,6 +12,7 @@ abstract class IAuthRepository {
   Future<Either<AuthFailure, Unit>> signInWithGoogle();
   Future<Either<AuthFailure, Unit>> signInWithFacebook();
   Future<Either<AuthFailure, Unit>> appleSignIn();
+  Future<Either<AuthFailure, Unit>> reloginUser({required String provider, String? password});
   Future<void> signOut();
 
 } 

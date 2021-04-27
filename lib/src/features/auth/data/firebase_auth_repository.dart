@@ -28,12 +28,14 @@ class FirebaseAuthRepository implements IAuthRepository {
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword(
-      {required String email, required String password, required String displayName}) async {
+      {required String email,
+      required String password,
+      required String displayName}) async {
     try {
-      final credentials = await firebaseAuthInstance.createUserWithEmailAndPassword(
-          email: email, password: password);
-      
-      credentials.user!.updateProfile(displayName: displayName);
+      await firebaseAuthInstance
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then((credential) async =>
+              await credential.user?.updateProfile(displayName: displayName));
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -132,12 +134,78 @@ class FirebaseAuthRepository implements IAuthRepository {
       );
 
   @override
-  Future<Either<AuthFailure, Unit>> resetPassword({required String email}) async {
+  Future<Either<AuthFailure, Unit>> resetPassword(
+      {required String email}) async {
     try {
       await firebaseAuthInstance.sendPasswordResetEmail(email: email);
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      return manageFirebaseAuthExceptions(errorCode: '${e.code}-reset-password');
+      return manageFirebaseAuthExceptions(
+          errorCode: '${e.code}-reset-password');
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> reloginUser(
+      {required String provider, String? password}) async {
+    try {
+      final AuthCredential credential;
+      switch (provider) {
+        case 'password':
+          final userEmail = firebaseAuthInstance.currentUser!.email;
+          credential = EmailAuthProvider.credential(
+              email: userEmail!, password: password!);
+          break;
+        case 'google.com':
+          final googleUser = await googleSignIn.signIn();
+          if (googleUser == null) {
+            return left(const AuthFailure.cancelledByUser());
+          }
+
+          final GoogleSignInAuthentication googleAuthentication =
+              await googleUser.authentication;
+
+          credential = GoogleAuthProvider.credential(
+            idToken: googleAuthentication.idToken,
+            accessToken: googleAuthentication.accessToken,
+          );
+          break;
+        case 'facebook.com':
+          final LoginResult result = await facebookAuth.login();
+          switch (result.status) {
+            case LoginStatus.cancelled:
+              return left(const AuthFailure.cancelledByUser());
+            case LoginStatus.success:
+              credential =
+                  FacebookAuthProvider.credential(result.accessToken!.token);
+              break;
+            default:
+              return left(const AuthFailure.serverError());
+          }
+          break;
+        case 'apple.com':
+          final AuthorizationCredentialAppleID result =
+              await signInWithApple.getAppleIDCredential(
+            scopes: [
+              AppleIDAuthorizationScopes.email,
+              AppleIDAuthorizationScopes.fullName,
+            ],
+          );
+          final OAuthProvider appleAuthProvider = OAuthProvider("apple.com");
+          credential = appleAuthProvider.credential(
+            idToken: result.identityToken,
+            accessToken: result.authorizationCode,
+          );
+          break;
+        default:
+          credential = EmailAuthProvider.credential(email: '', password: '');
+          break;
+      }
+      await firebaseAuthInstance.currentUser!
+          .reauthenticateWithCredential(credential);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      return manageFirebaseAuthExceptions(errorCode: e.code);
     }
   }
 }
