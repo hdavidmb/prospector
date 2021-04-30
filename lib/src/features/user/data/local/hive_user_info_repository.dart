@@ -33,7 +33,7 @@ class HiveUserInfoRepository implements IUserInfoRepository {
   }
 
   @override
-  Future<Either<DatabaseFailure, Unit>> updateUserDocument(UserEntity user) => saveUser(user); //TODO test
+  Future<Either<DatabaseFailure, Unit>> updateUserDocument(UserEntity user) => saveUser(user);
 
   @override
   Future<Either<DatabaseFailure, bool>> userDocumentExists(

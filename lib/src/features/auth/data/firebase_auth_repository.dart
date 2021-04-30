@@ -24,7 +24,9 @@ class FirebaseAuthRepository implements IAuthRepository {
 
   @override
   Stream<bool> get isUserAuthenticated =>
-      firebaseAuthInstance.authStateChanges().map((User? user) => user != null);
+      firebaseAuthInstance.authStateChanges().map((User? user) =>
+          user !=
+          null); //TODO try .userChanges() to be able to upgrade firebase_auth to 1.1.2
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword(

@@ -18,7 +18,7 @@ class FirestoreAppDefaultDataRepository
   @override
   Future<Either<DatabaseFailure, List<Status>>> getStatusList() async {
     final bool isConnected = await checkConnection();
-    if (!isConnected) return left(const DatabaseFailure.serverError());
+    if (!isConnected) return left(const DatabaseFailure.noConnection());
     try {
       final QuerySnapshot querySnapshot =
           await firestoreInstance.collection('statuses').get();
@@ -38,7 +38,7 @@ class FirestoreAppDefaultDataRepository
   Future<Either<DatabaseFailure, List<Subscription>>>
       getSubscriptionList() async {
     final bool isConnected = await checkConnection();
-    if (!isConnected) return left(const DatabaseFailure.serverError());
+    if (!isConnected) return left(const DatabaseFailure.noConnection());
     try {
       final QuerySnapshot querySnapshot =
           await firestoreInstance.collection('subscriptions').get();

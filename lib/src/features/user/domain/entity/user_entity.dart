@@ -60,6 +60,33 @@ class UserEntity {
     return userMap;
   }
 
+  UserEntity copyWith({
+    String? name,
+    String? subscription,
+    DateTime? expiryDate,
+    DateTime? created,
+    DateTime? modified,
+    String? email,
+    String? photoURL,
+    String? subscriptionSKU,
+    String? countryCode,
+    String? dialCode,
+  }) {
+    return UserEntity(
+      uid: uid,
+      name: name ?? this.name,
+      subscription: subscription ?? this.subscription,
+      expiryDate: expiryDate ?? this.expiryDate,
+      created: created ?? this.created,
+      modified: modified ?? this.modified,
+      email: email ?? this.email,
+      photoURL: photoURL ?? this.photoURL,
+      subscriptionSKU: subscriptionSKU ?? this.subscriptionSKU,
+      countryCode: countryCode ?? this.countryCode,
+      dialCode: dialCode ?? this.dialCode,
+    );
+  }
+
   factory UserEntity.fromMap(Map<String, dynamic> map) {
     return UserEntity(
       uid: map['uid'] as String,

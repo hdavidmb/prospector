@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
-part of 'database_failure.dart';
+part of 'user_info_failure.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,151 +13,66 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$DatabaseFailureTearOff {
-  const _$DatabaseFailureTearOff();
-
-  ServerError serverError() {
-    return const ServerError();
-  }
+class _$UserInfoFailureTearOff {
+  const _$UserInfoFailureTearOff();
 
   NoConnection noConnection() {
     return const NoConnection();
   }
+
+  ServerError serverError() {
+    return const ServerError();
+  }
 }
 
 /// @nodoc
-const $DatabaseFailure = _$DatabaseFailureTearOff();
+const $UserInfoFailure = _$UserInfoFailureTearOff();
 
 /// @nodoc
-mixin _$DatabaseFailure {
+mixin _$UserInfoFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
     required TResult Function() noConnection,
+    required TResult Function() serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
     TResult Function()? noConnection,
+    TResult Function()? serverError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
     required TResult Function(NoConnection value) noConnection,
+    required TResult Function(ServerError value) serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
     TResult Function(NoConnection value)? noConnection,
+    TResult Function(ServerError value)? serverError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DatabaseFailureCopyWith<$Res> {
-  factory $DatabaseFailureCopyWith(
-          DatabaseFailure value, $Res Function(DatabaseFailure) then) =
-      _$DatabaseFailureCopyWithImpl<$Res>;
+abstract class $UserInfoFailureCopyWith<$Res> {
+  factory $UserInfoFailureCopyWith(
+          UserInfoFailure value, $Res Function(UserInfoFailure) then) =
+      _$UserInfoFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DatabaseFailureCopyWithImpl<$Res>
-    implements $DatabaseFailureCopyWith<$Res> {
-  _$DatabaseFailureCopyWithImpl(this._value, this._then);
+class _$UserInfoFailureCopyWithImpl<$Res>
+    implements $UserInfoFailureCopyWith<$Res> {
+  _$UserInfoFailureCopyWithImpl(this._value, this._then);
 
-  final DatabaseFailure _value;
+  final UserInfoFailure _value;
   // ignore: unused_field
-  final $Res Function(DatabaseFailure) _then;
-}
-
-/// @nodoc
-abstract class $ServerErrorCopyWith<$Res> {
-  factory $ServerErrorCopyWith(
-          ServerError value, $Res Function(ServerError) then) =
-      _$ServerErrorCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$ServerErrorCopyWithImpl<$Res>
-    extends _$DatabaseFailureCopyWithImpl<$Res>
-    implements $ServerErrorCopyWith<$Res> {
-  _$ServerErrorCopyWithImpl(
-      ServerError _value, $Res Function(ServerError) _then)
-      : super(_value, (v) => _then(v as ServerError));
-
-  @override
-  ServerError get _value => super._value as ServerError;
-}
-
-/// @nodoc
-class _$ServerError implements ServerError {
-  const _$ServerError();
-
-  @override
-  String toString() {
-    return 'DatabaseFailure.serverError()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ServerError);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
-    required TResult Function() noConnection,
-  }) {
-    return serverError();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? noConnection,
-    required TResult orElse(),
-  }) {
-    if (serverError != null) {
-      return serverError();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
-    required TResult Function(NoConnection value) noConnection,
-  }) {
-    return serverError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
-    TResult Function(NoConnection value)? noConnection,
-    required TResult orElse(),
-  }) {
-    if (serverError != null) {
-      return serverError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ServerError implements DatabaseFailure {
-  const factory ServerError() = _$ServerError;
+  final $Res Function(UserInfoFailure) _then;
 }
 
 /// @nodoc
@@ -169,7 +84,7 @@ abstract class $NoConnectionCopyWith<$Res> {
 
 /// @nodoc
 class _$NoConnectionCopyWithImpl<$Res>
-    extends _$DatabaseFailureCopyWithImpl<$Res>
+    extends _$UserInfoFailureCopyWithImpl<$Res>
     implements $NoConnectionCopyWith<$Res> {
   _$NoConnectionCopyWithImpl(
       NoConnection _value, $Res Function(NoConnection) _then)
@@ -185,7 +100,7 @@ class _$NoConnection implements NoConnection {
 
   @override
   String toString() {
-    return 'DatabaseFailure.noConnection()';
+    return 'UserInfoFailure.noConnection()';
   }
 
   @override
@@ -199,8 +114,8 @@ class _$NoConnection implements NoConnection {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
     required TResult Function() noConnection,
+    required TResult Function() serverError,
   }) {
     return noConnection();
   }
@@ -208,8 +123,8 @@ class _$NoConnection implements NoConnection {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
     TResult Function()? noConnection,
+    TResult Function()? serverError,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -221,8 +136,8 @@ class _$NoConnection implements NoConnection {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
     required TResult Function(NoConnection value) noConnection,
+    required TResult Function(ServerError value) serverError,
   }) {
     return noConnection(this);
   }
@@ -230,8 +145,8 @@ class _$NoConnection implements NoConnection {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
     TResult Function(NoConnection value)? noConnection,
+    TResult Function(ServerError value)? serverError,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -241,6 +156,91 @@ class _$NoConnection implements NoConnection {
   }
 }
 
-abstract class NoConnection implements DatabaseFailure {
+abstract class NoConnection implements UserInfoFailure {
   const factory NoConnection() = _$NoConnection;
+}
+
+/// @nodoc
+abstract class $ServerErrorCopyWith<$Res> {
+  factory $ServerErrorCopyWith(
+          ServerError value, $Res Function(ServerError) then) =
+      _$ServerErrorCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ServerErrorCopyWithImpl<$Res>
+    extends _$UserInfoFailureCopyWithImpl<$Res>
+    implements $ServerErrorCopyWith<$Res> {
+  _$ServerErrorCopyWithImpl(
+      ServerError _value, $Res Function(ServerError) _then)
+      : super(_value, (v) => _then(v as ServerError));
+
+  @override
+  ServerError get _value => super._value as ServerError;
+}
+
+/// @nodoc
+class _$ServerError implements ServerError {
+  const _$ServerError();
+
+  @override
+  String toString() {
+    return 'UserInfoFailure.serverError()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ServerError);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() noConnection,
+    required TResult Function() serverError,
+  }) {
+    return serverError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? noConnection,
+    TResult Function()? serverError,
+    required TResult orElse(),
+  }) {
+    if (serverError != null) {
+      return serverError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NoConnection value) noConnection,
+    required TResult Function(ServerError value) serverError,
+  }) {
+    return serverError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(ServerError value)? serverError,
+    required TResult orElse(),
+  }) {
+    if (serverError != null) {
+      return serverError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ServerError implements UserInfoFailure {
+  const factory ServerError() = _$ServerError;
 }

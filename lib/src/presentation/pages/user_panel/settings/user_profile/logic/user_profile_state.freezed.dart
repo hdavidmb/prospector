@@ -24,14 +24,14 @@ class _$UserProfileStateTearOff {
     return const Submitting();
   }
 
-  ErrorAuth errorAuth(AuthFailure failure) {
-    return ErrorAuth(
+  Error error(UserInfoFailure failure) {
+    return Error(
       failure,
     );
   }
 
-  ErrorDatabase errorDatabase(DatabaseFailure failure) {
-    return ErrorDatabase(
+  ReloginError reloginError(AuthFailure failure) {
+    return ReloginError(
       failure,
     );
   }
@@ -46,16 +46,16 @@ mixin _$UserProfileState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() submitting,
-    required TResult Function(AuthFailure failure) errorAuth,
-    required TResult Function(DatabaseFailure failure) errorDatabase,
+    required TResult Function(UserInfoFailure failure) error,
+    required TResult Function(AuthFailure failure) reloginError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? submitting,
-    TResult Function(AuthFailure failure)? errorAuth,
-    TResult Function(DatabaseFailure failure)? errorDatabase,
+    TResult Function(UserInfoFailure failure)? error,
+    TResult Function(AuthFailure failure)? reloginError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,16 +63,16 @@ mixin _$UserProfileState {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Submitting value) submitting,
-    required TResult Function(ErrorAuth value) errorAuth,
-    required TResult Function(ErrorDatabase value) errorDatabase,
+    required TResult Function(Error value) error,
+    required TResult Function(ReloginError value) reloginError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Submitting value)? submitting,
-    TResult Function(ErrorAuth value)? errorAuth,
-    TResult Function(ErrorDatabase value)? errorDatabase,
+    TResult Function(Error value)? error,
+    TResult Function(ReloginError value)? reloginError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,8 +133,8 @@ class _$Initial implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() submitting,
-    required TResult Function(AuthFailure failure) errorAuth,
-    required TResult Function(DatabaseFailure failure) errorDatabase,
+    required TResult Function(UserInfoFailure failure) error,
+    required TResult Function(AuthFailure failure) reloginError,
   }) {
     return initial();
   }
@@ -144,8 +144,8 @@ class _$Initial implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? submitting,
-    TResult Function(AuthFailure failure)? errorAuth,
-    TResult Function(DatabaseFailure failure)? errorDatabase,
+    TResult Function(UserInfoFailure failure)? error,
+    TResult Function(AuthFailure failure)? reloginError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -159,8 +159,8 @@ class _$Initial implements Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Submitting value) submitting,
-    required TResult Function(ErrorAuth value) errorAuth,
-    required TResult Function(ErrorDatabase value) errorDatabase,
+    required TResult Function(Error value) error,
+    required TResult Function(ReloginError value) reloginError,
   }) {
     return initial(this);
   }
@@ -170,8 +170,8 @@ class _$Initial implements Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Submitting value)? submitting,
-    TResult Function(ErrorAuth value)? errorAuth,
-    TResult Function(ErrorDatabase value)? errorDatabase,
+    TResult Function(Error value)? error,
+    TResult Function(ReloginError value)? reloginError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -225,8 +225,8 @@ class _$Submitting implements Submitting {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() submitting,
-    required TResult Function(AuthFailure failure) errorAuth,
-    required TResult Function(DatabaseFailure failure) errorDatabase,
+    required TResult Function(UserInfoFailure failure) error,
+    required TResult Function(AuthFailure failure) reloginError,
   }) {
     return submitting();
   }
@@ -236,8 +236,8 @@ class _$Submitting implements Submitting {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? submitting,
-    TResult Function(AuthFailure failure)? errorAuth,
-    TResult Function(DatabaseFailure failure)? errorDatabase,
+    TResult Function(UserInfoFailure failure)? error,
+    TResult Function(AuthFailure failure)? reloginError,
     required TResult orElse(),
   }) {
     if (submitting != null) {
@@ -251,8 +251,8 @@ class _$Submitting implements Submitting {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Submitting value) submitting,
-    required TResult Function(ErrorAuth value) errorAuth,
-    required TResult Function(ErrorDatabase value) errorDatabase,
+    required TResult Function(Error value) error,
+    required TResult Function(ReloginError value) reloginError,
   }) {
     return submitting(this);
   }
@@ -262,8 +262,8 @@ class _$Submitting implements Submitting {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Submitting value)? submitting,
-    TResult Function(ErrorAuth value)? errorAuth,
-    TResult Function(ErrorDatabase value)? errorDatabase,
+    TResult Function(Error value)? error,
+    TResult Function(ReloginError value)? reloginError,
     required TResult orElse(),
   }) {
     if (submitting != null) {
@@ -278,28 +278,159 @@ abstract class Submitting implements UserProfileState {
 }
 
 /// @nodoc
-abstract class $ErrorAuthCopyWith<$Res> {
-  factory $ErrorAuthCopyWith(ErrorAuth value, $Res Function(ErrorAuth) then) =
-      _$ErrorAuthCopyWithImpl<$Res>;
+abstract class $ErrorCopyWith<$Res> {
+  factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
+      _$ErrorCopyWithImpl<$Res>;
+  $Res call({UserInfoFailure failure});
+
+  $UserInfoFailureCopyWith<$Res> get failure;
+}
+
+/// @nodoc
+class _$ErrorCopyWithImpl<$Res> extends _$UserProfileStateCopyWithImpl<$Res>
+    implements $ErrorCopyWith<$Res> {
+  _$ErrorCopyWithImpl(Error _value, $Res Function(Error) _then)
+      : super(_value, (v) => _then(v as Error));
+
+  @override
+  Error get _value => super._value as Error;
+
+  @override
+  $Res call({
+    Object? failure = freezed,
+  }) {
+    return _then(Error(
+      failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as UserInfoFailure,
+    ));
+  }
+
+  @override
+  $UserInfoFailureCopyWith<$Res> get failure {
+    return $UserInfoFailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
+  }
+}
+
+/// @nodoc
+class _$Error implements Error {
+  const _$Error(this.failure);
+
+  @override
+  final UserInfoFailure failure;
+
+  @override
+  String toString() {
+    return 'UserProfileState.error(failure: $failure)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Error &&
+            (identical(other.failure, failure) ||
+                const DeepCollectionEquality().equals(other.failure, failure)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
+
+  @JsonKey(ignore: true)
+  @override
+  $ErrorCopyWith<Error> get copyWith =>
+      _$ErrorCopyWithImpl<Error>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() submitting,
+    required TResult Function(UserInfoFailure failure) error,
+    required TResult Function(AuthFailure failure) reloginError,
+  }) {
+    return error(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? submitting,
+    TResult Function(UserInfoFailure failure)? error,
+    TResult Function(AuthFailure failure)? reloginError,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Submitting value) submitting,
+    required TResult Function(Error value) error,
+    required TResult Function(ReloginError value) reloginError,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Submitting value)? submitting,
+    TResult Function(Error value)? error,
+    TResult Function(ReloginError value)? reloginError,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Error implements UserProfileState {
+  const factory Error(UserInfoFailure failure) = _$Error;
+
+  UserInfoFailure get failure => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ErrorCopyWith<Error> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ReloginErrorCopyWith<$Res> {
+  factory $ReloginErrorCopyWith(
+          ReloginError value, $Res Function(ReloginError) then) =
+      _$ReloginErrorCopyWithImpl<$Res>;
   $Res call({AuthFailure failure});
 
   $AuthFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
-class _$ErrorAuthCopyWithImpl<$Res> extends _$UserProfileStateCopyWithImpl<$Res>
-    implements $ErrorAuthCopyWith<$Res> {
-  _$ErrorAuthCopyWithImpl(ErrorAuth _value, $Res Function(ErrorAuth) _then)
-      : super(_value, (v) => _then(v as ErrorAuth));
+class _$ReloginErrorCopyWithImpl<$Res>
+    extends _$UserProfileStateCopyWithImpl<$Res>
+    implements $ReloginErrorCopyWith<$Res> {
+  _$ReloginErrorCopyWithImpl(
+      ReloginError _value, $Res Function(ReloginError) _then)
+      : super(_value, (v) => _then(v as ReloginError));
 
   @override
-  ErrorAuth get _value => super._value as ErrorAuth;
+  ReloginError get _value => super._value as ReloginError;
 
   @override
   $Res call({
     Object? failure = freezed,
   }) {
-    return _then(ErrorAuth(
+    return _then(ReloginError(
       failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -316,21 +447,21 @@ class _$ErrorAuthCopyWithImpl<$Res> extends _$UserProfileStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$ErrorAuth implements ErrorAuth {
-  const _$ErrorAuth(this.failure);
+class _$ReloginError implements ReloginError {
+  const _$ReloginError(this.failure);
 
   @override
   final AuthFailure failure;
 
   @override
   String toString() {
-    return 'UserProfileState.errorAuth(failure: $failure)';
+    return 'UserProfileState.reloginError(failure: $failure)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ErrorAuth &&
+        (other is ReloginError &&
             (identical(other.failure, failure) ||
                 const DeepCollectionEquality().equals(other.failure, failure)));
   }
@@ -341,18 +472,18 @@ class _$ErrorAuth implements ErrorAuth {
 
   @JsonKey(ignore: true)
   @override
-  $ErrorAuthCopyWith<ErrorAuth> get copyWith =>
-      _$ErrorAuthCopyWithImpl<ErrorAuth>(this, _$identity);
+  $ReloginErrorCopyWith<ReloginError> get copyWith =>
+      _$ReloginErrorCopyWithImpl<ReloginError>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() submitting,
-    required TResult Function(AuthFailure failure) errorAuth,
-    required TResult Function(DatabaseFailure failure) errorDatabase,
+    required TResult Function(UserInfoFailure failure) error,
+    required TResult Function(AuthFailure failure) reloginError,
   }) {
-    return errorAuth(failure);
+    return reloginError(failure);
   }
 
   @override
@@ -360,12 +491,12 @@ class _$ErrorAuth implements ErrorAuth {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? submitting,
-    TResult Function(AuthFailure failure)? errorAuth,
-    TResult Function(DatabaseFailure failure)? errorDatabase,
+    TResult Function(UserInfoFailure failure)? error,
+    TResult Function(AuthFailure failure)? reloginError,
     required TResult orElse(),
   }) {
-    if (errorAuth != null) {
-      return errorAuth(failure);
+    if (reloginError != null) {
+      return reloginError(failure);
     }
     return orElse();
   }
@@ -375,10 +506,10 @@ class _$ErrorAuth implements ErrorAuth {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Submitting value) submitting,
-    required TResult Function(ErrorAuth value) errorAuth,
-    required TResult Function(ErrorDatabase value) errorDatabase,
+    required TResult Function(Error value) error,
+    required TResult Function(ReloginError value) reloginError,
   }) {
-    return errorAuth(this);
+    return reloginError(this);
   }
 
   @override
@@ -386,154 +517,22 @@ class _$ErrorAuth implements ErrorAuth {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Submitting value)? submitting,
-    TResult Function(ErrorAuth value)? errorAuth,
-    TResult Function(ErrorDatabase value)? errorDatabase,
+    TResult Function(Error value)? error,
+    TResult Function(ReloginError value)? reloginError,
     required TResult orElse(),
   }) {
-    if (errorAuth != null) {
-      return errorAuth(this);
+    if (reloginError != null) {
+      return reloginError(this);
     }
     return orElse();
   }
 }
 
-abstract class ErrorAuth implements UserProfileState {
-  const factory ErrorAuth(AuthFailure failure) = _$ErrorAuth;
+abstract class ReloginError implements UserProfileState {
+  const factory ReloginError(AuthFailure failure) = _$ReloginError;
 
   AuthFailure get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ErrorAuthCopyWith<ErrorAuth> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ErrorDatabaseCopyWith<$Res> {
-  factory $ErrorDatabaseCopyWith(
-          ErrorDatabase value, $Res Function(ErrorDatabase) then) =
-      _$ErrorDatabaseCopyWithImpl<$Res>;
-  $Res call({DatabaseFailure failure});
-
-  $DatabaseFailureCopyWith<$Res> get failure;
-}
-
-/// @nodoc
-class _$ErrorDatabaseCopyWithImpl<$Res>
-    extends _$UserProfileStateCopyWithImpl<$Res>
-    implements $ErrorDatabaseCopyWith<$Res> {
-  _$ErrorDatabaseCopyWithImpl(
-      ErrorDatabase _value, $Res Function(ErrorDatabase) _then)
-      : super(_value, (v) => _then(v as ErrorDatabase));
-
-  @override
-  ErrorDatabase get _value => super._value as ErrorDatabase;
-
-  @override
-  $Res call({
-    Object? failure = freezed,
-  }) {
-    return _then(ErrorDatabase(
-      failure == freezed
-          ? _value.failure
-          : failure // ignore: cast_nullable_to_non_nullable
-              as DatabaseFailure,
-    ));
-  }
-
-  @override
-  $DatabaseFailureCopyWith<$Res> get failure {
-    return $DatabaseFailureCopyWith<$Res>(_value.failure, (value) {
-      return _then(_value.copyWith(failure: value));
-    });
-  }
-}
-
-/// @nodoc
-class _$ErrorDatabase implements ErrorDatabase {
-  const _$ErrorDatabase(this.failure);
-
-  @override
-  final DatabaseFailure failure;
-
-  @override
-  String toString() {
-    return 'UserProfileState.errorDatabase(failure: $failure)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is ErrorDatabase &&
-            (identical(other.failure, failure) ||
-                const DeepCollectionEquality().equals(other.failure, failure)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
-
-  @JsonKey(ignore: true)
-  @override
-  $ErrorDatabaseCopyWith<ErrorDatabase> get copyWith =>
-      _$ErrorDatabaseCopyWithImpl<ErrorDatabase>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() submitting,
-    required TResult Function(AuthFailure failure) errorAuth,
-    required TResult Function(DatabaseFailure failure) errorDatabase,
-  }) {
-    return errorDatabase(failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? submitting,
-    TResult Function(AuthFailure failure)? errorAuth,
-    TResult Function(DatabaseFailure failure)? errorDatabase,
-    required TResult orElse(),
-  }) {
-    if (errorDatabase != null) {
-      return errorDatabase(failure);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Submitting value) submitting,
-    required TResult Function(ErrorAuth value) errorAuth,
-    required TResult Function(ErrorDatabase value) errorDatabase,
-  }) {
-    return errorDatabase(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Submitting value)? submitting,
-    TResult Function(ErrorAuth value)? errorAuth,
-    TResult Function(ErrorDatabase value)? errorDatabase,
-    required TResult orElse(),
-  }) {
-    if (errorDatabase != null) {
-      return errorDatabase(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ErrorDatabase implements UserProfileState {
-  const factory ErrorDatabase(DatabaseFailure failure) = _$ErrorDatabase;
-
-  DatabaseFailure get failure => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ErrorDatabaseCopyWith<ErrorDatabase> get copyWith =>
+  $ReloginErrorCopyWith<ReloginError> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,9 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/core/connection/connection_checker.dart';
 
 import 'package:prospector/src/core/database/database_failures/database_failure.dart';
 import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
+import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
 import 'package:prospector/src/features/user/domain/interfaces/i_user_auth_profile_repository.dart';
 import 'package:prospector/src/features/user/domain/interfaces/i_user_info_repository.dart';
 
@@ -20,37 +22,48 @@ class GetOrCreateUserInfo {
     required this.read,
   });
 
-  Future<Either<DatabaseFailure, UserEntity>> call() async {
+  Future<Either<UserInfoFailure, UserEntity>> call() async {
     // Get current user id from Auth Profile repository
     final String currentUserID = userAuthProfileRepository.currentUserID();
     // Check if user exists locally
     final localCheckResult =
         await localUserInfoRepository.userDocumentExists(uid: currentUserID);
     return localCheckResult.fold(
-      (failure) => left(failure),
+      (failure) => left(const UserInfoFailure.serverError()),
       (existsLocally) async {
         if (existsLocally) {
           // yes? -> return user
           final Either<DatabaseFailure, UserEntity> result =
               await getLocalUser(currentUserID: currentUserID);
-          return result;
+          return result.fold(
+            (_) => left(const UserInfoFailure.serverError()),
+            (user) => right(user),
+          );
         } else {
           // no? -> // Check if user exists on remote repository
+          final bool isConnected = await checkConnection();
+          if (!isConnected) return left(const UserInfoFailure.noConnection());
           final remoteCheckResult = await remoteUserInfoRepository
               .userDocumentExists(uid: currentUserID);
           return remoteCheckResult.fold(
-            (failure) => left(failure),
+            (_) => left(const UserInfoFailure.serverError()),
             (existsRemote) async {
               if (existsRemote) {
                 //        yes? -> save locally and return user
                 final Either<DatabaseFailure, UserEntity> result =
                     await saveUserLocally(currentUserID: currentUserID);
-                return result;
+                return result.fold(
+                  (_) => left(const UserInfoFailure.serverError()),
+                  (user) => right(user),
+                );
               } else {
                 //        no? -> create local and remote user info and return user
                 final Either<DatabaseFailure, UserEntity> result =
                     await createNewUser(currentUserID: currentUserID);
-                return result;
+                return result.fold(
+                  (_) => left(const UserInfoFailure.serverError()),
+                  (user) => right(user),
+                );
               }
             },
           );
@@ -76,8 +89,7 @@ class GetOrCreateUserInfo {
     return remoteGetResult.fold(
       (failure) => left(failure),
       (user) async {
-        await localUserInfoRepository.createUserDocument(
-            user);
+        await localUserInfoRepository.createUserDocument(user);
         return right(user);
       },
     );
@@ -98,10 +110,8 @@ class GetOrCreateUserInfo {
     final email = userAuthProfileRepository.userEmail();
     if (photoURL.isNotEmpty) user.photoURL = photoURL;
     if (email.isNotEmpty) user.email = email;
-    await localUserInfoRepository
-        .createUserDocument(user);
-    await remoteUserInfoRepository
-        .createUserDocument(user);
+    await localUserInfoRepository.createUserDocument(user);
+    await remoteUserInfoRepository.createUserDocument(user);
     return right(user);
   }
 }

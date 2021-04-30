@@ -13,7 +13,9 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
   });
 
   @override
-  Future<Either<AuthFailure, Unit>> changePassword({required String newPassword}) async { //TODO test
+  Future<Either<AuthFailure, Unit>> changePassword(
+      {required String newPassword}) async {
+    //TODO test
     final user = firebaseAuthInstance.currentUser!;
     try {
       await user.updatePassword(newPassword);
@@ -24,7 +26,9 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> changeUserEmail({required String newEmail}) async { //TODO test
+  Future<Either<AuthFailure, Unit>> changeUserEmail(
+      {required String newEmail}) async {
+    //TODO test
     final user = firebaseAuthInstance.currentUser!;
     try {
       await user.updateEmail(newEmail);
@@ -47,10 +51,12 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
 
   @override
   Future<Either<AuthFailure, Unit>> updateUserProfile(
-      {String? displayName, String? photoURL}) async { //TODO test
-     final user = firebaseAuthInstance.currentUser!;
+      {String? displayName, String? photoURL}) async {
+    final user = firebaseAuthInstance.currentUser!;
     try {
-      await user.updateProfile(displayName: displayName, photoURL: photoURL); //TODO test without connection
+      await user.updateProfile(
+          displayName: displayName,
+          photoURL: photoURL);
       return right(unit);
     } on FirebaseAuthException catch (e) {
       return manageFirebaseAuthExceptions(errorCode: e.code);

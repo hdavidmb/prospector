@@ -10,6 +10,8 @@ import 'package:prospector/src/features/user/domain/interfaces/i_user_info_repos
 import 'package:prospector/src/features/user/domain/use_cases/delete_user_account.dart';
 import 'package:prospector/src/features/user/domain/use_cases/get_or_create_user_info.dart';
 import 'package:prospector/src/features/user/domain/use_cases/get_user_auth_provider.dart';
+import 'package:prospector/src/features/user/domain/use_cases/update_user_document.dart';
+import 'package:prospector/src/features/user/domain/use_cases/update_user_profile.dart';
 
 final remoteUserInfoRepository = Provider<IUserInfoRepository>((ref) {
   return FirestoreUserInfoRepository(
@@ -55,12 +57,25 @@ final deleteUserAccount = Provider<DeleteUserAccount>((ref) {
   );
 });
 
+final updateUserDocument = Provider<UpdateUserDocument>((ref) {
+  final _localUserInfoRepository = ref.watch(localUserInfoRepository);
+  final _remoteUserInfoRepository = ref.watch(remoteUserInfoRepository);
+    return UpdateUserDocument(localUserInfoRepository: _localUserInfoRepository, remoteUserInfoRepository: _remoteUserInfoRepository);
+});
+
+final updateUserProfile = Provider<UpdateUserProfile>((ref) {
+  final _userAuthProfileRepository = ref.watch(userAuthProfileRepository);
+  final _updateUserDocument = ref.watch(updateUserDocument);
+    return UpdateUserProfile(userAuthProfileRepository: _userAuthProfileRepository, updateUserDocument: _updateUserDocument);
+});
+
 // * Notifier
 final userInfoNotifierProvider =
     ChangeNotifierProvider<UserInfoNotifier>((ref) {
   final _getOrCreateUserInfo = ref.watch(getOrCreateUserInfo);
   final _getUserAuthProvider = ref.watch(getUserAuthProvider);
+  final _updateUserProfile = ref.watch(updateUserProfile);
   return UserInfoNotifier(
       getOrCreateUserInfo: _getOrCreateUserInfo,
-      getUserAuthProvider: _getUserAuthProvider);
+      getUserAuthProvider: _getUserAuthProvider, updateUserProfile: _updateUserProfile);
 });

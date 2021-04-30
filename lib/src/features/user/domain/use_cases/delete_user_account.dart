@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
+import 'package:prospector/src/core/connection/connection_checker.dart';
 
-import 'package:prospector/src/features/auth/domain/auth_failure.dart';
+import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
 import 'package:prospector/src/features/user/domain/interfaces/i_user_auth_profile_repository.dart';
 import 'package:prospector/src/features/user/domain/interfaces/i_user_info_repository.dart';
 
@@ -15,18 +16,20 @@ class DeleteUserAccount {
     required this.remoteUserInfoRepository,
   });
 
-  Future<Either<AuthFailure, Unit>> call() async {
-        final String uid = userAuthProfileRepository.currentUserID();
+  Future<Either<UserInfoFailure, Unit>> call() async {
+    final bool isConnected = await checkConnection();
+    if (!isConnected) return left(const UserInfoFailure.noConnection()); 
+    final String uid = userAuthProfileRepository.currentUserID();
     final deleteResult = await userAuthProfileRepository.deleteAccount();
     return deleteResult.fold(
-      (failure) => left(failure),
+      (failure) => left(const UserInfoFailure.serverError()),
       (_) async {
         final localDelete =
             await localUserInfoRepository.deleteUserDocument(uid: uid);
         final remoteDelete =
             await remoteUserInfoRepository.deleteUserDocument(uid: uid);
         if (localDelete.isLeft() || remoteDelete.isLeft()) {
-          return left(const AuthFailure.serverError());
+          return left(const UserInfoFailure.serverError());
         } else {
           return right(unit);
         }

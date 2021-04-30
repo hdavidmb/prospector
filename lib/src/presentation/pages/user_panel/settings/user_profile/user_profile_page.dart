@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/helpers/process_auth_failure.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_provider.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_state.dart';
@@ -19,9 +18,8 @@ class UserProfilePage extends StatelessWidget {
       provider: userProfileProvider,
       onChange: (context, state) {
         state.maybeWhen(
-          errorAuth: (failure) => showAuthFailureSnackbar(context, failure),
-          errorDatabase: (_) => showSnackBar(
-              context: context, message: AppLocalizations.of(context)!.profile),
+          error: (failure) => showAuthFailureSnackbar(context, failure),
+          reloginError: (failure) => showAuthFailureSnackbar(context, failure),
           orElse: () {},
         );
       },
@@ -32,8 +30,9 @@ class UserProfilePage extends StatelessWidget {
             title: Text(AppLocalizations.of(context)!.profile),
             actions: [
               TextButton(
-                onPressed: () {
-                  //TODO save and pop
+                onPressed: () async {
+                  final success = await context.read(userProfileProvider.notifier).saveButtonPressed();
+                  if (success) Navigator.of(context).pop();
                 },
                 child: Text(AppLocalizations.of(context)!.save,
                     style: const TextStyle(color: Colors.white)),

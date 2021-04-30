@@ -2,6 +2,7 @@
     "welcomeTo": "Bienvenido a",
     "prospector": "Prospector",
     "serverError": "Algo salió mal. Por favor intenta de nuevo más tarde.",
+    "noConnectionMessage": "Algo salió mal. Comprueba tu conexión a internet y vuelve a intentarlo más tarde.",
     "invalidEmailAndPassword": "Correo electrónico o contraseña invalidos",
     "accountWithDifferentCredentials": "Tu cuenta no está asociada a este perfil. Intenta con los demás metodos de inicio de sesión.",
     "userNotFoundResetPassword": "No hemos encontrado ninguna cuenta asociada a este correo. Por favor verifica tus datos.",
@@ -44,7 +45,8 @@
     "enterYourPasswordToConfirm": "Ingresa tu contraseña para confirmar",
     "typeTheWord": "Ingresa la palabra",
     "deleteCap": "ELIMINAR",
-    "toConfirm": "para confirmar",
+    "toConfirm": "para confirmar.",
+    "youMayHaveToRelogin": "Deberás autenticar tu cuenta social de nuevo.",
     "typeHere": "Escribe aqui",
     "continueString": "Continuar"
 }

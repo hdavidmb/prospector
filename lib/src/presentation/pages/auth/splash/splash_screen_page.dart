@@ -16,7 +16,6 @@ class SplashScreenPage extends StatelessWidget {
       provider: appStateNotifierProvider,
       onChange: (context, appState) {
         // TODO this is being called twice
-        Future.delayed(const Duration(milliseconds: 200), () {
           if (appState == const AppState.authenticatedReady()) {
             Navigator.pushReplacement(
                 context,
@@ -34,7 +33,6 @@ class SplashScreenPage extends StatelessWidget {
                 context: context,
                 message: AppLocalizations.of(context)!.appStateError);
           }
-        });
       },
       child: Scaffold(body: Consumer(builder: (context, watch, child) {
         final AppState _appState = watch(appStateNotifierProvider);

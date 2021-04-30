@@ -16,7 +16,7 @@ class UserAuthProviderItems extends ConsumerWidget {
             divider,
             ListTile(
               onTap: () {
-                //TODO user riverpod provider
+                //TODO use riverpod provider
               },
               title: Text(AppLocalizations.of(context)!.changeEmail),
               trailing: const Icon(Icons.chevron_right),
@@ -24,7 +24,7 @@ class UserAuthProviderItems extends ConsumerWidget {
             divider,
             ListTile(
               onTap: () {
-                //TODO user riverpod provider
+                //TODO use riverpod provider
               },
               title: Text(AppLocalizations.of(context)!.changePassword),
               trailing: const Icon(Icons.chevron_right),

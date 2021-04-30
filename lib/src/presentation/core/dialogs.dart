@@ -149,7 +149,10 @@ Future<Option<String>> showDeleteConfirmDialog(
                               fontWeight: FontWeight.bold)),
                       TextSpan(
                           text:
-                              ' ${AppLocalizations.of(context)!.toConfirm}', style: Theme.of(context).textTheme.bodyText1,),
+                              ' ${AppLocalizations.of(context)!.toConfirm}\n', style: Theme.of(context).textTheme.bodyText1,),
+                      TextSpan(
+                          text:
+                              AppLocalizations.of(context)!.youMayHaveToRelogin, style: Theme.of(context).textTheme.bodyText1!.copyWith(fontWeight: FontWeight.w200, fontSize: 13.0),),
                     ],
                   ),
                 ),

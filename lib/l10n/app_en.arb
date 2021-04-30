@@ -2,6 +2,7 @@
     "welcomeTo": "Welcome to",
     "prospector": "Prospector",
     "serverError": "Something went wrong. Please try again later.",
+    "noConnectionMessage": "Something went wrong. Please check your internet connection and try again later.",
     "invalidEmailAndPassword": "Invalid email and password combination",
     "accountWithDifferentCredentials": "Your account is not associated with this profile. Try the other sign in methods.",
     "userNotFoundResetPassword": "We haven't found any account associated with this email address. Please confirm your email.",
@@ -44,7 +45,8 @@
     "enterYourPasswordToConfirm": "Enter your password to confirm",
     "typeTheWord": "Type the word",
     "deleteCap": "DELETE",
-    "toConfirm": "to confirm",
+    "toConfirm": "to confirm.",
+    "youMayHaveToRelogin": "You may have to authenticate with your social account again.",
     "typeHere": "Type here",
     "continueString": "Continue"
 }

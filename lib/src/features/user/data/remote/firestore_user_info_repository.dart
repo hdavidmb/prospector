@@ -39,7 +39,7 @@ class FirestoreUserInfoRepository implements IUserInfoRepository {
   Future<Either<DatabaseFailure, UserEntity>> readUserDocument(
       {required String uid}) async {
     final bool isConnected = await checkConnection();
-    if (!isConnected) return left(const DatabaseFailure.serverError());
+    if (!isConnected) return left(const DatabaseFailure.noConnection());
     try {
       final DocumentSnapshot userDocSnapshot =
           await firestoreInstance.collection('users').doc(uid).get();
@@ -59,11 +59,10 @@ class FirestoreUserInfoRepository implements IUserInfoRepository {
   @override
   Future<Either<DatabaseFailure, Unit>> updateUserDocument(
       UserEntity user) async {
-    //TODO test
     final String uid = user.uid;
     final Map<String, dynamic> userMap = user.toMap();
     try {
-      await firestoreInstance.collection('users').doc(uid).update(userMap);
+      firestoreInstance.collection('users').doc(uid).update(userMap);
       return right(unit);
     } catch (e) {
       return left(const DatabaseFailure.serverError());
@@ -74,7 +73,7 @@ class FirestoreUserInfoRepository implements IUserInfoRepository {
   Future<Either<DatabaseFailure, bool>> userDocumentExists(
       {required String uid}) async {
     final bool isConnected = await checkConnection();
-    if (!isConnected) return left(const DatabaseFailure.serverError());
+    if (!isConnected) return left(const DatabaseFailure.noConnection());
     try {
       final DocumentSnapshot userDocSnapshot =
           await firestoreInstance.collection('users').doc(uid).get();
