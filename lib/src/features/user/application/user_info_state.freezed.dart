@@ -108,6 +108,7 @@ class _$InitialCopyWithImpl<$Res> extends _$UserInfoStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Initial implements Initial {
   const _$Initial();
 
@@ -198,6 +199,7 @@ class _$FetchingCopyWithImpl<$Res> extends _$UserInfoStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Fetching implements Fetching {
   const _$Fetching();
 
@@ -288,6 +290,7 @@ class _$ReadyCopyWithImpl<$Res> extends _$UserInfoStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Ready implements Ready {
   const _$Ready();
 
@@ -378,6 +381,7 @@ class _$ErrorCopyWithImpl<$Res> extends _$UserInfoStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Error implements Error {
   const _$Error();
 

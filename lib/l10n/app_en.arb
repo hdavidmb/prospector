@@ -48,5 +48,7 @@
     "toConfirm": "to confirm.",
     "youMayHaveToRelogin": "You may have to authenticate with your social account again.",
     "typeHere": "Type here",
-    "continueString": "Continue"
+    "continueString": "Continue",
+    "selectImage": "Select image",
+    "takePhoto": "Take photo"
 }

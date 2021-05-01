@@ -106,6 +106,7 @@ class _$InitialCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Initial implements Initial {
   const _$Initial();
 
@@ -199,6 +200,7 @@ class _$UnathenticatedReadyCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$UnathenticatedReady implements UnathenticatedReady {
   const _$UnathenticatedReady();
 
@@ -291,6 +293,7 @@ class _$AthenticatedReadyCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$AthenticatedReady implements AthenticatedReady {
   const _$AthenticatedReady();
 
@@ -381,6 +384,7 @@ class _$ErrorCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Error implements Error {
   const _$Error();
 

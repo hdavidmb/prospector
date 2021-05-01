@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/src/presentation/helpers/process_auth_failure.dart';
+import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_notifier.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_provider.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_state.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/widgets/logout_and_delete_buttons.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/widgets/user_auth_provider_items.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/widgets/user_avatar_edit.dart';
@@ -14,10 +14,10 @@ class UserProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProviderListener<UserProfileState>(
+    return ProviderListener<UserProfileNotifier>(
       provider: userProfileProvider,
-      onChange: (context, state) {
-        state.maybeWhen(
+      onChange: (context, notifier) { //TODO test
+        notifier.userProfileState.maybeWhen(
           error: (failure) => showAuthFailureSnackbar(context, failure),
           reloginError: (failure) => showAuthFailureSnackbar(context, failure),
           orElse: () {},

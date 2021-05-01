@@ -95,6 +95,7 @@ class _$ServerErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ServerError implements ServerError {
   const _$ServerError();
 
@@ -180,6 +181,7 @@ class _$NoConnectionCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$NoConnection implements NoConnection {
   const _$NoConnection();
 

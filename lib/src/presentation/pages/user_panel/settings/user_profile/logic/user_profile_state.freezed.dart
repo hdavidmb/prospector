@@ -112,6 +112,7 @@ class _$InitialCopyWithImpl<$Res> extends _$UserProfileStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Initial implements Initial {
   const _$Initial();
 
@@ -204,6 +205,7 @@ class _$SubmittingCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Submitting implements Submitting {
   const _$Submitting();
 
@@ -316,6 +318,7 @@ class _$ErrorCopyWithImpl<$Res> extends _$UserProfileStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Error implements Error {
   const _$Error(this.failure);
 
@@ -447,6 +450,7 @@ class _$ReloginErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ReloginError implements ReloginError {
   const _$ReloginError(this.failure);
 

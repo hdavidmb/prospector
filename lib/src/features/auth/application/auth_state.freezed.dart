@@ -106,6 +106,7 @@ class _$InitialCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Initial implements Initial {
   const _$Initial();
 
@@ -198,6 +199,7 @@ class _$AuthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Authenticated implements Authenticated {
   const _$Authenticated();
 
@@ -290,6 +292,7 @@ class _$UnauthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Unauthenticated implements Unauthenticated {
   const _$Unauthenticated();
 
@@ -380,6 +383,7 @@ class _$ErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Error implements Error {
   const _$Error();
 

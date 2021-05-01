@@ -140,6 +140,7 @@ class _$CancelledByUserCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CancelledByUser implements CancelledByUser {
   const _$CancelledByUser();
 
@@ -250,6 +251,7 @@ class _$ServerErrorCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ServerError implements ServerError {
   const _$ServerError();
 
@@ -360,6 +362,7 @@ class _$NoConnectionCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$NoConnection implements NoConnection {
   const _$NoConnection();
 
@@ -471,6 +474,7 @@ class _$EmailAlreadyInUseCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$EmailAlreadyInUse implements EmailAlreadyInUse {
   const _$EmailAlreadyInUse();
 
@@ -583,6 +587,7 @@ class _$UserNotFoundResetPasswordCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$UserNotFoundResetPassword implements UserNotFoundResetPassword {
   const _$UserNotFoundResetPassword();
 
@@ -697,6 +702,7 @@ class _$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$InvalidEmailAndPasswordCombination
     implements InvalidEmailAndPasswordCombination {
   const _$InvalidEmailAndPasswordCombination();
@@ -814,6 +820,7 @@ class _$AccountExistsWithDifferentCredentialCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$AccountExistsWithDifferentCredential
     implements AccountExistsWithDifferentCredential {
   const _$AccountExistsWithDifferentCredential();

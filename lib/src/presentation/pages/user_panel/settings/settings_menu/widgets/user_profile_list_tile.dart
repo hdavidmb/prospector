@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 import 'package:prospector/src/features/user/application/user_info_providers.dart';
 import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
+import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_provider.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/user_profile_page.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/widgets/user_avatar.dart';
 import 'package:prospector/src/presentation/theme/theme_constants.dart';
@@ -26,6 +27,7 @@ class UserProfileListTile extends ConsumerWidget {
     return InkWell(
       splashColor: Colors.transparent,
       onTap: () {
+        context.read(userProfileProvider).reset();
         Navigator.push(context,
             CupertinoPageRoute(builder: (context) => UserProfilePage()));
       },

@@ -194,6 +194,7 @@ class __$SignInFormStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_SignInFormState implements _SignInFormState {
   const _$_SignInFormState(
       {required this.email,

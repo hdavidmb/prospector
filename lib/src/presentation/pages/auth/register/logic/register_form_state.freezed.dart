@@ -194,6 +194,7 @@ class __$RegisterFormStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_RegisterFormState implements _RegisterFormState {
   const _$_RegisterFormState(
       {required this.name,

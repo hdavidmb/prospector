@@ -3,6 +3,8 @@ import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:prospector/src/features/images/domain/sources/source_image.dart';
 
 import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
 
@@ -119,8 +121,7 @@ void showMessageDialog(
 }
 
 Future<Option<String>> showDeleteConfirmDialog(
-    {required BuildContext context,
-    required bool isPassword}) async {
+    {required BuildContext context, required bool isPassword}) async {
   final response = await showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -134,25 +135,32 @@ Future<Option<String>> showDeleteConfirmDialog(
             children: <Widget>[
               if (isPassword)
                 Text(
-                    '${AppLocalizations.of(context)!.thisAcctionCannotBeUndone} ${AppLocalizations.of(context)!.enterYourPasswordToConfirm}', style: Theme.of(context).textTheme.bodyText1,)
+                  '${AppLocalizations.of(context)!.thisAcctionCannotBeUndone} ${AppLocalizations.of(context)!.enterYourPasswordToConfirm}',
+                  style: Theme.of(context).textTheme.bodyText1,
+                )
               else
                 RichText(
                   text: TextSpan(
                     children: <TextSpan>[
                       TextSpan(
-                          text:
-                              '${AppLocalizations.of(context)!.thisAcctionCannotBeUndone} ${AppLocalizations.of(context)!.typeTheWord} ', style: Theme.of(context).textTheme.bodyText1,),
+                        text:
+                            '${AppLocalizations.of(context)!.thisAcctionCannotBeUndone} ${AppLocalizations.of(context)!.typeTheWord} ',
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
                       TextSpan(
                           text: AppLocalizations.of(context)!.deleteCap,
                           style: const TextStyle(
                               color: Colors.redAccent,
                               fontWeight: FontWeight.bold)),
                       TextSpan(
-                          text:
-                              ' ${AppLocalizations.of(context)!.toConfirm}\n', style: Theme.of(context).textTheme.bodyText1,),
+                        text: ' ${AppLocalizations.of(context)!.toConfirm}\n',
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
                       TextSpan(
-                          text:
-                              AppLocalizations.of(context)!.youMayHaveToRelogin, style: Theme.of(context).textTheme.bodyText1!.copyWith(fontWeight: FontWeight.w200, fontSize: 13.0),),
+                        text: AppLocalizations.of(context)!.youMayHaveToRelogin,
+                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            fontWeight: FontWeight.w200, fontSize: 13.0),
+                      ),
                     ],
                   ),
                 ),
@@ -195,4 +203,39 @@ Future<Option<String>> showDeleteConfirmDialog(
   );
 
   return response != null && response != '' ? some(response as String) : none();
+}
+
+Future<Option<SourceImage>> showImageSourceDialog(BuildContext context) async {
+  final SourceImage? source = await showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(AppLocalizations.of(context)!.editImage),
+        content: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.80,
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              ListTile(
+                title: Text(AppLocalizations.of(context)!
+                    .selectImage), //TODO change to Select image
+                onTap: () {
+                  Navigator.of(context).pop(const SourceImage.gallery());
+                },
+              ),
+              const Divider(height: 0.0),
+              ListTile(
+                title: Text(AppLocalizations.of(context)!
+                    .takePhoto), //TODO change to take photo
+                onTap: () {
+                  Navigator.of(context).pop(const SourceImage.camera());
+                },
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+  return optionOf(source);
 }
