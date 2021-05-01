@@ -34,7 +34,7 @@ class UserAvatar extends ConsumerWidget {
           borderRadius: BorderRadius.circular(size / 2 - 5),
           child: Container(
             color: Colors.white60,
-            child: pickedImage == null //TODO test
+            child: pickedImage == null
                 ? (user.photoURL == null || user.photoURL!.isEmpty)
                     ? Image(
                         image: const AssetImage(

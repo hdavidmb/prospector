@@ -3,8 +3,10 @@ import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:prospector/src/core/database/database_failures/database_failure.dart';
+import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 import 'package:prospector/src/features/images/domain/sources/source_image.dart';
+import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
 
 import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
 
@@ -29,6 +31,39 @@ void showSnackBar({required BuildContext context, required String message}) {
       );
     },
   );
+}
+
+void showFailureSnackbar(BuildContext context, dynamic failure) {
+  if (failure == const AuthFailure.serverError() ||
+      failure == const DatabaseFailure.serverError() ||
+      failure == const UserInfoFailure.serverError()) {
+    showSnackBar(
+        context: context, message: AppLocalizations.of(context)!.serverError);
+  } else if (failure ==
+      const AuthFailure.invalidEmailAndPasswordCombination()) {
+    showSnackBar(
+        context: context,
+        message: AppLocalizations.of(context)!.invalidEmailAndPassword);
+  } else if (failure ==
+      const AuthFailure.accountExistsWithDifferentCredential()) {
+    showSnackBar(
+        context: context,
+        message: AppLocalizations.of(context)!.accountWithDifferentCredentials);
+  } else if (failure == const AuthFailure.userNotFoundResetPassword()) {
+    showSnackBar(
+        context: context,
+        message: AppLocalizations.of(context)!.userNotFoundResetPassword);
+  } else if (failure == const AuthFailure.emailAlreadyInUse()) {
+    showSnackBar(
+        context: context,
+        message: AppLocalizations.of(context)!.emailAlreadyInUse);
+  } else if (failure == const AuthFailure.noConnection() ||
+      failure == const DatabaseFailure.noConnection() ||
+      failure == const UserInfoFailure.noConnection()) {
+    showSnackBar(
+        context: context,
+        message: AppLocalizations.of(context)!.noConnectionMessage);
+  }
 }
 
 void showResetPasswordDialog(BuildContext context) {
@@ -218,7 +253,7 @@ Future<Option<SourceImage>> showImageSourceDialog(BuildContext context) async {
             children: [
               ListTile(
                 title: Text(AppLocalizations.of(context)!
-                    .selectImage), //TODO change to Select image
+                    .selectImage),
                 onTap: () {
                   Navigator.of(context).pop(const SourceImage.gallery());
                 },
@@ -226,7 +261,7 @@ Future<Option<SourceImage>> showImageSourceDialog(BuildContext context) async {
               const Divider(height: 0.0),
               ListTile(
                 title: Text(AppLocalizations.of(context)!
-                    .takePhoto), //TODO change to take photo
+                    .takePhoto),
                 onTap: () {
                   Navigator.of(context).pop(const SourceImage.camera());
                 },

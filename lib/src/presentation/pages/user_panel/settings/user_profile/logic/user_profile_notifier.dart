@@ -8,7 +8,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 import 'package:prospector/src/features/auth/domain/use_cases/relogin_user.dart';
 import 'package:prospector/src/features/auth/domain/use_cases/sign_out.dart';
-import 'package:prospector/src/features/images/data/image_picker_repository.dart';
 import 'package:prospector/src/features/images/domain/use_cases/get_image.dart';
 import 'package:prospector/src/features/user/application/user_info_providers.dart';
 import 'package:prospector/src/features/user/domain/use_cases/delete_user_account.dart';
@@ -97,12 +96,11 @@ class UserProfileNotifier extends ChangeNotifier {
   }
 
   Future<void> getAvatarImage(BuildContext context) async {
-    //TODO ask for source with dialog
     final selectedSource = await showImageSourceDialog(context);
     final Option<File> result = await selectedSource.fold(
       () => none(),
       (source) async {
-        return getImage(source: source); //TODO test
+        return getImage(source: source);
       },
     );
     result.fold(
