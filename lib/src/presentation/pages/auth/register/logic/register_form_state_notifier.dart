@@ -61,7 +61,7 @@ class RegisterFormStateNotifier extends StateNotifier<RegisterFormState> with Fo
     }
 
     state = state.copyWith(
-      isSubmitting: false,
+      isSubmitting: _authFailure == null,
       showErrorMessages: true,
       authFailureOption: optionOf(_authFailure),
     );
@@ -86,15 +86,15 @@ class RegisterFormStateNotifier extends StateNotifier<RegisterFormState> with Fo
       authFailureOption: none(),
     );
 
-    AuthFailure? authFailure;
+    AuthFailure? _authFailure;
 
     final Either<AuthFailure, Unit> result = await callBack();
 
-    result.fold((failure) => authFailure = failure, (_) {});
+    result.fold((failure) => _authFailure = failure, (_) {});
 
     state = state.copyWith(
-      isSubmitting: false,
-      authFailureOption: optionOf(authFailure),
+      isSubmitting: _authFailure == null,
+      authFailureOption: optionOf(_authFailure),
     );
   }
 
