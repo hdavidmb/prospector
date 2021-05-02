@@ -6,7 +6,7 @@ import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 part 'register_form_state.freezed.dart';
 
 @freezed
-abstract class RegisterFormState with _$RegisterFormState{
+class RegisterFormState with _$RegisterFormState{
   const factory RegisterFormState({
 
     required String name,

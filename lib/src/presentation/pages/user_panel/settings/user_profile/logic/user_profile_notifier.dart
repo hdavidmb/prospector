@@ -9,15 +9,19 @@ import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 import 'package:prospector/src/features/auth/domain/use_cases/relogin_user.dart';
 import 'package:prospector/src/features/auth/domain/use_cases/sign_out.dart';
 import 'package:prospector/src/features/images/domain/use_cases/get_image.dart';
+import 'package:prospector/src/features/storage/domain/use_cases/upload_user_avatar.dart';
 import 'package:prospector/src/features/user/application/user_info_providers.dart';
+import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
 import 'package:prospector/src/features/user/domain/use_cases/delete_user_account.dart';
 import 'package:prospector/src/presentation/core/dialogs.dart';
+import 'package:prospector/src/presentation/helpers/form_validators.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_state.dart';
 
-class UserProfileNotifier extends ChangeNotifier {
+class UserProfileNotifier extends ChangeNotifier with FormValidators {
   final SignOut signOut;
   final ReloginUser reloginUser;
   final DeleteUserAccount deleteUserAccount;
+  final UploadUserAvatar uploadUserAvatar;
   final GetImage getImage;
   final Reader read;
 
@@ -25,18 +29,22 @@ class UserProfileNotifier extends ChangeNotifier {
       {required this.signOut,
       required this.reloginUser,
       required this.deleteUserAccount,
+      required this.uploadUserAvatar,
       required this.getImage,
       required this.read});
 
   UserProfileState _userProfileState = const UserProfileState.initial();
   String? _formName;
   File? _pickedImage;
+  bool _showInputErrorMessage = false;
 
   UserProfileState get userProfileState => _userProfileState;
   File? get pickedImage => _pickedImage;
+  bool get showInputErrorMessage => _showInputErrorMessage;
 
   void reset() {
     _userProfileState = const UserProfileState.initial();
+    _showInputErrorMessage = false;
     _formName = null;
     _pickedImage = null;
   }
@@ -112,15 +120,52 @@ class UserProfileNotifier extends ChangeNotifier {
     );
   }
 
+  bool validateName() {
+    _showInputErrorMessage = true;
+    notifyListeners();
+    return validateFieldIsNotEmpty(_formName!);
+  }
+
   Future<bool> saveButtonPressed() async {
-    //TODO validate name is not empty
-    if (_pickedImage != null) {
-      //TODO save image on storage and get url
-    }
+    if (_formName == null && _pickedImage == null) return true;
+    // * Something changed
+
     _userProfileState = const UserProfileState.submitting();
     notifyListeners();
+
+    if (_formName != null) {
+      final bool isNameValid = validateName();
+      if (!isNameValid) return false;
+    }
+    // * name didn't change or is valid
+
+    String? downloadURL;
+    if (_pickedImage != null) {
+      bool failed = false;
+      final uid = read(userInfoNotifierProvider).user.uid;
+      final uploadResult =
+          await uploadUserAvatar(uid: uid, image: _pickedImage!);
+      uploadResult.fold(
+        (failure) {
+          failure.maybeWhen(noConnection: () {
+            _userProfileState =
+                const UserProfileState.error(UserInfoFailure.noConnection());
+          }, orElse: () {
+            _userProfileState =
+                const UserProfileState.error(UserInfoFailure.serverError());
+          });
+          notifyListeners();
+          failed = true;
+        },
+        (url) => downloadURL = url,
+      );
+      if (failed) return false;
+    }
+    // * image didn't change or successfully uploaded
+
+    // * (nameChanged AND is valid) or (image changed AND succesfully uploaded)
     final saveResult = await read(userInfoNotifierProvider)
-        .updateUserAuthProfile(displayName: _formName);
+        .updateUserAuthProfile(displayName: _formName, photoURL: downloadURL);
     return saveResult.fold(
       (failure) {
         _userProfileState = UserProfileState.error(failure);

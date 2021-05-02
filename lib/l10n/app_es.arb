@@ -50,5 +50,6 @@
     "typeHere": "Escribe aqui",
     "continueString": "Continuar",
     "selectImage": "Seleccionar imagen",
-    "takePhoto": "Tomar foto"
+    "takePhoto": "Tomar foto",
+    "nameMustNotBeEmpty": "El nombre no puede estar vacío"
 }

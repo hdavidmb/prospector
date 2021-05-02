@@ -5,7 +5,7 @@ import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 part 'sign_in_form_state.freezed.dart';
 
 @freezed
-abstract class SignInFormState with _$SignInFormState {
+class SignInFormState with _$SignInFormState {
   const factory SignInFormState({
     required String email,
     required String password,

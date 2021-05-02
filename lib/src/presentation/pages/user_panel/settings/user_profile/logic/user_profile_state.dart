@@ -5,7 +5,7 @@ import 'package:prospector/src/features/user/domain/failures/user_info_failure.d
 part 'user_profile_state.freezed.dart';
 
 @freezed
-abstract class UserProfileState with _$UserProfileState{
+class UserProfileState with _$UserProfileState{
   const factory UserProfileState.initial() = Initial;
   const factory UserProfileState.submitting() = Submitting;
   const factory UserProfileState.error(UserInfoFailure failure) = Error;
