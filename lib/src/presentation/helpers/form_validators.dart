@@ -17,7 +17,7 @@ class FormValidators {
     return regExp.hasMatch(password);
   }
 
-  bool validatePasswordsMatch(String password, String?/*!*/ confirmPassword) {
-    return password == confirmPassword;
+  bool validateFieldsMatch(String field, String?/*!*/ confirmField) {
+    return field == confirmField;
   }
 }

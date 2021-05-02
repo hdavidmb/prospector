@@ -20,6 +20,14 @@ class _$UserInfoFailureTearOff {
     return const NoConnection();
   }
 
+  EmailAlreadyInUse emailAlreadyInUse() {
+    return const EmailAlreadyInUse();
+  }
+
+  InvalidEmailAndPasswordCombination invalidEmailAndPasswordCombination() {
+    return const InvalidEmailAndPasswordCombination();
+  }
+
   ServerError serverError() {
     return const ServerError();
   }
@@ -33,12 +41,16 @@ mixin _$UserInfoFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() noConnection,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() invalidEmailAndPasswordCombination,
     required TResult Function() serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noConnection,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
     TResult Function()? serverError,
     required TResult orElse(),
   }) =>
@@ -46,12 +58,18 @@ mixin _$UserInfoFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(NoConnection value) noConnection,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(InvalidEmailAndPasswordCombination value)
+        invalidEmailAndPasswordCombination,
     required TResult Function(ServerError value) serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NoConnection value)? noConnection,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
     TResult Function(ServerError value)? serverError,
     required TResult orElse(),
   }) =>
@@ -116,6 +134,8 @@ class _$NoConnection implements NoConnection {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() noConnection,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() invalidEmailAndPasswordCombination,
     required TResult Function() serverError,
   }) {
     return noConnection();
@@ -125,6 +145,8 @@ class _$NoConnection implements NoConnection {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noConnection,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
     TResult Function()? serverError,
     required TResult orElse(),
   }) {
@@ -138,6 +160,9 @@ class _$NoConnection implements NoConnection {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(NoConnection value) noConnection,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(InvalidEmailAndPasswordCombination value)
+        invalidEmailAndPasswordCombination,
     required TResult Function(ServerError value) serverError,
   }) {
     return noConnection(this);
@@ -147,6 +172,9 @@ class _$NoConnection implements NoConnection {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NoConnection value)? noConnection,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
     TResult Function(ServerError value)? serverError,
     required TResult orElse(),
   }) {
@@ -159,6 +187,204 @@ class _$NoConnection implements NoConnection {
 
 abstract class NoConnection implements UserInfoFailure {
   const factory NoConnection() = _$NoConnection;
+}
+
+/// @nodoc
+abstract class $EmailAlreadyInUseCopyWith<$Res> {
+  factory $EmailAlreadyInUseCopyWith(
+          EmailAlreadyInUse value, $Res Function(EmailAlreadyInUse) then) =
+      _$EmailAlreadyInUseCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$EmailAlreadyInUseCopyWithImpl<$Res>
+    extends _$UserInfoFailureCopyWithImpl<$Res>
+    implements $EmailAlreadyInUseCopyWith<$Res> {
+  _$EmailAlreadyInUseCopyWithImpl(
+      EmailAlreadyInUse _value, $Res Function(EmailAlreadyInUse) _then)
+      : super(_value, (v) => _then(v as EmailAlreadyInUse));
+
+  @override
+  EmailAlreadyInUse get _value => super._value as EmailAlreadyInUse;
+}
+
+/// @nodoc
+
+class _$EmailAlreadyInUse implements EmailAlreadyInUse {
+  const _$EmailAlreadyInUse();
+
+  @override
+  String toString() {
+    return 'UserInfoFailure.emailAlreadyInUse()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is EmailAlreadyInUse);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() noConnection,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() invalidEmailAndPasswordCombination,
+    required TResult Function() serverError,
+  }) {
+    return emailAlreadyInUse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? noConnection,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? serverError,
+    required TResult orElse(),
+  }) {
+    if (emailAlreadyInUse != null) {
+      return emailAlreadyInUse();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NoConnection value) noConnection,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(InvalidEmailAndPasswordCombination value)
+        invalidEmailAndPasswordCombination,
+    required TResult Function(ServerError value) serverError,
+  }) {
+    return emailAlreadyInUse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(ServerError value)? serverError,
+    required TResult orElse(),
+  }) {
+    if (emailAlreadyInUse != null) {
+      return emailAlreadyInUse(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EmailAlreadyInUse implements UserInfoFailure {
+  const factory EmailAlreadyInUse() = _$EmailAlreadyInUse;
+}
+
+/// @nodoc
+abstract class $InvalidEmailAndPasswordCombinationCopyWith<$Res> {
+  factory $InvalidEmailAndPasswordCombinationCopyWith(
+          InvalidEmailAndPasswordCombination value,
+          $Res Function(InvalidEmailAndPasswordCombination) then) =
+      _$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>
+    extends _$UserInfoFailureCopyWithImpl<$Res>
+    implements $InvalidEmailAndPasswordCombinationCopyWith<$Res> {
+  _$InvalidEmailAndPasswordCombinationCopyWithImpl(
+      InvalidEmailAndPasswordCombination _value,
+      $Res Function(InvalidEmailAndPasswordCombination) _then)
+      : super(_value, (v) => _then(v as InvalidEmailAndPasswordCombination));
+
+  @override
+  InvalidEmailAndPasswordCombination get _value =>
+      super._value as InvalidEmailAndPasswordCombination;
+}
+
+/// @nodoc
+
+class _$InvalidEmailAndPasswordCombination
+    implements InvalidEmailAndPasswordCombination {
+  const _$InvalidEmailAndPasswordCombination();
+
+  @override
+  String toString() {
+    return 'UserInfoFailure.invalidEmailAndPasswordCombination()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is InvalidEmailAndPasswordCombination);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() noConnection,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() invalidEmailAndPasswordCombination,
+    required TResult Function() serverError,
+  }) {
+    return invalidEmailAndPasswordCombination();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? noConnection,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? serverError,
+    required TResult orElse(),
+  }) {
+    if (invalidEmailAndPasswordCombination != null) {
+      return invalidEmailAndPasswordCombination();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NoConnection value) noConnection,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(InvalidEmailAndPasswordCombination value)
+        invalidEmailAndPasswordCombination,
+    required TResult Function(ServerError value) serverError,
+  }) {
+    return invalidEmailAndPasswordCombination(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(ServerError value)? serverError,
+    required TResult orElse(),
+  }) {
+    if (invalidEmailAndPasswordCombination != null) {
+      return invalidEmailAndPasswordCombination(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidEmailAndPasswordCombination implements UserInfoFailure {
+  const factory InvalidEmailAndPasswordCombination() =
+      _$InvalidEmailAndPasswordCombination;
 }
 
 /// @nodoc
@@ -202,6 +428,8 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() noConnection,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() invalidEmailAndPasswordCombination,
     required TResult Function() serverError,
   }) {
     return serverError();
@@ -211,6 +439,8 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noConnection,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
     TResult Function()? serverError,
     required TResult orElse(),
   }) {
@@ -224,6 +454,9 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(NoConnection value) noConnection,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(InvalidEmailAndPasswordCombination value)
+        invalidEmailAndPasswordCombination,
     required TResult Function(ServerError value) serverError,
   }) {
     return serverError(this);
@@ -233,6 +466,9 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NoConnection value)? noConnection,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
     TResult Function(ServerError value)? serverError,
     required TResult orElse(),
   }) {

@@ -26,7 +26,6 @@ class FirebaseStorageRepository implements IStorageRepository {
   @override
   Future<Either<StorageFailure, String>> uploadUserAvatar(
       {required String uid, required File image}) async {
-        //TODO test
     final String storageImagePath = 'images/profile_images/$uid.jpg';
     return _performUploadTask(storageImagePath, image);
   }

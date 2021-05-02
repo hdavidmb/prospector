@@ -34,7 +34,7 @@ class RegisterForm extends StatelessWidget {
 
           return Form(
             autovalidateMode: showErrorMessages
-                ? AutovalidateMode.onUserInteraction
+                ? AutovalidateMode.always
                 : AutovalidateMode.disabled,
             child: Column(
               children: [
@@ -120,7 +120,7 @@ class RegisterForm extends StatelessWidget {
                         .validateFieldIsNotEmpty(value!);
                     final bool passwordsMatch = context
                         .read(registerFormProvider.notifier)
-                        .validatePasswordsMatch(
+                        .validateFieldsMatch(
                             _registerFormState.password, value);
                     return isNotEmpty
                         ? passwordsMatch

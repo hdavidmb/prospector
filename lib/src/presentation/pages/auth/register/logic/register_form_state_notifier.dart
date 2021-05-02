@@ -42,7 +42,7 @@ class RegisterFormStateNotifier extends StateNotifier<RegisterFormState> with Fo
     final bool isNameValid = validateFieldIsNotEmpty(state.name);
     final bool isEmailValid = validateEmail(state.email);
     final bool isPasswordValid = validateFieldIsNotEmpty(state.password) && validatePasswordStrength(state.password);
-    final bool isConfirmPasswordValid = validateFieldIsNotEmpty(state.confirmPassword) && validatePasswordsMatch(state.password, state.confirmPassword);
+    final bool isConfirmPasswordValid = validateFieldIsNotEmpty(state.confirmPassword) && validateFieldsMatch(state.password, state.confirmPassword);
 
     AuthFailure? _authFailure;
 

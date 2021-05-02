@@ -28,7 +28,6 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
   @override
   Future<Either<AuthFailure, Unit>> changeUserEmail(
       {required String newEmail}) async {
-    //TODO test
     final user = firebaseAuthInstance.currentUser!;
     try {
       await user.updateEmail(newEmail);

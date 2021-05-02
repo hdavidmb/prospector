@@ -51,5 +51,11 @@
     "continueString": "Continue",
     "selectImage": "Select image",
     "takePhoto": "Take photo",
-    "nameMustNotBeEmpty": "Name must not be empty"
+    "nameMustNotBeEmpty": "Name must not be empty",
+    "newEmail": "New email",
+    "confirmNewEmail": "Confirm new email",
+    "emailsDontMatch": "Emails don't match",
+    "currentEmail": "Current email",
+    "reauthenticate": "Reauthenticate",
+    "reauthMessage": "You need to reauthenticate. Enter your password to continue."
 }

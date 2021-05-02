@@ -40,7 +40,8 @@ void showFailureSnackbar(BuildContext context, dynamic failure) {
     showSnackBar(
         context: context, message: AppLocalizations.of(context)!.serverError);
   } else if (failure ==
-      const AuthFailure.invalidEmailAndPasswordCombination()) {
+          const AuthFailure.invalidEmailAndPasswordCombination() ||
+      failure == const UserInfoFailure.invalidEmailAndPasswordCombination()) {
     showSnackBar(
         context: context,
         message: AppLocalizations.of(context)!.invalidEmailAndPassword);
@@ -53,7 +54,8 @@ void showFailureSnackbar(BuildContext context, dynamic failure) {
     showSnackBar(
         context: context,
         message: AppLocalizations.of(context)!.userNotFoundResetPassword);
-  } else if (failure == const AuthFailure.emailAlreadyInUse()) {
+  } else if (failure == const AuthFailure.emailAlreadyInUse() ||
+      failure == const UserInfoFailure.emailAlreadyInUse()) {
     showSnackBar(
         context: context,
         message: AppLocalizations.of(context)!.emailAlreadyInUse);
@@ -157,51 +159,65 @@ void showMessageDialog(
 
 Future<Option<String>> showDeleteConfirmDialog(
     {required BuildContext context, required bool isPassword}) async {
+  final title = Text(AppLocalizations.of(context)!.areYouSureDeleteAccount);
+  final content = isPassword
+      ? Text(
+          '${AppLocalizations.of(context)!.thisAcctionCannotBeUndone} ${AppLocalizations.of(context)!.enterYourPasswordToConfirm}',
+          style: Theme.of(context).textTheme.bodyText1,
+        )
+      : RichText(
+          text: TextSpan(
+            children: <TextSpan>[
+              TextSpan(
+                text:
+                    '${AppLocalizations.of(context)!.thisAcctionCannotBeUndone} ${AppLocalizations.of(context)!.typeTheWord} ',
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+              TextSpan(
+                  text: AppLocalizations.of(context)!.deleteCap,
+                  style: const TextStyle(
+                      color: Colors.redAccent, fontWeight: FontWeight.bold)),
+              TextSpan(
+                text: ' ${AppLocalizations.of(context)!.toConfirm}\n',
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+              TextSpan(
+                text: AppLocalizations.of(context)!.youMayHaveToRelogin,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1!
+                    .copyWith(fontWeight: FontWeight.w200, fontSize: 13.0),
+              ),
+            ],
+          ),
+        );
+  return showTextFieldDialog(context: context, title: title, content: content, isPassword: isPassword);
+}
+
+Future<Option<String>> showReloginPasswordDialog({required BuildContext context}) {
+  final title = Text(AppLocalizations.of(context)!.reauthenticate);
+  final content = Text(AppLocalizations.of(context)!.reauthMessage);
+  return showTextFieldDialog(context: context, title: title, content: content, isPassword: true);
+}
+
+Future<Option<String>> showTextFieldDialog(
+    {required BuildContext context,
+    required Widget title,
+    required Widget content,
+    bool isPassword = false}) async {
   final response = await showDialog(
     context: context,
     builder: (BuildContext context) {
       final TextEditingController _controller = TextEditingController();
       return AlertDialog(
-        title: Text(AppLocalizations.of(context)!.areYouSureDeleteAccount),
+        title: title,
         content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.80,
           child: ListView(
             shrinkWrap: true,
             children: <Widget>[
-              if (isPassword)
-                Text(
-                  '${AppLocalizations.of(context)!.thisAcctionCannotBeUndone} ${AppLocalizations.of(context)!.enterYourPasswordToConfirm}',
-                  style: Theme.of(context).textTheme.bodyText1,
-                )
-              else
-                RichText(
-                  text: TextSpan(
-                    children: <TextSpan>[
-                      TextSpan(
-                        text:
-                            '${AppLocalizations.of(context)!.thisAcctionCannotBeUndone} ${AppLocalizations.of(context)!.typeTheWord} ',
-                        style: Theme.of(context).textTheme.bodyText1,
-                      ),
-                      TextSpan(
-                          text: AppLocalizations.of(context)!.deleteCap,
-                          style: const TextStyle(
-                              color: Colors.redAccent,
-                              fontWeight: FontWeight.bold)),
-                      TextSpan(
-                        text: ' ${AppLocalizations.of(context)!.toConfirm}\n',
-                        style: Theme.of(context).textTheme.bodyText1,
-                      ),
-                      TextSpan(
-                        text: AppLocalizations.of(context)!.youMayHaveToRelogin,
-                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                            fontWeight: FontWeight.w200, fontSize: 13.0),
-                      ),
-                    ],
-                  ),
-                ),
-              const SizedBox(
-                height: 10.0,
-              ),
+              content,
+              const SizedBox(height: 10.0),
               TextFormField(
                 controller: _controller,
                 autofocus: true,
@@ -252,16 +268,14 @@ Future<Option<SourceImage>> showImageSourceDialog(BuildContext context) async {
             shrinkWrap: true,
             children: [
               ListTile(
-                title: Text(AppLocalizations.of(context)!
-                    .selectImage),
+                title: Text(AppLocalizations.of(context)!.selectImage),
                 onTap: () {
                   Navigator.of(context).pop(const SourceImage.gallery());
                 },
               ),
               const Divider(height: 0.0),
               ListTile(
-                title: Text(AppLocalizations.of(context)!
-                    .takePhoto),
+                title: Text(AppLocalizations.of(context)!.takePhoto),
                 onTap: () {
                   Navigator.of(context).pop(const SourceImage.camera());
                 },
