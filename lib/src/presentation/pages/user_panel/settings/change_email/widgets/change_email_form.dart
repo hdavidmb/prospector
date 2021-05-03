@@ -26,6 +26,7 @@ class ChangeEmailForm extends ConsumerWidget {
               ? AutovalidateMode.always
               : AutovalidateMode.disabled,
           child: ListView(
+            physics: const BouncingScrollPhysics(),
             children: [
               const SizedBox(height: 20.0),
               ListTile(
@@ -83,19 +84,19 @@ class ChangeEmailForm extends ConsumerWidget {
               ),
               const SizedBox(height: 20.0),
               ElevatedButton(
-                  onPressed: formState.isSubmitting
-                      ? null
-                      : () => _saveAction(context),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(AppLocalizations.of(context)!.save),
-                      if (formState.isSubmitting) ...const [
-                        SizedBox(width: 8.0),
-                        CircularProgressIndicator.adaptive(),
-                      ],
+                onPressed:
+                    formState.isSubmitting ? null : () => _saveAction(context),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(AppLocalizations.of(context)!.save),
+                    if (formState.isSubmitting) ...const [
+                      SizedBox(width: 8.0),
+                      CircularProgressIndicator.adaptive(),
                     ],
-                  ))
+                  ],
+                ),
+              ),
             ],
           ),
         ),

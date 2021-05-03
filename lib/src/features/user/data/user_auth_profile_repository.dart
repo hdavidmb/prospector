@@ -15,7 +15,6 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
   @override
   Future<Either<AuthFailure, Unit>> changePassword(
       {required String newPassword}) async {
-    //TODO test
     final user = firebaseAuthInstance.currentUser!;
     try {
       await user.updatePassword(newPassword);

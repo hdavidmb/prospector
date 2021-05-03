@@ -57,5 +57,10 @@
     "emailsDontMatch": "Los correos no coinciden",
     "currentEmail": "Correo actual",
     "reauthenticate": "Reautenticar",
-    "reauthMessage": "Debes autenticarte de nuevo. Ingresa tu contraseña para continuar."
+    "reauthMessage": "Debes autenticarte de nuevo. Ingresa tu contraseña para continuar.",
+    "currentPassword": "Contraseña actual",
+    "newPassword": "Nueva contraseña",
+    "confirmNewPassword": "Confirmar nueva contraseña",
+    "showPasswords": "Mostrar contraseñas",
+    "hidePasswords": "Ocultar contraseñas"
 }

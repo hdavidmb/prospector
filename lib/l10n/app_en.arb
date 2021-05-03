@@ -57,5 +57,10 @@
     "emailsDontMatch": "Emails don't match",
     "currentEmail": "Current email",
     "reauthenticate": "Reauthenticate",
-    "reauthMessage": "You need to reauthenticate. Enter your password to continue."
+    "reauthMessage": "You need to reauthenticate. Enter your password to continue.",
+    "currentPassword": "Current password",
+    "newPassword": "New password",
+    "confirmNewPassword": "Confirm new password",
+    "showPasswords": "Show passwords",
+    "hidePasswords": "Hide passwords"
 }

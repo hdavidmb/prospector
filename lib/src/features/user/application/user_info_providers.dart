@@ -8,6 +8,7 @@ import 'package:prospector/src/features/user/data/user_auth_profile_repository.d
 import 'package:prospector/src/features/user/domain/interfaces/i_user_auth_profile_repository.dart';
 import 'package:prospector/src/features/user/domain/interfaces/i_user_info_repository.dart';
 import 'package:prospector/src/features/user/domain/use_cases/change_user_email.dart';
+import 'package:prospector/src/features/user/domain/use_cases/change_user_password.dart';
 import 'package:prospector/src/features/user/domain/use_cases/delete_user_account.dart';
 import 'package:prospector/src/features/user/domain/use_cases/get_or_create_user_info.dart';
 import 'package:prospector/src/features/user/domain/use_cases/get_user_auth_provider.dart';
@@ -81,6 +82,11 @@ final changeUserEmail = Provider<ChangeUserEmail>((ref) {
     userAuthProfileRepository: _userAuthProfileRepository,
     updateUserDocument: _updateUserDocument,
   );
+});
+
+final changeUserPassword = Provider<ChangeUserPassword>((ref) {
+  final _userAuthProfileRepository = ref.watch(userAuthProfileRepository);
+    return ChangeUserPassword(userAuthProfileRepository: _userAuthProfileRepository);
 });
 
 // * Notifier

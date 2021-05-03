@@ -21,11 +21,13 @@ class ChangeUserEmail {
         await userAuthProfileRepository.changeUserEmail(newEmail: user.email!);
     return changeResult.fold(
       (failure) {
-        return left(failure.maybeWhen(
-          noConnection: () => const UserInfoFailure.noConnection(),
-          emailAlreadyInUse: () => const UserInfoFailure.emailAlreadyInUse(),
-          orElse: () => const UserInfoFailure.serverError(),
-        ));
+        return left(
+          failure.maybeWhen(
+            noConnection: () => const UserInfoFailure.noConnection(),
+            emailAlreadyInUse: () => const UserInfoFailure.emailAlreadyInUse(),
+            orElse: () => const UserInfoFailure.serverError(),
+          ),
+        );
       },
       (_) => updateUserDocument(user),
     );

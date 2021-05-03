@@ -5,6 +5,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:prospector/src/features/user/application/user_info_providers.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/change_email/change_email_page.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/change_email/logic/change_email_form_provider.dart';
+import 'package:prospector/src/presentation/pages/user_panel/settings/change_password/change_password_page.dart';
+import 'package:prospector/src/presentation/pages/user_panel/settings/change_password/logic/change_password_form_provider.dart';
 
 class UserAuthProviderItems extends ConsumerWidget {
   final Widget divider = const Divider(height: 0.0);
@@ -42,7 +44,11 @@ class UserAuthProviderItems extends ConsumerWidget {
             divider,
             ListTile(
               onTap: () {
-                //TODO navigate to change Password page
+                context.read(changePasswordFormProvider.notifier).reset();
+                Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                        builder: (context) => ChangePasswordPage()));
               },
               title: Text(AppLocalizations.of(context)!.changePassword),
               trailing: const Icon(Icons.chevron_right),
