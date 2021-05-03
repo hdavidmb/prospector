@@ -24,6 +24,10 @@ class _$AuthFailureTearOff {
     return const ServerError();
   }
 
+  NoConnection noConnection() {
+    return const NoConnection();
+  }
+
   EmailAlreadyInUse emailAlreadyInUse() {
     return const EmailAlreadyInUse();
   }
@@ -50,6 +54,7 @@ mixin _$AuthFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() cancelledByUser,
     required TResult Function() serverError,
+    required TResult Function() noConnection,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() userNotFoundResetPassword,
     required TResult Function() invalidEmailAndPasswordCombination,
@@ -60,6 +65,7 @@ mixin _$AuthFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
+    TResult Function()? noConnection,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? userNotFoundResetPassword,
     TResult Function()? invalidEmailAndPasswordCombination,
@@ -71,6 +77,7 @@ mixin _$AuthFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(NoConnection value) noConnection,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(UserNotFoundResetPassword value)
         userNotFoundResetPassword,
@@ -84,6 +91,7 @@ mixin _$AuthFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CancelledByUser value)? cancelledByUser,
     TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(UserNotFoundResetPassword value)?
         userNotFoundResetPassword,
@@ -132,6 +140,7 @@ class _$CancelledByUserCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CancelledByUser implements CancelledByUser {
   const _$CancelledByUser();
 
@@ -153,6 +162,7 @@ class _$CancelledByUser implements CancelledByUser {
   TResult when<TResult extends Object?>({
     required TResult Function() cancelledByUser,
     required TResult Function() serverError,
+    required TResult Function() noConnection,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() userNotFoundResetPassword,
     required TResult Function() invalidEmailAndPasswordCombination,
@@ -166,6 +176,7 @@ class _$CancelledByUser implements CancelledByUser {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
+    TResult Function()? noConnection,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? userNotFoundResetPassword,
     TResult Function()? invalidEmailAndPasswordCombination,
@@ -183,6 +194,7 @@ class _$CancelledByUser implements CancelledByUser {
   TResult map<TResult extends Object?>({
     required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(NoConnection value) noConnection,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(UserNotFoundResetPassword value)
         userNotFoundResetPassword,
@@ -199,6 +211,7 @@ class _$CancelledByUser implements CancelledByUser {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CancelledByUser value)? cancelledByUser,
     TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(UserNotFoundResetPassword value)?
         userNotFoundResetPassword,
@@ -238,6 +251,7 @@ class _$ServerErrorCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ServerError implements ServerError {
   const _$ServerError();
 
@@ -259,6 +273,7 @@ class _$ServerError implements ServerError {
   TResult when<TResult extends Object?>({
     required TResult Function() cancelledByUser,
     required TResult Function() serverError,
+    required TResult Function() noConnection,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() userNotFoundResetPassword,
     required TResult Function() invalidEmailAndPasswordCombination,
@@ -272,6 +287,7 @@ class _$ServerError implements ServerError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
+    TResult Function()? noConnection,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? userNotFoundResetPassword,
     TResult Function()? invalidEmailAndPasswordCombination,
@@ -289,6 +305,7 @@ class _$ServerError implements ServerError {
   TResult map<TResult extends Object?>({
     required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(NoConnection value) noConnection,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(UserNotFoundResetPassword value)
         userNotFoundResetPassword,
@@ -305,6 +322,7 @@ class _$ServerError implements ServerError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CancelledByUser value)? cancelledByUser,
     TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(UserNotFoundResetPassword value)?
         userNotFoundResetPassword,
@@ -323,6 +341,117 @@ class _$ServerError implements ServerError {
 
 abstract class ServerError implements AuthFailure {
   const factory ServerError() = _$ServerError;
+}
+
+/// @nodoc
+abstract class $NoConnectionCopyWith<$Res> {
+  factory $NoConnectionCopyWith(
+          NoConnection value, $Res Function(NoConnection) then) =
+      _$NoConnectionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$NoConnectionCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+    implements $NoConnectionCopyWith<$Res> {
+  _$NoConnectionCopyWithImpl(
+      NoConnection _value, $Res Function(NoConnection) _then)
+      : super(_value, (v) => _then(v as NoConnection));
+
+  @override
+  NoConnection get _value => super._value as NoConnection;
+}
+
+/// @nodoc
+
+class _$NoConnection implements NoConnection {
+  const _$NoConnection();
+
+  @override
+  String toString() {
+    return 'AuthFailure.noConnection()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is NoConnection);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function() serverError,
+    required TResult Function() noConnection,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() userNotFoundResetPassword,
+    required TResult Function() invalidEmailAndPasswordCombination,
+    required TResult Function() accountExistsWithDifferentCredential,
+  }) {
+    return noConnection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? noConnection,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? userNotFoundResetPassword,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? accountExistsWithDifferentCredential,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(NoConnection value) noConnection,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(UserNotFoundResetPassword value)
+        userNotFoundResetPassword,
+    required TResult Function(InvalidEmailAndPasswordCombination value)
+        invalidEmailAndPasswordCombination,
+    required TResult Function(AccountExistsWithDifferentCredential value)
+        accountExistsWithDifferentCredential,
+  }) {
+    return noConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(UserNotFoundResetPassword value)?
+        userNotFoundResetPassword,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(AccountExistsWithDifferentCredential value)?
+        accountExistsWithDifferentCredential,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoConnection implements AuthFailure {
+  const factory NoConnection() = _$NoConnection;
 }
 
 /// @nodoc
@@ -345,6 +474,7 @@ class _$EmailAlreadyInUseCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$EmailAlreadyInUse implements EmailAlreadyInUse {
   const _$EmailAlreadyInUse();
 
@@ -366,6 +496,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
   TResult when<TResult extends Object?>({
     required TResult Function() cancelledByUser,
     required TResult Function() serverError,
+    required TResult Function() noConnection,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() userNotFoundResetPassword,
     required TResult Function() invalidEmailAndPasswordCombination,
@@ -379,6 +510,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
+    TResult Function()? noConnection,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? userNotFoundResetPassword,
     TResult Function()? invalidEmailAndPasswordCombination,
@@ -396,6 +528,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
   TResult map<TResult extends Object?>({
     required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(NoConnection value) noConnection,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(UserNotFoundResetPassword value)
         userNotFoundResetPassword,
@@ -412,6 +545,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CancelledByUser value)? cancelledByUser,
     TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(UserNotFoundResetPassword value)?
         userNotFoundResetPassword,
@@ -453,6 +587,7 @@ class _$UserNotFoundResetPasswordCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$UserNotFoundResetPassword implements UserNotFoundResetPassword {
   const _$UserNotFoundResetPassword();
 
@@ -474,6 +609,7 @@ class _$UserNotFoundResetPassword implements UserNotFoundResetPassword {
   TResult when<TResult extends Object?>({
     required TResult Function() cancelledByUser,
     required TResult Function() serverError,
+    required TResult Function() noConnection,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() userNotFoundResetPassword,
     required TResult Function() invalidEmailAndPasswordCombination,
@@ -487,6 +623,7 @@ class _$UserNotFoundResetPassword implements UserNotFoundResetPassword {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
+    TResult Function()? noConnection,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? userNotFoundResetPassword,
     TResult Function()? invalidEmailAndPasswordCombination,
@@ -504,6 +641,7 @@ class _$UserNotFoundResetPassword implements UserNotFoundResetPassword {
   TResult map<TResult extends Object?>({
     required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(NoConnection value) noConnection,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(UserNotFoundResetPassword value)
         userNotFoundResetPassword,
@@ -520,6 +658,7 @@ class _$UserNotFoundResetPassword implements UserNotFoundResetPassword {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CancelledByUser value)? cancelledByUser,
     TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(UserNotFoundResetPassword value)?
         userNotFoundResetPassword,
@@ -563,6 +702,7 @@ class _$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$InvalidEmailAndPasswordCombination
     implements InvalidEmailAndPasswordCombination {
   const _$InvalidEmailAndPasswordCombination();
@@ -586,6 +726,7 @@ class _$InvalidEmailAndPasswordCombination
   TResult when<TResult extends Object?>({
     required TResult Function() cancelledByUser,
     required TResult Function() serverError,
+    required TResult Function() noConnection,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() userNotFoundResetPassword,
     required TResult Function() invalidEmailAndPasswordCombination,
@@ -599,6 +740,7 @@ class _$InvalidEmailAndPasswordCombination
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
+    TResult Function()? noConnection,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? userNotFoundResetPassword,
     TResult Function()? invalidEmailAndPasswordCombination,
@@ -616,6 +758,7 @@ class _$InvalidEmailAndPasswordCombination
   TResult map<TResult extends Object?>({
     required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(NoConnection value) noConnection,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(UserNotFoundResetPassword value)
         userNotFoundResetPassword,
@@ -632,6 +775,7 @@ class _$InvalidEmailAndPasswordCombination
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CancelledByUser value)? cancelledByUser,
     TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(UserNotFoundResetPassword value)?
         userNotFoundResetPassword,
@@ -676,6 +820,7 @@ class _$AccountExistsWithDifferentCredentialCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$AccountExistsWithDifferentCredential
     implements AccountExistsWithDifferentCredential {
   const _$AccountExistsWithDifferentCredential();
@@ -699,6 +844,7 @@ class _$AccountExistsWithDifferentCredential
   TResult when<TResult extends Object?>({
     required TResult Function() cancelledByUser,
     required TResult Function() serverError,
+    required TResult Function() noConnection,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() userNotFoundResetPassword,
     required TResult Function() invalidEmailAndPasswordCombination,
@@ -712,6 +858,7 @@ class _$AccountExistsWithDifferentCredential
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
+    TResult Function()? noConnection,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? userNotFoundResetPassword,
     TResult Function()? invalidEmailAndPasswordCombination,
@@ -729,6 +876,7 @@ class _$AccountExistsWithDifferentCredential
   TResult map<TResult extends Object?>({
     required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(NoConnection value) noConnection,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(UserNotFoundResetPassword value)
         userNotFoundResetPassword,
@@ -745,6 +893,7 @@ class _$AccountExistsWithDifferentCredential
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CancelledByUser value)? cancelledByUser,
     TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(UserNotFoundResetPassword value)?
         userNotFoundResetPassword,

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hive/hive.dart';
 
-import 'package:prospector/src/presentation/pages/splash/splash_screen_page.dart';
+import 'package:prospector/src/presentation/pages/auth/splash/splash_screen_page.dart';
 import 'package:prospector/src/presentation/theme/theme_providers.dart';
 import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 

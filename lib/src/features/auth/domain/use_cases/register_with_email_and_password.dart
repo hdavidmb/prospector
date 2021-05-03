@@ -8,5 +8,5 @@ class RegisterWithEmailAndPassword {
 
   RegisterWithEmailAndPassword({required this.authRepository});
 
-  Future<Either<AuthFailure, Unit>> call({required String email, required String password}) => authRepository.registerWithEmailAndPassword(email: email, password: password);
+  Future<Either<AuthFailure, Unit>> call({required String email, required String password, required String displayName}) => authRepository.registerWithEmailAndPassword(email: email, password: password, displayName: displayName);
 }

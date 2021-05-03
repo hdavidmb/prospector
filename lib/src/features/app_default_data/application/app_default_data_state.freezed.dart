@@ -101,6 +101,7 @@ class _$InitialCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Initial implements Initial {
   const _$Initial();
 
@@ -187,6 +188,7 @@ class _$ReadyCopyWithImpl<$Res> extends _$AppDefaultDataStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Ready implements Ready {
   const _$Ready();
 
@@ -273,6 +275,7 @@ class _$ErrorCopyWithImpl<$Res> extends _$AppDefaultDataStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Error implements Error {
   const _$Error();
 

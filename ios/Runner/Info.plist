@@ -80,5 +80,9 @@
 		<string>en</string>
 		<string>es</string>
 	</array>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Prospector needs access to your photo library for your profile and prospects.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Prospector needs access to your camera for your profile and prospects.</string>
 </dict>
 </plist>

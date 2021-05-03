@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:prospector/src/core/auth/auth_instance_provider.dart';
 import 'package:prospector/src/features/auth/application/auth_state.dart';
 
 import 'package:prospector/src/features/auth/application/auth_state_notifier.dart';
@@ -13,8 +14,9 @@ import 'package:prospector/src/features/auth/domain/use_cases/auth_use_cases.dar
 export 'package:prospector/src/features/auth/application/auth_state.dart';
 
 final _authRepositoryProvider = Provider<IAuthRepository>((ref) {
+  final FirebaseAuth _firebaseAuthInstance = ref.watch(firebaseAuthInstance);
   return FirebaseAuthRepository(
-    firebaseAuthInstance: FirebaseAuth.instance,
+    firebaseAuthInstance: _firebaseAuthInstance,
     googleSignIn: GoogleSignIn(),
     facebookAuth: FacebookAuth.instance,
     signInWithApple: SignInWithAppleHelper(),
@@ -62,6 +64,11 @@ final resetPassword =
     Provider<ResetPassword>((ref) {
   final _authRepository = ref.watch(_authRepositoryProvider);
   return ResetPassword(authRepository: _authRepository);
+});
+
+final reloginUser = Provider<ReloginUser>((ref) {
+  final _authRepository = ref.watch(_authRepositoryProvider);
+  return ReloginUser(authRepository: _authRepository);
 });
 
 // * Auth State provider

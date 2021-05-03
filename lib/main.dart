@@ -5,6 +5,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:prospector/src/features/app_default_data/domain/entities/status_entity.dart';
 import 'package:prospector/src/features/app_default_data/domain/entities/subscription_entity.dart';
+import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
 
 import 'src/app.dart';
 import 'src/core/shared_prefs/shared_prefs.dart';
@@ -17,6 +18,7 @@ Future<void> main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(StatusAdapter());
   Hive.registerAdapter(SubscriptionAdapter());
+  Hive.registerAdapter(UserEntityAdapter());
 
   runApp(
     ProviderScope(

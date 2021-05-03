@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:prospector/src/core/auth/auth_helpers.dart';
 
 import 'package:prospector/src/features/auth/data/helpers/sign_in_with_apple_helper.dart';
 import 'package:prospector/src/features/auth/domain/auth_failure.dart';
@@ -23,14 +24,21 @@ class FirebaseAuthRepository implements IAuthRepository {
 
   @override
   Stream<bool> get isUserAuthenticated =>
-      firebaseAuthInstance.authStateChanges().map((User? user) => user != null);
+      firebaseAuthInstance.authStateChanges().map((User? user) =>
+          user !=
+          null); //TODO try .userChanges() to be able to upgrade firebase_auth to 1.1.2
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword(
-      {required String email, required String password}) async {
+      {required String email,
+      required String password,
+      required String displayName}) async {
     try {
-      await firebaseAuthInstance.createUserWithEmailAndPassword(
-          email: email, password: password);
+      await firebaseAuthInstance
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then((credential) async =>
+              await credential.user?.updateProfile(displayName: displayName));
+
       return right(unit);
     } on FirebaseAuthException catch (e) {
       return manageFirebaseAuthExceptions(errorCode: e.code);
@@ -122,36 +130,84 @@ class FirebaseAuthRepository implements IAuthRepository {
   Future<void> signOut() => Future.wait(
         [
           googleSignIn.signOut(),
+          facebookAuth.logOut(),
           firebaseAuthInstance.signOut(),
         ],
       );
 
-  Either<AuthFailure, Unit> manageFirebaseAuthExceptions(
-      {required String errorCode}) {
-    switch (errorCode) {
-      case 'email-already-in-use':
-        return left(const AuthFailure.emailAlreadyInUse());
-      case 'user-not-found':
-      case 'wrong-password':
-        return left(const AuthFailure.invalidEmailAndPasswordCombination());
-      case 'account-exists-with-different-credential':
-        return left(const AuthFailure.accountExistsWithDifferentCredential());
-      case 'AuthorizationErrorCode.canceled':
-        return left(const AuthFailure.cancelledByUser());
-      case 'user-not-found-reset-password':
-        return left(const AuthFailure.userNotFoundResetPassword());
-      default:
-        return left(const AuthFailure.serverError());
-    }
-  }
-
   @override
-  Future<Either<AuthFailure, Unit>> resetPassword({required String email}) async {
+  Future<Either<AuthFailure, Unit>> resetPassword(
+      {required String email}) async {
     try {
       await firebaseAuthInstance.sendPasswordResetEmail(email: email);
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      return manageFirebaseAuthExceptions(errorCode: '${e.code}-reset-password');
+      return manageFirebaseAuthExceptions(
+          errorCode: '${e.code}-reset-password');
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> reloginUser(
+      {required String provider, String? password}) async {
+    try {
+      final AuthCredential credential;
+      switch (provider) {
+        case 'password':
+          final userEmail = firebaseAuthInstance.currentUser!.email;
+          credential = EmailAuthProvider.credential(
+              email: userEmail!, password: password!);
+          break;
+        case 'google.com':
+          final googleUser = await googleSignIn.signIn();
+          if (googleUser == null) {
+            return left(const AuthFailure.cancelledByUser());
+          }
+
+          final GoogleSignInAuthentication googleAuthentication =
+              await googleUser.authentication;
+
+          credential = GoogleAuthProvider.credential(
+            idToken: googleAuthentication.idToken,
+            accessToken: googleAuthentication.accessToken,
+          );
+          break;
+        case 'facebook.com':
+          final LoginResult result = await facebookAuth.login();
+          switch (result.status) {
+            case LoginStatus.cancelled:
+              return left(const AuthFailure.cancelledByUser());
+            case LoginStatus.success:
+              credential =
+                  FacebookAuthProvider.credential(result.accessToken!.token);
+              break;
+            default:
+              return left(const AuthFailure.serverError());
+          }
+          break;
+        case 'apple.com':
+          final AuthorizationCredentialAppleID result =
+              await signInWithApple.getAppleIDCredential(
+            scopes: [
+              AppleIDAuthorizationScopes.email,
+              AppleIDAuthorizationScopes.fullName,
+            ],
+          );
+          final OAuthProvider appleAuthProvider = OAuthProvider("apple.com");
+          credential = appleAuthProvider.credential(
+            idToken: result.identityToken,
+            accessToken: result.authorizationCode,
+          );
+          break;
+        default:
+          credential = EmailAuthProvider.credential(email: '', password: '');
+          break;
+      }
+      await firebaseAuthInstance.currentUser!
+          .reauthenticateWithCredential(credential);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      return manageFirebaseAuthExceptions(errorCode: e.code);
     }
   }
 }
