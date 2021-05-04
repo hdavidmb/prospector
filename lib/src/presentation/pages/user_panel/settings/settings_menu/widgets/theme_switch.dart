@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:prospector/src/presentation/theme/theme_providers.dart';
 
 class ThemeSwitch extends ConsumerWidget {
@@ -9,7 +10,7 @@ class ThemeSwitch extends ConsumerWidget {
     final bool darkModeOn = brightness == Brightness.dark;
 
     return SwitchListTile.adaptive(
-      title: Text(darkModeOn ? 'Light theme' : 'Dark theme'),
+      title: Text(darkModeOn ? AppLocalizations.of(context)!.lightTheme : AppLocalizations.of(context)!.darkTheme),
       value: darkModeOn ? watch(themeNotifierProvider).lightModeSwitch : watch(themeNotifierProvider).darkModeSwitch,
       onChanged: (value) {
         if (darkModeOn) {

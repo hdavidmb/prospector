@@ -62,5 +62,7 @@
     "newPassword": "Nueva contraseña",
     "confirmNewPassword": "Confirmar nueva contraseña",
     "showPasswords": "Mostrar contraseñas",
-    "hidePasswords": "Ocultar contraseñas"
+    "hidePasswords": "Ocultar contraseñas",
+    "darkTheme": "Tema oscuro",
+    "lightTheme": "Tema claro"
 }
