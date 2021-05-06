@@ -20,7 +20,7 @@ class FirestoreAppDefaultDataRepository
     final bool isConnected = await checkConnection();
     if (!isConnected) return left(const DatabaseFailure.noConnection());
     try {
-      final QuerySnapshot querySnapshot =
+      final QuerySnapshot<Map<String, dynamic>> querySnapshot =
           await firestoreInstance.collection('statuses').get();
       final List<Status> statuses = querySnapshot.docs.map((doc) {
         final Map<String, dynamic> docMap = doc.data();
@@ -40,7 +40,7 @@ class FirestoreAppDefaultDataRepository
     final bool isConnected = await checkConnection();
     if (!isConnected) return left(const DatabaseFailure.noConnection());
     try {
-      final QuerySnapshot querySnapshot =
+      final QuerySnapshot<Map<String, dynamic>> querySnapshot =
           await firestoreInstance.collection('subscriptions').get();
       final List<Subscription> subscriptions = querySnapshot.docs.map((doc) {
         final Map<String, dynamic> docMap = doc.data();

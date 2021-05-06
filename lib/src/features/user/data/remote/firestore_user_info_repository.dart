@@ -41,7 +41,7 @@ class FirestoreUserInfoRepository implements IUserInfoRepository {
     final bool isConnected = await checkConnection();
     if (!isConnected) return left(const DatabaseFailure.noConnection());
     try {
-      final DocumentSnapshot userDocSnapshot =
+      final DocumentSnapshot<Map<String, dynamic>> userDocSnapshot =
           await firestoreInstance.collection('users').doc(uid).get();
       // * Transform timestamps into millisecondsSinceEpoch and complete with required info
       final userMap = userDocSnapshot.data()!;
