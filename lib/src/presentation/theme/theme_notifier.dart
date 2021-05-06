@@ -3,7 +3,7 @@ import 'package:prospector/src/core/shared_prefs/shared_prefs.dart';
 
 export 'theme_constants.dart';
 
-class ThemeNotifier with ChangeNotifier { //TODO test if with or extends
+class ThemeNotifier with ChangeNotifier {
   final UserSharedPreferences _prefs;
 
   ThemeNotifier(this._prefs) {

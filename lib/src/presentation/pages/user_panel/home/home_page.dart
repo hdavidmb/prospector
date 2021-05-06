@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/src/features/auth/application/auth_providers.dart';
 import 'package:prospector/src/features/auth/application/auth_state.dart';
 import 'package:prospector/src/features/user/application/user_info_providers.dart';
+import 'package:prospector/src/presentation/core/fade_page_route.dart';
 import 'package:prospector/src/presentation/pages/auth/register/logic/register_form_provider.dart';
 import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
 import 'package:prospector/src/presentation/pages/auth/sign_in/sign_in_page.dart';
@@ -19,10 +20,10 @@ class HomePage extends StatelessWidget {
           context.read(signInFormProvider.notifier).reset();
           context.read(registerFormProvider.notifier).reset();
           context.read(userInfoNotifierProvider).reset();
-          Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => SignInPage()),
+          Navigator.pushAndRemoveUntil(
+              context,
+              FadePageRoute().call(page: SignInPage()),
               (Route<dynamic> route) => false);
-          //         //TODO implement fade in transition
         }
       },
       child: SettingsMenuPage(),

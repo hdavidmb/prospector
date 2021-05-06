@@ -6,6 +6,7 @@ import 'package:prospector/src/features/app_default_data/application/app_default
 import 'package:prospector/src/presentation/core/app_state/app_state.dart';
 import 'package:prospector/src/presentation/core/app_state/app_state_provider.dart';
 import 'package:prospector/src/presentation/core/dialogs.dart';
+import 'package:prospector/src/presentation/core/fade_page_route.dart';
 import 'package:prospector/src/presentation/pages/user_panel/home/home_page.dart';
 import 'package:prospector/src/presentation/pages/auth/sign_in/sign_in_page.dart';
 
@@ -16,23 +17,25 @@ class SplashScreenPage extends StatelessWidget {
       provider: appStateNotifierProvider,
       onChange: (context, appState) {
         // TODO this is being called twice
-          if (appState == const AppState.authenticatedReady()) {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(// TODO implement fade in transition
-                    fullscreenDialog: true, builder: (context) => HomePage()));
-          } else if (appState == const AppState.unauthenticatedReady()) {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    fullscreenDialog: true,
-                    builder: (context) => SignInPage()));
-          } else
-          if (appState == const AppState.error()) {
-            showMessageDialog(
-                context: context,
-                message: AppLocalizations.of(context)!.appStateError);
-          }
+        if (appState == const AppState.authenticatedReady()) {
+          Navigator.pushReplacement(
+            context,
+            FadePageRoute().call(
+              page: HomePage(),
+            ),
+          );
+        } else if (appState == const AppState.unauthenticatedReady()) {
+          Navigator.pushReplacement(
+            context,
+            FadePageRoute().call(
+              page: SignInPage(),
+            ),
+          );
+        } else if (appState == const AppState.error()) {
+          showMessageDialog(
+              context: context,
+              message: AppLocalizations.of(context)!.appStateError);
+        }
       },
       child: Scaffold(body: Consumer(builder: (context, watch, child) {
         final AppState _appState = watch(appStateNotifierProvider);
