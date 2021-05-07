@@ -47,9 +47,9 @@ class FirestoreUserInfoRepository implements IUserInfoRepository {
       final userMap = userDocSnapshot.data()!;
       userMap['uid'] = userDocSnapshot.id;
       userMap['name'] = userMap['name'] ?? '';
-      userMap['expiry_date'] = userMap['expiry_date'] != null ? userMap['expiry_date'].millisecondsSinceEpoch : DateTime.now().subtract(const Duration(days: 30)).millisecondsSinceEpoch;
-      userMap['created'] = userMap['created'] != null ? userMap['created'].millisecondsSinceEpoch : DateTime.now().millisecondsSinceEpoch;
-      userMap['modified'] = userMap['modified'] != null ? userMap['modified'].millisecondsSinceEpoch : DateTime.now().millisecondsSinceEpoch;
+      userMap['expiry_date'] = userMap['expiry_date'] != null ? userMap['expiry_date'].toDate() : DateTime.now().subtract(const Duration(days: 30));
+      userMap['created'] = userMap['created'] != null ? userMap['created'].toDate() : DateTime.now();
+      userMap['modified'] = userMap['modified'] != null ? userMap['modified'].toDate() : DateTime.now();
       return right(UserEntity.fromMap(userMap));
     } catch (e) {
       return left(const DatabaseFailure.serverError());

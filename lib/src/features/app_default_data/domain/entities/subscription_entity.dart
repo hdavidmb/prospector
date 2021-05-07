@@ -21,7 +21,7 @@ class Subscription {
     return {
       'key': key,
       'id': id,
-      'created': created.millisecondsSinceEpoch,
+      'created': created,
     };
   }
 
@@ -29,7 +29,7 @@ class Subscription {
     return Subscription(
       key: map['key'] as String,
       id: map['id'] as String ,
-      created: DateTime.fromMillisecondsSinceEpoch(map['created']as int),
+      created: map['created'] as DateTime,
     );
   }
 

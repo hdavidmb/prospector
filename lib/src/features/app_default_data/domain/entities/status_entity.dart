@@ -21,7 +21,7 @@ class Status {
     return {
       'id': id,
       'key': key,
-      'created': created.millisecondsSinceEpoch,
+      'created': created,
     };
   }
 
@@ -29,7 +29,7 @@ class Status {
     return Status(
       id: map['id'] as String,
       key: map['key'] as String,
-      created: DateTime.fromMillisecondsSinceEpoch(map['created'] as int),
+      created: map['created'] as DateTime,
     );
   }
 

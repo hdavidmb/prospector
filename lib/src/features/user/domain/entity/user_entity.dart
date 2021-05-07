@@ -43,23 +43,6 @@ class UserEntity {
     this.dialCode,
   });
 
-  Map<String, dynamic> toMap() {
-    final Map<String, dynamic> userMap = {
-      'uid': uid,
-      'name': name,
-      'subscription': subscription,
-      'expiry_date': expiryDate,
-      'created': created,
-      'modified': modified,
-    };
-    if (email != null) userMap['email'] = email;
-    if (photoURL != null) userMap['photoURL'] = photoURL;
-    if (subscriptionSKU != null) userMap['subscription_sku'] = subscriptionSKU;
-    if (countryCode != null) userMap['country_code'] = countryCode;
-    if (dialCode != null) userMap['dial_code'] = dialCode;
-    return userMap;
-  }
-
   UserEntity copyWith({
     String? name,
     String? subscription,
@@ -87,15 +70,31 @@ class UserEntity {
     );
   }
 
+  Map<String, dynamic> toMap() {
+    final Map<String, dynamic> userMap = {
+      'uid': uid,
+      'name': name,
+      'subscription': subscription,
+      'expiry_date': expiryDate,
+      'created': created,
+      'modified': modified,
+    };
+    if (email != null) userMap['email'] = email;
+    if (photoURL != null) userMap['photoURL'] = photoURL;
+    if (subscriptionSKU != null) userMap['subscription_sku'] = subscriptionSKU;
+    if (countryCode != null) userMap['country_code'] = countryCode;
+    if (dialCode != null) userMap['dial_code'] = dialCode;
+    return userMap;
+  }
+
   factory UserEntity.fromMap(Map<String, dynamic> map) {
     return UserEntity(
       uid: map['uid'] as String,
       name: map['name'] as String,
       subscription: map['subscription'] as String,
-      expiryDate:
-          DateTime.fromMillisecondsSinceEpoch(map['expiry_date'] as int),
-      created: DateTime.fromMillisecondsSinceEpoch(map['created'] as int),
-      modified: DateTime.fromMillisecondsSinceEpoch(map['modified'] as int),
+      expiryDate: map['expiry_date'] as DateTime,
+      created: map['created'] as DateTime,
+      modified: map['modified'] as DateTime,
       email: map['email'] as String?,
       photoURL: map['photoURL'] as String?,
       subscriptionSKU: map['subscription_sku'] as String?,
