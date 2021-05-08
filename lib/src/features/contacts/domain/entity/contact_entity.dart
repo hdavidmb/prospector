@@ -23,6 +23,7 @@ class Contact with _$Contact {
     @HiveField(11) List<dynamic>? tags,
     @HiveField(12) String? importedId,
   }) = _Contact;
+  
   // ignore: unused_element
   const Contact._();
 

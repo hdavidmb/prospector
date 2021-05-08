@@ -1,21 +1,20 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
+
+part 'subscription_entity.freezed.dart';
 
 part 'subscription_entity.g.dart';
 
-@HiveType(typeId: 1)
-class Subscription {
-  @HiveField(0)
-  final String key;
-  @HiveField(1)
-  final String id;
-  @HiveField(2)
-  final DateTime created;
+@freezed
+class Subscription with _$Subscription {
+  @HiveType(typeId: 1)
+  const factory Subscription({
+    @HiveField(0) required String key,
+    @HiveField(1) required String id,
+    @HiveField(2) required DateTime created,
+  }) = _Subscription;
 
-  Subscription({
-    required this.key,
-    required this.id,
-    required this.created,
-  });
+  const Subscription._();
 
   Map<String, dynamic> toMap() {
     return {
@@ -28,24 +27,8 @@ class Subscription {
   factory Subscription.fromMap(Map<String, dynamic> map) {
     return Subscription(
       key: map['key'] as String,
-      id: map['id'] as String ,
+      id: map['id'] as String,
       created: map['created'] as DateTime,
     );
   }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-  
-    return other is Subscription &&
-      other.key == key &&
-      other.id == id &&
-      other.created == created;
-  }
-
-  @override
-  int get hashCode => key.hashCode ^ id.hashCode ^ created.hashCode;
-
-  @override
-  String toString() => 'Subscription(key: $key, id: $id, created: $created)';
 }

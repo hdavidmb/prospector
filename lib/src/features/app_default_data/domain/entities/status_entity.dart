@@ -1,21 +1,20 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
+
+part 'status_entity.freezed.dart';
 
 part 'status_entity.g.dart';
 
-@HiveType(typeId: 0)
-class Status {
-  @HiveField(0)
-  final String id;
-  @HiveField(1)
-  final String key;
-  @HiveField(2)
-  final DateTime created;
+@freezed
+class Status with _$Status {
+  @HiveType(typeId: 0)
+  const factory Status({
+    @HiveField(0) required String id,
+    @HiveField(1) required String key,
+    @HiveField(2) required DateTime created,
+  }) = _Status;
 
-  Status({
-    required this.id,
-    required this.key,
-    required this.created,
-  });
+  const Status._();
 
   Map<String, dynamic> toMap() {
     return {
@@ -32,20 +31,4 @@ class Status {
       created: map['created'] as DateTime,
     );
   }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-  
-    return other is Status &&
-      other.id == id &&
-      other.key == key &&
-      other.created == created;
-  }
-
-  @override
-  int get hashCode => id.hashCode ^ key.hashCode ^ created.hashCode;
-
-  @override
-  String toString() => 'Status(id: $id, key: $key, created: $created)';
 }

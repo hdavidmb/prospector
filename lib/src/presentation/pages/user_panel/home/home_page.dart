@@ -8,6 +8,7 @@ import 'package:prospector/src/presentation/core/fade_page_route.dart';
 import 'package:prospector/src/presentation/pages/auth/register/logic/register_form_provider.dart';
 import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
 import 'package:prospector/src/presentation/pages/auth/sign_in/sign_in_page.dart';
+import 'package:prospector/src/presentation/pages/user_panel/settings/settings_menu/settings_menu_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -26,24 +27,26 @@ class HomePage extends StatelessWidget {
               (Route<dynamic> route) => false);
         }
       },
-      child: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            final Contact contact = Contact(
-              id: 'hsju7AHsh2y4h7sGH82k',
-              name: 'New Contact Name',
-              status: 'k64rgYg467Hsy',
-              created: DateTime.now(),
-              modified: DateTime.now(),
-              phone: '3017123617',
-            );
-            final contactMap = contact.toMap();
-            final contactFM = Contact.fromMap(contactMap);
-            debugPrint(contactFM.toString());
-          },
-          child: const Text('Button'),
-        ),
-      ),
+      child: SettingsMenuPage(), 
+      
+      // Center(
+      //   child: ElevatedButton(
+      //     onPressed: () {
+      //       final Contact contact = Contact(
+      //         id: 'hsju7AHsh2y4h7sGH82k',
+      //         name: 'New Contact Name',
+      //         status: 'k64rgYg467Hsy',
+      //         created: DateTime.now(),
+      //         modified: DateTime.now(),
+      //         phone: '3017123617',
+      //       );
+      //       final contactMap = contact.toMap();
+      //       final contactFM = Contact.fromMap(contactMap);
+      //       debugPrint(contactFM.toString());
+      //     },
+      //     child: const Text('Button'),
+      //   ),
+      // ),
       //SettingsMenuPage(),
       // child: Scaffold(
       //   appBar: AppBar(title: const Text('Home')),

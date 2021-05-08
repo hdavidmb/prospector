@@ -98,6 +98,8 @@ class GetOrCreateUserInfo {
   Future<Either<DatabaseFailure, UserEntity>> createNewUser(
       {required String currentUserID}) async {
     final String freeSubID = read(appDefaultDataProvider).freeSubID;
+    final String photoURL = userAuthProfileRepository.userPhotoURL();
+    final email = userAuthProfileRepository.userEmail();
     final UserEntity user = UserEntity(
       uid: currentUserID,
       name: userAuthProfileRepository.userDisplayName(),
@@ -105,11 +107,9 @@ class GetOrCreateUserInfo {
       expiryDate: DateTime.now().subtract(const Duration(days: 30)),
       created: DateTime.now(),
       modified: DateTime.now(),
+      email: (email.isNotEmpty) ? email : null,
+      photoURL: (photoURL.isNotEmpty) ? photoURL : null,
     );
-    final String photoURL = userAuthProfileRepository.userPhotoURL();
-    final email = userAuthProfileRepository.userEmail();
-    if (photoURL.isNotEmpty) user.photoURL = photoURL;
-    if (email.isNotEmpty) user.email = email;
     await localUserInfoRepository.createUserDocument(user);
     await remoteUserInfoRepository.createUserDocument(user);
     return right(user);

@@ -6,17 +6,17 @@ part of 'user_entity.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class UserEntityAdapter extends TypeAdapter<UserEntity> {
+class UserEntityAdapter extends TypeAdapter<_$_UserEntity> {
   @override
   final int typeId = 2;
 
   @override
-  UserEntity read(BinaryReader reader) {
+  _$_UserEntity read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return UserEntity(
+    return _$_UserEntity(
       uid: fields[0] as String,
       name: fields[1] as String,
       subscription: fields[2] as String,
@@ -32,7 +32,7 @@ class UserEntityAdapter extends TypeAdapter<UserEntity> {
   }
 
   @override
-  void write(BinaryWriter writer, UserEntity obj) {
+  void write(BinaryWriter writer, _$_UserEntity obj) {
     writer
       ..writeByte(11)
       ..writeByte(0)

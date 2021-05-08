@@ -50,8 +50,9 @@ class UserInfoNotifier extends ChangeNotifier {
 
   Future<Either<UserInfoFailure, Unit>> updateUserAuthProfile(
       {String? displayName, String? photoURL}) async {
-    final newUserInfo =
-        _user.copyWith(name: displayName, photoURL: photoURL);
+        UserEntity newUserInfo = _user.copyWith();
+        if (displayName != null) newUserInfo = newUserInfo.copyWith(name: displayName);
+        if (photoURL != null) newUserInfo = newUserInfo.copyWith(photoURL: photoURL);
     return _performUpdate(newUserInfo: newUserInfo, callBack: updateUserProfile);
   }
 
