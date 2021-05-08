@@ -21,9 +21,6 @@ class UserInfoNotifier extends ChangeNotifier {
     required this.changeUserEmail,
   });
 
-  void reset() {
-    _userInfoState = const UserInfoState.initial();
-  }
 
   UserInfoState _userInfoState = const UserInfoState.initial();
   late UserEntity _user;
@@ -33,9 +30,14 @@ class UserInfoNotifier extends ChangeNotifier {
 
   String getUserProvider() => getUserAuthProvider();
 
+  void reset() {
+    _userInfoState = const UserInfoState.initial();
+  }
+
   Future<void> getOrCreateUser() async {
     if (_userInfoState != const UserInfoState.fetching()) {
       _userInfoState = const UserInfoState.fetching();
+      //TODO notifyListeners();
       final result = await getOrCreateUserInfo();
       result.fold(
         (failure) => _userInfoState = const UserInfoState.error(),

@@ -49,7 +49,7 @@ class HiveUserInfoRepository implements IUserInfoRepository {
   Future<Either<DatabaseFailure, Unit>> saveUser(UserEntity user) async {
     try {
       if (!Hive.isBoxOpen(user.uid)) await Hive.openBox<UserEntity>(user.uid);
-      Hive.box<UserEntity>(user.uid).put(user.uid, user);
+      Hive.box<UserEntity>(user.uid).put(user.uid, user); //TODO test await needed
       return right(unit);
     } catch (e) {
       return left(const DatabaseFailure.serverError());
