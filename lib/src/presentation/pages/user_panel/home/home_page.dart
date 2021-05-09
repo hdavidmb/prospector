@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
               (Route<dynamic> route) => false);
         }
       },
-      child: ContactsListPage(),
+      child: NewContactPage(),
       
       //SettingsMenuPage(),
       // child: Scaffold(

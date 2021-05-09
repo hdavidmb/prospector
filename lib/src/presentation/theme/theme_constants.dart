@@ -22,13 +22,13 @@ final ElevatedButtonThemeData kElevatedButtonTheme = ElevatedButtonThemeData(
 final kLightTheme = ThemeData.light().copyWith(
   primaryColor: kPrimaryColor,
   accentColor: kAccentColor,
-  inputDecorationTheme: kInputDecorationTheme,
+  inputDecorationTheme: kInputDecorationTheme.copyWith(fillColor: const Color(0x0A000000)),
   elevatedButtonTheme: kElevatedButtonTheme,
 );
 
 final kDarkTheme = ThemeData.dark().copyWith(
   primaryColor: kPrimaryColor,
   accentColor: kAccentColor,
-  inputDecorationTheme: kInputDecorationTheme,
+  inputDecorationTheme: kInputDecorationTheme.copyWith(fillColor: const Color(0x1AFFFFFF)),
   elevatedButtonTheme: kElevatedButtonTheme,
 );

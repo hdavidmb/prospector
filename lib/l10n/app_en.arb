@@ -65,5 +65,9 @@
     "hidePasswords": "Hide passwords",
     "darkTheme": "Dark theme",
     "lightTheme": "Light theme",
-    "prospects": "Prospects"
+    "prospects": "Prospects",
+    "nameRequired": "Name (Required)",
+    "phone": "Phone",
+    "newPhone": "New phone",
+    "city": "City"
 }

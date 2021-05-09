@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/src/presentation/core/dialogs.dart';
+import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/widgets/loading_page_cover.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_notifier.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_provider.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_state.dart';
@@ -61,13 +62,13 @@ class UserProfilePage extends ConsumerWidget {
                   LogoutAndDeleteButtons(),
                 ],
               ),
-              if (isSubmitting)
-                Container(
-                  color: Colors.grey.withOpacity(0.5),
-                  child: const Center(
-                    child: CircularProgressIndicator.adaptive(),
-                  ),
-                ),
+              if (isSubmitting) LoadingPageCover(),
+                // TODO test Container(
+                //   color: Colors.grey.withOpacity(0.5),
+                //   child: const Center(
+                //     child: CircularProgressIndicator.adaptive(),
+                //   ),
+                // ),
             ],
           ),
         ),

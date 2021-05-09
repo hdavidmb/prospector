@@ -65,5 +65,9 @@
     "hidePasswords": "Ocultar contraseñas",
     "darkTheme": "Modo oscuro",
     "lightTheme": "Modo claro",
-    "prospects": "Prospectos"
+    "prospects": "Prospectos",
+    "nameRequired": "Nombre (Requerido)",
+    "phone": "Teléfono",
+    "newPhone": "Nuevo teléfono",
+    "city": "Ciudad"
 }
