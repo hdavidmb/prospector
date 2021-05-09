@@ -37,7 +37,6 @@ class UserInfoNotifier extends ChangeNotifier {
   Future<void> getOrCreateUser() async {
     if (_userInfoState != const UserInfoState.fetching()) {
       _userInfoState = const UserInfoState.fetching();
-      //TODO notifyListeners();
       final result = await getOrCreateUserInfo();
       result.fold(
         (failure) => _userInfoState = const UserInfoState.error(),

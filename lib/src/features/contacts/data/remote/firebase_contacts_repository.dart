@@ -64,11 +64,11 @@ class FirebaseContactsRepository implements IContactsRemoteRepository {
         final Map<String, dynamic> contactMap = contactDoc.data();
         contactMap['id'] = contactDoc.id;
         contactMap['created'] =
-            contactMap['created']?.toDate() ?? DateTime.now(); //TODO test
+            contactMap['created']?.toDate() ?? DateTime.now();
         contactMap['modified'] =
-            contactMap['modified']?.toDate() ?? DateTime.now(); //TODO test
+            contactMap['modified']?.toDate() ?? DateTime.now();
 
-        return Contact.fromMap(contactMap); //TODO test
+        return Contact.fromMap(contactMap);
       }).toList();
       return right(contacts);
     } catch (e) {

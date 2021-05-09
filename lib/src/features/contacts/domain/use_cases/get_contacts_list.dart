@@ -13,8 +13,8 @@ class GetContactsList {
   });
 
   Future<Either<DatabaseFailure, List<Contact>>> call(
-      {required String uid}) async { //TODO test
-    //TODO check if exists locally
+      {required String uid}) async {
+    // Check if exists locally
     final localCheckResult =
         await localContactsRepository.contactsCollectionExists(uid: uid);
     return localCheckResult.fold(

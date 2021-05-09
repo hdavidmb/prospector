@@ -37,35 +37,42 @@ class SplashScreenPage extends StatelessWidget {
               message: AppLocalizations.of(context)!.appStateError);
         }
       },
-      child: Scaffold(body: Consumer(builder: (context, watch, child) {
-        final AppState _appState = watch(appStateNotifierProvider);
-        return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const Hero(
-              tag: 'prospector_logo',
-              child: Image(
-                  image: AssetImage('assets/images/prospector_logo.png'),
-                  width: 150.0)),
-          Text(AppLocalizations.of(context)!.prospector,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline4!
-                  .copyWith(color: Colors.black87)),
-          const SizedBox(
-            width: double.infinity,
-            height: 20.0,
-          ),
-          if (_appState != const AppState.error())
-            const CircularProgressIndicator.adaptive()
-          else
-            ElevatedButton(
-              onPressed: () {
-                context.read(appStateNotifierProvider.notifier).reset();
-                context.read(appDefaultDataProvider).getDefaultData();
-              },
-              child: Text(AppLocalizations.of(context)!.tryAgain),
-            ),
-        ]);
-      })),
+      child: Scaffold(
+        body: Consumer(
+          builder: (context, watch, child) {
+            final AppState _appState = watch(appStateNotifierProvider);
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Hero(
+                    tag: 'prospector_logo',
+                    child: Image(
+                        image: AssetImage('assets/images/prospector_logo.png'),
+                        width: 150.0)),
+                Text(AppLocalizations.of(context)!.prospector,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline4!
+                        .copyWith(color: Colors.black87)),
+                const SizedBox(
+                  width: double.infinity,
+                  height: 20.0,
+                ),
+                if (_appState != const AppState.error())
+                  const CircularProgressIndicator.adaptive()
+                else
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read(appStateNotifierProvider.notifier).reset();
+                      context.read(appDefaultDataProvider).getDefaultData();
+                    },
+                    child: Text(AppLocalizations.of(context)!.tryAgain),
+                  ),
+              ],
+            );
+          },
+        ),
+      ),
     );
   }
 }

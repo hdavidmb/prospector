@@ -33,7 +33,6 @@ class ContactsNotifier extends ChangeNotifier {
 
   void reset() => _contactsState = const ContactsState.initial();
 
-  //TODO CRUD
   Future<Either<DatabaseFailure, Unit>> createContact(Contact contact) async {
     //TODO test
     final uid = read(userInfoNotifierProvider).user.uid;
@@ -51,17 +50,16 @@ class ContactsNotifier extends ChangeNotifier {
     );
   }
 
-  Future<void> getContacts() async { // TODO test
+  Future<void> getContacts() async {
     if (_contactsState != const ContactsState.fetching()) {
       _contactsState = const ContactsState.fetching();
-      notifyListeners();
       final uid = read(userInfoNotifierProvider).user.uid;
       final getResult = await getContactsList(uid: uid);
       getResult.fold(
         (failure) => _contactsState = const ContactsState.error(),
         (contactsList) {
       contactsList
-          .sort((a, b) => b.modified.compareTo(a.modified)); // TODO test order
+          .sort((a, b) => b.modified.compareTo(a.modified));
           _contacts = contactsList;
           _contactsState = const ContactsState.ready();
         },

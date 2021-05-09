@@ -64,5 +64,6 @@
     "showPasswords": "Mostrar contraseñas",
     "hidePasswords": "Ocultar contraseñas",
     "darkTheme": "Modo oscuro",
-    "lightTheme": "Modo claro"
+    "lightTheme": "Modo claro",
+    "prospects": "Prospectos"
 }

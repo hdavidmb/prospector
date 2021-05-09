@@ -7,6 +7,7 @@ import 'package:prospector/src/presentation/core/fade_page_route.dart';
 import 'package:prospector/src/presentation/pages/auth/register/logic/register_form_provider.dart';
 import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
 import 'package:prospector/src/presentation/pages/auth/sign_in/sign_in_page.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/contacts_list/contacts_list_page.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/new_contact/new_contact_page.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/settings_menu/settings_menu_page.dart';
 
@@ -27,7 +28,7 @@ class HomePage extends StatelessWidget {
               (Route<dynamic> route) => false);
         }
       },
-      child: NewContactPage(),
+      child: ContactsListPage(),
       
       //SettingsMenuPage(),
       // child: Scaffold(
