@@ -42,7 +42,7 @@ class ContactsNotifier extends ChangeNotifier {
       (failure) => left(failure),
       (unit) {
         _contacts
-          ..add(contact)
+          ..add(contact) //TODO test insertAt(0)
           ..sort((a, b) => b.modified.compareTo(a.modified)); //TODO test order
         notifyListeners();
         return right(unit);
