@@ -6,6 +6,7 @@ import 'package:prospector/src/presentation/pages/user_panel/contacts/new_contac
 import 'package:prospector/src/presentation/pages/user_panel/contacts/new_contact/widgets/gender_dropdown.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/new_contact/widgets/location_text_field.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/new_contact/widgets/phones_text_fields.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/new_contact/widgets/status_dropdown.dart';
 
 class NewContactForm extends StatelessWidget {
   @override
@@ -75,15 +76,25 @@ class NewContactForm extends StatelessWidget {
               ),
               const SizedBox(height: 10.0),
 
-              // * Gender textfield
+              // * Gender dropdown
               GenderDropdown(
                 gender: formState.gender,
                 onGenderChanged: (String value) => context
                     .read(newContactFormProvider.notifier)
                     .genderChanged(value),
               ),
-
               const SizedBox(height: 10.0),
+
+              // * Status dropdown
+              StatusDropDown(
+                status: formState.status,
+                gender: formState.gender,
+                onStatusChanged: (String value) => context
+                    .read(newContactFormProvider.notifier)
+                    .statusChanged(value),
+              ),
+              const SizedBox(height: 10.0),
+
               ElevatedButton(
                 onPressed: () {
                   debugPrint(formState.toString());

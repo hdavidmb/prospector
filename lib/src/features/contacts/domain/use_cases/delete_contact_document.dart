@@ -12,7 +12,8 @@ class DeleteContactDocument {
   });
 
   Future<Either<DatabaseFailure, Unit>> call(
-      {required String contactID, required String uid}) async {
+      {required String contactID, required String uid}) async { // TODO test
+      
     final localDelete = await localContactsRepository.deleteContactDocument(
         contactID: contactID, uid: uid);
     return localDelete.fold(

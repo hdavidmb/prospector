@@ -70,6 +70,7 @@ class ContactsNotifier extends ChangeNotifier {
 
   Future<Either<DatabaseFailure, Unit>> updateContact(Contact contact) async {
     // TODO test
+    // TODO if status changed create status interaction
     final uid = read(userInfoNotifierProvider).user.uid;
     final newContactInfo = contact.copyWith(modified: DateTime.now());
     final updateResult =
@@ -89,6 +90,8 @@ class ContactsNotifier extends ChangeNotifier {
   Future<Either<DatabaseFailure, Unit>> deleteContact(
       {required String contactID}) async {
     // TODO test
+    // TODO delete contact interactions
+    // TODO delete contact from events
     final uid = read(userInfoNotifierProvider).user.uid;
     final deleteResult =
         await deleteContactDocument(contactID: contactID, uid: uid);

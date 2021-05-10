@@ -14,9 +14,14 @@ class GenderDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
       decoration: InputDecoration(
-        prefixIcon: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 12.0),
-          child: FaIcon(FontAwesomeIcons.venusMars),
+        prefixIcon: Padding(
+          padding: EdgeInsets.symmetric(
+              vertical: 12.0, horizontal: gender == '' ? 10.0 : 17.0),
+          child: FaIcon(gender == 'male'
+              ? FontAwesomeIcons.mars
+              : gender == 'female'
+                  ? FontAwesomeIcons.venus
+                  : FontAwesomeIcons.venusMars),
         ),
         hintText: AppLocalizations.of(context)!.gender,
       ),

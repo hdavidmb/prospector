@@ -73,5 +73,21 @@
     "newProspect": "New prospect",
     "gender": "Gender",
     "male": "Male",
-    "female": "Female"
+    "female": "Female",
+    "notInterested": "Not interested",
+    "notInteresteF": "Not interested",
+    "notInterestedP": "Not interested",
+    "notContacted": "Not contacted",
+    "notContactedF": "Not contacted",
+    "notContactedP": "Not contacted",
+    "invited": "Invited",
+    "invitedF": "Invited",
+    "invitedP": "Invited",
+    "followUp": "Follow up",
+    "client": "Client",
+    "clientF": "Client",
+    "clients": "Clients",
+    "executive": "Executive",
+    "executiveF": "Executive",
+    "executives": "Executives"
 }

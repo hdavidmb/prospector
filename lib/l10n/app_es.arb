@@ -73,5 +73,21 @@
     "newProspect": "Nuevo prospecto",
     "gender": "Género",
     "male": "Masculino",
-    "female": "Femenino"
+    "female": "Femenino",
+    "notInterested": "No interesado",
+    "notInteresteF": "No interesada",
+    "notInterestedP": "No interesados",
+    "notContacted": "No contactado",
+    "notContactedF": "No contactada",
+    "notContactedP": "No contactados",
+    "invited": "Invitado",
+    "invitedF": "Invitada",
+    "invitedP": "Invitados",
+    "followUp": "Seguimiento",
+    "client": "Cliente",
+    "clientF": "Clienta",
+    "clients": "Clientes",
+    "executive": "Ejecutivo",
+    "executiveF": "Ejecutiva",
+    "executives": "Ejecutivos"
 }
