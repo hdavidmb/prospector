@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/new_contact/logic/new_contact_form_provider.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/new_contact/logic/new_contact_form_state.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/new_contact/widgets/location_textfield.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/new_contact/widgets/phones_text_fields.dart';
 
 class NewContactForm extends StatelessWidget {
@@ -65,15 +66,10 @@ class NewContactForm extends StatelessWidget {
               const SizedBox(height: 10.0),
 
               // * Location textfield
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.location_on),
-                  hintText: AppLocalizations.of(context)!.city,
-                ),
-                textInputAction: TextInputAction.next,
-                // onChanged:
-                //     context.read(registerFormProvider.notifier).emailChanged,
+              LocationTextField(
+                location: formState.location,
+                onLocationChanged: (String value) => context
+                    .read(newContactFormProvider.notifier).locationChanged(value),
               ),
               const SizedBox(height: 10.0),
               ElevatedButton(

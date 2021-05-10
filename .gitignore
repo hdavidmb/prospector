@@ -48,3 +48,6 @@ app.*.map.json
 # Firebase Config
 google-services.json
 GoogleService-Info.plist
+
+# Private api keys
+lib/src/core/private/private_keys.dart

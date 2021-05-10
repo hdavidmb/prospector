@@ -69,5 +69,6 @@
     "nameRequired": "Name (Required)",
     "phone": "Phone",
     "newPhone": "New phone",
-    "city": "City"
+    "city": "City",
+    "newProspect": "New prospect"
 }

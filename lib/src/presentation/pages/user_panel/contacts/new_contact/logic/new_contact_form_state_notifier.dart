@@ -18,7 +18,7 @@ class NewContactFormStateNotifier extends StateNotifier<NewContactFormState> wit
       state = state.copyWith(whatsapp: value, failureOption: none());
 
   void phonesListChanged(List<String> values) =>
-      state = state.copyWith(phones: values, failureOption: none()); //TODO organice as needed
+      state = state.copyWith(phones: values, failureOption: none());
 
   void locationChanged(String value) =>
       state = state.copyWith(location: value, failureOption: none());
