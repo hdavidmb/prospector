@@ -70,5 +70,8 @@
     "phone": "Teléfono",
     "newPhone": "Nuevo teléfono",
     "city": "Ciudad",
-    "newProspect": "Nuevo prospecto"
+    "newProspect": "Nuevo prospecto",
+    "gender": "Género",
+    "male": "Masculino",
+    "female": "Femenino"
 }

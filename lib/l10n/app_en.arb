@@ -70,5 +70,8 @@
     "phone": "Phone",
     "newPhone": "New phone",
     "city": "City",
-    "newProspect": "New prospect"
+    "newProspect": "New prospect",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female"
 }
