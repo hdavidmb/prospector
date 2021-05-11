@@ -29,7 +29,7 @@ class Tag with _$Tag {
     return Tag(
       id: map['id'] as String,
       name: map['name'] as String,
-      created: map['id'] as DateTime,
+      created: map['created'] as DateTime,
     );
   }
 }
