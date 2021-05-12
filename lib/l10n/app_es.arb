@@ -89,5 +89,8 @@
     "clients": "Clientes",
     "executive": "Ejecutivo",
     "executiveF": "Ejecutiva",
-    "executives": "Ejecutivos"
+    "executives": "Ejecutivos",
+    "addTag": "Agregar etiqueta",
+    "addANewTag": "Agregar nueva etiqueta:",
+    "tagName": "Nombre de la etiqueta"
 }

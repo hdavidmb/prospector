@@ -14,7 +14,6 @@ class FirebaseTagsRepository implements ITagsRemoteRepository {
   @override
   Future<Either<DatabaseFailure, Unit>> createTagDocument(
       {required Tag tag, required String uid}) async {
-    //TODO test
     final Map<String, dynamic> tagMap = tag.toMap();
     try {
       await firestoreInstance
@@ -32,7 +31,6 @@ class FirebaseTagsRepository implements ITagsRemoteRepository {
   @override
   Future<Either<DatabaseFailure, Unit>> deleteTagDocument(
       {required String tagID, required String uid}) async {
-        // TODO test
       try {
         await firestoreInstance
           .collection('users')
@@ -48,7 +46,7 @@ class FirebaseTagsRepository implements ITagsRemoteRepository {
 
   @override
   Future<Either<DatabaseFailure, List<Tag>>> getTagsList(
-      {required String uid}) async { // TODO test
+      {required String uid}) async {
     final bool isConnected = await checkConnection();
     if (!isConnected) return left(const DatabaseFailure.noConnection());
     try {

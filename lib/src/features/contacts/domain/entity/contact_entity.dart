@@ -18,9 +18,9 @@ class Contact with _$Contact {
     @HiveField(6) String? location,
     @HiveField(7) String? phone,
     @HiveField(8) String? whatsapp,
-    @HiveField(9) List<dynamic>? phones,
+    @HiveField(9) List<String>? phones,
     @HiveField(10) String? photo,
-    @HiveField(11) List<dynamic>? tags,
+    @HiveField(11) List<String>? tags,
     @HiveField(12) String? importedId,
   }) = _Contact;
   
@@ -63,9 +63,9 @@ class Contact with _$Contact {
       location: map['location'] as String?,
       phone: map['phone'] as String?,
       whatsapp: map['whatsapp'] as String?,
-      phones: map['phones'] as List<dynamic>?,
+      phones: map['phones'] as List<String>?,
       photo: map['photo'] as String?,
-      tags: map['tags'] as List<dynamic>?,
+      tags: map['tags'] as List<String>?,
       importedId: map['imported_id'] as String?,
     );
   }

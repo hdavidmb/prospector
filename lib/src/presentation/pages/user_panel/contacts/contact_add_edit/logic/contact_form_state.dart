@@ -2,33 +2,33 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:prospector/src/core/database/database_failures/database_failure.dart';
 
-part 'new_contact_form_state.freezed.dart';
+part 'contact_form_state.freezed.dart';
 
 @freezed
-class NewContactFormState with _$NewContactFormState {
-  const factory NewContactFormState({
+class ContactFormState with _$ContactFormState {
+  const factory ContactFormState({
     required String name,
     required String phone,
     required String whatsapp,
     required List<String> phones,
     required String location,
     required String gender,
-    required String status,
     required List<String> tags,
+    required String status,
     required bool showErrorMessages,
     required bool isSubmitting,
     required Option<DatabaseFailure> failureOption, //TODO change to Option<Either<DatabaseFailure, Unit>>
-  }) = _NewContactFormState;
+  }) = _ContactFormState;
 
-  factory NewContactFormState.initial() => NewContactFormState(
+  factory ContactFormState.initial() => ContactFormState(
         name: '',
         phone: '',
         whatsapp: '',
         phones: [],
         location: '',
         gender: '',
-        status: '',
         tags: [],
+        status: '',
         isSubmitting: false,
         showErrorMessages: false,
         failureOption: none(),

@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
-part of 'new_contact_form_state.dart';
+part of 'contact_form_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,30 +13,30 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$NewContactFormStateTearOff {
-  const _$NewContactFormStateTearOff();
+class _$ContactFormStateTearOff {
+  const _$ContactFormStateTearOff();
 
-  _NewContactFormState call(
+  _ContactFormState call(
       {required String name,
       required String phone,
       required String whatsapp,
       required List<String> phones,
       required String location,
       required String gender,
-      required String status,
       required List<String> tags,
+      required String status,
       required bool showErrorMessages,
       required bool isSubmitting,
       required Option<DatabaseFailure> failureOption}) {
-    return _NewContactFormState(
+    return _ContactFormState(
       name: name,
       phone: phone,
       whatsapp: whatsapp,
       phones: phones,
       location: location,
       gender: gender,
-      status: status,
       tags: tags,
+      status: status,
       showErrorMessages: showErrorMessages,
       isSubmitting: isSubmitting,
       failureOption: failureOption,
@@ -45,33 +45,37 @@ class _$NewContactFormStateTearOff {
 }
 
 /// @nodoc
-const $NewContactFormState = _$NewContactFormStateTearOff();
+const $ContactFormState = _$ContactFormStateTearOff();
 
 /// @nodoc
-mixin _$NewContactFormState {
+mixin _$ContactFormState {
   String get name => throw _privateConstructorUsedError;
-  String get phone => throw _privateConstructorUsedError;
-  String get whatsapp => throw _privateConstructorUsedError;
-  List<String> get phones => throw _privateConstructorUsedError;
-  String get location => throw _privateConstructorUsedError;
-  String get gender => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError; //TODO make nullable
+  String get whatsapp =>
+      throw _privateConstructorUsedError; //TODO make nullable
+  List<String> get phones =>
+      throw _privateConstructorUsedError; //TODO make nullable
+  String get location =>
+      throw _privateConstructorUsedError; //TODO make nullable
+  String get gender => throw _privateConstructorUsedError; //TODO make nullable
+  List<String> get tags =>
+      throw _privateConstructorUsedError; //TODO make nullable
   String get status => throw _privateConstructorUsedError;
-  List<String> get tags => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   Option<DatabaseFailure> get failureOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $NewContactFormStateCopyWith<NewContactFormState> get copyWith =>
+  $ContactFormStateCopyWith<ContactFormState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NewContactFormStateCopyWith<$Res> {
-  factory $NewContactFormStateCopyWith(
-          NewContactFormState value, $Res Function(NewContactFormState) then) =
-      _$NewContactFormStateCopyWithImpl<$Res>;
+abstract class $ContactFormStateCopyWith<$Res> {
+  factory $ContactFormStateCopyWith(
+          ContactFormState value, $Res Function(ContactFormState) then) =
+      _$ContactFormStateCopyWithImpl<$Res>;
   $Res call(
       {String name,
       String phone,
@@ -79,21 +83,21 @@ abstract class $NewContactFormStateCopyWith<$Res> {
       List<String> phones,
       String location,
       String gender,
-      String status,
       List<String> tags,
+      String status,
       bool showErrorMessages,
       bool isSubmitting,
       Option<DatabaseFailure> failureOption});
 }
 
 /// @nodoc
-class _$NewContactFormStateCopyWithImpl<$Res>
-    implements $NewContactFormStateCopyWith<$Res> {
-  _$NewContactFormStateCopyWithImpl(this._value, this._then);
+class _$ContactFormStateCopyWithImpl<$Res>
+    implements $ContactFormStateCopyWith<$Res> {
+  _$ContactFormStateCopyWithImpl(this._value, this._then);
 
-  final NewContactFormState _value;
+  final ContactFormState _value;
   // ignore: unused_field
-  final $Res Function(NewContactFormState) _then;
+  final $Res Function(ContactFormState) _then;
 
   @override
   $Res call({
@@ -103,8 +107,8 @@ class _$NewContactFormStateCopyWithImpl<$Res>
     Object? phones = freezed,
     Object? location = freezed,
     Object? gender = freezed,
-    Object? status = freezed,
     Object? tags = freezed,
+    Object? status = freezed,
     Object? showErrorMessages = freezed,
     Object? isSubmitting = freezed,
     Object? failureOption = freezed,
@@ -134,14 +138,14 @@ class _$NewContactFormStateCopyWithImpl<$Res>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
       tags: tags == freezed
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -159,11 +163,11 @@ class _$NewContactFormStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$NewContactFormStateCopyWith<$Res>
-    implements $NewContactFormStateCopyWith<$Res> {
-  factory _$NewContactFormStateCopyWith(_NewContactFormState value,
-          $Res Function(_NewContactFormState) then) =
-      __$NewContactFormStateCopyWithImpl<$Res>;
+abstract class _$ContactFormStateCopyWith<$Res>
+    implements $ContactFormStateCopyWith<$Res> {
+  factory _$ContactFormStateCopyWith(
+          _ContactFormState value, $Res Function(_ContactFormState) then) =
+      __$ContactFormStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {String name,
@@ -172,23 +176,23 @@ abstract class _$NewContactFormStateCopyWith<$Res>
       List<String> phones,
       String location,
       String gender,
-      String status,
       List<String> tags,
+      String status,
       bool showErrorMessages,
       bool isSubmitting,
       Option<DatabaseFailure> failureOption});
 }
 
 /// @nodoc
-class __$NewContactFormStateCopyWithImpl<$Res>
-    extends _$NewContactFormStateCopyWithImpl<$Res>
-    implements _$NewContactFormStateCopyWith<$Res> {
-  __$NewContactFormStateCopyWithImpl(
-      _NewContactFormState _value, $Res Function(_NewContactFormState) _then)
-      : super(_value, (v) => _then(v as _NewContactFormState));
+class __$ContactFormStateCopyWithImpl<$Res>
+    extends _$ContactFormStateCopyWithImpl<$Res>
+    implements _$ContactFormStateCopyWith<$Res> {
+  __$ContactFormStateCopyWithImpl(
+      _ContactFormState _value, $Res Function(_ContactFormState) _then)
+      : super(_value, (v) => _then(v as _ContactFormState));
 
   @override
-  _NewContactFormState get _value => super._value as _NewContactFormState;
+  _ContactFormState get _value => super._value as _ContactFormState;
 
   @override
   $Res call({
@@ -198,13 +202,13 @@ class __$NewContactFormStateCopyWithImpl<$Res>
     Object? phones = freezed,
     Object? location = freezed,
     Object? gender = freezed,
-    Object? status = freezed,
     Object? tags = freezed,
+    Object? status = freezed,
     Object? showErrorMessages = freezed,
     Object? isSubmitting = freezed,
     Object? failureOption = freezed,
   }) {
-    return _then(_NewContactFormState(
+    return _then(_ContactFormState(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -229,14 +233,14 @@ class __$NewContactFormStateCopyWithImpl<$Res>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
       tags: tags == freezed
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -255,16 +259,16 @@ class __$NewContactFormStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NewContactFormState implements _NewContactFormState {
-  const _$_NewContactFormState(
+class _$_ContactFormState implements _ContactFormState {
+  const _$_ContactFormState(
       {required this.name,
       required this.phone,
       required this.whatsapp,
       required this.phones,
       required this.location,
       required this.gender,
-      required this.status,
       required this.tags,
+      required this.status,
       required this.showErrorMessages,
       required this.isSubmitting,
       required this.failureOption});
@@ -273,18 +277,18 @@ class _$_NewContactFormState implements _NewContactFormState {
   final String name;
   @override
   final String phone;
-  @override
+  @override //TODO make nullable
   final String whatsapp;
-  @override
+  @override //TODO make nullable
   final List<String> phones;
-  @override
+  @override //TODO make nullable
   final String location;
-  @override
+  @override //TODO make nullable
   final String gender;
-  @override
-  final String status;
-  @override
+  @override //TODO make nullable
   final List<String> tags;
+  @override //TODO make nullable
+  final String status;
   @override
   final bool showErrorMessages;
   @override
@@ -294,13 +298,13 @@ class _$_NewContactFormState implements _NewContactFormState {
 
   @override
   String toString() {
-    return 'NewContactFormState(name: $name, phone: $phone, whatsapp: $whatsapp, phones: $phones, location: $location, gender: $gender, status: $status, tags: $tags, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, failureOption: $failureOption)';
+    return 'ContactFormState(name: $name, phone: $phone, whatsapp: $whatsapp, phones: $phones, location: $location, gender: $gender, tags: $tags, status: $status, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, failureOption: $failureOption)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _NewContactFormState &&
+        (other is _ContactFormState &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.phone, phone) ||
@@ -315,10 +319,10 @@ class _$_NewContactFormState implements _NewContactFormState {
                     .equals(other.location, location)) &&
             (identical(other.gender, gender) ||
                 const DeepCollectionEquality().equals(other.gender, gender)) &&
-            (identical(other.status, status) ||
-                const DeepCollectionEquality().equals(other.status, status)) &&
             (identical(other.tags, tags) ||
                 const DeepCollectionEquality().equals(other.tags, tags)) &&
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 const DeepCollectionEquality()
                     .equals(other.showErrorMessages, showErrorMessages)) &&
@@ -339,49 +343,48 @@ class _$_NewContactFormState implements _NewContactFormState {
       const DeepCollectionEquality().hash(phones) ^
       const DeepCollectionEquality().hash(location) ^
       const DeepCollectionEquality().hash(gender) ^
-      const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(tags) ^
+      const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
       const DeepCollectionEquality().hash(failureOption);
 
   @JsonKey(ignore: true)
   @override
-  _$NewContactFormStateCopyWith<_NewContactFormState> get copyWith =>
-      __$NewContactFormStateCopyWithImpl<_NewContactFormState>(
-          this, _$identity);
+  _$ContactFormStateCopyWith<_ContactFormState> get copyWith =>
+      __$ContactFormStateCopyWithImpl<_ContactFormState>(this, _$identity);
 }
 
-abstract class _NewContactFormState implements NewContactFormState {
-  const factory _NewContactFormState(
+abstract class _ContactFormState implements ContactFormState {
+  const factory _ContactFormState(
       {required String name,
       required String phone,
       required String whatsapp,
       required List<String> phones,
       required String location,
       required String gender,
-      required String status,
       required List<String> tags,
+      required String status,
       required bool showErrorMessages,
       required bool isSubmitting,
-      required Option<DatabaseFailure> failureOption}) = _$_NewContactFormState;
+      required Option<DatabaseFailure> failureOption}) = _$_ContactFormState;
 
   @override
   String get name => throw _privateConstructorUsedError;
   @override
   String get phone => throw _privateConstructorUsedError;
-  @override
+  @override //TODO make nullable
   String get whatsapp => throw _privateConstructorUsedError;
-  @override
+  @override //TODO make nullable
   List<String> get phones => throw _privateConstructorUsedError;
-  @override
+  @override //TODO make nullable
   String get location => throw _privateConstructorUsedError;
-  @override
+  @override //TODO make nullable
   String get gender => throw _privateConstructorUsedError;
-  @override
-  String get status => throw _privateConstructorUsedError;
-  @override
+  @override //TODO make nullable
   List<String> get tags => throw _privateConstructorUsedError;
+  @override //TODO make nullable
+  String get status => throw _privateConstructorUsedError;
   @override
   bool get showErrorMessages => throw _privateConstructorUsedError;
   @override
@@ -391,6 +394,6 @@ abstract class _NewContactFormState implements NewContactFormState {
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$NewContactFormStateCopyWith<_NewContactFormState> get copyWith =>
+  _$ContactFormStateCopyWith<_ContactFormState> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -26,9 +26,9 @@ class ContactAdapter extends TypeAdapter<_$_Contact> {
       location: fields[6] as String?,
       phone: fields[7] as String?,
       whatsapp: fields[8] as String?,
-      phones: (fields[9] as List?)?.cast<dynamic>(),
+      phones: (fields[9] as List?)?.cast<String>(),
       photo: fields[10] as String?,
-      tags: (fields[11] as List?)?.cast<dynamic>(),
+      tags: (fields[11] as List?)?.cast<String>(),
       importedId: fields[12] as String?,
     );
   }

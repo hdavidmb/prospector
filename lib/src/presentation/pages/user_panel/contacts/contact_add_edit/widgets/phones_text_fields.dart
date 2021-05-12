@@ -62,6 +62,7 @@ class _PhonesTextFieldsState extends State<PhonesTextFields> {
                     removedControllers.add(controllers.last);
                     controllers.removeLast();
                     widget.phonesList.removeAt(index);
+                    //TODO if it was phone/whatsapp delete it also
                   } else {
                     if (index == widget.phonesList.length) {
                       if (index == 0) {
@@ -84,7 +85,7 @@ class _PhonesTextFieldsState extends State<PhonesTextFields> {
               child: IconButton(
                 icon: Icon(
                   Icons.phone_in_talk_rounded,
-                  color: _getPhoneIconColor(context, index, widget.phone),
+                  color: _getIconColor(context, index, widget.phone),
                 ),
                 onPressed: () {
                   if (index < widget.phonesList.length) {
@@ -98,7 +99,7 @@ class _PhonesTextFieldsState extends State<PhonesTextFields> {
               child: IconButton(
                 icon: FaIcon(
                   FontAwesomeIcons.whatsapp,
-                  color: _getPhoneIconColor(context, index, widget.whatsapp),
+                  color: _getIconColor(context, index, widget.whatsapp),
                 ),
                 onPressed: () {
                   if (index < widget.phonesList.length) {
@@ -130,7 +131,7 @@ class _PhonesTextFieldsState extends State<PhonesTextFields> {
     }
   }
 
-  Color _getPhoneIconColor(BuildContext context, int index, String toCompare) {
+  Color _getIconColor(BuildContext context, int index, String toCompare) {
     final brightness = Theme.of(context).brightness;
     final disabledColor =
         brightness == Brightness.dark ? Colors.white12 : Colors.black12;

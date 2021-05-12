@@ -191,19 +191,34 @@ Future<Option<String>> showDeleteConfirmDialog(
             ],
           ),
         );
-  return showTextFieldDialog(context: context, title: title, content: content, isPassword: isPassword);
+  return showTextFieldDialog(
+    context: context,
+    title: title,
+    content: content,
+    isPassword: isPassword,
+    hintText: isPassword //TODO test
+        ? AppLocalizations.of(context)!.password
+        : AppLocalizations.of(context)!.typeHere,
+  );
 }
 
-Future<Option<String>> showReloginPasswordDialog({required BuildContext context}) {
+Future<Option<String>> showReloginPasswordDialog(
+    {required BuildContext context}) {
   final title = Text(AppLocalizations.of(context)!.reauthenticate);
   final content = Text(AppLocalizations.of(context)!.reauthMessage);
-  return showTextFieldDialog(context: context, title: title, content: content, isPassword: true);
+  return showTextFieldDialog(
+      context: context,
+      title: title,
+      content: content,
+      isPassword: true,
+      hintText: AppLocalizations.of(context)!.password); //TODO test
 }
 
 Future<Option<String>> showTextFieldDialog(
     {required BuildContext context,
-    required Widget title,
-    required Widget content,
+    Widget? title,
+    Widget? content,
+    required String hintText, //TODO test
     bool isPassword = false}) async {
   final response = await showDialog(
     context: context,
@@ -216,17 +231,17 @@ Future<Option<String>> showTextFieldDialog(
           child: ListView(
             shrinkWrap: true,
             children: <Widget>[
-              content,
+              if (content != null) content,
               const SizedBox(height: 10.0),
               TextFormField(
                 controller: _controller,
                 autofocus: true,
                 obscureText: isPassword,
                 textInputAction: TextInputAction.done,
-                decoration: InputDecoration(
-                    hintText: isPassword
-                        ? AppLocalizations.of(context)!.password
-                        : AppLocalizations.of(context)!.typeHere),
+                decoration: InputDecoration(hintText: hintText),
+                    //TODO test and delete hintText: isPassword
+                    //     ? AppLocalizations.of(context)!.password
+                    //     : AppLocalizations.of(context)!.typeHere),
                 onFieldSubmitted: (value) {
                   Navigator.of(context).pop(value);
                 },

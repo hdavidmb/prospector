@@ -11,7 +11,7 @@ class DeleteTagDocument {
     required this.remoteTagsRepository,
   });
 
-  Future<Either<DatabaseFailure, Unit>> call( //TODO test
+  Future<Either<DatabaseFailure, Unit>> call(
       {required String tagID, required String uid}) async {
     final localDelete =
         await localTagsRepository.deleteTagDocument(tagID: tagID, uid: uid);

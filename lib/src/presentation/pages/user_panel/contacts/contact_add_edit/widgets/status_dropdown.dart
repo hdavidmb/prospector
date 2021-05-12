@@ -4,11 +4,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 
-class StatusDropDown extends ConsumerWidget {
+class StatusDropdown extends ConsumerWidget {
   final String status;
   final String gender;
   final void Function(String) onStatusChanged;
-  const StatusDropDown({
+  const StatusDropdown({
     Key? key,
     required this.status,
     required this.gender,

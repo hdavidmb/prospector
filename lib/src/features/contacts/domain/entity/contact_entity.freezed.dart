@@ -26,9 +26,9 @@ class _$ContactTearOff {
       @HiveField(6) String? location,
       @HiveField(7) String? phone,
       @HiveField(8) String? whatsapp,
-      @HiveField(9) List<dynamic>? phones,
+      @HiveField(9) List<String>? phones,
       @HiveField(10) String? photo,
-      @HiveField(11) List<dynamic>? tags,
+      @HiveField(11) List<String>? tags,
       @HiveField(12) String? importedId}) {
     return _Contact(
       id: id,
@@ -72,11 +72,11 @@ mixin _$Contact {
   @HiveField(8)
   String? get whatsapp => throw _privateConstructorUsedError;
   @HiveField(9)
-  List<dynamic>? get phones => throw _privateConstructorUsedError;
+  List<String>? get phones => throw _privateConstructorUsedError;
   @HiveField(10)
   String? get photo => throw _privateConstructorUsedError;
   @HiveField(11)
-  List<dynamic>? get tags => throw _privateConstructorUsedError;
+  List<String>? get tags => throw _privateConstructorUsedError;
   @HiveField(12)
   String? get importedId => throw _privateConstructorUsedError;
 
@@ -98,9 +98,9 @@ abstract class $ContactCopyWith<$Res> {
       @HiveField(6) String? location,
       @HiveField(7) String? phone,
       @HiveField(8) String? whatsapp,
-      @HiveField(9) List<dynamic>? phones,
+      @HiveField(9) List<String>? phones,
       @HiveField(10) String? photo,
-      @HiveField(11) List<dynamic>? tags,
+      @HiveField(11) List<String>? tags,
       @HiveField(12) String? importedId});
 }
 
@@ -168,7 +168,7 @@ class _$ContactCopyWithImpl<$Res> implements $ContactCopyWith<$Res> {
       phones: phones == freezed
           ? _value.phones
           : phones // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String>?,
       photo: photo == freezed
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
@@ -176,7 +176,7 @@ class _$ContactCopyWithImpl<$Res> implements $ContactCopyWith<$Res> {
       tags: tags == freezed
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String>?,
       importedId: importedId == freezed
           ? _value.importedId
           : importedId // ignore: cast_nullable_to_non_nullable
@@ -200,9 +200,9 @@ abstract class _$ContactCopyWith<$Res> implements $ContactCopyWith<$Res> {
       @HiveField(6) String? location,
       @HiveField(7) String? phone,
       @HiveField(8) String? whatsapp,
-      @HiveField(9) List<dynamic>? phones,
+      @HiveField(9) List<String>? phones,
       @HiveField(10) String? photo,
-      @HiveField(11) List<dynamic>? tags,
+      @HiveField(11) List<String>? tags,
       @HiveField(12) String? importedId});
 }
 
@@ -271,7 +271,7 @@ class __$ContactCopyWithImpl<$Res> extends _$ContactCopyWithImpl<$Res>
       phones: phones == freezed
           ? _value.phones
           : phones // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String>?,
       photo: photo == freezed
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
@@ -279,7 +279,7 @@ class __$ContactCopyWithImpl<$Res> extends _$ContactCopyWithImpl<$Res>
       tags: tags == freezed
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String>?,
       importedId: importedId == freezed
           ? _value.importedId
           : importedId // ignore: cast_nullable_to_non_nullable
@@ -337,13 +337,13 @@ class _$_Contact extends _Contact {
   final String? whatsapp;
   @override
   @HiveField(9)
-  final List<dynamic>? phones;
+  final List<String>? phones;
   @override
   @HiveField(10)
   final String? photo;
   @override
   @HiveField(11)
-  final List<dynamic>? tags;
+  final List<String>? tags;
   @override
   @HiveField(12)
   final String? importedId;
@@ -424,9 +424,9 @@ abstract class _Contact extends Contact {
       @HiveField(6) String? location,
       @HiveField(7) String? phone,
       @HiveField(8) String? whatsapp,
-      @HiveField(9) List<dynamic>? phones,
+      @HiveField(9) List<String>? phones,
       @HiveField(10) String? photo,
-      @HiveField(11) List<dynamic>? tags,
+      @HiveField(11) List<String>? tags,
       @HiveField(12) String? importedId}) = _$_Contact;
   const _Contact._() : super._();
 
@@ -459,13 +459,13 @@ abstract class _Contact extends Contact {
   String? get whatsapp => throw _privateConstructorUsedError;
   @override
   @HiveField(9)
-  List<dynamic>? get phones => throw _privateConstructorUsedError;
+  List<String>? get phones => throw _privateConstructorUsedError;
   @override
   @HiveField(10)
   String? get photo => throw _privateConstructorUsedError;
   @override
   @HiveField(11)
-  List<dynamic>? get tags => throw _privateConstructorUsedError;
+  List<String>? get tags => throw _privateConstructorUsedError;
   @override
   @HiveField(12)
   String? get importedId => throw _privateConstructorUsedError;

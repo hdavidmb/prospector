@@ -31,7 +31,6 @@ class TagsNotifier extends ChangeNotifier {
   void reset() => _tagsState = const TagsState.initial();
 
   Future<Either<DatabaseFailure, Unit>> createTag(Tag tag) async {
-    //TODO test
     final uid = read(userInfoNotifierProvider).user.uid;
     final createResult = await createTagDocument(tag: tag, uid: uid);
     return createResult.fold(
@@ -45,7 +44,6 @@ class TagsNotifier extends ChangeNotifier {
   }
 
   Future<void> getTags() async {
-    //TODO test
     if (_tagsState != const TagsState.fetching()) {
       _tagsState = const TagsState.fetching();
       final uid = read(userInfoNotifierProvider).user.uid;
@@ -63,7 +61,6 @@ class TagsNotifier extends ChangeNotifier {
 
   Future<Either<DatabaseFailure, Unit>> deleteTag(
       {required String tagID}) async {
-    // TODO test
     // TODO delete tag from contacts
     final uid = read(userInfoNotifierProvider).user.uid;
     final deleteResult = await deleteTagDocument(tagID: tagID, uid: uid);

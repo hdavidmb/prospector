@@ -12,7 +12,7 @@ class CreateTagDocument {
     required this.remoteTagsRepository,
   });
 
-  Future<Either<DatabaseFailure, Unit>> call( //TODO test
+  Future<Either<DatabaseFailure, Unit>> call(
       {required Tag tag, required String uid}) async {
     final localCreate =
         await localTagsRepository.createTagDocument(tag: tag, uid: uid);
