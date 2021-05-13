@@ -93,6 +93,8 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
           // Edit
           failureOrSuccess = await read(contactsNotifierProvider)
               .updateContact(newContactInfo); // TODO test
+        } else {
+          failureOrSuccess = right(unit);
         }
       } else {
         // Create contact

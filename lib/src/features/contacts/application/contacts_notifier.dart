@@ -80,6 +80,7 @@ class ContactsNotifier extends ChangeNotifier {
         final int index = _contacts
             .indexWhere((listContact) => listContact.id == newContactInfo.id);
         _contacts[index] = newContactInfo;
+        _contacts.sort((a, b) => b.modified.compareTo(a.modified));
         notifyListeners();
         return right(unit);
       },

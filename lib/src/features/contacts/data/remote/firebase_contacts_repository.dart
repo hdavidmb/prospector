@@ -86,7 +86,7 @@ class FirebaseContactsRepository implements IContactsRemoteRepository {
           .doc(uid)
           .collection('contacts')
           .doc(contact.id)
-          .update(contactMap);
+          .set(contactMap);
       return right(unit);
     } catch (e) {
       return left(const DatabaseFailure.serverError());
