@@ -26,9 +26,17 @@ class PhonesTextFields extends StatefulWidget {
 class _PhonesTextFieldsState extends State<PhonesTextFields> {
   final List<TextEditingController> controllers = [];
   final List<TextEditingController> removedControllers = [];
+  //TODO check for whatsapp and phone conflict with duplicate numbers
 
   @override
   Widget build(BuildContext context) {
+    if (widget.phonesList.isEmpty) {
+      WidgetsBinding.instance!.addPostFrameCallback((_) {
+        for (final controller in controllers) {
+          controller.clear();
+        }
+      });
+    }
     final List<Widget> textFields = [];
     for (int index = 0; index <= widget.phonesList.length; index++) {
       if (index == controllers.length) {
@@ -57,12 +65,18 @@ class _PhonesTextFieldsState extends State<PhonesTextFields> {
                 onChanged: (value) {
                   if (value.isEmpty) {
                     FocusScope.of(context).unfocus();
+
                     removedControllers.add(controllers[index]);
                     controllers.removeAt(index);
                     removedControllers.add(controllers.last);
                     controllers.removeLast();
+                    if (widget.phonesList[index] == widget.phone) {
+                      widget.onPhoneChanged(value);
+                    }
+                    if (widget.phonesList[index] == widget.whatsapp) {
+                      widget.onWhatsappChanged(value);
+                    }
                     widget.phonesList.removeAt(index);
-                    //TODO if it was phone/whatsapp delete it also
                   } else {
                     if (index == widget.phonesList.length) {
                       if (index == 0) {
@@ -71,8 +85,12 @@ class _PhonesTextFieldsState extends State<PhonesTextFields> {
                       }
                       widget.phonesList.add(value);
                     } else {
-                      if (widget.phonesList[index] == widget.phone) widget.onPhoneChanged(value);
-                      if (widget.phonesList[index] == widget.whatsapp) widget.onWhatsappChanged(value);
+                      if (widget.phonesList[index] == widget.phone) {
+                        widget.onPhoneChanged(value);
+                      }
+                      if (widget.phonesList[index] == widget.whatsapp) {
+                        widget.onWhatsappChanged(value);
+                      }
                       widget.phonesList[index] = value;
                     }
                     widget.onPhonesListChanged(widget.phonesList);
@@ -111,7 +129,9 @@ class _PhonesTextFieldsState extends State<PhonesTextFields> {
           ],
         ),
       );
-      if (index < widget.phonesList.length) textFields.add(const Divider(height: 0.0));
+      if (index < widget.phonesList.length) {
+        textFields.add(const Divider(height: 0.0));
+      }
     }
     return Column(children: textFields);
   }
@@ -135,7 +155,8 @@ class _PhonesTextFieldsState extends State<PhonesTextFields> {
     final brightness = Theme.of(context).brightness;
     final disabledColor =
         brightness == Brightness.dark ? Colors.white12 : Colors.black12;
-    final selectedColor = brightness == Brightness.dark ? Colors.white70 : Colors.black87;
+    final selectedColor =
+        brightness == Brightness.dark ? Colors.white70 : Colors.black87;
     if (index < widget.phonesList.length) {
       return (toCompare == widget.phonesList[index])
           ? selectedColor

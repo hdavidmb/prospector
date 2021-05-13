@@ -13,7 +13,7 @@ class CreateContactDocument {
   });
 
   Future<Either<DatabaseFailure, Unit>> call(
-      {required Contact contact, required String uid}) async { //TODO test
+      {required Contact contact, required String uid}) async {
     final localCreate = await localContactsRepository.createContactDocument(
         contact: contact, uid: uid);
     return localCreate.fold(

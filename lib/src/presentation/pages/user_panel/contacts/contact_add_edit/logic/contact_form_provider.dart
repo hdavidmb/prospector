@@ -5,5 +5,7 @@ import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_ad
 final contactFormProvider =
     StateNotifierProvider<ContactFormStateNotifier, ContactFormState>(
         (ref) {
-  return ContactFormStateNotifier();
+  return ContactFormStateNotifier(
+    read: ref.read,
+  );
 });

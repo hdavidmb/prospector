@@ -15,7 +15,6 @@ class FirebaseContactsRepository implements IContactsRemoteRepository {
   @override
   Future<Either<DatabaseFailure, Unit>> createContactDocument(
       {required Contact contact, required String uid}) async {
-    //TODO test
     final Map<String, dynamic> contactMap = contact.toMap();
     try {
       await firestoreInstance

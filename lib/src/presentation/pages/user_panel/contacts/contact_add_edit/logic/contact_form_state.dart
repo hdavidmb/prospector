@@ -17,7 +17,7 @@ class ContactFormState with _$ContactFormState {
     required String status,
     required bool showErrorMessages,
     required bool isSubmitting,
-    required Option<DatabaseFailure> failureOption, //TODO change to Option<Either<DatabaseFailure, Unit>>
+    required Option<Either<DatabaseFailure, Unit>> failureOrSuccesOption,
   }) = _ContactFormState;
 
   factory ContactFormState.initial() => ContactFormState(
@@ -31,6 +31,6 @@ class ContactFormState with _$ContactFormState {
         status: '',
         isSubmitting: false,
         showErrorMessages: false,
-        failureOption: none(),
+        failureOrSuccesOption: none(),
       );
 }

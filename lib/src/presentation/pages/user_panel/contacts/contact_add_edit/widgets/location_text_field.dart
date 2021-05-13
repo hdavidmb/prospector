@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
+
 import 'package:prospector/src/core/private/private_keys.dart';
 // ignore: implementation_imports
 import 'package:google_maps_webservice/src/places.dart' show Prediction;
@@ -30,8 +31,17 @@ class _LocationTextFieldState extends State<LocationTextField> {
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final Locale myLocale = Localizations.localeOf(context);
+    if (widget.location.isEmpty) {
+      WidgetsBinding.instance!.addPostFrameCallback((_) => _controller.clear());
+    }
     return TextFormField(
       readOnly: true,
       controller: _controller,

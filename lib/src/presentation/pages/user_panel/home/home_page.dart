@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/src/features/auth/application/auth_providers.dart';
 import 'package:prospector/src/features/auth/application/auth_state.dart';
-import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
 import 'package:prospector/src/features/user/application/user_info_providers.dart';
 import 'package:prospector/src/presentation/core/fade_page_route.dart';
 import 'package:prospector/src/presentation/pages/auth/register/logic/register_form_provider.dart';
@@ -44,7 +43,7 @@ class HomePage extends StatelessWidget {
       //   ),
       // ),
 
-      //SettingsMenuPage(),
+      // child: SettingsMenuPage(),
       // child: Scaffold(
       //   appBar: AppBar(title: const Text('Home')),
       //   body: Center(

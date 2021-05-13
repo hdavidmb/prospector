@@ -34,7 +34,6 @@ class ContactsNotifier extends ChangeNotifier {
   void reset() => _contactsState = const ContactsState.initial();
 
   Future<Either<DatabaseFailure, Unit>> createContact(Contact contact) async {
-    //TODO test
     final uid = read(userInfoNotifierProvider).user.uid;
     final createResult =
         await createContactDocument(contact: contact, uid: uid);

@@ -27,7 +27,7 @@ class _$ContactFormStateTearOff {
       required String status,
       required bool showErrorMessages,
       required bool isSubmitting,
-      required Option<DatabaseFailure> failureOption}) {
+      required Option<Either<DatabaseFailure, Unit>> failureOrSuccesOption}) {
     return _ContactFormState(
       name: name,
       phone: phone,
@@ -39,7 +39,7 @@ class _$ContactFormStateTearOff {
       status: status,
       showErrorMessages: showErrorMessages,
       isSubmitting: isSubmitting,
-      failureOption: failureOption,
+      failureOrSuccesOption: failureOrSuccesOption,
     );
   }
 }
@@ -50,20 +50,16 @@ const $ContactFormState = _$ContactFormStateTearOff();
 /// @nodoc
 mixin _$ContactFormState {
   String get name => throw _privateConstructorUsedError;
-  String get phone => throw _privateConstructorUsedError; //TODO make nullable
-  String get whatsapp =>
-      throw _privateConstructorUsedError; //TODO make nullable
-  List<String> get phones =>
-      throw _privateConstructorUsedError; //TODO make nullable
-  String get location =>
-      throw _privateConstructorUsedError; //TODO make nullable
-  String get gender => throw _privateConstructorUsedError; //TODO make nullable
-  List<String> get tags =>
-      throw _privateConstructorUsedError; //TODO make nullable
+  String get phone => throw _privateConstructorUsedError;
+  String get whatsapp => throw _privateConstructorUsedError;
+  List<String> get phones => throw _privateConstructorUsedError;
+  String get location => throw _privateConstructorUsedError;
+  String get gender => throw _privateConstructorUsedError;
+  List<String> get tags => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
-  Option<DatabaseFailure> get failureOption =>
+  Option<Either<DatabaseFailure, Unit>> get failureOrSuccesOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -87,7 +83,7 @@ abstract class $ContactFormStateCopyWith<$Res> {
       String status,
       bool showErrorMessages,
       bool isSubmitting,
-      Option<DatabaseFailure> failureOption});
+      Option<Either<DatabaseFailure, Unit>> failureOrSuccesOption});
 }
 
 /// @nodoc
@@ -111,7 +107,7 @@ class _$ContactFormStateCopyWithImpl<$Res>
     Object? status = freezed,
     Object? showErrorMessages = freezed,
     Object? isSubmitting = freezed,
-    Object? failureOption = freezed,
+    Object? failureOrSuccesOption = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -154,10 +150,10 @@ class _$ContactFormStateCopyWithImpl<$Res>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
-      failureOption: failureOption == freezed
-          ? _value.failureOption
-          : failureOption // ignore: cast_nullable_to_non_nullable
-              as Option<DatabaseFailure>,
+      failureOrSuccesOption: failureOrSuccesOption == freezed
+          ? _value.failureOrSuccesOption
+          : failureOrSuccesOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<DatabaseFailure, Unit>>,
     ));
   }
 }
@@ -180,7 +176,7 @@ abstract class _$ContactFormStateCopyWith<$Res>
       String status,
       bool showErrorMessages,
       bool isSubmitting,
-      Option<DatabaseFailure> failureOption});
+      Option<Either<DatabaseFailure, Unit>> failureOrSuccesOption});
 }
 
 /// @nodoc
@@ -206,7 +202,7 @@ class __$ContactFormStateCopyWithImpl<$Res>
     Object? status = freezed,
     Object? showErrorMessages = freezed,
     Object? isSubmitting = freezed,
-    Object? failureOption = freezed,
+    Object? failureOrSuccesOption = freezed,
   }) {
     return _then(_ContactFormState(
       name: name == freezed
@@ -249,10 +245,10 @@ class __$ContactFormStateCopyWithImpl<$Res>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
-      failureOption: failureOption == freezed
-          ? _value.failureOption
-          : failureOption // ignore: cast_nullable_to_non_nullable
-              as Option<DatabaseFailure>,
+      failureOrSuccesOption: failureOrSuccesOption == freezed
+          ? _value.failureOrSuccesOption
+          : failureOrSuccesOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<DatabaseFailure, Unit>>,
     ));
   }
 }
@@ -271,34 +267,34 @@ class _$_ContactFormState implements _ContactFormState {
       required this.status,
       required this.showErrorMessages,
       required this.isSubmitting,
-      required this.failureOption});
+      required this.failureOrSuccesOption});
 
   @override
   final String name;
   @override
   final String phone;
-  @override //TODO make nullable
+  @override
   final String whatsapp;
-  @override //TODO make nullable
+  @override
   final List<String> phones;
-  @override //TODO make nullable
+  @override
   final String location;
-  @override //TODO make nullable
+  @override
   final String gender;
-  @override //TODO make nullable
+  @override
   final List<String> tags;
-  @override //TODO make nullable
+  @override
   final String status;
   @override
   final bool showErrorMessages;
   @override
   final bool isSubmitting;
   @override
-  final Option<DatabaseFailure> failureOption;
+  final Option<Either<DatabaseFailure, Unit>> failureOrSuccesOption;
 
   @override
   String toString() {
-    return 'ContactFormState(name: $name, phone: $phone, whatsapp: $whatsapp, phones: $phones, location: $location, gender: $gender, tags: $tags, status: $status, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, failureOption: $failureOption)';
+    return 'ContactFormState(name: $name, phone: $phone, whatsapp: $whatsapp, phones: $phones, location: $location, gender: $gender, tags: $tags, status: $status, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, failureOrSuccesOption: $failureOrSuccesOption)';
   }
 
   @override
@@ -329,9 +325,9 @@ class _$_ContactFormState implements _ContactFormState {
             (identical(other.isSubmitting, isSubmitting) ||
                 const DeepCollectionEquality()
                     .equals(other.isSubmitting, isSubmitting)) &&
-            (identical(other.failureOption, failureOption) ||
-                const DeepCollectionEquality()
-                    .equals(other.failureOption, failureOption)));
+            (identical(other.failureOrSuccesOption, failureOrSuccesOption) ||
+                const DeepCollectionEquality().equals(
+                    other.failureOrSuccesOption, failureOrSuccesOption)));
   }
 
   @override
@@ -347,7 +343,7 @@ class _$_ContactFormState implements _ContactFormState {
       const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
-      const DeepCollectionEquality().hash(failureOption);
+      const DeepCollectionEquality().hash(failureOrSuccesOption);
 
   @JsonKey(ignore: true)
   @override
@@ -367,30 +363,31 @@ abstract class _ContactFormState implements ContactFormState {
       required String status,
       required bool showErrorMessages,
       required bool isSubmitting,
-      required Option<DatabaseFailure> failureOption}) = _$_ContactFormState;
+      required Option<Either<DatabaseFailure, Unit>>
+          failureOrSuccesOption}) = _$_ContactFormState;
 
   @override
   String get name => throw _privateConstructorUsedError;
   @override
   String get phone => throw _privateConstructorUsedError;
-  @override //TODO make nullable
+  @override
   String get whatsapp => throw _privateConstructorUsedError;
-  @override //TODO make nullable
+  @override
   List<String> get phones => throw _privateConstructorUsedError;
-  @override //TODO make nullable
+  @override
   String get location => throw _privateConstructorUsedError;
-  @override //TODO make nullable
+  @override
   String get gender => throw _privateConstructorUsedError;
-  @override //TODO make nullable
+  @override
   List<String> get tags => throw _privateConstructorUsedError;
-  @override //TODO make nullable
+  @override
   String get status => throw _privateConstructorUsedError;
   @override
   bool get showErrorMessages => throw _privateConstructorUsedError;
   @override
   bool get isSubmitting => throw _privateConstructorUsedError;
   @override
-  Option<DatabaseFailure> get failureOption =>
+  Option<Either<DatabaseFailure, Unit>> get failureOrSuccesOption =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

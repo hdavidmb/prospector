@@ -71,6 +71,7 @@
     "newPhone": "New phone",
     "city": "City",
     "newProspect": "New prospect",
+    "editProspect": "Edit prospect",
     "gender": "Gender",
     "male": "Male",
     "female": "Female",
@@ -92,5 +93,6 @@
     "executives": "Executives",
     "addTag": "Add tag",
     "addANewTag": "Add a new tag:",
-    "tagName": "Tag name"
+    "tagName": "Tag name",
+    "contactSavedSuccessfully": "Contact saved successfully"
 }

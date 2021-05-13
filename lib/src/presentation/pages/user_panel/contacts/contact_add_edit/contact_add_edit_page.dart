@@ -25,16 +25,13 @@ class ContactAddEditPage extends ConsumerWidget {
         context.read(contactFormProvider.notifier).reset();
         return true;
       },
-      child: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text(AppLocalizations.of(context)!.newProspect),
-          ),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: ContactForm(editingContact: editingContact),
-          ),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(editingContact != null ? AppLocalizations.of(context)!.editProspect : AppLocalizations.of(context)!.newProspect),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: ContactForm(editingContact: editingContact),
         ),
       ),
     );

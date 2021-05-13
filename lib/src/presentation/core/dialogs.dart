@@ -10,7 +10,30 @@ import 'package:prospector/src/features/user/domain/failures/user_info_failure.d
 
 import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
 
-void showSnackBar({required BuildContext context, required String message}) {
+enum SnackbarType { failure, success, warning }
+
+void showSnackBar({
+  required BuildContext context,
+  required String message,
+  required SnackbarType type,
+}) {
+  late Color color;
+  late IconData icon;
+  switch (type) {
+    case SnackbarType.failure:
+      color = Colors.red[600]!;
+      icon = Icons.info;
+      break;
+    case SnackbarType.success:
+      color = Colors.green[600]!;
+      icon = Icons.check;
+      break;
+    case SnackbarType.warning:
+      color = Colors.amber;
+      icon = Icons.warning;
+      break;
+  }
+
   showFlash(
     context: context,
     duration: const Duration(milliseconds: 4000),
@@ -21,8 +44,11 @@ void showSnackBar({required BuildContext context, required String message}) {
         margin: const EdgeInsets.all(10.0),
         borderRadius: BorderRadius.circular(8.0),
         child: FlashBar(
-          icon: Icon(Icons.info, color: Theme.of(context).primaryColor),
-          leftBarIndicatorColor: Theme.of(context).primaryColor,
+          icon: Icon(
+            icon,
+            color: color,
+          ),
+          leftBarIndicatorColor: color,
           message: Text(
             message,
             style: const TextStyle(color: Colors.white70),
@@ -38,33 +64,33 @@ void showFailureSnackbar(BuildContext context, dynamic failure) {
       failure == const DatabaseFailure.serverError() ||
       failure == const UserInfoFailure.serverError()) {
     showSnackBar(
-        context: context, message: AppLocalizations.of(context)!.serverError);
+        context: context, message: AppLocalizations.of(context)!.serverError, type: SnackbarType.failure);
   } else if (failure ==
           const AuthFailure.invalidEmailAndPasswordCombination() ||
       failure == const UserInfoFailure.invalidEmailAndPasswordCombination()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.invalidEmailAndPassword);
+        message: AppLocalizations.of(context)!.invalidEmailAndPassword, type: SnackbarType.failure);
   } else if (failure ==
       const AuthFailure.accountExistsWithDifferentCredential()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.accountWithDifferentCredentials);
+        message: AppLocalizations.of(context)!.accountWithDifferentCredentials, type: SnackbarType.failure);
   } else if (failure == const AuthFailure.userNotFoundResetPassword()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.userNotFoundResetPassword);
+        message: AppLocalizations.of(context)!.userNotFoundResetPassword, type: SnackbarType.failure);
   } else if (failure == const AuthFailure.emailAlreadyInUse() ||
       failure == const UserInfoFailure.emailAlreadyInUse()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.emailAlreadyInUse);
+        message: AppLocalizations.of(context)!.emailAlreadyInUse, type: SnackbarType.failure);
   } else if (failure == const AuthFailure.noConnection() ||
       failure == const DatabaseFailure.noConnection() ||
       failure == const UserInfoFailure.noConnection()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.noConnectionMessage);
+        message: AppLocalizations.of(context)!.noConnectionMessage, type: SnackbarType.failure);
   }
 }
 
@@ -239,9 +265,9 @@ Future<Option<String>> showTextFieldDialog(
                 obscureText: isPassword,
                 textInputAction: TextInputAction.done,
                 decoration: InputDecoration(hintText: hintText),
-                    //TODO test and delete hintText: isPassword
-                    //     ? AppLocalizations.of(context)!.password
-                    //     : AppLocalizations.of(context)!.typeHere),
+                //TODO test and delete hintText: isPassword
+                //     ? AppLocalizations.of(context)!.password
+                //     : AppLocalizations.of(context)!.typeHere),
                 onFieldSubmitted: (value) {
                   Navigator.of(context).pop(value);
                 },
