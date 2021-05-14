@@ -94,5 +94,9 @@
     "addTag": "Add tag",
     "addANewTag": "Add a new tag:",
     "tagName": "Tag name",
-    "contactSavedSuccessfully": "Contact saved successfully"
+    "prospectSavedSuccessfully": "Contact saved successfully",
+    "deleteProspect": "Delete prospect",
+    "delete": "Delete",
+    "areYouSureDeleteProspect": "Are you sure you want to delete this Prospect?"
+
 }

@@ -17,6 +17,7 @@ class ContactFormState with _$ContactFormState {
     required String status,
     required bool showErrorMessages,
     required bool isSubmitting,
+    required bool deleted,
     required Option<Either<DatabaseFailure, Unit>> failureOrSuccesOption,
   }) = _ContactFormState;
 
@@ -31,6 +32,7 @@ class ContactFormState with _$ContactFormState {
         status: '',
         isSubmitting: false,
         showErrorMessages: false,
+        deleted: false,
         failureOrSuccesOption: none(),
       );
 }

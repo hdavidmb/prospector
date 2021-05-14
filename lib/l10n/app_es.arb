@@ -94,5 +94,8 @@
     "addTag": "Agregar etiqueta",
     "addANewTag": "Agregar nueva etiqueta:",
     "tagName": "Nombre de la etiqueta",
-    "contactSavedSuccessfully": "Contacto guardado exitosamente"
+    "prospecttSavedSuccessfully": "Prospecto guardado exitosamente",
+    "deleteProspect": "Eliminar prospecto",
+    "delete": "Eliminar",
+    "areYouSureDeleteProspect": "Confirma que deseas eliminar este prospecto"
 }

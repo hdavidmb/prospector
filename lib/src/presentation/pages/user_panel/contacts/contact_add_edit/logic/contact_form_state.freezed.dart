@@ -27,6 +27,7 @@ class _$ContactFormStateTearOff {
       required String status,
       required bool showErrorMessages,
       required bool isSubmitting,
+      required bool deleted,
       required Option<Either<DatabaseFailure, Unit>> failureOrSuccesOption}) {
     return _ContactFormState(
       name: name,
@@ -39,6 +40,7 @@ class _$ContactFormStateTearOff {
       status: status,
       showErrorMessages: showErrorMessages,
       isSubmitting: isSubmitting,
+      deleted: deleted,
       failureOrSuccesOption: failureOrSuccesOption,
     );
   }
@@ -59,6 +61,7 @@ mixin _$ContactFormState {
   String get status => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
+  bool get deleted => throw _privateConstructorUsedError;
   Option<Either<DatabaseFailure, Unit>> get failureOrSuccesOption =>
       throw _privateConstructorUsedError;
 
@@ -83,6 +86,7 @@ abstract class $ContactFormStateCopyWith<$Res> {
       String status,
       bool showErrorMessages,
       bool isSubmitting,
+      bool deleted,
       Option<Either<DatabaseFailure, Unit>> failureOrSuccesOption});
 }
 
@@ -107,6 +111,7 @@ class _$ContactFormStateCopyWithImpl<$Res>
     Object? status = freezed,
     Object? showErrorMessages = freezed,
     Object? isSubmitting = freezed,
+    Object? deleted = freezed,
     Object? failureOrSuccesOption = freezed,
   }) {
     return _then(_value.copyWith(
@@ -150,6 +155,10 @@ class _$ContactFormStateCopyWithImpl<$Res>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      deleted: deleted == freezed
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
       failureOrSuccesOption: failureOrSuccesOption == freezed
           ? _value.failureOrSuccesOption
           : failureOrSuccesOption // ignore: cast_nullable_to_non_nullable
@@ -176,6 +185,7 @@ abstract class _$ContactFormStateCopyWith<$Res>
       String status,
       bool showErrorMessages,
       bool isSubmitting,
+      bool deleted,
       Option<Either<DatabaseFailure, Unit>> failureOrSuccesOption});
 }
 
@@ -202,6 +212,7 @@ class __$ContactFormStateCopyWithImpl<$Res>
     Object? status = freezed,
     Object? showErrorMessages = freezed,
     Object? isSubmitting = freezed,
+    Object? deleted = freezed,
     Object? failureOrSuccesOption = freezed,
   }) {
     return _then(_ContactFormState(
@@ -245,6 +256,10 @@ class __$ContactFormStateCopyWithImpl<$Res>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      deleted: deleted == freezed
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
       failureOrSuccesOption: failureOrSuccesOption == freezed
           ? _value.failureOrSuccesOption
           : failureOrSuccesOption // ignore: cast_nullable_to_non_nullable
@@ -267,6 +282,7 @@ class _$_ContactFormState implements _ContactFormState {
       required this.status,
       required this.showErrorMessages,
       required this.isSubmitting,
+      required this.deleted,
       required this.failureOrSuccesOption});
 
   @override
@@ -290,11 +306,13 @@ class _$_ContactFormState implements _ContactFormState {
   @override
   final bool isSubmitting;
   @override
+  final bool deleted;
+  @override
   final Option<Either<DatabaseFailure, Unit>> failureOrSuccesOption;
 
   @override
   String toString() {
-    return 'ContactFormState(name: $name, phone: $phone, whatsapp: $whatsapp, phones: $phones, location: $location, gender: $gender, tags: $tags, status: $status, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, failureOrSuccesOption: $failureOrSuccesOption)';
+    return 'ContactFormState(name: $name, phone: $phone, whatsapp: $whatsapp, phones: $phones, location: $location, gender: $gender, tags: $tags, status: $status, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, deleted: $deleted, failureOrSuccesOption: $failureOrSuccesOption)';
   }
 
   @override
@@ -325,6 +343,9 @@ class _$_ContactFormState implements _ContactFormState {
             (identical(other.isSubmitting, isSubmitting) ||
                 const DeepCollectionEquality()
                     .equals(other.isSubmitting, isSubmitting)) &&
+            (identical(other.deleted, deleted) ||
+                const DeepCollectionEquality()
+                    .equals(other.deleted, deleted)) &&
             (identical(other.failureOrSuccesOption, failureOrSuccesOption) ||
                 const DeepCollectionEquality().equals(
                     other.failureOrSuccesOption, failureOrSuccesOption)));
@@ -343,6 +364,7 @@ class _$_ContactFormState implements _ContactFormState {
       const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
+      const DeepCollectionEquality().hash(deleted) ^
       const DeepCollectionEquality().hash(failureOrSuccesOption);
 
   @JsonKey(ignore: true)
@@ -363,6 +385,7 @@ abstract class _ContactFormState implements ContactFormState {
       required String status,
       required bool showErrorMessages,
       required bool isSubmitting,
+      required bool deleted,
       required Option<Either<DatabaseFailure, Unit>>
           failureOrSuccesOption}) = _$_ContactFormState;
 
@@ -386,6 +409,8 @@ abstract class _ContactFormState implements ContactFormState {
   bool get showErrorMessages => throw _privateConstructorUsedError;
   @override
   bool get isSubmitting => throw _privateConstructorUsedError;
+  @override
+  bool get deleted => throw _privateConstructorUsedError;
   @override
   Option<Either<DatabaseFailure, Unit>> get failureOrSuccesOption =>
       throw _privateConstructorUsedError;

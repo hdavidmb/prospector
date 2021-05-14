@@ -1,9 +1,13 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:prospector/src/core/database/database_failures/database_failure.dart';
 import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
 import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
+import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/helpers/form_validators.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/logic/contact_form_state.dart';
 import 'package:random_string/random_string.dart';
@@ -29,6 +33,7 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
       status: editingContact.status,
       showErrorMessages: false,
       isSubmitting: false,
+      deleted: false,
       failureOrSuccesOption: none(),
     );
   }
@@ -92,7 +97,7 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
         if (editingContact != newContactInfo) {
           // Edit
           failureOrSuccess = await read(contactsNotifierProvider)
-              .updateContact(newContactInfo); // TODO test
+              .updateContact(newContactInfo);
         } else {
           failureOrSuccess = right(unit);
         }
@@ -101,12 +106,37 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
         failureOrSuccess =
             await read(contactsNotifierProvider).createContact(newContactInfo);
       }
-
     }
     // Set final state (failure or success)
     state = state.copyWith(
-      isSubmitting: true,
+      isSubmitting: false,
       showErrorMessages: true,
+      failureOrSuccesOption: optionOf(failureOrSuccess),
+    );
+  }
+
+  Future<void> deleteContact(
+      {required BuildContext context, required String contactID}) async {
+    // Set submiting state
+    state = state.copyWith(
+      isSubmitting: true,
+      failureOrSuccesOption: none(),
+    );
+    Either<DatabaseFailure, Unit>? failureOrSuccess;
+    final confirm = await showDeleteConfirmDialog(
+      context: context,
+      title: AppLocalizations.of(context)!.areYouSureDeleteProspect,
+      message: AppLocalizations.of(context)!.thisAcctionCannotBeUndone,
+    );
+    if (confirm) {
+      failureOrSuccess = await read(contactsNotifierProvider)
+          .deleteContact(contactID: contactID);
+    }
+    final deleted = failureOrSuccess?.isRight() ?? false;
+    // Set final state (failure or success)
+    state = state.copyWith(
+      isSubmitting: false,
+      deleted: deleted,
       failureOrSuccesOption: optionOf(failureOrSuccess),
     );
   }

@@ -23,7 +23,7 @@ class HiveContactsRepository implements IContactsLocalRepository {
 
   @override
   Future<Either<DatabaseFailure, Unit>> deleteContactDocument(
-      {required String contactID, required String uid}) async { // TODO test
+      {required String contactID, required String uid}) async {
     try {
       if (!Hive.isBoxOpen('$uid-contacts')) await Hive.openBox<Contact>('$uid-contacts');
       await Hive.box<Contact>('$uid-contacts').delete(contactID);
@@ -48,7 +48,7 @@ class HiveContactsRepository implements IContactsLocalRepository {
   @override
   Future<Either<DatabaseFailure, Unit>> updateContactDocument(
           {required Contact contact, required String uid}) =>
-      _saveContact(contact: contact, uid: uid); // TODO test
+      _saveContact(contact: contact, uid: uid);
 
   Future<Either<DatabaseFailure, Unit>> _saveContact(
       {required Contact contact, required String uid}) async {

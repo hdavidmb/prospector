@@ -38,13 +38,20 @@ class ContactForm extends StatelessWidget {
                 FocusScope.of(context).unfocus();
                 showSnackBar(
                     context: context,
-                    message: AppLocalizations.of(context)!.contactSavedSuccessfully,
+                    message:
+                        AppLocalizations.of(context)!.prospectSavedSuccessfully,
                     type: SnackbarType.success);
                 //Reset form state
                 context.read(contactFormProvider.notifier).reset();
               } else {
                 // Pop view
-                Navigator.of(context).pop();
+                if (state.deleted) {
+                  Navigator.of(context)
+                      .popUntil((route) => route.isFirst); //TODO test when contactDetails page is implemented
+                } else {
+                  Navigator.of(context).pop();
+                }
+                context.read(contactFormProvider.notifier).reset();
               }
             },
           ),
@@ -66,6 +73,7 @@ class ContactForm extends StatelessWidget {
 
                 Row(
                   children: [
+                    //TODO implement image picker for editing
                     Expanded(
                       child: Column(
                         children: [
@@ -149,13 +157,39 @@ class ContactForm extends StatelessWidget {
                       .read(contactFormProvider.notifier)
                       .tagsListChanged(values),
                 ),
+                const SizedBox(height: 10.0),
 
+                // * Save button
                 ElevatedButton(
-                  onPressed: () => context
-                      .read(contactFormProvider.notifier)
-                      .savedButtonPressed(editingContact: editingContact),
-                  child: Text(AppLocalizations.of(context)!.save),
+                  onPressed: (formState.isSubmitting)
+                      ? null
+                      : () => context
+                          .read(contactFormProvider.notifier)
+                          .savedButtonPressed(editingContact: editingContact),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(AppLocalizations.of(context)!.save),
+                      if (formState.isSubmitting)
+                        const CircularProgressIndicator.adaptive(),
+                    ],
+                  ),
                 ),
+
+                if (editingContact != null) ...[
+                  const SizedBox(height: 10.0),
+                  TextButton(
+                    onPressed: (formState.isSubmitting)
+                        ? null
+                        : () => context
+                            .read(contactFormProvider.notifier)
+                            .deleteContact(
+                                context: context,
+                                contactID: editingContact!.id),
+                    child: Text(AppLocalizations.of(context)!.deleteProspect,
+                        style: const TextStyle(color: Colors.red)),
+                  ),
+                ]
               ],
             ),
           ),

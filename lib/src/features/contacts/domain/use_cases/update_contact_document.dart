@@ -13,7 +13,7 @@ class UpdateContactDocument {
   });
 
   Future<Either<DatabaseFailure, Unit>> call(
-      {required Contact contact, required String uid}) async { // TODO test
+      {required Contact contact, required String uid}) async {
     final localUpdate = await localContactsRepository.updateContactDocument(
         contact: contact, uid: uid);
     return localUpdate.fold(

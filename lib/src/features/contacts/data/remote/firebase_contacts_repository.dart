@@ -32,7 +32,6 @@ class FirebaseContactsRepository implements IContactsRemoteRepository {
   @override
   Future<Either<DatabaseFailure, Unit>> deleteContactDocument(
       {required String contactID, required String uid}) async {
-    //TODO test
     try {
       await firestoreInstance
           .collection('users')
@@ -78,7 +77,6 @@ class FirebaseContactsRepository implements IContactsRemoteRepository {
   @override
   Future<Either<DatabaseFailure, Unit>> updateContactDocument(
       {required Contact contact, required String uid}) async {
-    //TODO test
     final Map<String, dynamic> contactMap = contact.toMap();
     try {
       await firestoreInstance

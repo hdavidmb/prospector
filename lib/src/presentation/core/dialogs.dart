@@ -64,33 +64,40 @@ void showFailureSnackbar(BuildContext context, dynamic failure) {
       failure == const DatabaseFailure.serverError() ||
       failure == const UserInfoFailure.serverError()) {
     showSnackBar(
-        context: context, message: AppLocalizations.of(context)!.serverError, type: SnackbarType.failure);
+        context: context,
+        message: AppLocalizations.of(context)!.serverError,
+        type: SnackbarType.failure);
   } else if (failure ==
           const AuthFailure.invalidEmailAndPasswordCombination() ||
       failure == const UserInfoFailure.invalidEmailAndPasswordCombination()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.invalidEmailAndPassword, type: SnackbarType.failure);
+        message: AppLocalizations.of(context)!.invalidEmailAndPassword,
+        type: SnackbarType.failure);
   } else if (failure ==
       const AuthFailure.accountExistsWithDifferentCredential()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.accountWithDifferentCredentials, type: SnackbarType.failure);
+        message: AppLocalizations.of(context)!.accountWithDifferentCredentials,
+        type: SnackbarType.failure);
   } else if (failure == const AuthFailure.userNotFoundResetPassword()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.userNotFoundResetPassword, type: SnackbarType.failure);
+        message: AppLocalizations.of(context)!.userNotFoundResetPassword,
+        type: SnackbarType.failure);
   } else if (failure == const AuthFailure.emailAlreadyInUse() ||
       failure == const UserInfoFailure.emailAlreadyInUse()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.emailAlreadyInUse, type: SnackbarType.failure);
+        message: AppLocalizations.of(context)!.emailAlreadyInUse,
+        type: SnackbarType.failure);
   } else if (failure == const AuthFailure.noConnection() ||
       failure == const DatabaseFailure.noConnection() ||
       failure == const UserInfoFailure.noConnection()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.noConnectionMessage, type: SnackbarType.failure);
+        message: AppLocalizations.of(context)!.noConnectionMessage,
+        type: SnackbarType.failure);
   }
 }
 
@@ -183,7 +190,31 @@ void showMessageDialog(
   );
 }
 
-Future<Option<String>> showDeleteConfirmDialog(
+Future<bool> showDeleteConfirmDialog(
+    {required BuildContext context, String? title, String? message}) async {
+  final response = await showDialog<bool>(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: (title != null && title.isNotEmpty) ? Text(title) : null,
+        content: (message != null && message.isNotEmpty) ? Text(message) : null,
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Text(AppLocalizations.of(context)!.cancel),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: Text(AppLocalizations.of(context)!.delete),
+          ),
+        ],
+      );
+    },
+  );
+  return response ?? false;
+}
+
+Future<Option<String>> showDeleteAccountConfirmDialog(
     {required BuildContext context, required bool isPassword}) async {
   final title = Text(AppLocalizations.of(context)!.areYouSureDeleteAccount);
   final content = isPassword
