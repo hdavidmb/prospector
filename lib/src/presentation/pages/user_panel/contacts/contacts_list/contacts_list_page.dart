@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/contact_add_edit_page.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/logic/contact_form_provider.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/contact_details_page.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/contacts_list/widgets/contact_tile.dart';
 
 class ContactsListPage extends StatelessWidget {
   @override
@@ -16,14 +16,13 @@ class ContactsListPage extends StatelessWidget {
       body: Consumer(builder: (context, watch, child) {
         final contacts = watch(contactsNotifierProvider).contacts;
         return ListView.separated(
-          itemBuilder: (context, index) => ListTile(
-            title: Text(contacts[index].name),
+          itemBuilder: (context, index) => ContactTile(
+            contact: contacts[index],
             onTap: () {
-              context.read(contactFormProvider.notifier).setEditingState(editingContact: contacts[index]);
               Navigator.of(context).push(
                 CupertinoPageRoute(
-                  builder: (context) => ContactAddEditPage(
-                    editingContact: contacts[index],
+                  builder: (context) => ContactDetailsPage(
+                    contactID: contacts[index].id,
                   ),
                 ),
               );

@@ -97,5 +97,7 @@
     "prospectSavedSuccessfully": "Prospecto guardado exitosamente",
     "deleteProspect": "Eliminar prospecto",
     "delete": "Eliminar",
-    "areYouSureDeleteProspect": "Confirma que deseas eliminar este prospecto"
+    "areYouSureDeleteProspect": "Confirma que deseas eliminar este prospecto",
+    "edit": "Editar",
+    "prospectDetails": "Detalles"
 }

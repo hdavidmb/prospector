@@ -46,6 +46,7 @@ dependencies:
   random_string: ^2.2.0-nullsafety
   shared_preferences: ^2.0.5
   sign_in_with_apple: ^3.0.0
+  timeago: ^3.0.2
 
 dev_dependencies:
   flutter_test:
