@@ -7,6 +7,7 @@ import 'package:prospector/src/features/contacts/domain/entity/contact_entity.da
 import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/logic/contact_form_provider.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/logic/contact_form_state.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/contact_image.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/contact_name_text_field.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/gender_dropdown.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/location_text_field.dart';
@@ -46,12 +47,13 @@ class ContactForm extends StatelessWidget {
               } else {
                 // Pop view
                 if (state.deleted) {
-                  Navigator.of(context)
-                      .popUntil((route) => route.isFirst); //TODO test when contactDetails page is implemented
+                  Navigator.of(context).popUntil((route) => route
+                      .isFirst); //TODO test when contactDetails page is implemented
                 } else {
                   Navigator.of(context).pop();
                 }
-                context.read(contactFormProvider.notifier).reset();
+                Future.delayed(const Duration(milliseconds: 300), () => 
+                context.read(contactFormProvider.notifier).reset());
               }
             },
           ),
@@ -73,7 +75,33 @@ class ContactForm extends StatelessWidget {
 
                 Row(
                   children: [
-                    //TODO implement image picker for editing
+                    if (editingContact != null) ...[
+                      GestureDetector(
+                        onTap: () => context
+                            .read(contactFormProvider.notifier)
+                            .getContactImage(context),
+                        child: Column(
+                          children: [
+                            ContactImage(
+                              size: 80,
+                              contactPhoto: editingContact?.photo,
+                              pickedImage: formState.pickedImage,
+                            ),
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                  tapTargetSize:
+                                      MaterialTapTargetSize.shrinkWrap),
+                              onPressed: () => context
+                                  .read(contactFormProvider.notifier)
+                                  .getContactImage(context),
+                              child:
+                                  Text(AppLocalizations.of(context)!.editImage),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 10.0),
+                    ],
                     Expanded(
                       child: Column(
                         children: [

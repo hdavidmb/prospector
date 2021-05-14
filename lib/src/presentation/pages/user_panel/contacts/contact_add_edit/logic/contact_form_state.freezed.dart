@@ -25,8 +25,9 @@ class _$ContactFormStateTearOff {
       required String gender,
       required List<String> tags,
       required String status,
-      required bool showErrorMessages,
+      required File? pickedImage,
       required bool isSubmitting,
+      required bool showErrorMessages,
       required bool deleted,
       required Option<Either<DatabaseFailure, Unit>> failureOrSuccesOption}) {
     return _ContactFormState(
@@ -38,8 +39,9 @@ class _$ContactFormStateTearOff {
       gender: gender,
       tags: tags,
       status: status,
-      showErrorMessages: showErrorMessages,
+      pickedImage: pickedImage,
       isSubmitting: isSubmitting,
+      showErrorMessages: showErrorMessages,
       deleted: deleted,
       failureOrSuccesOption: failureOrSuccesOption,
     );
@@ -59,8 +61,9 @@ mixin _$ContactFormState {
   String get gender => throw _privateConstructorUsedError;
   List<String> get tags => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
-  bool get showErrorMessages => throw _privateConstructorUsedError;
+  File? get pickedImage => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
+  bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
   Option<Either<DatabaseFailure, Unit>> get failureOrSuccesOption =>
       throw _privateConstructorUsedError;
@@ -84,8 +87,9 @@ abstract class $ContactFormStateCopyWith<$Res> {
       String gender,
       List<String> tags,
       String status,
-      bool showErrorMessages,
+      File? pickedImage,
       bool isSubmitting,
+      bool showErrorMessages,
       bool deleted,
       Option<Either<DatabaseFailure, Unit>> failureOrSuccesOption});
 }
@@ -109,8 +113,9 @@ class _$ContactFormStateCopyWithImpl<$Res>
     Object? gender = freezed,
     Object? tags = freezed,
     Object? status = freezed,
-    Object? showErrorMessages = freezed,
+    Object? pickedImage = freezed,
     Object? isSubmitting = freezed,
+    Object? showErrorMessages = freezed,
     Object? deleted = freezed,
     Object? failureOrSuccesOption = freezed,
   }) {
@@ -147,13 +152,17 @@ class _$ContactFormStateCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      showErrorMessages: showErrorMessages == freezed
-          ? _value.showErrorMessages
-          : showErrorMessages // ignore: cast_nullable_to_non_nullable
-              as bool,
+      pickedImage: pickedImage == freezed
+          ? _value.pickedImage
+          : pickedImage // ignore: cast_nullable_to_non_nullable
+              as File?,
       isSubmitting: isSubmitting == freezed
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showErrorMessages: showErrorMessages == freezed
+          ? _value.showErrorMessages
+          : showErrorMessages // ignore: cast_nullable_to_non_nullable
               as bool,
       deleted: deleted == freezed
           ? _value.deleted
@@ -183,8 +192,9 @@ abstract class _$ContactFormStateCopyWith<$Res>
       String gender,
       List<String> tags,
       String status,
-      bool showErrorMessages,
+      File? pickedImage,
       bool isSubmitting,
+      bool showErrorMessages,
       bool deleted,
       Option<Either<DatabaseFailure, Unit>> failureOrSuccesOption});
 }
@@ -210,8 +220,9 @@ class __$ContactFormStateCopyWithImpl<$Res>
     Object? gender = freezed,
     Object? tags = freezed,
     Object? status = freezed,
-    Object? showErrorMessages = freezed,
+    Object? pickedImage = freezed,
     Object? isSubmitting = freezed,
+    Object? showErrorMessages = freezed,
     Object? deleted = freezed,
     Object? failureOrSuccesOption = freezed,
   }) {
@@ -248,13 +259,17 @@ class __$ContactFormStateCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      showErrorMessages: showErrorMessages == freezed
-          ? _value.showErrorMessages
-          : showErrorMessages // ignore: cast_nullable_to_non_nullable
-              as bool,
+      pickedImage: pickedImage == freezed
+          ? _value.pickedImage
+          : pickedImage // ignore: cast_nullable_to_non_nullable
+              as File?,
       isSubmitting: isSubmitting == freezed
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showErrorMessages: showErrorMessages == freezed
+          ? _value.showErrorMessages
+          : showErrorMessages // ignore: cast_nullable_to_non_nullable
               as bool,
       deleted: deleted == freezed
           ? _value.deleted
@@ -280,8 +295,9 @@ class _$_ContactFormState implements _ContactFormState {
       required this.gender,
       required this.tags,
       required this.status,
-      required this.showErrorMessages,
+      required this.pickedImage,
       required this.isSubmitting,
+      required this.showErrorMessages,
       required this.deleted,
       required this.failureOrSuccesOption});
 
@@ -302,9 +318,11 @@ class _$_ContactFormState implements _ContactFormState {
   @override
   final String status;
   @override
-  final bool showErrorMessages;
+  final File? pickedImage;
   @override
   final bool isSubmitting;
+  @override
+  final bool showErrorMessages;
   @override
   final bool deleted;
   @override
@@ -312,7 +330,7 @@ class _$_ContactFormState implements _ContactFormState {
 
   @override
   String toString() {
-    return 'ContactFormState(name: $name, phone: $phone, whatsapp: $whatsapp, phones: $phones, location: $location, gender: $gender, tags: $tags, status: $status, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, deleted: $deleted, failureOrSuccesOption: $failureOrSuccesOption)';
+    return 'ContactFormState(name: $name, phone: $phone, whatsapp: $whatsapp, phones: $phones, location: $location, gender: $gender, tags: $tags, status: $status, pickedImage: $pickedImage, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, deleted: $deleted, failureOrSuccesOption: $failureOrSuccesOption)';
   }
 
   @override
@@ -337,12 +355,15 @@ class _$_ContactFormState implements _ContactFormState {
                 const DeepCollectionEquality().equals(other.tags, tags)) &&
             (identical(other.status, status) ||
                 const DeepCollectionEquality().equals(other.status, status)) &&
-            (identical(other.showErrorMessages, showErrorMessages) ||
+            (identical(other.pickedImage, pickedImage) ||
                 const DeepCollectionEquality()
-                    .equals(other.showErrorMessages, showErrorMessages)) &&
+                    .equals(other.pickedImage, pickedImage)) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 const DeepCollectionEquality()
                     .equals(other.isSubmitting, isSubmitting)) &&
+            (identical(other.showErrorMessages, showErrorMessages) ||
+                const DeepCollectionEquality()
+                    .equals(other.showErrorMessages, showErrorMessages)) &&
             (identical(other.deleted, deleted) ||
                 const DeepCollectionEquality()
                     .equals(other.deleted, deleted)) &&
@@ -362,8 +383,9 @@ class _$_ContactFormState implements _ContactFormState {
       const DeepCollectionEquality().hash(gender) ^
       const DeepCollectionEquality().hash(tags) ^
       const DeepCollectionEquality().hash(status) ^
-      const DeepCollectionEquality().hash(showErrorMessages) ^
+      const DeepCollectionEquality().hash(pickedImage) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
+      const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(deleted) ^
       const DeepCollectionEquality().hash(failureOrSuccesOption);
 
@@ -383,8 +405,9 @@ abstract class _ContactFormState implements ContactFormState {
       required String gender,
       required List<String> tags,
       required String status,
-      required bool showErrorMessages,
+      required File? pickedImage,
       required bool isSubmitting,
+      required bool showErrorMessages,
       required bool deleted,
       required Option<Either<DatabaseFailure, Unit>>
           failureOrSuccesOption}) = _$_ContactFormState;
@@ -406,9 +429,11 @@ abstract class _ContactFormState implements ContactFormState {
   @override
   String get status => throw _privateConstructorUsedError;
   @override
-  bool get showErrorMessages => throw _privateConstructorUsedError;
+  File? get pickedImage => throw _privateConstructorUsedError;
   @override
   bool get isSubmitting => throw _privateConstructorUsedError;
+  @override
+  bool get showErrorMessages => throw _privateConstructorUsedError;
   @override
   bool get deleted => throw _privateConstructorUsedError;
   @override

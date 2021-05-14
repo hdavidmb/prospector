@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,6 +9,9 @@ import 'package:prospector/src/core/database/database_failures/database_failure.
 import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
 import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
+import 'package:prospector/src/features/images/domain/use_cases/get_image.dart';
+import 'package:prospector/src/features/storage/domain/use_cases/upload_contact_image.dart';
+import 'package:prospector/src/features/user/application/user_info_providers.dart';
 import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/helpers/form_validators.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/logic/contact_form_state.dart';
@@ -14,8 +19,12 @@ import 'package:random_string/random_string.dart';
 
 class ContactFormStateNotifier extends StateNotifier<ContactFormState>
     with FormValidators {
+  final GetImage getImage;
+  final UploadContactImage uploadContactImage;
   final Reader read;
   ContactFormStateNotifier({
+    required this.getImage,
+    required this.uploadContactImage,
     required this.read,
   }) : super(ContactFormState.initial());
 
@@ -31,8 +40,9 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
       gender: editingContact.gender ?? '',
       tags: editingContact.tags ?? [],
       status: editingContact.status,
-      showErrorMessages: false,
+      pickedImage: null,
       isSubmitting: false,
+      showErrorMessages: false,
       deleted: false,
       failureOrSuccesOption: none(),
     );
@@ -74,6 +84,27 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
         isSubmitting: true,
         failureOrSuccesOption: none(),
       );
+
+      String? downloadURL;
+      if (editingContact != null && state.pickedImage != null) {
+        final uid = read(userInfoNotifierProvider).user.uid;
+        final uploadResult = await uploadContactImage(
+            uid: uid, contactID: editingContact.id, image: state.pickedImage!);
+        uploadResult.fold(
+          (failure) {
+            failure.maybeWhen(
+              noConnection: () {
+                failureOrSuccess = left(const DatabaseFailure.noConnection());
+              },
+              orElse: () {
+                failureOrSuccess = left(const DatabaseFailure.serverError());
+              },
+            );
+          },
+          (url) => downloadURL = url,
+        );
+      }
+
       // Arrange contactEntity from state values
       final newContactInfo = Contact(
         id: editingContact?.id ?? randomAlphaNumeric(20),
@@ -89,6 +120,7 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
         location: state.location != '' ? state.location : null,
         gender: state.gender != '' ? state.gender : null,
         tags: state.tags.isNotEmpty ? state.tags : null,
+        photo: downloadURL ?? editingContact?.photo,
       );
 
       // If editing compare contact entities
@@ -112,6 +144,22 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
       isSubmitting: false,
       showErrorMessages: true,
       failureOrSuccesOption: optionOf(failureOrSuccess),
+    );
+  }
+
+  Future<void> getContactImage(BuildContext context) async {
+    final selectedSource = await showImageSourceDialog(context);
+    final Option<File> result = await selectedSource.fold(
+      () => none(),
+      (source) async {
+        return getImage(source: source);
+      },
+    );
+    result.fold(
+      () => null,
+      (file) {
+        state = state.copyWith(pickedImage: file);
+      },
     );
   }
 

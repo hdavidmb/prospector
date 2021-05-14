@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:prospector/src/core/database/database_failures/database_failure.dart';
@@ -15,8 +17,9 @@ class ContactFormState with _$ContactFormState {
     required String gender,
     required List<String> tags,
     required String status,
-    required bool showErrorMessages,
+    required File? pickedImage,
     required bool isSubmitting,
+    required bool showErrorMessages,
     required bool deleted,
     required Option<Either<DatabaseFailure, Unit>> failureOrSuccesOption,
   }) = _ContactFormState;
@@ -30,6 +33,7 @@ class ContactFormState with _$ContactFormState {
         gender: '',
         tags: [],
         status: '',
+        pickedImage: null,
         isSubmitting: false,
         showErrorMessages: false,
         deleted: false,
