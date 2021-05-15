@@ -7,9 +7,10 @@ import 'package:prospector/src/features/contacts/application/contacts_providers.
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/contact_add_edit_page.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/logic/contact_form_provider.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/contact_image.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/widgets/contact_info.dart';
 
 class ContactDetailsPage extends ConsumerWidget {
-  final String contactID;
+  final String? contactID;
   const ContactDetailsPage({
     Key? key,
     required this.contactID,
@@ -62,8 +63,15 @@ class ContactDetailsPage extends ConsumerWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Text('Hola Mundo'),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Column(
+            children: [
+              if (_isKeyboardHidden(context)) ContactInfo(contact: contact),
+            ],
+          ),
+        ),
       ),
     );
   }
