@@ -20,7 +20,7 @@ class ContactTile extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: Row(
           children: <Widget>[
-            ContactImage(size: 60.0, contactPhoto: contact.photo),
+            Hero(tag: contact.id, child: ContactImage(size: 60.0, contactPhoto: contact.photo)),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),

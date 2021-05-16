@@ -7,7 +7,9 @@ import 'package:prospector/src/features/contacts/application/contacts_providers.
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/contact_add_edit_page.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/logic/contact_form_provider.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/contact_image.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/widgets/action_buttons.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/widgets/contact_info.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/widgets/interaction_text_field.dart';
 
 class ContactDetailsPage extends ConsumerWidget {
   final String? contactID;
@@ -21,55 +23,62 @@ class ContactDetailsPage extends ConsumerWidget {
     final contact = watch(contactsNotifierProvider)
         .contacts
         .firstWhere((c) => contactID == c.id);
-    return Scaffold(
-      appBar: AppBar(
-        title: !_isKeyboardHidden(context)
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ContactImage(
-                    size: 33.0,
-                    contactPhoto: contact.photo,
-                  ),
-                  const SizedBox(width: 10.0),
-                  Expanded(
-                    child: Text(
-                      contact.name,
-                      softWrap: true,
-                      overflow: TextOverflow.ellipsis,
+    return GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Scaffold(
+        appBar: AppBar(
+          title: !_isKeyboardHidden(context)
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ContactImage(
+                      size: 33.0,
+                      contactPhoto: contact.photo,
+                    ),
+                    const SizedBox(width: 10.0),
+                    Expanded(
+                      child: Text(
+                        contact.name,
+                        softWrap: true,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                )
+              : Text(AppLocalizations.of(context)!.prospectDetails),
+          actions: [
+            TextButton(
+              onPressed: () {
+                context
+                    .read(contactFormProvider.notifier)
+                    .setEditingState(editingContact: contact);
+                Navigator.of(context).push(
+                  CupertinoPageRoute(
+                    builder: (context) => ContactAddEditPage(
+                      editingContact: contact,
                     ),
                   ),
-                ],
-              )
-            : Text(AppLocalizations.of(context)!.prospectDetails),
-        actions: [
-          TextButton(
-            onPressed: () {
-              context
-                  .read(contactFormProvider.notifier)
-                  .setEditingState(editingContact: contact);
-              Navigator.of(context).push(
-                CupertinoPageRoute(
-                  builder: (context) => ContactAddEditPage(
-                    editingContact: contact,
-                  ),
-                ),
-              );
-            },
-            child: Text(
-              AppLocalizations.of(context)!.edit,
-              style: const TextStyle(color: Colors.white),
+                );
+              },
+              child: Text(
+                AppLocalizations.of(context)!.edit,
+                style: const TextStyle(color: Colors.white),
+              ),
             ),
-          ),
-        ],
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Column(
-            children: [
-              if (_isKeyboardHidden(context)) ContactInfo(contact: contact),
-            ],
+          ],
+        ),
+        body: SafeArea(
+          child: GestureDetector(
+            onTap: () => FocusScope.of(context).unfocus(),
+            child: Column(
+              children: [
+                if (_isKeyboardHidden(context)) ContactInfo(contact: contact),
+                ActionButtons(contactStatus: contact.status, gender: contact.gender),
+                const Divider(height: 0.0, thickness: 2.0),
+                const Expanded(child: Center(child: Text('Interactions list'))), //TODO implement interactions
+                InteractionTextField()
+              ],
+            ),
           ),
         ),
       ),

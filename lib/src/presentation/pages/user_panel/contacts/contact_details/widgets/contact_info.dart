@@ -6,6 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/contact_image.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/widgets/contact_tags_wrap.dart';
 
 class ContactInfo extends StatelessWidget {
   final Contact contact;
@@ -16,8 +17,7 @@ class ContactInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isDarkTheme =
-              Theme.of(context).brightness == Brightness.dark;
+    final bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 0.0),
       color: isDarkTheme ? Colors.grey[800] : Colors.grey[200],
@@ -25,7 +25,9 @@ class ContactInfo extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: ContactImage(size: 90.0, contactPhoto: contact.photo),
+            child: Hero(
+                tag: contact.id,
+                child: ContactImage(size: 90.0, contactPhoto: contact.photo)),
           ),
           Expanded(
             child: Padding(
@@ -39,12 +41,10 @@ class ContactInfo extends StatelessWidget {
                         fontSize: 20.0, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                      getStatusText(
-                          context: context, statusID: contact.status),
+                      getStatusText(context: context, statusID: contact.status),
                       style: const TextStyle(
                           fontSize: 16.0, fontWeight: FontWeight.bold)),
-                  if (contact.location != null &&
-                      contact.location!.isNotEmpty)
+                  if (contact.location != null && contact.location!.isNotEmpty)
                     Text(contact.location ?? '',
                         style: const TextStyle(fontSize: 15.0)),
                   if (contact.phone != null && contact.phone!.isNotEmpty)
@@ -84,8 +84,8 @@ class ContactInfo extends StatelessWidget {
                         ),
                       ],
                     ),
-                  if ((contact.phone != null || contact.phone == '') &&
-                      (contact.whatsapp != null || contact.whatsapp == '') &&
+                  if ((contact.phone == null || contact.phone == '') &&
+                      (contact.whatsapp == null || contact.whatsapp == '') &&
                       contact.phones != null &&
                       contact.phones!.isNotEmpty)
                     Row(
@@ -98,15 +98,15 @@ class ContactInfo extends StatelessWidget {
                     ),
                   if (contact.gender != null && contact.gender!.isNotEmpty)
                     Text(
-                      contact.gender == 'male' ? AppLocalizations.of(context)!.male : AppLocalizations.of(context)!.female,
+                      contact.gender == 'male'
+                          ? AppLocalizations.of(context)!.male
+                          : AppLocalizations.of(context)!.female,
                       style: const TextStyle(fontSize: 15.0),
                     ),
-                  // TODO (userTags != null && contact.tags != null)
-                  //     ? SizedBox(height: 4.0)
-                  //     : Container(),
-                  // (userTags != null && contact.tags != null)
-                  //     ? _tagsWrap()
-                  //     : Container(),
+                  if (contact.tags != null && contact.tags!.isNotEmpty) ...[
+                    const SizedBox(height: 8.0),
+                    ContactTagsWrap(tags: contact.tags!),
+                  ]
                 ],
               ),
             ),

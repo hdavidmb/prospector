@@ -31,14 +31,18 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
   void reset() => state = ContactFormState.initial();
 
   void setEditingState({required Contact editingContact}) {
+    final List<String> statePhones = [];
+    final List<String> stateTags = [];
+    if (editingContact.phones != null && editingContact.phones!.isNotEmpty) statePhones.addAll(editingContact.phones!);
+    if (editingContact.tags != null && editingContact.tags!.isNotEmpty) stateTags.addAll(editingContact.tags!);
     state = ContactFormState(
       name: editingContact.name,
       phone: editingContact.phone ?? '',
       whatsapp: editingContact.whatsapp ?? '',
-      phones: editingContact.phones ?? [],
+      phones: statePhones,
       location: editingContact.location ?? '',
       gender: editingContact.gender ?? '',
-      tags: editingContact.tags ?? [],
+      tags: stateTags,
       status: editingContact.status,
       pickedImage: null,
       isSubmitting: false,

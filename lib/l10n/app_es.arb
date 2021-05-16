@@ -99,5 +99,9 @@
     "delete": "Eliminar",
     "areYouSureDeleteProspect": "Confirma que deseas eliminar este prospecto",
     "edit": "Editar",
-    "prospectDetails": "Detalles"
+    "prospectDetails": "Detalles",
+    "invite": "Invitar",
+    "present": "Presentar",
+    "affiliate": "Afiliar",
+    "typeAnInteraction": "Ingresa una interacción..."
 }

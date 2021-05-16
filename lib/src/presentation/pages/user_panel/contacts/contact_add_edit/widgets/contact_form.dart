@@ -48,7 +48,7 @@ class ContactForm extends StatelessWidget {
                 // Pop view
                 if (state.deleted) {
                   Navigator.of(context).popUntil((route) => route
-                      .isFirst); //TODO test when contactDetails page is implemented
+                      .isFirst); //TODO bad state: no element error when deleting and poping view try push and remove
                 } else {
                   Navigator.of(context).pop();
                 }

@@ -99,6 +99,9 @@
     "delete": "Delete",
     "areYouSureDeleteProspect": "Are you sure you want to delete this Prospect?",
     "edit": "Edit",
-    "prospectDetails": "Prospect Details"
-
+    "prospectDetails": "Prospect Details",
+    "invite": "Invite",
+    "present": "Present",
+    "affiliate": "Affiliate",
+    "typeAnInteraction": "Type an interaction..."
 }
