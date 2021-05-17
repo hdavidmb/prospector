@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:random_string/random_string.dart';
 
 import 'package:prospector/src/features/tags/application/tags_provider.dart';
 import 'package:prospector/src/features/tags/domain/entity/tag_entity.dart';
 import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/tags_selection_wrap/widgets/tag_chip.dart';
-import 'package:random_string/random_string.dart';
 
 class TagsSelectionWrap extends ConsumerWidget {
   final List<String> selectedTags;
   final bool isEditing;
+  final bool canAdd;
   final void Function(List<String>) onTagsListChanged;
   const TagsSelectionWrap({
     this.selectedTags = const <String>[],
     this.isEditing = false,
+    this.canAdd = true,
     required this.onTagsListChanged,
   });
   @override
@@ -51,7 +53,7 @@ class TagsSelectionWrap extends ConsumerWidget {
             onPressed: () => _addTag(context: context),
           );
     wrapChildren.addAll(tagsChips);
-    wrapChildren.add(addButton);
+    if (canAdd) wrapChildren.add(addButton);
     return Wrap(
         alignment: WrapAlignment.center,
         spacing: 8.0,

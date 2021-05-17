@@ -60,7 +60,6 @@ class ContactsTabBar extends StatelessWidget {
           ),
         ),
         body: TabBarView(
-          //TODO remember scrollbar
           children: [
             ContactsGroupList(
               statuses: [

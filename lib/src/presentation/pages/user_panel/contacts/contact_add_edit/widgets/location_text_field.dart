@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
-
-import 'package:prospector/src/core/private/private_keys.dart';
 // ignore: implementation_imports
 import 'package:google_maps_webservice/src/places.dart' show Prediction;
+
+import 'package:prospector/src/core/private/private_keys.dart';
 
 class LocationTextField extends StatefulWidget {
   final String location;
@@ -72,7 +72,7 @@ class _LocationTextFieldState extends State<LocationTextField> {
       textInputAction: TextInputAction.next,
       onTap: () async {
         if (_textFieldFocusNode.canRequestFocus) {
-          try {
+          try { //TODO use places dialog from dialogs file
             final Prediction? p = await PlacesAutocomplete.show(
               context: context,
               types: ['(regions)'],

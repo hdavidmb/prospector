@@ -18,10 +18,11 @@ class ContactsGroupList extends ConsumerWidget {
   Widget build(BuildContext context, ScopedReader watch) {
     final bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     final List<Widget> sections = [];
+    final bool isFiltered = watch(contactsNotifierProvider).isFiltered;
 
     for (final String status in statuses) {
       final List<Contact> contacts = watch(contactsNotifierProvider)
-          .contacts
+          .filteredContacts
           .where((contact) => contact.status == status)
           .toList();
       final String statusText = context
@@ -31,7 +32,6 @@ class ContactsGroupList extends ConsumerWidget {
         sections.add(
           SliverStickyHeader(
             header: Container(
-              // height: 30.0,
               color: isDarkTheme ? Colors.grey[700] : Colors.grey[300],
               padding:
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 5.0),
@@ -82,12 +82,23 @@ class ContactsGroupList extends ConsumerWidget {
           )
         : Padding(
             padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
-            child: Column(children: [
-              const Image(image: AssetImage('assets/images/no_prospects.png'), width: 150.0),
-              const SizedBox(height: 8.0),
-              Text(AppLocalizations.of(context)!.noProspectsMessage, textAlign: TextAlign.center,),
-            ]),
+                const EdgeInsets.symmetric(horizontal: 30.0, vertical: 60.0),
+            child: Column(
+              children: [
+                Image(
+                    image: AssetImage(isFiltered
+                        ? 'assets/images/no_filtered_prospects.png'
+                        : 'assets/images/no_prospects.png'),
+                    height: 120.0),
+                const SizedBox(height: 8.0),
+                Text(
+                  isFiltered
+                      ? AppLocalizations.of(context)!.noFilteredProspectsMessage
+                      : AppLocalizations.of(context)!.noProspectsMessage,
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           );
   }
 }

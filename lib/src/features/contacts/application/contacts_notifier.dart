@@ -57,8 +57,7 @@ class ContactsNotifier extends ChangeNotifier {
       getResult.fold(
         (failure) => _contactsState = const ContactsState.error(),
         (contactsList) {
-      contactsList
-          .sort((a, b) => b.modified.compareTo(a.modified));
+          contactsList.sort((a, b) => b.modified.compareTo(a.modified));
           _contacts = contactsList;
           _contactsState = const ContactsState.ready();
         },
@@ -102,4 +101,44 @@ class ContactsNotifier extends ChangeNotifier {
       },
     );
   }
+
+  // * FILTERS
+  String _genderFilter = '';
+  String _locationFilter = '';
+  List<String> _tagsFilter = [];
+
+  String get genderFilter => _genderFilter;
+  String get locationFilter => _locationFilter;
+  List<String> get tagsFilter => _tagsFilter;
+
+  bool get isFiltered =>
+      _genderFilter.isNotEmpty ||
+      _locationFilter.isNotEmpty ||
+      _tagsFilter.isNotEmpty;
+
+  void setFilters({String? gender, String? location, List<String>? tags}) {
+    if (gender != null) _genderFilter = gender;
+    if (location != null) _locationFilter = location;
+    if (tags != null) _tagsFilter = tags;
+    notifyListeners();
+  }
+
+  void clearFilters() {
+    _genderFilter = '';
+    _locationFilter = '';
+    _tagsFilter = [];
+    notifyListeners();
+  }
+
+  List<Contact> get filteredContacts => _contacts
+      .where(
+        (contact) =>
+            (_genderFilter.isEmpty || contact.gender == _genderFilter) &&
+            (_locationFilter.isEmpty || contact.location == _locationFilter) &&
+            (_tagsFilter.isEmpty ||
+                (contact.tags != null &&
+                    _tagsFilter.every(
+                        (filterTag) => contact.tags!.contains(filterTag)))),
+      )
+      .toList();
 }

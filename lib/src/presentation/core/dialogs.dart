@@ -1,14 +1,19 @@
 import 'package:dartz/dartz.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_google_places/flutter_google_places.dart';
+// ignore: implementation_imports
+import 'package:google_maps_webservice/src/places.dart' show Prediction;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:prospector/src/core/database/database_failures/database_failure.dart';
 import 'package:prospector/src/features/auth/domain/auth_failure.dart';
+import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
 import 'package:prospector/src/features/images/domain/sources/source_image.dart';
 import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
-
+import 'package:prospector/src/core/private/private_keys.dart';
 import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/tags_selection_wrap/tags_selection_wrap.dart';
 
 enum SnackbarType { failure, success, warning }
 
@@ -359,4 +364,124 @@ Future<Option<SourceImage>> showImageSourceDialog(BuildContext context) async {
     },
   );
   return optionOf(source);
+}
+
+Future<String?> showPlacesDialog(BuildContext context) async {
+  final kGoogleApiKey = PrivateKeys.getGooglePlacesApiKey();
+  final Locale myLocale = Localizations.localeOf(context);
+  try {
+    final Prediction? p = await PlacesAutocomplete.show(
+      context: context,
+      types: ['(regions)'],
+      strictbounds: false,
+      apiKey: kGoogleApiKey,
+      mode: Mode.overlay,
+      language: myLocale.languageCode,
+      components: [],
+    );
+    return p?.description;
+  } catch (e) {
+    debugPrint(e.toString());
+    return '';
+  }
+}
+
+void showFiltersDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return Consumer(
+        builder: (context, watch, child) {
+          final String genderFilter =
+              watch(contactsNotifierProvider).genderFilter;
+          final String locationFilter =
+              watch(contactsNotifierProvider).locationFilter;
+          final List<String> tagsFilter =
+              watch(contactsNotifierProvider).tagsFilter;
+          final String genderText = genderFilter == 'male'
+              ? AppLocalizations.of(context)!.male
+              : AppLocalizations.of(context)!.female;
+          return AlertDialog(
+            contentPadding: const EdgeInsets.symmetric(vertical: 20.0),
+            title: Text(
+              AppLocalizations.of(context)!.filterBy,
+              style: Theme.of(context).textTheme.headline6,
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Divider(height: 0.0),
+                ListTile(
+                  tileColor: genderFilter.isNotEmpty
+                      ? Theme.of(context).primaryColor
+                      : null,
+                  title: Text(
+                    genderFilter.isNotEmpty
+                        ? '${AppLocalizations.of(context)!.gender}: $genderText'
+                        : AppLocalizations.of(context)!.gender,
+                    style: TextStyle(
+                        color: genderFilter.isNotEmpty ? Colors.white70 : null),
+                  ),
+                  onTap: () {
+                    final newFilter = genderFilter.isEmpty
+                        ? 'male'
+                        : genderFilter == 'male'
+                            ? 'female'
+                            : '';
+                    context
+                        .read(contactsNotifierProvider)
+                        .setFilters(gender: newFilter);
+                  },
+                ),
+                const Divider(
+                  height: 1.0,
+                ),
+                ListTile(
+                  tileColor: locationFilter.isNotEmpty
+                      ? Theme.of(context).primaryColor
+                      : null,
+                  title: Text(
+                    locationFilter.isNotEmpty
+                        ? '${AppLocalizations.of(context)!.city}: $locationFilter'
+                        : AppLocalizations.of(context)!.city,
+                    style: TextStyle(
+                        color:
+                            locationFilter.isNotEmpty ? Colors.white70 : null),
+                  ),
+                  onTap: () async {
+                    final newFilter = locationFilter.isNotEmpty
+                        ? ''
+                        : await showPlacesDialog(context);
+                    if (newFilter != null) {
+                      context
+                          .read(contactsNotifierProvider)
+                          .setFilters(location: newFilter);
+                    }
+                  },
+                ),
+                const Divider(height: 1.0),
+                TagsSelectionWrap(
+                  selectedTags: tagsFilter,
+                  canAdd: false,
+                  onTagsListChanged: (tags) => context
+                      .read(contactsNotifierProvider)
+                      .setFilters(tags: tags),
+                ),
+              ],
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () =>
+                      context.read(contactsNotifierProvider).clearFilters(),
+                  child: Text(AppLocalizations.of(context)!.clearFilters)),
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: Text(AppLocalizations.of(context)!.ok),
+              ),
+            ],
+          );
+        },
+      );
+    },
+  );
 }
