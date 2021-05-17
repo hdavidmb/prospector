@@ -6,10 +6,12 @@ import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_ad
 
 class ContactTile extends StatelessWidget {
   final Contact contact;
+  final bool redName;
   final void Function() onTap;
   const ContactTile({
     Key? key,
     required this.contact,
+    this.redName = false,
     required this.onTap,
   }) : super(key: key);
   @override
@@ -29,7 +31,7 @@ class ContactTile extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       contact.name,
-                      style: const TextStyle(fontSize: 17.5, fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 17.5, fontWeight: FontWeight.bold, color: redName ? Colors.red : null),
                       softWrap: false,
                       overflow: TextOverflow.ellipsis,
                     ),

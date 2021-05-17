@@ -103,5 +103,8 @@
     "invite": "Invite",
     "present": "Present",
     "affiliate": "Affiliate",
-    "typeAnInteraction": "Type an interaction..."
+    "typeAnInteraction": "Type an interaction...",
+    "general": "General",
+    "affiliatedP": "Affiliated",
+    "noProspectsMessage": "You have no prospects yet on this list.\nTry adding a new prospect or moving one from the other lists."
 }
