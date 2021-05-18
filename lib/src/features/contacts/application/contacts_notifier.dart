@@ -102,7 +102,7 @@ class ContactsNotifier extends ChangeNotifier {
     );
   }
 
-  // * FILTERS
+  // ************ FILTERS ***************
   String _genderFilter = '';
   String _locationFilter = '';
   List<String> _tagsFilter = [];
@@ -139,6 +139,37 @@ class ContactsNotifier extends ChangeNotifier {
                 (contact.tags != null &&
                     _tagsFilter.every(
                         (filterTag) => contact.tags!.contains(filterTag)))),
+      )
+      .toList();
+
+  // ************ SEARCH ***************
+  String _searchText = '';
+  bool _isSearchBarShowing = false;
+
+  bool get isSearchBarShowing => _isSearchBarShowing;
+  bool get isSearchTextEmpty => _searchText.isEmpty;
+
+  void search({required String searchText}) {
+    _searchText = searchText;
+    notifyListeners();
+  }
+
+  void showSearchBar() {
+    _isSearchBarShowing = true;
+    notifyListeners();
+  }
+
+  void cancelSearch() {
+    _isSearchBarShowing = false;
+    _searchText = '';
+    notifyListeners();
+  }
+
+  List<Contact> get searchingContacts => _contacts
+      .where(
+        (contact) =>
+            _searchText.isEmpty ||
+            contact.name.toLowerCase().contains(_searchText.toLowerCase()),
       )
       .toList();
 }

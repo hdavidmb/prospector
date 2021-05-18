@@ -80,25 +80,28 @@ class ContactsGroupList extends ConsumerWidget {
               slivers: sections,
             ),
           )
-        : Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 30.0, vertical: 60.0),
-            child: Column(
-              children: [
-                Image(
-                    image: AssetImage(isFiltered
-                        ? 'assets/images/no_filtered_prospects.png'
-                        : 'assets/images/no_prospects.png'),
-                    height: 120.0),
-                const SizedBox(height: 8.0),
-                Text(
-                  isFiltered
-                      ? AppLocalizations.of(context)!.noFilteredProspectsMessage
-                      : AppLocalizations.of(context)!.noProspectsMessage,
-                  textAlign: TextAlign.center,
-                ),
-              ],
+        : SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+                  child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 30.0, vertical: 60.0),
+              child: Column(
+                children: [
+                  Image(
+                      image: AssetImage(isFiltered
+                          ? 'assets/images/no_filtered_prospects.png'
+                          : 'assets/images/no_prospects.png'),
+                      height: 120.0),
+                  const SizedBox(height: 8.0),
+                  Text(
+                    isFiltered
+                        ? AppLocalizations.of(context)!.noFilteredProspectsMessage
+                        : AppLocalizations.of(context)!.noProspectsMessage,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
             ),
-          );
+        );
   }
 }

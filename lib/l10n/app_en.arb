@@ -108,6 +108,8 @@
     "affiliatedP": "Affiliated",
     "noProspectsMessage": "You have no prospects yet on this list.\nTry adding a new prospect or moving one from the other lists.",
     "noFilteredProspectsMessage": "There are no prospects matching the applied filters in this list",
+    "noSearchProspectsMessage": "There are no prospects matching your search.",
     "filterBy": "Filter by...",
-    "clearFilters": "Clear filters"
+    "clearFilters": "Clear filters",
+    "search": "Search"
 }

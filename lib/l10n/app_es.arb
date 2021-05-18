@@ -108,6 +108,8 @@
     "affiliatedP": "Afiliados",
     "noProspectsMessage": "Aún no tienes prospectos en esta lista.\nIntenta agregar nuevos prospectos o moverlos desde las otras listas.",
     "noFilteredProspectsMessage": "Esta lista no contiene prospectos que conicidan con los filtros aplicados.",
+    "noSearchProspectsMessage": "No hay ningún prospecto que coincida con la busqueda.",
     "filterBy": "Filtrar por...",
-    "clearFilters": "Limpiar filtros"
+    "clearFilters": "Limpiar filtros",
+    "search": "Buscar"
 }
