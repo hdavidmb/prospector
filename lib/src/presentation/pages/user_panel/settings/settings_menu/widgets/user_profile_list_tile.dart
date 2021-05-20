@@ -32,7 +32,7 @@ class UserProfileListTile extends ConsumerWidget {
             CupertinoPageRoute(builder: (context) => UserProfilePage()));
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
         child: Row(
           children: <Widget>[
             const Padding(
@@ -74,7 +74,7 @@ class UserProfileListTile extends ConsumerWidget {
                 ],
               ),
             ),
-            const Icon(Icons.chevron_right, color: Colors.grey)
+            const Icon(Icons.chevron_right)
           ],
         ),
       ),

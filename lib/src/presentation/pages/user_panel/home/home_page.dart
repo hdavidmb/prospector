@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
               (Route<dynamic> route) => false);
         }
       },
-      child: ContactsListPage(),
+      // child: ContactsListPage(),
       // child: const ContactAddEditPage(),
       // child: ContactAddEditPage(editingContact: Contact(id: 'id', name: 'name', status: 'u9uvk4CbYDoc2PQLdIv8', created: DateTime.now(), modified: DateTime.now()),),
       // child: Center(
@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
       //   ),
       // ),
 
-      // child: SettingsMenuPage(),
+      child: SettingsMenuPage(),
       // child: Scaffold(
       //   appBar: AppBar(title: const Text('Home')),
       //   body: Center(

@@ -111,5 +111,13 @@
     "noSearchProspectsMessage": "There are no prospects matching your search.",
     "filterBy": "Filter by...",
     "clearFilters": "Clear filters",
-    "search": "Search"
+    "search": "Search",
+    "membership": "Membership",
+    "importContacts": "Import contacts",
+    "events": "Events",
+    "tags": "Tags",
+    "whatsapp": "Whatsapp",
+    "importedContacts": "Imported contacts",
+    "noImportedContactsMessage": "You haven't imported any contact yet. Try importing some of your device contacts.\n\nBe Sure to allow contacts access.",
+    "import": "Import"
 }

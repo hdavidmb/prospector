@@ -6,6 +6,7 @@ import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
 import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
+import 'package:prospector/src/presentation/core/no_contatcs_screen/no_contacts_screen.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/contact_details_page.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contacts_list/widgets/contact_tile.dart';
 
@@ -80,28 +81,14 @@ class ContactsGroupList extends ConsumerWidget {
               slivers: sections,
             ),
           )
-        : SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-                  child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 30.0, vertical: 60.0),
-              child: Column(
-                children: [
-                  Image(
-                      image: AssetImage(isFiltered
-                          ? 'assets/images/no_filtered_prospects.png'
-                          : 'assets/images/no_prospects.png'),
-                      height: 120.0),
-                  const SizedBox(height: 8.0),
-                  Text(
-                    isFiltered
-                        ? AppLocalizations.of(context)!.noFilteredProspectsMessage
-                        : AppLocalizations.of(context)!.noProspectsMessage,
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-            ),
-        );
+        : NoContactsScreen(
+            imagePath: isFiltered
+                    ? 'assets/images/no_filtered_prospects.png'
+                    : 'assets/images/no_prospects.png',
+            imageHeight: 120.0,
+            message: isFiltered
+                  ? AppLocalizations.of(context)!.noFilteredProspectsMessage
+                  : AppLocalizations.of(context)!.noProspectsMessage,
+          );
   }
 }

@@ -111,5 +111,13 @@
     "noSearchProspectsMessage": "No hay ningún prospecto que coincida con la busqueda.",
     "filterBy": "Filtrar por...",
     "clearFilters": "Limpiar filtros",
-    "search": "Buscar"
+    "search": "Buscar",
+    "membership": "Membresía",
+    "importContacts": "Importar contactos",
+    "events": "Eventos",
+    "tags": "Etiquetas",
+    "whatsapp": "Whatsapp",
+    "importedContacts": "Contactos importados",
+    "noImportedContactsMessage": "Aún no has importado ningún contacto. Intenta importar algunos de los contactos de tu dispositivo.\n\nAsegúrate de permitir el acceso a los contactos.",
+    "import": "Importar"
 }
