@@ -1,10 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
 import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
+import 'package:prospector/src/features/import_contacts/application/import_contacts_providers.dart';
 import 'package:prospector/src/presentation/core/no_contatcs_screen/no_contacts_screen.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contacts_list/widgets/contact_tile.dart';
+import 'package:prospector/src/presentation/pages/user_panel/settings/import_contacts/import_contacts/import_contacts_page.dart';
 
 class ImportedContactsPage extends ConsumerWidget {
   @override
@@ -22,9 +25,7 @@ class ImportedContactsPage extends ConsumerWidget {
         ),
         actions: [
           TextButton(
-            onPressed: () {
-              // TODO navigate to import contacts page
-            },
+            onPressed: () => goToImportContacts(context),
             child: Text(
               AppLocalizations.of(context)!.import,
               style: const TextStyle(color: Colors.white),
@@ -49,12 +50,16 @@ class ImportedContactsPage extends ConsumerWidget {
               imageHeight: 150.0,
               message: AppLocalizations.of(context)!.noImportedContactsMessage,
               action: ElevatedButton(
-                onPressed: () {
-                  // TODO navigate to import contacts page
-                },
+                onPressed: () => goToImportContacts(context),
                 child: Text(AppLocalizations.of(context)!.importContacts),
               ),
             ),
     );
+  }
+
+  void goToImportContacts(BuildContext context) {
+    //TODO test getting contacts from here
+    context.read(importContactsProvider).getContacts();
+    Navigator.of(context).push(CupertinoPageRoute(builder: (context) => ImportContactsPage()));
   }
 }

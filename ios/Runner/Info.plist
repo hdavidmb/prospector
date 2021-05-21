@@ -82,5 +82,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSContactsUsageDescription</key>
+    <string>Prospector needs access to contacts so you can import them as prospects</string>
 </dict>
 </plist>

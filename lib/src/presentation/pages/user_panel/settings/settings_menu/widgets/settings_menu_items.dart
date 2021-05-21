@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/import_contacts/imported_contacts/imported_contacts.dart';
+import 'package:prospector/src/presentation/pages/user_panel/settings/import_contacts/imported_contacts/imported_contacts_page.dart';
 
 class SettingsMenuItems extends StatelessWidget {
   final Widget divider;
