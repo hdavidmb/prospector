@@ -17,6 +17,9 @@ class AppDefaultDataNotifier extends ChangeNotifier {
   });
 
   AppDefaultDataState _defaultDataState = const AppDefaultDataState.initial();
+  void reset() => _defaultDataState = const AppDefaultDataState.initial();
+
+
   late List<Status> _statuses;
   late String _notInterestedID;
   late String _notContactedID;

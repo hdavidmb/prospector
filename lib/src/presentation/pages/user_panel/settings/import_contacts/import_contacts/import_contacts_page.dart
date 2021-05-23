@@ -22,7 +22,7 @@ class ImportContactsPage extends ConsumerWidget {
               imagePath: 'assets/images/loading_device_contacts.png',
               padding: const EdgeInsets.symmetric(vertical: 80.0),
               imageHeight: 150.0,
-              message: 'Loading contacts...', //TODO localize
+              message: AppLocalizations.of(context)!.loadingContacts,
               action: const CircularProgressIndicator.adaptive(),
             ),
     );

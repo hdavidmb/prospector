@@ -65,6 +65,16 @@ class FirebaseContactsRepository implements IContactsRemoteRepository {
             contactMap['created']?.toDate() ?? DateTime.now();
         contactMap['modified'] =
             contactMap['modified']?.toDate() ?? DateTime.now();
+        if (contactMap['phones'] != null) {
+          contactMap['phones'] = (contactMap['phones'] as List<dynamic>)
+              .map((phone) => phone.toString())
+              .toList();
+        }
+        if (contactMap['tags'] != null) {
+          contactMap['tags'] = (contactMap['tags'] as List<dynamic>)
+              .map((tag) => tag.toString())
+              .toList();
+        }
 
         return Contact.fromMap(contactMap);
       }).toList();

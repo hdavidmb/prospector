@@ -13,9 +13,10 @@ import 'package:prospector/src/presentation/pages/auth/sign_in/sign_in_page.dart
 class SplashScreenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    bool showingDialog = false; 
     return ProviderListener<AppState>(
       provider: appStateNotifierProvider,
-      onChange: (context, appState) {
+      onChange: (context, appState) async {
         // TODO this is being called twice
         if (appState == const AppState.authenticatedReady()) {
           Navigator.pushReplacement(
@@ -32,9 +33,13 @@ class SplashScreenPage extends StatelessWidget {
             ),
           );
         } else if (appState == const AppState.error()) {
-          showMessageDialog(
-              context: context,
-              message: AppLocalizations.of(context)!.appStateError);
+          if (!showingDialog) {
+            showingDialog = true;
+            await showMessageDialog(
+                context: context,
+                message: AppLocalizations.of(context)!.appStateError);
+            showingDialog = false;
+          }
         }
       },
       child: Scaffold(

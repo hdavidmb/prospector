@@ -50,7 +50,7 @@ class ContactsNotifier extends ChangeNotifier {
   }
 
   Future<void> getContacts() async {
-    if (_contactsState != const ContactsState.fetching()) {
+    if (_contactsState == const ContactsState.initial()) {
       _contactsState = const ContactsState.fetching();
       final uid = read(userInfoNotifierProvider).user.uid;
       final getResult = await getContactsList(uid: uid);

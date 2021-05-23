@@ -119,5 +119,6 @@
     "whatsapp": "Whatsapp",
     "importedContacts": "Imported contacts",
     "noImportedContactsMessage": "You haven't imported any contact yet. Try importing some of your device contacts.\n\nBe Sure to allow contacts access.",
-    "import": "Import"
+    "import": "Import",
+    "loadingContacts":  "Loading contacts..."
 }

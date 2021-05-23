@@ -15,7 +15,7 @@ class SettingsMenuPage extends StatelessWidget {
         children: [
           UserProfileListTile(),
           divider,
-          SettingsMenuItems(divider: divider),
+          const SettingsMenuItems(divider: divider),
           ThemeSwitch(),
           divider,
         ],

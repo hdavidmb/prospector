@@ -177,9 +177,9 @@ void showResetPasswordDialog(BuildContext context) {
   );
 }
 
-void showMessageDialog(
-    {required BuildContext context, String? title, required String message}) {
-  showDialog(
+Future<void> showMessageDialog(
+    {required BuildContext context, String? title, required String message}) async {
+  await showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
