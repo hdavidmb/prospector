@@ -10,7 +10,7 @@ class ImportContactsNotifier extends ChangeNotifier {
     required this.getDeviceContacts,
   });
 
-  late List<ImportedContact> _deviceContacts;
+  List<ImportedContact> _deviceContacts = [];
   ImportContactsState _state = const ImportContactsState.initial();
 
   List<ImportedContact> get deviceContacts => _deviceContacts;

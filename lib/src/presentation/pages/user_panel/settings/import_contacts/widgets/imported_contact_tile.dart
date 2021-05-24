@@ -4,22 +4,33 @@ import 'package:prospector/src/features/import_contacts/domain/entity/imported_c
 
 class ImportedContactTile extends StatelessWidget {
   final ImportedContact contact;
+  final Widget? leading;
   final Widget? trailing;
-  //TODO implement on tap action
+  final void Function()? onTap;
   const ImportedContactTile({
     Key? key,
     required this.contact,
+    this.leading,
     this.trailing,
+    this.onTap,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    ImageProvider backgroundImage =
+        const AssetImage('assets/images/defaultContactImage.jpg');
+    if (contact.photo != null) backgroundImage = MemoryImage(contact.photo!);
     return ListTile(
-      //TODO implement contact image on leading
       title: Text(contact.name),
-      subtitle: contact.phones != null && contact.phones!.isNotEmpty
-          ? Text(contact.phones![0])
-          : null,
-          trailing: trailing,
+      subtitle: Text(contact.phones != null && contact.phones!.isNotEmpty
+          ? contact.phones![0]
+          : ''),
+      leading: leading ??
+          CircleAvatar(
+            radius: 30.0,
+            backgroundImage: backgroundImage,
+          ),
+      trailing: trailing,
+      onTap: onTap,
     );
   }
 }

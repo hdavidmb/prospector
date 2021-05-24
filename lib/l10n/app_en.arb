@@ -120,5 +120,8 @@
     "importedContacts": "Imported contacts",
     "noImportedContactsMessage": "You haven't imported any contact yet. Try importing some of your device contacts.\n\nBe Sure to allow contacts access.",
     "import": "Import",
-    "loadingContacts":  "Loading contacts..."
+    "loadingContacts":  "Loading contacts...",
+    "selectAll": "Select all",
+    "unselectAll": "Unselect all",
+    "noDeviceContactsMessage": "There are no contacts in your device contacts list."
 }

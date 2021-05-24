@@ -70,7 +70,6 @@ class SplashScreenPage extends StatelessWidget {
                     onPressed: () {
                       context.read(appStateNotifierProvider.notifier).reset();
                       context.read(appDefaultDataProvider).getDefaultData();
-                      //TODO test if needs to reset data notifiers (contacts, tags, etc)
                     },
                     child: Text(AppLocalizations.of(context)!.tryAgain),
                   ),

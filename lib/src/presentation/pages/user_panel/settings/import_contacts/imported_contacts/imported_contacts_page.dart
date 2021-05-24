@@ -5,9 +5,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
 import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
 import 'package:prospector/src/features/import_contacts/application/import_contacts_providers.dart';
+import 'package:prospector/src/features/import_contacts/domain/entity/imported_contact_entity.dart';
 import 'package:prospector/src/presentation/core/no_contatcs_screen/no_contacts_screen.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contacts_list/widgets/contact_tile.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/logic/contact_form_provider.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/contact_image.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/import_contacts/import_contacts/import_contacts_page.dart';
+import 'package:prospector/src/presentation/pages/user_panel/settings/import_contacts/widgets/imported_contact_tile.dart';
 
 class ImportedContactsPage extends ConsumerWidget {
   @override
@@ -35,12 +38,36 @@ class ImportedContactsPage extends ConsumerWidget {
       ),
       body: importedContacts.isNotEmpty
           ? ListView.separated(
-              itemBuilder: (context, index) => ContactTile(
-                contact: importedContacts[index],
-                onTap: () {
-                  //TODO show confirm delete contact
-                },
-              ), //TODO create imported contact tile - device contact tile
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) {
+                final Contact contact = importedContacts[index];
+                final ImportedContact importedContact =
+                    ImportedContact.fromContact(contact);
+                return Dismissible(
+                  key: Key(contact.id),
+                  direction: DismissDirection.endToStart,
+                  background: Container(
+                    color: Colors.red,
+                    alignment: Alignment.centerRight,
+                    padding: const EdgeInsets.only(right: 20.0),
+                    child: const Icon(Icons.delete, color: Colors.white),
+                  ),
+                  onDismissed: (direction) {
+                    deleteContact(context, contact.id);
+                  },
+                  child: ImportedContactTile(
+                    contact: importedContact,
+                    leading:
+                        ContactImage(size: 60.0, contactPhoto: contact.photo),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete, color: Colors.grey),
+                      onPressed: () {
+                        deleteContact(context, contact.id);
+                      },
+                    ),
+                  ),
+                );
+              },
               separatorBuilder: (context, index) =>
                   const Divider(height: 0.0, indent: 75.0),
               itemCount: importedContacts.length,
@@ -59,6 +86,13 @@ class ImportedContactsPage extends ConsumerWidget {
 
   void goToImportContacts(BuildContext context) {
     context.read(importContactsProvider).getContacts();
-    Navigator.of(context).push(CupertinoPageRoute(builder: (context) => ImportContactsPage()));
+    Navigator.of(context)
+        .push(CupertinoPageRoute(builder: (context) => ImportContactsPage()));
+  }
+
+  void deleteContact(BuildContext context, String contactID) {
+    context
+        .read(contactFormProvider.notifier)
+        .deleteContact(context: context, contactID: contactID);
   }
 }

@@ -20,11 +20,13 @@ class _$ImportedContactTearOff {
       {required String importedID,
       required String name,
       List<String>? phones,
+      bool selected = false,
       Uint8List? photo}) {
     return _ImportedContact(
       importedID: importedID,
       name: name,
       phones: phones,
+      selected: selected,
       photo: photo,
     );
   }
@@ -38,6 +40,7 @@ mixin _$ImportedContact {
   String get importedID => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   List<String>? get phones => throw _privateConstructorUsedError;
+  bool get selected => throw _privateConstructorUsedError;
   Uint8List? get photo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -51,7 +54,11 @@ abstract class $ImportedContactCopyWith<$Res> {
           ImportedContact value, $Res Function(ImportedContact) then) =
       _$ImportedContactCopyWithImpl<$Res>;
   $Res call(
-      {String importedID, String name, List<String>? phones, Uint8List? photo});
+      {String importedID,
+      String name,
+      List<String>? phones,
+      bool selected,
+      Uint8List? photo});
 }
 
 /// @nodoc
@@ -68,6 +75,7 @@ class _$ImportedContactCopyWithImpl<$Res>
     Object? importedID = freezed,
     Object? name = freezed,
     Object? phones = freezed,
+    Object? selected = freezed,
     Object? photo = freezed,
   }) {
     return _then(_value.copyWith(
@@ -83,6 +91,10 @@ class _$ImportedContactCopyWithImpl<$Res>
           ? _value.phones
           : phones // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      selected: selected == freezed
+          ? _value.selected
+          : selected // ignore: cast_nullable_to_non_nullable
+              as bool,
       photo: photo == freezed
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
@@ -99,7 +111,11 @@ abstract class _$ImportedContactCopyWith<$Res>
       __$ImportedContactCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String importedID, String name, List<String>? phones, Uint8List? photo});
+      {String importedID,
+      String name,
+      List<String>? phones,
+      bool selected,
+      Uint8List? photo});
 }
 
 /// @nodoc
@@ -118,6 +134,7 @@ class __$ImportedContactCopyWithImpl<$Res>
     Object? importedID = freezed,
     Object? name = freezed,
     Object? phones = freezed,
+    Object? selected = freezed,
     Object? photo = freezed,
   }) {
     return _then(_ImportedContact(
@@ -133,6 +150,10 @@ class __$ImportedContactCopyWithImpl<$Res>
           ? _value.phones
           : phones // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      selected: selected == freezed
+          ? _value.selected
+          : selected // ignore: cast_nullable_to_non_nullable
+              as bool,
       photo: photo == freezed
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
@@ -143,9 +164,14 @@ class __$ImportedContactCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ImportedContact implements _ImportedContact {
+class _$_ImportedContact extends _ImportedContact {
   const _$_ImportedContact(
-      {required this.importedID, required this.name, this.phones, this.photo});
+      {required this.importedID,
+      required this.name,
+      this.phones,
+      this.selected = false,
+      this.photo})
+      : super._();
 
   @override
   final String importedID;
@@ -153,12 +179,15 @@ class _$_ImportedContact implements _ImportedContact {
   final String name;
   @override
   final List<String>? phones;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool selected;
   @override
   final Uint8List? photo;
 
   @override
   String toString() {
-    return 'ImportedContact(importedID: $importedID, name: $name, phones: $phones, photo: $photo)';
+    return 'ImportedContact(importedID: $importedID, name: $name, phones: $phones, selected: $selected, photo: $photo)';
   }
 
   @override
@@ -172,6 +201,9 @@ class _$_ImportedContact implements _ImportedContact {
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.phones, phones) ||
                 const DeepCollectionEquality().equals(other.phones, phones)) &&
+            (identical(other.selected, selected) ||
+                const DeepCollectionEquality()
+                    .equals(other.selected, selected)) &&
             (identical(other.photo, photo) ||
                 const DeepCollectionEquality().equals(other.photo, photo)));
   }
@@ -182,6 +214,7 @@ class _$_ImportedContact implements _ImportedContact {
       const DeepCollectionEquality().hash(importedID) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(phones) ^
+      const DeepCollectionEquality().hash(selected) ^
       const DeepCollectionEquality().hash(photo);
 
   @JsonKey(ignore: true)
@@ -190,12 +223,14 @@ class _$_ImportedContact implements _ImportedContact {
       __$ImportedContactCopyWithImpl<_ImportedContact>(this, _$identity);
 }
 
-abstract class _ImportedContact implements ImportedContact {
+abstract class _ImportedContact extends ImportedContact {
   const factory _ImportedContact(
       {required String importedID,
       required String name,
       List<String>? phones,
+      bool selected,
       Uint8List? photo}) = _$_ImportedContact;
+  const _ImportedContact._() : super._();
 
   @override
   String get importedID => throw _privateConstructorUsedError;
@@ -203,6 +238,8 @@ abstract class _ImportedContact implements ImportedContact {
   String get name => throw _privateConstructorUsedError;
   @override
   List<String>? get phones => throw _privateConstructorUsedError;
+  @override
+  bool get selected => throw _privateConstructorUsedError;
   @override
   Uint8List? get photo => throw _privateConstructorUsedError;
   @override

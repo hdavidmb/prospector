@@ -93,7 +93,7 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
       if (editingContact != null && state.pickedImage != null) {
         final uid = read(userInfoNotifierProvider).user.uid;
         final uploadResult = await uploadContactImage(
-            uid: uid, contactID: editingContact.id, image: state.pickedImage!);
+            uid: uid, contactID: editingContact.id, image: state.pickedImage);
         uploadResult.fold(
           (failure) {
             failure.maybeWhen(

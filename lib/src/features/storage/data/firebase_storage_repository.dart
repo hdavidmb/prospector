@@ -15,10 +15,10 @@ class FirebaseStorageRepository implements IStorageRepository {
 
   @override
   Future<Either<StorageFailure, String>> uploadContactImage(
-      {required String uid, required String contactID, required File image}) async {
+      {required String uid, required String contactID, required dynamic image}) async {
     final String storageImagePath = (image is File)
         ? 'images/contacts_images/$uid/$contactID.jpg'
-        : 'images/contacts_images/$uid/$contactID.png'; //TODO test uint8list when importing contacts
+        : 'images/contacts_images/$uid/$contactID.png';
     return _performUploadTask(storageImagePath, image);
   }
 
@@ -40,7 +40,7 @@ class FirebaseStorageRepository implements IStorageRepository {
       if (image is File) {
         await storageReference.putFile(image);
       } else if (image is Uint8List) {
-        await storageReference.putData(image); //TODO test uint8list when importing contacts
+        await storageReference.putData(image);
       } else {
         return left(const StorageFailure.invalidFormat());
       }

@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
+import 'package:prospector/src/presentation/core/contacts_search_field/contacts_search_field.dart';
 import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contacts_list/widgets/contacts_tab_bar.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contacts_list/widgets/search_contacts_list.dart';
@@ -21,25 +22,8 @@ class ContactsListPage extends ConsumerWidget {
               ? Theme.of(context).scaffoldBackgroundColor
               : null,
           title: isSearchBarShowing
-              ? TextField(
+              ? ContactsSearchField(
                   autofocus: true,
-                  decoration: InputDecoration(
-                    hintText:
-                        AppLocalizations.of(context)!.search,
-                    contentPadding: const EdgeInsets.symmetric(
-                        vertical: 10.0, horizontal: 25.0),
-                    filled: true,
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                          color: Colors.transparent, width: 0.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                          color: Colors.transparent, width: 0.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                  ),
                   onChanged: (value) => context
                       .read(contactsNotifierProvider)
                       .search(searchText: value),
