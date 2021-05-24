@@ -36,4 +36,7 @@ class ImportContactsRepository implements IImportContactsRepository {
       return left(const ImportContactsFailure.serverError());
     }
   }
+
+  @override
+  void addContactsListener(Function() callback) => flutterContacts.addListener(callback);
 }

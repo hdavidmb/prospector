@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:prospector/src/features/import_contacts/application/import_contacts_state.dart';
 import 'package:prospector/src/features/import_contacts/domain/entity/imported_contact_entity.dart';
-
 import 'package:prospector/src/features/import_contacts/domain/use_cases/get_device_contacts.dart';
 
 class ImportContactsNotifier extends ChangeNotifier {
@@ -26,7 +26,6 @@ class ImportContactsNotifier extends ChangeNotifier {
       (contacts) {
         _deviceContacts = contacts;
         _state = const ImportContactsState.ready();
-        //TODO implement contacts listener to reset state on changes
       },
     );
 
