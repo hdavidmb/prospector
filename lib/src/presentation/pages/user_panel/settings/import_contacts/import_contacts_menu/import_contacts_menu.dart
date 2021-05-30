@@ -22,6 +22,7 @@ class ImportContactsMenuPage extends StatelessWidget {
             onTap: () => Navigator.of(context).push(CupertinoPageRoute(
                 builder: (context) => ImportedContactsPage())),
           ),
+          const Divider(height: 0.0),
           Consumer(
             builder: (context, watch, child) {
               final bool isPremiumUser =

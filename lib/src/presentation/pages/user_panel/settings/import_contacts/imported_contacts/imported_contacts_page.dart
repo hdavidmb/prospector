@@ -84,10 +84,12 @@ class ImportedContactsPage extends ConsumerWidget {
     );
   }
 
-  void goToImportContacts(BuildContext context) {
-    context.read(importContactsProvider).getContacts();
-    Navigator.of(context)
+  Future<void> goToImportContacts(BuildContext context) async {
+    final accessed = await context.read(importContactsProvider).getContacts(context: context);
+    if (accessed) {
+      Navigator.of(context)
         .push(CupertinoPageRoute(builder: (context) => ImportContactsPage()));
+    }
   }
 
   void deleteContact(BuildContext context, String contactID) {

@@ -128,5 +128,9 @@
     "close": "Close",
     "premiumFeature": "Premium feature",
     "premiumFeatureMessage": "This is a premium feature.\nUpgrade to one of our premium subscriptions to access this feature and take your business to the next level.",
-    "moreInfo": "More info"
+    "moreInfo": "More info",
+    "goToSettings": "Go to Settings",
+    "contactsAccess": "Contacts access",
+    "contactsAccessMessage": "Contacts access is not allowed for Prospector MLM.",
+    "allowAccess": "Please allow it on your device settings."
 }

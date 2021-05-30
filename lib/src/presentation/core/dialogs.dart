@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
+import 'package:permission_handler/permission_handler.dart';
 // ignore: implementation_imports
 import 'package:google_maps_webservice/src/places.dart' show Prediction;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -276,7 +277,7 @@ void showPremiumDialog({required BuildContext context}) {
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.of(context).pop(false);
+              Navigator.of(context).pop();
             },
             child: Text(AppLocalizations.of(context)!.close),
           ),
@@ -288,9 +289,44 @@ void showPremiumDialog({required BuildContext context}) {
               Navigator.of(context).pop();
               //TODO navigate to membership
             },
-            child: Text(AppLocalizations.of(context)!.moreInfo,
-                style: const TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.white)),
+            child: Text(
+              AppLocalizations.of(context)!.moreInfo,
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.white),
+            ),
+          )
+        ],
+      );
+    },
+  );
+}
+
+void showPermissionsDialog(
+    {required BuildContext context, String? title, String? message}) {
+  showDialog<bool>(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: (title != null && title.isNotEmpty) ? Text(title) : null,
+        content: (message != null && message.isNotEmpty) ? Text('$message\n${AppLocalizations.of(context)!.allowAccess}') : null,
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Text(AppLocalizations.of(context)!.close),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.blue,
+            ),
+            onPressed: () async {
+              Navigator.of(context).pop();
+              openAppSettings();
+            },
+            child: Text(
+              AppLocalizations.of(context)!.goToSettings,
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.white),
+            ),
           )
         ],
       );

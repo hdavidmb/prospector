@@ -128,5 +128,9 @@
     "close": "Cerrar",
     "premiumFeature": "Función Premium",
     "premiumFeatureMessage": "Esta es una característica premium.\nAdquiere alguna de nuestras suscripciones premium para acceder a esta función y llevar tu negocio al siguiente nivel.",
-    "moreInfo": "Más información"
+    "moreInfo": "Más información",
+    "goToSettings": "Ir a Configuración",
+    "contactsAccess": "Acceso a contactos",
+    "contactsAccessMessage": "El acceso a los contactos esta deshabilitado para Prospector MLM.",
+    "allowAccess": "Por favor habilitalo en la configuración de tu dispositivo."
 }
