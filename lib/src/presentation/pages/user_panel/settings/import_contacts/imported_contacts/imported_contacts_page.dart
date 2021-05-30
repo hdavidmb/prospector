@@ -85,7 +85,7 @@ class ImportedContactsPage extends ConsumerWidget {
   }
 
   void goToImportContacts(BuildContext context) {
-    context.read(importContactsProvider).getContacts(); //TODO check if importContactstate == ready
+    context.read(importContactsProvider).getContacts();
     Navigator.of(context)
         .push(CupertinoPageRoute(builder: (context) => ImportContactsPage()));
   }

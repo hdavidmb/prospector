@@ -19,4 +19,9 @@ class UserSharedPreferences {
   set userThemePrefs(int value) {
     _prefs.setInt('userThemePrefs', value);
   }
+
+  bool get syncContactsEnabled => _prefs.getBool('syncContactsEnabled') ?? false;
+  set syncContactsEnabled(bool value) {
+    _prefs.setBool('syncContactsEnabled', value);
+  }
 }

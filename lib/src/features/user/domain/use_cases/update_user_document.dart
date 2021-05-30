@@ -11,7 +11,7 @@ class UpdateUserDocument {
     required this.remoteUserInfoRepository,
   });
 
-  Future<Either<UserInfoFailure, Unit>> call(UserEntity user) async {
+  Future<Either<UserInfoFailure, UserEntity>> call(UserEntity user) async {
     final newUserInfo = user.copyWith(modified: DateTime.now());
     final localUpdate = await localUserInfoRepository.updateUserDocument(newUserInfo);
     final remoteUpdate =
@@ -19,7 +19,7 @@ class UpdateUserDocument {
     if (localUpdate.isLeft() || remoteUpdate.isLeft()) {
       return left(const UserInfoFailure.serverError());
     } else {
-      return right(unit);
+      return right(newUserInfo); //TODO test
     }
   }
 }

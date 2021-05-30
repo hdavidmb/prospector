@@ -4,7 +4,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 import 'package:prospector/src/features/user/application/user_info_providers.dart';
 import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
 import 'package:prospector/src/presentation/theme/theme_constants.dart';
@@ -21,9 +20,7 @@ class UserAvatar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final UserEntity user = watch(userInfoNotifierProvider).user;
-    final String premiumSubID =
-        context.read(appDefaultDataProvider).premiumSubID;
-    final bool isPremium = user.subscription == premiumSubID;
+    final bool isPremium = watch(userInfoNotifierProvider).isPremiumUser;
     return CircleAvatar(
       radius: size / 2,
       backgroundColor: isPremium ? kPremiumColor : Colors.transparent,

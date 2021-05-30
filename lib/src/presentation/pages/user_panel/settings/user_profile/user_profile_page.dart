@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
+import 'package:prospector/src/features/user/application/user_info_providers.dart';
 import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/widgets/loading_page_cover.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_notifier.dart';
@@ -60,15 +62,32 @@ class UserProfilePage extends ConsumerWidget {
                   UserAuthProviderItems(),
                   const SizedBox(height: 15.0),
                   LogoutAndDeleteButtons(),
+                  //TODO temporal delete
+                  const SizedBox(height: 15.0),
+                  TextButton(
+                    onPressed: () {
+                      final premiumSubID =
+                          context.read(appDefaultDataProvider).premiumSubID;
+                      final freeSubID =
+                          context.read(appDefaultDataProvider).freeSubID;
+                      final user = context.read(userInfoNotifierProvider).user;
+                      final isPremiumUser = context.read(userInfoNotifierProvider).isPremiumUser;
+                      final newUserInfo = user.copyWith(subscription: isPremiumUser ? freeSubID : premiumSubID);
+
+                      context.read(userInfoNotifierProvider).updateUserInfo(newUserInfo);
+                    },
+                    child: Text('Change subscription'),
+                  )
+                  //TODO temporal delete
                 ],
               ),
               if (isSubmitting) LoadingPageCover(),
-                // TODO test Container(
-                //   color: Colors.grey.withOpacity(0.5),
-                //   child: const Center(
-                //     child: CircularProgressIndicator.adaptive(),
-                //   ),
-                // ),
+              // TODO test Container(
+              //   color: Colors.grey.withOpacity(0.5),
+              //   child: const Center(
+              //     child: CircularProgressIndicator.adaptive(),
+              //   ),
+              // ),
             ],
           ),
         ),

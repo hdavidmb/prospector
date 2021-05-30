@@ -178,7 +178,9 @@ void showResetPasswordDialog(BuildContext context) {
 }
 
 Future<void> showMessageDialog(
-    {required BuildContext context, String? title, required String message}) async {
+    {required BuildContext context,
+    String? title,
+    required String message}) async {
   await showDialog(
     context: context,
     builder: (context) {
@@ -195,7 +197,7 @@ Future<void> showMessageDialog(
   );
 }
 
-Future<bool> showDeleteConfirmDialog(
+Future<bool> showConfirmDialog(
     {required BuildContext context, String? title, String? message}) async {
   final response = await showDialog<bool>(
     context: context,
@@ -261,6 +263,38 @@ Future<Option<String>> showDeleteAccountConfirmDialog(
     hintText: isPassword //TODO test
         ? AppLocalizations.of(context)!.password
         : AppLocalizations.of(context)!.typeHere,
+  );
+}
+
+void showPremiumDialog({required BuildContext context}) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text(AppLocalizations.of(context)!.premiumFeature),
+        content: Text(AppLocalizations.of(context)!.premiumFeatureMessage),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(false);
+            },
+            child: Text(AppLocalizations.of(context)!.close),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.blue,
+            ),
+            onPressed: () async {
+              Navigator.of(context).pop();
+              //TODO navigate to membership
+            },
+            child: Text(AppLocalizations.of(context)!.moreInfo,
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.white)),
+          )
+        ],
+      );
+    },
   );
 }
 

@@ -175,7 +175,7 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
       failureOrSuccesOption: none(),
     );
     Either<DatabaseFailure, Unit>? failureOrSuccess;
-    final confirm = await showDeleteConfirmDialog(
+    final confirm = await showConfirmDialog(
       context: context,
       title: AppLocalizations.of(context)!.areYouSureDeleteProspect,
       message: AppLocalizations.of(context)!.thisAcctionCannotBeUndone,

@@ -27,7 +27,10 @@ final addContactsListener = Provider<AddContactsListener>((ref) {
 final importContactsProvider =
     ChangeNotifierProvider<ImportContactsNotifier>((ref) {
   final GetDeviceContacts _getDeviceContacts = ref.watch(getDeviceContacts);
+  final AddContactsListener _addContactsListener = ref.watch(addContactsListener);
   return ImportContactsNotifier(
     getDeviceContacts: _getDeviceContacts,
+    addContactsListener: _addContactsListener,
+    read: ref.read,
   );
 });

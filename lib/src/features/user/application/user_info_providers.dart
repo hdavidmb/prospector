@@ -86,7 +86,8 @@ final changeUserEmail = Provider<ChangeUserEmail>((ref) {
 
 final changeUserPassword = Provider<ChangeUserPassword>((ref) {
   final _userAuthProfileRepository = ref.watch(userAuthProfileRepository);
-    return ChangeUserPassword(userAuthProfileRepository: _userAuthProfileRepository);
+  return ChangeUserPassword(
+      userAuthProfileRepository: _userAuthProfileRepository);
 });
 
 // * Notifier
@@ -96,9 +97,13 @@ final userInfoNotifierProvider =
   final _getUserAuthProvider = ref.watch(getUserAuthProvider);
   final _updateUserProfile = ref.watch(updateUserProfile);
   final _changeUserEmail = ref.watch(changeUserEmail);
+  final _updateUserDocument = ref.watch(updateUserDocument);
   return UserInfoNotifier(
-      getOrCreateUserInfo: _getOrCreateUserInfo,
-      getUserAuthProvider: _getUserAuthProvider,
-      updateUserProfile: _updateUserProfile,
-      changeUserEmail: _changeUserEmail);
+    getOrCreateUserInfo: _getOrCreateUserInfo,
+    getUserAuthProvider: _getUserAuthProvider,
+    updateUserProfile: _updateUserProfile,
+    changeUserEmail: _changeUserEmail,
+    updateUserDocument: _updateUserDocument,
+    read: ref.read,
+  );
 });

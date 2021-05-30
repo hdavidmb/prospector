@@ -13,16 +13,16 @@ class UpdateUserProfile {
     required this.updateUserDocument,
   });
 
-  Future<Either<UserInfoFailure, Unit>> call(UserEntity user) async {
+  Future<Either<UserInfoFailure, UserEntity>> call(UserEntity user) async {
     final bool isConnected = await checkConnection();
-    if (!isConnected) return left(const UserInfoFailure.noConnection()); 
+    if (!isConnected) return left(const UserInfoFailure.noConnection());
     final updateAuthResult = await userAuthProfileRepository.updateUserProfile(
         displayName: user.name, photoURL: user.photoURL);
     final updateDocumentResult = await updateUserDocument(user);
     if (updateAuthResult.isLeft() || updateDocumentResult.isLeft()) {
       return left(const UserInfoFailure.serverError());
     } else {
-      return right(unit);
+      return updateDocumentResult; //TODO test
     }
   }
 }

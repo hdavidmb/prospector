@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/import_contacts/imported_contacts/imported_contacts_page.dart';
+import 'package:prospector/src/presentation/pages/user_panel/settings/import_contacts/import_contacts_menu/import_contacts_menu.dart';
 
 class SettingsMenuItems extends StatelessWidget {
   final Widget divider;
@@ -16,7 +16,7 @@ class SettingsMenuItems extends StatelessWidget {
       // {'title': AppLocalizations.of(context)!.membership}, //TODO implement
       {
         'title': AppLocalizations.of(context)!.importContacts,
-        'page': ImportedContactsPage()
+        'page': ImportContactsMenuPage()
       },
       // {'title': AppLocalizations.of(context)!.events}, //TODO implement
       // {'title': AppLocalizations.of(context)!.tags}, //TODO implement

@@ -42,6 +42,11 @@ class AppStateNotifier extends StateNotifier<AppState> {
             read(tagsNotifierProvider).getTags();
           }
 
+          if (read(userInfoNotifierProvider).isPremiumUser) {
+            //TODO init premium user configuration (contactsSync, Admob, Statistics)
+            
+          }
+
           if (contactsState == const ContactsState.ready() &&
               tagsState == const TagsState.ready()) {
             state = const AppState.authenticatedReady();

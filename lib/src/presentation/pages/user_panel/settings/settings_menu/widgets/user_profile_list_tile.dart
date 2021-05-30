@@ -5,7 +5,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 import 'package:prospector/src/features/user/application/user_info_providers.dart';
 import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
 import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_provider.dart';
@@ -17,9 +16,7 @@ class UserProfileListTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final UserEntity user = watch(userInfoNotifierProvider).user;
-    final String premiumSubID =
-        context.read(appDefaultDataProvider).premiumSubID;
-    final bool isPremium = user.subscription == premiumSubID;
+    final bool isPremium = watch(userInfoNotifierProvider).isPremiumUser;
 
     final Locale myLocale = Localizations.localeOf(context);
     final dateFormat = DateFormat.yMd(myLocale.languageCode);

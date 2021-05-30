@@ -123,5 +123,10 @@
     "loadingContacts":  "Cargando contactos...",
     "selectAll": "Seleccionar todos",
     "unselectAll": "Deseleccionar todos",
-    "noDeviceContactsMessage": "No hay contactos en la lista de contactos de tu dispositivo."
+    "noDeviceContactsMessage": "No hay contactos en la lista de contactos de tu dispositivo.",
+    "syncContacts": "Sincronizar contactos",
+    "close": "Cerrar",
+    "premiumFeature": "Función Premium",
+    "premiumFeatureMessage": "Esta es una característica premium.\nAdquiere alguna de nuestras suscripciones premium para acceder a esta función y llevar tu negocio al siguiente nivel.",
+    "moreInfo": "Más información"
 }

@@ -1,12 +1,15 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 import 'package:prospector/src/features/user/application/user_info_state.dart';
 import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
 import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
 import 'package:prospector/src/features/user/domain/use_cases/change_user_email.dart';
 import 'package:prospector/src/features/user/domain/use_cases/get_or_create_user_info.dart';
 import 'package:prospector/src/features/user/domain/use_cases/get_user_auth_provider.dart';
+import 'package:prospector/src/features/user/domain/use_cases/update_user_document.dart';
 import 'package:prospector/src/features/user/domain/use_cases/update_user_profile.dart';
 
 class UserInfoNotifier extends ChangeNotifier {
@@ -14,11 +17,15 @@ class UserInfoNotifier extends ChangeNotifier {
   final GetUserAuthProvider getUserAuthProvider;
   final UpdateUserProfile updateUserProfile;
   final ChangeUserEmail changeUserEmail;
+  final UpdateUserDocument updateUserDocument;
+  final Reader read;
   UserInfoNotifier({
     required this.getOrCreateUserInfo,
     required this.getUserAuthProvider,
     required this.updateUserProfile,
     required this.changeUserEmail,
+    required this.updateUserDocument,
+    required this.read,
   });
 
 
@@ -27,6 +34,12 @@ class UserInfoNotifier extends ChangeNotifier {
 
   UserInfoState get userInfoState => _userInfoState;
   UserEntity get user => _user;
+
+  bool get isPremiumUser {
+    final String premiumSubID =
+        read(appDefaultDataProvider).premiumSubID;
+    return _user.subscription == premiumSubID;
+  }
 
   String getUserProvider() => getUserAuthProvider();
 
@@ -62,13 +75,15 @@ class UserInfoNotifier extends ChangeNotifier {
     return _performUpdate(newUserInfo: newUserInfo, callBack: changeUserEmail);
   }
 
-  Future<Either<UserInfoFailure, Unit>> _performUpdate({required UserEntity newUserInfo, required Future<Either<UserInfoFailure, Unit>> Function(UserEntity callBackUser) callBack}) async {
+  Future<Either<UserInfoFailure, Unit>> updateUserInfo(UserEntity newUserInfo) async => _performUpdate(newUserInfo: newUserInfo, callBack: updateUserDocument);
+
+  Future<Either<UserInfoFailure, Unit>> _performUpdate({required UserEntity newUserInfo, required Future<Either<UserInfoFailure, UserEntity>> Function(UserEntity callBackUser) callBack}) async {
     if (_user == newUserInfo) return right(unit);
     final result = await callBack(newUserInfo);
     return result.fold(
       (failure) => left(failure),
-      (_) {
-        _user = newUserInfo;
+      (newUser) {
+        _user = newUser; //TODO test checking modified field
         notifyListeners();
         return right(unit);
       },
