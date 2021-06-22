@@ -22,7 +22,7 @@ class UpdateUserProfile {
     if (updateAuthResult.isLeft() || updateDocumentResult.isLeft()) {
       return left(const UserInfoFailure.serverError());
     } else {
-      return updateDocumentResult; //TODO test
+      return updateDocumentResult;
     }
   }
 }

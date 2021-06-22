@@ -19,7 +19,7 @@ class UpdateUserDocument {
     if (localUpdate.isLeft() || remoteUpdate.isLeft()) {
       return left(const UserInfoFailure.serverError());
     } else {
-      return right(newUserInfo); //TODO test
+      return right(newUserInfo); 
     }
   }
 }

@@ -132,5 +132,9 @@
     "goToSettings": "Ir a Configuración",
     "contactsAccess": "Acceso a contactos",
     "contactsAccessMessage": "El acceso a los contactos esta deshabilitado para Prospector MLM.",
-    "allowAccess": "Por favor habilitalo en la configuración de tu dispositivo."
+    "allowAccess": "Por favor habilitalo en la configuración de tu dispositivo.",
+    "enable": "Habilitar",
+    "disable": "Deshabilitar",
+    "prospectorWillImportContacts": "Prospector importará automáticamente los contactos nuevos que agregues en tu dispositivo.",
+    "prospectorWillStopImporting": "Prospector dejará de importar automáticamente los nuevos contactos de tu dispositivo."
 }

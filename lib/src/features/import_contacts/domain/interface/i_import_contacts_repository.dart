@@ -5,4 +5,5 @@ import 'package:prospector/src/features/import_contacts/domain/failures/import_c
 abstract class IImportContactsRepository {
   Future<Either<ImportContactsFailure, List<ImportedContact>>> getDeviceContacts();
   void addContactsListener(dynamic Function() callback);
+  void removeContactsListener(void Function() callback);
 }

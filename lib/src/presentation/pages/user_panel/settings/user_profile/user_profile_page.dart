@@ -82,12 +82,6 @@ class UserProfilePage extends ConsumerWidget {
                 ],
               ),
               if (isSubmitting) LoadingPageCover(),
-              // TODO test Container(
-              //   color: Colors.grey.withOpacity(0.5),
-              //   child: const Center(
-              //     child: CircularProgressIndicator.adaptive(),
-              //   ),
-              // ),
             ],
           ),
         ),

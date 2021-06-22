@@ -24,7 +24,10 @@ class ImportContactsPage extends ConsumerWidget {
         actions: [
           TextButton(
             onPressed:
-                importing ? null : context.read(importContactsPageProvider).importSelectedContacts,
+                importing ? null : () async {
+                  await context.read(importContactsPageProvider).importSelectedContacts();
+                  Navigator.of(context).pop();
+                  },
             child: Text(
               AppLocalizations.of(context)!.import,
               style: const TextStyle(color: Colors.white),

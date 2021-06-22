@@ -34,7 +34,7 @@ class ImportContactsMenuPage extends StatelessWidget {
                 value: isPremiumUser && syncContactsEnabled,
                 onChanged: (value) => context
                     .read(imporContactsMenuProvider)
-                    .syncContactsSwitchTapped(context, value),
+                    .syncContactsSwitchTapped(context, value: value),
               );
             },
           ),

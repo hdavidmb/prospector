@@ -5,5 +5,8 @@ class FlutterContactsHelper {
 
   Future<List<Contact>> getContacts({bool withProperties = false, bool withPhoto = false}) => FlutterContacts.getContacts(withProperties: withProperties, withPhoto: withPhoto);
 
-  void addListener(dynamic Function() callback) => FlutterContacts.addListener(callback); //TODO pending implementation
+  void addListener(dynamic Function() callback) => FlutterContacts.addListener(callback);
+
+  void removeListener(void Function() callback) => FlutterContacts.removeListener(callback);
+
 }

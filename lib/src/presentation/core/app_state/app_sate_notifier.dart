@@ -5,6 +5,7 @@ import 'package:prospector/src/features/app_default_data/application/app_default
 import 'package:prospector/src/features/auth/application/auth_state.dart';
 import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
 import 'package:prospector/src/features/contacts/application/contacts_state.dart';
+import 'package:prospector/src/features/import_contacts/application/import_contacts_providers.dart';
 import 'package:prospector/src/features/tags/application/tags_provider.dart';
 import 'package:prospector/src/features/tags/application/tags_state.dart';
 import 'package:prospector/src/features/user/application/user_info_providers.dart';
@@ -44,7 +45,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
 
           if (read(userInfoNotifierProvider).isPremiumUser) {
             //TODO init premium user configuration (contactsSync, Admob, Statistics)
-            
+            read(importContactsProvider).addContactsListener();
           }
 
           if (contactsState == const ContactsState.ready() &&

@@ -199,7 +199,7 @@ Future<void> showMessageDialog(
 }
 
 Future<bool> showConfirmDialog(
-    {required BuildContext context, String? title, String? message}) async {
+    {required BuildContext context, String? title, String? message, String? confirmText}) async {
   final response = await showDialog<bool>(
     context: context,
     builder: (context) {
@@ -213,7 +213,7 @@ Future<bool> showConfirmDialog(
           ),
           TextButton(
             onPressed: () => Navigator.of(context).pop(true),
-            child: Text(AppLocalizations.of(context)!.delete),
+            child: Text(confirmText ?? AppLocalizations.of(context)!.delete),
           ),
         ],
       );

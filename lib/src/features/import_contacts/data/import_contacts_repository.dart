@@ -39,4 +39,7 @@ class ImportContactsRepository implements IImportContactsRepository {
 
   @override
   void addContactsListener(Function() callback) => flutterContacts.addListener(callback);
+
+  @override
+  void removeContactsListener(Function() callback) => flutterContacts.removeListener(callback);
 }
