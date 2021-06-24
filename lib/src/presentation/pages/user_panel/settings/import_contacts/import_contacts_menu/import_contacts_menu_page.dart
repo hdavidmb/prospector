@@ -9,6 +9,7 @@ import 'package:prospector/src/presentation/pages/user_panel/settings/import_con
 class ImportContactsMenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final Divider divider = const Divider(height: 0.0, indent: 8.0,);
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.importContacts),
@@ -22,7 +23,7 @@ class ImportContactsMenuPage extends StatelessWidget {
             onTap: () => Navigator.of(context).push(CupertinoPageRoute(
                 builder: (context) => ImportedContactsPage())),
           ),
-          const Divider(height: 0.0),
+          divider,
           Consumer(
             builder: (context, watch, child) {
               final bool isPremiumUser =
@@ -38,6 +39,7 @@ class ImportContactsMenuPage extends StatelessWidget {
               );
             },
           ),
+          divider,
         ],
       ),
     );

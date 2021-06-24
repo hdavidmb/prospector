@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:prospector/src/core/shared_prefs/shared_prefs.dart';
 import 'package:random_string/random_string.dart';
 
 import 'package:prospector/src/core/shared_prefs/shared_prefs_provider.dart';
@@ -29,6 +30,7 @@ class ImportContactsNotifier extends ChangeNotifier {
   final GetLastImportIdentifiers getLastImportIdentifiers;
   final SaveIdentifiersList saveIdentifiersList;
   final SaveSingleIdentifier saveSingleIdentifier;
+  final UserSharedPreferences prefs;
   final Reader read;
   ImportContactsNotifier({
     required this.getDeviceContacts,
@@ -38,6 +40,7 @@ class ImportContactsNotifier extends ChangeNotifier {
     required this.getLastImportIdentifiers,
     required this.saveIdentifiersList,
     required this.saveSingleIdentifier,
+    required this.prefs,
     required this.read,
   });
 
@@ -53,21 +56,27 @@ class ImportContactsNotifier extends ChangeNotifier {
   // ignore: prefer_function_declarations_over_variables
   void Function() _listener = () {};
 
+  Future<bool> _contactsAccessNotDenied() async {
+    final PermissionStatus contactsAccessStatus =
+        await Permission.contacts.status;
+    return !contactsAccessStatus.isDenied && !contactsAccessStatus.isPermanentlyDenied && !contactsAccessStatus.isLimited && !contactsAccessStatus.isRestricted;
+  }
+
+  void _showPermissionsDialog(BuildContext context) {
+    showPermissionsDialog(
+      context: context,
+      title: AppLocalizations.of(context)!.contactsAccess,
+      message: AppLocalizations.of(context)!.contactsAccessMessage,
+    );
+  }
+
   Future<bool> getContacts({required BuildContext context}) async {
     _state = const ImportContactsState.initial();
     notifyListeners();
 
-    final PermissionStatus contactsAccessStatus =
-        await Permission.contacts.status;
-    final bool accessDenied = contactsAccessStatus.isDenied ||
-        contactsAccessStatus.isPermanentlyDenied;
-
-    if (accessDenied) {
-      showPermissionsDialog(
-        context: context,
-        title: AppLocalizations.of(context)!.contactsAccess,
-        message: AppLocalizations.of(context)!.contactsAccessMessage,
-      );
+    final accessNotDenied = await _contactsAccessNotDenied();
+    if (!accessNotDenied) {
+      _showPermissionsDialog(context);
       return false;
     }
 
@@ -84,16 +93,23 @@ class ImportContactsNotifier extends ChangeNotifier {
     return true;
   }
 
-  Future<bool> setSyncContacts() async {
+  Future<bool> setSyncContacts({required BuildContext context, required bool enabled}) async {
     final bool isPremiumUser = read(userInfoNotifierProvider).isPremiumUser;
-    final bool syncContactsEnabled =
-        read(userSharedPrefsProvider).syncContactsEnabled;
-    if (isPremiumUser && syncContactsEnabled) {
+    if (!isPremiumUser) return false;
+
+    final accessNotDenied = await _contactsAccessNotDenied();
+    if (!accessNotDenied) {
+      _showPermissionsDialog(context);
+      return false;
+    }
+
+    bool _success = true;
+    if (enabled) {
       final result = await getDeviceContacts();
-      return result.fold(
+      await result.fold(
         (failure) {
           _state = ImportContactsState.error(failure);
-          return false;
+          _success = false;
         },
         (contacts) async {
           final String uid = read(userInfoNotifierProvider).user.uid;
@@ -102,22 +118,31 @@ class ImportContactsNotifier extends ChangeNotifier {
               .toList();
           await saveIdentifiersList(
               identifiers: _lastImportIdentifiers!, uid: uid);
-          return addContactsListener();
+          _success = await addContactsListener(manualSetting: true);
         },
       );
     } else {
-      return false;
+      await removeContactsListener();
     }
+    prefs.syncContactsEnabled = _success && enabled;
+
+    return _success;
   }
 
-  Future<bool> addContactsListener() async {
+  Future<bool> addContactsListener({bool manualSetting = false}) async {
     final bool isPremiumUser = read(userInfoNotifierProvider).isPremiumUser;
-    final bool syncContactsEnabled =
+    final bool syncContactsEnabled = manualSetting || 
         read(userSharedPrefsProvider).syncContactsEnabled;
     if (isPremiumUser && syncContactsEnabled) {
+      //TODO check contacts permission
+      final bool accessNotDenied = await _contactsAccessNotDenied();
+      if (!accessNotDenied) { //TODO test
+        prefs.syncContactsEnabled = false;
+        return false;
+      }
       if (!_listenerAdded) {
         _listenerAdded = true;
-          final String uid = read(userInfoNotifierProvider).user.uid;
+        final String uid = read(userInfoNotifierProvider).user.uid;
         if (_lastImportIdentifiers == null) {
           final result = await getLastImportIdentifiers(uid: uid);
           result.fold(
@@ -140,7 +165,8 @@ class ImportContactsNotifier extends ChangeNotifier {
               for (final ImportedContact contact in contacts) {
                 if (!_lastImportIdentifiers!.contains(contact.importedID)) {
                   importContact(contact);
-                  saveSingleIdentifier(identifier: contact.importedID, uid: uid);
+                  saveSingleIdentifier(
+                      identifier: contact.importedID, uid: uid);
                   _lastImportIdentifiers!.add(contact.importedID);
                 }
               }

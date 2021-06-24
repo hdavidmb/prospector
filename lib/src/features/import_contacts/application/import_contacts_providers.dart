@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/core/shared_prefs/shared_prefs_provider.dart';
 import 'package:prospector/src/features/import_contacts/application/import_contacts_notifier.dart';
 import 'package:prospector/src/features/import_contacts/data/helpers/flutter_contacts_helper.dart';
 import 'package:prospector/src/features/import_contacts/data/hive_last_import_repository.dart';
@@ -19,8 +20,9 @@ final importContactsRepository = Provider<ImportContactsRepository>((ref) {
   return ImportContactsRepository(flutterContacts: _flutterContacts);
 });
 
-final lastImportIdentifiersRepository = Provider<HiveLastImportRepository>((ref) {
-    return HiveLastImportRepository();
+final lastImportIdentifiersRepository =
+    Provider<HiveLastImportRepository>((ref) {
+  return HiveLastImportRepository();
 });
 
 // * Use cases
@@ -37,25 +39,29 @@ final addContactsListener = Provider<AddContactsListener>((ref) {
 
 final removeContactsListener = Provider<RemoveContactsListener>((ref) {
   final _importContactsRepository = ref.watch(importContactsRepository);
-    return RemoveContactsListener(importContactsRepository: _importContactsRepository);
+  return RemoveContactsListener(
+      importContactsRepository: _importContactsRepository);
 });
 
 final getLastImportIdentifiers = Provider<GetLastImportIdentifiers>((ref) {
-  final ILastImportIdentifiersRepository _lastImportIdentifiersRepository = ref.watch(lastImportIdentifiersRepository);
+  final ILastImportIdentifiersRepository _lastImportIdentifiersRepository =
+      ref.watch(lastImportIdentifiersRepository);
   return GetLastImportIdentifiers(
     lastImportIdentifiersRepository: _lastImportIdentifiersRepository,
   );
 });
 
 final saveIdentifiersList = Provider<SaveIdentifiersList>((ref) {
-  final ILastImportIdentifiersRepository _lastImportIdentifiersRepository = ref.watch(lastImportIdentifiersRepository);
+  final ILastImportIdentifiersRepository _lastImportIdentifiersRepository =
+      ref.watch(lastImportIdentifiersRepository);
   return SaveIdentifiersList(
     lastImportIdentifiersRepository: _lastImportIdentifiersRepository,
   );
 });
 
 final saveSingleIdentifier = Provider<SaveSingleIdentifier>((ref) {
-  final ILastImportIdentifiersRepository _lastImportIdentifiersRepository = ref.watch(lastImportIdentifiersRepository);
+  final ILastImportIdentifiersRepository _lastImportIdentifiersRepository =
+      ref.watch(lastImportIdentifiersRepository);
   return SaveSingleIdentifier(
     lastImportIdentifiersRepository: _lastImportIdentifiersRepository,
   );
@@ -76,6 +82,7 @@ final importContactsProvider =
   final SaveSingleIdentifier _saveSingleIdentifier =
       ref.watch(saveSingleIdentifier);
   final UploadContactImage _uploadContactImage = ref.watch(uploadContactImage);
+  final _prefs = ref.watch(userSharedPrefsProvider);
   return ImportContactsNotifier(
     getDeviceContacts: _getDeviceContacts,
     addContactsListenerUC: _addContactsListener,
@@ -84,6 +91,7 @@ final importContactsProvider =
     saveIdentifiersList: _saveIdentifiersList,
     saveSingleIdentifier: _saveSingleIdentifier,
     uploadContactImage: _uploadContactImage,
+    prefs: _prefs,
     read: ref.read,
   );
 });
