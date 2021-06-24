@@ -18,6 +18,8 @@ class ContactTagsWrap extends ConsumerWidget {
     const double fontSize = 14.0;
     const double verticalPadding = 6.0;
     for (final String tag in tags) {
+      final List<String> userTagsIDs = userTags.map((userTag) => userTag.id).toList();
+      if (!userTagsIDs.contains(tag)) break;
       final tagName = userTags.firstWhere((userTag) => userTag.id == tag).name;
       tagsList.add(
         Container(

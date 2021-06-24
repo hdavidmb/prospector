@@ -66,10 +66,10 @@ class ContactsNotifier extends ChangeNotifier {
     }
   }
 
-  Future<Either<DatabaseFailure, Unit>> updateContact(Contact contact) async {
+  Future<Either<DatabaseFailure, Unit>> updateContact(Contact contact, {bool removingDeletedTag = false}) async {
     // TODO if status changed create status interaction
     final uid = read(userInfoNotifierProvider).user.uid;
-    final newContactInfo = contact.copyWith(modified: DateTime.now());
+    final newContactInfo = removingDeletedTag ? contact : contact.copyWith(modified: DateTime.now());
     final updateResult =
         await updateContactDocument(contact: newContactInfo, uid: uid);
     return updateResult.fold(
@@ -83,6 +83,16 @@ class ContactsNotifier extends ChangeNotifier {
         return right(unit);
       },
     );
+  }
+
+  void deleteTagFromContacts({required String tagID}) {
+    for (final Contact contact in _contacts) {
+      if (contact.tags != null && contact.tags!.contains(tagID)) {
+        final newContactInfo = contact.copyWith();
+        newContactInfo.tags!.remove(tagID);
+        updateContact(newContactInfo, removingDeletedTag: true);
+      }
+    }
   }
 
   Future<Either<DatabaseFailure, Unit>> deleteContact(

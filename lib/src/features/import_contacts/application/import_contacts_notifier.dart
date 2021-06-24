@@ -134,9 +134,8 @@ class ImportContactsNotifier extends ChangeNotifier {
     final bool syncContactsEnabled = manualSetting || 
         read(userSharedPrefsProvider).syncContactsEnabled;
     if (isPremiumUser && syncContactsEnabled) {
-      //TODO check contacts permission
       final bool accessNotDenied = await _contactsAccessNotDenied();
-      if (!accessNotDenied) { //TODO test
+      if (!accessNotDenied) {
         prefs.syncContactsEnabled = false;
         return false;
       }

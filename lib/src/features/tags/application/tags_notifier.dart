@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/src/core/database/database_failures/database_failure.dart';
+import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
 import 'package:prospector/src/features/tags/application/tags_state.dart';
 import 'package:prospector/src/features/tags/domain/entity/tag_entity.dart';
 
@@ -61,13 +62,13 @@ class TagsNotifier extends ChangeNotifier {
 
   Future<Either<DatabaseFailure, Unit>> deleteTag(
       {required String tagID}) async {
-    // TODO delete tag from contacts
     final uid = read(userInfoNotifierProvider).user.uid;
     final deleteResult = await deleteTagDocument(tagID: tagID, uid: uid);
     return deleteResult.fold(
       (failure) => left(failure),
       (unit) {
         _tags.removeWhere((listTag) => listTag.id == tagID);
+        read(contactsNotifierProvider).deleteTagFromContacts(tagID: tagID);
         notifyListeners();
         return right(unit);
       },
