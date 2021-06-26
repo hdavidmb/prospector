@@ -13,7 +13,6 @@ final SwitchThemeData kSwitchThemeDark = SwitchThemeData(
       if (states.any(interactiveStates.contains)) {
         return Colors.green;
       }
-      // return Colors.red;
     },
   ),
 );
@@ -28,10 +27,13 @@ const InputDecorationTheme kInputDecorationTheme = InputDecorationTheme(
 final ElevatedButtonThemeData kElevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(primary: kPrimaryColor));
 
+final BottomNavigationBarThemeData kBottomNavigationBarThemeData = ThemeData.light().bottomNavigationBarTheme.copyWith(selectedItemColor: kPrimaryColor);
+
 // * Themes
 final kLightTheme = ThemeData.light().copyWith(
   primaryColor: kPrimaryColor,
   accentColor: kAccentColor,
+  bottomNavigationBarTheme: kBottomNavigationBarThemeData,
   inputDecorationTheme:
       kInputDecorationTheme.copyWith(fillColor: const Color(0x0A000000)),
   elevatedButtonTheme: kElevatedButtonTheme,
@@ -40,6 +42,7 @@ final kLightTheme = ThemeData.light().copyWith(
 final kDarkTheme = ThemeData.dark().copyWith(
   primaryColor: kPrimaryColor,
   accentColor: kAccentColor,
+  bottomNavigationBarTheme: kBottomNavigationBarThemeData,
   inputDecorationTheme:
       kInputDecorationTheme.copyWith(fillColor: const Color(0x1AFFFFFF)),
   switchTheme: kSwitchThemeDark,
