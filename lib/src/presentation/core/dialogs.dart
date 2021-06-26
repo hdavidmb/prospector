@@ -1,16 +1,45 @@
 import 'package:dartz/dartz.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_google_places/flutter_google_places.dart';
+import 'package:permission_handler/permission_handler.dart';
+// ignore: implementation_imports
+import 'package:google_maps_webservice/src/places.dart' show Prediction;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:prospector/src/core/database/database_failures/database_failure.dart';
 import 'package:prospector/src/features/auth/domain/auth_failure.dart';
+import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
 import 'package:prospector/src/features/images/domain/sources/source_image.dart';
 import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
-
+import 'package:prospector/src/core/private/private_keys.dart';
 import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/tags_selection_wrap/tags_selection_wrap.dart';
 
-void showSnackBar({required BuildContext context, required String message}) {
+enum SnackbarType { failure, success, warning }
+
+void showSnackBar({
+  required BuildContext context,
+  required String message,
+  required SnackbarType type,
+}) {
+  late Color color;
+  late IconData icon;
+  switch (type) {
+    case SnackbarType.failure:
+      color = Colors.red[600]!;
+      icon = Icons.info;
+      break;
+    case SnackbarType.success:
+      color = Colors.green[600]!;
+      icon = Icons.check;
+      break;
+    case SnackbarType.warning:
+      color = Colors.amber;
+      icon = Icons.warning;
+      break;
+  }
+
   showFlash(
     context: context,
     duration: const Duration(milliseconds: 4000),
@@ -21,8 +50,11 @@ void showSnackBar({required BuildContext context, required String message}) {
         margin: const EdgeInsets.all(10.0),
         borderRadius: BorderRadius.circular(8.0),
         child: FlashBar(
-          icon: Icon(Icons.info, color: Theme.of(context).primaryColor),
-          leftBarIndicatorColor: Theme.of(context).primaryColor,
+          icon: Icon(
+            icon,
+            color: color,
+          ),
+          leftBarIndicatorColor: color,
           message: Text(
             message,
             style: const TextStyle(color: Colors.white70),
@@ -38,33 +70,40 @@ void showFailureSnackbar(BuildContext context, dynamic failure) {
       failure == const DatabaseFailure.serverError() ||
       failure == const UserInfoFailure.serverError()) {
     showSnackBar(
-        context: context, message: AppLocalizations.of(context)!.serverError);
+        context: context,
+        message: AppLocalizations.of(context)!.serverError,
+        type: SnackbarType.failure);
   } else if (failure ==
           const AuthFailure.invalidEmailAndPasswordCombination() ||
       failure == const UserInfoFailure.invalidEmailAndPasswordCombination()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.invalidEmailAndPassword);
+        message: AppLocalizations.of(context)!.invalidEmailAndPassword,
+        type: SnackbarType.failure);
   } else if (failure ==
       const AuthFailure.accountExistsWithDifferentCredential()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.accountWithDifferentCredentials);
+        message: AppLocalizations.of(context)!.accountWithDifferentCredentials,
+        type: SnackbarType.failure);
   } else if (failure == const AuthFailure.userNotFoundResetPassword()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.userNotFoundResetPassword);
+        message: AppLocalizations.of(context)!.userNotFoundResetPassword,
+        type: SnackbarType.failure);
   } else if (failure == const AuthFailure.emailAlreadyInUse() ||
       failure == const UserInfoFailure.emailAlreadyInUse()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.emailAlreadyInUse);
+        message: AppLocalizations.of(context)!.emailAlreadyInUse,
+        type: SnackbarType.failure);
   } else if (failure == const AuthFailure.noConnection() ||
       failure == const DatabaseFailure.noConnection() ||
       failure == const UserInfoFailure.noConnection()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.noConnectionMessage);
+        message: AppLocalizations.of(context)!.noConnectionMessage,
+        type: SnackbarType.failure);
   }
 }
 
@@ -139,9 +178,11 @@ void showResetPasswordDialog(BuildContext context) {
   );
 }
 
-void showMessageDialog(
-    {required BuildContext context, String? title, required String message}) {
-  showDialog(
+Future<void> showMessageDialog(
+    {required BuildContext context,
+    String? title,
+    required String message}) async {
+  await showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
@@ -157,7 +198,31 @@ void showMessageDialog(
   );
 }
 
-Future<Option<String>> showDeleteConfirmDialog(
+Future<bool> showConfirmDialog(
+    {required BuildContext context, String? title, String? message, String? confirmText}) async {
+  final response = await showDialog<bool>(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: (title != null && title.isNotEmpty) ? Text(title) : null,
+        content: (message != null && message.isNotEmpty) ? Text(message) : null,
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Text(AppLocalizations.of(context)!.cancel),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: Text(confirmText ?? AppLocalizations.of(context)!.delete),
+          ),
+        ],
+      );
+    },
+  );
+  return response ?? false;
+}
+
+Future<Option<String>> showDeleteAccountConfirmDialog(
     {required BuildContext context, required bool isPassword}) async {
   final title = Text(AppLocalizations.of(context)!.areYouSureDeleteAccount);
   final content = isPassword
@@ -191,19 +256,101 @@ Future<Option<String>> showDeleteConfirmDialog(
             ],
           ),
         );
-  return showTextFieldDialog(context: context, title: title, content: content, isPassword: isPassword);
+  return showTextFieldDialog(
+    context: context,
+    title: title,
+    content: content,
+    isPassword: isPassword,
+    hintText: isPassword //TODO test
+        ? AppLocalizations.of(context)!.password
+        : AppLocalizations.of(context)!.typeHere,
+  );
 }
 
-Future<Option<String>> showReloginPasswordDialog({required BuildContext context}) {
+void showPremiumDialog({required BuildContext context}) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text(AppLocalizations.of(context)!.premiumFeature),
+        content: Text(AppLocalizations.of(context)!.premiumFeatureMessage),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text(AppLocalizations.of(context)!.close),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.blue,
+            ),
+            onPressed: () async {
+              Navigator.of(context).pop();
+              //TODO navigate to membership
+            },
+            child: Text(
+              AppLocalizations.of(context)!.moreInfo,
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.white),
+            ),
+          )
+        ],
+      );
+    },
+  );
+}
+
+void showPermissionsDialog(
+    {required BuildContext context, String? title, String? message}) {
+  showDialog<bool>(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: (title != null && title.isNotEmpty) ? Text(title) : null,
+        content: (message != null && message.isNotEmpty) ? Text('$message\n${AppLocalizations.of(context)!.allowAccess}') : null,
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Text(AppLocalizations.of(context)!.close),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.blue,
+            ),
+            onPressed: () async {
+              Navigator.of(context).pop();
+              openAppSettings();
+            },
+            child: Text(
+              AppLocalizations.of(context)!.goToSettings,
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.white),
+            ),
+          )
+        ],
+      );
+    },
+  );
+}
+
+Future<Option<String>> showReloginPasswordDialog(
+    {required BuildContext context}) {
   final title = Text(AppLocalizations.of(context)!.reauthenticate);
   final content = Text(AppLocalizations.of(context)!.reauthMessage);
-  return showTextFieldDialog(context: context, title: title, content: content, isPassword: true);
+  return showTextFieldDialog(
+      context: context,
+      title: title,
+      content: content,
+      isPassword: true,
+      hintText: AppLocalizations.of(context)!.password); //TODO test
 }
 
 Future<Option<String>> showTextFieldDialog(
     {required BuildContext context,
-    required Widget title,
-    required Widget content,
+    Widget? title,
+    Widget? content,
+    required String hintText, //TODO test
     bool isPassword = false}) async {
   final response = await showDialog(
     context: context,
@@ -216,17 +363,17 @@ Future<Option<String>> showTextFieldDialog(
           child: ListView(
             shrinkWrap: true,
             children: <Widget>[
-              content,
+              if (content != null) content,
               const SizedBox(height: 10.0),
               TextFormField(
                 controller: _controller,
                 autofocus: true,
                 obscureText: isPassword,
                 textInputAction: TextInputAction.done,
-                decoration: InputDecoration(
-                    hintText: isPassword
-                        ? AppLocalizations.of(context)!.password
-                        : AppLocalizations.of(context)!.typeHere),
+                decoration: InputDecoration(hintText: hintText),
+                //TODO test and delete hintText: isPassword
+                //     ? AppLocalizations.of(context)!.password
+                //     : AppLocalizations.of(context)!.typeHere),
                 onFieldSubmitted: (value) {
                   Navigator.of(context).pop(value);
                 },
@@ -287,4 +434,124 @@ Future<Option<SourceImage>> showImageSourceDialog(BuildContext context) async {
     },
   );
   return optionOf(source);
+}
+
+Future<String?> showPlacesDialog(BuildContext context) async {
+  final kGoogleApiKey = PrivateKeys.getGooglePlacesApiKey();
+  final Locale myLocale = Localizations.localeOf(context);
+  try {
+    final Prediction? p = await PlacesAutocomplete.show(
+      context: context,
+      types: ['(regions)'],
+      strictbounds: false,
+      apiKey: kGoogleApiKey,
+      mode: Mode.overlay,
+      language: myLocale.languageCode,
+      components: [],
+    );
+    return p?.description;
+  } catch (e) {
+    debugPrint(e.toString());
+    return '';
+  }
+}
+
+void showFiltersDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return Consumer(
+        builder: (context, watch, child) {
+          final String genderFilter =
+              watch(contactsNotifierProvider).genderFilter;
+          final String locationFilter =
+              watch(contactsNotifierProvider).locationFilter;
+          final List<String> tagsFilter =
+              watch(contactsNotifierProvider).tagsFilter;
+          final String genderText = genderFilter == 'male'
+              ? AppLocalizations.of(context)!.male
+              : AppLocalizations.of(context)!.female;
+          return AlertDialog(
+            contentPadding: const EdgeInsets.symmetric(vertical: 20.0),
+            title: Text(
+              AppLocalizations.of(context)!.filterBy,
+              style: Theme.of(context).textTheme.headline6,
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Divider(height: 0.0),
+                ListTile(
+                  tileColor: genderFilter.isNotEmpty
+                      ? Theme.of(context).primaryColor
+                      : null,
+                  title: Text(
+                    genderFilter.isNotEmpty
+                        ? '${AppLocalizations.of(context)!.gender}: $genderText'
+                        : AppLocalizations.of(context)!.gender,
+                    style: TextStyle(
+                        color: genderFilter.isNotEmpty ? Colors.white70 : null),
+                  ),
+                  onTap: () {
+                    final newFilter = genderFilter.isEmpty
+                        ? 'male'
+                        : genderFilter == 'male'
+                            ? 'female'
+                            : '';
+                    context
+                        .read(contactsNotifierProvider)
+                        .setFilters(gender: newFilter);
+                  },
+                ),
+                const Divider(
+                  height: 1.0,
+                ),
+                ListTile(
+                  tileColor: locationFilter.isNotEmpty
+                      ? Theme.of(context).primaryColor
+                      : null,
+                  title: Text(
+                    locationFilter.isNotEmpty
+                        ? '${AppLocalizations.of(context)!.city}: $locationFilter'
+                        : AppLocalizations.of(context)!.city,
+                    style: TextStyle(
+                        color:
+                            locationFilter.isNotEmpty ? Colors.white70 : null),
+                  ),
+                  onTap: () async {
+                    final newFilter = locationFilter.isNotEmpty
+                        ? ''
+                        : await showPlacesDialog(context);
+                    if (newFilter != null) {
+                      context
+                          .read(contactsNotifierProvider)
+                          .setFilters(location: newFilter);
+                    }
+                  },
+                ),
+                const Divider(height: 1.0),
+                TagsSelectionWrap(
+                  selectedTags: tagsFilter,
+                  canAdd: false,
+                  onTagsListChanged: (tags) => context
+                      .read(contactsNotifierProvider)
+                      .setFilters(tags: tags),
+                ),
+              ],
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () =>
+                      context.read(contactsNotifierProvider).clearFilters(),
+                  child: Text(AppLocalizations.of(context)!.clearFilters)),
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: Text(AppLocalizations.of(context)!.ok),
+              ),
+            ],
+          );
+        },
+      );
+    },
+  );
 }

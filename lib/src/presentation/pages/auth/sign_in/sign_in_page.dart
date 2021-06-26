@@ -5,20 +5,30 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:prospector/src/presentation/core/app_state/app_state.dart';
 import 'package:prospector/src/presentation/core/app_state/app_state_provider.dart';
+import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/pages/user_panel/home/home_page.dart';
 import 'package:prospector/src/presentation/pages/auth/sign_in/widgets/sign_in_form.dart';
 
 class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    bool showingDialog = false;
     final bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       body: ProviderListener<AppState>(
         provider: appStateNotifierProvider,
-        onChange: (context, appState) {
+        onChange: (context, appState) async {
           if (appState == const AppState.authenticatedReady()) {
             Navigator.pushReplacement(
                 context, CupertinoPageRoute(builder: (context) => HomePage()));
+          } else if (appState == const AppState.error()) {
+            if (!showingDialog) {
+              showingDialog = true;
+              await showMessageDialog(
+                  context: context,
+                  message: AppLocalizations.of(context)!.appStateError);
+              showingDialog = false;
+            }
           }
         },
         child: GestureDetector(

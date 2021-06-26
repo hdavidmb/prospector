@@ -75,6 +75,6 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
   String userPhotoURL() => firebaseAuthInstance.currentUser!.photoURL ?? '';
 
   @override
-  String userProvider() =>
-      firebaseAuthInstance.currentUser!.providerData.last.providerId;
+  String userProvider() => firebaseAuthInstance.currentUser != null ?
+      firebaseAuthInstance.currentUser!.providerData.last.providerId : '';
 }

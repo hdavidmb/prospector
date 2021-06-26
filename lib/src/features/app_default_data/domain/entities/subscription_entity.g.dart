@@ -6,17 +6,17 @@ part of 'subscription_entity.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class SubscriptionAdapter extends TypeAdapter<Subscription> {
+class SubscriptionAdapter extends TypeAdapter<_$_Subscription> {
   @override
   final int typeId = 1;
 
   @override
-  Subscription read(BinaryReader reader) {
+  _$_Subscription read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Subscription(
+    return _$_Subscription(
       key: fields[0] as String,
       id: fields[1] as String,
       created: fields[2] as DateTime,
@@ -24,7 +24,7 @@ class SubscriptionAdapter extends TypeAdapter<Subscription> {
   }
 
   @override
-  void write(BinaryWriter writer, Subscription obj) {
+  void write(BinaryWriter writer, _$_Subscription obj) {
     writer
       ..writeByte(3)
       ..writeByte(0)

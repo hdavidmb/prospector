@@ -43,13 +43,16 @@ class FirestoreUserInfoRepository implements IUserInfoRepository {
     try {
       final DocumentSnapshot<Map<String, dynamic>> userDocSnapshot =
           await firestoreInstance.collection('users').doc(uid).get();
-      // * Transform timestamps into millisecondsSinceEpoch and complete with required info
+      // * Transform timestamps into DateTimes and complete with required info
       final userMap = userDocSnapshot.data()!;
       userMap['uid'] = userDocSnapshot.id;
       userMap['name'] = userMap['name'] ?? '';
-      userMap['expiry_date'] = userMap['expiry_date'] != null ? userMap['expiry_date'].millisecondsSinceEpoch : DateTime.now().subtract(const Duration(days: 30)).millisecondsSinceEpoch;
-      userMap['created'] = userMap['created'] != null ? userMap['created'].millisecondsSinceEpoch : DateTime.now().millisecondsSinceEpoch;
-      userMap['modified'] = userMap['modified'] != null ? userMap['modified'].millisecondsSinceEpoch : DateTime.now().millisecondsSinceEpoch;
+      userMap['expiry_date'] = userMap['expiry_date']?.toDate() ??
+          DateTime.now().subtract(const Duration(days: 30)); //TODO test
+      userMap['created'] =
+          userMap['created']?.toDate() ?? DateTime.now(); //TODO test
+      userMap['modified'] =
+          userMap['modified']?.toDate() ?? DateTime.now(); //TODO test
       return right(UserEntity.fromMap(userMap));
     } catch (e) {
       return left(const DatabaseFailure.serverError());
@@ -75,7 +78,7 @@ class FirestoreUserInfoRepository implements IUserInfoRepository {
     final bool isConnected = await checkConnection();
     if (!isConnected) return left(const DatabaseFailure.noConnection());
     try {
-      final DocumentSnapshot userDocSnapshot =
+      final DocumentSnapshot<Map<String, dynamic>> userDocSnapshot =
           await firestoreInstance.collection('users').doc(uid).get();
       return right(userDocSnapshot.exists);
     } catch (e) {

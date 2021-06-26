@@ -1,0 +1,86 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
+import 'package:prospector/src/presentation/core/contacts_search_field/contacts_search_field.dart';
+import 'package:prospector/src/presentation/core/dialogs.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/contacts_list/widgets/contacts_tab_bar.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/contacts_list/widgets/search_contacts_list.dart';
+
+class ContactsListPage extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, ScopedReader watch) {
+    final bool _isFiltered = watch(contactsNotifierProvider).isFiltered;
+    final bool isSearchBarShowing =
+        watch(contactsNotifierProvider).isSearchBarShowing;
+    final isSearchTextEmpty = watch(contactsNotifierProvider).isSearchTextEmpty;
+    return Scaffold(
+        appBar: AppBar(
+          centerTitle: isSearchBarShowing ? false : null,
+          backgroundColor: isSearchBarShowing
+              ? Theme.of(context).scaffoldBackgroundColor
+              : null,
+          title: isSearchBarShowing
+              ? ContactsSearchField(
+                  autofocus: true,
+                  onChanged: (value) => context
+                      .read(contactsNotifierProvider)
+                      .search(searchText: value),
+                )
+              : Text(AppLocalizations.of(context)!.prospects),
+          actions: isSearchBarShowing
+              ? [
+                  TextButton(
+                    onPressed: () =>
+                        context.read(contactsNotifierProvider).cancelSearch(),
+                    child: Text(AppLocalizations.of(context)!.cancel),
+                  ),
+                  const SizedBox(width: 8.0),
+                ]
+              : [
+                  IconButton(
+                    icon: const Icon(Icons.search),
+                    onPressed: () {
+                      context.read(contactsNotifierProvider).showSearchBar();
+                    },
+                  ),
+                  Ink(
+                    width: 43.0,
+                    height: 43.0,
+                    decoration: ShapeDecoration(
+                      color: _isFiltered
+                          ? Colors.white
+                          : Theme.of(context).primaryColor,
+                      shape: const CircleBorder(),
+                    ),
+                    child: IconButton(
+                      icon: const Icon(Icons.filter_list),
+                      color: _isFiltered
+                          ? Theme.of(context).primaryColor
+                          : Colors.white,
+                      onPressed: () {
+                        showFiltersDialog(context);
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 8.0),
+                ],
+        ),
+        body: isSearchTextEmpty
+            ? Stack(
+                children: [
+                  ContactsTabBar(),
+                  if (isSearchBarShowing)
+                    GestureDetector(
+                      onTap: () =>
+                          context.read(contactsNotifierProvider).cancelSearch(),
+                      child: Container(
+                        color: Colors.grey.withOpacity(0.4),
+                      ),
+                    )
+                ],
+              )
+            : SearchContactsList());
+  }
+}

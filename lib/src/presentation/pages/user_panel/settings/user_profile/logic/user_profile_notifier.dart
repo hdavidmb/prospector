@@ -62,7 +62,7 @@ class UserProfileNotifier extends ChangeNotifier with FormValidators {
     notifyListeners();
     final userAuthProvider = read(userInfoNotifierProvider).getUserProvider();
     final bool _isPassword = userAuthProvider == 'password';
-    final response = await showDeleteConfirmDialog(
+    final response = await showDeleteAccountConfirmDialog(
         context: context, isPassword: _isPassword);
     response.fold(
       () {},

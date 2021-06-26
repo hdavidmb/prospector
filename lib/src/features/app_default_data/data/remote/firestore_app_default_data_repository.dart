@@ -25,7 +25,7 @@ class FirestoreAppDefaultDataRepository
       final List<Status> statuses = querySnapshot.docs.map((doc) {
         final Map<String, dynamic> docMap = doc.data();
         docMap['id'] = doc.id;
-        docMap['created'] = docMap['created'].millisecondsSinceEpoch;
+        docMap['created'] = docMap['created'].toDate();
         return Status.fromMap(docMap);
       }).toList();
       return right(statuses);
@@ -45,7 +45,7 @@ class FirestoreAppDefaultDataRepository
       final List<Subscription> subscriptions = querySnapshot.docs.map((doc) {
         final Map<String, dynamic> docMap = doc.data();
         docMap['id'] = doc.id;
-        docMap['created'] = docMap['created'].millisecondsSinceEpoch;
+        docMap['created'] = docMap['created'].toDate();
         return Subscription.fromMap(docMap);
       }).toList();
       return right(subscriptions);

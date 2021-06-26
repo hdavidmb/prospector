@@ -6,17 +6,17 @@ part of 'status_entity.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class StatusAdapter extends TypeAdapter<Status> {
+class StatusAdapter extends TypeAdapter<_$_Status> {
   @override
   final int typeId = 0;
 
   @override
-  Status read(BinaryReader reader) {
+  _$_Status read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Status(
+    return _$_Status(
       id: fields[0] as String,
       key: fields[1] as String,
       created: fields[2] as DateTime,
@@ -24,7 +24,7 @@ class StatusAdapter extends TypeAdapter<Status> {
   }
 
   @override
-  void write(BinaryWriter writer, Status obj) {
+  void write(BinaryWriter writer, _$_Status obj) {
     writer
       ..writeByte(3)
       ..writeByte(0)

@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Prospector</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -63,6 +65,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Prospector needs access to your camera for your profile and prospects.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Prospector needs access to contacts so you can import them as prospects</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Prospector needs access to your photo library for your profile and prospects.</string>
 	<key>UILaunchStoryboardName</key>

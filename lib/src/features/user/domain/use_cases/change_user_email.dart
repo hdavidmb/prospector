@@ -14,7 +14,7 @@ class ChangeUserEmail {
     required this.updateUserDocument,
   });
 
-  Future<Either<UserInfoFailure, Unit>> call(UserEntity user) async {
+  Future<Either<UserInfoFailure, UserEntity>> call(UserEntity user) async {
     final bool isConnected = await checkConnection();
     if (!isConnected) return left(const UserInfoFailure.noConnection());
     final changeResult =
