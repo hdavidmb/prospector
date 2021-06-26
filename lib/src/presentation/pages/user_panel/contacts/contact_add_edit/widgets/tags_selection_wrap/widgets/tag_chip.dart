@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/tags/application/tags_provider.dart';
 
-import 'package:prospector/src/features/tags/domain/entity/tag_entity.dart';
+import '../../../../../../../../features/tags/application/tags_provider.dart';
+import '../../../../../../../../features/tags/domain/entity/tag_entity.dart';
 
 class TagChip extends ConsumerWidget {
   final Tag tag;

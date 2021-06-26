@@ -2,12 +2,12 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:prospector/src/core/auth/auth_helpers.dart';
-
-import 'package:prospector/src/features/auth/data/helpers/sign_in_with_apple_helper.dart';
-import 'package:prospector/src/features/auth/domain/auth_failure.dart';
-import 'package:prospector/src/features/auth/domain/i_auth_repository.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+
+import '../../../core/auth/auth_helpers.dart';
+import '../domain/auth_failure.dart';
+import '../domain/i_auth_repository.dart';
+import 'helpers/sign_in_with_apple_helper.dart';
 
 class FirebaseAuthRepository implements IAuthRepository {
   final FirebaseAuth firebaseAuthInstance;

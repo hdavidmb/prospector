@@ -2,15 +2,15 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
-import 'package:prospector/src/features/user/application/user_info_state.dart';
-import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
-import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
-import 'package:prospector/src/features/user/domain/use_cases/change_user_email.dart';
-import 'package:prospector/src/features/user/domain/use_cases/get_or_create_user_info.dart';
-import 'package:prospector/src/features/user/domain/use_cases/get_user_auth_provider.dart';
-import 'package:prospector/src/features/user/domain/use_cases/update_user_document.dart';
-import 'package:prospector/src/features/user/domain/use_cases/update_user_profile.dart';
+import '../../app_default_data/application/app_default_data_providers.dart';
+import '../domain/entity/user_entity.dart';
+import '../domain/failures/user_info_failure.dart';
+import '../domain/use_cases/change_user_email.dart';
+import '../domain/use_cases/get_or_create_user_info.dart';
+import '../domain/use_cases/get_user_auth_provider.dart';
+import '../domain/use_cases/update_user_document.dart';
+import '../domain/use_cases/update_user_profile.dart';
+import 'user_info_state.dart';
 
 class UserInfoNotifier extends ChangeNotifier {
   final GetOrCreateUserInfo getOrCreateUserInfo;

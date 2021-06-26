@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/features/auth/domain/auth_failure.dart';
+
+import '../../features/auth/domain/auth_failure.dart';
 
 Either<AuthFailure, Unit> manageFirebaseAuthExceptions(
       {required String errorCode}) {

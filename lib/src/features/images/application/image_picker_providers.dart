@@ -1,8 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:prospector/src/features/images/data/image_picker_repository.dart';
-import 'package:prospector/src/features/images/domain/interface/i_images_picker.dart';
-import 'package:prospector/src/features/images/domain/use_cases/get_image.dart';
+
+import '../data/image_picker_repository.dart';
+import '../domain/interface/i_images_picker.dart';
+import '../domain/use_cases/get_image.dart';
 
 // * Repository
 final imagePrickerRepository = Provider<IImagesPicker>((ref) {

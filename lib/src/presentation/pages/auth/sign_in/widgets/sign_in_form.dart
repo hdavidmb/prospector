@@ -1,13 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'package:prospector/src/presentation/core/dialogs.dart';
-import 'package:prospector/src/presentation/pages/auth/register/register_page.dart';
-import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
+import '../../../../core/dialogs.dart';
+import '../../register/register_page.dart';
+import '../logic/sign_in_form_provider.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({

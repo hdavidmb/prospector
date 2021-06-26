@@ -1,16 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import 'package:intl/intl.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
-import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_provider.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/user_profile_page.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/widgets/user_avatar.dart';
-import 'package:prospector/src/presentation/theme/theme_constants.dart';
+import '../../../../../../features/user/application/user_info_providers.dart';
+import '../../../../../../features/user/domain/entity/user_entity.dart';
+import '../../../../../theme/theme_constants.dart';
+import '../../user_profile/logic/user_profile_provider.dart';
+import '../../user_profile/user_profile_page.dart';
+import '../../widgets/user_avatar.dart';
 
 class UserProfileListTile extends ConsumerWidget {
   @override

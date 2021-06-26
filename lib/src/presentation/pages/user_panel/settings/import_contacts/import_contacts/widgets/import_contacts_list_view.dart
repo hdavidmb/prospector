@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:prospector/src/features/import_contacts/domain/entity/imported_contact_entity.dart';
-import 'package:prospector/src/presentation/core/no_contatcs_screen/no_contacts_screen.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/import_contacts/import_contacts/logic/impor_contacts_page_providers.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/import_contacts/widgets/imported_contact_tile.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../../../../../features/import_contacts/domain/entity/imported_contact_entity.dart';
+import '../../../../../../core/no_contatcs_screen/no_contacts_screen.dart';
+import '../../widgets/imported_contact_tile.dart';
+import '../logic/impor_contacts_page_providers.dart';
 
 class ImportContactsListView extends ConsumerWidget {
   @override

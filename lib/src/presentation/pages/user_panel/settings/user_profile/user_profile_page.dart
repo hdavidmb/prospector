@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
-import 'package:prospector/src/presentation/core/dialogs.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/widgets/loading_page_cover.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_notifier.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_provider.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_state.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/widgets/logout_and_delete_buttons.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/widgets/user_auth_provider_items.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/widgets/user_avatar_edit.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/widgets/user_name_textfield.dart';
+
+import '../../../../../features/app_default_data/application/app_default_data_providers.dart';
+import '../../../../../features/user/application/user_info_providers.dart';
+import '../../../../core/dialogs.dart';
+import 'logic/user_profile_notifier.dart';
+import 'logic/user_profile_provider.dart';
+import 'logic/user_profile_state.dart';
+import 'widgets/loading_page_cover.dart';
+import 'widgets/logout_and_delete_buttons.dart';
+import 'widgets/user_auth_provider_items.dart';
+import 'widgets/user_avatar_edit.dart';
+import 'widgets/user_name_textfield.dart';
 
 class UserProfilePage extends ConsumerWidget {
   final Widget divider = const Divider(height: 0.0);

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
-import 'package:prospector/src/presentation/helpers/date_formatters.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/contact_image.dart';
+import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
+import '../../../../../helpers/date_formatters.dart';
+import '../../contact_add_edit/widgets/contact_image.dart';
 
 class ContactTile extends StatelessWidget {
   final Contact contact;

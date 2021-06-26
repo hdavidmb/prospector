@@ -1,14 +1,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/core/database/instances/database_instance_provider.dart';
-import 'package:prospector/src/features/contacts/application/contacts_notifier.dart';
-import 'package:prospector/src/features/contacts/data/local/hive_contacts_repository.dart';
-import 'package:prospector/src/features/contacts/data/remote/firebase_contacts_repository.dart';
-import 'package:prospector/src/features/contacts/domain/interfaces/i_contacts_local_repository.dart';
-import 'package:prospector/src/features/contacts/domain/interfaces/i_contacts_remote_repository.dart';
-import 'package:prospector/src/features/contacts/domain/use_cases/create_contact_document.dart';
-import 'package:prospector/src/features/contacts/domain/use_cases/delete_contact_document.dart';
-import 'package:prospector/src/features/contacts/domain/use_cases/get_contacts_list.dart';
-import 'package:prospector/src/features/contacts/domain/use_cases/update_contact_document.dart';
+
+import '../../../core/database/instances/database_instance_provider.dart';
+import '../data/local/hive_contacts_repository.dart';
+import '../data/remote/firebase_contacts_repository.dart';
+import '../domain/interfaces/i_contacts_local_repository.dart';
+import '../domain/interfaces/i_contacts_remote_repository.dart';
+import '../domain/use_cases/create_contact_document.dart';
+import '../domain/use_cases/delete_contact_document.dart';
+import '../domain/use_cases/get_contacts_list.dart';
+import '../domain/use_cases/update_contact_document.dart';
+import 'contacts_notifier.dart';
 
 // * Repositorioes
 final remoteContactsRepository = Provider<IContactsRemoteRepository>((ref) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:prospector/src/features/import_contacts/domain/entity/imported_contact_entity.dart';
+import '../../../../../../features/import_contacts/domain/entity/imported_contact_entity.dart';
 
 class ImportedContactTile extends StatelessWidget {
   final ImportedContact contact;

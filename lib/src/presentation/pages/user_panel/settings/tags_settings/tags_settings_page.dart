@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/tags_selection_wrap/tags_selection_wrap.dart';
+
+import '../../contacts/contact_add_edit/widgets/tags_selection_wrap/tags_selection_wrap.dart';
 
 class TagsSettingsPage extends StatelessWidget {
   @override

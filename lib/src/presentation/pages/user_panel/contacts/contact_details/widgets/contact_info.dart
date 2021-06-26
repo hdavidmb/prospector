@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
-import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/contact_image.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/widgets/contact_tags_wrap.dart';
+import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
+import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
+import '../../contact_add_edit/widgets/contact_image.dart';
+import 'contact_tags_wrap.dart';
 
 class ContactInfo extends StatelessWidget {
   final Contact contact;

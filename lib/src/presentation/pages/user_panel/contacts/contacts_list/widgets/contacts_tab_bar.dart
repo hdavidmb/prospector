@@ -2,8 +2,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contacts_list/widgets/contacts_group_list.dart';
+
+import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
+import 'contacts_group_list.dart';
 
 class ContactsTabBar extends StatelessWidget {
   @override

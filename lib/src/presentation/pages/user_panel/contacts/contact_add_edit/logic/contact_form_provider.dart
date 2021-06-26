@@ -1,8 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/images/application/image_picker_providers.dart';
-import 'package:prospector/src/features/storage/application/storage_providers.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/logic/contact_form_state.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/logic/contact_form_state_notifier.dart';
+
+import '../../../../../../features/images/application/image_picker_providers.dart';
+import '../../../../../../features/storage/application/storage_providers.dart';
+import 'contact_form_state.dart';
+import 'contact_form_state_notifier.dart';
 
 final contactFormProvider =
     StateNotifierProvider<ContactFormStateNotifier, ContactFormState>(

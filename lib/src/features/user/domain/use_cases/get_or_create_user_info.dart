@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/core/connection/connection_checker.dart';
 
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
-import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
-import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
-import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
-import 'package:prospector/src/features/user/domain/interfaces/i_user_auth_profile_repository.dart';
-import 'package:prospector/src/features/user/domain/interfaces/i_user_info_repository.dart';
+import '../../../../core/connection/connection_checker.dart';
+import '../../../../core/database/database_failures/database_failure.dart';
+import '../../../app_default_data/application/app_default_data_providers.dart';
+import '../entity/user_entity.dart';
+import '../failures/user_info_failure.dart';
+import '../interfaces/i_user_auth_profile_repository.dart';
+import '../interfaces/i_user_info_repository.dart';
 
 class GetOrCreateUserInfo {
   final IUserInfoRepository localUserInfoRepository;

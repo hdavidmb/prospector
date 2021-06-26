@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:prospector/src/core/shared_prefs/shared_prefs.dart';
-import 'package:prospector/src/features/import_contacts/application/import_contacts_providers.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
-import 'package:prospector/src/presentation/core/dialogs.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../../../../../core/shared_prefs/shared_prefs.dart';
+import '../../../../../../../features/import_contacts/application/import_contacts_providers.dart';
+import '../../../../../../../features/user/application/user_info_providers.dart';
+import '../../../../../../core/dialogs.dart';
 
 class ImportContactsMenuNotifier extends ChangeNotifier {
   final UserSharedPreferences prefs;

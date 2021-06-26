@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
-import 'package:prospector/src/features/app_default_data/domain/entities/subscription_entity.dart';
-import 'package:prospector/src/features/app_default_data/domain/interface/i_app_default_data_local_repository.dart';
-import 'package:prospector/src/features/app_default_data/domain/interface/i_app_default_data_repository.dart';
+import '../../../../core/database/database_failures/database_failure.dart';
+import '../entities/subscription_entity.dart';
+import '../interface/i_app_default_data_local_repository.dart';
+import '../interface/i_app_default_data_repository.dart';
 
 class GetSubscriptions {
   final IAppDefaultDataRemoteRepository remoteRepository;

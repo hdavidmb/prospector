@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/change_email/change_email_page.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/change_email/logic/change_email_form_provider.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/change_password/change_password_page.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/change_password/logic/change_password_form_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../../../../features/user/application/user_info_providers.dart';
+import '../../change_email/change_email_page.dart';
+import '../../change_email/logic/change_email_form_provider.dart';
+import '../../change_password/change_password_page.dart';
+import '../../change_password/logic/change_password_form_provider.dart';
 
 class UserAuthProviderItems extends ConsumerWidget {
   final Widget divider = const Divider(height: 0.0);

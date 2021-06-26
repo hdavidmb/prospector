@@ -2,14 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:prospector/src/core/auth/auth_instance_provider.dart';
-import 'package:prospector/src/features/auth/application/auth_state.dart';
 
-import 'package:prospector/src/features/auth/application/auth_state_notifier.dart';
-import 'package:prospector/src/features/auth/data/firebase_auth_repository.dart';
-import 'package:prospector/src/features/auth/data/helpers/sign_in_with_apple_helper.dart';
-import 'package:prospector/src/features/auth/domain/i_auth_repository.dart';
-import 'package:prospector/src/features/auth/domain/use_cases/auth_use_cases.dart';
+import '../../../core/auth/auth_instance_provider.dart';
+import '../data/firebase_auth_repository.dart';
+import '../data/helpers/sign_in_with_apple_helper.dart';
+import '../domain/i_auth_repository.dart';
+import '../domain/use_cases/auth_use_cases.dart';
+import 'auth_state.dart';
+import 'auth_state_notifier.dart';
 
 export 'package:prospector/src/features/auth/application/auth_state.dart';
 

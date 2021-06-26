@@ -1,11 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/auth/domain/use_cases/relogin_user.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
-import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
-import 'package:prospector/src/features/user/domain/use_cases/change_user_password.dart';
-import 'package:prospector/src/presentation/helpers/form_validators.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/change_password/logic/change_password_form_state.dart';
+
+import '../../../../../../features/auth/domain/use_cases/relogin_user.dart';
+import '../../../../../../features/user/application/user_info_providers.dart';
+import '../../../../../../features/user/domain/failures/user_info_failure.dart';
+import '../../../../../../features/user/domain/use_cases/change_user_password.dart';
+import '../../../../../helpers/form_validators.dart';
+import 'change_password_form_state.dart';
 
 class ChangePasswordFormStateNotifier
     extends StateNotifier<ChangePasswordFormState> with FormValidators {

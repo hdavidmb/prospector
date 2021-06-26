@@ -1,7 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/auth/application/auth_providers.dart';
-import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_state.dart';
-import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_state_notifier.dart';
+
+import '../../../../../features/auth/application/auth_providers.dart';
+import 'sign_in_form_state.dart';
+import 'sign_in_form_state_notifier.dart';
 
 export 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_state.dart';
 

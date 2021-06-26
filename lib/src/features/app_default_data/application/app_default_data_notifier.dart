@@ -2,11 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:prospector/src/features/app_default_data/application/app_default_data_state.dart';
-import 'package:prospector/src/features/app_default_data/domain/entities/status_entity.dart';
-import 'package:prospector/src/features/app_default_data/domain/entities/subscription_entity.dart';
-import 'package:prospector/src/features/app_default_data/domain/use_cases/get_statuses.dart';
-import 'package:prospector/src/features/app_default_data/domain/use_cases/get_subscriptions.dart';
+
+import '../domain/entities/status_entity.dart';
+import '../domain/entities/subscription_entity.dart';
+import '../domain/use_cases/get_statuses.dart';
+import '../domain/use_cases/get_subscriptions.dart';
+import 'app_default_data_state.dart';
 
 class AppDefaultDataNotifier extends ChangeNotifier {
   final GetStatuses getStatuses;

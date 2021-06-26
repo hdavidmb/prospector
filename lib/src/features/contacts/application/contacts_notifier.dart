@@ -2,14 +2,14 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
-import 'package:prospector/src/features/contacts/application/contacts_state.dart';
-import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
-import 'package:prospector/src/features/contacts/domain/use_cases/create_contact_document.dart';
-import 'package:prospector/src/features/contacts/domain/use_cases/delete_contact_document.dart';
-import 'package:prospector/src/features/contacts/domain/use_cases/get_contacts_list.dart';
-import 'package:prospector/src/features/contacts/domain/use_cases/update_contact_document.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
+import '../../../core/database/database_failures/database_failure.dart';
+import '../../user/application/user_info_providers.dart';
+import '../domain/entity/contact_entity.dart';
+import '../domain/use_cases/create_contact_document.dart';
+import '../domain/use_cases/delete_contact_document.dart';
+import '../domain/use_cases/get_contacts_list.dart';
+import '../domain/use_cases/update_contact_document.dart';
+import 'contacts_state.dart';
 
 class ContactsNotifier extends ChangeNotifier {
   final CreateContactDocument createContactDocument;

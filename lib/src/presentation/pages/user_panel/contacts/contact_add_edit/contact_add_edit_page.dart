@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/logic/contact_form_provider.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/contact_form.dart';
+import '../../../../../features/contacts/domain/entity/contact_entity.dart';
+import 'logic/contact_form_provider.dart';
+import 'widgets/contact_form.dart';
 
 class ContactAddEditPage extends ConsumerWidget {
   /// Pass the contact to be edited

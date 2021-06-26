@@ -3,9 +3,10 @@ import 'dart:typed_data';
 
 import 'package:dartz/dartz.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:prospector/src/core/connection/connection_checker.dart';
-import 'package:prospector/src/features/storage/domain/failures/storage_failure.dart';
-import 'package:prospector/src/features/storage/domain/interface/i_storage_repository.dart';
+
+import '../../../core/connection/connection_checker.dart';
+import '../domain/failures/storage_failure.dart';
+import '../domain/interface/i_storage_repository.dart';
 
 class FirebaseStorageRepository implements IStorageRepository {
   final FirebaseStorage storageInstance;

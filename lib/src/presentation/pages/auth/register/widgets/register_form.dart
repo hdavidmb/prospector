@@ -1,13 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:prospector/src/presentation/core/dialogs.dart';
 
-import 'package:prospector/src/presentation/pages/auth/register/logic/register_form_provider.dart';
-import 'package:prospector/src/presentation/pages/auth/sign_in/sign_in_page.dart';
+import '../../../../core/dialogs.dart';
+import '../../sign_in/sign_in_page.dart';
+import '../logic/register_form_provider.dart';
 
 class RegisterForm extends StatelessWidget {
   const RegisterForm({

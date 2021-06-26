@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
+import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 
 class ActionButtons extends StatelessWidget {
   final String contactStatus;

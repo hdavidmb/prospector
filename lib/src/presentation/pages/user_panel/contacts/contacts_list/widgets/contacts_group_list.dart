@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
-import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
-import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
-import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
-import 'package:prospector/src/presentation/core/no_contatcs_screen/no_contacts_screen.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/contact_details_page.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contacts_list/widgets/contact_tile.dart';
+
+import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
+import '../../../../../../features/contacts/application/contacts_providers.dart';
+import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
+import '../../../../../core/no_contatcs_screen/no_contacts_screen.dart';
+import '../../contact_details/contact_details_page.dart';
+import 'contact_tile.dart';
 
 class ContactsGroupList extends ConsumerWidget {
   final List<String> statuses;

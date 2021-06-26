@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
+import '../../../../../features/contacts/application/contacts_providers.dart';
 
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/contact_add_edit_page.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/logic/contact_form_provider.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/contact_image.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/widgets/action_buttons.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/widgets/contact_info.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/widgets/interaction_text_field.dart';
+import '../contact_add_edit/contact_add_edit_page.dart';
+import '../contact_add_edit/logic/contact_form_provider.dart';
+import '../contact_add_edit/widgets/contact_image.dart';
+import 'widgets/action_buttons.dart';
+import 'widgets/contact_info.dart';
+import 'widgets/interaction_text_field.dart';
 
 class ContactDetailsPage extends ConsumerWidget {
   final String? contactID;

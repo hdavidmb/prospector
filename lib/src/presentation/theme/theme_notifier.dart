@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:prospector/src/core/shared_prefs/shared_prefs.dart';
+
+import '../../core/shared_prefs/shared_prefs.dart';
 
 export 'theme_constants.dart';
 

@@ -1,8 +1,9 @@
-import 'package:hive/hive.dart';
-import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/features/user/domain/interfaces/i_user_info_repository.dart';
+import 'package:hive/hive.dart';
+
+import '../../../../core/database/database_failures/database_failure.dart';
+import '../../domain/entity/user_entity.dart';
+import '../../domain/interfaces/i_user_info_repository.dart';
 
 class HiveUserInfoRepository implements IUserInfoRepository {
   @override

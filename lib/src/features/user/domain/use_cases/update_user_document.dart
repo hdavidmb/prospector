@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
-import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
-import 'package:prospector/src/features/user/domain/interfaces/i_user_info_repository.dart';
+
+import '../entity/user_entity.dart';
+import '../failures/user_info_failure.dart';
+import '../interfaces/i_user_info_repository.dart';
 
 class UpdateUserDocument {
   final IUserInfoRepository localUserInfoRepository;

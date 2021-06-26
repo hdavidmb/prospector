@@ -5,17 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:prospector/src/features/auth/domain/auth_failure.dart';
-import 'package:prospector/src/features/auth/domain/use_cases/relogin_user.dart';
-import 'package:prospector/src/features/auth/domain/use_cases/sign_out.dart';
-import 'package:prospector/src/features/images/domain/use_cases/get_image.dart';
-import 'package:prospector/src/features/storage/domain/use_cases/upload_user_avatar.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
-import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
-import 'package:prospector/src/features/user/domain/use_cases/delete_user_account.dart';
-import 'package:prospector/src/presentation/core/dialogs.dart';
-import 'package:prospector/src/presentation/helpers/form_validators.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_state.dart';
+import '../../../../../../features/auth/domain/auth_failure.dart';
+import '../../../../../../features/auth/domain/use_cases/relogin_user.dart';
+import '../../../../../../features/auth/domain/use_cases/sign_out.dart';
+import '../../../../../../features/images/domain/use_cases/get_image.dart';
+import '../../../../../../features/storage/domain/use_cases/upload_user_avatar.dart';
+import '../../../../../../features/user/application/user_info_providers.dart';
+import '../../../../../../features/user/domain/failures/user_info_failure.dart';
+import '../../../../../../features/user/domain/use_cases/delete_user_account.dart';
+import '../../../../../core/dialogs.dart';
+import '../../../../../helpers/form_validators.dart';
+import 'user_profile_state.dart';
 
 class UserProfileNotifier extends ChangeNotifier with FormValidators {
   final SignOut signOut;

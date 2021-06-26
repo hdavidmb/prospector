@@ -1,19 +1,20 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/core/auth/auth_instance_provider.dart';
-import 'package:prospector/src/core/database/instances/database_instance_provider.dart';
-import 'package:prospector/src/features/user/application/user_info_notifier.dart';
-import 'package:prospector/src/features/user/data/local/hive_user_info_repository.dart';
-import 'package:prospector/src/features/user/data/remote/firestore_user_info_repository.dart';
-import 'package:prospector/src/features/user/data/user_auth_profile_repository.dart';
-import 'package:prospector/src/features/user/domain/interfaces/i_user_auth_profile_repository.dart';
-import 'package:prospector/src/features/user/domain/interfaces/i_user_info_repository.dart';
-import 'package:prospector/src/features/user/domain/use_cases/change_user_email.dart';
-import 'package:prospector/src/features/user/domain/use_cases/change_user_password.dart';
-import 'package:prospector/src/features/user/domain/use_cases/delete_user_account.dart';
-import 'package:prospector/src/features/user/domain/use_cases/get_or_create_user_info.dart';
-import 'package:prospector/src/features/user/domain/use_cases/get_user_auth_provider.dart';
-import 'package:prospector/src/features/user/domain/use_cases/update_user_document.dart';
-import 'package:prospector/src/features/user/domain/use_cases/update_user_profile.dart';
+
+import '../../../core/auth/auth_instance_provider.dart';
+import '../../../core/database/instances/database_instance_provider.dart';
+import '../data/local/hive_user_info_repository.dart';
+import '../data/remote/firestore_user_info_repository.dart';
+import '../data/user_auth_profile_repository.dart';
+import '../domain/interfaces/i_user_auth_profile_repository.dart';
+import '../domain/interfaces/i_user_info_repository.dart';
+import '../domain/use_cases/change_user_email.dart';
+import '../domain/use_cases/change_user_password.dart';
+import '../domain/use_cases/delete_user_account.dart';
+import '../domain/use_cases/get_or_create_user_info.dart';
+import '../domain/use_cases/get_user_auth_provider.dart';
+import '../domain/use_cases/update_user_document.dart';
+import '../domain/use_cases/update_user_profile.dart';
+import 'user_info_notifier.dart';
 
 final remoteUserInfoRepository = Provider<IUserInfoRepository>((ref) {
   return FirestoreUserInfoRepository(

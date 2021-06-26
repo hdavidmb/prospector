@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
+
+import '../../../../../../features/user/domain/failures/user_info_failure.dart';
 
 part 'change_email_form_state.freezed.dart';
 

@@ -1,8 +1,9 @@
-import 'package:hive/hive.dart';
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/features/tags/domain/entity/tag_entity.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
-import 'package:prospector/src/features/tags/domain/interfaces/i_tags_local_repository.dart';
+import 'package:hive/hive.dart';
+
+import '../../../../core/database/database_failures/database_failure.dart';
+import '../../domain/entity/tag_entity.dart';
+import '../../domain/interfaces/i_tags_local_repository.dart';
 
 class HiveTagsRepository implements ITagsLocalRepository {
   @override

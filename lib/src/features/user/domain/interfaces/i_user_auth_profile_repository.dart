@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/features/auth/domain/auth_failure.dart';
+
+import '../../../auth/domain/auth_failure.dart';
 
 abstract class IUserAuthProfileRepository {
   String currentUserID();

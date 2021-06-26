@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:prospector/src/features/app_default_data/domain/entities/status_entity.dart';
-import 'package:prospector/src/features/app_default_data/domain/entities/subscription_entity.dart';
-import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
-import 'package:prospector/src/features/tags/domain/entity/tag_entity.dart';
-import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
 
 import 'src/app.dart';
 import 'src/core/shared_prefs/shared_prefs.dart';
+import 'src/features/app_default_data/domain/entities/status_entity.dart';
+import 'src/features/app_default_data/domain/entities/subscription_entity.dart';
+import 'src/features/contacts/domain/entity/contact_entity.dart';
+import 'src/features/tags/domain/entity/tag_entity.dart';
+import 'src/features/user/domain/entity/user_entity.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:prospector/src/features/import_contacts/domain/failures/import_contacts_failure.dart';
+
+import '../domain/failures/import_contacts_failure.dart';
 
 part 'import_contacts_state.freezed.dart';
 

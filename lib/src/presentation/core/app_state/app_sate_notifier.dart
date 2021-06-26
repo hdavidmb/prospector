@@ -1,16 +1,16 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 
-import 'package:prospector/src/features/app_default_data/application/app_default_data_state.dart';
-import 'package:prospector/src/features/auth/application/auth_state.dart';
-import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
-import 'package:prospector/src/features/contacts/application/contacts_state.dart';
-import 'package:prospector/src/features/import_contacts/application/import_contacts_providers.dart';
-import 'package:prospector/src/features/tags/application/tags_provider.dart';
-import 'package:prospector/src/features/tags/application/tags_state.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
-import 'package:prospector/src/features/user/application/user_info_state.dart';
-import 'package:prospector/src/presentation/core/app_state/app_state.dart';
+import '../../../features/app_default_data/application/app_default_data_providers.dart';
+import '../../../features/app_default_data/application/app_default_data_state.dart';
+import '../../../features/auth/application/auth_state.dart';
+import '../../../features/contacts/application/contacts_providers.dart';
+import '../../../features/contacts/application/contacts_state.dart';
+import '../../../features/import_contacts/application/import_contacts_providers.dart';
+import '../../../features/tags/application/tags_provider.dart';
+import '../../../features/tags/application/tags_state.dart';
+import '../../../features/user/application/user_info_providers.dart';
+import '../../../features/user/application/user_info_state.dart';
+import 'app_state.dart';
 
 class AppStateNotifier extends StateNotifier<AppState> {
   final AuthState authState;

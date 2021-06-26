@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/change_email/widgets/change_email_form.dart';
+
+import 'widgets/change_email_form.dart';
 
 class ChangeEmailPage extends StatelessWidget {
   @override

@@ -1,10 +1,10 @@
-import 'package:dartz/dartz.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dartz/dartz.dart';
 
-import 'package:prospector/src/core/connection/connection_checker.dart';
-import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
-import 'package:prospector/src/features/contacts/domain/interfaces/i_contacts_remote_repository.dart';
+import '../../../../core/connection/connection_checker.dart';
+import '../../../../core/database/database_failures/database_failure.dart';
+import '../../domain/entity/contact_entity.dart';
+import '../../domain/interfaces/i_contacts_remote_repository.dart';
 
 class FirebaseContactsRepository implements IContactsRemoteRepository {
   final FirebaseFirestore firestoreInstance;

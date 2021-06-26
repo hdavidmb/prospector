@@ -1,15 +1,15 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
-import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
-import 'package:prospector/src/features/tags/application/tags_state.dart';
-import 'package:prospector/src/features/tags/domain/entity/tag_entity.dart';
 
-import 'package:prospector/src/features/tags/domain/use_cases/create_tag_document.dart';
-import 'package:prospector/src/features/tags/domain/use_cases/delete_tag_document.dart';
-import 'package:prospector/src/features/tags/domain/use_cases/get_tags_list.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
+import '../../../core/database/database_failures/database_failure.dart';
+import '../../contacts/application/contacts_providers.dart';
+import '../../user/application/user_info_providers.dart';
+import '../domain/entity/tag_entity.dart';
+import '../domain/use_cases/create_tag_document.dart';
+import '../domain/use_cases/delete_tag_document.dart';
+import '../domain/use_cases/get_tags_list.dart';
+import 'tags_state.dart';
 
 class TagsNotifier extends ChangeNotifier {
   final CreateTagDocument createTagDocument;

@@ -1,7 +1,8 @@
 import 'dart:typed_data';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
+
+import '../../../contacts/domain/entity/contact_entity.dart';
 
 part 'imported_contact_entity.freezed.dart';
 

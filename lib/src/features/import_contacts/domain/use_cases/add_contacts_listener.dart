@@ -1,4 +1,4 @@
-import 'package:prospector/src/features/import_contacts/domain/interface/i_import_contacts_repository.dart';
+import '../interface/i_import_contacts_repository.dart';
 
 class AddContactsListener {
   final IImportContactsRepository importContactsRepository;

@@ -4,9 +4,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
-import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
-import 'package:prospector/src/presentation/theme/theme_constants.dart';
+import '../../../../../features/user/application/user_info_providers.dart';
+import '../../../../../features/user/domain/entity/user_entity.dart';
+import '../../../../theme/theme_constants.dart';
 
 class UserAvatar extends ConsumerWidget {
   final double size;

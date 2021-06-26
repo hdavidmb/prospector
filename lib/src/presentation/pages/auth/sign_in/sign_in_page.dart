@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:prospector/src/presentation/core/app_state/app_state.dart';
-import 'package:prospector/src/presentation/core/app_state/app_state_provider.dart';
-import 'package:prospector/src/presentation/core/dialogs.dart';
-import 'package:prospector/src/presentation/pages/user_panel/home/home_page.dart';
-import 'package:prospector/src/presentation/pages/auth/sign_in/widgets/sign_in_form.dart';
+import '../../../core/app_state/app_state.dart';
+import '../../../core/app_state/app_state_provider.dart';
+import '../../../core/dialogs.dart';
+import '../../user_panel/home/home_page.dart';
+import 'widgets/sign_in_form.dart';
 
 class SignInPage extends StatelessWidget {
   @override

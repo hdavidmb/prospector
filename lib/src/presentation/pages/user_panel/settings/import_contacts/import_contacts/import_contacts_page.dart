@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/import_contacts/application/import_contacts_providers.dart';
-import 'package:prospector/src/features/import_contacts/application/import_contacts_state.dart';
-import 'package:prospector/src/presentation/core/no_contatcs_screen/no_contacts_screen.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/import_contacts/import_contacts/logic/impor_contacts_page_providers.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/import_contacts/import_contacts/widgets/import_contacts_search_bar.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/import_contacts/import_contacts/widgets/import_contacts_list_view.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/import_contacts/import_contacts/widgets/select_all_button.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/widgets/loading_page_cover.dart';
+
+import '../../../../../../features/import_contacts/application/import_contacts_providers.dart';
+import '../../../../../../features/import_contacts/application/import_contacts_state.dart';
+import '../../../../../core/no_contatcs_screen/no_contacts_screen.dart';
+import '../../user_profile/widgets/loading_page_cover.dart';
+import 'logic/impor_contacts_page_providers.dart';
+import 'widgets/import_contacts_list_view.dart';
+import 'widgets/import_contacts_search_bar.dart';
+import 'widgets/select_all_button.dart';
 
 class ImportContactsPage extends ConsumerWidget {
   @override

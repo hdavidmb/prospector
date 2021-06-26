@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:prospector/src/features/auth/domain/auth_failure.dart';
-import 'package:prospector/src/features/auth/domain/use_cases/auth_use_cases.dart';
-import 'package:prospector/src/features/auth/domain/use_cases/reset_password.dart';
-import 'package:prospector/src/presentation/helpers/form_validators.dart';
-import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_state.dart';
+import '../../../../../features/auth/domain/auth_failure.dart';
+import '../../../../../features/auth/domain/use_cases/auth_use_cases.dart';
+import '../../../../../features/auth/domain/use_cases/reset_password.dart';
+import '../../../../helpers/form_validators.dart';
+import 'sign_in_form_state.dart';
 
 class SignInFormStateNotifier extends StateNotifier<SignInFormState>
     with FormValidators {

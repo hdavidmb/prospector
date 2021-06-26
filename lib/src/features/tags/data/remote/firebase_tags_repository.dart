@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:prospector/src/core/connection/connection_checker.dart';
-import 'package:prospector/src/features/tags/domain/entity/tag_entity.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/features/tags/domain/interfaces/i_tags_remote_repository.dart';
+
+import '../../../../core/connection/connection_checker.dart';
+import '../../../../core/database/database_failures/database_failure.dart';
+import '../../domain/entity/tag_entity.dart';
+import '../../domain/interfaces/i_tags_remote_repository.dart';
 
 class FirebaseTagsRepository implements ITagsRemoteRepository {
   final FirebaseFirestore firestoreInstance;

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/user_profile/logic/user_profile_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../../../../features/user/application/user_info_providers.dart';
+import '../logic/user_profile_provider.dart';
 
 class UserNameTextField extends ConsumerWidget {
   @override

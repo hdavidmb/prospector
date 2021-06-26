@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
-import 'package:prospector/src/features/tags/domain/entity/tag_entity.dart';
+
+import '../../../../core/database/database_failures/database_failure.dart';
+import '../entity/tag_entity.dart';
 
 abstract class ITagsRemoteRepository {
   Future<Either<DatabaseFailure, Unit>> createTagDocument({required Tag tag, required String uid});

@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
-import 'package:prospector/src/presentation/core/dialogs.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/logic/contact_form_provider.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/logic/contact_form_state.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/contact_image.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/contact_name_text_field.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/gender_dropdown.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/location_text_field.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/phones_text_fields.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/status_dropdown.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/tags_selection_wrap/tags_selection_wrap.dart';
+import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
+import '../../../../../core/dialogs.dart';
+import '../logic/contact_form_provider.dart';
+import '../logic/contact_form_state.dart';
+import 'contact_image.dart';
+import 'contact_name_text_field.dart';
+import 'gender_dropdown.dart';
+import 'location_text_field.dart';
+import 'phones_text_fields.dart';
+import 'status_dropdown.dart';
+import 'tags_selection_wrap/tags_selection_wrap.dart';
 
 class ContactForm extends StatelessWidget {
   final Contact? editingContact;

@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:prospector/src/features/auth/domain/auth_failure.dart';
-import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
+
+import '../../../../../../features/auth/domain/auth_failure.dart';
+import '../../../../../../features/user/domain/failures/user_info_failure.dart';
 
 part 'user_profile_state.freezed.dart';
 

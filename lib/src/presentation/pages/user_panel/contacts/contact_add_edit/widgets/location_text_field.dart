@@ -3,7 +3,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
 // ignore: implementation_imports
 import 'package:google_maps_webservice/src/places.dart' show Prediction;
-
 import 'package:prospector/src/core/private/private_keys.dart';
 
 class LocationTextField extends StatefulWidget {

@@ -1,12 +1,13 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/core/database/instances/database_instance_provider.dart';
-import 'package:prospector/src/features/app_default_data/application/app_default_data_notifier.dart';
-import 'package:prospector/src/features/app_default_data/data/local/hive_app_default_data_repository.dart';
-import 'package:prospector/src/features/app_default_data/data/remote/firestore_app_default_data_repository.dart';
-import 'package:prospector/src/features/app_default_data/domain/interface/i_app_default_data_local_repository.dart';
-import 'package:prospector/src/features/app_default_data/domain/interface/i_app_default_data_repository.dart';
-import 'package:prospector/src/features/app_default_data/domain/use_cases/get_statuses.dart';
-import 'package:prospector/src/features/app_default_data/domain/use_cases/get_subscriptions.dart';
+
+import '../../../core/database/instances/database_instance_provider.dart';
+import '../data/local/hive_app_default_data_repository.dart';
+import '../data/remote/firestore_app_default_data_repository.dart';
+import '../domain/interface/i_app_default_data_local_repository.dart';
+import '../domain/interface/i_app_default_data_repository.dart';
+import '../domain/use_cases/get_statuses.dart';
+import '../domain/use_cases/get_subscriptions.dart';
+import 'app_default_data_notifier.dart';
 
 final remoteAppDefaultDataRepositoryProvider = Provider<IAppDefaultDataRemoteRepository>((ref) {
     return FirestoreAppDefaultDataRepository(firestoreInstance: ref.watch(firestoreInstance));

@@ -1,18 +1,19 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/core/shared_prefs/shared_prefs_provider.dart';
-import 'package:prospector/src/features/import_contacts/application/import_contacts_notifier.dart';
-import 'package:prospector/src/features/import_contacts/data/helpers/flutter_contacts_helper.dart';
-import 'package:prospector/src/features/import_contacts/data/hive_last_import_repository.dart';
-import 'package:prospector/src/features/import_contacts/data/import_contacts_repository.dart';
-import 'package:prospector/src/features/import_contacts/domain/interface/i_last_import_identifiers_repository.dart';
-import 'package:prospector/src/features/import_contacts/domain/use_cases/add_contacts_listener.dart';
-import 'package:prospector/src/features/import_contacts/domain/use_cases/get_device_contacts.dart';
-import 'package:prospector/src/features/import_contacts/domain/use_cases/get_last_import_identifiers.dart';
-import 'package:prospector/src/features/import_contacts/domain/use_cases/remove_contacts_listener.dart';
-import 'package:prospector/src/features/import_contacts/domain/use_cases/save_identifiers_list.dart';
-import 'package:prospector/src/features/import_contacts/domain/use_cases/save_single_identifier.dart';
-import 'package:prospector/src/features/storage/application/storage_providers.dart';
-import 'package:prospector/src/features/storage/domain/use_cases/upload_contact_image.dart';
+
+import '../../../core/shared_prefs/shared_prefs_provider.dart';
+import '../../storage/application/storage_providers.dart';
+import '../../storage/domain/use_cases/upload_contact_image.dart';
+import '../data/helpers/flutter_contacts_helper.dart';
+import '../data/hive_last_import_repository.dart';
+import '../data/import_contacts_repository.dart';
+import '../domain/interface/i_last_import_identifiers_repository.dart';
+import '../domain/use_cases/add_contacts_listener.dart';
+import '../domain/use_cases/get_device_contacts.dart';
+import '../domain/use_cases/get_last_import_identifiers.dart';
+import '../domain/use_cases/remove_contacts_listener.dart';
+import '../domain/use_cases/save_identifiers_list.dart';
+import '../domain/use_cases/save_single_identifier.dart';
+import 'import_contacts_notifier.dart';
 
 // * Repository
 final importContactsRepository = Provider<ImportContactsRepository>((ref) {

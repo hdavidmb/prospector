@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/import_contacts/application/import_contacts_providers.dart';
 
-import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
-import 'package:prospector/src/features/import_contacts/domain/entity/imported_contact_entity.dart';
-import 'package:prospector/src/features/storage/domain/use_cases/upload_contact_image.dart';
+import '../../../../../../../features/contacts/application/contacts_providers.dart';
+import '../../../../../../../features/import_contacts/application/import_contacts_providers.dart';
+import '../../../../../../../features/import_contacts/domain/entity/imported_contact_entity.dart';
+import '../../../../../../../features/storage/domain/use_cases/upload_contact_image.dart';
 
 class ImportContactsPageNotifier extends ChangeNotifier {
   final List<ImportedContact> deviceContacts;

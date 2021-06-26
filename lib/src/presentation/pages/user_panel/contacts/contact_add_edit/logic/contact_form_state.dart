@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
+
+import '../../../../../../core/database/database_failures/database_failure.dart';
 
 part 'contact_form_state.freezed.dart';
 

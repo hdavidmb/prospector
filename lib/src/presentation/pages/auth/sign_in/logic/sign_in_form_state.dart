@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:prospector/src/features/auth/domain/auth_failure.dart';
+
+import '../../../../../features/auth/domain/auth_failure.dart';
 
 part 'sign_in_form_state.freezed.dart';
 

@@ -1,7 +1,8 @@
-import 'package:hive/hive.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/features/import_contacts/domain/interface/i_last_import_identifiers_repository.dart';
+import 'package:hive/hive.dart';
+
+import '../../../core/database/database_failures/database_failure.dart';
+import '../domain/interface/i_last_import_identifiers_repository.dart';
 
 class HiveLastImportRepository implements ILastImportIdentifiersRepository {
   @override

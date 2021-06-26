@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
-import 'package:prospector/src/presentation/core/no_contatcs_screen/no_contacts_screen.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/contact_details_page.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contacts_list/widgets/contact_tile.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../../../../features/contacts/application/contacts_providers.dart';
+import '../../../../../core/no_contatcs_screen/no_contacts_screen.dart';
+import '../../contact_details/contact_details_page.dart';
+import 'contact_tile.dart';
 
 class SearchContactsList extends ConsumerWidget {
   @override

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
-import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
+
+import '../../../../core/database/database_failures/database_failure.dart';
+import '../entity/contact_entity.dart';
 
 abstract class IContactsLocalRepository {
   // Check existance

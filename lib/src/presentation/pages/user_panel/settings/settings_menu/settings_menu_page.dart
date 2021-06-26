@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/settings_menu/widgets/settings_menu_items.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/settings_menu/widgets/theme_switch.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/settings_menu/widgets/user_profile_list_tile.dart';
+
+import 'widgets/settings_menu_items.dart';
+import 'widgets/theme_switch.dart';
+import 'widgets/user_profile_list_tile.dart';
 
 class SettingsMenuPage extends StatelessWidget {
   @override

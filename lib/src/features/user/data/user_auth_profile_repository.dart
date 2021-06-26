@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:prospector/src/core/auth/auth_helpers.dart';
-import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 
-import 'package:prospector/src/features/user/domain/interfaces/i_user_auth_profile_repository.dart';
+import '../../../core/auth/auth_helpers.dart';
+import '../../auth/domain/auth_failure.dart';
+import '../domain/interfaces/i_user_auth_profile_repository.dart';
 
 class UserAuthProfileRepository implements IUserAuthProfileRepository {
   final FirebaseAuth firebaseAuthInstance;

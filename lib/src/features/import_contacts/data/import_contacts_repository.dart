@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_contacts/contact.dart';
-import 'package:prospector/src/features/import_contacts/data/helpers/flutter_contacts_helper.dart';
-import 'package:prospector/src/features/import_contacts/domain/entity/imported_contact_entity.dart';
-import 'package:prospector/src/features/import_contacts/domain/failures/import_contacts_failure.dart';
-import 'package:prospector/src/features/import_contacts/domain/interface/i_import_contacts_repository.dart';
+
+import '../domain/entity/imported_contact_entity.dart';
+import '../domain/failures/import_contacts_failure.dart';
+import '../domain/interface/i_import_contacts_repository.dart';
+import 'helpers/flutter_contacts_helper.dart';
 
 class ImportContactsRepository implements IImportContactsRepository {
   final FlutterContactsHelper flutterContacts;

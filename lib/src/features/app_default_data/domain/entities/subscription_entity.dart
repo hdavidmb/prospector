@@ -2,7 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 
 part 'subscription_entity.freezed.dart';
-
 part 'subscription_entity.g.dart';
 
 @freezed

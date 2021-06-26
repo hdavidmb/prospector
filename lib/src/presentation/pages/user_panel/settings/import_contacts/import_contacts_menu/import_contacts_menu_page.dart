@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/import_contacts/import_contacts_menu/logic/import_contacts_menu_provider.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/import_contacts/imported_contacts/imported_contacts_page.dart';
+
+import '../../../../../../features/user/application/user_info_providers.dart';
+import '../imported_contacts/imported_contacts_page.dart';
+import 'logic/import_contacts_menu_provider.dart';
 
 class ImportContactsMenuPage extends StatelessWidget {
   @override

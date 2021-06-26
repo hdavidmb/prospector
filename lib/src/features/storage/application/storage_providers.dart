@@ -1,9 +1,10 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/storage/data/firebase_storage_repository.dart';
-import 'package:prospector/src/features/storage/domain/interface/i_storage_repository.dart';
-import 'package:prospector/src/features/storage/domain/use_cases/upload_contact_image.dart';
-import 'package:prospector/src/features/storage/domain/use_cases/upload_user_avatar.dart';
+
+import '../data/firebase_storage_repository.dart';
+import '../domain/interface/i_storage_repository.dart';
+import '../domain/use_cases/upload_contact_image.dart';
+import '../domain/use_cases/upload_user_avatar.dart';
 
 // * Repository
 final storageRepository = Provider<IStorageRepository>((ref) {

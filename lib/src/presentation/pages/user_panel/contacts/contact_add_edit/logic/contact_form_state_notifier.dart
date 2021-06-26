@@ -2,20 +2,20 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
-import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
-import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
-import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
-import 'package:prospector/src/features/images/domain/use_cases/get_image.dart';
-import 'package:prospector/src/features/storage/domain/use_cases/upload_contact_image.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
-import 'package:prospector/src/presentation/core/dialogs.dart';
-import 'package:prospector/src/presentation/helpers/form_validators.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/logic/contact_form_state.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:random_string/random_string.dart';
+
+import '../../../../../../core/database/database_failures/database_failure.dart';
+import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
+import '../../../../../../features/contacts/application/contacts_providers.dart';
+import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
+import '../../../../../../features/images/domain/use_cases/get_image.dart';
+import '../../../../../../features/storage/domain/use_cases/upload_contact_image.dart';
+import '../../../../../../features/user/application/user_info_providers.dart';
+import '../../../../../core/dialogs.dart';
+import '../../../../../helpers/form_validators.dart';
+import 'contact_form_state.dart';
 
 class ContactFormStateNotifier extends StateNotifier<ContactFormState>
     with FormValidators {

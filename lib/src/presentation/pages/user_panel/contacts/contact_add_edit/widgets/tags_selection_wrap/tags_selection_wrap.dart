@@ -3,10 +3,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:random_string/random_string.dart';
 
-import 'package:prospector/src/features/tags/application/tags_provider.dart';
-import 'package:prospector/src/features/tags/domain/entity/tag_entity.dart';
-import 'package:prospector/src/presentation/core/dialogs.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/tags_selection_wrap/widgets/tag_chip.dart';
+import '../../../../../../../features/tags/application/tags_provider.dart';
+import '../../../../../../../features/tags/domain/entity/tag_entity.dart';
+import '../../../../../../core/dialogs.dart';
+import 'widgets/tag_chip.dart';
 
 class TagsSelectionWrap extends ConsumerWidget {
   final List<String> selectedTags;

@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:prospector/src/core/connection/connection_checker.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
-import 'package:prospector/src/features/user/domain/entity/user_entity.dart';
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/features/user/domain/interfaces/i_user_info_repository.dart';
+
+import '../../../../core/connection/connection_checker.dart';
+import '../../../../core/database/database_failures/database_failure.dart';
+import '../../domain/entity/user_entity.dart';
+import '../../domain/interfaces/i_user_info_repository.dart';
 
 class FirestoreUserInfoRepository implements IUserInfoRepository {
   final FirebaseFirestore firestoreInstance;

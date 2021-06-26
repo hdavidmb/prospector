@@ -1,8 +1,9 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/features/images/domain/interface/i_images_picker.dart';
-import 'package:prospector/src/features/images/domain/sources/source_image.dart';
+
+import '../interface/i_images_picker.dart';
+import '../sources/source_image.dart';
 
 class GetImage {
   final IImagesPicker imagesPickerRepository;

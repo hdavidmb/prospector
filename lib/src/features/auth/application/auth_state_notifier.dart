@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:prospector/src/features/auth/application/auth_state.dart';
+import 'auth_state.dart';
 
 class AuthStateNotifier extends StateNotifier<AuthState> {
   final AsyncValue<bool> isAuthenticated;

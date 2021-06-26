@@ -1,7 +1,8 @@
 import 'package:hive/hive.dart';
-import 'package:prospector/src/features/app_default_data/domain/entities/status_entity.dart';
-import 'package:prospector/src/features/app_default_data/domain/entities/subscription_entity.dart';
-import 'package:prospector/src/features/app_default_data/domain/interface/i_app_default_data_local_repository.dart';
+
+import '../../domain/entities/status_entity.dart';
+import '../../domain/entities/subscription_entity.dart';
+import '../../domain/interface/i_app_default_data_local_repository.dart';
 
 class HiveDefaultDataRepository implements IAppDefaultDataLocalRepository {
 

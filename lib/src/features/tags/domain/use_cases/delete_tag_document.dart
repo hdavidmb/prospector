@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
-import 'package:prospector/src/features/tags/domain/interfaces/i_tags_local_repository.dart';
-import 'package:prospector/src/features/tags/domain/interfaces/i_tags_remote_repository.dart';
+
+import '../../../../core/database/database_failures/database_failure.dart';
+import '../interfaces/i_tags_local_repository.dart';
+import '../interfaces/i_tags_remote_repository.dart';
 
 class DeleteTagDocument {
   final ITagsLocalRepository localTagsRepository;
