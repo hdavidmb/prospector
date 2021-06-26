@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../../../features/auth/application/auth_providers.dart';
 import '../../../../features/auth/application/auth_state.dart';
 import '../../../../features/user/application/user_info_providers.dart';
@@ -21,27 +23,27 @@ class HomePage extends StatelessWidget {
       {
         'icon': const Icon(Icons.insert_chart),
         'page': Container(), //TODO implement statistics page
-        'label': 'Statistics' //TODO localize
+        'label': AppLocalizations.of(context)!.statistics,
       },
       {
         'icon': const Icon(Icons.people),
         'page': ContactsListPage(),
-        'label': 'Prospects' //TODO localize
+        'label': AppLocalizations.of(context)!.prospects,
       },
       {
         'icon': const Icon(Icons.person_add),
         'page': const ContactAddEditPage(),
-        'label': 'New' //TODO localize
+        'label': AppLocalizations.of(context)!.newString,
       },
       {
         'icon': const Icon(Icons.event),
-        'page': Container(), //TODO implement statistics page
-        'label': 'Events' //TODO localize
+        'page': Container(), //TODO implement events page
+        'label': AppLocalizations.of(context)!.events,
       },
       {
         'icon': const Icon(Icons.settings),
-        'page': SettingsMenuPage(), //TODO implement statistics page
-        'label': 'Settings' //TODO localize
+        'page': SettingsMenuPage(),
+        'label': AppLocalizations.of(context)!.settings,
       },
     ];
     // * This provider listener must always be at the top of the home widget tree

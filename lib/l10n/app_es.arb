@@ -136,5 +136,7 @@
     "enable": "Habilitar",
     "disable": "Deshabilitar",
     "prospectorWillImportContacts": "Prospector importará automáticamente los contactos nuevos que agregues en tu dispositivo.",
-    "prospectorWillStopImporting": "Prospector dejará de importar automáticamente los nuevos contactos de tu dispositivo."
+    "prospectorWillStopImporting": "Prospector dejará de importar automáticamente los nuevos contactos de tu dispositivo.",
+    "statistics": "Statistics",
+    "newString": "New"
 }
