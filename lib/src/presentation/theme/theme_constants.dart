@@ -14,11 +14,26 @@ const InputDecorationTheme kInputDecorationTheme = InputDecorationTheme(
   focusedBorder: UnderlineInputBorder(borderSide: BorderSide(width: 2.0)),
 );
 
+final SwitchThemeData kSwitchTheme = SwitchThemeData(
+  thumbColor: MaterialStateProperty.all(Colors.white),
+  trackColor: MaterialStateProperty.resolveWith(
+    (states) {
+      const Set<MaterialState> interactiveStates = <MaterialState>{
+        MaterialState.selected,
+      };
+      if (states.any(interactiveStates.contains)) {
+        return Colors.green;
+      }
+    },
+  ),
+);
+
 // * Themes
 final kLightTheme = ThemeData.light().copyWith(
   primaryColor: kPrimaryColor,
   accentColor: kAccentColor,
   colorScheme: kLightColorScheme,
+  switchTheme: kSwitchTheme,
   inputDecorationTheme:
       kInputDecorationTheme.copyWith(fillColor: const Color(0x0A000000)),
 );
@@ -27,5 +42,6 @@ final kDarkTheme = ThemeData.dark().copyWith(
   primaryColor: kPrimaryColor,
   accentColor: kAccentColor,
   colorScheme: kDarkColorScheme,
+  switchTheme: kSwitchTheme,
   inputDecorationTheme: kInputDecorationTheme.copyWith(fillColor: const Color(0x1AFFFFFF)),
 );

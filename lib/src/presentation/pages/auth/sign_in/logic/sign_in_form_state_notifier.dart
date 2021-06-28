@@ -58,7 +58,7 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
     }
 
     state = state.copyWith(
-      isSubmitting: _authFailure == null,
+      isSubmitting: false,
       showErrorMessages: true,
       authFailureOption: optionOf(_authFailure),
     );
@@ -90,7 +90,7 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
     result.fold((failure) => _authFailure = failure, (_) {});
 
     state = state.copyWith(
-      isSubmitting: _authFailure == null,
+      isSubmitting: _authFailure == null, //TODO test and change to false
       authFailureOption: optionOf(_authFailure),
     );
   }

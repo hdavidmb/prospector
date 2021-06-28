@@ -283,7 +283,7 @@ void showPremiumDialog({required BuildContext context}) {
           ),
           TextButton(
             style: TextButton.styleFrom(
-              backgroundColor: Colors.blue,
+              backgroundColor: Theme.of(context).primaryColor,
             ),
             onPressed: () async {
               Navigator.of(context).pop();
@@ -316,7 +316,7 @@ void showPermissionsDialog(
           ),
           TextButton(
             style: TextButton.styleFrom(
-              backgroundColor: Colors.blue,
+              backgroundColor: Theme.of(context).primaryColor,
             ),
             onPressed: () async {
               Navigator.of(context).pop();

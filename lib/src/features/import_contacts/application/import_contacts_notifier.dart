@@ -56,12 +56,6 @@ class ImportContactsNotifier extends ChangeNotifier {
   // ignore: prefer_function_declarations_over_variables
   void Function() _listener = () {};
 
-  Future<bool> _contactsAccessNotDenied() async {
-    final PermissionStatus contactsAccessStatus =
-        await Permission.contacts.status;
-    return !contactsAccessStatus.isDenied && !contactsAccessStatus.isPermanentlyDenied && !contactsAccessStatus.isLimited && !contactsAccessStatus.isRestricted;
-  }
-
   void _showPermissionsDialog(BuildContext context) {
     showPermissionsDialog(
       context: context,
@@ -74,8 +68,8 @@ class ImportContactsNotifier extends ChangeNotifier {
     _state = const ImportContactsState.initial();
     notifyListeners();
 
-    final accessNotDenied = await _contactsAccessNotDenied();
-    if (!accessNotDenied) {
+    final accessGranted = await Permission.contacts.request().isGranted;
+    if (!accessGranted) {
       _showPermissionsDialog(context);
       return false;
     }
@@ -97,8 +91,8 @@ class ImportContactsNotifier extends ChangeNotifier {
     final bool isPremiumUser = read(userInfoNotifierProvider).isPremiumUser;
     if (!isPremiumUser) return false;
 
-    final accessNotDenied = await _contactsAccessNotDenied();
-    if (!accessNotDenied) {
+    final accessGranted = await Permission.contacts.request().isGranted;
+    if (!accessGranted) {
       _showPermissionsDialog(context);
       return false;
     }
@@ -134,8 +128,8 @@ class ImportContactsNotifier extends ChangeNotifier {
     final bool syncContactsEnabled = manualSetting || 
         read(userSharedPrefsProvider).syncContactsEnabled;
     if (isPremiumUser && syncContactsEnabled) {
-      final bool accessNotDenied = await _contactsAccessNotDenied();
-      if (!accessNotDenied) {
+      final accessGranted = await Permission.contacts.request().isGranted;
+      if (!accessGranted) {
         prefs.syncContactsEnabled = false;
         return false;
       }
