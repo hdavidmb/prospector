@@ -9,6 +9,7 @@ import 'package:google_maps_webservice/src/places.dart' show Prediction;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:prospector/src/core/database/database_failures/database_failure.dart';
 import 'package:prospector/src/core/private/private_keys.dart';
+import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
 import 'package:prospector/src/features/images/domain/sources/source_image.dart';
@@ -199,7 +200,10 @@ Future<void> showMessageDialog(
 }
 
 Future<bool> showConfirmDialog(
-    {required BuildContext context, String? title, String? message, String? confirmText}) async {
+    {required BuildContext context,
+    String? title,
+    String? message,
+    String? confirmText}) async {
   final response = await showDialog<bool>(
     context: context,
     builder: (context) {
@@ -308,7 +312,9 @@ void showPermissionsDialog(
     builder: (context) {
       return AlertDialog(
         title: (title != null && title.isNotEmpty) ? Text(title) : null,
-        content: (message != null && message.isNotEmpty) ? Text('$message\n${AppLocalizations.of(context)!.allowAccess}') : null,
+        content: (message != null && message.isNotEmpty)
+            ? Text('$message\n${AppLocalizations.of(context)!.allowAccess}')
+            : null,
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
@@ -434,6 +440,47 @@ Future<Option<SourceImage>> showImageSourceDialog(BuildContext context) async {
     },
   );
   return optionOf(source);
+}
+
+Future<Option<String>> showAffiliationDialog(
+    {required BuildContext context, String? gender}) async {
+  final String? newStatusID = await showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title:
+            Text(AppLocalizations.of(context)!.affiliateAs), //TODO affiliate as
+        content: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.80,
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              ListTile(
+                title: Text(gender == 'female'
+                    ? AppLocalizations.of(context)!.clientF
+                    : AppLocalizations.of(context)!.client),
+                onTap: () {
+                  Navigator.of(context)
+                      .pop(context.read(appDefaultDataProvider).clientID);
+                },
+              ),
+              const Divider(height: 0.0),
+              ListTile(
+                title: Text(gender == 'female'
+                    ? AppLocalizations.of(context)!.executiveF
+                    : AppLocalizations.of(context)!.executive),
+                onTap: () {
+                  Navigator.of(context)
+                      .pop(context.read(appDefaultDataProvider).executiveID);
+                },
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+  return optionOf(newStatusID);
 }
 
 Future<String?> showPlacesDialog(BuildContext context) async {

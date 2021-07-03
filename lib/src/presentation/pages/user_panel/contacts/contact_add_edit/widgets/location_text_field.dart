@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:prospector/src/core/private/private_keys.dart';
-import 'package:prospector/src/presentation/core/dialogs.dart';
+
+import '../../../../../../core/private/private_keys.dart';
+import '../../../../../core/dialogs.dart';
 
 class LocationTextField extends StatefulWidget {
   final String location;
@@ -35,7 +36,6 @@ class _LocationTextFieldState extends State<LocationTextField> {
 
   @override
   Widget build(BuildContext context) {
-    final Locale myLocale = Localizations.localeOf(context);
     if (widget.location.isEmpty) {
       WidgetsBinding.instance!.addPostFrameCallback((_) => _controller.clear());
     }

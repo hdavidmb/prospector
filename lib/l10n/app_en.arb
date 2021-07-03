@@ -120,7 +120,7 @@
     "importedContacts": "Imported contacts",
     "noImportedContactsMessage": "You haven't imported any contact yet. Try importing some of your device contacts.\n\nBe Sure to allow contacts access.",
     "import": "Import",
-    "loadingContacts":  "Loading contacts...",
+    "loadingContacts": "Loading contacts...",
     "selectAll": "Select all",
     "unselectAll": "Unselect all",
     "noDeviceContactsMessage": "There are no contacts in your device contacts list.",
@@ -138,5 +138,6 @@
     "prospectorWillImportContacts": "Prospector will automatically import the new contacts you add on your device.",
     "prospectorWillStopImporting": "Prospector will stop automatically importing your device new contacts.",
     "statistics": "Statistics",
-    "newString": "New"
+    "newString": "New",
+    "affiliateAs": "Affiliate as"
 }

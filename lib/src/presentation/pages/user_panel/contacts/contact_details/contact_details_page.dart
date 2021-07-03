@@ -73,8 +73,7 @@ class ContactDetailsPage extends ConsumerWidget {
             child: Column(
               children: [
                 if (_isKeyboardHidden(context)) ContactInfo(contact: contact),
-                ActionButtons(
-                    contactStatus: contact.status, gender: contact.gender),
+                ActionButtons(contact: contact),
                 const Divider(height: 0.0, thickness: 2.0),
                 const Expanded(
                     child: Center(

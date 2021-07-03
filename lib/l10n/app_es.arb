@@ -120,7 +120,7 @@
     "importedContacts": "Contactos importados",
     "noImportedContactsMessage": "Aún no has importado ningún contacto. Intenta importar algunos de los contactos de tu dispositivo.\n\nAsegúrate de permitir el acceso a los contactos.",
     "import": "Importar",
-    "loadingContacts":  "Cargando contactos...",
+    "loadingContacts": "Cargando contactos...",
     "selectAll": "Seleccionar todos",
     "unselectAll": "Deseleccionar todos",
     "noDeviceContactsMessage": "No hay contactos en la lista de contactos de tu dispositivo.",
@@ -138,5 +138,6 @@
     "prospectorWillImportContacts": "Prospector importará automáticamente los contactos nuevos que agregues en tu dispositivo.",
     "prospectorWillStopImporting": "Prospector dejará de importar automáticamente los nuevos contactos de tu dispositivo.",
     "statistics": "Estadisticas",
-    "newString": "Nuevo"
+    "newString": "Nuevo",
+    "affiliateAs": "Afiliar como"
 }
