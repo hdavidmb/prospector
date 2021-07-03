@@ -4,8 +4,11 @@ final Color? kPrimaryColor = Colors.red[600];
 final Color? kAccentColor = kPrimaryColor;
 const Color kPremiumColor = Color(0xffD4AF37);
 
-final ColorScheme kLightColorScheme = ThemeData.light().colorScheme.copyWith(primary: kPrimaryColor);
-final ColorScheme kDarkColorScheme = ThemeData.dark().colorScheme.copyWith(primary: kPrimaryColor, secondary: kPrimaryColor);
+final ColorScheme kLightColorScheme =
+    ThemeData.light().colorScheme.copyWith(primary: kPrimaryColor);
+final ColorScheme kDarkColorScheme = ThemeData.dark()
+    .colorScheme
+    .copyWith(primary: kPrimaryColor, secondary: kPrimaryColor);
 
 const InputDecorationTheme kInputDecorationTheme = InputDecorationTheme(
   filled: true,
@@ -43,5 +46,6 @@ final kDarkTheme = ThemeData.dark().copyWith(
   accentColor: kAccentColor,
   colorScheme: kDarkColorScheme,
   switchTheme: kSwitchTheme,
-  inputDecorationTheme: kInputDecorationTheme.copyWith(fillColor: const Color(0x1AFFFFFF)),
+  inputDecorationTheme:
+      kInputDecorationTheme.copyWith(fillColor: const Color(0x1AFFFFFF)),
 );

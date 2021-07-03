@@ -13,7 +13,7 @@ import '../user_panel/home/home_page.dart';
 class SplashScreenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    bool showingDialog = false; 
+    bool showingDialog = false;
     return ProviderListener<AppState>(
       provider: appStateNotifierProvider,
       onChange: (context, appState) async {

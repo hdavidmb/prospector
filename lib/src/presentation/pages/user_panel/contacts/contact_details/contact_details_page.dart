@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../../../../features/contacts/application/contacts_providers.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../features/contacts/application/contacts_providers.dart';
 import '../contact_add_edit/contact_add_edit_page.dart';
 import '../contact_add_edit/logic/contact_form_provider.dart';
 import '../contact_add_edit/widgets/contact_image.dart';
@@ -24,8 +24,8 @@ class ContactDetailsPage extends ConsumerWidget {
         .contacts
         .firstWhere((c) => contactID == c.id);
     return GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Scaffold(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
         appBar: AppBar(
           title: !_isKeyboardHidden(context)
               ? Row(
@@ -73,9 +73,13 @@ class ContactDetailsPage extends ConsumerWidget {
             child: Column(
               children: [
                 if (_isKeyboardHidden(context)) ContactInfo(contact: contact),
-                ActionButtons(contactStatus: contact.status, gender: contact.gender),
+                ActionButtons(
+                    contactStatus: contact.status, gender: contact.gender),
                 const Divider(height: 0.0, thickness: 2.0),
-                const Expanded(child: Center(child: Text('Interactions list'))), //TODO implement interactions
+                const Expanded(
+                    child: Center(
+                        child: Text(
+                            'Interactions list'))), //TODO implement interactions
                 InteractionTextField()
               ],
             ),

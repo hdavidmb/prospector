@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../features/auth/application/auth_providers.dart';
 import '../../../../features/auth/application/auth_state.dart';
@@ -69,7 +68,7 @@ class HomePage extends StatelessWidget {
             bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               currentIndex: currentIndex,
-              onTap: (index) => indexProvider.state = index,
+              onTap: (index) => context.read(homeIndexProvider).state = index,
               items: pages
                   .map(
                     (pageMap) => BottomNavigationBarItem(
