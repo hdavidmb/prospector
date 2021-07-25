@@ -60,8 +60,7 @@ final signOut = Provider<SignOut>((ref) {
   return SignOut(authRepository: _authRepository);
 });
 
-final resetPassword =
-    Provider<ResetPassword>((ref) {
+final resetPassword = Provider<ResetPassword>((ref) {
   final _authRepository = ref.watch(_authRepositoryProvider);
   return ResetPassword(authRepository: _authRepository);
 });
@@ -75,5 +74,5 @@ final reloginUser = Provider<ReloginUser>((ref) {
 final authStateNotifierProvider =
     StateNotifierProvider<AuthStateNotifier, AuthState>((ref) {
   final _isAuthenticated = ref.watch(_isAuthenticatedStreamProvider);
-  return AuthStateNotifier(isAuthenticated: _isAuthenticated);
+  return AuthStateNotifier(isAuthenticated: _isAuthenticated, read: ref.read);
 });

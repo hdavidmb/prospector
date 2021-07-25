@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
         if (authState == const AuthState.unauthenticated()) {
           context.read(signInFormProvider.notifier).reset();
           context.read(registerFormProvider.notifier).reset();
-          context.read(userInfoNotifierProvider).reset();
+
           Navigator.pushAndRemoveUntil(
               context,
               FadePageRoute().call(page: SignInPage()),
