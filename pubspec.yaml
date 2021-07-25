@@ -33,7 +33,7 @@ dependencies:
   firebase_auth: ^3.0.1
   firebase_core: ^1.4.0
   firebase_storage: ^10.0.1
-  flash: ^1.5.2
+  flash: ^2.0.1
   flutter_contacts: ^1.1.0+3
   flutter_facebook_auth: ^3.5.0
   flutter_google_places: ^0.3.0
