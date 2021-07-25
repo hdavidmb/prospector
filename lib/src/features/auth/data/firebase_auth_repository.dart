@@ -36,8 +36,8 @@ class FirebaseAuthRepository implements IAuthRepository {
     try {
       await firebaseAuthInstance
           .createUserWithEmailAndPassword(email: email, password: password)
-          .then((credential) async =>
-              await credential.user?.updateProfile(displayName: displayName));
+          .then((credential) async => await credential.user
+              ?.updateDisplayName(displayName)); //TODO test
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
