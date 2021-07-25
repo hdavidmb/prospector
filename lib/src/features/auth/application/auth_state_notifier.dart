@@ -1,9 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
-import 'package:prospector/src/features/tags/application/tags_provider.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
-import 'package:prospector/src/presentation/pages/auth/register/logic/register_form_provider.dart';
-import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
+import '../../contacts/application/contacts_providers.dart';
+import '../../tags/application/tags_provider.dart';
+import '../../user/application/user_info_providers.dart';
 
 import 'auth_state.dart';
 

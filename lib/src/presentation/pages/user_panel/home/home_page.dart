@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../features/auth/application/auth_providers.dart';
 import '../../../../features/auth/application/auth_state.dart';
-import '../../../../features/user/application/user_info_providers.dart';
 import '../../../core/fade_page_route.dart';
 import '../../auth/register/logic/register_form_provider.dart';
 import '../../auth/sign_in/logic/sign_in_form_provider.dart';
