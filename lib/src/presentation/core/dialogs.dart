@@ -55,8 +55,8 @@ void showSnackBar({
             icon,
             color: color,
           ),
-          leftBarIndicatorColor: color,
-          message: Text(
+          indicatorColor: color,
+          content: Text(
             message,
             style: const TextStyle(color: Colors.white70),
           ),

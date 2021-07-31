@@ -72,12 +72,17 @@ class UserProfilePage extends ConsumerWidget {
                       final freeSubID =
                           context.read(appDefaultDataProvider).freeSubID;
                       final user = context.read(userInfoNotifierProvider).user;
-                      final isPremiumUser = context.read(userInfoNotifierProvider).isPremiumUser;
-                      final newUserInfo = user.copyWith(subscription: isPremiumUser ? freeSubID : premiumSubID);
+                      final isPremiumUser =
+                          context.read(userInfoNotifierProvider).isPremiumUser;
+                      final newUserInfo = user.copyWith(
+                          subscription:
+                              isPremiumUser ? freeSubID : premiumSubID);
 
-                      context.read(userInfoNotifierProvider).updateUserInfo(newUserInfo);
+                      context
+                          .read(userInfoNotifierProvider)
+                          .updateUserInfo(newUserInfo);
                     },
-                    child: Text('Change subscription'),
+                    child: const Text('Change subscription'),
                   )
                   //TODO temporal delete
                 ],

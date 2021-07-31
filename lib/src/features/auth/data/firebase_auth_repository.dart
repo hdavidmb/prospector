@@ -24,9 +24,7 @@ class FirebaseAuthRepository implements IAuthRepository {
 
   @override
   Stream<bool> get isUserAuthenticated =>
-      firebaseAuthInstance.authStateChanges().map((User? user) =>
-          user !=
-          null); //TODO try .userChanges() to be able to upgrade firebase_auth to 1.1.2
+      firebaseAuthInstance.authStateChanges().map((User? user) => user != null);
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword(
@@ -36,8 +34,8 @@ class FirebaseAuthRepository implements IAuthRepository {
     try {
       await firebaseAuthInstance
           .createUserWithEmailAndPassword(email: email, password: password)
-          .then((credential) async =>
-              await credential.user?.updateProfile(displayName: displayName));
+          .then((credential) async => await credential.user
+              ?.updateDisplayName(displayName)); //TODO test
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
