@@ -52,8 +52,8 @@ class ContactForm extends StatelessWidget {
                 } else {
                   Navigator.of(context).pop();
                 }
-                Future.delayed(const Duration(milliseconds: 300), () => 
-                context.read(contactFormProvider.notifier).reset());
+                Future.delayed(const Duration(milliseconds: 300),
+                    () => context.read(contactFormProvider.notifier).reset());
               }
             },
           ),
@@ -217,7 +217,7 @@ class ContactForm extends StatelessWidget {
                     child: Text(AppLocalizations.of(context)!.deleteProspect,
                         style: const TextStyle(color: Colors.red)),
                   ),
-                ]
+                ],
               ],
             ),
           ),

@@ -88,6 +88,7 @@ class ContactDetailsPage extends ConsumerWidget {
     );
   }
 
+  //TODO use KeyboardVisibilityBuilder instead
   bool _isKeyboardHidden(BuildContext context) {
     return MediaQuery.of(context).viewInsets.bottom == 0.0;
   }
