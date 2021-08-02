@@ -69,7 +69,7 @@ class _InteractionTextFieldState extends State<InteractionTextField> {
                                     onPressed: whatsappProspect))
                           ])
                         :  */
-                        const SizedBox(width:10.0),
+          const SizedBox(width: 10.0),
           IconButton(
             icon: const Icon(Icons.send),
             iconSize: 28.0,
@@ -88,6 +88,7 @@ class _InteractionTextFieldState extends State<InteractionTextField> {
     super.dispose();
   }
 
+  //TODO use KeyboardVisibilityBuilder instead
   bool _isKeyboardHidden(BuildContext context) {
     return MediaQuery.of(context).viewInsets.bottom == 0.0;
   }

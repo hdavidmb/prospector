@@ -222,7 +222,7 @@ class ContactForm extends StatelessWidget {
                     child: Text(AppLocalizations.of(context)!.deleteProspect,
                         style: const TextStyle(color: Colors.red)),
                   ),
-                ]
+                ],
               ],
             ),
           ),
