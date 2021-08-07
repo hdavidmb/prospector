@@ -19,7 +19,8 @@ final appStateNotifierProvider =
       ref.watch(appDefaultDataProvider).defaultDataState;
   final UserInfoState _userInfoState =
       ref.watch(userInfoNotifierProvider).userInfoState;
-  final ContactsState _contactsState = ref.watch(contactsNotifierProvider).contactsState;
+  final ContactsState _contactsState =
+      ref.watch(contactsNotifierProvider).contactsState;
   final TagsState _tagsState = ref.watch(tagsNotifierProvider).tagsState;
   return AppStateNotifier(
     authState: _authState,
@@ -27,6 +28,6 @@ final appStateNotifierProvider =
     userInfoState: _userInfoState,
     contactsState: _contactsState,
     tagsState: _tagsState,
-    read: ref.read, 
+    read: ref.read,
   );
 });

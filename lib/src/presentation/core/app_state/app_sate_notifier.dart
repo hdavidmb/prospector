@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/admob/application/ads_provider.dart';
+import '../../../features/admob/application/ads_providers.dart';
 
 import '../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../features/app_default_data/application/app_default_data_state.dart';
