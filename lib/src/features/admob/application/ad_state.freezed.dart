@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
-part of 'ads_state.dart';
+part of 'ad_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,8 +13,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$AdsStateTearOff {
-  const _$AdsStateTearOff();
+class _$AdStateTearOff {
+  const _$AdStateTearOff();
 
   Initial initial() {
     return const Initial();
@@ -34,10 +34,10 @@ class _$AdsStateTearOff {
 }
 
 /// @nodoc
-const $AdsState = _$AdsStateTearOff();
+const $AdState = _$AdStateTearOff();
 
 /// @nodoc
-mixin _$AdsState {
+mixin _$AdState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -75,18 +75,18 @@ mixin _$AdsState {
 }
 
 /// @nodoc
-abstract class $AdsStateCopyWith<$Res> {
-  factory $AdsStateCopyWith(AdsState value, $Res Function(AdsState) then) =
-      _$AdsStateCopyWithImpl<$Res>;
+abstract class $AdStateCopyWith<$Res> {
+  factory $AdStateCopyWith(AdState value, $Res Function(AdState) then) =
+      _$AdStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AdsStateCopyWithImpl<$Res> implements $AdsStateCopyWith<$Res> {
-  _$AdsStateCopyWithImpl(this._value, this._then);
+class _$AdStateCopyWithImpl<$Res> implements $AdStateCopyWith<$Res> {
+  _$AdStateCopyWithImpl(this._value, this._then);
 
-  final AdsState _value;
+  final AdState _value;
   // ignore: unused_field
-  final $Res Function(AdsState) _then;
+  final $Res Function(AdState) _then;
 }
 
 /// @nodoc
@@ -96,7 +96,7 @@ abstract class $InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$InitialCopyWithImpl<$Res> extends _$AdsStateCopyWithImpl<$Res>
+class _$InitialCopyWithImpl<$Res> extends _$AdStateCopyWithImpl<$Res>
     implements $InitialCopyWith<$Res> {
   _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
       : super(_value, (v) => _then(v as Initial));
@@ -112,7 +112,7 @@ class _$Initial implements Initial {
 
   @override
   String toString() {
-    return 'AdsState.initial()';
+    return 'AdState.initial()';
   }
 
   @override
@@ -176,7 +176,7 @@ class _$Initial implements Initial {
   }
 }
 
-abstract class Initial implements AdsState {
+abstract class Initial implements AdState {
   const factory Initial() = _$Initial;
 }
 
@@ -187,7 +187,7 @@ abstract class $LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LoadingCopyWithImpl<$Res> extends _$AdsStateCopyWithImpl<$Res>
+class _$LoadingCopyWithImpl<$Res> extends _$AdStateCopyWithImpl<$Res>
     implements $LoadingCopyWith<$Res> {
   _$LoadingCopyWithImpl(Loading _value, $Res Function(Loading) _then)
       : super(_value, (v) => _then(v as Loading));
@@ -203,7 +203,7 @@ class _$Loading implements Loading {
 
   @override
   String toString() {
-    return 'AdsState.loading()';
+    return 'AdState.loading()';
   }
 
   @override
@@ -267,7 +267,7 @@ class _$Loading implements Loading {
   }
 }
 
-abstract class Loading implements AdsState {
+abstract class Loading implements AdState {
   const factory Loading() = _$Loading;
 }
 
@@ -278,7 +278,7 @@ abstract class $LoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LoadedCopyWithImpl<$Res> extends _$AdsStateCopyWithImpl<$Res>
+class _$LoadedCopyWithImpl<$Res> extends _$AdStateCopyWithImpl<$Res>
     implements $LoadedCopyWith<$Res> {
   _$LoadedCopyWithImpl(Loaded _value, $Res Function(Loaded) _then)
       : super(_value, (v) => _then(v as Loaded));
@@ -294,7 +294,7 @@ class _$Loaded implements Loaded {
 
   @override
   String toString() {
-    return 'AdsState.loaded()';
+    return 'AdState.loaded()';
   }
 
   @override
@@ -358,7 +358,7 @@ class _$Loaded implements Loaded {
   }
 }
 
-abstract class Loaded implements AdsState {
+abstract class Loaded implements AdState {
   const factory Loaded() = _$Loaded;
 }
 
@@ -369,7 +369,7 @@ abstract class $ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ErrorCopyWithImpl<$Res> extends _$AdsStateCopyWithImpl<$Res>
+class _$ErrorCopyWithImpl<$Res> extends _$AdStateCopyWithImpl<$Res>
     implements $ErrorCopyWith<$Res> {
   _$ErrorCopyWithImpl(Error _value, $Res Function(Error) _then)
       : super(_value, (v) => _then(v as Error));
@@ -385,7 +385,7 @@ class _$Error implements Error {
 
   @override
   String toString() {
-    return 'AdsState.error()';
+    return 'AdState.error()';
   }
 
   @override
@@ -449,6 +449,6 @@ class _$Error implements Error {
   }
 }
 
-abstract class Error implements AdsState {
+abstract class Error implements AdState {
   const factory Error() = _$Error;
 }
