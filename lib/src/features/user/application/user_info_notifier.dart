@@ -95,6 +95,7 @@ class UserInfoNotifier extends ChangeNotifier {
       (failure) => left(failure),
       (newUser) {
         _user = newUser; //TODO test checking modified field
+        //TODO check for premium changes and enable/disable premium features
         notifyListeners();
         return right(unit);
       },

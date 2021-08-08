@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../features/admob/application/ads_providers.dart';
 
+import '../../../features/admob/application/ads_providers.dart';
 import '../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../features/app_default_data/application/app_default_data_state.dart';
 import '../../../features/auth/application/auth_state.dart';
@@ -45,7 +45,6 @@ class AppStateNotifier extends StateNotifier<AppState> {
           }
 
           if (read(userInfoNotifierProvider).isPremiumUser) {
-            //TODO listen to user account changes
             //TODO init premium user configuration (contactsSync, Statistics)
             read(importContactsProvider).addContactsListener();
           } else {
