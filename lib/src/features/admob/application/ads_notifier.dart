@@ -4,28 +4,49 @@ import 'ad_state.dart';
 
 class AdsNotifier extends ChangeNotifier {
   AdsNotifier() {
+    const String _adUnitId =
+        'ca-app-pub-3940256099942544/2934735716'; //TODO: PrivateKeys.getBannerAdUnitId();
     contactsBanner = BannerAd(
-      adUnitId:
-          'ca-app-pub-3940256099942544/2934735716', //TODO: PrivateKeys.getBannerAdUnitId(),
+      adUnitId: _adUnitId,
       size: AdSize.banner,
       request: const AdRequest(),
       listener: BannerAdListener(
-        // Called when an ad is successfully received.
         onAdLoaded: (Ad ad) => contactsBannerState = const AdState.loaded(),
         onAdFailedToLoad: (Ad ad, LoadAdError error) {
           ad.dispose();
           contactsBannerState = const AdState.error();
         },
-      ), //TODO: implement listener,
+      ),
+    );
+
+    settingsBanner = BannerAd(
+      adUnitId: _adUnitId,
+      size: AdSize.largeBanner,
+      request: const AdRequest(),
+      listener: BannerAdListener(
+        onAdLoaded: (Ad ad) => settingsBannerState = const AdState.loaded(),
+        onAdFailedToLoad: (Ad ad, LoadAdError error) {
+          ad.dispose();
+          settingsBannerState = const AdState.error();
+        },
+      ),
     );
   }
+
   AdState contactsBannerState = const AdState.initial();
+  AdState settingsBannerState = const AdState.initial();
 
   late BannerAd contactsBanner;
+  late BannerAd settingsBanner;
 
   void loadAds() {
-    //TODO: use some ad loading state to prevent it from loading multiple times
-    contactsBanner.load();
-    contactsBannerState = const AdState.loading();
+    if (contactsBannerState.isInitial) {
+      contactsBannerState = const AdState.loading();
+      contactsBanner.load();
+    }
+    if (settingsBannerState.isInitial) {
+      settingsBannerState = const AdState.loading();
+      settingsBanner.load();
+    }
   }
 }

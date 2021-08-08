@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../../../../features/admob/application/ad_state.dart';
 import '../../../../../features/admob/application/ads_providers.dart';
 import '../../../../../features/contacts/domain/entity/contact_entity.dart';
-import '../../../../core/keyboard_visibility_builder/keyboard_visibility_builder.dart';
 import 'logic/contact_form_provider.dart';
 import 'widgets/contact_form.dart';
+import 'widgets/contacts_admob_banner.dart';
 
 class ContactAddEditPage extends ConsumerWidget {
   /// Pass the contact to be edited
@@ -46,23 +45,7 @@ class ContactAddEditPage extends ConsumerWidget {
               children: [
                 ContactForm(editingContact: editingContact),
                 if (shouldShowAds && bannerState.isLoaded)
-                  KeyboardVisibilityBuilder(
-                    builder: (context, child, isKeyboardVisible) =>
-                        isKeyboardVisible ? const SizedBox() : child,
-                    child: Positioned.fill(
-                      bottom: 20.0,
-                      child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: SizedBox(
-                          height: 60.0,
-                          width: MediaQuery.of(context).size.width,
-                          child: AdWidget(
-                            ad: context.read(adsProvider).contactsBanner,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  const ContactsAdmobBanner(),
               ],
             ),
           ),
