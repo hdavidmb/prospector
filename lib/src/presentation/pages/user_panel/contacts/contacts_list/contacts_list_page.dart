@@ -18,6 +18,7 @@ class ContactsListPage extends ConsumerWidget {
     final isSearchTextEmpty = watch(contactsNotifierProvider).isSearchTextEmpty;
     return Scaffold(
         appBar: AppBar(
+          //TODO: try to extract appbar
           centerTitle: isSearchBarShowing ? false : null,
           backgroundColor: isSearchBarShowing
               ? Theme.of(context).scaffoldBackgroundColor
