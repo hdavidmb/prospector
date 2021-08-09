@@ -2,10 +2,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contacts_list/widgets/shimmer_tile.dart';
 
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import 'contacts_group_list.dart';
+import 'rewarded_video_wrapper.dart';
 
 class ContactsTabBar extends StatelessWidget {
   @override
@@ -13,7 +13,7 @@ class ContactsTabBar extends StatelessWidget {
     final bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     return Column(
       children: [
-        const ShimmerTile(isHeader: true),
+        const RewardedVideoWrapper(),
         Expanded(
           child: DefaultTabController(
             length: 4,
