@@ -11,10 +11,14 @@ class AdsNotifier extends ChangeNotifier {
       size: AdSize.banner,
       request: const AdRequest(),
       listener: BannerAdListener(
-        onAdLoaded: (Ad ad) => contactsBannerState = const AdState.loaded(),
+        onAdLoaded: (Ad ad) {
+          contactsBannerState = const AdState.loaded();
+          notifyListeners();
+        },
         onAdFailedToLoad: (Ad ad, LoadAdError error) {
           ad.dispose();
           contactsBannerState = const AdState.error();
+          notifyListeners();
         },
       ),
     );
@@ -24,10 +28,14 @@ class AdsNotifier extends ChangeNotifier {
       size: AdSize.largeBanner,
       request: const AdRequest(),
       listener: BannerAdListener(
-        onAdLoaded: (Ad ad) => settingsBannerState = const AdState.loaded(),
+        onAdLoaded: (Ad ad) {
+          settingsBannerState = const AdState.loaded();
+          notifyListeners();
+        },
         onAdFailedToLoad: (Ad ad, LoadAdError error) {
           ad.dispose();
           settingsBannerState = const AdState.error();
+          notifyListeners();
         },
       ),
     );
@@ -35,18 +43,32 @@ class AdsNotifier extends ChangeNotifier {
 
   AdState contactsBannerState = const AdState.initial();
   AdState settingsBannerState = const AdState.initial();
+  AdState rewardedVideoState = const AdState.initial();
 
   late BannerAd contactsBanner;
   late BannerAd settingsBanner;
 
   void loadAds() {
+    bool notify = false;
     if (contactsBannerState.isInitial) {
       contactsBannerState = const AdState.loading();
       contactsBanner.load();
+      notify = true;
     }
     if (settingsBannerState.isInitial) {
       settingsBannerState = const AdState.loading();
       settingsBanner.load();
+      notify = true;
     }
+    if (rewardedVideoState.isInitial) {
+      rewardedVideoState = const AdState.loading();
+      Future.delayed(Duration(seconds: 5), () {
+        rewardedVideoState = const AdState.loaded();
+        notifyListeners();
+      });
+      notify = true;
+      //TODO implement properlly
+    }
+    if (notify) notifyListeners();
   }
 }

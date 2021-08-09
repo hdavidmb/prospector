@@ -139,5 +139,9 @@
     "prospectorWillStopImporting": "Prospector will stop automatically importing your device new contacts.",
     "statistics": "Statistics",
     "newString": "New",
-    "affiliateAs": "Affiliate as"
+    "affiliateAs": "Affiliate as",
+    "getRidOfAds": "Get rid of ads",
+    "watchAShortVideo": "Watch a short video to get",
+    "minutes": "minutes",
+    "ofProspectorWithNoAds": "of Prospector with no Ads"
 }
