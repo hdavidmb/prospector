@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/admob/application/ads_providers.dart';
 
 class RewardedVideoHeader extends StatelessWidget {
   const RewardedVideoHeader({
@@ -10,6 +12,7 @@ class RewardedVideoHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
+      onTap: context.read(adsProvider).showRewaradedVideo,
       child: Container(
         padding: const EdgeInsets.all(10.0),
         color: isDarkTheme ? Colors.grey[800] : Colors.grey[200],

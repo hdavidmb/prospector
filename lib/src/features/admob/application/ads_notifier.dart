@@ -1,11 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:prospector/src/core/private/private_keys.dart';
 import 'ad_state.dart';
 
 class AdsNotifier extends ChangeNotifier {
   AdsNotifier() {
-    const String _adUnitId =
-        'ca-app-pub-3940256099942544/2934735716'; //TODO: PrivateKeys.getBannerAdUnitId();
+    final String _adUnitId = Platform.isIOS
+        ? 'ca-app-pub-3940256099942544/2934735716'
+        : 'ca-app-pub-3940256099942544/6300978111'; //TODO: PrivateKeys.getBannerAdUnitId();
     contactsBanner = BannerAd(
       adUnitId: _adUnitId,
       size: AdSize.banner,
@@ -47,6 +51,7 @@ class AdsNotifier extends ChangeNotifier {
 
   late BannerAd contactsBanner;
   late BannerAd settingsBanner;
+  RewardedAd? rewardedAd;
 
   void loadAds() {
     bool notify = false;
@@ -62,13 +67,51 @@ class AdsNotifier extends ChangeNotifier {
     }
     if (rewardedVideoState.isInitial) {
       rewardedVideoState = const AdState.loading();
-      Future.delayed(Duration(seconds: 5), () {
-        rewardedVideoState = const AdState.loaded();
-        notifyListeners();
-      });
+      RewardedAd.load(
+        adUnitId: Platform.isIOS
+            ? 'ca-app-pub-3940256099942544/1712485313'
+            : 'ca-app-pub-3940256099942544/5224354917', //TODO: PrivateKeys.getRewardedAdUnitId(),
+        request: const AdRequest(),
+        rewardedAdLoadCallback: RewardedAdLoadCallback(
+          onAdLoaded: (RewardedAd ad) {
+            rewardedAd = ad;
+            rewardedVideoState = const AdState.loaded();
+            rewardedAd!.fullScreenContentCallback = FullScreenContentCallback(
+              //TODO: check where to reload the rewarded video ad
+              onAdShowedFullScreenContent: (RewardedAd ad) =>
+                  print('$ad onAdShowedFullScreenContent.'),
+              onAdDismissedFullScreenContent: (RewardedAd ad) {
+                print('$ad onAdDismissedFullScreenContent.');
+                ad.dispose();
+              },
+              onAdFailedToShowFullScreenContent:
+                  (RewardedAd ad, AdError error) {
+                print('$ad onAdFailedToShowFullScreenContent: $error');
+                ad.dispose();
+              },
+              onAdImpression: (RewardedAd ad) =>
+                  print('$ad impression occurred.'),
+            );
+            notifyListeners();
+          },
+          onAdFailedToLoad: (LoadAdError error) {
+            rewardedVideoState = const AdState.error();
+            notifyListeners();
+          },
+        ),
+      );
       notify = true;
-      //TODO implement properlly
     }
-    if (notify) notifyListeners();
+    // if (notify) notifyListeners();
+  }
+
+  void showRewaradedVideo() {
+    if (rewardedVideoState.isLoaded && rewardedAd != null) {
+      rewardedAd!.show(
+          onUserEarnedReward: (RewardedAd ad, RewardItem rewardItem) {
+        // TODO: Reward the user for watching an ad.
+        print('user got rewarded');
+      });
+    }
   }
 }
