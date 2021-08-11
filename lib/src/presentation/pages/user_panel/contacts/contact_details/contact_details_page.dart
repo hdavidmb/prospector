@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
 
 import '../../../../../features/contacts/application/contacts_providers.dart';
+import '../../../../../features/contacts/domain/entity/contact_entity.dart';
 import '../../../../routes/app_router.gr.dart';
 import '../contact_add_edit/logic/contact_form_provider.dart';
 import '../contact_add_edit/widgets/contact_image.dart';

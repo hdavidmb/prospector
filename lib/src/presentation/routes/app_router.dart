@@ -1,7 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+
 import '../pages/auth/register/register_page.dart';
 import '../pages/auth/sign_in/sign_in_page.dart';
 import '../pages/splash/splash_screen_page.dart';
+import '../pages/user_panel/contacts/contact_add_edit/contact_add_edit_page.dart';
+import '../pages/user_panel/contacts/contact_details/contact_details_page.dart';
 import '../pages/user_panel/home/home_page.dart';
 
 @MaterialAutoRouter(
@@ -19,6 +22,8 @@ import '../pages/user_panel/home/home_page.dart';
         page: RegisterPage,
         transitionsBuilder: TransitionsBuilders.fadeIn,
         path: '/register'),
+    CupertinoRoute(page: ContactDetailsPage),
+    CupertinoRoute(page: ContactAddEditPage),
   ],
   replaceInRouteName: 'Page,Route',
 )
