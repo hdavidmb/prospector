@@ -2,12 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/routes/app_router.gr.dart';
 
 import '../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../core/app_state/app_state.dart';
 import '../../core/app_state/app_state_provider.dart';
 import '../../core/dialogs.dart';
+import '../../routes/app_router.gr.dart';
 
 class SplashScreenPage extends StatelessWidget {
   @override

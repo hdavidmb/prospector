@@ -3,11 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/routes/app_router.gr.dart';
 
 import '../../../core/app_state/app_state.dart';
 import '../../../core/app_state/app_state_provider.dart';
 import '../../../core/dialogs.dart';
+import '../../../routes/app_router.gr.dart';
 import 'widgets/sign_in_form.dart';
 
 class SignInPage extends StatelessWidget {

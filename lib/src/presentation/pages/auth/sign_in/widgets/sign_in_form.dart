@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:prospector/src/presentation/routes/app_router.gr.dart';
 
 import '../../../../core/dialogs.dart';
+import '../../../../routes/app_router.gr.dart';
 import '../logic/sign_in_form_provider.dart';
 
 class SignInForm extends StatelessWidget {

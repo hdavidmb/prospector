@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:prospector/src/presentation/pages/auth/register/register_page.dart';
-import 'package:prospector/src/presentation/pages/auth/sign_in/sign_in_page.dart';
-import 'package:prospector/src/presentation/pages/splash/splash_screen_page.dart';
-import 'package:prospector/src/presentation/pages/user_panel/home/home_page.dart';
+import '../pages/auth/register/register_page.dart';
+import '../pages/auth/sign_in/sign_in_page.dart';
+import '../pages/splash/splash_screen_page.dart';
+import '../pages/user_panel/home/home_page.dart';
 
 @MaterialAutoRouter(
   routes: [

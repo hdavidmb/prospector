@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/routes/app_router.gr.dart';
 
 import '../../../../features/auth/application/auth_providers.dart';
 import '../../../../features/auth/application/auth_state.dart';
+import '../../../routes/app_router.gr.dart';
 import '../../auth/register/logic/register_form_provider.dart';
 import '../../auth/sign_in/logic/sign_in_form_provider.dart';
 import '../contacts/contact_add_edit/contact_add_edit_page.dart';
