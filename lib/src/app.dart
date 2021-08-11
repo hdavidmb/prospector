@@ -41,7 +41,7 @@ class _AppState extends State<App> {
         darkTheme: kDarkTheme,
         routerDelegate: appRouter.delegate(),
         routeInformationParser: appRouter.defaultRouteParser(),
-        // home: SplashScreenPage(),
+        // TODO: delete home: SplashScreenPage(),
       );
     });
   }

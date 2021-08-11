@@ -6,8 +6,7 @@ analyzer:
     missing_return: error
     sort_pub_dependencies: ignore
     todo: info
-  
+
   exclude:
     - "**/*.g.dart"
-    - "**/*.gr.dart"
     - "**/*.freezed.dart"

@@ -1,12 +1,13 @@
 import 'dart:io';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/dialogs.dart';
-import '../../sign_in/sign_in_page.dart';
+import '../../../../routes/app_router.gr.dart';
 import '../logic/register_form_provider.dart';
 
 class RegisterForm extends StatelessWidget {
@@ -158,12 +159,8 @@ class RegisterForm extends StatelessWidget {
                   child: TextButton(
                     style: TextButton.styleFrom(
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        fullscreenDialog: true,
-                          builder: (context) =>
-                              SignInPage()));
-                    },
+                    onPressed: () =>
+                        AutoRouter.of(context).replace(const SignInRoute()),
                     child: Text(AppLocalizations.of(context)!.signIn,
                         style: TextStyle(
                             color:

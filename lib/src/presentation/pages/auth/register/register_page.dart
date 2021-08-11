@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -6,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/app_state/app_state.dart';
 import '../../../core/app_state/app_state_provider.dart';
 import '../../../core/dialogs.dart';
-import '../../user_panel/home/home_page.dart';
+import '../../../routes/app_router.gr.dart';
 import 'widgets/register_form.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -18,8 +19,7 @@ class RegisterPage extends StatelessWidget {
         provider: appStateNotifierProvider,
         onChange: (context, appState) async {
           if (appState == const AppState.authenticatedReady()) {
-            Navigator.pushReplacement(
-                context, CupertinoPageRoute(builder: (context) => HomePage()));
+            AutoRouter.of(context).replace(const HomeRoute());
           } else if (appState == const AppState.error()) {
             if (!showingDialog) {
               showingDialog = true;
