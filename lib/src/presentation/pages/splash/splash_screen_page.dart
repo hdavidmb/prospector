@@ -1,14 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/routes/app_router.gr.dart';
 
 import '../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../core/app_state/app_state.dart';
 import '../../core/app_state/app_state_provider.dart';
 import '../../core/dialogs.dart';
-import '../../core/fade_page_route.dart';
-import '../auth/sign_in/sign_in_page.dart';
-import '../user_panel/home/home_page.dart';
 
 class SplashScreenPage extends StatelessWidget {
   @override
@@ -19,19 +18,9 @@ class SplashScreenPage extends StatelessWidget {
       onChange: (context, appState) async {
         // TODO this is being called twice
         if (appState == const AppState.authenticatedReady()) {
-          Navigator.pushReplacement(
-            context,
-            FadePageRoute().call(
-              page: HomePage(),
-            ),
-          );
+          AutoRouter.of(context).replace(const HomeRoute());
         } else if (appState == const AppState.unauthenticatedReady()) {
-          Navigator.pushReplacement(
-            context,
-            FadePageRoute().call(
-              page: SignInPage(),
-            ),
-          );
+          AutoRouter.of(context).replace(const SignInRoute());
         } else if (appState == const AppState.error()) {
           if (!showingDialog) {
             showingDialog = true;
