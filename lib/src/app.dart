@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
+import 'package:prospector/src/presentation/routes/app_router.gr.dart';
 
 import 'features/app_default_data/application/app_default_data_providers.dart';
 import 'presentation/pages/splash/splash_screen_page.dart';
@@ -13,6 +14,7 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  final appRouter = AppRouter();
   @override
   void initState() {
     super.initState();
@@ -29,7 +31,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return Consumer(builder: (context, watch, child) {
       final currentThemeMode = watch(themeNotifierProvider).currentThemeMode;
-      return MaterialApp(
+      return MaterialApp.router(
         title: 'Prospector',
         debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -38,7 +40,9 @@ class _AppState extends State<App> {
         themeMode: currentThemeMode,
         theme: kLightTheme,
         darkTheme: kDarkTheme,
-        home: SplashScreenPage(),
+        routerDelegate: appRouter.delegate(),
+        routeInformationParser: appRouter.defaultRouteParser(),
+        // home: SplashScreenPage(),
       );
     });
   }
