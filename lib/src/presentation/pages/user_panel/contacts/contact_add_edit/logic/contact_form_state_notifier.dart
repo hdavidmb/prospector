@@ -33,8 +33,12 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
   void setEditingState({required Contact editingContact}) {
     final List<String> statePhones = [];
     final List<String> stateTags = [];
-    if (editingContact.phones != null && editingContact.phones!.isNotEmpty) statePhones.addAll(editingContact.phones!);
-    if (editingContact.tags != null && editingContact.tags!.isNotEmpty) stateTags.addAll(editingContact.tags!);
+    if (editingContact.phones != null && editingContact.phones!.isNotEmpty) {
+      statePhones.addAll(editingContact.phones!);
+    }
+    if (editingContact.tags != null && editingContact.tags!.isNotEmpty) {
+      stateTags.addAll(editingContact.tags!);
+    }
     state = ContactFormState(
       name: editingContact.name,
       phone: editingContact.phone ?? '',

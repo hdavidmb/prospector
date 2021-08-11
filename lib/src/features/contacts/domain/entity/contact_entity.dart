@@ -22,7 +22,7 @@ class Contact with _$Contact {
     @HiveField(11) List<String>? tags,
     @HiveField(12) String? importedId,
   }) = _Contact;
-  
+
   // ignore: unused_element
   const Contact._();
 
@@ -68,4 +68,12 @@ class Contact with _$Contact {
       importedId: map['imported_id'] as String?,
     );
   }
+
+  factory Contact.empty() => Contact(
+        id: '',
+        name: '',
+        status: '',
+        created: DateTime.now(),
+        modified: DateTime.now(),
+      );
 }
