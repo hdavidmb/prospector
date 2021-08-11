@@ -7,6 +7,7 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
+import '../pages/auth/register/register_page.dart' as _i6;
 import '../pages/auth/sign_in/sign_in_page.dart' as _i5;
 import '../pages/splash/splash_screen_page.dart' as _i3;
 import '../pages/user_panel/home/home_page.dart' as _i4;
@@ -37,6 +38,14 @@ class AppRouter extends _i1.RootStackRouter {
         },
         transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
         opaque: true,
+        barrierDismissible: false),
+    RegisterRoute.name: (routeData) => _i1.CustomPage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i6.RegisterPage();
+        },
+        transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
+        opaque: true,
         barrierDismissible: false)
   };
 
@@ -44,7 +53,8 @@ class AppRouter extends _i1.RootStackRouter {
   List<_i1.RouteConfig> get routes => [
         _i1.RouteConfig(SplashScreenRoute.name, path: '/'),
         _i1.RouteConfig(HomeRoute.name, path: '/home'),
-        _i1.RouteConfig(SignInRoute.name, path: '/sign-in')
+        _i1.RouteConfig(SignInRoute.name, path: '/sign-in'),
+        _i1.RouteConfig(RegisterRoute.name, path: '/register')
       ];
 }
 
@@ -64,4 +74,10 @@ class SignInRoute extends _i1.PageRouteInfo {
   const SignInRoute() : super(name, path: '/sign-in');
 
   static const String name = 'SignInRoute';
+}
+
+class RegisterRoute extends _i1.PageRouteInfo {
+  const RegisterRoute() : super(name, path: '/register');
+
+  static const String name = 'RegisterRoute';
 }

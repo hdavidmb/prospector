@@ -5,7 +5,6 @@ import 'package:hive/hive.dart';
 import 'package:prospector/src/presentation/routes/app_router.gr.dart';
 
 import 'features/app_default_data/application/app_default_data_providers.dart';
-import 'presentation/pages/splash/splash_screen_page.dart';
 import 'presentation/theme/theme_providers.dart';
 
 class App extends StatefulWidget {

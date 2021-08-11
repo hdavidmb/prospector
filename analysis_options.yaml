@@ -9,4 +9,5 @@ analyzer:
   
   exclude:
     - "**/*.g.dart"
+    - "**/*.gr.dart"
     - "**/*.freezed.dart"

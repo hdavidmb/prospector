@@ -46,6 +46,7 @@ class FirebaseAuthRepository implements IAuthRepository {
   @override
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword(
       {required String email, required String password}) async {
+    //TODO: handle no connection on all auth events
     try {
       await firebaseAuthInstance.signInWithEmailAndPassword(
           email: email, password: password);
