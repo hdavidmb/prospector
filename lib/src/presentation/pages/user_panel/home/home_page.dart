@@ -1,14 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/routes/app_router.gr.dart';
 
 import '../../../../features/auth/application/auth_providers.dart';
 import '../../../../features/auth/application/auth_state.dart';
-import '../../../core/fade_page_route.dart';
 import '../../auth/register/logic/register_form_provider.dart';
 import '../../auth/sign_in/logic/sign_in_form_provider.dart';
-import '../../auth/sign_in/sign_in_page.dart';
 import '../contacts/contact_add_edit/contact_add_edit_page.dart';
 import '../contacts/contacts_list/contacts_list_page.dart';
 import '../settings/settings_menu/settings_menu_page.dart';
@@ -52,10 +52,7 @@ class HomePage extends StatelessWidget {
           context.read(signInFormProvider.notifier).reset();
           context.read(registerFormProvider.notifier).reset();
 
-          Navigator.pushAndRemoveUntil(
-              context,
-              FadePageRoute().call(page: SignInPage()),
-              (Route<dynamic> route) => false);
+          AutoRouter.of(context).replaceAll(const [SignInRoute()]);
         }
       },
       child: Consumer(
