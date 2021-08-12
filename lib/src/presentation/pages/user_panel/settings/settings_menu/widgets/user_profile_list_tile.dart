@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -6,9 +7,9 @@ import 'package:intl/intl.dart';
 
 import '../../../../../../features/user/application/user_info_providers.dart';
 import '../../../../../../features/user/domain/entity/user_entity.dart';
+import '../../../../../routes/app_router.gr.dart';
 import '../../../../../theme/theme_constants.dart';
 import '../../user_profile/logic/user_profile_provider.dart';
-import '../../user_profile/user_profile_page.dart';
 import '../../widgets/user_avatar.dart';
 
 class UserProfileListTile extends ConsumerWidget {
@@ -24,8 +25,7 @@ class UserProfileListTile extends ConsumerWidget {
       splashColor: Colors.transparent,
       onTap: () {
         context.read(userProfileProvider).reset();
-        Navigator.push(context,
-            CupertinoPageRoute(builder: (context) => UserProfilePage()));
+        AutoRouter.of(context).push(const UserProfileRoute());
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),

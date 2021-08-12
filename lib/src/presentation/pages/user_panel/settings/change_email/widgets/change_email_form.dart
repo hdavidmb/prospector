@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -109,6 +110,6 @@ class ChangeEmailForm extends ConsumerWidget {
     final saveSuccess = await context
         .read(changeEmailFormProvider.notifier)
         .saveButtonPressed(context);
-    if (saveSuccess) Navigator.of(context).pop();
+    if (saveSuccess) AutoRouter.of(context).pop();
   }
 }

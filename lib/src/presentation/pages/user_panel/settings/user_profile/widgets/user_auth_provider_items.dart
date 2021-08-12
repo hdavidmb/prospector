@@ -1,10 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../features/user/application/user_info_providers.dart';
-import '../../change_email/change_email_page.dart';
+import '../../../../../routes/app_router.gr.dart';
 import '../../change_email/logic/change_email_form_provider.dart';
 import '../../change_password/change_password_page.dart';
 import '../../change_password/logic/change_password_form_provider.dart';
@@ -18,15 +19,12 @@ class UserAuthProviderItems extends ConsumerWidget {
     final bool isPassword = userAuthProvider == 'password';
 
     final List<Widget> items = isPassword
-        ? [
+        ? <Widget>[
             divider,
             ListTile(
               onTap: () {
                 context.read(changeEmailFormProvider.notifier).reset();
-                Navigator.push(
-                    context,
-                    CupertinoPageRoute(
-                        builder: (context) => ChangeEmailPage()));
+                AutoRouter.of(context).push(const ChangeEmailRoute());
               },
               title: Text(AppLocalizations.of(context)!.changeEmail),
               trailing: Row(
@@ -46,10 +44,11 @@ class UserAuthProviderItems extends ConsumerWidget {
             ListTile(
               onTap: () {
                 context.read(changePasswordFormProvider.notifier).reset();
-                Navigator.push(
-                    context,
-                    CupertinoPageRoute(
-                        builder: (context) => ChangePasswordPage()));
+                AutoRouter.of(context).push(const ChangePasswordRoute());
+                //TODO: Navigator.push(
+                //     context,
+                //     CupertinoPageRoute(
+                //         builder: (context) => ChangePasswordPage()));
               },
               title: Text(AppLocalizations.of(context)!.changePassword),
               trailing: const Icon(Icons.chevron_right),

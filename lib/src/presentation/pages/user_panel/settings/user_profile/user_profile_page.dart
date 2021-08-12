@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -43,7 +44,7 @@ class UserProfilePage extends ConsumerWidget {
                         final success = await context
                             .read(userProfileProvider.notifier)
                             .saveButtonPressed();
-                        if (success) Navigator.of(context).pop();
+                        if (success) AutoRouter.of(context).pop();
                       },
                 child: Text(AppLocalizations.of(context)!.save,
                     style: const TextStyle(color: Colors.white)),
@@ -66,6 +67,8 @@ class UserProfilePage extends ConsumerWidget {
                   //TODO temporal delete
                   const SizedBox(height: 15.0),
                   TextButton(
+                    style: TextButton.styleFrom(
+                        primary: Colors.yellow, backgroundColor: Colors.blue),
                     onPressed: () {
                       final premiumSubID =
                           context.read(appDefaultDataProvider).premiumSubID;

@@ -5,10 +5,10 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
-import 'package:flutter/cupertino.dart' as _i9;
+import 'package:flutter/cupertino.dart' as _i12;
 import 'package:flutter/material.dart' as _i2;
 
-import '../../features/contacts/domain/entity/contact_entity.dart' as _i10;
+import '../../features/contacts/domain/entity/contact_entity.dart' as _i13;
 import '../pages/auth/register/register_page.dart' as _i6;
 import '../pages/auth/sign_in/sign_in_page.dart' as _i5;
 import '../pages/splash/splash_screen_page.dart' as _i3;
@@ -17,6 +17,12 @@ import '../pages/user_panel/contacts/contact_add_edit/contact_add_edit_page.dart
 import '../pages/user_panel/contacts/contact_details/contact_details_page.dart'
     as _i7;
 import '../pages/user_panel/home/home_page.dart' as _i4;
+import '../pages/user_panel/settings/change_email/change_email_page.dart'
+    as _i10;
+import '../pages/user_panel/settings/change_password/change_password_page.dart'
+    as _i11;
+import '../pages/user_panel/settings/user_profile/user_profile_page.dart'
+    as _i9;
 
 class AppRouter extends _i1.RootStackRouter {
   AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
@@ -67,6 +73,21 @@ class AppRouter extends _i1.RootStackRouter {
               orElse: () => const ContactAddEditRouteArgs());
           return _i8.ContactAddEditPage(
               key: args.key, editingContact: args.editingContact);
+        }),
+    UserProfileRoute.name: (routeData) => _i1.CupertinoPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i9.UserProfilePage();
+        }),
+    ChangeEmailRoute.name: (routeData) => _i1.CupertinoPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i10.ChangeEmailPage();
+        }),
+    ChangePasswordRoute.name: (routeData) => _i1.CupertinoPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i11.ChangePasswordPage();
         })
   };
 
@@ -79,7 +100,10 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(ContactDetailsRoute.name,
             path: '/contact-details-page'),
         _i1.RouteConfig(ContactAddEditRoute.name,
-            path: '/contact-add-edit-page')
+            path: '/contact-add-edit-page'),
+        _i1.RouteConfig(UserProfileRoute.name, path: '/user-profile-page'),
+        _i1.RouteConfig(ChangeEmailRoute.name, path: '/change-email-page'),
+        _i1.RouteConfig(ChangePasswordRoute.name, path: '/change-password-page')
       ];
 }
 
@@ -108,7 +132,7 @@ class RegisterRoute extends _i1.PageRouteInfo {
 }
 
 class ContactDetailsRoute extends _i1.PageRouteInfo<ContactDetailsRouteArgs> {
-  ContactDetailsRoute({_i9.Key? key, required String? contactID})
+  ContactDetailsRoute({_i12.Key? key, required String? contactID})
       : super(name,
             path: '/contact-details-page',
             args: ContactDetailsRouteArgs(key: key, contactID: contactID));
@@ -119,13 +143,13 @@ class ContactDetailsRoute extends _i1.PageRouteInfo<ContactDetailsRouteArgs> {
 class ContactDetailsRouteArgs {
   const ContactDetailsRouteArgs({this.key, required this.contactID});
 
-  final _i9.Key? key;
+  final _i12.Key? key;
 
   final String? contactID;
 }
 
 class ContactAddEditRoute extends _i1.PageRouteInfo<ContactAddEditRouteArgs> {
-  ContactAddEditRoute({_i9.Key? key, _i10.Contact? editingContact})
+  ContactAddEditRoute({_i12.Key? key, _i13.Contact? editingContact})
       : super(name,
             path: '/contact-add-edit-page',
             args: ContactAddEditRouteArgs(
@@ -137,7 +161,25 @@ class ContactAddEditRoute extends _i1.PageRouteInfo<ContactAddEditRouteArgs> {
 class ContactAddEditRouteArgs {
   const ContactAddEditRouteArgs({this.key, this.editingContact});
 
-  final _i9.Key? key;
+  final _i12.Key? key;
 
-  final _i10.Contact? editingContact;
+  final _i13.Contact? editingContact;
+}
+
+class UserProfileRoute extends _i1.PageRouteInfo {
+  const UserProfileRoute() : super(name, path: '/user-profile-page');
+
+  static const String name = 'UserProfileRoute';
+}
+
+class ChangeEmailRoute extends _i1.PageRouteInfo {
+  const ChangeEmailRoute() : super(name, path: '/change-email-page');
+
+  static const String name = 'ChangeEmailRoute';
+}
+
+class ChangePasswordRoute extends _i1.PageRouteInfo {
+  const ChangePasswordRoute() : super(name, path: '/change-password-page');
+
+  static const String name = 'ChangePasswordRoute';
 }
