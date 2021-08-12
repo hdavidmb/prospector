@@ -5,10 +5,10 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
-import 'package:flutter/cupertino.dart' as _i12;
+import 'package:flutter/cupertino.dart' as _i16;
 import 'package:flutter/material.dart' as _i2;
 
-import '../../features/contacts/domain/entity/contact_entity.dart' as _i13;
+import '../../features/contacts/domain/entity/contact_entity.dart' as _i17;
 import '../pages/auth/register/register_page.dart' as _i6;
 import '../pages/auth/sign_in/sign_in_page.dart' as _i5;
 import '../pages/splash/splash_screen_page.dart' as _i3;
@@ -21,6 +21,14 @@ import '../pages/user_panel/settings/change_email/change_email_page.dart'
     as _i10;
 import '../pages/user_panel/settings/change_password/change_password_page.dart'
     as _i11;
+import '../pages/user_panel/settings/import_contacts/import_contacts/import_contacts_page.dart'
+    as _i15;
+import '../pages/user_panel/settings/import_contacts/import_contacts_menu/import_contacts_menu_page.dart'
+    as _i12;
+import '../pages/user_panel/settings/import_contacts/imported_contacts/imported_contacts_page.dart'
+    as _i14;
+import '../pages/user_panel/settings/tags_settings/tags_settings_page.dart'
+    as _i13;
 import '../pages/user_panel/settings/user_profile/user_profile_page.dart'
     as _i9;
 
@@ -88,6 +96,26 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (_) {
           return _i11.ChangePasswordPage();
+        }),
+    ImportContactsMenuRoute.name: (routeData) => _i1.CupertinoPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i12.ImportContactsMenuPage();
+        }),
+    TagsSettingsRoute.name: (routeData) => _i1.CupertinoPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i13.TagsSettingsPage();
+        }),
+    ImportedContactsRoute.name: (routeData) => _i1.CupertinoPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i14.ImportedContactsPage();
+        }),
+    ImportContactsRoute.name: (routeData) => _i1.CupertinoPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i15.ImportContactsPage();
         })
   };
 
@@ -103,7 +131,14 @@ class AppRouter extends _i1.RootStackRouter {
             path: '/contact-add-edit-page'),
         _i1.RouteConfig(UserProfileRoute.name, path: '/user-profile-page'),
         _i1.RouteConfig(ChangeEmailRoute.name, path: '/change-email-page'),
-        _i1.RouteConfig(ChangePasswordRoute.name, path: '/change-password-page')
+        _i1.RouteConfig(ChangePasswordRoute.name,
+            path: '/change-password-page'),
+        _i1.RouteConfig(ImportContactsMenuRoute.name,
+            path: '/import-contacts-menu-page'),
+        _i1.RouteConfig(TagsSettingsRoute.name, path: '/tags-settings-page'),
+        _i1.RouteConfig(ImportedContactsRoute.name,
+            path: '/imported-contacts-page'),
+        _i1.RouteConfig(ImportContactsRoute.name, path: '/import-contacts-page')
       ];
 }
 
@@ -132,7 +167,7 @@ class RegisterRoute extends _i1.PageRouteInfo {
 }
 
 class ContactDetailsRoute extends _i1.PageRouteInfo<ContactDetailsRouteArgs> {
-  ContactDetailsRoute({_i12.Key? key, required String? contactID})
+  ContactDetailsRoute({_i16.Key? key, required String? contactID})
       : super(name,
             path: '/contact-details-page',
             args: ContactDetailsRouteArgs(key: key, contactID: contactID));
@@ -143,13 +178,13 @@ class ContactDetailsRoute extends _i1.PageRouteInfo<ContactDetailsRouteArgs> {
 class ContactDetailsRouteArgs {
   const ContactDetailsRouteArgs({this.key, required this.contactID});
 
-  final _i12.Key? key;
+  final _i16.Key? key;
 
   final String? contactID;
 }
 
 class ContactAddEditRoute extends _i1.PageRouteInfo<ContactAddEditRouteArgs> {
-  ContactAddEditRoute({_i12.Key? key, _i13.Contact? editingContact})
+  ContactAddEditRoute({_i16.Key? key, _i17.Contact? editingContact})
       : super(name,
             path: '/contact-add-edit-page',
             args: ContactAddEditRouteArgs(
@@ -161,9 +196,9 @@ class ContactAddEditRoute extends _i1.PageRouteInfo<ContactAddEditRouteArgs> {
 class ContactAddEditRouteArgs {
   const ContactAddEditRouteArgs({this.key, this.editingContact});
 
-  final _i12.Key? key;
+  final _i16.Key? key;
 
-  final _i13.Contact? editingContact;
+  final _i17.Contact? editingContact;
 }
 
 class UserProfileRoute extends _i1.PageRouteInfo {
@@ -182,4 +217,29 @@ class ChangePasswordRoute extends _i1.PageRouteInfo {
   const ChangePasswordRoute() : super(name, path: '/change-password-page');
 
   static const String name = 'ChangePasswordRoute';
+}
+
+class ImportContactsMenuRoute extends _i1.PageRouteInfo {
+  const ImportContactsMenuRoute()
+      : super(name, path: '/import-contacts-menu-page');
+
+  static const String name = 'ImportContactsMenuRoute';
+}
+
+class TagsSettingsRoute extends _i1.PageRouteInfo {
+  const TagsSettingsRoute() : super(name, path: '/tags-settings-page');
+
+  static const String name = 'TagsSettingsRoute';
+}
+
+class ImportedContactsRoute extends _i1.PageRouteInfo {
+  const ImportedContactsRoute() : super(name, path: '/imported-contacts-page');
+
+  static const String name = 'ImportedContactsRoute';
+}
+
+class ImportContactsRoute extends _i1.PageRouteInfo {
+  const ImportContactsRoute() : super(name, path: '/import-contacts-page');
+
+  static const String name = 'ImportContactsRoute';
 }

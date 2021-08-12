@@ -8,6 +8,10 @@ import '../pages/user_panel/contacts/contact_details/contact_details_page.dart';
 import '../pages/user_panel/home/home_page.dart';
 import '../pages/user_panel/settings/change_email/change_email_page.dart';
 import '../pages/user_panel/settings/change_password/change_password_page.dart';
+import '../pages/user_panel/settings/import_contacts/import_contacts/import_contacts_page.dart';
+import '../pages/user_panel/settings/import_contacts/import_contacts_menu/import_contacts_menu_page.dart';
+import '../pages/user_panel/settings/import_contacts/imported_contacts/imported_contacts_page.dart';
+import '../pages/user_panel/settings/tags_settings/tags_settings_page.dart';
 import '../pages/user_panel/settings/user_profile/user_profile_page.dart';
 
 @MaterialAutoRouter(
@@ -30,6 +34,10 @@ import '../pages/user_panel/settings/user_profile/user_profile_page.dart';
     CupertinoRoute(page: UserProfilePage),
     CupertinoRoute(page: ChangeEmailPage),
     CupertinoRoute(page: ChangePasswordPage),
+    CupertinoRoute(page: ImportContactsMenuPage),
+    CupertinoRoute(page: TagsSettingsPage),
+    CupertinoRoute(page: ImportedContactsPage),
+    CupertinoRoute(page: ImportContactsPage),
   ],
   replaceInRouteName: 'Page,Route',
 )

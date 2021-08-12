@@ -1,10 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../features/user/application/user_info_providers.dart';
-import '../imported_contacts/imported_contacts_page.dart';
+import '../../../../../routes/app_router.gr.dart';
 import 'logic/import_contacts_menu_provider.dart';
 
 class ImportContactsMenuPage extends StatelessWidget {
@@ -21,8 +22,8 @@ class ImportContactsMenuPage extends StatelessWidget {
           ListTile(
             title: Text(AppLocalizations.of(context)!.importContacts),
             trailing: const Icon(Icons.chevron_right),
-            onTap: () => Navigator.of(context).push(CupertinoPageRoute(
-                builder: (context) => ImportedContactsPage())),
+            onTap: () =>
+                AutoRouter.of(context).push(const ImportedContactsRoute()),
           ),
           divider,
           Consumer(
