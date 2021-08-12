@@ -12,25 +12,18 @@ class SelectAllButton extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
-    return Column(children: [
-      const Divider(height: 0.0),
-      Container(
-        color: isDarkTheme ? Colors.grey[800] : Colors.grey[200],
-        child: Center(
-          child: TextButton(
-            style: ButtonStyle(
-              overlayColor: MaterialStateColor.resolveWith(
-                  (states) => Colors.transparent),
-            ),
-            onPressed:
-                context.read(importContactsPageProvider).selectAllButtonPressed,
-            child: Text(allSelected
-                ? AppLocalizations.of(context)!.unselectAll
-                : AppLocalizations.of(context)!.selectAll),
-          ),
+    return BottomAppBar(
+      child: TextButton(
+        style: ButtonStyle(
+          overlayColor:
+              MaterialStateColor.resolveWith((states) => Colors.transparent),
         ),
+        onPressed:
+            context.read(importContactsPageProvider).selectAllButtonPressed,
+        child: Text(allSelected
+            ? AppLocalizations.of(context)!.unselectAll
+            : AppLocalizations.of(context)!.selectAll),
       ),
-    ]);
+    );
   }
 }

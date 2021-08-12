@@ -24,10 +24,13 @@ class ImportContactsPage extends ConsumerWidget {
         title: Text(AppLocalizations.of(context)!.importContacts),
         actions: [
           TextButton(
-            onPressed:
-                importing ? null : () async {
-                  await context.read(importContactsPageProvider).importSelectedContacts();
-                  Navigator.of(context).pop();
+            onPressed: importing
+                ? null
+                : () async {
+                    await context
+                        .read(importContactsPageProvider)
+                        .importSelectedContacts();
+                    Navigator.of(context).pop();
                   },
             child: Text(
               AppLocalizations.of(context)!.import,
@@ -38,19 +41,16 @@ class ImportContactsPage extends ConsumerWidget {
       ),
       body: importContactsState == const ImportContactsState.ready()
           ? Stack(
-            children: [
-              Column(
+              children: [
+                Column(
                   children: [
                     ImportContactsSearchBar(),
                     Expanded(child: ImportContactsListView()),
-                    SelectAllButton(
-                      allSelected: allSelected,
-                    )
                   ],
                 ),
                 if (importing) LoadingPageCover(),
-            ],
-          )
+              ],
+            )
           : NoContactsScreen(
               imagePath: 'assets/images/loading_device_contacts.png',
               padding: const EdgeInsets.symmetric(vertical: 80.0),
@@ -58,6 +58,9 @@ class ImportContactsPage extends ConsumerWidget {
               message: AppLocalizations.of(context)!.loadingContacts,
               action: const CircularProgressIndicator.adaptive(),
             ),
+      bottomNavigationBar: SelectAllButton(
+        allSelected: allSelected,
+      ),
     );
   }
 }
