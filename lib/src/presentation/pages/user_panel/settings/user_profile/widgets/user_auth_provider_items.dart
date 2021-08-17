@@ -7,7 +7,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../features/user/application/user_info_providers.dart';
 import '../../../../../routes/app_router.gr.dart';
 import '../../change_email/logic/change_email_form_provider.dart';
-import '../../change_password/change_password_page.dart';
 import '../../change_password/logic/change_password_form_provider.dart';
 
 class UserAuthProviderItems extends ConsumerWidget {
@@ -45,10 +44,6 @@ class UserAuthProviderItems extends ConsumerWidget {
               onTap: () {
                 context.read(changePasswordFormProvider.notifier).reset();
                 AutoRouter.of(context).push(const ChangePasswordRoute());
-                //TODO: Navigator.push(
-                //     context,
-                //     CupertinoPageRoute(
-                //         builder: (context) => ChangePasswordPage()));
               },
               title: Text(AppLocalizations.of(context)!.changePassword),
               trailing: const Icon(Icons.chevron_right),

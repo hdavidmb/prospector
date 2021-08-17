@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
@@ -154,7 +155,7 @@ void showResetPasswordDialog(BuildContext context) {
             ),
             actions: [
               TextButton(
-                  onPressed: () => Navigator.of(context).pop(),
+                  onPressed: () => AutoRouter.of(context).pop(),
                   child: Text(AppLocalizations.of(context)!.cancel)),
               TextButton(
                 onPressed: () async {
@@ -162,11 +163,11 @@ void showResetPasswordDialog(BuildContext context) {
                       .read(signInFormProvider.notifier)
                       .forgotPasswordButtonPressed();
                   if (success) {
-                    Navigator.of(context).pop();
-                    showMessageDialog(
+                    await showMessageDialog(
                         context: context,
                         message: AppLocalizations.of(context)!
                             .resetPasswordEmailSent);
+                    AutoRouter.of(context).pop();
                   }
                 },
                 child: Text(AppLocalizations.of(context)!.send),
@@ -191,7 +192,7 @@ Future<void> showMessageDialog(
         content: Text(message),
         actions: [
           TextButton(
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () => AutoRouter.of(context).pop(),
               child: Text(AppLocalizations.of(context)!.ok)),
         ],
       );
@@ -212,11 +213,11 @@ Future<bool> showConfirmDialog(
         content: (message != null && message.isNotEmpty) ? Text(message) : null,
         actions: [
           TextButton(
-            onPressed: () => Navigator.of(context).pop(false),
+            onPressed: () => AutoRouter.of(context).pop(false),
             child: Text(AppLocalizations.of(context)!.cancel),
           ),
           TextButton(
-            onPressed: () => Navigator.of(context).pop(true),
+            onPressed: () => AutoRouter.of(context).pop(true),
             child: Text(confirmText ?? AppLocalizations.of(context)!.delete),
           ),
         ],
@@ -265,7 +266,7 @@ Future<Option<String>> showDeleteAccountConfirmDialog(
     title: title,
     content: content,
     isPassword: isPassword,
-    hintText: isPassword //TODO test
+    hintText: isPassword
         ? AppLocalizations.of(context)!.password
         : AppLocalizations.of(context)!.typeHere,
   );
@@ -281,7 +282,7 @@ void showPremiumDialog({required BuildContext context}) {
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              AutoRouter.of(context).pop();
             },
             child: Text(AppLocalizations.of(context)!.close),
           ),
@@ -290,7 +291,7 @@ void showPremiumDialog({required BuildContext context}) {
               backgroundColor: Theme.of(context).primaryColor,
             ),
             onPressed: () async {
-              Navigator.of(context).pop();
+              AutoRouter.of(context).pop();
               //TODO navigate to membership
             },
             child: Text(
@@ -317,7 +318,7 @@ void showPermissionsDialog(
             : null,
         actions: [
           TextButton(
-            onPressed: () => Navigator.of(context).pop(false),
+            onPressed: () => AutoRouter.of(context).pop(false),
             child: Text(AppLocalizations.of(context)!.close),
           ),
           TextButton(
@@ -325,7 +326,7 @@ void showPermissionsDialog(
               backgroundColor: Theme.of(context).primaryColor,
             ),
             onPressed: () async {
-              Navigator.of(context).pop();
+              AutoRouter.of(context).pop();
               openAppSettings();
             },
             child: Text(
@@ -349,14 +350,14 @@ Future<Option<String>> showReloginPasswordDialog(
       title: title,
       content: content,
       isPassword: true,
-      hintText: AppLocalizations.of(context)!.password); //TODO test
+      hintText: AppLocalizations.of(context)!.password);
 }
 
 Future<Option<String>> showTextFieldDialog(
     {required BuildContext context,
     Widget? title,
     Widget? content,
-    required String hintText, //TODO test
+    required String hintText,
     bool isPassword = false}) async {
   final response = await showDialog(
     context: context,
@@ -377,11 +378,8 @@ Future<Option<String>> showTextFieldDialog(
                 obscureText: isPassword,
                 textInputAction: TextInputAction.done,
                 decoration: InputDecoration(hintText: hintText),
-                //TODO test and delete hintText: isPassword
-                //     ? AppLocalizations.of(context)!.password
-                //     : AppLocalizations.of(context)!.typeHere),
                 onFieldSubmitted: (value) {
-                  Navigator.of(context).pop(value);
+                  AutoRouter.of(context).pop(value);
                 },
               ),
             ],
@@ -390,14 +388,14 @@ Future<Option<String>> showTextFieldDialog(
         actions: <Widget>[
           TextButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              AutoRouter.of(context).pop();
             },
             child: Text(AppLocalizations.of(context)!.cancel),
           ),
           TextButton(
             onPressed: () {
               final response = _controller.text;
-              Navigator.of(context).pop(response);
+              AutoRouter.of(context).pop(response);
             },
             child: Text(AppLocalizations.of(context)!.continueString),
           ),
@@ -423,14 +421,14 @@ Future<Option<SourceImage>> showImageSourceDialog(BuildContext context) async {
               ListTile(
                 title: Text(AppLocalizations.of(context)!.selectImage),
                 onTap: () {
-                  Navigator.of(context).pop(const SourceImage.gallery());
+                  AutoRouter.of(context).pop(const SourceImage.gallery());
                 },
               ),
               const Divider(height: 0.0),
               ListTile(
                 title: Text(AppLocalizations.of(context)!.takePhoto),
                 onTap: () {
-                  Navigator.of(context).pop(const SourceImage.camera());
+                  AutoRouter.of(context).pop(const SourceImage.camera());
                 },
               ),
             ],
@@ -448,8 +446,7 @@ Future<Option<String>> showAffiliationDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title:
-            Text(AppLocalizations.of(context)!.affiliateAs), //TODO affiliate as
+        title: Text(AppLocalizations.of(context)!.affiliateAs),
         content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.80,
           child: ListView(
@@ -460,7 +457,7 @@ Future<Option<String>> showAffiliationDialog(
                     ? AppLocalizations.of(context)!.clientF
                     : AppLocalizations.of(context)!.client),
                 onTap: () {
-                  Navigator.of(context)
+                  AutoRouter.of(context)
                       .pop(context.read(appDefaultDataProvider).clientID);
                 },
               ),
@@ -470,7 +467,7 @@ Future<Option<String>> showAffiliationDialog(
                     ? AppLocalizations.of(context)!.executiveF
                     : AppLocalizations.of(context)!.executive),
                 onTap: () {
-                  Navigator.of(context)
+                  AutoRouter.of(context)
                       .pop(context.read(appDefaultDataProvider).executiveID);
                 },
               ),
@@ -592,7 +589,7 @@ void showFiltersDialog(BuildContext context) {
                       context.read(contactsNotifierProvider).clearFilters(),
                   child: Text(AppLocalizations.of(context)!.clearFilters)),
               TextButton(
-                onPressed: () => Navigator.of(context).pop(),
+                onPressed: () => AutoRouter.of(context).pop(),
                 child: Text(AppLocalizations.of(context)!.ok),
               ),
             ],
