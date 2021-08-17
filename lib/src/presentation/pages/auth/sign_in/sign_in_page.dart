@@ -1,63 +1,40 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/app_state/app_state.dart';
-import '../../../core/app_state/app_state_provider.dart';
-import '../../../core/dialogs.dart';
-import '../../../routes/app_router.gr.dart';
 import 'widgets/sign_in_form.dart';
 
 class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    bool showingDialog = false;
     final bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      body: ProviderListener<AppState>(
-        provider: appStateNotifierProvider,
-        onChange: (context, appState) async {
-          if (appState == const AppState.authenticatedReady()) {
-            AutoRouter.of(context).replace(const HomeRoute());
-          } else if (appState == const AppState.error()) {
-            if (!showingDialog) {
-              showingDialog = true;
-              await showMessageDialog(
-                  context: context,
-                  message: AppLocalizations.of(context)!.appStateError);
-              showingDialog = false;
-            }
-          }
-        },
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Center(
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Container(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Hero(
-                        tag: 'prospector_logo',
-                        child: Image(
-                            image:
-                                AssetImage('assets/images/prospector_logo.png'),
-                            width: 100.0)),
-                    Text(AppLocalizations.of(context)!.welcomeTo,
-                        style: Theme.of(context).textTheme.headline5),
-                    const SizedBox(height: 8.0),
-                    Text(AppLocalizations.of(context)!.prospector,
-                        style: Theme.of(context).textTheme.headline3!.copyWith(
-                            color:
-                                isDarkTheme ? Colors.white70 : Colors.black87)),
-                    const SizedBox(height: 30.0),
-                    const SignInForm(),
-                  ],
-                ),
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Center(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Container(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Hero(
+                      tag: 'prospector_logo',
+                      child: Image(
+                          image:
+                              AssetImage('assets/images/prospector_logo.png'),
+                          width: 100.0)),
+                  Text(AppLocalizations.of(context)!.welcomeTo,
+                      style: Theme.of(context).textTheme.headline5),
+                  const SizedBox(height: 8.0),
+                  Text(AppLocalizations.of(context)!.prospector,
+                      style: Theme.of(context).textTheme.headline3!.copyWith(
+                          color:
+                              isDarkTheme ? Colors.white70 : Colors.black87)),
+                  const SizedBox(height: 30.0),
+                  const SignInForm(),
+                ],
               ),
             ),
           ),
