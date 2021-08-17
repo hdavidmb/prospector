@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -47,13 +48,15 @@ class ContactForm extends StatelessWidget {
               } else {
                 // Pop view
                 if (state.deleted) {
-                  Navigator.of(context).popUntil((route) => route
-                      .isFirst); //TODO bad state: no element error when deleting and poping view try push and remove
+                  //To ensure dialog is fully closed
+                  Future.delayed(Duration.zero, () {
+                    AutoRouter.of(context).popUntilRoot();
+                  });
                 } else {
-                  Navigator.of(context).pop();
+                  AutoRouter.of(context).pop();
                 }
-                Future.delayed(const Duration(milliseconds: 300), () => 
-                context.read(contactFormProvider.notifier).reset());
+                Future.delayed(const Duration(milliseconds: 300),
+                    () => context.read(contactFormProvider.notifier).reset());
               }
             },
           ),
@@ -209,11 +212,13 @@ class ContactForm extends StatelessWidget {
                   TextButton(
                     onPressed: (formState.isSubmitting)
                         ? null
-                        : () => context
-                            .read(contactFormProvider.notifier)
-                            .deleteContact(
-                                context: context,
-                                contactID: editingContact!.id),
+                        : () {
+                            context
+                                .read(contactFormProvider.notifier)
+                                .deleteContact(
+                                    context: context,
+                                    contactID: editingContact!.id);
+                          },
                     child: Text(AppLocalizations.of(context)!.deleteProspect,
                         style: const TextStyle(color: Colors.red)),
                   ),

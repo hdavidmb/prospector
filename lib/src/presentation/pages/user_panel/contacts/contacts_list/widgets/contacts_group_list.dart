@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -8,7 +9,7 @@ import '../../../../../../features/app_default_data/application/app_default_data
 import '../../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
 import '../../../../../core/no_contatcs_screen/no_contacts_screen.dart';
-import '../../contact_details/contact_details_page.dart';
+import '../../../../../routes/app_router.gr.dart';
 import 'contact_tile.dart';
 
 class ContactsGroupList extends ConsumerWidget {
@@ -54,15 +55,8 @@ class ContactsGroupList extends ConsumerWidget {
                             context
                                 .read(appDefaultDataProvider)
                                 .notInterestedID,
-                        onTap: () {
-                          Navigator.of(context).push(
-                            CupertinoPageRoute(
-                              builder: (context) => ContactDetailsPage(
-                                contactID: contacts[index].id,
-                              ),
-                            ),
-                          );
-                        },
+                        onTap: () => AutoRouter.of(context).push(
+                            ContactDetailsRoute(contactID: contacts[index].id)),
                       ),
                       const Divider(height: 0.0, indent: 75.0)
                     ],
@@ -84,12 +78,12 @@ class ContactsGroupList extends ConsumerWidget {
           )
         : NoContactsScreen(
             imagePath: isFiltered
-                    ? 'assets/images/no_filtered_prospects.png'
-                    : 'assets/images/no_prospects.png',
+                ? 'assets/images/no_filtered_prospects.png'
+                : 'assets/images/no_prospects.png',
             imageHeight: 120.0,
             message: isFiltered
-                  ? AppLocalizations.of(context)!.noFilteredProspectsMessage
-                  : AppLocalizations.of(context)!.noProspectsMessage,
+                ? AppLocalizations.of(context)!.noFilteredProspectsMessage
+                : AppLocalizations.of(context)!.noProspectsMessage,
           );
   }
 }
