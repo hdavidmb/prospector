@@ -10,6 +10,8 @@ import 'widgets/contacts_tab_bar.dart';
 import 'widgets/search_contacts_list.dart';
 
 class ContactsListPage extends ConsumerWidget {
+  const ContactsListPage();
+
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final bool _isFiltered = watch(contactsNotifierProvider).isFiltered;
