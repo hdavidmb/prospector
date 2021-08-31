@@ -11,6 +11,7 @@ class RewardedVideoHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final rewardMinutes = context.read(adsProvider.notifier).rewardMinutes;
     return GestureDetector(
       onTap: context.read(adsProvider).showRewaradedVideo,
       child: Container(
@@ -50,7 +51,7 @@ class RewardedVideoHeader extends StatelessWidget {
                           ),
                           TextSpan(
                               text:
-                                  ' ${20} ${AppLocalizations.of(context)!.minutes} ', //TODO: get minutes from admob
+                                  ' $rewardMinutes ${AppLocalizations.of(context)!.minutes} ', //TODO: get minutes from admob
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold)),
                           TextSpan(

@@ -52,57 +52,20 @@ class AdsNotifier extends ChangeNotifier {
   late BannerAd contactsBanner;
   late BannerAd settingsBanner;
   RewardedAd? rewardedAd;
+  final int rewardMinutes = 20;
 
   void loadAds() {
-    bool notify = false;
     if (contactsBannerState.isInitial) {
       contactsBannerState = const AdState.loading();
       contactsBanner.load();
-      notify = true;
     }
     if (settingsBannerState.isInitial) {
       settingsBannerState = const AdState.loading();
       settingsBanner.load();
-      notify = true;
     }
     if (rewardedVideoState.isInitial) {
-      rewardedVideoState = const AdState.loading();
-      RewardedAd.load(
-        adUnitId: Platform.isIOS
-            ? 'ca-app-pub-3940256099942544/1712485313'
-            : 'ca-app-pub-3940256099942544/5224354917', //TODO: PrivateKeys.getRewardedAdUnitId(),
-        request: const AdRequest(),
-        rewardedAdLoadCallback: RewardedAdLoadCallback(
-          onAdLoaded: (RewardedAd ad) {
-            rewardedAd = ad;
-            rewardedVideoState = const AdState.loaded();
-            rewardedAd!.fullScreenContentCallback = FullScreenContentCallback(
-              //TODO: check where to reload the rewarded video ad
-              onAdShowedFullScreenContent: (RewardedAd ad) =>
-                  print('$ad onAdShowedFullScreenContent.'),
-              onAdDismissedFullScreenContent: (RewardedAd ad) {
-                print('$ad onAdDismissedFullScreenContent.');
-                ad.dispose();
-              },
-              onAdFailedToShowFullScreenContent:
-                  (RewardedAd ad, AdError error) {
-                print('$ad onAdFailedToShowFullScreenContent: $error');
-                ad.dispose();
-              },
-              onAdImpression: (RewardedAd ad) =>
-                  print('$ad impression occurred.'),
-            );
-            notifyListeners();
-          },
-          onAdFailedToLoad: (LoadAdError error) {
-            rewardedVideoState = const AdState.error();
-            notifyListeners();
-          },
-        ),
-      );
-      notify = true;
+      loadRewardedAd();
     }
-    // if (notify) notifyListeners();
   }
 
   void showRewaradedVideo() {
@@ -113,5 +76,41 @@ class AdsNotifier extends ChangeNotifier {
         print('user got rewarded');
       });
     }
+  }
+
+  void emitAdErrorState() {
+    rewardedVideoState = const AdState.error();
+    notifyListeners();
+  }
+
+  void loadRewardedAd({bool fromDismissed = false}) {
+    rewardedVideoState = const AdState.loading();
+    if (fromDismissed) notifyListeners();
+    RewardedAd.load(
+      adUnitId: Platform.isIOS
+          ? 'ca-app-pub-3940256099942544/1712485313'
+          : 'ca-app-pub-3940256099942544/5224354917', //TODO: PrivateKeys.getRewardedAdUnitId(),
+      request: const AdRequest(),
+      rewardedAdLoadCallback: RewardedAdLoadCallback(
+        onAdLoaded: (RewardedAd ad) {
+          rewardedAd = ad;
+          rewardedVideoState = const AdState.loaded();
+          rewardedAd!.fullScreenContentCallback = FullScreenContentCallback(
+            onAdDismissedFullScreenContent: (RewardedAd ad) {
+              print('$ad onAdDismissedFullScreenContent.');
+              ad.dispose();
+              loadRewardedAd(fromDismissed: true);
+            },
+            onAdFailedToShowFullScreenContent: (RewardedAd ad, AdError error) {
+              print('$ad onAdFailedToShowFullScreenContent: $error');
+              ad.dispose();
+              emitAdErrorState();
+            },
+          );
+          notifyListeners();
+        },
+        onAdFailedToLoad: (LoadAdError error) => emitAdErrorState(),
+      ),
+    );
   }
 }

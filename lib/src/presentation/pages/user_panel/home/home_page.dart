@@ -9,12 +9,7 @@ import 'logic/home_index_provider.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     final List<Map<String, dynamic>> bottomBarItems = [
-=======
-    //TODO: change implementation for widget with switch case to get the page
-    final List<Map<String, dynamic>> pages = [
->>>>>>> 5be94a425d3f6050e7412a34347a9edeff088068
       {
         'icon': const Icon(Icons.insert_chart),
         'label': AppLocalizations.of(context)!.statistics,
