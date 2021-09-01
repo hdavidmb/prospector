@@ -1,13 +1,17 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/core/shared_prefs/shared_prefs_provider.dart';
 
 import '../../user/application/user_info_providers.dart';
 import 'ads_notifier.dart';
 
 final adsProvider = ChangeNotifierProvider<AdsNotifier>((ref) {
-  return AdsNotifier();
+  final _prefs = ref.watch(userSharedPrefsProvider);
+  return AdsNotifier(prefs: _prefs);
 });
 
 final showAds = Provider<bool>((ref) {
   final bool isPremiumUser = ref.watch(userInfoNotifierProvider).isPremiumUser;
-  return !isPremiumUser; //TODO: complete with isRewarded from ads notifier
+  final bool isRewarded = ref.watch(adsProvider).isRewarded;
+  return !isPremiumUser &&
+      !isRewarded; //TODO: complete with isRewarded from ads notifier
 });

@@ -1,7 +1,8 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserSharedPreferences {
-  static final UserSharedPreferences _instance = UserSharedPreferences._internal();
+  static final UserSharedPreferences _instance =
+      UserSharedPreferences._internal();
 
   factory UserSharedPreferences() {
     return _instance;
@@ -16,12 +17,20 @@ class UserSharedPreferences {
   }
 
   int get userThemePrefs => _prefs.getInt('userThemePrefs') ?? 0;
-  set userThemePrefs(int value) {
-    _prefs.setInt('userThemePrefs', value);
+  set userThemePrefs(int value) => _prefs.setInt('userThemePrefs', value);
+
+  bool get syncContactsEnabled =>
+      _prefs.getBool('syncContactsEnabled') ?? false;
+  set syncContactsEnabled(bool value) =>
+      _prefs.setBool('syncContactsEnabled', value);
+
+  DateTime get rewardEndDate {
+    final int? milliseconds = _prefs.getInt('rewardEndDateMilliseconds');
+    return milliseconds != null
+        ? DateTime.fromMillisecondsSinceEpoch(milliseconds)
+        : DateTime.now().subtract(const Duration(days: 10));
   }
 
-  bool get syncContactsEnabled => _prefs.getBool('syncContactsEnabled') ?? false;
-  set syncContactsEnabled(bool value) {
-    _prefs.setBool('syncContactsEnabled', value);
-  }
+  set rewardEndDate(DateTime date) =>
+      _prefs.setInt('rewardEndDateMilliseconds', date.millisecondsSinceEpoch);
 }

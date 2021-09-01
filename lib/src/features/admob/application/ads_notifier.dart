@@ -1,12 +1,18 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:prospector/src/core/private/private_keys.dart';
+import 'package:prospector/src/core/shared_prefs/shared_prefs.dart';
 import 'ad_state.dart';
 
 class AdsNotifier extends ChangeNotifier {
-  AdsNotifier() {
+  final UserSharedPreferences prefs;
+  AdsNotifier({required this.prefs}) {
+    _rewardEndDate = prefs.rewardEndDate;
+    _setTimerOnInit();
+
     final String _adUnitId = Platform.isIOS
         ? 'ca-app-pub-3940256099942544/2934735716'
         : 'ca-app-pub-3940256099942544/6300978111'; //TODO: PrivateKeys.getBannerAdUnitId();
@@ -52,7 +58,11 @@ class AdsNotifier extends ChangeNotifier {
   late BannerAd contactsBanner;
   late BannerAd settingsBanner;
   RewardedAd? rewardedAd;
-  final int rewardMinutes = 20;
+
+  final int rewardMinutes = 1; //TODO: change to 20
+  DateTime _rewardEndDate = DateTime.now().subtract(const Duration(days: 10));
+
+  bool get isRewarded => DateTime.now().isBefore(_rewardEndDate);
 
   void loadAds() {
     if (contactsBannerState.isInitial) {
@@ -65,16 +75,6 @@ class AdsNotifier extends ChangeNotifier {
     }
     if (rewardedVideoState.isInitial) {
       loadRewardedAd();
-    }
-  }
-
-  void showRewaradedVideo() {
-    if (rewardedVideoState.isLoaded && rewardedAd != null) {
-      rewardedAd!.show(
-          onUserEarnedReward: (RewardedAd ad, RewardItem rewardItem) {
-        // TODO: Reward the user for watching an ad.
-        print('user got rewarded');
-      });
     }
   }
 
@@ -112,5 +112,29 @@ class AdsNotifier extends ChangeNotifier {
         onAdFailedToLoad: (LoadAdError error) => emitAdErrorState(),
       ),
     );
+  }
+
+  void _setTimerOnInit() {
+    if (isRewarded) {
+      final Duration diff = _rewardEndDate.difference(DateTime.now());
+      _setRewardEndTimer(diff);
+    }
+  }
+
+  void _setRewardEndTimer(Duration duration) =>
+      Timer(duration + const Duration(seconds: 1), () => notifyListeners());
+
+  void showRewaradedVideo() {
+    if (rewardedVideoState.isLoaded && rewardedAd != null) {
+      rewardedAd!.show(
+        onUserEarnedReward: (RewardedAd ad, RewardItem rewardItem) {
+          print('user got rewarded');
+          _rewardEndDate = DateTime.now().add(Duration(minutes: rewardMinutes));
+          prefs.rewardEndDate = _rewardEndDate;
+          notifyListeners();
+          _setRewardEndTimer(Duration(minutes: rewardMinutes));
+        },
+      );
+    }
   }
 }
