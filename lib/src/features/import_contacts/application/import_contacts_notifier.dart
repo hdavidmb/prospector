@@ -87,7 +87,8 @@ class ImportContactsNotifier extends ChangeNotifier {
     return true;
   }
 
-  Future<bool> setSyncContacts({required BuildContext context, required bool enabled}) async {
+  Future<bool> setSyncContacts(
+      {required BuildContext context, required bool enabled}) async {
     final bool isPremiumUser = read(userInfoNotifierProvider).isPremiumUser;
     if (!isPremiumUser) return false;
 
@@ -125,8 +126,8 @@ class ImportContactsNotifier extends ChangeNotifier {
 
   Future<bool> addContactsListener({bool manualSetting = false}) async {
     final bool isPremiumUser = read(userInfoNotifierProvider).isPremiumUser;
-    final bool syncContactsEnabled = manualSetting || 
-        read(userSharedPrefsProvider).syncContactsEnabled;
+    final bool syncContactsEnabled =
+        manualSetting || read(userSharedPrefsProvider).syncContactsEnabled;
     if (isPremiumUser && syncContactsEnabled) {
       final accessGranted = await Permission.contacts.request().isGranted;
       if (!accessGranted) {
