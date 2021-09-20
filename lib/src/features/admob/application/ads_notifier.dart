@@ -93,6 +93,7 @@ class AdsNotifier extends ChangeNotifier {
       request: const AdRequest(),
       rewardedAdLoadCallback: RewardedAdLoadCallback(
         onAdLoaded: (RewardedAd ad) {
+          print('Rewarded ad loaded');
           rewardedAd = ad;
           rewardedVideoState = const AdState.loaded();
           rewardedAd!.fullScreenContentCallback = FullScreenContentCallback(
@@ -109,7 +110,10 @@ class AdsNotifier extends ChangeNotifier {
           );
           notifyListeners();
         },
-        onAdFailedToLoad: (LoadAdError error) => emitAdErrorState(),
+        onAdFailedToLoad: (LoadAdError error) {
+          print('Reward ad failed to load. Code: ${error.code}');
+          emitAdErrorState();
+        },
       ),
     );
   }
@@ -135,6 +139,54 @@ class AdsNotifier extends ChangeNotifier {
           _setRewardEndTimer(Duration(minutes: rewardMinutes));
         },
       );
+    }
+  }
+
+  Map<String, Map<String, Map<String, dynamic>>> nativeAdsMap = {};
+
+  NativeAd getNativeAd({required String status, required int index}) {
+    final String indexString = index.toString();
+    print('------ Get Native called. Status: $status. Index: $index -------');
+    final adStateMap = nativeAdsMap[status]?[indexString];
+
+    if (adStateMap == null) {
+      if (nativeAdsMap[status] == null) nativeAdsMap[status] = {};
+      if (nativeAdsMap[status]![indexString] == null) {
+        nativeAdsMap[status]?[indexString] = {};
+      }
+
+      nativeAdsMap[status]![indexString]!['state'] = const AdState.initial();
+
+      final nativeAd = NativeAd(
+        adUnitId: Platform.isIOS
+            ? 'ca-app-pub-3940256099942544/3986624511'
+            : 'ca-app-pub-3940256099942544/2247696110', //TODO: PrivateKeys.getNativeAdUnitId();
+        factoryId: 'listTile',
+        request: const AdRequest(),
+        listener: NativeAdListener(
+          onAdLoaded: (ad) {
+            print(
+                'Native Ad loaded successfully. Status: $status. Index: $index');
+            nativeAdsMap[status]?[indexString]?['state'] =
+                const AdState.loaded();
+            notifyListeners();
+          },
+          onAdFailedToLoad: (ad, error) {
+            // Releases an ad resource when it fails to load
+            nativeAdsMap[status]?[indexString]?['state'] =
+                const AdState.error();
+            ad.dispose();
+
+            print(
+                'Native Ad load failed (code=${error.code} message=${error.message})');
+          },
+        ),
+      );
+      nativeAdsMap[status]![indexString]!['ad'] = nativeAd;
+      nativeAdsMap[status]![indexString]!['ad'].load();
+      return nativeAdsMap[status]![indexString]!['ad'] as NativeAd;
+    } else {
+      return adStateMap['ad'] as NativeAd;
     }
   }
 }
