@@ -61,10 +61,10 @@ final getContactsList = Provider<GetContactsList>((ref) {
 // * Notifier
 final contactsNotifierProvider =
     ChangeNotifierProvider<ContactsNotifier>((ref) {
-final _createContactDocument = ref.watch(createContactDocument);
-final _deleteContactDocument = ref.watch(deleteContactDocument);
-final _updateContactDocument = ref.watch(updateContactDocument);
-final _getContactsList = ref.watch(getContactsList);
+  final _createContactDocument = ref.watch(createContactDocument);
+  final _deleteContactDocument = ref.watch(deleteContactDocument);
+  final _updateContactDocument = ref.watch(updateContactDocument);
+  final _getContactsList = ref.watch(getContactsList);
   return ContactsNotifier(
     createContactDocument: _createContactDocument,
     deleteContactDocument: _deleteContactDocument,

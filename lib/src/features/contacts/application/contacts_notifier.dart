@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/admob/domain/native_ad_dummy.dart';
+import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
 import '../../user/application/user_info_providers.dart';
@@ -34,55 +36,71 @@ class ContactsNotifier extends ChangeNotifier {
   void reset() => _contactsState = const ContactsState.initial();
 
   Future<Either<DatabaseFailure, Unit>> createContact(Contact contact) async {
-    final uid = read(userInfoNotifierProvider).user.uid;
-    final createResult =
-        await createContactDocument(contact: contact, uid: uid);
-    return createResult.fold(
-      (failure) => left(failure),
-      (unit) {
-        _contacts
-          ..add(contact) //TODO test insertAt(0)
-          ..sort((a, b) => b.modified.compareTo(a.modified));
-        notifyListeners();
-        return right(unit);
-      },
-    );
+    final uid = read(userInfoNotifierProvider).user?.uid;
+    if (uid != null) {
+      final createResult =
+          await createContactDocument(contact: contact, uid: uid);
+      return createResult.fold(
+        (failure) => left(failure),
+        (unit) {
+          _contacts
+            ..add(contact) //TODO test insertAt(0)
+            ..sort((a, b) => b.modified.compareTo(a.modified));
+          notifyListeners();
+          return right(unit);
+        },
+      );
+    } else {
+      return left(const DatabaseFailure.noUserAuthenticated());
+    }
   }
 
   Future<void> getContacts() async {
     if (_contactsState == const ContactsState.initial()) {
       _contactsState = const ContactsState.fetching();
-      final uid = read(userInfoNotifierProvider).user.uid;
-      final getResult = await getContactsList(uid: uid);
-      getResult.fold(
-        (failure) => _contactsState = const ContactsState.error(),
-        (contactsList) {
-          contactsList.sort((a, b) => b.modified.compareTo(a.modified));
-          _contacts = contactsList;
-          _contactsState = const ContactsState.ready();
-        },
-      );
+      final uid = read(userInfoNotifierProvider).user?.uid;
+      if (uid != null) {
+        final getResult = await getContactsList(uid: uid);
+        getResult.fold(
+          (failure) => _contactsState = const ContactsState.error(),
+          (contactsList) {
+            contactsList.sort((a, b) => b.modified.compareTo(a.modified));
+            _contacts = contactsList;
+            _contactsState = const ContactsState.ready();
+          },
+        );
+      } else {
+        _contactsState = const ContactsState.error();
+      }
       notifyListeners();
     }
   }
 
-  Future<Either<DatabaseFailure, Unit>> updateContact(Contact contact, {bool removingDeletedTag = false}) async {
+  Future<Either<DatabaseFailure, Unit>> updateContact(Contact contact,
+      {bool removingDeletedTag = false}) async {
     // TODO if status changed create status interaction
-    final uid = read(userInfoNotifierProvider).user.uid;
-    final newContactInfo = removingDeletedTag ? contact : contact.copyWith(modified: DateTime.now());
-    final updateResult =
-        await updateContactDocument(contact: newContactInfo, uid: uid);
-    return updateResult.fold(
-      (failure) => left(failure),
-      (unit) {
-        final int index = _contacts
-            .indexWhere((listContact) => listContact.id == newContactInfo.id);
-        _contacts[index] = newContactInfo;
-        _contacts.sort((a, b) => b.modified.compareTo(a.modified));
-        notifyListeners();
-        return right(unit);
-      },
-    );
+    final uid = read(userInfoNotifierProvider).user?.uid;
+
+    if (uid != null) {
+      final newContactInfo = removingDeletedTag
+          ? contact
+          : contact.copyWith(modified: DateTime.now());
+      final updateResult =
+          await updateContactDocument(contact: newContactInfo, uid: uid);
+      return updateResult.fold(
+        (failure) => left(failure),
+        (unit) {
+          final int index = _contacts
+              .indexWhere((listContact) => listContact.id == newContactInfo.id);
+          _contacts[index] = newContactInfo;
+          _contacts.sort((a, b) => b.modified.compareTo(a.modified));
+          notifyListeners();
+          return right(unit);
+        },
+      );
+    } else {
+      return left(const DatabaseFailure.noUserAuthenticated());
+    }
   }
 
   void deleteTagFromContacts({required String tagID}) {
@@ -99,17 +117,21 @@ class ContactsNotifier extends ChangeNotifier {
       {required String contactID}) async {
     // TODO delete contact interactions
     // TODO delete contact from events
-    final uid = read(userInfoNotifierProvider).user.uid;
-    final deleteResult =
-        await deleteContactDocument(contactID: contactID, uid: uid);
-    return deleteResult.fold(
-      (failure) => left(failure),
-      (unit) {
-        _contacts.removeWhere((listContact) => listContact.id == contactID);
-        notifyListeners();
-        return right(unit);
-      },
-    );
+    final uid = read(userInfoNotifierProvider).user?.uid;
+    if (uid != null) {
+      final deleteResult =
+          await deleteContactDocument(contactID: contactID, uid: uid);
+      return deleteResult.fold(
+        (failure) => left(failure),
+        (unit) {
+          _contacts.removeWhere((listContact) => listContact.id == contactID);
+          notifyListeners();
+          return right(unit);
+        },
+      );
+    } else {
+      return left(const DatabaseFailure.noUserAuthenticated());
+    }
   }
 
   // ************ FILTERS ***************
@@ -151,6 +173,128 @@ class ContactsNotifier extends ChangeNotifier {
                         (filterTag) => contact.tags!.contains(filterTag)))),
       )
       .toList();
+
+  List<Object> get notContactedContacts {
+    final notContactedID = read(appDefaultDataProvider).notContactedID;
+    final _notContactedContacts = _contacts
+        .where(
+          (contact) =>
+              (contact.status == notContactedID) &&
+              (_genderFilter.isEmpty || contact.gender == _genderFilter) &&
+              (_locationFilter.isEmpty ||
+                  contact.location == _locationFilter) &&
+              (_tagsFilter.isEmpty ||
+                  (contact.tags != null &&
+                      _tagsFilter.every(
+                          (filterTag) => contact.tags!.contains(filterTag)))),
+        )
+        .toList();
+    //TODO only insert ads if showAds == true
+
+    return _insertAds(_notContactedContacts);
+  }
+
+  List<Object> get notInterestedContacts {
+    final notInterestedID = read(appDefaultDataProvider).notInterestedID;
+    return _contacts
+        .where(
+          (contact) =>
+              (contact.status == notInterestedID) &&
+              (_genderFilter.isEmpty || contact.gender == _genderFilter) &&
+              (_locationFilter.isEmpty ||
+                  contact.location == _locationFilter) &&
+              (_tagsFilter.isEmpty ||
+                  (contact.tags != null &&
+                      _tagsFilter.every(
+                          (filterTag) => contact.tags!.contains(filterTag)))),
+        )
+        .toList();
+  }
+
+  List<Object> get invitedContacts {
+    final invitedID = read(appDefaultDataProvider).invitedID;
+    return _contacts
+        .where(
+          (contact) =>
+              (contact.status == invitedID) &&
+              (_genderFilter.isEmpty || contact.gender == _genderFilter) &&
+              (_locationFilter.isEmpty ||
+                  contact.location == _locationFilter) &&
+              (_tagsFilter.isEmpty ||
+                  (contact.tags != null &&
+                      _tagsFilter.every(
+                          (filterTag) => contact.tags!.contains(filterTag)))),
+        )
+        .toList();
+  }
+
+  List<Object> get followUpContacts {
+    final followUpID = read(appDefaultDataProvider).followUpID;
+    return _contacts
+        .where(
+          (contact) =>
+              (contact.status == followUpID) &&
+              (_genderFilter.isEmpty || contact.gender == _genderFilter) &&
+              (_locationFilter.isEmpty ||
+                  contact.location == _locationFilter) &&
+              (_tagsFilter.isEmpty ||
+                  (contact.tags != null &&
+                      _tagsFilter.every(
+                          (filterTag) => contact.tags!.contains(filterTag)))),
+        )
+        .toList();
+  }
+
+  List<Object> get clientContacts {
+    final clientID = read(appDefaultDataProvider).clientID;
+    return _contacts
+        .where(
+          (contact) =>
+              (contact.status == clientID) &&
+              (_genderFilter.isEmpty || contact.gender == _genderFilter) &&
+              (_locationFilter.isEmpty ||
+                  contact.location == _locationFilter) &&
+              (_tagsFilter.isEmpty ||
+                  (contact.tags != null &&
+                      _tagsFilter.every(
+                          (filterTag) => contact.tags!.contains(filterTag)))),
+        )
+        .toList();
+  }
+
+  List<Object> get executiveContacts {
+    final executiveID = read(appDefaultDataProvider).executiveID;
+    return _contacts
+        .where(
+          (contact) =>
+              (contact.status == executiveID) &&
+              (_genderFilter.isEmpty || contact.gender == _genderFilter) &&
+              (_locationFilter.isEmpty ||
+                  contact.location == _locationFilter) &&
+              (_tagsFilter.isEmpty ||
+                  (contact.tags != null &&
+                      _tagsFilter.every(
+                          (filterTag) => contact.tags!.contains(filterTag)))),
+        )
+        .toList();
+  }
+
+  List<Object> _insertAds(List<Contact> contacts) {
+    final List<Object> _contactsWAds = [];
+    if (contacts.isNotEmpty) {
+      _contactsWAds.addAll(contacts);
+      final int numOfAds = ((_contactsWAds.length + 4) / 9).floor();
+      if (numOfAds == 0) {
+        _contactsWAds.add(NativeAdDummy());
+      } else {
+        for (var i = 1; i <= numOfAds; i++) {
+          final index = i * 10 - 6;
+          _contactsWAds.insert(index, NativeAdDummy());
+        }
+      }
+    }
+    return _contactsWAds;
+  }
 
   // ************ SEARCH ***************
   String _searchText = '';

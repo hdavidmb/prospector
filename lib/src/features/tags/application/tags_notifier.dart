@@ -32,46 +32,58 @@ class TagsNotifier extends ChangeNotifier {
   void reset() => _tagsState = const TagsState.initial();
 
   Future<Either<DatabaseFailure, Unit>> createTag(Tag tag) async {
-    final uid = read(userInfoNotifierProvider).user.uid;
-    final createResult = await createTagDocument(tag: tag, uid: uid);
-    return createResult.fold(
-      (failure) => left(failure),
-      (unit) {
-        _tags.add(tag);
-        notifyListeners();
-        return right(unit);
-      },
-    );
+    final uid = read(userInfoNotifierProvider).user?.uid;
+    if (uid != null) {
+      final createResult = await createTagDocument(tag: tag, uid: uid);
+      return createResult.fold(
+        (failure) => left(failure),
+        (unit) {
+          _tags.add(tag);
+          notifyListeners();
+          return right(unit);
+        },
+      );
+    } else {
+      return left(const DatabaseFailure.noUserAuthenticated());
+    }
   }
 
   Future<void> getTags() async {
     if (_tagsState != const TagsState.fetching()) {
       _tagsState = const TagsState.fetching();
-      final uid = read(userInfoNotifierProvider).user.uid;
-      final getResult = await getTagsList(uid: uid);
-      getResult.fold(
-        (failure) => _tagsState = const TagsState.error(),
-        (tagsList) {
-          _tags = tagsList;
-          _tagsState = const TagsState.ready();
-        },
-      );
+      final uid = read(userInfoNotifierProvider).user?.uid;
+      if (uid != null) {
+        final getResult = await getTagsList(uid: uid);
+        getResult.fold(
+          (failure) => _tagsState = const TagsState.error(),
+          (tagsList) {
+            _tags = tagsList;
+            _tagsState = const TagsState.ready();
+          },
+        );
+      } else {
+        _tagsState = const TagsState.error();
+      }
       notifyListeners();
     }
   }
 
   Future<Either<DatabaseFailure, Unit>> deleteTag(
       {required String tagID}) async {
-    final uid = read(userInfoNotifierProvider).user.uid;
-    final deleteResult = await deleteTagDocument(tagID: tagID, uid: uid);
-    return deleteResult.fold(
-      (failure) => left(failure),
-      (unit) {
-        _tags.removeWhere((listTag) => listTag.id == tagID);
-        read(contactsNotifierProvider).deleteTagFromContacts(tagID: tagID);
-        notifyListeners();
-        return right(unit);
-      },
-    );
+    final uid = read(userInfoNotifierProvider).user?.uid;
+    if (uid != null) {
+      final deleteResult = await deleteTagDocument(tagID: tagID, uid: uid);
+      return deleteResult.fold(
+        (failure) => left(failure),
+        (unit) {
+          _tags.removeWhere((listTag) => listTag.id == tagID);
+          read(contactsNotifierProvider).deleteTagFromContacts(tagID: tagID);
+          notifyListeners();
+          return right(unit);
+        },
+      );
+    } else {
+      return left(const DatabaseFailure.noUserAuthenticated());
+    }
   }
 }

@@ -37,7 +37,7 @@ class ChangeEmailForm extends ConsumerWidget {
                   style: const TextStyle(fontSize: 14.0),
                 ),
                 trailing: Text(
-                  watch(userInfoNotifierProvider).user.email!,
+                  watch(userInfoNotifierProvider).user?.email ?? '',
                   style: const TextStyle(fontSize: 17.0),
                   textAlign: TextAlign.center,
                 ),
