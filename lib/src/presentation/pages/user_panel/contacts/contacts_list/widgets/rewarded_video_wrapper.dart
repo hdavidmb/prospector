@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../../features/admob/application/ad_state.dart';
-import 'rewarded_video_header.dart';
 
+import '../../../../../../features/admob/application/ad_state.dart';
 import '../../../../../../features/admob/application/ads_providers.dart';
+import 'rewarded_video_header.dart';
 import 'shimmer_tile.dart';
 
 class RewardedVideoWrapper extends ConsumerWidget {

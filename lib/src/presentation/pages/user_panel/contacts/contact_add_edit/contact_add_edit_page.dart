@@ -41,10 +41,11 @@ class ContactAddEditPage extends ConsumerWidget {
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Stack(
-              //TODO: change to column to avoid blocking button when keyboard is hiden
+            child: Column(
               children: [
-                ContactForm(editingContact: editingContact),
+                Expanded(
+                  child: ContactForm(editingContact: editingContact),
+                ),
                 if (shouldShowAds && bannerState.isLoaded)
                   const ContactsAdmobBanner(),
               ],

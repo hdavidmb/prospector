@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../contacts/contact_add_edit/contact_add_edit_page.dart';
 import '../../contacts/contacts_list/contacts_list_page.dart';
-import '../logic/home_index_provider.dart';
 import '../../settings/settings_menu/settings_menu_page.dart';
+import '../logic/home_index_provider.dart';
 
 class HomeBodySelector extends ConsumerWidget {
   const HomeBodySelector({
