@@ -189,9 +189,8 @@ class ContactsNotifier extends ChangeNotifier {
                           (filterTag) => contact.tags!.contains(filterTag)))),
         )
         .toList();
-    //TODO only insert ads if showAds == true
 
-    return _insertAds(_notContactedContacts);
+    return _notContactedContacts;
   }
 
   List<Object> get notInterestedContacts {
@@ -277,23 +276,6 @@ class ContactsNotifier extends ChangeNotifier {
                           (filterTag) => contact.tags!.contains(filterTag)))),
         )
         .toList();
-  }
-
-  List<Object> _insertAds(List<Contact> contacts) {
-    final List<Object> _contactsWAds = [];
-    if (contacts.isNotEmpty) {
-      _contactsWAds.addAll(contacts);
-      final int numOfAds = ((_contactsWAds.length + 4) / 9).floor();
-      if (numOfAds == 0) {
-        _contactsWAds.add(NativeAdDummy());
-      } else {
-        for (var i = 1; i <= numOfAds; i++) {
-          final index = i * 10 - 6;
-          _contactsWAds.insert(index, NativeAdDummy());
-        }
-      }
-    }
-    return _contactsWAds;
   }
 
   // ************ SEARCH ***************

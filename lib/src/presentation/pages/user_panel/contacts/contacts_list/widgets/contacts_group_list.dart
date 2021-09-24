@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:prospector/src/features/admob/application/ads_providers.dart';
 import 'package:prospector/src/features/admob/domain/native_ad_dummy.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contacts_list/widgets/custom_native_ad_widget.dart';
 
@@ -24,6 +25,7 @@ class ContactsGroupList extends ConsumerWidget {
     final bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     final List<Widget> sections = [];
     final bool isFiltered = watch(contactsNotifierProvider).isFiltered;
+    final bool shouldShowAds = watch(showAds);
 
     for (final String status in statuses) {
       List<Object> contacts = [];
@@ -41,9 +43,16 @@ class ContactsGroupList extends ConsumerWidget {
       } else if (status == context.read(appDefaultDataProvider).executiveID) {
         contacts = watch(contactsNotifierProvider).executiveContacts;
       }
+      final int contactsCount = contacts.length;
+
+      if (shouldShowAds) {
+        contacts = context.read(adsProvider).insertAds(contacts);
+      }
+
       final String statusText = context
           .read(appDefaultDataProvider)
           .getStatusText(context: context, statusID: status, isPlural: true);
+
       if (contacts.isNotEmpty) {
         sections.add(
           SliverStickyHeader(
@@ -53,7 +62,7 @@ class ContactsGroupList extends ConsumerWidget {
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 5.0),
               alignment: Alignment.centerLeft,
               child: Text(
-                '$statusText (${contacts.length})', //TODO change contacts length to remove ads in the count
+                '$statusText ($contactsCount)',
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
             ),

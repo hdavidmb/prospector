@@ -12,6 +12,5 @@ final adsProvider = ChangeNotifierProvider<AdsNotifier>((ref) {
 final showAds = Provider<bool>((ref) {
   final bool isPremiumUser = ref.watch(userInfoNotifierProvider).isPremiumUser;
   final bool isRewarded = ref.watch(adsProvider).isRewarded;
-  return !isPremiumUser &&
-      !isRewarded; //TODO: complete with isRewarded from ads notifier
+  return !isPremiumUser && !isRewarded;
 });

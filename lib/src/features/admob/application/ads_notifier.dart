@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:prospector/src/core/private/private_keys.dart';
 import 'package:prospector/src/core/shared_prefs/shared_prefs.dart';
+import 'package:prospector/src/features/admob/domain/native_ad_dummy.dart';
 import 'ad_state.dart';
 
 class AdsNotifier extends ChangeNotifier {
@@ -93,17 +94,17 @@ class AdsNotifier extends ChangeNotifier {
       request: const AdRequest(),
       rewardedAdLoadCallback: RewardedAdLoadCallback(
         onAdLoaded: (RewardedAd ad) {
-          print('Rewarded ad loaded');
+          debugPrint('Rewarded ad loaded');
           rewardedAd = ad;
           rewardedVideoState = const AdState.loaded();
           rewardedAd!.fullScreenContentCallback = FullScreenContentCallback(
             onAdDismissedFullScreenContent: (RewardedAd ad) {
-              print('$ad onAdDismissedFullScreenContent.');
+              debugPrint('$ad onAdDismissedFullScreenContent.');
               ad.dispose();
               loadRewardedAd(fromDismissed: true);
             },
             onAdFailedToShowFullScreenContent: (RewardedAd ad, AdError error) {
-              print('$ad onAdFailedToShowFullScreenContent: $error');
+              debugPrint('$ad onAdFailedToShowFullScreenContent: $error');
               ad.dispose();
               emitAdErrorState();
             },
@@ -111,7 +112,7 @@ class AdsNotifier extends ChangeNotifier {
           notifyListeners();
         },
         onAdFailedToLoad: (LoadAdError error) {
-          print('Reward ad failed to load. Code: ${error.code}');
+          debugPrint('Reward ad failed to load. Code: ${error.code}');
           emitAdErrorState();
         },
       ),
@@ -132,7 +133,7 @@ class AdsNotifier extends ChangeNotifier {
     if (rewardedVideoState.isLoaded && rewardedAd != null) {
       rewardedAd!.show(
         onUserEarnedReward: (RewardedAd ad, RewardItem rewardItem) {
-          print('user got rewarded');
+          debugPrint('User got rewarded');
           _rewardEndDate = DateTime.now().add(Duration(minutes: rewardMinutes));
           prefs.rewardEndDate = _rewardEndDate;
           notifyListeners();
@@ -146,7 +147,8 @@ class AdsNotifier extends ChangeNotifier {
 
   NativeAd getNativeAd({required String status, required int index}) {
     final String indexString = index.toString();
-    print('------ Get Native called. Status: $status. Index: $index -------');
+    debugPrint(
+        '------ Get Native called. Status: $status. Index: $index -------');
     final adStateMap = nativeAdsMap[status]?[indexString];
 
     if (adStateMap == null) {
@@ -165,7 +167,7 @@ class AdsNotifier extends ChangeNotifier {
         request: const AdRequest(),
         listener: NativeAdListener(
           onAdLoaded: (ad) {
-            print(
+            debugPrint(
                 'Native Ad loaded successfully. Status: $status. Index: $index');
             nativeAdsMap[status]?[indexString]?['state'] =
                 const AdState.loaded();
@@ -177,7 +179,7 @@ class AdsNotifier extends ChangeNotifier {
                 const AdState.error();
             ad.dispose();
 
-            print(
+            debugPrint(
                 'Native Ad load failed (code=${error.code} message=${error.message})');
           },
         ),
@@ -188,5 +190,22 @@ class AdsNotifier extends ChangeNotifier {
     } else {
       return adStateMap['ad'] as NativeAd;
     }
+  }
+
+  List<Object> insertAds(List<Object> contacts) {
+    final List<Object> _contactsWAds = [];
+    if (contacts.isNotEmpty) {
+      _contactsWAds.addAll(contacts);
+      final int numOfAds = ((_contactsWAds.length + 4) / 9).floor();
+      if (numOfAds == 0) {
+        _contactsWAds.add(const NativeAdDummy());
+      } else {
+        for (var i = 1; i <= numOfAds; i++) {
+          final index = i * 10 - 6;
+          _contactsWAds.insert(index, const NativeAdDummy());
+        }
+      }
+    }
+    return _contactsWAds;
   }
 }
