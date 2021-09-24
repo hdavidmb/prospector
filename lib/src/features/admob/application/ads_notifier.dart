@@ -3,9 +3,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:prospector/src/core/private/private_keys.dart';
-import 'package:prospector/src/core/shared_prefs/shared_prefs.dart';
-import 'package:prospector/src/features/admob/domain/native_ad_dummy.dart';
+import '../../../core/private/private_keys.dart';
+import '../../../core/shared_prefs/shared_prefs.dart';
+import '../domain/native_ad_dummy.dart';
 import 'ad_state.dart';
 
 class AdsNotifier extends ChangeNotifier {

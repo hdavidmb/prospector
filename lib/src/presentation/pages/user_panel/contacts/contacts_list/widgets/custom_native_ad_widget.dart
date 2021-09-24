@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:prospector/src/features/admob/application/ad_state.dart';
-import 'package:prospector/src/features/admob/application/ads_providers.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contacts_list/widgets/shimmer_tile.dart';
+import '../../../../../../features/admob/application/ad_state.dart';
+import '../../../../../../features/admob/application/ads_providers.dart';
+import 'shimmer_tile.dart';
 
 class CustomNativeAdWidget extends ConsumerWidget {
   final String status;

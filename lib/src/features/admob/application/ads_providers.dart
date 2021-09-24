@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/core/shared_prefs/shared_prefs_provider.dart';
+import '../../../core/shared_prefs/shared_prefs_provider.dart';
 
 import '../../user/application/user_info_providers.dart';
 import 'ads_notifier.dart';

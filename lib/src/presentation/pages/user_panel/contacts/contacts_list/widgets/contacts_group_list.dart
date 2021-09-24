@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
-import 'package:prospector/src/features/admob/application/ads_providers.dart';
-import 'package:prospector/src/features/admob/domain/native_ad_dummy.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contacts_list/widgets/custom_native_ad_widget.dart';
+import '../../../../../../features/admob/application/ads_providers.dart';
+import '../../../../../../features/admob/domain/native_ad_dummy.dart';
+import 'custom_native_ad_widget.dart';
 
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';

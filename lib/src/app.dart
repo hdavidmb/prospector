@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
-import 'package:prospector/src/presentation/core/app_state/app_state.dart';
-import 'package:prospector/src/presentation/core/app_state/app_state_provider.dart';
-import 'package:prospector/src/presentation/core/dialogs.dart';
-import 'package:prospector/src/presentation/pages/auth/register/logic/register_form_provider.dart';
-import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
 
 import 'features/app_default_data/application/app_default_data_providers.dart';
+import 'presentation/core/app_state/app_state.dart';
+import 'presentation/core/app_state/app_state_provider.dart';
+import 'presentation/core/dialogs.dart';
+import 'presentation/pages/auth/register/logic/register_form_provider.dart';
+import 'presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
 import 'presentation/routes/app_router.gr.dart';
 import 'presentation/theme/theme_providers.dart';
 

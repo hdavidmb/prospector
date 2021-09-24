@@ -1,10 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/admob/domain/native_ad_dummy.dart';
-import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
+import '../../app_default_data/application/app_default_data_providers.dart';
 import '../../user/application/user_info_providers.dart';
 import '../domain/entity/contact_entity.dart';
 import '../domain/use_cases/create_contact_document.dart';
