@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -14,9 +13,7 @@ class AdsNotifier extends ChangeNotifier {
     _rewardEndDate = prefs.rewardEndDate;
     _setTimerOnInit();
 
-    final String _adUnitId = Platform.isIOS
-        ? 'ca-app-pub-3940256099942544/2934735716'
-        : 'ca-app-pub-3940256099942544/6300978111'; //TODO: PrivateKeys.getBannerAdUnitId();
+    final String _adUnitId = PrivateKeys.getBannerAdUnitId();
     contactsBanner = BannerAd(
       adUnitId: _adUnitId,
       size: AdSize.banner,
@@ -60,7 +57,7 @@ class AdsNotifier extends ChangeNotifier {
   late BannerAd settingsBanner;
   RewardedAd? rewardedAd;
 
-  final int rewardMinutes = 1; //TODO: change to 20
+  final int rewardMinutes = 20;
   DateTime _rewardEndDate = DateTime.now().subtract(const Duration(days: 10));
 
   bool get isRewarded => DateTime.now().isBefore(_rewardEndDate);
@@ -88,9 +85,7 @@ class AdsNotifier extends ChangeNotifier {
     rewardedVideoState = const AdState.loading();
     if (fromDismissed) notifyListeners();
     RewardedAd.load(
-      adUnitId: Platform.isIOS
-          ? 'ca-app-pub-3940256099942544/1712485313'
-          : 'ca-app-pub-3940256099942544/5224354917', //TODO: PrivateKeys.getRewardedAdUnitId(),
+      adUnitId: PrivateKeys.getRewardedAdUnitId(),
       request: const AdRequest(),
       rewardedAdLoadCallback: RewardedAdLoadCallback(
         onAdLoaded: (RewardedAd ad) {
@@ -160,9 +155,7 @@ class AdsNotifier extends ChangeNotifier {
       nativeAdsMap[status]![indexString]!['state'] = const AdState.initial();
 
       final nativeAd = NativeAd(
-        adUnitId: Platform.isIOS
-            ? 'ca-app-pub-3940256099942544/3986624511'
-            : 'ca-app-pub-3940256099942544/2247696110', //TODO: PrivateKeys.getNativeAdUnitId();
+        adUnitId: PrivateKeys.getNativeAdUnitId(),
         factoryId: 'listTile',
         request: const AdRequest(),
         listener: NativeAdListener(

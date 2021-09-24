@@ -38,6 +38,7 @@ class _AppState extends State<App> {
     return ProviderListener<AppState>(
       provider: appStateNotifierProvider,
       onChange: (context, state) {
+        //TODO: save old state, compare with new one and only act if new state is different
         state.maybeMap(
           authenticatedReady: (_) => appRouter.replaceAll(const [HomeRoute()]),
           unauthenticatedReady: (_) {
