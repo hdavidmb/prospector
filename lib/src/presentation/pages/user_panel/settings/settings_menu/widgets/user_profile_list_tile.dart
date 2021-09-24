@@ -15,7 +15,7 @@ import '../../widgets/user_avatar.dart';
 class UserProfileListTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final UserEntity user = watch(userInfoNotifierProvider).user;
+    final UserEntity? user = watch(userInfoNotifierProvider).user;
     final bool isPremium = watch(userInfoNotifierProvider).isPremiumUser;
 
     final Locale myLocale = Localizations.localeOf(context);
@@ -43,12 +43,12 @@ class UserProfileListTile extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                      user.name.isNotEmpty
-                          ? user.name
+                      user?.name.isNotEmpty ?? false
+                          ? user!.name
                           : AppLocalizations.of(context)!.profile,
                       style: Theme.of(context).textTheme.headline6),
-                  if (user.email != null)
-                    Text(user.email!,
+                  if (user?.email != null)
+                    Text(user?.email ?? '',
                         style: const TextStyle(
                             color: Colors.grey, fontWeight: FontWeight.normal)),
                   if (isPremium) ...[
@@ -62,7 +62,7 @@ class UserProfileListTile extends ConsumerWidget {
                                 color: kPremiumColor,
                                 fontWeight: FontWeight.bold)),
                         Text(
-                            '${AppLocalizations.of(context)!.until} ${dateFormat.format(user.expiryDate)}',
+                            '${AppLocalizations.of(context)!.until} ${dateFormat.format(user?.expiryDate ?? DateTime.now())}',
                             style: Theme.of(context).textTheme.caption)
                       ],
                     )

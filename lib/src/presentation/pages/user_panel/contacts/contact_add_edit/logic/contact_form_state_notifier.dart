@@ -95,22 +95,24 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
 
       String? downloadURL;
       if (editingContact != null && state.pickedImage != null) {
-        final uid = read(userInfoNotifierProvider).user.uid;
-        final uploadResult = await uploadContactImage(
-            uid: uid, contactID: editingContact.id, image: state.pickedImage);
-        uploadResult.fold(
-          (failure) {
-            failure.maybeWhen(
-              noConnection: () {
-                failureOrSuccess = left(const DatabaseFailure.noConnection());
-              },
-              orElse: () {
-                failureOrSuccess = left(const DatabaseFailure.serverError());
-              },
-            );
-          },
-          (url) => downloadURL = url,
-        );
+        final uid = read(userInfoNotifierProvider).user?.uid;
+        if (uid != null) {
+          final uploadResult = await uploadContactImage(
+              uid: uid, contactID: editingContact.id, image: state.pickedImage);
+          uploadResult.fold(
+            (failure) {
+              failure.maybeWhen(
+                noConnection: () {
+                  failureOrSuccess = left(const DatabaseFailure.noConnection());
+                },
+                orElse: () {
+                  failureOrSuccess = left(const DatabaseFailure.serverError());
+                },
+              );
+            },
+            (url) => downloadURL = url,
+          );
+        }
       }
 
       // Arrange contactEntity from state values

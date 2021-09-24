@@ -142,23 +142,25 @@ class UserProfileNotifier extends ChangeNotifier with FormValidators {
     String? downloadURL;
     if (_pickedImage != null) {
       bool failed = false;
-      final uid = read(userInfoNotifierProvider).user.uid;
-      final uploadResult =
-          await uploadUserAvatar(uid: uid, image: _pickedImage!);
-      uploadResult.fold(
-        (failure) {
-          failure.maybeWhen(noConnection: () {
-            _userProfileState =
-                const UserProfileState.error(UserInfoFailure.noConnection());
-          }, orElse: () {
-            _userProfileState =
-                const UserProfileState.error(UserInfoFailure.serverError());
-          });
-          notifyListeners();
-          failed = true;
-        },
-        (url) => downloadURL = url,
-      );
+      final uid = read(userInfoNotifierProvider).user?.uid;
+      if (uid != null) {
+        final uploadResult =
+            await uploadUserAvatar(uid: uid, image: _pickedImage!);
+        uploadResult.fold(
+          (failure) {
+            failure.maybeWhen(noConnection: () {
+              _userProfileState =
+                  const UserProfileState.error(UserInfoFailure.noConnection());
+            }, orElse: () {
+              _userProfileState =
+                  const UserProfileState.error(UserInfoFailure.serverError());
+            });
+            notifyListeners();
+            failed = true;
+          },
+          (url) => downloadURL = url,
+        );
+      }
       if (failed) return false;
     }
     // * image didn't change or successfully uploaded

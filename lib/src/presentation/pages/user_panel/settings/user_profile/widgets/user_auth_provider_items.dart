@@ -31,7 +31,7 @@ class UserAuthProviderItems extends ConsumerWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    watch(userInfoNotifierProvider).user.email!,
+                    watch(userInfoNotifierProvider).user?.email ?? '',
                     style: const TextStyle(
                         color: Colors.grey, fontWeight: FontWeight.normal),
                   ),

@@ -23,6 +23,10 @@ class _$DatabaseFailureTearOff {
   NoConnection noConnection() {
     return const NoConnection();
   }
+
+  NoUserAuthenticated noUserAuthenticated() {
+    return const NoUserAuthenticated();
+  }
 }
 
 /// @nodoc
@@ -34,12 +38,14 @@ mixin _$DatabaseFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
     required TResult Function() noConnection,
+    required TResult Function() noUserAuthenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? noConnection,
+    TResult Function()? noUserAuthenticated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,12 +53,14 @@ mixin _$DatabaseFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(ServerError value) serverError,
     required TResult Function(NoConnection value) noConnection,
+    required TResult Function(NoUserAuthenticated value) noUserAuthenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ServerError value)? serverError,
     TResult Function(NoConnection value)? noConnection,
+    TResult Function(NoUserAuthenticated value)? noUserAuthenticated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -117,6 +125,7 @@ class _$ServerError implements ServerError {
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
     required TResult Function() noConnection,
+    required TResult Function() noUserAuthenticated,
   }) {
     return serverError();
   }
@@ -126,6 +135,7 @@ class _$ServerError implements ServerError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? noConnection,
+    TResult Function()? noUserAuthenticated,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -139,6 +149,7 @@ class _$ServerError implements ServerError {
   TResult map<TResult extends Object?>({
     required TResult Function(ServerError value) serverError,
     required TResult Function(NoConnection value) noConnection,
+    required TResult Function(NoUserAuthenticated value) noUserAuthenticated,
   }) {
     return serverError(this);
   }
@@ -148,6 +159,7 @@ class _$ServerError implements ServerError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ServerError value)? serverError,
     TResult Function(NoConnection value)? noConnection,
+    TResult Function(NoUserAuthenticated value)? noUserAuthenticated,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -203,6 +215,7 @@ class _$NoConnection implements NoConnection {
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
     required TResult Function() noConnection,
+    required TResult Function() noUserAuthenticated,
   }) {
     return noConnection();
   }
@@ -212,6 +225,7 @@ class _$NoConnection implements NoConnection {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? noConnection,
+    TResult Function()? noUserAuthenticated,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -225,6 +239,7 @@ class _$NoConnection implements NoConnection {
   TResult map<TResult extends Object?>({
     required TResult Function(ServerError value) serverError,
     required TResult Function(NoConnection value) noConnection,
+    required TResult Function(NoUserAuthenticated value) noUserAuthenticated,
   }) {
     return noConnection(this);
   }
@@ -234,6 +249,7 @@ class _$NoConnection implements NoConnection {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ServerError value)? serverError,
     TResult Function(NoConnection value)? noConnection,
+    TResult Function(NoUserAuthenticated value)? noUserAuthenticated,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -245,4 +261,94 @@ class _$NoConnection implements NoConnection {
 
 abstract class NoConnection implements DatabaseFailure {
   const factory NoConnection() = _$NoConnection;
+}
+
+/// @nodoc
+abstract class $NoUserAuthenticatedCopyWith<$Res> {
+  factory $NoUserAuthenticatedCopyWith(
+          NoUserAuthenticated value, $Res Function(NoUserAuthenticated) then) =
+      _$NoUserAuthenticatedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$NoUserAuthenticatedCopyWithImpl<$Res>
+    extends _$DatabaseFailureCopyWithImpl<$Res>
+    implements $NoUserAuthenticatedCopyWith<$Res> {
+  _$NoUserAuthenticatedCopyWithImpl(
+      NoUserAuthenticated _value, $Res Function(NoUserAuthenticated) _then)
+      : super(_value, (v) => _then(v as NoUserAuthenticated));
+
+  @override
+  NoUserAuthenticated get _value => super._value as NoUserAuthenticated;
+}
+
+/// @nodoc
+
+class _$NoUserAuthenticated implements NoUserAuthenticated {
+  const _$NoUserAuthenticated();
+
+  @override
+  String toString() {
+    return 'DatabaseFailure.noUserAuthenticated()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is NoUserAuthenticated);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() noConnection,
+    required TResult Function() noUserAuthenticated,
+  }) {
+    return noUserAuthenticated();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? noConnection,
+    TResult Function()? noUserAuthenticated,
+    required TResult orElse(),
+  }) {
+    if (noUserAuthenticated != null) {
+      return noUserAuthenticated();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(NoConnection value) noConnection,
+    required TResult Function(NoUserAuthenticated value) noUserAuthenticated,
+  }) {
+    return noUserAuthenticated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(NoUserAuthenticated value)? noUserAuthenticated,
+    required TResult orElse(),
+  }) {
+    if (noUserAuthenticated != null) {
+      return noUserAuthenticated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoUserAuthenticated implements DatabaseFailure {
+  const factory NoUserAuthenticated() = _$NoUserAuthenticated;
 }

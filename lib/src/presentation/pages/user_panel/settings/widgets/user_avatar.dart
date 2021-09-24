@@ -19,7 +19,7 @@ class UserAvatar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final UserEntity user = watch(userInfoNotifierProvider).user;
+    final UserEntity? user = watch(userInfoNotifierProvider).user;
     final bool isPremium = watch(userInfoNotifierProvider).isPremiumUser;
     return CircleAvatar(
       radius: size / 2,
@@ -32,7 +32,9 @@ class UserAvatar extends ConsumerWidget {
           child: Container(
             color: Colors.white60,
             child: pickedImage == null
-                ? (user.photoURL == null || user.photoURL!.isEmpty)
+                ? (user == null ||
+                        user.photoURL == null ||
+                        user.photoURL!.isEmpty)
                     ? Image(
                         image: const AssetImage(
                             'assets/images/defaultContactImage.jpg'),
@@ -50,10 +52,12 @@ class UserAvatar extends ConsumerWidget {
                         errorWidget: (context, url, error) =>
                             const Icon(Icons.error),
                       )
-                : Image(image: FileImage(pickedImage!),
-                        height: size - 10,
-                        width: size - 10,
-                        fit: BoxFit.cover,)
+                : Image(
+                    image: FileImage(pickedImage!),
+                    height: size - 10,
+                    width: size - 10,
+                    fit: BoxFit.cover,
+                  ),
           ),
         ),
       ),

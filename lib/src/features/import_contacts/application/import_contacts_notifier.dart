@@ -87,7 +87,8 @@ class ImportContactsNotifier extends ChangeNotifier {
     return true;
   }
 
-  Future<bool> setSyncContacts({required BuildContext context, required bool enabled}) async {
+  Future<bool> setSyncContacts(
+      {required BuildContext context, required bool enabled}) async {
     final bool isPremiumUser = read(userInfoNotifierProvider).isPremiumUser;
     if (!isPremiumUser) return false;
 
@@ -106,13 +107,19 @@ class ImportContactsNotifier extends ChangeNotifier {
           _success = false;
         },
         (contacts) async {
-          final String uid = read(userInfoNotifierProvider).user.uid;
-          _lastImportIdentifiers = contacts
-              .map((ImportedContact contact) => contact.importedID)
-              .toList();
-          await saveIdentifiersList(
-              identifiers: _lastImportIdentifiers!, uid: uid);
-          _success = await addContactsListener(manualSetting: true);
+          final String? uid = read(userInfoNotifierProvider).user?.uid;
+          if (uid != null) {
+            _lastImportIdentifiers = contacts
+                .map((ImportedContact contact) => contact.importedID)
+                .toList();
+            await saveIdentifiersList(
+                identifiers: _lastImportIdentifiers!, uid: uid);
+            _success = await addContactsListener(manualSetting: true);
+          } else {
+            _state = const ImportContactsState.error(
+                ImportContactsFailure.noUserAuthenticated());
+            _success = false;
+          }
         },
       );
     } else {
@@ -125,8 +132,8 @@ class ImportContactsNotifier extends ChangeNotifier {
 
   Future<bool> addContactsListener({bool manualSetting = false}) async {
     final bool isPremiumUser = read(userInfoNotifierProvider).isPremiumUser;
-    final bool syncContactsEnabled = manualSetting || 
-        read(userSharedPrefsProvider).syncContactsEnabled;
+    final bool syncContactsEnabled =
+        manualSetting || read(userSharedPrefsProvider).syncContactsEnabled;
     if (isPremiumUser && syncContactsEnabled) {
       final accessGranted = await Permission.contacts.request().isGranted;
       if (!accessGranted) {
@@ -135,40 +142,45 @@ class ImportContactsNotifier extends ChangeNotifier {
       }
       if (!_listenerAdded) {
         _listenerAdded = true;
-        final String uid = read(userInfoNotifierProvider).user.uid;
-        if (_lastImportIdentifiers == null) {
-          final result = await getLastImportIdentifiers(uid: uid);
-          result.fold(
-            (failure) {
-              _state = const ImportContactsState.error(
-                  ImportContactsFailure.serverError());
-            },
-            (List<String> identifiers) => _lastImportIdentifiers = identifiers,
-          );
-          if (result.isLeft()) {
-            _listenerAdded = false;
-            return false;
+        final String? uid = read(userInfoNotifierProvider).user?.uid;
+        if (uid != null) {
+          if (_lastImportIdentifiers == null) {
+            final result = await getLastImportIdentifiers(uid: uid);
+            result.fold(
+              (failure) {
+                _state = const ImportContactsState.error(
+                    ImportContactsFailure.serverError());
+              },
+              (List<String> identifiers) =>
+                  _lastImportIdentifiers = identifiers,
+            );
+            if (result.isLeft()) {
+              _listenerAdded = false;
+              return false;
+            }
           }
-        }
-        _listener = () async {
-          final contactsResult = await getDeviceContacts();
-          contactsResult.fold(
-            (failure) => _state = ImportContactsState.error(failure),
-            (contacts) {
-              for (final ImportedContact contact in contacts) {
-                if (!_lastImportIdentifiers!.contains(contact.importedID)) {
-                  importContact(contact);
-                  saveSingleIdentifier(
-                      identifier: contact.importedID, uid: uid);
-                  _lastImportIdentifiers!.add(contact.importedID);
+          _listener = () async {
+            final contactsResult = await getDeviceContacts();
+            contactsResult.fold(
+              (failure) => _state = ImportContactsState.error(failure),
+              (contacts) {
+                for (final ImportedContact contact in contacts) {
+                  if (!_lastImportIdentifiers!.contains(contact.importedID)) {
+                    importContact(contact);
+                    saveSingleIdentifier(
+                        identifier: contact.importedID, uid: uid);
+                    _lastImportIdentifiers!.add(contact.importedID);
+                  }
                 }
-              }
-            },
-          );
-        };
-        _listener();
-        addContactsListenerUC(_listener);
-        return true;
+              },
+            );
+          };
+          _listener();
+          addContactsListenerUC(_listener);
+          return true;
+        } else {
+          return false;
+        }
       } else {
         return false;
       }
@@ -182,13 +194,15 @@ class ImportContactsNotifier extends ChangeNotifier {
     final newContactID = randomAlphaNumeric(20);
     String? downloadURL;
     if (contact.photo != null && contact.photo!.isNotEmpty) {
-      final uid = read(userInfoNotifierProvider).user.uid;
-      final uploadResult = await uploadContactImage(
-          uid: uid, contactID: newContactID, image: contact.photo);
-      uploadResult.fold(
-        (failure) {},
-        (url) => downloadURL = url,
-      );
+      final uid = read(userInfoNotifierProvider).user?.uid;
+      if (uid != null) {
+        final uploadResult = await uploadContactImage(
+            uid: uid, contactID: newContactID, image: contact.photo);
+        uploadResult.fold(
+          (failure) {},
+          (url) => downloadURL = url,
+        );
+      }
     }
     final newContact = Contact(
       id: newContactID,

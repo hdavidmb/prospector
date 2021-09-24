@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/pages/user_panel/home/widgets/home_body_selector.dart';
 
 import 'logic/home_index_provider.dart';
+import 'widgets/home_body_selector.dart';
 
 class HomePage extends StatelessWidget {
   @override

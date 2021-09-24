@@ -5,10 +5,9 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
-import 'package:flutter/cupertino.dart' as _i16;
 import 'package:flutter/material.dart' as _i2;
 
-import '../../features/contacts/domain/entity/contact_entity.dart' as _i17;
+import '../../features/contacts/domain/entity/contact_entity.dart' as _i16;
 import '../pages/auth/register/register_page.dart' as _i6;
 import '../pages/auth/sign_in/sign_in_page.dart' as _i5;
 import '../pages/splash/splash_screen_page.dart' as _i3;
@@ -167,7 +166,7 @@ class RegisterRoute extends _i1.PageRouteInfo {
 }
 
 class ContactDetailsRoute extends _i1.PageRouteInfo<ContactDetailsRouteArgs> {
-  ContactDetailsRoute({_i16.Key? key, required String? contactID})
+  ContactDetailsRoute({_i2.Key? key, required String? contactID})
       : super(name,
             path: '/contact-details-page',
             args: ContactDetailsRouteArgs(key: key, contactID: contactID));
@@ -178,13 +177,13 @@ class ContactDetailsRoute extends _i1.PageRouteInfo<ContactDetailsRouteArgs> {
 class ContactDetailsRouteArgs {
   const ContactDetailsRouteArgs({this.key, required this.contactID});
 
-  final _i16.Key? key;
+  final _i2.Key? key;
 
   final String? contactID;
 }
 
 class ContactAddEditRoute extends _i1.PageRouteInfo<ContactAddEditRouteArgs> {
-  ContactAddEditRoute({_i16.Key? key, _i17.Contact? editingContact})
+  ContactAddEditRoute({_i2.Key? key, _i16.Contact? editingContact})
       : super(name,
             path: '/contact-add-edit-page',
             args: ContactAddEditRouteArgs(
@@ -196,9 +195,9 @@ class ContactAddEditRoute extends _i1.PageRouteInfo<ContactAddEditRouteArgs> {
 class ContactAddEditRouteArgs {
   const ContactAddEditRouteArgs({this.key, this.editingContact});
 
-  final _i16.Key? key;
+  final _i2.Key? key;
 
-  final _i17.Contact? editingContact;
+  final _i16.Contact? editingContact;
 }
 
 class UserProfileRoute extends _i1.PageRouteInfo {

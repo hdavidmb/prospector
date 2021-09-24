@@ -5,12 +5,15 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 
+import '../../../../../../features/admob/application/ads_providers.dart';
+import '../../../../../../features/admob/domain/native_ad_dummy.dart';
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
 import '../../../../../core/no_contatcs_screen/no_contacts_screen.dart';
 import '../../../../../routes/app_router.gr.dart';
 import 'contact_tile.dart';
+import 'custom_native_ad_widget.dart';
 
 class ContactsGroupList extends ConsumerWidget {
   final List<String> statuses;
@@ -22,15 +25,34 @@ class ContactsGroupList extends ConsumerWidget {
     final bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     final List<Widget> sections = [];
     final bool isFiltered = watch(contactsNotifierProvider).isFiltered;
+    final bool shouldShowAds = watch(showAds);
 
     for (final String status in statuses) {
-      final List<Contact> contacts = watch(contactsNotifierProvider)
-          .filteredContacts
-          .where((contact) => contact.status == status)
-          .toList();
+      List<Object> contacts = [];
+      if (status == context.read(appDefaultDataProvider).notContactedID) {
+        contacts = watch(contactsNotifierProvider).notContactedContacts;
+      } else if (status ==
+          context.read(appDefaultDataProvider).notInterestedID) {
+        contacts = watch(contactsNotifierProvider).notInterestedContacts;
+      } else if (status == context.read(appDefaultDataProvider).invitedID) {
+        contacts = watch(contactsNotifierProvider).invitedContacts;
+      } else if (status == context.read(appDefaultDataProvider).followUpID) {
+        contacts = watch(contactsNotifierProvider).followUpContacts;
+      } else if (status == context.read(appDefaultDataProvider).clientID) {
+        contacts = watch(contactsNotifierProvider).clientContacts;
+      } else if (status == context.read(appDefaultDataProvider).executiveID) {
+        contacts = watch(contactsNotifierProvider).executiveContacts;
+      }
+      final int contactsCount = contacts.length;
+
+      if (shouldShowAds) {
+        contacts = context.read(adsProvider).insertAds(contacts);
+      }
+
       final String statusText = context
           .read(appDefaultDataProvider)
           .getStatusText(context: context, statusID: status, isPlural: true);
+
       if (contacts.isNotEmpty) {
         sections.add(
           SliverStickyHeader(
@@ -40,27 +62,32 @@ class ContactsGroupList extends ConsumerWidget {
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 5.0),
               alignment: Alignment.centerLeft,
               child: Text(
-                '$statusText (${contacts.length})',
+                '$statusText ($contactsCount)',
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  return Column(
-                    children: [
-                      ContactTile(
-                        contact: contacts[index],
-                        redName: status ==
-                            context
-                                .read(appDefaultDataProvider)
-                                .notInterestedID,
-                        onTap: () => AutoRouter.of(context).push(
-                            ContactDetailsRoute(contactID: contacts[index].id)),
-                      ),
-                      const Divider(height: 0.0, indent: 75.0)
-                    ],
-                  );
+                  final contact = contacts[index];
+                  if (contact is Contact) {
+                    return Column(
+                      children: [
+                        ContactTile(
+                          contact: contact,
+                          redName: status ==
+                              context
+                                  .read(appDefaultDataProvider)
+                                  .notInterestedID,
+                          onTap: () => AutoRouter.of(context)
+                              .push(ContactDetailsRoute(contactID: contact.id)),
+                        ),
+                        const Divider(height: 0.0, indent: 75.0)
+                      ],
+                    );
+                  } else if (contact is NativeAdDummy) {
+                    return CustomNativeAdWidget(status: status, index: index);
+                  }
                 },
                 childCount: contacts.length,
               ),

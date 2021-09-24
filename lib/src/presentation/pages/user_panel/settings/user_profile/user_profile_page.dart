@@ -77,13 +77,16 @@ class UserProfilePage extends ConsumerWidget {
                       final user = context.read(userInfoNotifierProvider).user;
                       final isPremiumUser =
                           context.read(userInfoNotifierProvider).isPremiumUser;
-                      final newUserInfo = user.copyWith(
+                      final newUserInfo = user?.copyWith(
                           subscription:
                               isPremiumUser ? freeSubID : premiumSubID);
-
-                      context
-                          .read(userInfoNotifierProvider)
-                          .updateUserInfo(newUserInfo);
+                      if (newUserInfo != null) {
+                        context
+                            .read(userInfoNotifierProvider)
+                            .updateUserInfo(newUserInfo);
+                      } else {
+                        //TODO: give feedback
+                      }
                     },
                     child: const Text('Change subscription'),
                   )
