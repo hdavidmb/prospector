@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+
 import '../../../../../../features/admob/application/ads_providers.dart';
 import '../../../../../../features/admob/domain/native_ad_dummy.dart';
-import 'custom_native_ad_widget.dart';
-
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
 import '../../../../../core/no_contatcs_screen/no_contacts_screen.dart';
 import '../../../../../routes/app_router.gr.dart';
 import 'contact_tile.dart';
+import 'custom_native_ad_widget.dart';
 
 class ContactsGroupList extends ConsumerWidget {
   final List<String> statuses;
