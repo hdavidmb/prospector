@@ -18,7 +18,7 @@ class ImagePickerRepository implements IImagesPicker {
       gallery: () => ImageSource.gallery,
       camera: () => ImageSource.camera,
     );
-    final pickedFile = await picker.getImage(
+    final pickedFile = await picker.pickImage(
         source: repoSource, maxHeight: 200.0, maxWidth: 200.0);
     if (pickedFile != null) {
       return some(File(pickedFile.path));

@@ -91,7 +91,9 @@ class ImportedContactsPage extends ConsumerWidget {
         .read(importContactsProvider)
         .getContacts(context: context);
     if (accessed) {
-      AutoRouter.of(context).push(const ImportContactsRoute());
+      Future.delayed(Duration.zero, () {
+        AutoRouter.of(context).push(const ImportContactsRoute());
+      });
     }
   }
 

@@ -44,7 +44,11 @@ class UserProfilePage extends ConsumerWidget {
                         final success = await context
                             .read(userProfileProvider.notifier)
                             .saveButtonPressed();
-                        if (success) AutoRouter.of(context).pop();
+                        if (success) {
+                          Future.delayed(Duration.zero, () {
+                            AutoRouter.of(context).pop();
+                          });
+                        }
                       },
                 child: Text(AppLocalizations.of(context)!.save,
                     style: const TextStyle(color: Colors.white)),

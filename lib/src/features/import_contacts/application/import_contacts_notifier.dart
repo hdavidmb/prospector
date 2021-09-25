@@ -70,7 +70,9 @@ class ImportContactsNotifier extends ChangeNotifier {
 
     final accessGranted = await Permission.contacts.request().isGranted;
     if (!accessGranted) {
-      _showPermissionsDialog(context);
+      Future.delayed(Duration.zero, () {
+        _showPermissionsDialog(context);
+      });
       return false;
     }
 
@@ -94,7 +96,9 @@ class ImportContactsNotifier extends ChangeNotifier {
 
     final accessGranted = await Permission.contacts.request().isGranted;
     if (!accessGranted) {
-      _showPermissionsDialog(context);
+      Future.delayed(Duration.zero, () {
+        _showPermissionsDialog(context);
+      });
       return false;
     }
 
