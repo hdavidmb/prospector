@@ -29,7 +29,7 @@ class UserInfoNotifier extends ChangeNotifier {
   });
 
   UserInfoState _userInfoState = const UserInfoState.initial();
-  UserEntity? _user; //TODO user should be nullable and be resetted at logout
+  UserEntity? _user;
 
   UserInfoState get userInfoState => _userInfoState;
   UserEntity? get user => _user;
@@ -43,6 +43,7 @@ class UserInfoNotifier extends ChangeNotifier {
 
   void reset() {
     _userInfoState = const UserInfoState.initial();
+    _user = null;
   }
 
   Future<void> getOrCreateUser() async {
@@ -103,7 +104,6 @@ class UserInfoNotifier extends ChangeNotifier {
       (failure) => left(failure),
       (newUser) {
         _user = newUser; //TODO test checking modified field
-        //TODO check for premium changes and enable/disable premium features
         notifyListeners();
         return right(unit);
       },
