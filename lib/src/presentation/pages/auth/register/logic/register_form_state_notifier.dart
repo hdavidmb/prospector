@@ -6,7 +6,8 @@ import '../../../../../features/auth/domain/use_cases/auth_use_cases.dart';
 import '../../../../helpers/form_validators.dart';
 import 'register_form_state.dart';
 
-class RegisterFormStateNotifier extends StateNotifier<RegisterFormState> with FormValidators {
+class RegisterFormStateNotifier extends StateNotifier<RegisterFormState>
+    with FormValidators {
   final RegisterWithEmailAndPassword registerWithEmailAndPassword;
   final SignInWithGoogle signInWithGoogle;
   final SignInWithFacebook signInWithFacebook;
@@ -17,8 +18,7 @@ class RegisterFormStateNotifier extends StateNotifier<RegisterFormState> with Fo
     required this.signInWithGoogle,
     required this.signInWithFacebook,
     required this.appleSignIn,
-    }) : super(RegisterFormState.initial());
-
+  }) : super(RegisterFormState.initial());
 
   void reset() => state = RegisterFormState.initial();
 
@@ -37,22 +37,31 @@ class RegisterFormStateNotifier extends StateNotifier<RegisterFormState> with Fo
   void confirmPasswordChanged(String value) {
     state = state.copyWith(confirmPassword: value, authFailureOption: none());
   }
-  
+
   Future<void> registerButtonPressed() async {
     final bool isNameValid = validateFieldIsNotEmpty(state.name);
     final bool isEmailValid = validateEmail(state.email);
-    final bool isPasswordValid = validateFieldIsNotEmpty(state.password) && validatePasswordStrength(state.password);
-    final bool isConfirmPasswordValid = validateFieldIsNotEmpty(state.confirmPassword) && validateFieldsMatch(state.password, state.confirmPassword);
+    final bool isPasswordValid = validateFieldIsNotEmpty(state.password) &&
+        validatePasswordStrength(state.password);
+    final bool isConfirmPasswordValid =
+        validateFieldIsNotEmpty(state.confirmPassword) &&
+            validateFieldsMatch(state.password, state.confirmPassword);
 
     AuthFailure? _authFailure;
 
-    if (isNameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid) {
+    if (isNameValid &&
+        isEmailValid &&
+        isPasswordValid &&
+        isConfirmPasswordValid) {
       state = state.copyWith(
         isSubmitting: true,
         authFailureOption: none(),
       );
-      final Either<AuthFailure, Unit> result = await registerWithEmailAndPassword(
-          email: state.email, password: state.password, displayName: state.name);
+      final Either<AuthFailure, Unit> result =
+          await registerWithEmailAndPassword(
+              email: state.email,
+              password: state.password,
+              displayName: state.name);
 
       result.fold(
         (AuthFailure failure) => _authFailure = failure,
@@ -61,7 +70,7 @@ class RegisterFormStateNotifier extends StateNotifier<RegisterFormState> with Fo
     }
 
     state = state.copyWith(
-      isSubmitting: _authFailure == null,
+      isSubmitting: false,
       showErrorMessages: true,
       authFailureOption: optionOf(_authFailure),
     );
@@ -97,6 +106,4 @@ class RegisterFormStateNotifier extends StateNotifier<RegisterFormState> with Fo
       authFailureOption: optionOf(_authFailure),
     );
   }
-
-
 }

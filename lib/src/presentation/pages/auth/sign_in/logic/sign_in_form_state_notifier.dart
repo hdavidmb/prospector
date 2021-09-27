@@ -20,7 +20,7 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
     required this.signInWithFacebook,
     required this.appleSignIn,
     required this.resetPassword,
-  })  : super(SignInFormState.initial());
+  }) : super(SignInFormState.initial());
 
   void reset() => state = SignInFormState.initial();
 
@@ -90,7 +90,7 @@ class SignInFormStateNotifier extends StateNotifier<SignInFormState>
     result.fold((failure) => _authFailure = failure, (_) {});
 
     state = state.copyWith(
-      isSubmitting: _authFailure == null, //TODO test and change to false
+      isSubmitting: _authFailure == null,
       authFailureOption: optionOf(_authFailure),
     );
   }

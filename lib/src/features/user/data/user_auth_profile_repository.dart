@@ -52,10 +52,9 @@ class UserAuthProfileRepository implements IUserAuthProfileRepository {
       {String? displayName, String? photoURL}) async {
     final user = firebaseAuthInstance.currentUser!;
     try {
-      await user.updateDisplayName(displayName);
-      await user.updatePhotoURL(photoURL);
+      if (displayName != null) await user.updateDisplayName(displayName);
+      if (photoURL != null) await user.updatePhotoURL(photoURL);
 
-      //TODO test and delete updateProfile(displayName: displayName, photoURL: photoURL);
       return right(unit);
     } on FirebaseAuthException catch (e) {
       return manageFirebaseAuthExceptions(errorCode: e.code);

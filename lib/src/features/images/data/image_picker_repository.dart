@@ -18,6 +18,7 @@ class ImagePickerRepository implements IImagesPicker {
       gallery: () => ImageSource.gallery,
       camera: () => ImageSource.camera,
     );
+    //TODO: check for error picking first image on iphone simulator photos.
     final pickedFile = await picker.pickImage(
         source: repoSource, maxHeight: 200.0, maxWidth: 200.0);
     if (pickedFile != null) {
