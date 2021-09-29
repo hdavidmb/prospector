@@ -2,10 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:prospector/src/core/connection/connection_checker.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../../../core/auth/auth_helpers.dart';
+import '../../../core/connection/connection_checker.dart';
 import '../domain/auth_failure.dart';
 import '../domain/i_auth_repository.dart';
 import 'helpers/sign_in_with_apple_helper.dart';
@@ -37,8 +37,8 @@ class FirebaseAuthRepository implements IAuthRepository {
     try {
       await firebaseAuthInstance
           .createUserWithEmailAndPassword(email: email, password: password)
-          .then((credential) async => await credential.user
-              ?.updateDisplayName(displayName)); //TODO test
+          .then((credential) async =>
+              await credential.user?.updateDisplayName(displayName));
 
       return right(unit);
     } on FirebaseAuthException catch (e) {

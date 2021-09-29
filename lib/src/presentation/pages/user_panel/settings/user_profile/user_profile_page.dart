@@ -88,8 +88,6 @@ class UserProfilePage extends ConsumerWidget {
                         context
                             .read(userInfoNotifierProvider)
                             .updateUserInfo(newUserInfo);
-                      } else {
-                        //TODO: give feedback
                       }
                     },
                     child: const Text('Change subscription'),
