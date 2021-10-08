@@ -20,7 +20,6 @@ class ContactsAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      //TODO: try to extract appbar
       centerTitle: isSearchBarShowing ? false : null,
       backgroundColor:
           isSearchBarShowing ? Theme.of(context).scaffoldBackgroundColor : null,
