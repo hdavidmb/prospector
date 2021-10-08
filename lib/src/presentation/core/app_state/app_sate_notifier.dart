@@ -48,7 +48,6 @@ class AppStateNotifier extends StateNotifier<AppState> {
             //TODO init premium user configuration (contactsSync, Statistics)
             read(importContactsProvider).addContactsListener();
           } else {
-            //TODO init free user configuration (Admob)
             read(adsProvider).loadAds();
           }
 

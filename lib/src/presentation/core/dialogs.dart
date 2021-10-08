@@ -163,11 +163,15 @@ void showResetPasswordDialog(BuildContext context) {
                       .read(signInFormProvider.notifier)
                       .forgotPasswordButtonPressed();
                   if (success) {
-                    await showMessageDialog(
-                        context: context,
-                        message: AppLocalizations.of(context)!
-                            .resetPasswordEmailSent);
-                    AutoRouter.of(context).pop();
+                    await Future.delayed(Duration.zero, () async {
+                      await showMessageDialog(
+                          context: context,
+                          message: AppLocalizations.of(context)!
+                              .resetPasswordEmailSent);
+                    });
+                    Future.delayed(Duration.zero, () {
+                      AutoRouter.of(context).pop();
+                    });
                   }
                 },
                 child: Text(AppLocalizations.of(context)!.send),
@@ -567,9 +571,11 @@ void showFiltersDialog(BuildContext context) {
                         ? ''
                         : await showPlacesDialog(context);
                     if (newFilter != null) {
-                      context
-                          .read(contactsNotifierProvider)
-                          .setFilters(location: newFilter);
+                      Future.delayed(Duration.zero, () {
+                        context
+                            .read(contactsNotifierProvider)
+                            .setFilters(location: newFilter);
+                      });
                     }
                   },
                 ),

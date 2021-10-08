@@ -19,6 +19,7 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   final appRouter = AppRouter();
+  AppState oldState = const AppState.initial();
 
   @override
   void initState() {
@@ -38,13 +39,20 @@ class _AppState extends State<App> {
     return ProviderListener<AppState>(
       provider: appStateNotifierProvider,
       onChange: (context, state) {
-        //TODO: save old state, compare with new one and only act if new state is different
         state.maybeMap(
-          authenticatedReady: (_) => appRouter.replaceAll(const [HomeRoute()]),
+          authenticatedReady: (_) {
+            if (oldState != const AppState.authenticatedReady()) {
+              oldState = const AppState.authenticatedReady();
+              appRouter.replaceAll(const [HomeRoute()]);
+            }
+          },
           unauthenticatedReady: (_) {
-            context.read(signInFormProvider.notifier).reset();
-            context.read(registerFormProvider.notifier).reset();
-            return appRouter.replaceAll(const [SignInRoute()]);
+            if (oldState != const AppState.unauthenticatedReady()) {
+              oldState = const AppState.unauthenticatedReady();
+              context.read(signInFormProvider.notifier).reset();
+              context.read(registerFormProvider.notifier).reset();
+              appRouter.replaceAll(const [SignInRoute()]);
+            }
           },
           error: (_) async {
             if (!showingDialog) {

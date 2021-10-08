@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+
 import '../../../core/private/private_keys.dart';
 import '../../../core/shared_prefs/shared_prefs.dart';
 import '../domain/native_ad_dummy.dart';

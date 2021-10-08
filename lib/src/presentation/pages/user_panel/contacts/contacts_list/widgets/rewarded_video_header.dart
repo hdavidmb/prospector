@@ -51,7 +51,7 @@ class RewardedVideoHeader extends StatelessWidget {
                           ),
                           TextSpan(
                               text:
-                                  ' $rewardMinutes ${AppLocalizations.of(context)!.minutes} ', //TODO: get minutes from admob
+                                  ' $rewardMinutes ${AppLocalizations.of(context)!.minutes} ',
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold)),
                           TextSpan(

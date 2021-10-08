@@ -31,10 +31,12 @@ class ImportContactsMenuNotifier extends ChangeNotifier {
               : AppLocalizations.of(context)!.prospectorWillStopImporting,
           confirmText: AppLocalizations.of(context)!.ok);
       if (!confirm) return;
-      
-      final bool success =
-          await read(importContactsProvider).setSyncContacts(context: context, enabled: value);
-      if (!success) return;
+
+      await Future.delayed(Duration.zero, () async {
+        final bool success = await read(importContactsProvider)
+            .setSyncContacts(context: context, enabled: value);
+        if (!success) return;
+      });
 
       _syncContactsEnabled = value;
       notifyListeners();

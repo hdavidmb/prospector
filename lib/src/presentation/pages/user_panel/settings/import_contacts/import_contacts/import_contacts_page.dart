@@ -31,7 +31,9 @@ class ImportContactsPage extends ConsumerWidget {
                     await context
                         .read(importContactsPageProvider)
                         .importSelectedContacts();
-                    AutoRouter.of(context).pop();
+                    Future.delayed(Duration.zero, () {
+                      AutoRouter.of(context).pop();
+                    });
                   },
             child: Text(
               AppLocalizations.of(context)!.import,

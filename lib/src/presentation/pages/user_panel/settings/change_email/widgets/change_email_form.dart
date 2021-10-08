@@ -110,6 +110,10 @@ class ChangeEmailForm extends ConsumerWidget {
     final saveSuccess = await context
         .read(changeEmailFormProvider.notifier)
         .saveButtonPressed(context);
-    if (saveSuccess) AutoRouter.of(context).pop();
+    if (saveSuccess) {
+      Future.delayed(Duration.zero, () {
+        AutoRouter.of(context).pop();
+      });
+    }
   }
 }

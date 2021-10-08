@@ -5,6 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../../../core/auth/auth_helpers.dart';
+import '../../../core/connection/connection_checker.dart';
 import '../domain/auth_failure.dart';
 import '../domain/i_auth_repository.dart';
 import 'helpers/sign_in_with_apple_helper.dart';
@@ -31,11 +32,13 @@ class FirebaseAuthRepository implements IAuthRepository {
       {required String email,
       required String password,
       required String displayName}) async {
+    final bool isConnected = await checkConnection();
+    if (!isConnected) return left(const AuthFailure.noConnection());
     try {
       await firebaseAuthInstance
           .createUserWithEmailAndPassword(email: email, password: password)
-          .then((credential) async => await credential.user
-              ?.updateDisplayName(displayName)); //TODO test
+          .then((credential) async =>
+              await credential.user?.updateDisplayName(displayName));
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -46,7 +49,8 @@ class FirebaseAuthRepository implements IAuthRepository {
   @override
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword(
       {required String email, required String password}) async {
-    //TODO: handle no connection on all auth events
+    final bool isConnected = await checkConnection();
+    if (!isConnected) return left(const AuthFailure.noConnection());
     try {
       await firebaseAuthInstance.signInWithEmailAndPassword(
           email: email, password: password);
@@ -58,6 +62,8 @@ class FirebaseAuthRepository implements IAuthRepository {
 
   @override
   Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
+    final bool isConnected = await checkConnection();
+    if (!isConnected) return left(const AuthFailure.noConnection());
     try {
       final googleUser = await googleSignIn.signIn();
       if (googleUser == null) {
@@ -81,6 +87,8 @@ class FirebaseAuthRepository implements IAuthRepository {
 
   @override
   Future<Either<AuthFailure, Unit>> signInWithFacebook() async {
+    final bool isConnected = await checkConnection();
+    if (!isConnected) return left(const AuthFailure.noConnection());
     try {
       final LoginResult result = await facebookAuth.login();
       switch (result.status) {
@@ -101,6 +109,8 @@ class FirebaseAuthRepository implements IAuthRepository {
 
   @override
   Future<Either<AuthFailure, Unit>> appleSignIn() async {
+    final bool isConnected = await checkConnection();
+    if (!isConnected) return left(const AuthFailure.noConnection());
     try {
       final AuthorizationCredentialAppleID result =
           await signInWithApple.getAppleIDCredential(
@@ -137,6 +147,8 @@ class FirebaseAuthRepository implements IAuthRepository {
   @override
   Future<Either<AuthFailure, Unit>> resetPassword(
       {required String email}) async {
+    final bool isConnected = await checkConnection();
+    if (!isConnected) return left(const AuthFailure.noConnection());
     try {
       await firebaseAuthInstance.sendPasswordResetEmail(email: email);
       return right(unit);
@@ -149,6 +161,8 @@ class FirebaseAuthRepository implements IAuthRepository {
   @override
   Future<Either<AuthFailure, Unit>> reloginUser(
       {required String provider, String? password}) async {
+    final bool isConnected = await checkConnection();
+    if (!isConnected) return left(const AuthFailure.noConnection());
     try {
       final AuthCredential credential;
       switch (provider) {

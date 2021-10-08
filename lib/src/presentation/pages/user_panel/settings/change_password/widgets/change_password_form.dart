@@ -141,6 +141,10 @@ class ChangePasswordForm extends ConsumerWidget {
     final bool saveSuccess = await context
         .read(changePasswordFormProvider.notifier)
         .saveButtonPressed();
-    if (saveSuccess) AutoRouter.of(context).pop();
+    if (saveSuccess) {
+      Future.delayed(Duration.zero, () {
+        AutoRouter.of(context).pop();
+      });
+    }
   }
 }
