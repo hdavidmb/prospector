@@ -31,11 +31,12 @@ class Interaction with _$Interaction {
 
   factory Interaction.fromMap(Map<String, dynamic> map) {
     return Interaction(
-        id: map['id'] as String,
-        description: map['description'] as String,
-        contact: map['contact'] as String,
-        type: map['type'] as String,
-        created: map['created'] as DateTime,
-        event: map['event'] as String?);
+      id: map['id'] as String,
+      description: map['description'] as String,
+      contact: map['contact'] as String,
+      type: map['type'] as String,
+      created: map['created'] as DateTime,
+      event: map['event'] as String?,
+    );
   }
 }
