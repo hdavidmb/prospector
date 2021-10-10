@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/core/keyboard_visibility/keyboard_visibility.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/widgets/interactions_list_view.dart';
 
 import '../../../../../../generated/l10n.dart';
@@ -30,25 +31,27 @@ class ContactDetailsPage extends ConsumerWidget {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: !_isKeyboardHidden(context)
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ContactImage(
-                      size: 33.0,
-                      contactPhoto: contact.photo,
-                    ),
-                    const SizedBox(width: 10.0),
-                    Expanded(
-                      child: Text(
-                        contact.name,
-                        softWrap: true,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                )
-              : Text(AppLocalizations.of(context).prospectDetails),
+          title: KeyboardVisibility(
+            keyboardHiddenChild:
+                Text(AppLocalizations.of(context)!.prospectDetails),
+            keyboardShowingChild: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ContactImage(
+                  size: 33.0,
+                  contactPhoto: contact.photo,
+                ),
+                const SizedBox(width: 10.0),
+                Expanded(
+                  child: Text(
+                    contact.name,
+                    softWrap: true,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
+          ),
           actions: [
             TextButton(
               onPressed: () {
@@ -70,7 +73,8 @@ class ContactDetailsPage extends ConsumerWidget {
             onTap: () => FocusScope.of(context).unfocus(),
             child: Column(
               children: [
-                if (_isKeyboardHidden(context)) ContactInfo(contact: contact),
+                KeyboardVisibility(
+                    keyboardHiddenChild: ContactInfo(contact: contact)),
                 ActionButtons(contact: contact),
                 const Divider(height: 0.0, thickness: 2.0),
                 Expanded(
@@ -83,10 +87,5 @@ class ContactDetailsPage extends ConsumerWidget {
         ),
       ),
     );
-  }
-
-  //TODO use KeyboardVisibilityBuilder instead
-  bool _isKeyboardHidden(BuildContext context) {
-    return MediaQuery.of(context).viewInsets.bottom == 0.0;
   }
 }

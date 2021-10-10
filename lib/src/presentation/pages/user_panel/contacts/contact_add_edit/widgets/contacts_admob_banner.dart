@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../../../../../features/admob/application/ads_providers.dart';
-import '../../../../../core/keyboard_visibility_builder/keyboard_visibility_builder.dart';
+import '../../../../../core/keyboard_visibility/keyboard_visibility.dart';
 
 class ContactsAdmobBanner extends ConsumerWidget {
   const ContactsAdmobBanner({
@@ -12,10 +12,8 @@ class ContactsAdmobBanner extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    return KeyboardVisibilityBuilder(
-      builder: (context, child, isKeyboardVisible) =>
-          isKeyboardVisible ? const SizedBox() : child,
-      child: Positioned.fill(
+    return KeyboardVisibility(
+      keyboardHiddenChild: Positioned.fill(
         bottom: 20.0,
         child: Align(
           alignment: Alignment.bottomCenter,
