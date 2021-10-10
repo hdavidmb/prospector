@@ -20,6 +20,9 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
           read(userInfoNotifierProvider).reset();
           read(contactsNotifierProvider).reset();
           read(tagsNotifierProvider).reset();
+          //TODO read(interactionsNotifierProvider).reset();
+          //TODO read(eventsNotifierProvider).reset();
+          //TODO read(statisticsNotifierProvider).reset();
           return const AuthState.unauthenticated();
         }
       },
