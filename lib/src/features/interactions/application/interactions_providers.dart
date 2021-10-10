@@ -1,14 +1,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/core/database/instances/database_instance_provider.dart';
-import 'package:prospector/src/features/interactions/application/interactions_notifier.dart';
-import 'package:prospector/src/features/interactions/data/local/hive_interactions_repository.dart';
-import 'package:prospector/src/features/interactions/data/remote/firebase_interactions_repository.dart';
-import 'package:prospector/src/features/interactions/domain/interfaces/i_interactions_local_repository.dart';
-import 'package:prospector/src/features/interactions/domain/interfaces/i_interactions_remote_repository.dart';
-import 'package:prospector/src/features/interactions/domain/use_cases/create_interaction_document.dart';
-import 'package:prospector/src/features/interactions/domain/use_cases/delete_interaction_document.dart';
-import 'package:prospector/src/features/interactions/domain/use_cases/get_interactions_list.dart';
-import 'package:prospector/src/features/interactions/domain/use_cases/update_interaction_document.dart';
+
+import '../../../core/database/instances/database_instance_provider.dart';
+import '../data/local/hive_interactions_repository.dart';
+import '../data/remote/firebase_interactions_repository.dart';
+import '../domain/interfaces/i_interactions_local_repository.dart';
+import '../domain/interfaces/i_interactions_remote_repository.dart';
+import '../domain/use_cases/create_interaction_document.dart';
+import '../domain/use_cases/delete_interaction_document.dart';
+import '../domain/use_cases/get_interactions_list.dart';
+import '../domain/use_cases/update_interaction_document.dart';
+import 'interactions_notifier.dart';
 
 // * Repositories
 final remoteInteractionsRepository =

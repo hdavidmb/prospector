@@ -7,6 +7,8 @@ import '../../../features/auth/application/auth_state.dart';
 import '../../../features/contacts/application/contacts_providers.dart';
 import '../../../features/contacts/application/contacts_state.dart';
 import '../../../features/import_contacts/application/import_contacts_providers.dart';
+import '../../../features/interactions/application/interactions_providers.dart';
+import '../../../features/interactions/application/interactions_state.dart';
 import '../../../features/tags/application/tags_provider.dart';
 import '../../../features/tags/application/tags_state.dart';
 import '../../../features/user/application/user_info_providers.dart';
@@ -18,6 +20,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
   final AppDefaultDataState defaultDataState;
   final UserInfoState userInfoState;
   final ContactsState contactsState;
+  final InteractionsState interactionsState;
   final TagsState tagsState;
   final Reader read;
   AppStateNotifier({
@@ -25,6 +28,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
     required this.defaultDataState,
     required this.userInfoState,
     required this.contactsState,
+    required this.interactionsState,
     required this.tagsState,
     required this.read,
   }) : super(const AppState.initial()) {
@@ -32,6 +36,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
         defaultDataState == const AppDefaultDataState.error() ||
         userInfoState == const UserInfoState.error() ||
         contactsState == const ContactsState.error() ||
+        interactionsState == const InteractionsState.error() ||
         tagsState == const TagsState.error()) {
       state = const AppState.error();
     } else if (defaultDataState == const AppDefaultDataState.ready()) {
@@ -39,6 +44,9 @@ class AppStateNotifier extends StateNotifier<AppState> {
         if (userInfoState == const UserInfoState.ready()) {
           if (contactsState == const ContactsState.initial()) {
             read(contactsNotifierProvider).getContacts();
+          }
+          if (interactionsState == const InteractionsState.initial()) {
+            read(interactionsNotifierProvider).getInteractions();
           }
           if (tagsState == const TagsState.initial()) {
             read(tagsNotifierProvider).getTags();
@@ -52,6 +60,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
           }
 
           if (contactsState == const ContactsState.ready() &&
+              interactionsState == const InteractionsState.ready() &&
               tagsState == const TagsState.ready()) {
             state = const AppState.authenticatedReady();
           }
@@ -73,7 +82,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
     read(userInfoNotifierProvider).reset();
     read(contactsNotifierProvider).reset();
     read(tagsNotifierProvider).reset();
-    //TODO read(interactionsNotifierProvider).reset();
+    read(interactionsNotifierProvider).reset();
     //TODO read(eventsNotifierProvider).reset();
     //TODO read(statisticsNotifierProvider).reset();
     state = const AppState.initial();
