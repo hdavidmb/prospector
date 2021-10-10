@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/widgets/interactions_list_view.dart';
 
 import '../../../../../../generated/l10n.dart';
 import '../../../../../features/contacts/application/contacts_providers.dart';
@@ -72,10 +73,8 @@ class ContactDetailsPage extends ConsumerWidget {
                 if (_isKeyboardHidden(context)) ContactInfo(contact: contact),
                 ActionButtons(contact: contact),
                 const Divider(height: 0.0, thickness: 2.0),
-                const Expanded(
-                  child: Center(
-                    child: Text('Interactions list'),
-                  ),
+                Expanded(
+                  child: InteractionsListView(contactID: contact.id),
                 ), //TODO implement interactions
                 InteractionTextField()
               ],
