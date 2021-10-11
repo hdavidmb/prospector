@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class KeyboardVisibility extends StatefulWidget {
-  final Widget keyboardHiddenChild;
+  final Widget? keyboardHiddenChild;
   final Widget? keyboardShowingChild;
 
   const KeyboardVisibility({
     Key? key,
-    required this.keyboardHiddenChild,
+    this.keyboardHiddenChild,
     this.keyboardShowingChild,
-  }) : super(key: key);
+  })  : assert(keyboardHiddenChild != null || keyboardShowingChild != null),
+        super(key: key);
 
   @override
   _KeyboardVisibilityState createState() => _KeyboardVisibilityState();
@@ -44,5 +45,5 @@ class _KeyboardVisibilityState extends State<KeyboardVisibility>
   @override
   Widget build(BuildContext context) => _isKeyboardVisible
       ? widget.keyboardShowingChild ?? const SizedBox()
-      : widget.keyboardHiddenChild;
+      : widget.keyboardHiddenChild ?? const SizedBox();
 }

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import '../../../../core/connection/connection_checker.dart';
 
+import '../../../../core/connection/connection_checker.dart';
 import '../../../../core/database/database_failures/database_failure.dart';
 import '../../domain/entity/interaction_entity.dart';
 import '../../domain/interfaces/i_interactions_remote_repository.dart';

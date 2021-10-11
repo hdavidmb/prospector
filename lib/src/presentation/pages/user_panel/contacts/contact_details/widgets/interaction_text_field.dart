@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import '../../../../../../../generated/l10n.dart';
 
 class InteractionTextField extends StatefulWidget {
+  final Contact contact;
+  const InteractionTextField({
+    Key? key,
+    required this.contact,
+  }) : super(key: key);
   @override
   _InteractionTextFieldState createState() => _InteractionTextFieldState();
 }
 
 class _InteractionTextFieldState extends State<InteractionTextField> {
-  final _textEditingController = TextEditingController();
+  final TextEditingController _textEditingController = TextEditingController();
+  String _textFieldValue = '';
 
   @override
   Widget build(BuildContext context) {
@@ -39,43 +45,41 @@ class _InteractionTextFieldState extends State<InteractionTextField> {
                 ),
               ),
               onChanged: (value) {
-                //TODO implement
-              },
-              onSubmitted: (value) {
-                //TODO implement
+                setState(() => _textFieldValue = value);
               },
             ),
           ),
-          /* TODO implement call and whatsapp buttons
-          this._isKeyboardHidden(context)
-                        ? Row(children: [
-                            Container(
-                                margin: EdgeInsets.fromLTRB(4.0, 0.0, 0.0, 0.0),
-                                decoration: BoxDecoration(
-                                    color: Theme.of(context).accentColor,
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(25.0))),
-                                child: IconButton(
-                                    icon: Icon(Icons.phone),
-                                    onPressed: callProspect)),
-                            Container(
-                                margin: EdgeInsets.fromLTRB(4.0, 0.0, 0.0, 0.0),
-                                decoration: BoxDecoration(
-                                    color: Theme.of(context).accentColor,
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(25.0))),
-                                child: IconButton(
-                                    icon: FaIcon(FontAwesomeIcons.whatsapp),
-                                    onPressed: whatsappProspect))
-                          ])
-                        :  */
-          const SizedBox(width: 10.0),
-          IconButton(
-            icon: const Icon(Icons.send),
-            iconSize: 28.0,
-            onPressed: () async {
-              //TODO implement
-            },
+          const SizedBox(width: 8.0),
+          Consumer(builder: (context, watch, child) {
+            return IconButton(
+              icon: const Icon(Icons.send),
+              iconSize: 28.0,
+              onPressed: () async {
+                if (_textFieldValue.isNotEmpty) {
+                  final bool success = await context
+                      .read(contactDetailsProvider)
+                      .interactionSubmitButtonPressed(
+                          description: _textFieldValue,
+                          contactID: widget.contact.id);
+                  if (success) {
+                    _textFieldValue = '';
+                    _textEditingController.clear();
+                  } else {
+                    //TODO show snackbar if error
+                  }
+                }
+              },
+            );
+          }),
+          KeyboardVisibility(
+            keyboardHiddenChild: Row(
+              children: [
+                PhoneButton(phone: widget.contact.phone),
+                WhatsappButton(
+                  whatsapp: widget.contact.whatsapp,
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -86,10 +90,5 @@ class _InteractionTextFieldState extends State<InteractionTextField> {
   void dispose() {
     _textEditingController.dispose();
     super.dispose();
-  }
-
-  //TODO use KeyboardVisibilityBuilder instead
-  bool _isKeyboardHidden(BuildContext context) {
-    return MediaQuery.of(context).viewInsets.bottom == 0.0;
   }
 }

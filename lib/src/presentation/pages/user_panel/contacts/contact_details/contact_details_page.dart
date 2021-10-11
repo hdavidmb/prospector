@@ -2,18 +2,20 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/core/keyboard_visibility/keyboard_visibility.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/widgets/interactions_list_view.dart';
 
 import '../../../../../../generated/l10n.dart';
 import '../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../features/contacts/domain/entity/contact_entity.dart';
+import '../../../../core/keyboard_visibility/keyboard_visibility.dart';
 import '../../../../routes/app_router.gr.dart';
 import '../contact_add_edit/logic/contact_form_provider.dart';
 import '../contact_add_edit/widgets/contact_image.dart';
 import 'widgets/action_buttons.dart';
 import 'widgets/contact_info.dart';
 import 'widgets/interaction_text_field.dart';
+import 'widgets/interactions_list_view.dart';
+import 'widgets/phone_button.dart';
+import 'widgets/whatsapp_button.dart';
 
 class ContactDetailsPage extends ConsumerWidget {
   final String? contactID;
@@ -55,9 +57,9 @@ class ContactDetailsPage extends ConsumerWidget {
           actions: [
             TextButton(
               onPressed: () {
-                context
-                    .read(contactFormProvider.notifier)
-                    .setEditingState(editingContact: contact);
+                context.read(contactFormProvider.notifier).setEditingState(
+                    editingContact:
+                        contact); //TODO check if can be called from ContactAddEditPage constructor
                 AutoRouter.of(context)
                     .push(ContactAddEditRoute(editingContact: contact));
               },
@@ -78,9 +80,30 @@ class ContactDetailsPage extends ConsumerWidget {
                 ActionButtons(contact: contact),
                 const Divider(height: 0.0, thickness: 2.0),
                 Expanded(
-                  child: InteractionsListView(contactID: contact.id),
+                  child: Stack(
+                    children: [
+                      InteractionsListView(contactID: contact.id),
+                      KeyboardVisibility(
+                        keyboardShowingChild: Positioned(
+                          right: 6.0,
+                          bottom: 0.0,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              PhoneButton(phone: contact.phone),
+                              WhatsappButton(
+                                whatsapp: contact.whatsapp,
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ), //TODO implement interactions
-                InteractionTextField()
+                InteractionTextField(
+                  contact: contact,
+                )
               ],
             ),
           ),

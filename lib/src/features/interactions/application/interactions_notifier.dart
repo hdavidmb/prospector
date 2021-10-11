@@ -33,8 +33,9 @@ class InteractionsNotifier extends ChangeNotifier {
 
   void reset() => _interactionsState = const InteractionsState.initial();
 
-  Future<Either<DatabaseFailure, Unit>> createContact(
+  Future<Either<DatabaseFailure, Unit>> createInteraction(
       Interaction interaction) async {
+    //TODO update contact modified date if type != status
     final uid = read(userInfoNotifierProvider).user?.uid;
     if (uid != null) {
       final createResult =
@@ -91,8 +92,7 @@ class InteractionsNotifier extends ChangeNotifier {
           final int index = _interactions.indexWhere(
               (listInteraction) => listInteraction.id == interaction.id);
           _interactions[index] = interaction;
-          _interactions.sort(
-              (a, b) => b.created.compareTo(a.created)); //TODO check sort order
+          _interactions.sort((a, b) => b.created.compareTo(a.created));
           notifyListeners();
           return right(unit);
         },
@@ -113,8 +113,8 @@ class InteractionsNotifier extends ChangeNotifier {
       return deleteResult.fold(
         (failure) => left(failure),
         (unit) {
-          _interactions
-              .removeWhere((listContact) => listContact.id == interactionID);
+          _interactions.removeWhere(
+              (listInteraction) => listInteraction.id == interactionID);
           notifyListeners();
           return right(unit);
         },
