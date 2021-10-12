@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/interactions/application/interactions_providers.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
 import '../../app_default_data/application/app_default_data_providers.dart';
@@ -88,9 +89,14 @@ class ContactsNotifier extends ChangeNotifier {
           await updateContactDocument(contact: newContactInfo, uid: uid);
       return updateResult.fold(
         (failure) => left(failure),
-        (unit) {
+        (unit) async {
           final int index = _contacts
               .indexWhere((listContact) => listContact.id == newContactInfo.id);
+          if (_contacts[index].status != newContactInfo.status) {
+            //TODO create status interaction
+            await read(interactionsNotifierProvider)
+                .createStatusInteraction(contact: newContactInfo);
+          }
           _contacts[index] = newContactInfo;
           _contacts.sort((a, b) => b.modified.compareTo(a.modified));
           notifyListeners();

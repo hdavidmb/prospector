@@ -143,5 +143,7 @@
     "getRidOfAds": "Get rid of ads",
     "watchAShortVideo": "Watch a short video to get",
     "minutes": "minutes",
-    "ofProspectorWithNoAds": "of Prospector with no Ads"
+    "ofProspectorWithNoAds": "of Prospector with no Ads",
+    "movedToM": "Moved to",
+    "movedToF": "Moved to"
 }

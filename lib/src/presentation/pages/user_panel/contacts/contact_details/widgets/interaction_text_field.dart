@@ -60,7 +60,7 @@ class _InteractionTextFieldState extends State<InteractionTextField> {
                       .read(contactDetailsProvider)
                       .interactionSubmitButtonPressed(
                           description: _textFieldValue,
-                          contactID: widget.contact.id);
+                          contact: widget.contact);
                   if (success) {
                     _textFieldValue = '';
                     _textEditingController.clear();

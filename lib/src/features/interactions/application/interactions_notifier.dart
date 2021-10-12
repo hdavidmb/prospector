@@ -1,6 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
+import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
+import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
+import 'package:random_string/random_string.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
 import '../../user/application/user_info_providers.dart';
@@ -34,8 +39,8 @@ class InteractionsNotifier extends ChangeNotifier {
   void reset() => _interactionsState = const InteractionsState.initial();
 
   Future<Either<DatabaseFailure, Unit>> createInteraction(
-      Interaction interaction) async {
-    //TODO update contact modified date if type != status
+      Interaction interaction,
+      {required Contact contact}) async {
     final uid = read(userInfoNotifierProvider).user?.uid;
     if (uid != null) {
       final createResult =
@@ -49,12 +54,32 @@ class InteractionsNotifier extends ChangeNotifier {
             ..sort((a, b) =>
                 b.created.compareTo(a.created)); //TODO check sort order
           notifyListeners();
+          if (interaction.type != 'status') {
+            read(contactsNotifierProvider).updateContact(contact);
+          }
           return right(unit);
         },
       );
     } else {
       return left(const DatabaseFailure.noUserAuthenticated());
     }
+  }
+
+  Future<Either<DatabaseFailure, Unit>> createStatusInteraction(
+      {required Contact contact}) {
+    //TODO implement applocalizations without context
+    // final String statusText = read(appDefaultDataProvider).getStatusText(
+    //     context: context, statusID: contact.status, isPlural: true);
+    // final String movedTo =
+    //     AppLocalizations.of(context)!.youMayHaveToRelogin; //TODO change
+    final Interaction interaction = Interaction(
+      id: randomAlphaNumeric(20),
+      description: 'Moved to ${contact.status}', //TODO implement properlly
+      contact: contact.id,
+      type: 'status',
+      created: DateTime.now(),
+    );
+    return createInteraction(interaction, contact: contact);
   }
 
   Future<void> getInteractions() async {

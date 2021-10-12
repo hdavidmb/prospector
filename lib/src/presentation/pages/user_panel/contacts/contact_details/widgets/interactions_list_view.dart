@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/helpers/date_formatters.dart';
 import '../../../../../../features/interactions/application/interactions_providers.dart';
 import '../../../../../../features/interactions/domain/entity/interaction_entity.dart';
 
@@ -56,7 +57,7 @@ class InteractionListTile extends StatelessWidget {
                 ? Icons.event
                 : Icons.swap_horiz),
         title: Text(interaction.description),
-        //TODO add subtitle with formatted created date
+        subtitle: Text(getTimeagoFormatedDate(context, interaction.created)),
         onTap: interaction.type == 'event'
             ? () {
                 //TODO navigate to event details

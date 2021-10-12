@@ -50,16 +50,16 @@ class ContactDetailsNotifier {
   }
 
   Future<bool> interactionSubmitButtonPressed(
-      {required String description, required String contactID}) async {
+      {required String description, required Contact contact}) async {
     //TODO create submittingstate to disable buttons when submitting
     final Interaction interaction = Interaction(
         id: randomAlphaNumeric(20),
         description: description,
-        contact: contactID,
+        contact: contact.id,
         type: 'user',
         created: DateTime.now());
-    final createResult =
-        await read(interactionsNotifierProvider).createInteraction(interaction);
+    final createResult = await read(interactionsNotifierProvider)
+        .createInteraction(interaction, contact: contact);
     return createResult.isRight();
   }
 }

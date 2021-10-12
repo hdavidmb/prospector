@@ -143,5 +143,7 @@
     "getRidOfAds": "Elimina la Publicidad",
     "watchAShortVideo": "Mira un corto video para tener",
     "minutes": "minutos",
-    "ofProspectorWithNoAds": "de Prospector sin publicidad"
+    "ofProspectorWithNoAds": "de Prospector sin publicidad",
+    "movedToM": "Movido a",
+    "movedToF": "Movida a"
 }
