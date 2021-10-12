@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/user/application/user_info_providers.dart';
 import '../../../../../../features/user/domain/entity/user_entity.dart';
 import '../../../../../routes/app_router.gr.dart';
@@ -45,7 +45,7 @@ class UserProfileListTile extends ConsumerWidget {
                   Text(
                       user?.name.isNotEmpty ?? false
                           ? user!.name
-                          : AppLocalizations.of(context)!.profile,
+                          : AppLocalizations.of(context).profile,
                       style: Theme.of(context).textTheme.headline6),
                   if (user?.email != null)
                     Text(user?.email ?? '',
@@ -57,12 +57,12 @@ class UserProfileListTile extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(AppLocalizations.of(context)!.premiumCap,
+                        Text(AppLocalizations.of(context).premiumCap,
                             style: const TextStyle(
                                 color: kPremiumColor,
                                 fontWeight: FontWeight.bold)),
                         Text(
-                            '${AppLocalizations.of(context)!.until} ${dateFormat.format(user?.expiryDate ?? DateTime.now())}',
+                            '${AppLocalizations.of(context).until} ${dateFormat.format(user?.expiryDate ?? DateTime.now())}',
                             style: Theme.of(context).textTheme.caption)
                       ],
                     )

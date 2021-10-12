@@ -83,7 +83,6 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   # Enabling codegen for internationalization
-  generate: true
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/icons/
@@ -112,3 +111,6 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true
+  class_name: AppLocalizations

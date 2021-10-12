@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../../../../generated/l10n.dart';
 import '../../../../../../core/contacts_search_field/contacts_search_field.dart';
 import '../logic/impor_contacts_page_providers.dart';
 
@@ -22,17 +22,22 @@ class _ImportContactsSearchBarState extends State<ImportContactsSearchBar> {
           child: Row(
             children: [
               Expanded(
-                  child: ContactsSearchField(
-                controller: _controller,
-                onChanged: context.read(importContactsPageProvider).searchTextChanged,
-              )),
+                child: ContactsSearchField(
+                  controller: _controller,
+                  onChanged: context
+                      .read(importContactsPageProvider)
+                      .searchTextChanged,
+                ),
+              ),
               TextButton(
                 onPressed: () {
                   _controller.clear();
-                  context.read(importContactsPageProvider).searchTextChanged('');
+                  context
+                      .read(importContactsPageProvider)
+                      .searchTextChanged('');
                   FocusScope.of(context).unfocus();
                 },
-                child: Text(AppLocalizations.of(context)!.cancel),
+                child: Text(AppLocalizations.of(context).cancel),
               )
             ],
           ),

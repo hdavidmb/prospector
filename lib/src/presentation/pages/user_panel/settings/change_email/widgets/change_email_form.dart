@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/user/application/user_info_providers.dart';
 import '../../../../../core/dialogs.dart';
 import '../logic/change_email_form_provider.dart';
@@ -33,7 +33,7 @@ class ChangeEmailForm extends ConsumerWidget {
               const SizedBox(height: 20.0),
               ListTile(
                 title: Text(
-                  AppLocalizations.of(context)!.currentEmail,
+                  AppLocalizations.of(context).currentEmail,
                   style: const TextStyle(fontSize: 14.0),
                 ),
                 trailing: Text(
@@ -47,7 +47,7 @@ class ChangeEmailForm extends ConsumerWidget {
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.email),
-                  hintText: AppLocalizations.of(context)!.newEmail,
+                  hintText: AppLocalizations.of(context).newEmail,
                 ),
                 textInputAction: TextInputAction.next,
                 onChanged:
@@ -58,7 +58,7 @@ class ChangeEmailForm extends ConsumerWidget {
                       .validateEmail(value!);
                   return isValid
                       ? null
-                      : AppLocalizations.of(context)!.invalidEmail;
+                      : AppLocalizations.of(context).invalidEmail;
                 },
               ),
               const SizedBox(height: 10.0),
@@ -66,7 +66,7 @@ class ChangeEmailForm extends ConsumerWidget {
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.email),
-                  hintText: AppLocalizations.of(context)!.confirmNewEmail,
+                  hintText: AppLocalizations.of(context).confirmNewEmail,
                 ),
                 textInputAction: TextInputAction.done,
                 onChanged: context
@@ -80,7 +80,7 @@ class ChangeEmailForm extends ConsumerWidget {
                       .validateFieldsMatch(newEmail, value);
                   return isValid
                       ? null
-                      : AppLocalizations.of(context)!.emailsDontMatch;
+                      : AppLocalizations.of(context).emailsDontMatch;
                 },
                 onFieldSubmitted: (_) => _saveAction(context),
               ),
@@ -91,7 +91,7 @@ class ChangeEmailForm extends ConsumerWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(AppLocalizations.of(context)!.save),
+                    Text(AppLocalizations.of(context).save),
                     if (formState.isSubmitting) ...const [
                       SizedBox(width: 8.0),
                       CircularProgressIndicator.adaptive(),

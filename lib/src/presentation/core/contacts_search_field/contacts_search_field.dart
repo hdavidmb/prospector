@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../../generated/l10n.dart';
 
 class ContactsSearchField extends StatelessWidget {
   final bool autofocus;
@@ -17,7 +18,7 @@ class ContactsSearchField extends StatelessWidget {
       autofocus: autofocus,
       controller: controller,
       decoration: InputDecoration(
-        hintText: AppLocalizations.of(context)!.search,
+        hintText: AppLocalizations.current.search,
         contentPadding:
             const EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
         filled: true,

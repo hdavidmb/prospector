@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/user/application/user_info_providers.dart';
 import '../../../../../routes/app_router.gr.dart';
 import '../../change_email/logic/change_email_form_provider.dart';
@@ -25,7 +25,7 @@ class UserAuthProviderItems extends ConsumerWidget {
                 context.read(changeEmailFormProvider.notifier).reset();
                 AutoRouter.of(context).push(const ChangeEmailRoute());
               },
-              title: Text(AppLocalizations.of(context)!.changeEmail),
+              title: Text(AppLocalizations.of(context).changeEmail),
               trailing: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 mainAxisSize: MainAxisSize.min,
@@ -45,7 +45,7 @@ class UserAuthProviderItems extends ConsumerWidget {
                 context.read(changePasswordFormProvider.notifier).reset();
                 AutoRouter.of(context).push(const ChangePasswordRoute());
               },
-              title: Text(AppLocalizations.of(context)!.changePassword),
+              title: Text(AppLocalizations.of(context).changePassword),
               trailing: const Icon(Icons.chevron_right),
             ),
             divider
@@ -56,7 +56,7 @@ class UserAuthProviderItems extends ConsumerWidget {
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(AppLocalizations.of(context)!.loggedInWith),
+                  Text(AppLocalizations.of(context).loggedInWith),
                   Text(
                     userAuthProvider == 'facebook.com'
                         ? 'Facebook'

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:random_string/random_string.dart';
 
+import '../../../../../../../../generated/l10n.dart';
 import '../../../../../../../features/tags/application/tags_provider.dart';
 import '../../../../../../../features/tags/domain/entity/tag_entity.dart';
 import '../../../../../../core/dialogs.dart';
@@ -43,7 +43,7 @@ class TagsSelectionWrap extends ConsumerWidget {
     final Widget addButton = userTags.isEmpty
         ? TextButton.icon(
             icon: const Icon(Icons.add_circle),
-            label: Text(AppLocalizations.of(context)!.addTag),
+            label: Text(AppLocalizations.of(context).addTag),
             style: TextButton.styleFrom(
                 primary: Theme.of(context).textTheme.button!.color),
             onPressed: () => _addTag(context: context),
@@ -65,8 +65,8 @@ class TagsSelectionWrap extends ConsumerWidget {
     // Ask for new tag name on dialog
     final newTagNameOption = await showTextFieldDialog(
       context: context,
-      title: Text(AppLocalizations.of(context)!.addANewTag),
-      hintText: AppLocalizations.of(context)!.tagName,
+      title: Text(AppLocalizations.current.addANewTag),
+      hintText: AppLocalizations.current.tagName,
     );
     newTagNameOption.fold(
       () => null,

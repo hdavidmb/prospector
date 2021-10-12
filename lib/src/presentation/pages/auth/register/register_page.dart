@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../../generated/l10n.dart';
 
 import 'widgets/register_form.dart';
 
@@ -25,7 +25,7 @@ class RegisterPage extends StatelessWidget {
                           image:
                               AssetImage('assets/images/prospector_logo.png'),
                           width: 100.0)),
-                  Text(AppLocalizations.of(context)!.register,
+                  Text(AppLocalizations.of(context).register,
                       style: const TextStyle(fontSize: 30.0)),
                   const SizedBox(height: 30.0),
                   const RegisterForm(),

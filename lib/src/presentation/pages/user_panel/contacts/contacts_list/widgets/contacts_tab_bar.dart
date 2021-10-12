@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import 'contacts_group_list.dart';
 import 'rewarded_video_wrapper.dart';
@@ -35,28 +35,28 @@ class ContactsTabBar extends StatelessWidget {
                         tabs: <Widget>[
                           Tab(
                             child: AutoSizeText(
-                              AppLocalizations.of(context)!.general,
+                              AppLocalizations.of(context).general,
                               maxLines: 1,
                               textAlign: TextAlign.center,
                             ),
                           ),
                           Tab(
                             child: AutoSizeText(
-                              AppLocalizations.of(context)!.invitedP,
+                              AppLocalizations.of(context).invitedP,
                               maxLines: 1,
                               textAlign: TextAlign.center,
                             ),
                           ),
                           Tab(
                             child: AutoSizeText(
-                              AppLocalizations.of(context)!.followUp,
+                              AppLocalizations.of(context).followUp,
                               maxLines: 1,
                               textAlign: TextAlign.center,
                             ),
                           ),
                           Tab(
                             child: AutoSizeText(
-                              AppLocalizations.of(context)!.affiliatedP,
+                              AppLocalizations.of(context).affiliatedP,
                               maxLines: 1,
                               textAlign: TextAlign.center,
                             ),

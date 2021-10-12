@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/admob/application/ads_providers.dart';
 
 class RewardedVideoHeader extends StatelessWidget {
@@ -31,7 +31,7 @@ class RewardedVideoHeader extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      AppLocalizations.of(context)!.getRidOfAds,
+                      AppLocalizations.of(context).getRidOfAds,
                       style: Theme.of(context).textTheme.subtitle1!.copyWith(
                             fontSize: 17.5,
                             fontWeight: FontWeight.bold,
@@ -46,16 +46,15 @@ class RewardedVideoHeader extends StatelessWidget {
                             .copyWith(fontSize: 15.0),
                         children: <TextSpan>[
                           TextSpan(
-                            text:
-                                AppLocalizations.of(context)!.watchAShortVideo,
+                            text: AppLocalizations.of(context).watchAShortVideo,
                           ),
                           TextSpan(
                               text:
-                                  ' $rewardMinutes ${AppLocalizations.of(context)!.minutes} ',
+                                  ' $rewardMinutes ${AppLocalizations.of(context).minutes} ',
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold)),
                           TextSpan(
-                            text: AppLocalizations.of(context)!
+                            text: AppLocalizations.of(context)
                                 .ofProspectorWithNoAds,
                           )
                         ],

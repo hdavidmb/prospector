@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../generated/l10n.dart';
 
 import '../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../core/app_state/app_state.dart';
@@ -21,7 +21,7 @@ class SplashScreenPage extends StatelessWidget {
                   child: Image(
                       image: AssetImage('assets/images/prospector_logo.png'),
                       width: 150.0)),
-              Text(AppLocalizations.of(context)!.prospector,
+              Text(AppLocalizations.of(context).prospector,
                   style: Theme.of(context)
                       .textTheme
                       .headline4!
@@ -38,7 +38,7 @@ class SplashScreenPage extends StatelessWidget {
                     context.read(appStateNotifierProvider.notifier).reset();
                     context.read(appDefaultDataProvider).getDefaultData();
                   },
-                  child: Text(AppLocalizations.of(context)!.tryAgain),
+                  child: Text(AppLocalizations.of(context).tryAgain),
                 ),
             ],
           );

@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../../../generated/l10n.dart';
 import '../../../../core/dialogs.dart';
 import '../../../../routes/app_router.gr.dart';
 import '../logic/register_form_provider.dart';
@@ -44,7 +44,7 @@ class RegisterForm extends StatelessWidget {
                   textCapitalization: TextCapitalization.words,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.account_circle),
-                    hintText: AppLocalizations.of(context)!.name,
+                    hintText: AppLocalizations.of(context).name,
                   ),
                   textInputAction: TextInputAction.next,
                   onChanged:
@@ -55,7 +55,7 @@ class RegisterForm extends StatelessWidget {
                         .validateFieldIsNotEmpty(value!);
                     return isValid
                         ? null
-                        : AppLocalizations.of(context)!.enterYourName;
+                        : AppLocalizations.of(context).enterYourName;
                   },
                 ),
                 const SizedBox(height: 10.0),
@@ -63,7 +63,7 @@ class RegisterForm extends StatelessWidget {
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.email),
-                    hintText: AppLocalizations.of(context)!.email,
+                    hintText: AppLocalizations.of(context).email,
                   ),
                   textInputAction: TextInputAction.next,
                   onChanged:
@@ -74,14 +74,14 @@ class RegisterForm extends StatelessWidget {
                         .validateEmail(value!);
                     return isValid
                         ? null
-                        : AppLocalizations.of(context)!.invalidEmail;
+                        : AppLocalizations.of(context).invalidEmail;
                   },
                 ),
                 const SizedBox(height: 10.0),
                 TextFormField(
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.lock),
-                    hintText: AppLocalizations.of(context)!.password,
+                    hintText: AppLocalizations.of(context).password,
                   ),
                   textInputAction: TextInputAction.next,
                   obscureText: true,
@@ -98,15 +98,15 @@ class RegisterForm extends StatelessWidget {
                     return isNotEmpty
                         ? isStrongEnough
                             ? null
-                            : AppLocalizations.of(context)!.weakPassword
-                        : AppLocalizations.of(context)!.enterAPassword;
+                            : AppLocalizations.of(context).weakPassword
+                        : AppLocalizations.of(context).enterAPassword;
                   },
                 ),
                 const SizedBox(height: 10.0),
                 TextFormField(
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.lock),
-                    hintText: AppLocalizations.of(context)!.confirmPassword,
+                    hintText: AppLocalizations.of(context).confirmPassword,
                   ),
                   textInputAction: TextInputAction.done,
                   obscureText: true,
@@ -126,8 +126,8 @@ class RegisterForm extends StatelessWidget {
                     return isNotEmpty
                         ? passwordsMatch
                             ? null
-                            : AppLocalizations.of(context)!.passwordsDontMatch
-                        : AppLocalizations.of(context)!.enterAPassword;
+                            : AppLocalizations.of(context).passwordsDontMatch
+                        : AppLocalizations.of(context).enterAPassword;
                   },
                   onFieldSubmitted: (_) => context
                       .read(registerFormProvider.notifier)
@@ -145,7 +145,7 @@ class RegisterForm extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(AppLocalizations.of(context)!.registerButton),
+                        Text(AppLocalizations.of(context).registerButton),
                         if (formState.isSubmitting) ...const [
                           SizedBox(width: 8.0),
                           CircularProgressIndicator.adaptive(),
@@ -161,7 +161,7 @@ class RegisterForm extends StatelessWidget {
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                     onPressed: () =>
                         AutoRouter.of(context).replace(const SignInRoute()),
-                    child: Text(AppLocalizations.of(context)!.signIn,
+                    child: Text(AppLocalizations.of(context).signIn,
                         style: TextStyle(
                             color:
                                 isDarkTheme ? Colors.white70 : Colors.black87)),
@@ -169,7 +169,7 @@ class RegisterForm extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 8.0),
-                  child: Text(AppLocalizations.of(context)!.orContinueWith,
+                  child: Text(AppLocalizations.of(context).orContinueWith,
                       style: Theme.of(context).textTheme.subtitle1),
                 ),
                 Row(

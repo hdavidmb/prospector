@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../../generated/l10n.dart';
 import '../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../features/user/application/user_info_providers.dart';
 import '../../../../core/dialogs.dart';
@@ -35,7 +35,7 @@ class UserProfilePage extends ConsumerWidget {
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
           appBar: AppBar(
-            title: Text(AppLocalizations.of(context)!.profile),
+            title: Text(AppLocalizations.of(context).profile),
             actions: [
               TextButton(
                 onPressed: isSubmitting
@@ -50,7 +50,7 @@ class UserProfilePage extends ConsumerWidget {
                           });
                         }
                       },
-                child: Text(AppLocalizations.of(context)!.save,
+                child: Text(AppLocalizations.of(context).save,
                     style: const TextStyle(color: Colors.white)),
               )
             ],

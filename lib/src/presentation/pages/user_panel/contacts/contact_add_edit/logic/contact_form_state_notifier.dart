@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:random_string/random_string.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../core/database/database_failures/database_failure.dart';
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
@@ -183,8 +183,8 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
     Either<DatabaseFailure, Unit>? failureOrSuccess;
     final confirm = await showConfirmDialog(
       context: context,
-      title: AppLocalizations.of(context)!.areYouSureDeleteProspect,
-      message: AppLocalizations.of(context)!.thisAcctionCannotBeUndone,
+      title: AppLocalizations.current.areYouSureDeleteProspect,
+      message: AppLocalizations.current.thisAcctionCannotBeUndone,
     );
     if (confirm) {
       failureOrSuccess = await read(contactsNotifierProvider)

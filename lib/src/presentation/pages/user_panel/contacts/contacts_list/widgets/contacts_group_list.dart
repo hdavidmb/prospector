@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/admob/application/ads_providers.dart';
 import '../../../../../../features/admob/domain/native_ad_dummy.dart';
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
@@ -51,7 +51,7 @@ class ContactsGroupList extends ConsumerWidget {
 
       final String statusText = context
           .read(appDefaultDataProvider)
-          .getStatusText(context: context, statusID: status, isPlural: true);
+          .getStatusText(statusID: status, isPlural: true);
 
       if (contacts.isNotEmpty) {
         sections.add(
@@ -109,8 +109,8 @@ class ContactsGroupList extends ConsumerWidget {
                 : 'assets/images/no_prospects.png',
             imageHeight: 120.0,
             message: isFiltered
-                ? AppLocalizations.of(context)!.noFilteredProspectsMessage
-                : AppLocalizations.of(context)!.noProspectsMessage,
+                ? AppLocalizations.of(context).noFilteredProspectsMessage
+                : AppLocalizations.of(context).noProspectsMessage,
           );
   }
 }

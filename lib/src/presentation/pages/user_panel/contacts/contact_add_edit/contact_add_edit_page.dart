@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../../../generated/l10n.dart';
 
 import '../../../../../features/admob/application/ad_state.dart';
 import '../../../../../features/admob/application/ads_providers.dart';
@@ -35,8 +35,8 @@ class ContactAddEditPage extends ConsumerWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(editingContact != null
-              ? AppLocalizations.of(context)!.editProspect
-              : AppLocalizations.of(context)!.newProspect),
+              ? AppLocalizations.of(context).editProspect
+              : AppLocalizations.of(context).newProspect),
         ),
         body: SafeArea(
           child: Padding(

@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../../generated/l10n.dart';
 import '../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../features/contacts/domain/entity/contact_entity.dart';
 import '../../../../routes/app_router.gr.dart';
@@ -47,7 +47,7 @@ class ContactDetailsPage extends ConsumerWidget {
                     ),
                   ],
                 )
-              : Text(AppLocalizations.of(context)!.prospectDetails),
+              : Text(AppLocalizations.of(context).prospectDetails),
           actions: [
             TextButton(
               onPressed: () {
@@ -58,7 +58,7 @@ class ContactDetailsPage extends ConsumerWidget {
                     .push(ContactAddEditRoute(editingContact: contact));
               },
               child: Text(
-                AppLocalizations.of(context)!.edit,
+                AppLocalizations.of(context).edit,
                 style: const TextStyle(color: Colors.white),
               ),
             ),

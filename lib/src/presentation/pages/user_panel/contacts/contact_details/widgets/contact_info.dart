@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
 import '../../contact_add_edit/widgets/contact_image.dart';
@@ -99,8 +99,8 @@ class ContactInfo extends StatelessWidget {
                   if (contact.gender != null && contact.gender!.isNotEmpty)
                     Text(
                       contact.gender == 'male'
-                          ? AppLocalizations.of(context)!.male
-                          : AppLocalizations.of(context)!.female,
+                          ? AppLocalizations.of(context).male
+                          : AppLocalizations.of(context).female,
                       style: const TextStyle(fontSize: 15.0),
                     ),
                   if (contact.tags != null && contact.tags!.isNotEmpty) ...[
@@ -118,7 +118,8 @@ class ContactInfo extends StatelessWidget {
 
   String getStatusText(
       {required BuildContext context, required String statusID}) {
-    return context.read(appDefaultDataProvider).getStatusText(
-        context: context, statusID: statusID, gender: contact.gender ?? '');
+    return context
+        .read(appDefaultDataProvider)
+        .getStatusText(statusID: statusID, gender: contact.gender ?? '');
   }
 }
