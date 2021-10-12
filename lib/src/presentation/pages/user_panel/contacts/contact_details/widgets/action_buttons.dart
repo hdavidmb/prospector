@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../../../../generated/l10n.dart';
 
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
@@ -100,11 +100,11 @@ class ActionButtons extends StatelessWidget {
         context.read(appDefaultDataProvider).notInterestedID;
     return contactStatus == notInterestedID
         ? gender == 'female'
-            ? AppLocalizations.of(context)!.notContactedF
-            : AppLocalizations.of(context)!.notContacted
+            ? AppLocalizations.current.notContactedF
+            : AppLocalizations.current.notContacted
         : gender == 'female'
-            ? AppLocalizations.of(context)!.notInteresteF
-            : AppLocalizations.of(context)!.notInterested;
+            ? AppLocalizations.current.notInteresteF
+            : AppLocalizations.current.notInterested;
   }
 
   String _getForwardActionButtonText(BuildContext context) {
@@ -114,12 +114,12 @@ class ActionButtons extends StatelessWidget {
     final executiveID = context.read(appDefaultDataProvider).executiveID;
     return (contactStatus == executiveID || contactStatus == clientID)
         ? gender == 'female'
-            ? AppLocalizations.of(context)!.executiveF
-            : AppLocalizations.of(context)!.executive
+            ? AppLocalizations.current.executiveF
+            : AppLocalizations.current.executive
         : contactStatus == followUpID
-            ? AppLocalizations.of(context)!.affiliate
+            ? AppLocalizations.current.affiliate
             : contactStatus == invitedID
-                ? AppLocalizations.of(context)!.present
-                : AppLocalizations.of(context)!.invite;
+                ? AppLocalizations.current.present
+                : AppLocalizations.current.invite;
   }
 }

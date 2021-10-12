@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
 import '../../../../../../features/import_contacts/application/import_contacts_providers.dart';
@@ -25,14 +25,14 @@ class ImportedContactsPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppLocalizations.of(context)!.importedContacts,
+          AppLocalizations.of(context).importedContacts,
           style: const TextStyle(fontSize: 18.0),
         ),
         actions: [
           TextButton(
             onPressed: () => goToImportContacts(context),
             child: Text(
-              AppLocalizations.of(context)!.import,
+              AppLocalizations.of(context).import,
               style: const TextStyle(color: Colors.white),
             ),
           ),
@@ -77,10 +77,10 @@ class ImportedContactsPage extends ConsumerWidget {
           : NoContactsScreen(
               imagePath: 'assets/images/no_imported_contacts.png',
               imageHeight: 150.0,
-              message: AppLocalizations.of(context)!.noImportedContactsMessage,
+              message: AppLocalizations.of(context).noImportedContactsMessage,
               action: ElevatedButton(
                 onPressed: () => goToImportContacts(context),
-                child: Text(AppLocalizations.of(context)!.importContacts),
+                child: Text(AppLocalizations.of(context).importContacts),
               ),
             ),
     );

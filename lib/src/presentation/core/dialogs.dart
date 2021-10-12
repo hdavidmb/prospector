@@ -2,12 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // ignore: implementation_imports
 import 'package:google_maps_webservice/src/places.dart' show Prediction;
 import 'package:permission_handler/permission_handler.dart';
+import 'package:prospector/generated/l10n.dart';
 import 'package:prospector/src/core/database/database_failures/database_failure.dart';
 import 'package:prospector/src/core/private/private_keys.dart';
 import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
@@ -73,38 +73,38 @@ void showFailureSnackbar(BuildContext context, dynamic failure) {
       failure == const UserInfoFailure.serverError()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.serverError,
+        message: AppLocalizations.current.serverError,
         type: SnackbarType.failure);
   } else if (failure ==
           const AuthFailure.invalidEmailAndPasswordCombination() ||
       failure == const UserInfoFailure.invalidEmailAndPasswordCombination()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.invalidEmailAndPassword,
+        message: AppLocalizations.current.invalidEmailAndPassword,
         type: SnackbarType.failure);
   } else if (failure ==
       const AuthFailure.accountExistsWithDifferentCredential()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.accountWithDifferentCredentials,
+        message: AppLocalizations.current.accountWithDifferentCredentials,
         type: SnackbarType.failure);
   } else if (failure == const AuthFailure.userNotFoundResetPassword()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.userNotFoundResetPassword,
+        message: AppLocalizations.current.userNotFoundResetPassword,
         type: SnackbarType.failure);
   } else if (failure == const AuthFailure.emailAlreadyInUse() ||
       failure == const UserInfoFailure.emailAlreadyInUse()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.emailAlreadyInUse,
+        message: AppLocalizations.current.emailAlreadyInUse,
         type: SnackbarType.failure);
   } else if (failure == const AuthFailure.noConnection() ||
       failure == const DatabaseFailure.noConnection() ||
       failure == const UserInfoFailure.noConnection()) {
     showSnackBar(
         context: context,
-        message: AppLocalizations.of(context)!.noConnectionMessage,
+        message: AppLocalizations.current.noConnectionMessage,
         type: SnackbarType.failure);
   }
 }
@@ -119,13 +119,13 @@ void showResetPasswordDialog(BuildContext context) {
               watch(signInFormProvider).showResetPasswordEmailError;
           return AlertDialog(
             title: Text(
-              AppLocalizations.of(context)!.resetPassword,
+              AppLocalizations.current.resetPassword,
               style: Theme.of(context).textTheme.headline6,
             ),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(AppLocalizations.of(context)!.resetPasswordDialogMessage),
+                Text(AppLocalizations.current.resetPasswordDialogMessage),
                 const SizedBox(height: 10.0),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
@@ -134,7 +134,7 @@ void showResetPasswordDialog(BuildContext context) {
                       context.read(signInFormProvider).resetPasswordEmail,
                   autofocus: true,
                   decoration: InputDecoration(
-                    hintText: AppLocalizations.of(context)!.email,
+                    hintText: AppLocalizations.current.email,
                   ),
                   autovalidateMode: showErrorMessages
                       ? AutovalidateMode.always
@@ -148,7 +148,7 @@ void showResetPasswordDialog(BuildContext context) {
                         .validateEmail(value!);
                     return isValid
                         ? null
-                        : AppLocalizations.of(context)!.invalidEmail;
+                        : AppLocalizations.current.invalidEmail;
                   },
                 ),
               ],
@@ -156,7 +156,7 @@ void showResetPasswordDialog(BuildContext context) {
             actions: [
               TextButton(
                   onPressed: () => AutoRouter.of(context).pop(),
-                  child: Text(AppLocalizations.of(context)!.cancel)),
+                  child: Text(AppLocalizations.current.cancel)),
               TextButton(
                 onPressed: () async {
                   final bool success = await context
@@ -166,15 +166,15 @@ void showResetPasswordDialog(BuildContext context) {
                     await Future.delayed(Duration.zero, () async {
                       await showMessageDialog(
                           context: context,
-                          message: AppLocalizations.of(context)!
-                              .resetPasswordEmailSent);
+                          message:
+                              AppLocalizations.current.resetPasswordEmailSent);
                     });
                     Future.delayed(Duration.zero, () {
                       AutoRouter.of(context).pop();
                     });
                   }
                 },
-                child: Text(AppLocalizations.of(context)!.send),
+                child: Text(AppLocalizations.current.send),
               ),
             ],
           );
@@ -197,7 +197,7 @@ Future<void> showMessageDialog(
         actions: [
           TextButton(
               onPressed: () => AutoRouter.of(context).pop(),
-              child: Text(AppLocalizations.of(context)!.ok)),
+              child: Text(AppLocalizations.current.ok)),
         ],
       );
     },
@@ -218,11 +218,11 @@ Future<bool> showConfirmDialog(
         actions: [
           TextButton(
             onPressed: () => AutoRouter.of(context).pop(false),
-            child: Text(AppLocalizations.of(context)!.cancel),
+            child: Text(AppLocalizations.current.cancel),
           ),
           TextButton(
             onPressed: () => AutoRouter.of(context).pop(true),
-            child: Text(confirmText ?? AppLocalizations.of(context)!.delete),
+            child: Text(confirmText ?? AppLocalizations.current.delete),
           ),
         ],
       );
@@ -233,10 +233,10 @@ Future<bool> showConfirmDialog(
 
 Future<Option<String>> showDeleteAccountConfirmDialog(
     {required BuildContext context, required bool isPassword}) async {
-  final title = Text(AppLocalizations.of(context)!.areYouSureDeleteAccount);
+  final title = Text(AppLocalizations.current.areYouSureDeleteAccount);
   final content = isPassword
       ? Text(
-          '${AppLocalizations.of(context)!.thisAcctionCannotBeUndone} ${AppLocalizations.of(context)!.enterYourPasswordToConfirm}',
+          '${AppLocalizations.current.thisAcctionCannotBeUndone} ${AppLocalizations.current.enterYourPasswordToConfirm}',
           style: Theme.of(context).textTheme.bodyText1,
         )
       : RichText(
@@ -244,19 +244,19 @@ Future<Option<String>> showDeleteAccountConfirmDialog(
             children: <TextSpan>[
               TextSpan(
                 text:
-                    '${AppLocalizations.of(context)!.thisAcctionCannotBeUndone} ${AppLocalizations.of(context)!.typeTheWord} ',
+                    '${AppLocalizations.current.thisAcctionCannotBeUndone} ${AppLocalizations.current.typeTheWord} ',
                 style: Theme.of(context).textTheme.bodyText1,
               ),
               TextSpan(
-                  text: AppLocalizations.of(context)!.deleteCap,
+                  text: AppLocalizations.current.deleteCap,
                   style: const TextStyle(
                       color: Colors.redAccent, fontWeight: FontWeight.bold)),
               TextSpan(
-                text: ' ${AppLocalizations.of(context)!.toConfirm}\n',
+                text: ' ${AppLocalizations.current.toConfirm}\n',
                 style: Theme.of(context).textTheme.bodyText1,
               ),
               TextSpan(
-                text: AppLocalizations.of(context)!.youMayHaveToRelogin,
+                text: AppLocalizations.current.youMayHaveToRelogin,
                 style: Theme.of(context)
                     .textTheme
                     .bodyText1!
@@ -271,8 +271,8 @@ Future<Option<String>> showDeleteAccountConfirmDialog(
     content: content,
     isPassword: isPassword,
     hintText: isPassword
-        ? AppLocalizations.of(context)!.password
-        : AppLocalizations.of(context)!.typeHere,
+        ? AppLocalizations.current.password
+        : AppLocalizations.current.typeHere,
   );
 }
 
@@ -281,14 +281,14 @@ void showPremiumDialog({required BuildContext context}) {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: Text(AppLocalizations.of(context)!.premiumFeature),
-        content: Text(AppLocalizations.of(context)!.premiumFeatureMessage),
+        title: Text(AppLocalizations.current.premiumFeature),
+        content: Text(AppLocalizations.current.premiumFeatureMessage),
         actions: [
           TextButton(
             onPressed: () {
               AutoRouter.of(context).pop();
             },
-            child: Text(AppLocalizations.of(context)!.close),
+            child: Text(AppLocalizations.current.close),
           ),
           TextButton(
             style: TextButton.styleFrom(
@@ -299,7 +299,7 @@ void showPremiumDialog({required BuildContext context}) {
               //TODO navigate to membership
             },
             child: Text(
-              AppLocalizations.of(context)!.moreInfo,
+              AppLocalizations.current.moreInfo,
               style: const TextStyle(
                   fontWeight: FontWeight.bold, color: Colors.white),
             ),
@@ -318,12 +318,12 @@ void showPermissionsDialog(
       return AlertDialog(
         title: (title != null && title.isNotEmpty) ? Text(title) : null,
         content: (message != null && message.isNotEmpty)
-            ? Text('$message\n${AppLocalizations.of(context)!.allowAccess}')
+            ? Text('$message\n${AppLocalizations.current.allowAccess}')
             : null,
         actions: [
           TextButton(
             onPressed: () => AutoRouter.of(context).pop(false),
-            child: Text(AppLocalizations.of(context)!.close),
+            child: Text(AppLocalizations.current.close),
           ),
           TextButton(
             style: TextButton.styleFrom(
@@ -334,7 +334,7 @@ void showPermissionsDialog(
               openAppSettings();
             },
             child: Text(
-              AppLocalizations.of(context)!.goToSettings,
+              AppLocalizations.current.goToSettings,
               style: const TextStyle(
                   fontWeight: FontWeight.bold, color: Colors.white),
             ),
@@ -347,14 +347,14 @@ void showPermissionsDialog(
 
 Future<Option<String>> showReloginPasswordDialog(
     {required BuildContext context}) {
-  final title = Text(AppLocalizations.of(context)!.reauthenticate);
-  final content = Text(AppLocalizations.of(context)!.reauthMessage);
+  final title = Text(AppLocalizations.current.reauthenticate);
+  final content = Text(AppLocalizations.current.reauthMessage);
   return showTextFieldDialog(
       context: context,
       title: title,
       content: content,
       isPassword: true,
-      hintText: AppLocalizations.of(context)!.password);
+      hintText: AppLocalizations.current.password);
 }
 
 Future<Option<String>> showTextFieldDialog(
@@ -394,14 +394,14 @@ Future<Option<String>> showTextFieldDialog(
             onPressed: () {
               AutoRouter.of(context).pop();
             },
-            child: Text(AppLocalizations.of(context)!.cancel),
+            child: Text(AppLocalizations.current.cancel),
           ),
           TextButton(
             onPressed: () {
               final response = _controller.text;
               AutoRouter.of(context).pop(response);
             },
-            child: Text(AppLocalizations.of(context)!.continueString),
+            child: Text(AppLocalizations.current.continueString),
           ),
         ],
       );
@@ -416,21 +416,21 @@ Future<Option<SourceImage>> showImageSourceDialog(BuildContext context) async {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text(AppLocalizations.of(context)!.editImage),
+        title: Text(AppLocalizations.current.editImage),
         content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.80,
           child: ListView(
             shrinkWrap: true,
             children: [
               ListTile(
-                title: Text(AppLocalizations.of(context)!.selectImage),
+                title: Text(AppLocalizations.current.selectImage),
                 onTap: () {
                   AutoRouter.of(context).pop(const SourceImage.gallery());
                 },
               ),
               const Divider(height: 0.0),
               ListTile(
-                title: Text(AppLocalizations.of(context)!.takePhoto),
+                title: Text(AppLocalizations.current.takePhoto),
                 onTap: () {
                   AutoRouter.of(context).pop(const SourceImage.camera());
                 },
@@ -450,7 +450,7 @@ Future<Option<String>> showAffiliationDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text(AppLocalizations.of(context)!.affiliateAs),
+        title: Text(AppLocalizations.current.affiliateAs),
         content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.80,
           child: ListView(
@@ -458,8 +458,8 @@ Future<Option<String>> showAffiliationDialog(
             children: [
               ListTile(
                 title: Text(gender == 'female'
-                    ? AppLocalizations.of(context)!.clientF
-                    : AppLocalizations.of(context)!.client),
+                    ? AppLocalizations.current.clientF
+                    : AppLocalizations.current.client),
                 onTap: () {
                   AutoRouter.of(context)
                       .pop(context.read(appDefaultDataProvider).clientID);
@@ -468,8 +468,8 @@ Future<Option<String>> showAffiliationDialog(
               const Divider(height: 0.0),
               ListTile(
                 title: Text(gender == 'female'
-                    ? AppLocalizations.of(context)!.executiveF
-                    : AppLocalizations.of(context)!.executive),
+                    ? AppLocalizations.current.executiveF
+                    : AppLocalizations.current.executive),
                 onTap: () {
                   AutoRouter.of(context)
                       .pop(context.read(appDefaultDataProvider).executiveID);
@@ -517,12 +517,12 @@ void showFiltersDialog(BuildContext context) {
           final List<String> tagsFilter =
               watch(contactsNotifierProvider).tagsFilter;
           final String genderText = genderFilter == 'male'
-              ? AppLocalizations.of(context)!.male
-              : AppLocalizations.of(context)!.female;
+              ? AppLocalizations.current.male
+              : AppLocalizations.current.female;
           return AlertDialog(
             contentPadding: const EdgeInsets.symmetric(vertical: 20.0),
             title: Text(
-              AppLocalizations.of(context)!.filterBy,
+              AppLocalizations.current.filterBy,
               style: Theme.of(context).textTheme.headline6,
             ),
             content: Column(
@@ -535,8 +535,8 @@ void showFiltersDialog(BuildContext context) {
                       : null,
                   title: Text(
                     genderFilter.isNotEmpty
-                        ? '${AppLocalizations.of(context)!.gender}: $genderText'
-                        : AppLocalizations.of(context)!.gender,
+                        ? '${AppLocalizations.current.gender}: $genderText'
+                        : AppLocalizations.current.gender,
                     style: TextStyle(
                         color: genderFilter.isNotEmpty ? Colors.white70 : null),
                   ),
@@ -560,8 +560,8 @@ void showFiltersDialog(BuildContext context) {
                       : null,
                   title: Text(
                     locationFilter.isNotEmpty
-                        ? '${AppLocalizations.of(context)!.city}: $locationFilter'
-                        : AppLocalizations.of(context)!.city,
+                        ? '${AppLocalizations.current.city}: $locationFilter'
+                        : AppLocalizations.current.city,
                     style: TextStyle(
                         color:
                             locationFilter.isNotEmpty ? Colors.white70 : null),
@@ -593,10 +593,10 @@ void showFiltersDialog(BuildContext context) {
               TextButton(
                   onPressed: () =>
                       context.read(contactsNotifierProvider).clearFilters(),
-                  child: Text(AppLocalizations.of(context)!.clearFilters)),
+                  child: Text(AppLocalizations.current.clearFilters)),
               TextButton(
                 onPressed: () => AutoRouter.of(context).pop(),
-                child: Text(AppLocalizations.of(context)!.ok),
+                child: Text(AppLocalizations.current.ok),
               ),
             ],
           );

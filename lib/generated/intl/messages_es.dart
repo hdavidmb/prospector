@@ -1,0 +1,236 @@
+// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
+// This is a library that provides messages for a es locale. All the
+// messages from the main program should be duplicated here with the same
+// function name.
+
+// Ignore issues from commonly used lints in this file.
+// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
+// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
+// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
+// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
+
+import 'package:intl/intl.dart';
+import 'package:intl/message_lookup_by_library.dart';
+
+final messages = new MessageLookup();
+
+typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+
+class MessageLookup extends MessageLookupByLibrary {
+  String get localeName => 'es';
+
+  final messages = _notInlinedMessages(_notInlinedMessages);
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "accountWithDifferentCredentials": MessageLookupByLibrary.simpleMessage(
+            "Tu cuenta no está asociada a este perfil. Intenta con los demás metodos de inicio de sesión."),
+        "addANewTag":
+            MessageLookupByLibrary.simpleMessage("Agregar nueva etiqueta:"),
+        "addTag": MessageLookupByLibrary.simpleMessage("Agregar etiqueta"),
+        "affiliate": MessageLookupByLibrary.simpleMessage("Afiliar"),
+        "affiliateAs": MessageLookupByLibrary.simpleMessage("Afiliar como"),
+        "affiliatedP": MessageLookupByLibrary.simpleMessage("Afiliados"),
+        "allowAccess": MessageLookupByLibrary.simpleMessage(
+            "Por favor habilitalo en la configuración de tu dispositivo."),
+        "appStateError": MessageLookupByLibrary.simpleMessage(
+            "Ha habido un error al iniciar la aplicación. Comprueba tu conexión a internet y vuelve a intentarlo más tarde."),
+        "areYouSureDeleteAccount": MessageLookupByLibrary.simpleMessage(
+            "Confirma que deseas eliminar tu cuenta."),
+        "areYouSureDeleteProspect": MessageLookupByLibrary.simpleMessage(
+            "Confirma que deseas eliminar este prospecto"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
+        "changeEmail":
+            MessageLookupByLibrary.simpleMessage("Cambiar correo electrónico"),
+        "changePassword":
+            MessageLookupByLibrary.simpleMessage("Cambiar contraseña"),
+        "city": MessageLookupByLibrary.simpleMessage("Ciudad"),
+        "clearFilters": MessageLookupByLibrary.simpleMessage("Limpiar filtros"),
+        "client": MessageLookupByLibrary.simpleMessage("Cliente"),
+        "clientF": MessageLookupByLibrary.simpleMessage("Clienta"),
+        "clients": MessageLookupByLibrary.simpleMessage("Clientes"),
+        "close": MessageLookupByLibrary.simpleMessage("Cerrar"),
+        "confirmNewEmail":
+            MessageLookupByLibrary.simpleMessage("Confirmar nuevo correo"),
+        "confirmNewPassword":
+            MessageLookupByLibrary.simpleMessage("Confirmar nueva contraseña"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("Confirmar contraseña"),
+        "contactsAccess":
+            MessageLookupByLibrary.simpleMessage("Acceso a contactos"),
+        "contactsAccessMessage": MessageLookupByLibrary.simpleMessage(
+            "El acceso a los contactos esta deshabilitado para Prospector MLM."),
+        "continueString": MessageLookupByLibrary.simpleMessage("Continuar"),
+        "currentEmail": MessageLookupByLibrary.simpleMessage("Correo actual"),
+        "currentPassword":
+            MessageLookupByLibrary.simpleMessage("Contraseña actual"),
+        "darkTheme": MessageLookupByLibrary.simpleMessage("Modo oscuro"),
+        "delete": MessageLookupByLibrary.simpleMessage("Eliminar"),
+        "deleteAccount":
+            MessageLookupByLibrary.simpleMessage("Eliminar cuenta"),
+        "deleteCap": MessageLookupByLibrary.simpleMessage("ELIMINAR"),
+        "deleteProspect":
+            MessageLookupByLibrary.simpleMessage("Eliminar prospecto"),
+        "disable": MessageLookupByLibrary.simpleMessage("Deshabilitar"),
+        "edit": MessageLookupByLibrary.simpleMessage("Editar"),
+        "editImage": MessageLookupByLibrary.simpleMessage("Editar imagen"),
+        "editProspect":
+            MessageLookupByLibrary.simpleMessage("Editar prospecto"),
+        "email": MessageLookupByLibrary.simpleMessage("Correo electrónico"),
+        "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
+            "Ya existe una cuenta con este correo."),
+        "emailsDontMatch":
+            MessageLookupByLibrary.simpleMessage("Los correos no coinciden"),
+        "enable": MessageLookupByLibrary.simpleMessage("Habilitar"),
+        "enterAPassword":
+            MessageLookupByLibrary.simpleMessage("Ingresa una contraseña"),
+        "enterYourName":
+            MessageLookupByLibrary.simpleMessage("Ingresa tu nombre"),
+        "enterYourPasswordToConfirm": MessageLookupByLibrary.simpleMessage(
+            "Ingresa tu contraseña para confirmar"),
+        "events": MessageLookupByLibrary.simpleMessage("Eventos"),
+        "executive": MessageLookupByLibrary.simpleMessage("Ejecutivo"),
+        "executiveF": MessageLookupByLibrary.simpleMessage("Ejecutiva"),
+        "executives": MessageLookupByLibrary.simpleMessage("Ejecutivos"),
+        "female": MessageLookupByLibrary.simpleMessage("Femenino"),
+        "filterBy": MessageLookupByLibrary.simpleMessage("Filtrar por..."),
+        "followUp": MessageLookupByLibrary.simpleMessage("Seguimiento"),
+        "forgotPassword":
+            MessageLookupByLibrary.simpleMessage("Olvidé mi contraseña"),
+        "gender": MessageLookupByLibrary.simpleMessage("Género"),
+        "general": MessageLookupByLibrary.simpleMessage("General"),
+        "getRidOfAds":
+            MessageLookupByLibrary.simpleMessage("Elimina la Publicidad"),
+        "goToSettings":
+            MessageLookupByLibrary.simpleMessage("Ir a Configuración"),
+        "hidePasswords":
+            MessageLookupByLibrary.simpleMessage("Ocultar contraseñas"),
+        "import": MessageLookupByLibrary.simpleMessage("Importar"),
+        "importContacts":
+            MessageLookupByLibrary.simpleMessage("Importar contactos"),
+        "importedContacts":
+            MessageLookupByLibrary.simpleMessage("Contactos importados"),
+        "invalidEmail": MessageLookupByLibrary.simpleMessage("Correo inválido"),
+        "invalidEmailAndPassword": MessageLookupByLibrary.simpleMessage(
+            "Correo electrónico o contraseña invalidos"),
+        "invite": MessageLookupByLibrary.simpleMessage("Invitar"),
+        "invited": MessageLookupByLibrary.simpleMessage("Invitado"),
+        "invitedF": MessageLookupByLibrary.simpleMessage("Invitada"),
+        "invitedP": MessageLookupByLibrary.simpleMessage("Invitados"),
+        "lightTheme": MessageLookupByLibrary.simpleMessage("Modo claro"),
+        "loadingContacts":
+            MessageLookupByLibrary.simpleMessage("Cargando contactos..."),
+        "logOut": MessageLookupByLibrary.simpleMessage("Cerrar sesión"),
+        "loggedInWith":
+            MessageLookupByLibrary.simpleMessage("Iniciaste sesión con"),
+        "male": MessageLookupByLibrary.simpleMessage("Masculino"),
+        "membership": MessageLookupByLibrary.simpleMessage("Membresía"),
+        "minutes": MessageLookupByLibrary.simpleMessage("minutos"),
+        "moreInfo": MessageLookupByLibrary.simpleMessage("Más información"),
+        "name": MessageLookupByLibrary.simpleMessage("Nombre"),
+        "nameMustNotBeEmpty": MessageLookupByLibrary.simpleMessage(
+            "El nombre no puede estar vacío"),
+        "nameRequired":
+            MessageLookupByLibrary.simpleMessage("Nombre (Requerido)"),
+        "newEmail":
+            MessageLookupByLibrary.simpleMessage("Nuevo correo electrónico"),
+        "newPassword": MessageLookupByLibrary.simpleMessage("Nueva contraseña"),
+        "newPhone": MessageLookupByLibrary.simpleMessage("Nuevo teléfono"),
+        "newProspect": MessageLookupByLibrary.simpleMessage("Nuevo prospecto"),
+        "newString": MessageLookupByLibrary.simpleMessage("Nuevo"),
+        "noConnectionMessage": MessageLookupByLibrary.simpleMessage(
+            "Algo salió mal. Comprueba tu conexión a internet y vuelve a intentarlo más tarde."),
+        "noDeviceContactsMessage": MessageLookupByLibrary.simpleMessage(
+            "No hay contactos en la lista de contactos de tu dispositivo."),
+        "noFilteredProspectsMessage": MessageLookupByLibrary.simpleMessage(
+            "Esta lista no contiene prospectos que conicidan con los filtros aplicados."),
+        "noImportedContactsMessage": MessageLookupByLibrary.simpleMessage(
+            "Aún no has importado ningún contacto. Intenta importar algunos de los contactos de tu dispositivo.\n\nAsegúrate de permitir el acceso a los contactos."),
+        "noProspectsMessage": MessageLookupByLibrary.simpleMessage(
+            "Aún no tienes prospectos en esta lista.\nIntenta agregar nuevos prospectos o moverlos desde las otras listas."),
+        "noSearchProspectsMessage": MessageLookupByLibrary.simpleMessage(
+            "No hay ningún prospecto que coincida con la busqueda."),
+        "notContacted": MessageLookupByLibrary.simpleMessage("No contactado"),
+        "notContactedF": MessageLookupByLibrary.simpleMessage("No contactada"),
+        "notContactedP": MessageLookupByLibrary.simpleMessage("No contactados"),
+        "notInteresteF": MessageLookupByLibrary.simpleMessage("No interesada"),
+        "notInterested": MessageLookupByLibrary.simpleMessage("No interesado"),
+        "notInterestedP":
+            MessageLookupByLibrary.simpleMessage("No interesados"),
+        "ofProspectorWithNoAds": MessageLookupByLibrary.simpleMessage(
+            "de Prospector sin publicidad"),
+        "ok": MessageLookupByLibrary.simpleMessage("Ok"),
+        "orContinueWith":
+            MessageLookupByLibrary.simpleMessage("- o continúa con -"),
+        "password": MessageLookupByLibrary.simpleMessage("Contraseña"),
+        "passwordsDontMatch": MessageLookupByLibrary.simpleMessage(
+            "Las contraseñas no coinciden"),
+        "phone": MessageLookupByLibrary.simpleMessage("Teléfono"),
+        "premiumCap": MessageLookupByLibrary.simpleMessage("PREMIUM"),
+        "premiumFeature":
+            MessageLookupByLibrary.simpleMessage("Función Premium"),
+        "premiumFeatureMessage": MessageLookupByLibrary.simpleMessage(
+            "Esta es una característica premium.\nAdquiere alguna de nuestras suscripciones premium para acceder a esta función y llevar tu negocio al siguiente nivel."),
+        "present": MessageLookupByLibrary.simpleMessage("Presentar"),
+        "profile": MessageLookupByLibrary.simpleMessage("Perfil"),
+        "prospectDetails": MessageLookupByLibrary.simpleMessage("Detalles"),
+        "prospectSavedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Prospecto guardado exitosamente"),
+        "prospector": MessageLookupByLibrary.simpleMessage("Prospector"),
+        "prospectorWillImportContacts": MessageLookupByLibrary.simpleMessage(
+            "Prospector importará automáticamente los contactos nuevos que agregues en tu dispositivo."),
+        "prospectorWillStopImporting": MessageLookupByLibrary.simpleMessage(
+            "Prospector dejará de importar automáticamente los nuevos contactos de tu dispositivo."),
+        "prospects": MessageLookupByLibrary.simpleMessage("Prospectos"),
+        "reauthMessage": MessageLookupByLibrary.simpleMessage(
+            "Debes autenticarte de nuevo. Ingresa tu contraseña para continuar."),
+        "reauthenticate": MessageLookupByLibrary.simpleMessage("Reautenticar"),
+        "register": MessageLookupByLibrary.simpleMessage("Registro"),
+        "registerButton": MessageLookupByLibrary.simpleMessage("Registrarme"),
+        "resetPassword":
+            MessageLookupByLibrary.simpleMessage("Restablecer contraseña"),
+        "resetPasswordDialogMessage": MessageLookupByLibrary.simpleMessage(
+            "Ingresa el correo electrónico que usaste para crear tu cuenta en Prospector"),
+        "resetPasswordEmailSent": MessageLookupByLibrary.simpleMessage(
+            "Te hemos enviado un correo con las instrucciones para restablecer tu contraseña. \nPor favor revisa tu bandeja de entrada."),
+        "save": MessageLookupByLibrary.simpleMessage("Guardar"),
+        "search": MessageLookupByLibrary.simpleMessage("Buscar"),
+        "selectAll": MessageLookupByLibrary.simpleMessage("Seleccionar todos"),
+        "selectImage":
+            MessageLookupByLibrary.simpleMessage("Seleccionar imagen"),
+        "send": MessageLookupByLibrary.simpleMessage("Enviar"),
+        "serverError": MessageLookupByLibrary.simpleMessage(
+            "Algo salió mal. Por favor intenta de nuevo más tarde."),
+        "settings": MessageLookupByLibrary.simpleMessage("Configuración"),
+        "showPasswords":
+            MessageLookupByLibrary.simpleMessage("Mostrar contraseñas"),
+        "signIn": MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
+        "statistics": MessageLookupByLibrary.simpleMessage("Estadisticas"),
+        "syncContacts":
+            MessageLookupByLibrary.simpleMessage("Sincronizar contactos"),
+        "tagName":
+            MessageLookupByLibrary.simpleMessage("Nombre de la etiqueta"),
+        "tags": MessageLookupByLibrary.simpleMessage("Etiquetas"),
+        "takePhoto": MessageLookupByLibrary.simpleMessage("Tomar foto"),
+        "thisAcctionCannotBeUndone": MessageLookupByLibrary.simpleMessage(
+            "Esta acción no se puede deshacer."),
+        "toConfirm": MessageLookupByLibrary.simpleMessage("para confirmar."),
+        "tryAgain": MessageLookupByLibrary.simpleMessage("Reintentar"),
+        "typeAnInteraction":
+            MessageLookupByLibrary.simpleMessage("Ingresa una interacción..."),
+        "typeHere": MessageLookupByLibrary.simpleMessage("Escribe aqui"),
+        "typeTheWord":
+            MessageLookupByLibrary.simpleMessage("Ingresa la palabra"),
+        "unselectAll":
+            MessageLookupByLibrary.simpleMessage("Deseleccionar todos"),
+        "until": MessageLookupByLibrary.simpleMessage("hasta"),
+        "userNotFoundResetPassword": MessageLookupByLibrary.simpleMessage(
+            "No hemos encontrado ninguna cuenta asociada a este correo. Por favor verifica tus datos."),
+        "watchAShortVideo": MessageLookupByLibrary.simpleMessage(
+            "Mira un corto video para tener"),
+        "weakPassword": MessageLookupByLibrary.simpleMessage(
+            "Contraseña débil. \n Debe ser de al menos 8 caracteres y contener: \n - 1 letra mayúscula \n - 1 letra minúscula \n - 1 número"),
+        "welcomeTo": MessageLookupByLibrary.simpleMessage("Bienvenido a"),
+        "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
+        "youMayHaveToRelogin": MessageLookupByLibrary.simpleMessage(
+            "Deberás autenticar tu cuenta social de nuevo.")
+      };
+}

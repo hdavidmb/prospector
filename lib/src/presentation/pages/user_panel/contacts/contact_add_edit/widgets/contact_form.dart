@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../../../../generated/l10n.dart';
 
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
 import '../../../../../core/dialogs.dart';
@@ -41,7 +41,7 @@ class ContactForm extends StatelessWidget {
                 showSnackBar(
                     context: context,
                     message:
-                        AppLocalizations.of(context)!.prospectSavedSuccessfully,
+                        AppLocalizations.of(context).prospectSavedSuccessfully,
                     type: SnackbarType.success);
                 //Reset form state
                 context.read(contactFormProvider.notifier).reset();
@@ -98,7 +98,7 @@ class ContactForm extends StatelessWidget {
                                   .read(contactFormProvider.notifier)
                                   .getContactImage(context),
                               child:
-                                  Text(AppLocalizations.of(context)!.editImage),
+                                  Text(AppLocalizations.of(context).editImage),
                             ),
                           ],
                         ),
@@ -200,7 +200,7 @@ class ContactForm extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(AppLocalizations.of(context)!.save),
+                      Text(AppLocalizations.of(context).save),
                       if (formState.isSubmitting)
                         const CircularProgressIndicator.adaptive(),
                     ],
@@ -219,7 +219,7 @@ class ContactForm extends StatelessWidget {
                                     context: context,
                                     contactID: editingContact!.id);
                           },
-                    child: Text(AppLocalizations.of(context)!.deleteProspect,
+                    child: Text(AppLocalizations.of(context).deleteProspect,
                         style: const TextStyle(color: Colors.red)),
                   ),
                 ],

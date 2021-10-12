@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/auth/domain/auth_failure.dart';
 import '../../../../../../features/auth/domain/use_cases/relogin_user.dart';
 import '../../../../../../features/auth/domain/use_cases/sign_out.dart';
@@ -25,13 +25,14 @@ class UserProfileNotifier extends ChangeNotifier with FormValidators {
   final GetImage getImage;
   final Reader read;
 
-  UserProfileNotifier(
-      {required this.signOut,
-      required this.reloginUser,
-      required this.deleteUserAccount,
-      required this.uploadUserAvatar,
-      required this.getImage,
-      required this.read});
+  UserProfileNotifier({
+    required this.signOut,
+    required this.reloginUser,
+    required this.deleteUserAccount,
+    required this.uploadUserAvatar,
+    required this.getImage,
+    required this.read,
+  });
 
   UserProfileState _userProfileState = const UserProfileState.initial();
   String? _formName;
@@ -72,7 +73,7 @@ class UserProfileNotifier extends ChangeNotifier with FormValidators {
           if (_isPassword) {
             reloginResult = await reloginUser(
                 provider: userAuthProvider, password: _response);
-          } else if (_response == AppLocalizations.of(context)!.deleteCap) {
+          } else if (_response == AppLocalizations.current.deleteCap) {
             reloginResult = await reloginUser(provider: userAuthProvider);
           } else {
             reloginResult =

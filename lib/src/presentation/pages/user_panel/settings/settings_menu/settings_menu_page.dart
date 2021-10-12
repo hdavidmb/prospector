@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../../../generated/l10n.dart';
 import 'widgets/settings_admob_banner.dart';
 import 'widgets/settings_menu_items.dart';
 import 'widgets/theme_switch.dart';
@@ -14,7 +14,7 @@ class SettingsMenuPage extends StatelessWidget {
       indent: 10.0,
     );
     return Scaffold(
-      appBar: AppBar(title: Text(AppLocalizations.of(context)!.settings)),
+      appBar: AppBar(title: Text(AppLocalizations.of(context).settings)),
       body: Column(
         children: [
           Expanded(
@@ -23,7 +23,7 @@ class SettingsMenuPage extends StatelessWidget {
               children: [
                 UserProfileListTile(),
                 divider,
-                const SettingsMenuItems(divider: divider),
+                SettingsMenuItems(divider: divider),
                 ThemeSwitch(),
                 divider,
               ],

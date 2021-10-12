@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
+import '../generated/l10n.dart';
 
 import 'features/app_default_data/application/app_default_data_providers.dart';
 import 'presentation/core/app_state/app_state.dart';
@@ -59,7 +60,7 @@ class _AppState extends State<App> {
               showingDialog = true;
               await showMessageDialog(
                   context: context,
-                  message: AppLocalizations.of(context)!.appStateError);
+                  message: AppLocalizations.of(context).appStateError);
               showingDialog = false;
             }
           },
@@ -73,8 +74,13 @@ class _AppState extends State<App> {
           return MaterialApp.router(
             title: 'Prospector',
             debugShowCheckedModeBanner: false,
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: AppLocalizations.delegate
                 .supportedLocales, //! Add .arb file on lib/l10n - also modify info.plist localizations
             themeMode: currentThemeMode,
             theme: kLightTheme,

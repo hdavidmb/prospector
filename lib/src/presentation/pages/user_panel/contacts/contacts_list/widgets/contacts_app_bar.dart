@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../core/contacts_search_field/contacts_search_field.dart';
 import '../../../../../core/dialogs.dart';
@@ -30,13 +30,13 @@ class ContactsAppBar extends StatelessWidget implements PreferredSizeWidget {
                   .read(contactsNotifierProvider)
                   .search(searchText: value),
             )
-          : Text(AppLocalizations.of(context)!.prospects),
+          : Text(AppLocalizations.of(context).prospects),
       actions: isSearchBarShowing
           ? [
               TextButton(
                 onPressed: () =>
                     context.read(contactsNotifierProvider).cancelSearch(),
-                child: Text(AppLocalizations.of(context)!.cancel),
+                child: Text(AppLocalizations.of(context).cancel),
               ),
               const SizedBox(width: 8.0),
             ]

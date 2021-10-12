@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../../../../generated/l10n.dart';
 import '../../../../../../../core/shared_prefs/shared_prefs.dart';
 import '../../../../../../../features/import_contacts/application/import_contacts_providers.dart';
 import '../../../../../../../features/user/application/user_info_providers.dart';
@@ -24,12 +24,12 @@ class ImportContactsMenuNotifier extends ChangeNotifier {
       final bool confirm = await showConfirmDialog(
           context: context,
           title: value
-              ? AppLocalizations.of(context)!.enable
-              : AppLocalizations.of(context)!.disable,
+              ? AppLocalizations.current.enable
+              : AppLocalizations.current.disable,
           message: value
-              ? AppLocalizations.of(context)!.prospectorWillImportContacts
-              : AppLocalizations.of(context)!.prospectorWillStopImporting,
-          confirmText: AppLocalizations.of(context)!.ok);
+              ? AppLocalizations.current.prospectorWillImportContacts
+              : AppLocalizations.current.prospectorWillStopImporting,
+          confirmText: AppLocalizations.current.ok);
       if (!confirm) return;
 
       await Future.delayed(Duration.zero, () async {

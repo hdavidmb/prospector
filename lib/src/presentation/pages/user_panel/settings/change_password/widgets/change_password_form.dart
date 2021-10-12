@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../core/dialogs.dart';
 import '../logic/change_password_form_provider.dart';
 import '../logic/change_password_form_state.dart';
@@ -36,7 +36,7 @@ class ChangePasswordForm extends ConsumerWidget {
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.lock),
-                  hintText: AppLocalizations.of(context)!.currentPassword,
+                  hintText: AppLocalizations.of(context).currentPassword,
                 ),
                 textInputAction: TextInputAction.next,
                 obscureText: !showPasswords,
@@ -49,7 +49,7 @@ class ChangePasswordForm extends ConsumerWidget {
                       .validateFieldIsNotEmpty(value!);
                   return isValid
                       ? null
-                      : AppLocalizations.of(context)!.enterAPassword;
+                      : AppLocalizations.of(context).enterAPassword;
                 },
               ),
               const SizedBox(height: 20.0),
@@ -59,7 +59,7 @@ class ChangePasswordForm extends ConsumerWidget {
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.lock),
-                  hintText: AppLocalizations.of(context)!.newPassword,
+                  hintText: AppLocalizations.of(context).newPassword,
                 ),
                 textInputAction: TextInputAction.next,
                 obscureText: !showPasswords,
@@ -72,7 +72,7 @@ class ChangePasswordForm extends ConsumerWidget {
                       .validatePasswordStrength(value!);
                   return isValid
                       ? null
-                      : AppLocalizations.of(context)!.weakPassword;
+                      : AppLocalizations.of(context).weakPassword;
                 },
               ),
               const SizedBox(height: 10.0),
@@ -80,7 +80,7 @@ class ChangePasswordForm extends ConsumerWidget {
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.lock),
-                  hintText: AppLocalizations.of(context)!.confirmNewPassword,
+                  hintText: AppLocalizations.of(context).confirmNewPassword,
                 ),
                 textInputAction: TextInputAction.done,
                 obscureText: !showPasswords,
@@ -95,7 +95,7 @@ class ChangePasswordForm extends ConsumerWidget {
                       .validateFieldsMatch(formState.newPassword, value);
                   return isValid
                       ? null
-                      : AppLocalizations.of(context)!.passwordsDontMatch;
+                      : AppLocalizations.of(context).passwordsDontMatch;
                 },
               ),
               const SizedBox(height: 10.0),
@@ -109,8 +109,8 @@ class ChangePasswordForm extends ConsumerWidget {
                       .showHidePasswords,
                   child: Text(
                     showPasswords
-                        ? AppLocalizations.of(context)!.hidePasswords
-                        : AppLocalizations.of(context)!.showPasswords,
+                        ? AppLocalizations.of(context).hidePasswords
+                        : AppLocalizations.of(context).showPasswords,
                     style: TextStyle(
                         color: isDarkTheme ? Colors.white70 : Colors.black87),
                   ),
@@ -122,7 +122,7 @@ class ChangePasswordForm extends ConsumerWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(AppLocalizations.of(context)!.save),
+                    Text(AppLocalizations.of(context).save),
                     if (formState.isSubmitting) ...const [
                       SizedBox(width: 8.0),
                       CircularProgressIndicator.adaptive(),

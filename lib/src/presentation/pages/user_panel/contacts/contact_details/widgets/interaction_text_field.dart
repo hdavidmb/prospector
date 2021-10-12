@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../../../../generated/l10n.dart';
 
 class InteractionTextField extends StatefulWidget {
   @override
@@ -23,7 +23,7 @@ class _InteractionTextFieldState extends State<InteractionTextField> {
               textInputAction: TextInputAction.newline,
               textCapitalization: TextCapitalization.sentences,
               decoration: InputDecoration(
-                hintText: AppLocalizations.of(context)!.typeAnInteraction,
+                hintText: AppLocalizations.of(context).typeAnInteraction,
                 contentPadding: const EdgeInsets.symmetric(
                     vertical: 10.0, horizontal: 25.0),
                 filled: true,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:random_string/random_string.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../core/shared_prefs/shared_prefs.dart';
 import '../../../core/shared_prefs/shared_prefs_provider.dart';
 import '../../../presentation/core/dialogs.dart';
@@ -59,8 +59,8 @@ class ImportContactsNotifier extends ChangeNotifier {
   void _showPermissionsDialog(BuildContext context) {
     showPermissionsDialog(
       context: context,
-      title: AppLocalizations.of(context)!.contactsAccess,
-      message: AppLocalizations.of(context)!.contactsAccessMessage,
+      title: AppLocalizations.current.contactsAccess,
+      message: AppLocalizations.current.contactsAccessMessage,
     );
   }
 

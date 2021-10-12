@@ -16,8 +16,10 @@ class StatusDropdown extends ConsumerWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final String notInterestedID = context.read(appDefaultDataProvider).notInterestedID;
-    final String notContactedID = context.read(appDefaultDataProvider).notContactedID;
+    final String notInterestedID =
+        context.read(appDefaultDataProvider).notInterestedID;
+    final String notContactedID =
+        context.read(appDefaultDataProvider).notContactedID;
     final String invitedID = context.read(appDefaultDataProvider).invitedID;
     final String followUpID = context.read(appDefaultDataProvider).followUpID;
     final String clientID = context.read(appDefaultDataProvider).clientID;
@@ -26,7 +28,9 @@ class StatusDropdown extends ConsumerWidget {
       decoration: InputDecoration(
         prefixIcon: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 18.0),
-          child: FaIcon(context.read(appDefaultDataProvider).getStatusIcon(statusID: status)),
+          child: FaIcon(context
+              .read(appDefaultDataProvider)
+              .getStatusIcon(statusID: status)),
         ),
       ),
       value: status.isNotEmpty
@@ -35,11 +39,13 @@ class StatusDropdown extends ConsumerWidget {
       items: [
         DropdownMenuItem<String>(
           value: notInterestedID,
-          child: Text(getStatusText(context: context, statusID: notInterestedID)),
+          child:
+              Text(getStatusText(context: context, statusID: notInterestedID)),
         ),
         DropdownMenuItem<String>(
           value: notContactedID,
-          child: Text(getStatusText(context: context, statusID: notContactedID)),
+          child:
+              Text(getStatusText(context: context, statusID: notContactedID)),
         ),
         DropdownMenuItem<String>(
           value: invitedID,
@@ -62,7 +68,10 @@ class StatusDropdown extends ConsumerWidget {
     );
   }
 
-  String getStatusText({required BuildContext context, required String statusID}) {
-    return context.read(appDefaultDataProvider).getStatusText(context: context, statusID: statusID, gender: gender);
+  String getStatusText(
+      {required BuildContext context, required String statusID}) {
+    return context
+        .read(appDefaultDataProvider)
+        .getStatusText(statusID: statusID, gender: gender);
   }
 }

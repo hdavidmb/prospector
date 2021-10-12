@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../core/private/private_keys.dart';
 import '../../../../../core/dialogs.dart';
 
@@ -64,7 +64,7 @@ class _LocationTextFieldState extends State<LocationTextField> {
                 icon: const Icon(Icons.clear),
               )
             : null,
-        hintText: AppLocalizations.of(context)!.city,
+        hintText: AppLocalizations.of(context).city,
       ),
       textInputAction: TextInputAction.next,
       onTap: () async {

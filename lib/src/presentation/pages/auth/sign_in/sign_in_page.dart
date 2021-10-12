@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../../generated/l10n.dart';
 import 'widgets/sign_in_form.dart';
 
 class SignInPage extends StatelessWidget {
@@ -25,10 +25,10 @@ class SignInPage extends StatelessWidget {
                           image:
                               AssetImage('assets/images/prospector_logo.png'),
                           width: 100.0)),
-                  Text(AppLocalizations.of(context)!.welcomeTo,
+                  Text(AppLocalizations.of(context).welcomeTo,
                       style: Theme.of(context).textTheme.headline5),
                   const SizedBox(height: 8.0),
-                  Text(AppLocalizations.of(context)!.prospector,
+                  Text(AppLocalizations.of(context).prospector,
                       style: Theme.of(context).textTheme.headline3!.copyWith(
                           color:
                               isDarkTheme ? Colors.white70 : Colors.black87)),

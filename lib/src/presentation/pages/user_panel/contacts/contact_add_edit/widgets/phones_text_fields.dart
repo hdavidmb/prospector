@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../../../../../../generated/l10n.dart';
 
 class PhonesTextFields extends StatefulWidget {
   final List<String> phonesList;
@@ -59,8 +60,8 @@ class _PhonesTextFieldsState extends State<PhonesTextFields> {
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.phone),
                   hintText: index == 0
-                      ? AppLocalizations.of(context)!.phone
-                      : AppLocalizations.of(context)!.newPhone,
+                      ? AppLocalizations.of(context).phone
+                      : AppLocalizations.of(context).newPhone,
                 ),
                 onChanged: (value) {
                   if (value.isEmpty) {

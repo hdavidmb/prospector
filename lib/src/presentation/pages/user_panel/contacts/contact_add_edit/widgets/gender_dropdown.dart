@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../../../../../../generated/l10n.dart';
 
 class GenderDropdown extends StatelessWidget {
   final String gender;
@@ -23,21 +24,21 @@ class GenderDropdown extends StatelessWidget {
                   ? FontAwesomeIcons.venus
                   : FontAwesomeIcons.venusMars),
         ),
-        hintText: AppLocalizations.of(context)!.gender,
+        hintText: AppLocalizations.of(context).gender,
       ),
       value: gender,
       items: [
         DropdownMenuItem<String>(
           value: '',
-          child: Text(AppLocalizations.of(context)!.gender),
+          child: Text(AppLocalizations.of(context).gender),
         ),
         DropdownMenuItem<String>(
           value: 'male',
-          child: Text(AppLocalizations.of(context)!.male),
+          child: Text(AppLocalizations.of(context).male),
         ),
         DropdownMenuItem<String>(
           value: 'female',
-          child: Text(AppLocalizations.of(context)!.female),
+          child: Text(AppLocalizations.of(context).female),
         ),
       ],
       onChanged: (value) => onGenderChanged(value!),

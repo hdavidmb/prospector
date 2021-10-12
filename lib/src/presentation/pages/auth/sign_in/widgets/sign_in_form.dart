@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../../../../../generated/l10n.dart';
 
 import '../../../../core/dialogs.dart';
 import '../../../../routes/app_router.gr.dart';
@@ -43,7 +43,7 @@ class SignInForm extends StatelessWidget {
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.email),
-                    hintText: AppLocalizations.of(context)!.email,
+                    hintText: AppLocalizations.of(context).email,
                   ),
                   textInputAction: TextInputAction.next,
                   onChanged:
@@ -54,14 +54,14 @@ class SignInForm extends StatelessWidget {
                         .validateEmail(value!);
                     return isValid
                         ? null
-                        : AppLocalizations.of(context)!.invalidEmail;
+                        : AppLocalizations.of(context).invalidEmail;
                   },
                 ),
                 const SizedBox(height: 10.0),
                 TextFormField(
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.lock),
-                    hintText: AppLocalizations.of(context)!.password,
+                    hintText: AppLocalizations.of(context).password,
                   ),
                   textInputAction: TextInputAction.done,
                   obscureText: true,
@@ -73,7 +73,7 @@ class SignInForm extends StatelessWidget {
                         .validateFieldIsNotEmpty(value!);
                     return isValid
                         ? null
-                        : AppLocalizations.of(context)!.enterAPassword;
+                        : AppLocalizations.of(context).enterAPassword;
                   },
                   onFieldSubmitted: (_) => context
                       .read(signInFormProvider.notifier)
@@ -91,7 +91,7 @@ class SignInForm extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(AppLocalizations.of(context)!.signIn),
+                        Text(AppLocalizations.of(context).signIn),
                         if (formState.isSubmitting) ...const [
                           SizedBox(width: 8.0),
                           CircularProgressIndicator.adaptive(),
@@ -116,7 +116,7 @@ class SignInForm extends StatelessWidget {
                                 .resetPasswordEmailChanged(currentEmail);
                             showResetPasswordDialog(context);
                           },
-                    child: Text(AppLocalizations.of(context)!.forgotPassword,
+                    child: Text(AppLocalizations.of(context).forgotPassword,
                         style: TextStyle(
                             color:
                                 isDarkTheme ? Colors.white70 : Colors.black87)),
@@ -129,7 +129,7 @@ class SignInForm extends StatelessWidget {
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                     onPressed: () =>
                         AutoRouter.of(context).replace(const RegisterRoute()),
-                    child: Text(AppLocalizations.of(context)!.register,
+                    child: Text(AppLocalizations.of(context).register,
                         style: TextStyle(
                             color:
                                 isDarkTheme ? Colors.white70 : Colors.black87)),
@@ -137,7 +137,7 @@ class SignInForm extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 8.0),
-                  child: Text(AppLocalizations.of(context)!.orContinueWith,
+                  child: Text(AppLocalizations.of(context).orContinueWith,
                       style: Theme.of(context).textTheme.subtitle1),
                 ),
                 Row(

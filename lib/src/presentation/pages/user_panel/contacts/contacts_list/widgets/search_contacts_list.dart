@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../core/no_contatcs_screen/no_contacts_screen.dart';
 import '../../../../../routes/app_router.gr.dart';
@@ -29,7 +29,7 @@ class SearchContactsList extends ConsumerWidget {
             imageHeight: 140.0,
             padding:
                 const EdgeInsets.symmetric(horizontal: 30.0, vertical: 50.0),
-            message: AppLocalizations.of(context)!.noSearchProspectsMessage,
+            message: AppLocalizations.of(context).noSearchProspectsMessage,
           );
   }
 }

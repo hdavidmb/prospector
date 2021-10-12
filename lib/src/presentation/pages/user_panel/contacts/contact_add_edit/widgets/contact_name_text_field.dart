@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../logic/contact_form_provider.dart';
 
 class ContactNameTextField extends StatefulWidget {
@@ -18,7 +18,7 @@ class ContactNameTextField extends StatefulWidget {
 }
 
 class _ContactNameTextFieldState extends State<ContactNameTextField> {
-  late TextEditingController _controller; 
+  late TextEditingController _controller;
 
   @override
   void initState() {
@@ -31,6 +31,7 @@ class _ContactNameTextFieldState extends State<ContactNameTextField> {
     _controller.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     if (widget.name.isEmpty) {
@@ -42,7 +43,7 @@ class _ContactNameTextFieldState extends State<ContactNameTextField> {
       textCapitalization: TextCapitalization.words,
       decoration: InputDecoration(
         prefixIcon: const Icon(Icons.account_circle),
-        hintText: AppLocalizations.of(context)!.nameRequired,
+        hintText: AppLocalizations.of(context).nameRequired,
       ),
       textInputAction: TextInputAction.next,
       onChanged: widget.onNameChanged,
@@ -50,9 +51,7 @@ class _ContactNameTextFieldState extends State<ContactNameTextField> {
         final bool isValid = context
             .read(contactFormProvider.notifier)
             .validateFieldIsNotEmpty(value!);
-        return isValid
-            ? null
-            : AppLocalizations.of(context)!.nameMustNotBeEmpty;
+        return isValid ? null : AppLocalizations.of(context).nameMustNotBeEmpty;
       },
     );
   }
