@@ -35,7 +35,7 @@ class ContactDetailsPage extends ConsumerWidget {
         appBar: AppBar(
           title: KeyboardVisibility(
             keyboardHiddenChild:
-                Text(AppLocalizations.of(context)!.prospectDetails),
+                Text(AppLocalizations.of(context).prospectDetails),
             keyboardShowingChild: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
