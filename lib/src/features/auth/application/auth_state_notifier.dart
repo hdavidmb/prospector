@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../contacts/application/contacts_providers.dart';
+import '../../interactions/application/interactions_providers.dart';
 import '../../tags/application/tags_provider.dart';
 import '../../user/application/user_info_providers.dart';
 import 'auth_state.dart';
@@ -20,6 +21,9 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
           read(userInfoNotifierProvider).reset();
           read(contactsNotifierProvider).reset();
           read(tagsNotifierProvider).reset();
+          read(interactionsNotifierProvider).reset();
+          //TODO read(eventsNotifierProvider).reset();
+          //TODO read(statisticsNotifierProvider).reset();
           return const AuthState.unauthenticated();
         }
       },

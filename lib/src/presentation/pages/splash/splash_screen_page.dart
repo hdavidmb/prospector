@@ -36,7 +36,9 @@ class SplashScreenPage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     context.read(appStateNotifierProvider.notifier).reset();
-                    context.read(appDefaultDataProvider).getDefaultData();
+                    context
+                        .read(appDefaultDataProvider)
+                        .getDefaultData(); //TODO: check if needed (Already called in app_state_notifier reset)
                   },
                   child: Text(AppLocalizations.of(context).tryAgain),
                 ),

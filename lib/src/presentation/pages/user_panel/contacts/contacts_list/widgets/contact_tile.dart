@@ -22,7 +22,9 @@ class ContactTile extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: Row(
           children: <Widget>[
-            Hero(tag: contact.id, child: ContactImage(size: 60.0, contactPhoto: contact.photo)),
+            Hero(
+                tag: contact.id,
+                child: ContactImage(size: 60.0, contactPhoto: contact.photo)),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -31,7 +33,10 @@ class ContactTile extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       contact.name,
-                      style: TextStyle(fontSize: 17.5, fontWeight: FontWeight.bold, color: redName ? Colors.red : null),
+                      style: TextStyle(
+                          fontSize: 17.5,
+                          fontWeight: FontWeight.bold,
+                          color: redName ? Colors.red : null),
                       softWrap: false,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -39,12 +44,13 @@ class ContactTile extends StatelessWidget {
                         contact.location!.isNotEmpty)
                       Text(
                         contact.location!,
-                        style: const TextStyle(fontSize: 15.0, fontWeight: FontWeight.w300),
+                        style: const TextStyle(
+                            fontSize: 15.0, fontWeight: FontWeight.w300),
                         softWrap: false,
                         overflow: TextOverflow.ellipsis,
                       ),
                     Text(
-                      getContactFormatedDate(context, contact.modified),
+                      getTimeagoFormatedDate(context, contact.modified),
                       style: const TextStyle(
                           color: Colors.grey, fontWeight: FontWeight.w300),
                     )

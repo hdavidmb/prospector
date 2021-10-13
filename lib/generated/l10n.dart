@@ -1499,6 +1499,26 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Moved to`
+  String get movedToM {
+    return Intl.message(
+      'Moved to',
+      name: 'movedToM',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Moved to`
+  String get movedToF {
+    return Intl.message(
+      'Moved to',
+      name: 'movedToF',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/interactions/application/interactions_providers.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
 import '../../app_default_data/application/app_default_data_providers.dart';
@@ -42,9 +43,7 @@ class ContactsNotifier extends ChangeNotifier {
       return createResult.fold(
         (failure) => left(failure),
         (unit) {
-          _contacts
-            ..add(contact) //TODO test insertAt(0)
-            ..sort((a, b) => b.modified.compareTo(a.modified));
+          _contacts.insert(0, contact);
           notifyListeners();
           return right(unit);
         },
@@ -77,7 +76,6 @@ class ContactsNotifier extends ChangeNotifier {
 
   Future<Either<DatabaseFailure, Unit>> updateContact(Contact contact,
       {bool removingDeletedTag = false}) async {
-    // TODO if status changed create status interaction
     final uid = read(userInfoNotifierProvider).user?.uid;
 
     if (uid != null) {
@@ -88,9 +86,13 @@ class ContactsNotifier extends ChangeNotifier {
           await updateContactDocument(contact: newContactInfo, uid: uid);
       return updateResult.fold(
         (failure) => left(failure),
-        (unit) {
+        (unit) async {
           final int index = _contacts
               .indexWhere((listContact) => listContact.id == newContactInfo.id);
+          if (_contacts[index].status != newContactInfo.status) {
+            await read(interactionsNotifierProvider)
+                .createStatusInteraction(contact: newContactInfo);
+          }
           _contacts[index] = newContactInfo;
           _contacts.sort((a, b) => b.modified.compareTo(a.modified));
           notifyListeners();
@@ -114,7 +116,6 @@ class ContactsNotifier extends ChangeNotifier {
 
   Future<Either<DatabaseFailure, Unit>> deleteContact(
       {required String contactID}) async {
-    // TODO delete contact interactions
     // TODO delete contact from events
     final uid = read(userInfoNotifierProvider).user?.uid;
     if (uid != null) {
@@ -123,6 +124,8 @@ class ContactsNotifier extends ChangeNotifier {
       return deleteResult.fold(
         (failure) => left(failure),
         (unit) {
+          read(interactionsNotifierProvider)
+              .deleteContactInteractions(contactID: contactID);
           _contacts.removeWhere((listContact) => listContact.id == contactID);
           notifyListeners();
           return right(unit);

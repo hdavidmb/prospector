@@ -6,12 +6,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../features/contacts/domain/entity/contact_entity.dart';
+import '../../../../core/keyboard_visibility/keyboard_visibility.dart';
 import '../../../../routes/app_router.gr.dart';
 import '../contact_add_edit/logic/contact_form_provider.dart';
 import '../contact_add_edit/widgets/contact_image.dart';
 import 'widgets/action_buttons.dart';
 import 'widgets/contact_info.dart';
 import 'widgets/interaction_text_field.dart';
+import 'widgets/interactions_list_view.dart';
+import 'widgets/phone_button.dart';
+import 'widgets/whatsapp_button.dart';
 
 class ContactDetailsPage extends ConsumerWidget {
   final String? contactID;
@@ -29,31 +33,33 @@ class ContactDetailsPage extends ConsumerWidget {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: !_isKeyboardHidden(context)
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ContactImage(
-                      size: 33.0,
-                      contactPhoto: contact.photo,
-                    ),
-                    const SizedBox(width: 10.0),
-                    Expanded(
-                      child: Text(
-                        contact.name,
-                        softWrap: true,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                )
-              : Text(AppLocalizations.of(context).prospectDetails),
+          title: KeyboardVisibility(
+            keyboardHiddenChild:
+                Text(AppLocalizations.of(context).prospectDetails),
+            keyboardShowingChild: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ContactImage(
+                  size: 33.0,
+                  contactPhoto: contact.photo,
+                ),
+                const SizedBox(width: 10.0),
+                Expanded(
+                  child: Text(
+                    contact.name,
+                    softWrap: true,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
+          ),
           actions: [
             TextButton(
               onPressed: () {
-                context
-                    .read(contactFormProvider.notifier)
-                    .setEditingState(editingContact: contact);
+                context.read(contactFormProvider.notifier).setEditingState(
+                    editingContact:
+                        contact); //TODO check if can be called from ContactAddEditPage constructor
                 AutoRouter.of(context)
                     .push(ContactAddEditRoute(editingContact: contact));
               },
@@ -69,25 +75,40 @@ class ContactDetailsPage extends ConsumerWidget {
             onTap: () => FocusScope.of(context).unfocus(),
             child: Column(
               children: [
-                if (_isKeyboardHidden(context)) ContactInfo(contact: contact),
+                KeyboardVisibility(
+                    keyboardHiddenChild: ContactInfo(contact: contact)),
                 ActionButtons(contact: contact),
                 const Divider(height: 0.0, thickness: 2.0),
-                const Expanded(
-                  child: Center(
-                    child: Text('Interactions list'),
+                Expanded(
+                  child: Stack(
+                    children: [
+                      InteractionsListView(contactID: contact.id),
+                      KeyboardVisibility(
+                        keyboardShowingChild: Positioned(
+                          right: 6.0,
+                          bottom: 0.0,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              PhoneButton(phone: contact.phone),
+                              WhatsappButton(
+                                whatsapp: contact.whatsapp,
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                 ), //TODO implement interactions
-                InteractionTextField()
+                InteractionTextField(
+                  contact: contact,
+                )
               ],
             ),
           ),
         ),
       ),
     );
-  }
-
-  //TODO use KeyboardVisibilityBuilder instead
-  bool _isKeyboardHidden(BuildContext context) {
-    return MediaQuery.of(context).viewInsets.bottom == 0.0;
   }
 }
