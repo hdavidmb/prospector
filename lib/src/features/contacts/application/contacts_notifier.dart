@@ -43,9 +43,7 @@ class ContactsNotifier extends ChangeNotifier {
       return createResult.fold(
         (failure) => left(failure),
         (unit) {
-          _contacts
-            ..add(contact) //TODO test insertAt(0)
-            ..sort((a, b) => b.modified.compareTo(a.modified));
+          _contacts.insert(0, contact);
           notifyListeners();
           return right(unit);
         },
@@ -78,7 +76,6 @@ class ContactsNotifier extends ChangeNotifier {
 
   Future<Either<DatabaseFailure, Unit>> updateContact(Contact contact,
       {bool removingDeletedTag = false}) async {
-    // TODO if status changed create status interaction
     final uid = read(userInfoNotifierProvider).user?.uid;
 
     if (uid != null) {
@@ -93,7 +90,6 @@ class ContactsNotifier extends ChangeNotifier {
           final int index = _contacts
               .indexWhere((listContact) => listContact.id == newContactInfo.id);
           if (_contacts[index].status != newContactInfo.status) {
-            //TODO create status interaction
             await read(interactionsNotifierProvider)
                 .createStatusInteraction(contact: newContactInfo);
           }
@@ -120,7 +116,6 @@ class ContactsNotifier extends ChangeNotifier {
 
   Future<Either<DatabaseFailure, Unit>> deleteContact(
       {required String contactID}) async {
-    // TODO delete contact interactions
     // TODO delete contact from events
     final uid = read(userInfoNotifierProvider).user?.uid;
     if (uid != null) {
@@ -129,6 +124,8 @@ class ContactsNotifier extends ChangeNotifier {
       return deleteResult.fold(
         (failure) => left(failure),
         (unit) {
+          read(interactionsNotifierProvider)
+              .deleteContactInteractions(contactID: contactID);
           _contacts.removeWhere((listContact) => listContact.id == contactID);
           notifyListeners();
           return right(unit);

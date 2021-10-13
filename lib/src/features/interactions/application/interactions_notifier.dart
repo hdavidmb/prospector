@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/generated/l10n.dart';
 import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
 import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
 import 'package:random_string/random_string.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
 import '../../user/application/user_info_providers.dart';
@@ -50,9 +50,8 @@ class InteractionsNotifier extends ChangeNotifier {
         (failure) => left(failure),
         (_) {
           _interactions
-            ..add(interaction) //TODO test insertAt(0)
-            ..sort((a, b) =>
-                b.created.compareTo(a.created)); //TODO check sort order
+            ..add(interaction)
+            ..sort((a, b) => b.created.compareTo(a.created));
           notifyListeners();
           if (interaction.type != 'status') {
             read(contactsNotifierProvider).updateContact(contact);
@@ -67,14 +66,14 @@ class InteractionsNotifier extends ChangeNotifier {
 
   Future<Either<DatabaseFailure, Unit>> createStatusInteraction(
       {required Contact contact}) {
-    //TODO implement applocalizations without context
-    // final String statusText = read(appDefaultDataProvider).getStatusText(
-    //     context: context, statusID: contact.status, isPlural: true);
-    // final String movedTo =
-    //     AppLocalizations.of(context)!.youMayHaveToRelogin; //TODO change
+    final String statusText = read(appDefaultDataProvider)
+        .getStatusText(statusID: contact.status, isPlural: true);
+    final String movedTo = contact.gender == 'female'
+        ? AppLocalizations.current.movedToF
+        : AppLocalizations.current.movedToM;
     final Interaction interaction = Interaction(
       id: randomAlphaNumeric(20),
-      description: 'Moved to ${contact.status}', //TODO implement properlly
+      description: '$movedTo $statusText',
       contact: contact.id,
       type: 'status',
       created: DateTime.now(),
@@ -147,5 +146,18 @@ class InteractionsNotifier extends ChangeNotifier {
     } else {
       return left(const DatabaseFailure.noUserAuthenticated());
     }
+  }
+
+  Future<Either<DatabaseFailure, Unit>> deleteContactInteractions(
+      {required String contactID}) async {
+    Either<DatabaseFailure, Unit> deleteResult = right(unit);
+    final List<Interaction> contactInteractions = _interactions
+        .where((interaction) => interaction.contact == contactID)
+        .toList();
+    for (final Interaction interaction in contactInteractions) {
+      deleteResult = await deleteInteraction(interactionID: interaction.id);
+      if (deleteResult.isLeft()) break;
+    }
+    return deleteResult;
   }
 }

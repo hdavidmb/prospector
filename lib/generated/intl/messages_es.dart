@@ -125,6 +125,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "membership": MessageLookupByLibrary.simpleMessage("Membresía"),
         "minutes": MessageLookupByLibrary.simpleMessage("minutos"),
         "moreInfo": MessageLookupByLibrary.simpleMessage("Más información"),
+        "movedToF": MessageLookupByLibrary.simpleMessage("Movida a"),
+        "movedToM": MessageLookupByLibrary.simpleMessage("Movido a"),
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),
         "nameMustNotBeEmpty": MessageLookupByLibrary.simpleMessage(
             "El nombre no puede estar vacío"),
