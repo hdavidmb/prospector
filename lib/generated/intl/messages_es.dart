@@ -146,6 +146,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Esta lista no contiene prospectos que conicidan con los filtros aplicados."),
         "noImportedContactsMessage": MessageLookupByLibrary.simpleMessage(
             "Aún no has importado ningún contacto. Intenta importar algunos de los contactos de tu dispositivo.\n\nAsegúrate de permitir el acceso a los contactos."),
+        "noPhonesMessage": MessageLookupByLibrary.simpleMessage(
+            "Este Prospecto no tiene ningún número de telefono registrado, agregale alguno para proceder."),
+        "noPhonesTitle":
+            MessageLookupByLibrary.simpleMessage("Sin números de teléfono"),
         "noProspectsMessage": MessageLookupByLibrary.simpleMessage(
             "Aún no tienes prospectos en esta lista.\nIntenta agregar nuevos prospectos o moverlos desde las otras listas."),
         "noSearchProspectsMessage": MessageLookupByLibrary.simpleMessage(

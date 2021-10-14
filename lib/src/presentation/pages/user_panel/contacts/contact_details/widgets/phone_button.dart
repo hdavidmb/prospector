@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
+import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/logic/contact_details_provider.dart';
 
 class PhoneButton extends StatelessWidget {
-  final String? phone;
+  final Contact contact;
   const PhoneButton({
     Key? key,
-    required this.phone,
+    required this.contact,
   }) : super(key: key);
 
   @override
@@ -15,7 +18,9 @@ class PhoneButton extends StatelessWidget {
           shape: BoxShape.circle),
       child: IconButton(
         icon: const Icon(Icons.phone),
-        onPressed: () {}, //TODO call prospect
+        onPressed: () => context
+            .read(contactDetailsProvider)
+            .phoneButtonPressed(context: context, contact: contact),
       ),
     );
   }

@@ -484,6 +484,37 @@ Future<Option<String>> showAffiliationDialog(
   return optionOf(newStatusID);
 }
 
+Future<Option<String>> showOptionsSelectionDialog(
+    {required BuildContext context,
+    required List<String> options,
+    String? title}) async {
+  final String? newStatusID = await showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: title != null ? Text(title) : null,
+        content: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.80,
+          child: ListView(
+            shrinkWrap: true,
+            children: options
+                .map(
+                  (option) => ListTile(
+                    title: Text(option),
+                    onTap: () {
+                      AutoRouter.of(context).pop(option);
+                    },
+                  ),
+                )
+                .toList(),
+          ),
+        ),
+      );
+    },
+  );
+  return optionOf(newStatusID);
+}
+
 Future<String?> showPlacesDialog(BuildContext context) async {
   final kGoogleApiKey = PrivateKeys.getGooglePlacesApiKey();
   final Locale myLocale = Localizations.localeOf(context);

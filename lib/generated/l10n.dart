@@ -1519,6 +1519,26 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `No phone numbers`
+  String get noPhonesTitle {
+    return Intl.message(
+      'No phone numbers',
+      name: 'noPhonesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This prospect has no phone numbers registered, add some to proceed.`
+  String get noPhonesMessage {
+    return Intl.message(
+      'This prospect has no phone numbers registered, add some to proceed.',
+      name: 'noPhonesMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

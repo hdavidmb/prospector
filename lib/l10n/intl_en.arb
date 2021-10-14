@@ -145,5 +145,7 @@
     "minutes": "minutes",
     "ofProspectorWithNoAds": "of Prospector with no Ads",
     "movedToM": "Moved to",
-    "movedToF": "Moved to"
+    "movedToF": "Moved to",
+    "noPhonesTitle": "No phone numbers",
+    "noPhonesMessage": "This prospect has no phone numbers registered, add some to proceed."
 }

@@ -1,6 +1,10 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/generated/l10n.dart';
+import 'package:prospector/src/features/user/application/user_info_providers.dart';
 import 'package:random_string/random_string.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
@@ -61,5 +65,38 @@ class ContactDetailsNotifier {
     final createResult = await read(interactionsNotifierProvider)
         .createInteraction(interaction, contact: contact);
     return createResult.isRight();
+  }
+
+  Future<void> phoneButtonPressed(
+      {required BuildContext context, required Contact contact}) async {
+    final isPremium = read(userInfoNotifierProvider).isPremiumUser;
+    if (isPremium) {
+      if (contact.phones != null && contact.phones!.isNotEmpty) {
+        if (contact.phone != null && contact.phone!.isNotEmpty) {
+          await FlutterPhoneDirectCaller.callNumber(contact.phone!);
+        } else {
+          final Option<String> selection = await showOptionsSelectionDialog(
+              context: context,
+              options: contact.phones!,
+              title: 'Select a number'); //TODO localize
+          selection.fold(
+            () => null,
+            (number) async {
+              final Contact newContactInfo = contact.copyWith(phone: number);
+              read(contactsNotifierProvider).updateContact(newContactInfo);
+              await FlutterPhoneDirectCaller.callNumber(number);
+            },
+          );
+        }
+      } else {
+        //TODO show dialog that recommends adding a phone
+        showMessageDialog(
+            context: context,
+            title: AppLocalizations.current.noPhonesTitle,
+            message: AppLocalizations.current.noPhonesMessage);
+      }
+    } else {
+      showPremiumDialog(context: context);
+    }
   }
 }

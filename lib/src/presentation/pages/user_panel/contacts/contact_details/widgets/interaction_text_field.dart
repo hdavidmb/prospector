@@ -81,7 +81,7 @@ class _InteractionTextFieldState extends State<InteractionTextField> {
           KeyboardVisibility(
             keyboardHiddenChild: Row(
               children: [
-                PhoneButton(phone: widget.contact.phone),
+                PhoneButton(contact: widget.contact),
                 WhatsappButton(
                   whatsapp: widget.contact.whatsapp,
                 ),

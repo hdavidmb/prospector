@@ -90,7 +90,7 @@ class ContactDetailsPage extends ConsumerWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              PhoneButton(phone: contact.phone),
+                              PhoneButton(contact: contact),
                               WhatsappButton(
                                 whatsapp: contact.whatsapp,
                               )
