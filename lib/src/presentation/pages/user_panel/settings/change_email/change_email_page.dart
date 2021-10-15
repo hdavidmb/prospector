@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../../../generated/l10n.dart';
 
+import '../../../../../../generated/l10n.dart';
 import 'widgets/change_email_form.dart';
 
 class ChangeEmailPage extends StatelessWidget {

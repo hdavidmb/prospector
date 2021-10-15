@@ -148,5 +148,9 @@
     "movedToF": "Moved to",
     "selectANumber": "Select a number",
     "noPhonesTitle": "No phone numbers",
-    "noPhonesMessage": "This prospect has no phone numbers registered, add some to proceed."
+    "noPhonesMessage": "This prospect has no phone numbers registered, add some to proceed.",
+    "countryCode": "Country code",
+    "selectYourCountryCode": "Select your country code",
+    "defaultCountryCodeMessage": "This code will be used as default for your local contacts. For your international contacts please be sure to add the '+' symbol and their country code. Otherwise Whatsapp won't be able to identify your contact properly.",
+    "modifyCountryCodeMessage": "You can modify your country code on Settings."
 }

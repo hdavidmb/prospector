@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
-import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_details/logic/contact_details_provider.dart';
+import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
+import '../logic/contact_details_provider.dart';
 
 class CallTextButton extends StatelessWidget {
   final Contact contact;

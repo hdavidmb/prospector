@@ -59,10 +59,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "contactsAccessMessage": MessageLookupByLibrary.simpleMessage(
             "El acceso a los contactos esta deshabilitado para Prospector MLM."),
         "continueString": MessageLookupByLibrary.simpleMessage("Continuar"),
+        "countryCode": MessageLookupByLibrary.simpleMessage("Código de país"),
         "currentEmail": MessageLookupByLibrary.simpleMessage("Correo actual"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Contraseña actual"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Modo oscuro"),
+        "defaultCountryCodeMessage": MessageLookupByLibrary.simpleMessage(
+            "Este código se utilizará de forma predeterminada para sus contactos locales. Para sus contactos internacionales, asegúrese de agregar el símbolo \'+\' y su código de país. De lo contrario, Whatsapp no ​​podrá identificar correctamente a su contacto."),
         "delete": MessageLookupByLibrary.simpleMessage("Eliminar"),
         "deleteAccount":
             MessageLookupByLibrary.simpleMessage("Eliminar cuenta"),
@@ -124,6 +127,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "male": MessageLookupByLibrary.simpleMessage("Masculino"),
         "membership": MessageLookupByLibrary.simpleMessage("Membresía"),
         "minutes": MessageLookupByLibrary.simpleMessage("minutos"),
+        "modifyCountryCodeMessage": MessageLookupByLibrary.simpleMessage(
+            "Puedes modificar tu código de país en Configuración."),
         "moreInfo": MessageLookupByLibrary.simpleMessage("Más información"),
         "movedToF": MessageLookupByLibrary.simpleMessage("Movida a"),
         "movedToM": MessageLookupByLibrary.simpleMessage("Movido a"),
@@ -204,6 +209,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectAll": MessageLookupByLibrary.simpleMessage("Seleccionar todos"),
         "selectImage":
             MessageLookupByLibrary.simpleMessage("Seleccionar imagen"),
+        "selectYourCountryCode": MessageLookupByLibrary.simpleMessage(
+            "Selecciona tu código de país"),
         "send": MessageLookupByLibrary.simpleMessage("Enviar"),
         "serverError": MessageLookupByLibrary.simpleMessage(
             "Algo salió mal. Por favor intenta de nuevo más tarde."),

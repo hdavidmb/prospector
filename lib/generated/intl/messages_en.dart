@@ -57,10 +57,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "contactsAccessMessage": MessageLookupByLibrary.simpleMessage(
             "Contacts access is not allowed for Prospector MLM."),
         "continueString": MessageLookupByLibrary.simpleMessage("Continue"),
+        "countryCode": MessageLookupByLibrary.simpleMessage("Country code"),
         "currentEmail": MessageLookupByLibrary.simpleMessage("Current email"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Current password"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark theme"),
+        "defaultCountryCodeMessage": MessageLookupByLibrary.simpleMessage(
+            "This code will be used as default for your local contacts. For your international contacts please be sure to add the \'+\' symbol and their country code. Otherwise Whatsapp won\'t be able to identify your contact properly."),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete account"),
         "deleteCap": MessageLookupByLibrary.simpleMessage("DELETE"),
@@ -116,6 +119,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "male": MessageLookupByLibrary.simpleMessage("Male"),
         "membership": MessageLookupByLibrary.simpleMessage("Membership"),
         "minutes": MessageLookupByLibrary.simpleMessage("minutes"),
+        "modifyCountryCodeMessage": MessageLookupByLibrary.simpleMessage(
+            "You can modify your country code on Settings."),
         "moreInfo": MessageLookupByLibrary.simpleMessage("More info"),
         "movedToF": MessageLookupByLibrary.simpleMessage("Moved to"),
         "movedToM": MessageLookupByLibrary.simpleMessage("Moved to"),
@@ -194,6 +199,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Select a number"),
         "selectAll": MessageLookupByLibrary.simpleMessage("Select all"),
         "selectImage": MessageLookupByLibrary.simpleMessage("Select image"),
+        "selectYourCountryCode":
+            MessageLookupByLibrary.simpleMessage("Select your country code"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "serverError": MessageLookupByLibrary.simpleMessage(
             "Something went wrong. Please try again later."),

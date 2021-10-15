@@ -3,16 +3,17 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/generated/l10n.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
 import 'package:random_string/random_string.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
 import '../../../../../../features/interactions/application/interactions_providers.dart';
 import '../../../../../../features/interactions/domain/entity/interaction_entity.dart';
+import '../../../../../../features/user/application/user_info_providers.dart';
+import '../../../../../../features/user/domain/entity/user_entity.dart';
 import '../../../../../core/dialogs.dart';
 
 class ContactDetailsNotifier {
@@ -117,8 +118,15 @@ class ContactDetailsNotifier {
               message: AppLocalizations.current.noPhonesMessage);
         }
       } else {
-        //TODO request dialCode
-        print('Request dial code');
+        final Map<String, String>? newCountryCode =
+            await showCountryCodeDialog(context: context);
+        if (newCountryCode != null) {
+          final UserEntity currentUser = read(userInfoNotifierProvider).user!;
+          final newUserInfo = currentUser.copyWith(
+              countryCode: newCountryCode['code'],
+              dialCode: newCountryCode['dial_code']);
+          read(userInfoNotifierProvider).updateUserInfo(newUserInfo);
+        }
       }
     } else {
       showPremiumDialog(context: context);

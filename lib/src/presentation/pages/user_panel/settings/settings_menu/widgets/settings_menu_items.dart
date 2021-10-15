@@ -23,7 +23,10 @@ class SettingsMenuItems extends StatelessWidget {
       'title': AppLocalizations.current.tags,
       'route': const TagsSettingsRoute(),
     },
-    // {'title': AppLocalizations.of(context)!.whatsapp}, //TODO implement
+    {
+      'title': AppLocalizations.current.countryCode,
+      'route': const CountryCodeRoute(),
+    }, //TODO implement
   ];
 
   @override

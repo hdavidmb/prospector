@@ -11,10 +11,10 @@ import '../../../../routes/app_router.gr.dart';
 import '../contact_add_edit/logic/contact_form_provider.dart';
 import '../contact_add_edit/widgets/contact_image.dart';
 import 'widgets/action_buttons.dart';
+import 'widgets/call_text_button.dart';
 import 'widgets/contact_info.dart';
 import 'widgets/interaction_text_field.dart';
 import 'widgets/interactions_list_view.dart';
-import 'widgets/call_text_button.dart';
 
 class ContactDetailsPage extends ConsumerWidget {
   final String? contactID;

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/helpers/date_formatters.dart';
+
 import '../../../../../../features/interactions/application/interactions_providers.dart';
 import '../../../../../../features/interactions/domain/entity/interaction_entity.dart';
+import '../../../../../helpers/date_formatters.dart';
 
 class InteractionsListView extends ConsumerWidget {
   final String contactID;
