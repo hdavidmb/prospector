@@ -1520,6 +1520,16 @@ class AppLocalizations {
     );
   }
 
+  /// `Select a number`
+  String get selectANumber {
+    return Intl.message(
+      'Select a number',
+      name: 'selectANumber',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `No phone numbers`
   String get noPhonesTitle {
     return Intl.message(

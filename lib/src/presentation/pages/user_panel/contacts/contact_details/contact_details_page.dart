@@ -14,8 +14,7 @@ import 'widgets/action_buttons.dart';
 import 'widgets/contact_info.dart';
 import 'widgets/interaction_text_field.dart';
 import 'widgets/interactions_list_view.dart';
-import 'widgets/phone_button.dart';
-import 'widgets/whatsapp_button.dart';
+import 'widgets/call_text_button.dart';
 
 class ContactDetailsPage extends ConsumerWidget {
   final String? contactID;
@@ -90,10 +89,11 @@ class ContactDetailsPage extends ConsumerWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              PhoneButton(contact: contact),
-                              WhatsappButton(
-                                whatsapp: contact.whatsapp,
-                              )
+                              CallTextButton(contact: contact),
+                              CallTextButton(
+                                contact: contact,
+                                isTexting: true,
+                              ),
                             ],
                           ),
                         ),

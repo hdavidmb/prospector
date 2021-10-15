@@ -484,12 +484,15 @@ Future<Option<String>> showAffiliationDialog(
   return optionOf(newStatusID);
 }
 
+//TODO use for affiliate and image source dialog
 Future<Option<String>> showOptionsSelectionDialog(
     {required BuildContext context,
     required List<String> options,
+    bool dismissible = true,
     String? title}) async {
   final String? newStatusID = await showDialog(
     context: context,
+    barrierDismissible: dismissible,
     builder: (BuildContext context) {
       return AlertDialog(
         title: title != null ? Text(title) : null,

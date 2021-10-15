@@ -199,6 +199,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Te hemos enviado un correo con las instrucciones para restablecer tu contraseña. \nPor favor revisa tu bandeja de entrada."),
         "save": MessageLookupByLibrary.simpleMessage("Guardar"),
         "search": MessageLookupByLibrary.simpleMessage("Buscar"),
+        "selectANumber":
+            MessageLookupByLibrary.simpleMessage("Seleciona un número"),
         "selectAll": MessageLookupByLibrary.simpleMessage("Seleccionar todos"),
         "selectImage":
             MessageLookupByLibrary.simpleMessage("Seleccionar imagen"),

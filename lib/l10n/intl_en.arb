@@ -146,6 +146,7 @@
     "ofProspectorWithNoAds": "of Prospector with no Ads",
     "movedToM": "Moved to",
     "movedToF": "Moved to",
+    "selectANumber": "Select a number",
     "noPhonesTitle": "No phone numbers",
     "noPhonesMessage": "This prospect has no phone numbers registered, add some to proceed."
 }

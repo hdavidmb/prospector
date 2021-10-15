@@ -1,10 +1,12 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/generated/l10n.dart';
 import 'package:prospector/src/features/user/application/user_info_providers.dart';
 import 'package:random_string/random_string.dart';
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
@@ -67,36 +69,101 @@ class ContactDetailsNotifier {
     return createResult.isRight();
   }
 
-  Future<void> phoneButtonPressed(
-      {required BuildContext context, required Contact contact}) async {
+  Future<void> callTextButtonPressed(
+      {required BuildContext context,
+      required Contact contact,
+      required bool isTexting}) async {
     final isPremium = read(userInfoNotifierProvider).isPremiumUser;
     if (isPremium) {
-      if (contact.phones != null && contact.phones!.isNotEmpty) {
-        if (contact.phone != null && contact.phone!.isNotEmpty) {
-          await FlutterPhoneDirectCaller.callNumber(contact.phone!);
+      final String? dialCode = read(userInfoNotifierProvider).user!.dialCode;
+      final bool hasDialCode = dialCode != null && dialCode.isNotEmpty;
+      if (!isTexting || (isTexting && hasDialCode)) {
+        //TODO check or ask for textingApp (whatsapp or iOSmessenger)
+        if (contact.phones != null && contact.phones!.isNotEmpty) {
+          String? contactNumber = isTexting ? contact.whatsapp : contact.phone;
+          if (contactNumber == null || contactNumber.isEmpty) {
+            final Option<String> selection = await showOptionsSelectionDialog(
+                context: context,
+                options: contact.phones!,
+                title: AppLocalizations.current.selectANumber,
+                dismissible: false);
+            selection.fold(
+              () => null,
+              (number) async {
+                final Contact newContactInfo = isTexting
+                    ? contact.copyWith(whatsapp: number)
+                    : contact.copyWith(phone: number);
+                read(contactsNotifierProvider).updateContact(newContactInfo);
+                contactNumber = number;
+              },
+            );
+          }
+          final bool success = await _performContactAction(
+              number: contactNumber!,
+              dialCode: dialCode!,
+              isTexting: isTexting);
+          if (!success) {
+            Future.delayed(
+                Duration.zero,
+                () => showSnackBar(
+                    context: context,
+                    message: AppLocalizations.current.serverError,
+                    type: SnackbarType.failure));
+          }
         } else {
-          final Option<String> selection = await showOptionsSelectionDialog(
+          showMessageDialog(
               context: context,
-              options: contact.phones!,
-              title: 'Select a number'); //TODO localize
-          selection.fold(
-            () => null,
-            (number) async {
-              final Contact newContactInfo = contact.copyWith(phone: number);
-              read(contactsNotifierProvider).updateContact(newContactInfo);
-              await FlutterPhoneDirectCaller.callNumber(number);
-            },
-          );
+              title: AppLocalizations.current.noPhonesTitle,
+              message: AppLocalizations.current.noPhonesMessage);
         }
       } else {
-        //TODO show dialog that recommends adding a phone
-        showMessageDialog(
-            context: context,
-            title: AppLocalizations.current.noPhonesTitle,
-            message: AppLocalizations.current.noPhonesMessage);
+        //TODO request dialCode
+        print('Request dial code');
       }
     } else {
       showPremiumDialog(context: context);
+    }
+  }
+
+  Future<bool> _performContactAction(
+      {required String number,
+      required String dialCode,
+      required bool isTexting}) async {
+    //TODO delete final completeNumber = number[0] == '+' ? number : '$dialCode $number';
+
+    final urlNumber =
+        number[0] == '+' ? number : '$dialCode $number'; //TODO test on android
+    // TODO delete isWhatsapp
+    //     ? completeNumber.replaceAll(RegExp(r'$[^0-9]'), '')
+    //     : completeNumber;
+
+    // TODO delete ? number.replaceAll(RegExp(r'[^0-9]'), '')
+    // : dialCode.replaceAll(RegExp(r'[^0-9]'), '') +
+    //     number.replaceAll(RegExp(r'[^0-9]'), '');
+
+    final String baseUrl = isTexting
+        ? Platform.isIOS
+            ? "whatsapp://wa.me/"
+            : "whatsapp://send?phone="
+        : "tel:";
+
+    final url = Uri.encodeFull("$baseUrl$urlNumber"); //TODO test on android
+
+    // TODO delete final String url = isTexting
+    //     ? Platform.isIOS
+    //         ? Uri.encodeFull("whatsapp://wa.me/$urlNumber")
+    //         : "whatsapp://send?phone=$urlNumber"
+    //     : Uri.encodeFull("tel:$urlNumber"); //TODO test on android
+
+    if (await canLaunch(url)) {
+      try {
+        launch(url); //TODO test on android
+        return true;
+      } catch (error) {
+        return false;
+      }
+    } else {
+      return false;
     }
   }
 }
