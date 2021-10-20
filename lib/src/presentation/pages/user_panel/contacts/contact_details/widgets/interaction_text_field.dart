@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/core/dialogs.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
@@ -71,7 +72,12 @@ class _InteractionTextFieldState extends State<InteractionTextField> {
                     _textFieldValue = '';
                     _textEditingController.clear();
                   } else {
-                    //TODO show snackbar if error
+                    Future.delayed(
+                        Duration.zero,
+                        () => showSnackBar(
+                            context: context,
+                            message: AppLocalizations.current.serverError,
+                            type: SnackbarType.failure));
                   }
                 }
               },

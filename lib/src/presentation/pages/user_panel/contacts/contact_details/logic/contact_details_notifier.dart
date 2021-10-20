@@ -58,7 +58,6 @@ class ContactDetailsNotifier {
 
   Future<bool> interactionSubmitButtonPressed(
       {required String description, required Contact contact}) async {
-    //TODO create submittingstate to disable buttons when submitting
     final Interaction interaction = Interaction(
         id: randomAlphaNumeric(20),
         description: description,
@@ -133,21 +132,12 @@ class ContactDetailsNotifier {
     }
   }
 
-  Future<bool> _performContactAction(
-      {required String number,
-      required String dialCode,
-      required bool isTexting}) async {
-    //TODO delete final completeNumber = number[0] == '+' ? number : '$dialCode $number';
-
-    final urlNumber =
-        number[0] == '+' ? number : '$dialCode $number'; //TODO test on android
-    // TODO delete isWhatsapp
-    //     ? completeNumber.replaceAll(RegExp(r'$[^0-9]'), '')
-    //     : completeNumber;
-
-    // TODO delete ? number.replaceAll(RegExp(r'[^0-9]'), '')
-    // : dialCode.replaceAll(RegExp(r'[^0-9]'), '') +
-    //     number.replaceAll(RegExp(r'[^0-9]'), '');
+  Future<bool> _performContactAction({
+    required String number,
+    required String dialCode,
+    required bool isTexting,
+  }) async {
+    final urlNumber = number[0] == '+' ? number : '$dialCode $number';
 
     final String baseUrl = isTexting
         ? Platform.isIOS
@@ -155,17 +145,11 @@ class ContactDetailsNotifier {
             : "whatsapp://send?phone="
         : "tel:";
 
-    final url = Uri.encodeFull("$baseUrl$urlNumber"); //TODO test on android
-
-    // TODO delete final String url = isTexting
-    //     ? Platform.isIOS
-    //         ? Uri.encodeFull("whatsapp://wa.me/$urlNumber")
-    //         : "whatsapp://send?phone=$urlNumber"
-    //     : Uri.encodeFull("tel:$urlNumber"); //TODO test on android
+    final url = Uri.encodeFull("$baseUrl$urlNumber");
 
     if (await canLaunch(url)) {
       try {
-        launch(url); //TODO test on android
+        launch(url);
         return true;
       } catch (error) {
         return false;

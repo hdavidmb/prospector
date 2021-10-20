@@ -60,7 +60,6 @@ class CountryCodePage extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  //TODO save function
                   final UserEntity currentUser =
                       context.read(userInfoNotifierProvider).user!;
                   final newUserInfo = currentUser.copyWith(

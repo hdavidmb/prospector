@@ -100,7 +100,7 @@ class ContactDetailsPage extends ConsumerWidget {
                       )
                     ],
                   ),
-                ), //TODO implement interactions
+                ),
                 InteractionTextField(
                   contact: contact,
                 )

@@ -26,7 +26,7 @@ class SettingsMenuItems extends StatelessWidget {
     {
       'title': AppLocalizations.current.countryCode,
       'route': const CountryCodeRoute(),
-    }, //TODO implement
+    },
   ];
 
   @override

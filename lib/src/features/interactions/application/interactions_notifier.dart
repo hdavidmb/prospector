@@ -90,8 +90,7 @@ class InteractionsNotifier extends ChangeNotifier {
         getResult.fold(
           (failure) => _interactionsState = const InteractionsState.error(),
           (interactionsList) {
-            interactionsList.sort((a, b) =>
-                b.created.compareTo(a.created)); //TODO check sort order
+            interactionsList.sort((a, b) => b.created.compareTo(a.created));
             _interactions = interactionsList;
             _interactionsState = const InteractionsState.ready();
           },
