@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../../../../generated/l10n.dart';
 
+import '../../../../../../../../generated/l10n.dart';
 import '../logic/impor_contacts_page_providers.dart';
 
 class SelectAllButton extends StatelessWidget {

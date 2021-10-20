@@ -7,7 +7,7 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
-import '../../features/contacts/domain/entity/contact_entity.dart' as _i16;
+import '../../features/contacts/domain/entity/contact_entity.dart' as _i17;
 import '../pages/auth/register/register_page.dart' as _i6;
 import '../pages/auth/sign_in/sign_in_page.dart' as _i5;
 import '../pages/splash/splash_screen_page.dart' as _i3;
@@ -20,6 +20,8 @@ import '../pages/user_panel/settings/change_email/change_email_page.dart'
     as _i10;
 import '../pages/user_panel/settings/change_password/change_password_page.dart'
     as _i11;
+import '../pages/user_panel/settings/country_code/country_code_page.dart'
+    as _i16;
 import '../pages/user_panel/settings/import_contacts/import_contacts/import_contacts_page.dart'
     as _i15;
 import '../pages/user_panel/settings/import_contacts/import_contacts_menu/import_contacts_menu_page.dart'
@@ -115,6 +117,11 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (_) {
           return _i15.ImportContactsPage();
+        }),
+    CountryCodeRoute.name: (routeData) => _i1.CupertinoPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i16.CountryCodePage();
         })
   };
 
@@ -137,7 +144,9 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(TagsSettingsRoute.name, path: '/tags-settings-page'),
         _i1.RouteConfig(ImportedContactsRoute.name,
             path: '/imported-contacts-page'),
-        _i1.RouteConfig(ImportContactsRoute.name, path: '/import-contacts-page')
+        _i1.RouteConfig(ImportContactsRoute.name,
+            path: '/import-contacts-page'),
+        _i1.RouteConfig(CountryCodeRoute.name, path: '/country-code-page')
       ];
 }
 
@@ -183,7 +192,7 @@ class ContactDetailsRouteArgs {
 }
 
 class ContactAddEditRoute extends _i1.PageRouteInfo<ContactAddEditRouteArgs> {
-  ContactAddEditRoute({_i2.Key? key, _i16.Contact? editingContact})
+  ContactAddEditRoute({_i2.Key? key, _i17.Contact? editingContact})
       : super(name,
             path: '/contact-add-edit-page',
             args: ContactAddEditRouteArgs(
@@ -197,7 +206,7 @@ class ContactAddEditRouteArgs {
 
   final _i2.Key? key;
 
-  final _i16.Contact? editingContact;
+  final _i17.Contact? editingContact;
 }
 
 class UserProfileRoute extends _i1.PageRouteInfo {
@@ -241,4 +250,10 @@ class ImportContactsRoute extends _i1.PageRouteInfo {
   const ImportContactsRoute() : super(name, path: '/import-contacts-page');
 
   static const String name = 'ImportContactsRoute';
+}
+
+class CountryCodeRoute extends _i1.PageRouteInfo {
+  const CountryCodeRoute() : super(name, path: '/country-code-page');
+
+  static const String name = 'CountryCodeRoute';
 }

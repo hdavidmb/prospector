@@ -145,5 +145,12 @@
     "minutes": "minutos",
     "ofProspectorWithNoAds": "de Prospector sin publicidad",
     "movedToM": "Movido a",
-    "movedToF": "Movida a"
+    "movedToF": "Movida a",
+    "selectANumber": "Seleciona un número",
+    "noPhonesTitle": "Sin números de teléfono",
+    "noPhonesMessage": "Este Prospecto no tiene ningún número de telefono registrado, agregale alguno para proceder.",
+    "countryCode": "Código de país",
+    "selectYourCountryCode": "Selecciona tu código de país",
+    "defaultCountryCodeMessage": "Este código se utilizará de forma predeterminada para sus contactos locales. Para sus contactos internacionales, asegúrese de agregar el símbolo '+' y su código de país. De lo contrario, Whatsapp no ​​podrá identificar correctamente a su contacto.",
+    "modifyCountryCodeMessage": "Puedes modificar tu código de país en Configuración."
 }

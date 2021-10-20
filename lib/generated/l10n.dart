@@ -1519,6 +1519,76 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Select a number`
+  String get selectANumber {
+    return Intl.message(
+      'Select a number',
+      name: 'selectANumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No phone numbers`
+  String get noPhonesTitle {
+    return Intl.message(
+      'No phone numbers',
+      name: 'noPhonesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This prospect has no phone numbers registered, add some to proceed.`
+  String get noPhonesMessage {
+    return Intl.message(
+      'This prospect has no phone numbers registered, add some to proceed.',
+      name: 'noPhonesMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Country code`
+  String get countryCode {
+    return Intl.message(
+      'Country code',
+      name: 'countryCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select your country code`
+  String get selectYourCountryCode {
+    return Intl.message(
+      'Select your country code',
+      name: 'selectYourCountryCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This code will be used as default for your local contacts. For your international contacts please be sure to add the '+' symbol and their country code. Otherwise Whatsapp won't be able to identify your contact properly.`
+  String get defaultCountryCodeMessage {
+    return Intl.message(
+      'This code will be used as default for your local contacts. For your international contacts please be sure to add the \'+\' symbol and their country code. Otherwise Whatsapp won\'t be able to identify your contact properly.',
+      name: 'defaultCountryCodeMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can modify your country code on Settings.`
+  String get modifyCountryCodeMessage {
+    return Intl.message(
+      'You can modify your country code on Settings.',
+      name: 'modifyCountryCodeMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

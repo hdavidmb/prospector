@@ -4,8 +4,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../../../../../generated/l10n.dart';
 
+import '../../../../../../generated/l10n.dart';
 import '../../../../core/dialogs.dart';
 import '../../../../routes/app_router.gr.dart';
 import '../logic/sign_in_form_provider.dart';

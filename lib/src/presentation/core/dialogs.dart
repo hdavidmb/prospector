@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
@@ -484,6 +485,40 @@ Future<Option<String>> showAffiliationDialog(
   return optionOf(newStatusID);
 }
 
+//TODO use for affiliate and image source dialog
+Future<Option<String>> showOptionsSelectionDialog(
+    {required BuildContext context,
+    required List<String> options,
+    bool dismissible = true,
+    String? title}) async {
+  final String? newStatusID = await showDialog(
+    context: context,
+    barrierDismissible: dismissible,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: title != null ? Text(title) : null,
+        content: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.80,
+          child: ListView(
+            shrinkWrap: true,
+            children: options
+                .map(
+                  (option) => ListTile(
+                    title: Text(option),
+                    onTap: () {
+                      AutoRouter.of(context).pop(option);
+                    },
+                  ),
+                )
+                .toList(),
+          ),
+        ),
+      );
+    },
+  );
+  return optionOf(newStatusID);
+}
+
 Future<String?> showPlacesDialog(BuildContext context) async {
   final kGoogleApiKey = PrivateKeys.getGooglePlacesApiKey();
   final Locale myLocale = Localizations.localeOf(context);
@@ -601,6 +636,63 @@ void showFiltersDialog(BuildContext context) {
             ],
           );
         },
+      );
+    },
+  );
+}
+
+Future<Map<String, String>?> showCountryCodeDialog(
+    {required BuildContext context}) async {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      String selectedCountryCode = 'US';
+      String selectedDialCode = '+1';
+      return AlertDialog(
+        title: Text(AppLocalizations.current.countryCode),
+        contentPadding: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 0.0),
+        content: Flex(
+          mainAxisSize: MainAxisSize.min,
+          direction: Axis.vertical,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(AppLocalizations.current.selectYourCountryCode),
+            const SizedBox(height: 8.0),
+            Center(
+              child: CountryCodePicker(
+                onChanged: (countryCode) {
+                  selectedCountryCode = countryCode.code ?? selectedCountryCode;
+                  selectedDialCode = countryCode.dialCode ?? selectedDialCode;
+                },
+                initialSelection: selectedCountryCode,
+              ),
+            ),
+            const SizedBox(height: 8.0),
+            Text(AppLocalizations.current.defaultCountryCodeMessage,
+                style: const TextStyle(fontSize: 14.0)),
+            const SizedBox(height: 8.0),
+            Text(AppLocalizations.current.modifyCountryCodeMessage,
+                style: const TextStyle(fontSize: 14.0)),
+          ],
+        ),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              AutoRouter.of(context).pop();
+            },
+            child: Text(AppLocalizations.current.cancel),
+          ),
+          TextButton(
+            onPressed: () {
+              final Map<String, String> countryCode = {
+                'code': selectedCountryCode,
+                'dial_code': selectedDialCode
+              };
+              AutoRouter.of(context).pop(countryCode);
+            },
+            child: Text(AppLocalizations.current.ok),
+          )
+        ],
       );
     },
   );

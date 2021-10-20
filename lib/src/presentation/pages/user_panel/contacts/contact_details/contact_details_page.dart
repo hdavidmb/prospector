@@ -11,11 +11,10 @@ import '../../../../routes/app_router.gr.dart';
 import '../contact_add_edit/logic/contact_form_provider.dart';
 import '../contact_add_edit/widgets/contact_image.dart';
 import 'widgets/action_buttons.dart';
+import 'widgets/call_text_button.dart';
 import 'widgets/contact_info.dart';
 import 'widgets/interaction_text_field.dart';
 import 'widgets/interactions_list_view.dart';
-import 'widgets/phone_button.dart';
-import 'widgets/whatsapp_button.dart';
 
 class ContactDetailsPage extends ConsumerWidget {
   final String? contactID;
@@ -90,17 +89,18 @@ class ContactDetailsPage extends ConsumerWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              PhoneButton(phone: contact.phone),
-                              WhatsappButton(
-                                whatsapp: contact.whatsapp,
-                              )
+                              CallTextButton(contact: contact),
+                              CallTextButton(
+                                contact: contact,
+                                isTexting: true,
+                              ),
                             ],
                           ),
                         ),
                       )
                     ],
                   ),
-                ), //TODO implement interactions
+                ),
                 InteractionTextField(
                   contact: contact,
                 )

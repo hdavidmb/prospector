@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/generated/l10n.dart';
-import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
-import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
-import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
 import 'package:random_string/random_string.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../core/database/database_failures/database_failure.dart';
+import '../../app_default_data/application/app_default_data_providers.dart';
+import '../../contacts/application/contacts_providers.dart';
+import '../../contacts/domain/entity/contact_entity.dart';
 import '../../user/application/user_info_providers.dart';
 import '../domain/entity/interaction_entity.dart';
 import '../domain/use_cases/create_interaction_document.dart';
@@ -90,8 +90,7 @@ class InteractionsNotifier extends ChangeNotifier {
         getResult.fold(
           (failure) => _interactionsState = const InteractionsState.error(),
           (interactionsList) {
-            interactionsList.sort((a, b) =>
-                b.created.compareTo(a.created)); //TODO check sort order
+            interactionsList.sort((a, b) => b.created.compareTo(a.created));
             _interactions = interactionsList;
             _interactionsState = const InteractionsState.ready();
           },

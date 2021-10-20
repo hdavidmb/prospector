@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
+import '../../../../../core/dialogs.dart';
 import '../../../../../core/keyboard_visibility/keyboard_visibility.dart';
 import '../logic/contact_details_provider.dart';
-import 'phone_button.dart';
-import 'whatsapp_button.dart';
+import 'call_text_button.dart';
 
 class InteractionTextField extends StatefulWidget {
   final Contact contact;
@@ -72,7 +72,12 @@ class _InteractionTextFieldState extends State<InteractionTextField> {
                     _textFieldValue = '';
                     _textEditingController.clear();
                   } else {
-                    //TODO show snackbar if error
+                    Future.delayed(
+                        Duration.zero,
+                        () => showSnackBar(
+                            context: context,
+                            message: AppLocalizations.current.serverError,
+                            type: SnackbarType.failure));
                   }
                 }
               },
@@ -81,9 +86,10 @@ class _InteractionTextFieldState extends State<InteractionTextField> {
           KeyboardVisibility(
             keyboardHiddenChild: Row(
               children: [
-                PhoneButton(phone: widget.contact.phone),
-                WhatsappButton(
-                  whatsapp: widget.contact.whatsapp,
+                CallTextButton(contact: widget.contact),
+                CallTextButton(
+                  contact: widget.contact,
+                  isTexting: true,
                 ),
               ],
             ),
