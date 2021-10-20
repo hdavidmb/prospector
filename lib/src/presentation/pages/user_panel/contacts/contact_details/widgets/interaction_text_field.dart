@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/core/dialogs.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
+import '../../../../../core/dialogs.dart';
 import '../../../../../core/keyboard_visibility/keyboard_visibility.dart';
 import '../logic/contact_details_provider.dart';
 import 'call_text_button.dart';
