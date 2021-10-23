@@ -2,6 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:prospector/src/features/tags/domain/tags_use_cases.dart';
+
 import '../../../core/database/database_failures/database_failure.dart';
 import '../../contacts/application/contacts_providers.dart';
 import '../../user/application/user_info_providers.dart';
@@ -12,14 +14,20 @@ import '../domain/use_cases/get_tags_list.dart';
 import 'tags_state.dart';
 
 class TagsNotifier extends ChangeNotifier {
-  final CreateTagDocument createTagDocument;
-  final DeleteTagDocument deleteTagDocument;
-  final GetTagsList getTagsList;
+  // final CreateTagDocument createTagDocument;
+  // final DeleteTagDocument deleteTagDocument;
+  // final GetTagsList getTagsList;
+  // final Reader read;
+  // TagsNotifier({
+  //   required this.createTagDocument,
+  //   required this.deleteTagDocument,
+  //   required this.getTagsList,
+  //   required this.read,
+  // });
+  final TagsUseCases tagsUseCases;
   final Reader read;
   TagsNotifier({
-    required this.createTagDocument,
-    required this.deleteTagDocument,
-    required this.getTagsList,
+    required this.tagsUseCases,
     required this.read,
   });
 
@@ -34,7 +42,7 @@ class TagsNotifier extends ChangeNotifier {
   Future<Either<DatabaseFailure, Unit>> createTag(Tag tag) async {
     final uid = read(userInfoNotifierProvider).user?.uid;
     if (uid != null) {
-      final createResult = await createTagDocument(tag: tag, uid: uid);
+      final createResult = await tagsUseCases.createTag(tag: tag, uid: uid);
       return createResult.fold(
         (failure) => left(failure),
         (unit) {
@@ -53,7 +61,7 @@ class TagsNotifier extends ChangeNotifier {
       _tagsState = const TagsState.fetching();
       final uid = read(userInfoNotifierProvider).user?.uid;
       if (uid != null) {
-        final getResult = await getTagsList(uid: uid);
+        final getResult = await tagsUseCases.getTagsList(uid: uid);
         getResult.fold(
           (failure) => _tagsState = const TagsState.error(),
           (tagsList) {
@@ -72,7 +80,7 @@ class TagsNotifier extends ChangeNotifier {
       {required String tagID}) async {
     final uid = read(userInfoNotifierProvider).user?.uid;
     if (uid != null) {
-      final deleteResult = await deleteTagDocument(tagID: tagID, uid: uid);
+      final deleteResult = await tagsUseCases.deleteTag(tagID: tagID, uid: uid);
       return deleteResult.fold(
         (failure) => left(failure),
         (unit) {

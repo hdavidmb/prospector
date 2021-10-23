@@ -74,13 +74,18 @@ final tagsUseCases = Provider<TagsUseCases>((ref) {
 
 // * Notifier
 final tagsNotifierProvider = ChangeNotifierProvider<TagsNotifier>((ref) {
-  final _createTagDocument = ref.watch(createTagDocument);
-  final _deleteTagDocument = ref.watch(deleteTagDocument);
-  final _getTagsList = ref.watch(getTagsList);
+  // final _createTagDocument = ref.watch(createTagDocument);
+  // final _deleteTagDocument = ref.watch(deleteTagDocument);
+  // final _getTagsList = ref.watch(getTagsList);
+  // return TagsNotifier(
+  //   createTagDocument: _createTagDocument,
+  //   deleteTagDocument: _deleteTagDocument,
+  //   getTagsList: _getTagsList,
+  //   read: ref.read,
+  // );
+  final _tagsUseCases = ref.watch(tagsUseCases);
   return TagsNotifier(
-    createTagDocument: _createTagDocument,
-    deleteTagDocument: _deleteTagDocument,
-    getTagsList: _getTagsList,
+    tagsUseCases: _tagsUseCases,
     read: ref.read,
   );
 });
