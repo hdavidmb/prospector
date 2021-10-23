@@ -95,15 +95,9 @@ final interactionsUseCases = Provider<InteractionsUseCases>((ref) {
 // * Notifier
 final interactionsNotifierProvider =
     ChangeNotifierProvider<InteractionsNotifier>((ref) {
-  final _createInteractionDocument = ref.watch(createInteractionDocument);
-  final _deleteInteractionDocument = ref.watch(deleteInteractionDocument);
-  final _updateInteractionDocument = ref.watch(updateInteractionDocument);
-  final _getInteractionsList = ref.watch(getInteractionsList);
+  final _interactionUseCases = ref.watch(interactionsUseCases);
   return InteractionsNotifier(
-    createInteractionDocumentUC: _createInteractionDocument,
-    deleteInteractionDocumentUC: _deleteInteractionDocument,
-    updateInteractionDocumentUC: _updateInteractionDocument,
-    getInteractionsListUC: _getInteractionsList,
+    interactionsUseCases: _interactionUseCases,
     read: ref.read,
   );
 });

@@ -23,6 +23,7 @@ class Interaction with _$Interaction {
       'id': id,
       'description': description,
       'contact': contact,
+      'created': created,
       'type': type,
     };
     if (event != null) interactionMap['event'] = event;
