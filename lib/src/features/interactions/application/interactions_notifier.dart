@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:random_string/random_string.dart';
 
-import 'package:prospector/src/features/interactions/domain/interactions_use_cases.dart';
-
 import '../../../../generated/l10n.dart';
 import '../../../core/database/database_failures/database_failure.dart';
 import '../../app_default_data/application/app_default_data_providers.dart';
@@ -12,6 +10,7 @@ import '../../contacts/application/contacts_providers.dart';
 import '../../contacts/domain/entity/contact_entity.dart';
 import '../../user/application/user_info_providers.dart';
 import '../domain/entity/interaction_entity.dart';
+import '../domain/interactions_use_cases.dart';
 import 'interactions_state.dart';
 
 class InteractionsNotifier extends ChangeNotifier {
