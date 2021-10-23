@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
-import 'package:prospector/src/core/user_collections/domain/interfaces/i_user_collection_local_repository.dart';
+import '../../../database/database_failures/database_failure.dart';
+import '../../domain/interfaces/i_user_collection_local_repository.dart';
 
 class HiveUserCollectionRepository implements IUserCollectionLocalRepository {
   final String collectionName;
@@ -65,7 +65,8 @@ class HiveUserCollectionRepository implements IUserCollectionLocalRepository {
           Hive.box<Map<dynamic, dynamic>>('$uid-$collectionName')
               .values
               .toList();
-      return right(documentsLis as List<Map<String, dynamic>>);
+      return right(
+          documentsLis.map((map) => Map<String, dynamic>.from(map)).toList());
     } catch (e) {
       return left(const DatabaseFailure.serverError());
     }

@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:prospector/src/core/connection/connection_checker.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/core/user_collections/domain/interfaces/i_user_collection_remote_repository.dart';
+
+import '../../../connection/connection_checker.dart';
+import '../../../database/database_failures/database_failure.dart';
+import '../../domain/interfaces/i_user_collection_remote_repository.dart';
 
 class FirebaseUserCollectionRepository
     implements IUserCollectionRemoteRepository {

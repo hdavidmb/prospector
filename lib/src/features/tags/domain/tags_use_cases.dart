@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
-import 'package:prospector/src/core/user_collections/domain/interfaces/i_user_collection_local_repository.dart';
-import 'package:prospector/src/core/user_collections/domain/interfaces/i_user_collection_remote_repository.dart';
-import 'package:prospector/src/features/tags/domain/entity/tag_entity.dart';
+
+import '../../../core/database/database_failures/database_failure.dart';
+import '../../../core/user_collections/domain/interfaces/i_user_collection_local_repository.dart';
+import '../../../core/user_collections/domain/interfaces/i_user_collection_remote_repository.dart';
+import 'entity/tag_entity.dart';
 
 class TagsUseCases {
   final IUserCollectionLocalRepository localTagsRepository;
@@ -53,9 +54,7 @@ class TagsUseCases {
           return localGet.fold(
             (failure) => left(failure),
             (tagsMapsList) => right(
-              tagsMapsList
-                  .map((tagMap) => Tag.fromMap(tagMap))
-                  .toList(), //TODO check how dates are saved and read and transform if needed
+              tagsMapsList.map((tagMap) => Tag.fromMap(tagMap)).toList(),
             ),
           );
         } else {
@@ -70,14 +69,9 @@ class TagsUseCases {
                 newTagMap['created'] =
                     tagMap['created']?.toDate() ?? DateTime.now();
                 localTagsRepository.createDocument(
-                    //TODO test
-                    document: newTagMap,
-                    uid: uid);
+                    document: newTagMap, uid: uid);
                 return Tag.fromMap(newTagMap);
               }).toList();
-              //TODO delete for (final Tag tag in tagsList) {
-              //   await localTagsRepository.createDocument(document: tag, uid: uid);
-              // }
               return right(tagsList);
             },
           );

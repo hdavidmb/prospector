@@ -2,28 +2,14 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:prospector/src/features/tags/domain/tags_use_cases.dart';
-
 import '../../../core/database/database_failures/database_failure.dart';
 import '../../contacts/application/contacts_providers.dart';
 import '../../user/application/user_info_providers.dart';
 import '../domain/entity/tag_entity.dart';
-import '../domain/use_cases/create_tag_document.dart';
-import '../domain/use_cases/delete_tag_document.dart';
-import '../domain/use_cases/get_tags_list.dart';
+import '../domain/tags_use_cases.dart';
 import 'tags_state.dart';
 
 class TagsNotifier extends ChangeNotifier {
-  // final CreateTagDocument createTagDocument;
-  // final DeleteTagDocument deleteTagDocument;
-  // final GetTagsList getTagsList;
-  // final Reader read;
-  // TagsNotifier({
-  //   required this.createTagDocument,
-  //   required this.deleteTagDocument,
-  //   required this.getTagsList,
-  //   required this.read,
-  // });
   final TagsUseCases tagsUseCases;
   final Reader read;
   TagsNotifier({
