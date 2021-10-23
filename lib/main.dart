@@ -9,7 +9,6 @@ import 'src/app.dart';
 import 'src/core/shared_prefs/shared_prefs.dart';
 import 'src/features/app_default_data/domain/entities/status_entity.dart';
 import 'src/features/app_default_data/domain/entities/subscription_entity.dart';
-import 'src/features/contacts/domain/entity/contact_entity.dart';
 import 'src/features/user/domain/entity/user_entity.dart';
 
 Future<void> main() async {
@@ -23,7 +22,6 @@ Future<void> main() async {
   Hive.registerAdapter(StatusAdapter());
   Hive.registerAdapter(SubscriptionAdapter());
   Hive.registerAdapter(UserEntityAdapter());
-  Hive.registerAdapter(ContactAdapter());
 
   runApp(
     ProviderScope(

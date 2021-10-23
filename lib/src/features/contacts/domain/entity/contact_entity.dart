@@ -1,26 +1,23 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hive/hive.dart';
 
 part 'contact_entity.freezed.dart';
-part 'contact_entity.g.dart';
 
 @freezed
 class Contact with _$Contact {
-  @HiveType(typeId: 3)
   const factory Contact({
-    @HiveField(0) required String id,
-    @HiveField(1) required String name,
-    @HiveField(2) required String status,
-    @HiveField(3) required DateTime created,
-    @HiveField(4) required DateTime modified,
-    @HiveField(5) String? gender,
-    @HiveField(6) String? location,
-    @HiveField(7) String? phone,
-    @HiveField(8) String? whatsapp,
-    @HiveField(9) List<String>? phones,
-    @HiveField(10) String? photo,
-    @HiveField(11) List<String>? tags,
-    @HiveField(12) String? importedId,
+    required String id,
+    required String name,
+    required String status,
+    required DateTime created,
+    required DateTime modified,
+    String? gender,
+    String? location,
+    String? phone,
+    String? whatsapp,
+    List<String>? phones,
+    String? photo,
+    List<String>? tags,
+    String? importedId,
   }) = _Contact;
 
   // ignore: unused_element

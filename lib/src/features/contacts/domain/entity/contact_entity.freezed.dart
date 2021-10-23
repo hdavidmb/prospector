@@ -17,19 +17,19 @@ class _$ContactTearOff {
   const _$ContactTearOff();
 
   _Contact call(
-      {@HiveField(0) required String id,
-      @HiveField(1) required String name,
-      @HiveField(2) required String status,
-      @HiveField(3) required DateTime created,
-      @HiveField(4) required DateTime modified,
-      @HiveField(5) String? gender,
-      @HiveField(6) String? location,
-      @HiveField(7) String? phone,
-      @HiveField(8) String? whatsapp,
-      @HiveField(9) List<String>? phones,
-      @HiveField(10) String? photo,
-      @HiveField(11) List<String>? tags,
-      @HiveField(12) String? importedId}) {
+      {required String id,
+      required String name,
+      required String status,
+      required DateTime created,
+      required DateTime modified,
+      String? gender,
+      String? location,
+      String? phone,
+      String? whatsapp,
+      List<String>? phones,
+      String? photo,
+      List<String>? tags,
+      String? importedId}) {
     return _Contact(
       id: id,
       name: name,
@@ -53,31 +53,18 @@ const $Contact = _$ContactTearOff();
 
 /// @nodoc
 mixin _$Contact {
-  @HiveField(0)
   String get id => throw _privateConstructorUsedError;
-  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
-  @HiveField(2)
   String get status => throw _privateConstructorUsedError;
-  @HiveField(3)
   DateTime get created => throw _privateConstructorUsedError;
-  @HiveField(4)
   DateTime get modified => throw _privateConstructorUsedError;
-  @HiveField(5)
   String? get gender => throw _privateConstructorUsedError;
-  @HiveField(6)
   String? get location => throw _privateConstructorUsedError;
-  @HiveField(7)
   String? get phone => throw _privateConstructorUsedError;
-  @HiveField(8)
   String? get whatsapp => throw _privateConstructorUsedError;
-  @HiveField(9)
   List<String>? get phones => throw _privateConstructorUsedError;
-  @HiveField(10)
   String? get photo => throw _privateConstructorUsedError;
-  @HiveField(11)
   List<String>? get tags => throw _privateConstructorUsedError;
-  @HiveField(12)
   String? get importedId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -89,19 +76,19 @@ abstract class $ContactCopyWith<$Res> {
   factory $ContactCopyWith(Contact value, $Res Function(Contact) then) =
       _$ContactCopyWithImpl<$Res>;
   $Res call(
-      {@HiveField(0) String id,
-      @HiveField(1) String name,
-      @HiveField(2) String status,
-      @HiveField(3) DateTime created,
-      @HiveField(4) DateTime modified,
-      @HiveField(5) String? gender,
-      @HiveField(6) String? location,
-      @HiveField(7) String? phone,
-      @HiveField(8) String? whatsapp,
-      @HiveField(9) List<String>? phones,
-      @HiveField(10) String? photo,
-      @HiveField(11) List<String>? tags,
-      @HiveField(12) String? importedId});
+      {String id,
+      String name,
+      String status,
+      DateTime created,
+      DateTime modified,
+      String? gender,
+      String? location,
+      String? phone,
+      String? whatsapp,
+      List<String>? phones,
+      String? photo,
+      List<String>? tags,
+      String? importedId});
 }
 
 /// @nodoc
@@ -191,19 +178,19 @@ abstract class _$ContactCopyWith<$Res> implements $ContactCopyWith<$Res> {
       __$ContactCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@HiveField(0) String id,
-      @HiveField(1) String name,
-      @HiveField(2) String status,
-      @HiveField(3) DateTime created,
-      @HiveField(4) DateTime modified,
-      @HiveField(5) String? gender,
-      @HiveField(6) String? location,
-      @HiveField(7) String? phone,
-      @HiveField(8) String? whatsapp,
-      @HiveField(9) List<String>? phones,
-      @HiveField(10) String? photo,
-      @HiveField(11) List<String>? tags,
-      @HiveField(12) String? importedId});
+      {String id,
+      String name,
+      String status,
+      DateTime created,
+      DateTime modified,
+      String? gender,
+      String? location,
+      String? phone,
+      String? whatsapp,
+      List<String>? phones,
+      String? photo,
+      List<String>? tags,
+      String? importedId});
 }
 
 /// @nodoc
@@ -290,62 +277,48 @@ class __$ContactCopyWithImpl<$Res> extends _$ContactCopyWithImpl<$Res>
 
 /// @nodoc
 
-@HiveType(typeId: 3)
 class _$_Contact extends _Contact {
   const _$_Contact(
-      {@HiveField(0) required this.id,
-      @HiveField(1) required this.name,
-      @HiveField(2) required this.status,
-      @HiveField(3) required this.created,
-      @HiveField(4) required this.modified,
-      @HiveField(5) this.gender,
-      @HiveField(6) this.location,
-      @HiveField(7) this.phone,
-      @HiveField(8) this.whatsapp,
-      @HiveField(9) this.phones,
-      @HiveField(10) this.photo,
-      @HiveField(11) this.tags,
-      @HiveField(12) this.importedId})
+      {required this.id,
+      required this.name,
+      required this.status,
+      required this.created,
+      required this.modified,
+      this.gender,
+      this.location,
+      this.phone,
+      this.whatsapp,
+      this.phones,
+      this.photo,
+      this.tags,
+      this.importedId})
       : super._();
 
   @override
-  @HiveField(0)
   final String id;
   @override
-  @HiveField(1)
   final String name;
   @override
-  @HiveField(2)
   final String status;
   @override
-  @HiveField(3)
   final DateTime created;
   @override
-  @HiveField(4)
   final DateTime modified;
   @override
-  @HiveField(5)
   final String? gender;
   @override
-  @HiveField(6)
   final String? location;
   @override
-  @HiveField(7)
   final String? phone;
   @override
-  @HiveField(8)
   final String? whatsapp;
   @override
-  @HiveField(9)
   final List<String>? phones;
   @override
-  @HiveField(10)
   final String? photo;
   @override
-  @HiveField(11)
   final List<String>? tags;
   @override
-  @HiveField(12)
   final String? importedId;
 
   @override
@@ -415,59 +388,46 @@ class _$_Contact extends _Contact {
 
 abstract class _Contact extends Contact {
   const factory _Contact(
-      {@HiveField(0) required String id,
-      @HiveField(1) required String name,
-      @HiveField(2) required String status,
-      @HiveField(3) required DateTime created,
-      @HiveField(4) required DateTime modified,
-      @HiveField(5) String? gender,
-      @HiveField(6) String? location,
-      @HiveField(7) String? phone,
-      @HiveField(8) String? whatsapp,
-      @HiveField(9) List<String>? phones,
-      @HiveField(10) String? photo,
-      @HiveField(11) List<String>? tags,
-      @HiveField(12) String? importedId}) = _$_Contact;
+      {required String id,
+      required String name,
+      required String status,
+      required DateTime created,
+      required DateTime modified,
+      String? gender,
+      String? location,
+      String? phone,
+      String? whatsapp,
+      List<String>? phones,
+      String? photo,
+      List<String>? tags,
+      String? importedId}) = _$_Contact;
   const _Contact._() : super._();
 
   @override
-  @HiveField(0)
   String get id => throw _privateConstructorUsedError;
   @override
-  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
   @override
-  @HiveField(2)
   String get status => throw _privateConstructorUsedError;
   @override
-  @HiveField(3)
   DateTime get created => throw _privateConstructorUsedError;
   @override
-  @HiveField(4)
   DateTime get modified => throw _privateConstructorUsedError;
   @override
-  @HiveField(5)
   String? get gender => throw _privateConstructorUsedError;
   @override
-  @HiveField(6)
   String? get location => throw _privateConstructorUsedError;
   @override
-  @HiveField(7)
   String? get phone => throw _privateConstructorUsedError;
   @override
-  @HiveField(8)
   String? get whatsapp => throw _privateConstructorUsedError;
   @override
-  @HiveField(9)
   List<String>? get phones => throw _privateConstructorUsedError;
   @override
-  @HiveField(10)
   String? get photo => throw _privateConstructorUsedError;
   @override
-  @HiveField(11)
   List<String>? get tags => throw _privateConstructorUsedError;
   @override
-  @HiveField(12)
   String? get importedId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
