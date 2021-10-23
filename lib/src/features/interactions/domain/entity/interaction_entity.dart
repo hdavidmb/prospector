@@ -21,6 +21,7 @@ class Interaction with _$Interaction {
   Map<String, dynamic> toMap() {
     final Map<String, dynamic> interactionMap = {
       'id': id,
+      'created': created,
       'description': description,
       'contact': contact,
       'type': type,

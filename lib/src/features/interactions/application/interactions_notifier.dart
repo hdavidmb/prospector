@@ -10,23 +10,14 @@ import '../../contacts/application/contacts_providers.dart';
 import '../../contacts/domain/entity/contact_entity.dart';
 import '../../user/application/user_info_providers.dart';
 import '../domain/entity/interaction_entity.dart';
-import '../domain/use_cases/create_interaction_document.dart';
-import '../domain/use_cases/delete_interaction_document.dart';
-import '../domain/use_cases/get_interactions_list.dart';
-import '../domain/use_cases/update_interaction_document.dart';
+import '../domain/interactions_use_cases.dart';
 import 'interactions_state.dart';
 
 class InteractionsNotifier extends ChangeNotifier {
-  final CreateInteractionDocument createInteractionDocumentUC;
-  final DeleteInteractionDocument deleteInteractionDocumentUC;
-  final UpdateInteractionDocument updateInteractionDocumentUC;
-  final GetInteractionsList getInteractionsListUC;
+  final InteractionsUseCases interactionsUseCases;
   final Reader read;
   InteractionsNotifier({
-    required this.createInteractionDocumentUC,
-    required this.deleteInteractionDocumentUC,
-    required this.updateInteractionDocumentUC,
-    required this.getInteractionsListUC,
+    required this.interactionsUseCases,
     required this.read,
   });
 
@@ -43,8 +34,8 @@ class InteractionsNotifier extends ChangeNotifier {
       {required Contact contact}) async {
     final uid = read(userInfoNotifierProvider).user?.uid;
     if (uid != null) {
-      final createResult =
-          await createInteractionDocumentUC(interaction: interaction, uid: uid);
+      final createResult = await interactionsUseCases.createInteraction(
+          interaction: interaction, uid: uid);
 
       return createResult.fold(
         (failure) => left(failure),
@@ -86,7 +77,8 @@ class InteractionsNotifier extends ChangeNotifier {
       _interactionsState = const InteractionsState.fetching();
       final uid = read(userInfoNotifierProvider).user?.uid;
       if (uid != null) {
-        final getResult = await getInteractionsListUC(uid: uid);
+        final getResult =
+            await interactionsUseCases.getInteractionsList(uid: uid);
         getResult.fold(
           (failure) => _interactionsState = const InteractionsState.error(),
           (interactionsList) {
@@ -107,8 +99,8 @@ class InteractionsNotifier extends ChangeNotifier {
     final uid = read(userInfoNotifierProvider).user?.uid;
 
     if (uid != null) {
-      final updateResult =
-          await updateInteractionDocumentUC(interaction: interaction, uid: uid);
+      final updateResult = await interactionsUseCases.updateInteraction(
+          interaction: interaction, uid: uid);
       return updateResult.fold(
         (failure) => left(failure),
         (unit) {
@@ -131,7 +123,7 @@ class InteractionsNotifier extends ChangeNotifier {
     final uid = read(userInfoNotifierProvider).user?.uid;
 
     if (uid != null) {
-      final deleteResult = await deleteInteractionDocumentUC(
+      final deleteResult = await interactionsUseCases.deleteInteraction(
           interactionID: interactionID, uid: uid);
       return deleteResult.fold(
         (failure) => left(failure),
