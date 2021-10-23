@@ -66,15 +66,13 @@ class TagsUseCases {
             (tagsMapsList) async {
               final List<Tag> tagsList = tagsMapsList.map(
                 (tagMap) {
-                  final Map<String, dynamic> newTagMap =
-                      tagMap; //TODO remove and work with the original one
-                  newTagMap['created'] =
+                  tagMap['created'] =
                       tagMap['created']?.toDate() ?? DateTime.now();
 
                   localTagsRepository.createDocument(
-                      document: newTagMap, uid: uid);
+                      document: tagMap, uid: uid);
 
-                  return Tag.fromMap(newTagMap);
+                  return Tag.fromMap(tagMap);
                 },
               ).toList();
               return right(tagsList);
