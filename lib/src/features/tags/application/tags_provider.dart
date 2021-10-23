@@ -1,4 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/core/user_collections/data/local/hive_user_collection_repository.dart';
+import 'package:prospector/src/core/user_collections/data/remote/firebase_user_collection_repository.dart';
+import 'package:prospector/src/core/user_collections/domain/interfaces/i_user_collection_local_repository.dart';
+import 'package:prospector/src/core/user_collections/domain/interfaces/i_user_collection_remote_repository.dart';
+import 'package:prospector/src/features/tags/domain/tags_use_cases.dart';
 
 import '../../../core/database/instances/database_instance_provider.dart';
 import '../data/local/hive_tags_repository.dart';
@@ -18,6 +23,20 @@ final remoteTagsRepository = Provider<ITagsRemoteRepository>((ref) {
 
 final localTagsRepository = Provider<ITagsLocalRepository>((ref) {
   return HiveTagsRepository();
+});
+
+// * New Repositories
+//TODO test and replace old ones
+final newRemoteTagsRepository =
+    Provider<IUserCollectionRemoteRepository>((ref) {
+  return FirebaseUserCollectionRepository(
+    firestoreInstance: ref.watch(firestoreInstance),
+    collectionName: 'tags',
+  );
+});
+
+final newLocalTagsRepository = Provider<IUserCollectionLocalRepository>((ref) {
+  return HiveUserCollectionRepository(collectionName: 'tags');
 });
 
 // * Use cases
@@ -41,6 +60,14 @@ final getTagsList = Provider<GetTagsList>((ref) {
   final _localTagsRepository = ref.watch(localTagsRepository);
   final _remoteTagsRepository = ref.watch(remoteTagsRepository);
   return GetTagsList(
+      localTagsRepository: _localTagsRepository,
+      remoteTagsRepository: _remoteTagsRepository);
+});
+
+final tagsUseCases = Provider<TagsUseCases>((ref) {
+  final _localTagsRepository = ref.watch(newLocalTagsRepository);
+  final _remoteTagsRepository = ref.watch(newRemoteTagsRepository);
+  return TagsUseCases(
       localTagsRepository: _localTagsRepository,
       remoteTagsRepository: _remoteTagsRepository);
 });
