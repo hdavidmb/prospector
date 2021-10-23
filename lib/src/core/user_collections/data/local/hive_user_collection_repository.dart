@@ -61,12 +61,12 @@ class HiveUserCollectionRepository implements IUserCollectionLocalRepository {
       {required String uid}) async {
     try {
       await _checkOpenBox(uid: uid);
-      final documentsLis =
+      final documentsList =
           Hive.box<Map<dynamic, dynamic>>('$uid-$collectionName')
               .values
               .toList();
       return right(
-          documentsLis.map((map) => Map<String, dynamic>.from(map)).toList());
+          documentsList.map((map) => Map<String, dynamic>.from(map)).toList());
     } catch (e) {
       return left(const DatabaseFailure.serverError());
     }

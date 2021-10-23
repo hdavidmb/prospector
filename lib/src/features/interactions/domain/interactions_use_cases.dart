@@ -85,14 +85,19 @@ class InteractionsUseCases {
             (failure) => left(failure),
             (interactionsMapsList) async {
               final List<Interaction> interactionsList =
-                  interactionsMapsList.map((interactionMap) {
-                final Map<String, dynamic> newInteractionMap = interactionMap;
-                newInteractionMap['created'] =
-                    interactionMap['created']?.toDate() ?? DateTime.now();
-                localInteractionsRepository.createDocument(
-                    document: newInteractionMap, uid: uid);
-                return Interaction.fromMap(newInteractionMap);
-              }).toList();
+                  interactionsMapsList.map(
+                (interactionMap) {
+                  final Map<String, dynamic> newInteractionMap =
+                      interactionMap; //TODO remove and work with the original one
+                  newInteractionMap['created'] =
+                      interactionMap['created']?.toDate() ?? DateTime.now();
+
+                  localInteractionsRepository.createDocument(
+                      document: newInteractionMap, uid: uid);
+
+                  return Interaction.fromMap(newInteractionMap);
+                },
+              ).toList();
               return right(interactionsList);
             },
           );
