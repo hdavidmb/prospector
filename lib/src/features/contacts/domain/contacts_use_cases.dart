@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
-import 'package:prospector/src/features/contacts/domain/entity/contact_entity.dart';
 
+import '../../../core/database/database_failures/database_failure.dart';
 import '../../../core/user_collections/domain/interfaces/i_user_collection_local_repository.dart';
 import '../../../core/user_collections/domain/interfaces/i_user_collection_remote_repository.dart';
+import 'entity/contact_entity.dart';
 
 class ContactsUseCases {
   final IUserCollectionLocalRepository localContactsRepository;
