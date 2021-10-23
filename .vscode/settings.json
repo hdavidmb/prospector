@@ -5,8 +5,10 @@
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
-        "**/*.freezed.dart": true,
-        "**/*.g.dart": true,
+        "**/Thumbs.db": true,
+        "**/*.freezed.dart": false,
+        "**/*.g.dart": false,
         "**/*.gitkeep": false
-    }
+    },
+    "explorerExclude.backup": null
 }

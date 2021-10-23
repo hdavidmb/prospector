@@ -2,18 +2,16 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 
 part 'interaction_entity.freezed.dart';
-part 'interaction_entity.g.dart';
 
 @freezed
 class Interaction with _$Interaction {
-  @HiveType(typeId: 5)
   const factory Interaction({
-    @HiveField(0) required String id,
-    @HiveField(1) required String description,
-    @HiveField(2) required String contact,
-    @HiveField(3) required String type,
-    @HiveField(4) required DateTime created,
-    @HiveField(5) String? event,
+    required String id,
+    required String description,
+    required String contact,
+    required String type,
+    required DateTime created,
+    String? event,
   }) = _Interaction;
 
   const Interaction._();
