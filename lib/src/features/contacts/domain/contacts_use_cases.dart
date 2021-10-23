@@ -54,7 +54,7 @@ class ContactsUseCases {
     );
   }
 
-  Future<Either<DatabaseFailure, List<Contact>>> call(
+  Future<Either<DatabaseFailure, List<Contact>>> getContactsList(
       {required String uid}) async {
     // Check if exists locally
     final localCheckResult =
@@ -88,10 +88,10 @@ class ContactsUseCases {
                   contactMap['modified'] =
                       contactMap['modified']?.toDate() ?? DateTime.now();
                   if (contactMap['phones'] != null) {
-                    contactMap['phones'] =
-                        (contactMap['phones'] as List<dynamic>)
-                            .map((phone) => phone.toString())
-                            .toList();
+                    contactMap['phones'] = (contactMap['phones']
+                            as List<dynamic>)
+                        .map((phone) => phone.toString())
+                        .toList(); //TODO try List<String>.from(contactMap['phones'])
                   }
                   if (contactMap['tags'] != null) {
                     contactMap['tags'] = (contactMap['tags'] as List<dynamic>)

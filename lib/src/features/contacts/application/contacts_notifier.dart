@@ -2,6 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:prospector/src/features/contacts/domain/contacts_use_cases.dart';
+
 import '../../../core/database/database_failures/database_failure.dart';
 import '../../app_default_data/application/app_default_data_providers.dart';
 import '../../interactions/application/interactions_providers.dart';
@@ -14,16 +16,10 @@ import '../domain/use_cases/update_contact_document.dart';
 import 'contacts_state.dart';
 
 class ContactsNotifier extends ChangeNotifier {
-  final CreateContactDocument createContactDocument;
-  final DeleteContactDocument deleteContactDocument;
-  final UpdateContactDocument updateContactDocument;
-  final GetContactsList getContactsList;
+  final ContactsUseCases contactsUseCases;
   final Reader read;
   ContactsNotifier({
-    required this.createContactDocument,
-    required this.deleteContactDocument,
-    required this.updateContactDocument,
-    required this.getContactsList,
+    required this.contactsUseCases,
     required this.read,
   });
 
@@ -39,7 +35,7 @@ class ContactsNotifier extends ChangeNotifier {
     final uid = read(userInfoNotifierProvider).user?.uid;
     if (uid != null) {
       final createResult =
-          await createContactDocument(contact: contact, uid: uid);
+          await contactsUseCases.createContact(contact: contact, uid: uid);
       return createResult.fold(
         (failure) => left(failure),
         (unit) {
@@ -58,7 +54,7 @@ class ContactsNotifier extends ChangeNotifier {
       _contactsState = const ContactsState.fetching();
       final uid = read(userInfoNotifierProvider).user?.uid;
       if (uid != null) {
-        final getResult = await getContactsList(uid: uid);
+        final getResult = await contactsUseCases.getContactsList(uid: uid);
         getResult.fold(
           (failure) => _contactsState = const ContactsState.error(),
           (contactsList) {
@@ -82,8 +78,8 @@ class ContactsNotifier extends ChangeNotifier {
       final newContactInfo = removingDeletedTag
           ? contact
           : contact.copyWith(modified: DateTime.now());
-      final updateResult =
-          await updateContactDocument(contact: newContactInfo, uid: uid);
+      final updateResult = await contactsUseCases.updateContact(
+          contact: newContactInfo, uid: uid);
       return updateResult.fold(
         (failure) => left(failure),
         (unit) async {
@@ -120,7 +116,7 @@ class ContactsNotifier extends ChangeNotifier {
     final uid = read(userInfoNotifierProvider).user?.uid;
     if (uid != null) {
       final deleteResult =
-          await deleteContactDocument(contactID: contactID, uid: uid);
+          await contactsUseCases.deleteContact(contactID: contactID, uid: uid);
       return deleteResult.fold(
         (failure) => left(failure),
         (unit) {
