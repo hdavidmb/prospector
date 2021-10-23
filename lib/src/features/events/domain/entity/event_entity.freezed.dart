@@ -17,27 +17,27 @@ class _$EventTearOff {
   const _$EventTearOff();
 
   _Event call(
-      {@HiveField(0) required String id,
-      @HiveField(1) required String title,
-      @HiveField(2) required DateTime created,
-      @HiveField(3) required DateTime modified,
-      @HiveField(4) required String type,
-      @HiveField(5) required DateTime startDate,
-      @HiveField(6) required DateTime endDate,
-      @HiveField(7) required bool allDay,
-      @HiveField(8) List<dynamic>? guests,
-      @HiveField(9) String? location,
-      @HiveField(10) List<dynamic>? notifications,
-      @HiveField(11) List<dynamic>? notificationsIDs}) {
+      {required String id,
+      required bool allDay,
+      required DateTime created,
+      required DateTime modified,
+      required DateTime startDate,
+      required DateTime endDate,
+      required String title,
+      required String type,
+      List<String>? guests,
+      String? location,
+      List<DateTime>? notifications,
+      List<String>? notificationsIDs}) {
     return _Event(
       id: id,
-      title: title,
+      allDay: allDay,
       created: created,
       modified: modified,
-      type: type,
       startDate: startDate,
       endDate: endDate,
-      allDay: allDay,
+      title: title,
+      type: type,
       guests: guests,
       location: location,
       notifications: notifications,
@@ -51,30 +51,18 @@ const $Event = _$EventTearOff();
 
 /// @nodoc
 mixin _$Event {
-  @HiveField(0)
   String get id => throw _privateConstructorUsedError;
-  @HiveField(1)
-  String get title => throw _privateConstructorUsedError;
-  @HiveField(2)
-  DateTime get created => throw _privateConstructorUsedError;
-  @HiveField(3)
-  DateTime get modified => throw _privateConstructorUsedError;
-  @HiveField(4)
-  String get type => throw _privateConstructorUsedError;
-  @HiveField(5)
-  DateTime get startDate => throw _privateConstructorUsedError;
-  @HiveField(6)
-  DateTime get endDate => throw _privateConstructorUsedError;
-  @HiveField(7)
   bool get allDay => throw _privateConstructorUsedError;
-  @HiveField(8)
-  List<dynamic>? get guests => throw _privateConstructorUsedError;
-  @HiveField(9)
+  DateTime get created => throw _privateConstructorUsedError;
+  DateTime get modified => throw _privateConstructorUsedError;
+  DateTime get startDate => throw _privateConstructorUsedError;
+  DateTime get endDate => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
+  List<String>? get guests => throw _privateConstructorUsedError;
   String? get location => throw _privateConstructorUsedError;
-  @HiveField(10)
-  List<dynamic>? get notifications => throw _privateConstructorUsedError;
-  @HiveField(11)
-  List<dynamic>? get notificationsIDs => throw _privateConstructorUsedError;
+  List<DateTime>? get notifications => throw _privateConstructorUsedError;
+  List<String>? get notificationsIDs => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventCopyWith<Event> get copyWith => throw _privateConstructorUsedError;
@@ -85,18 +73,18 @@ abstract class $EventCopyWith<$Res> {
   factory $EventCopyWith(Event value, $Res Function(Event) then) =
       _$EventCopyWithImpl<$Res>;
   $Res call(
-      {@HiveField(0) String id,
-      @HiveField(1) String title,
-      @HiveField(2) DateTime created,
-      @HiveField(3) DateTime modified,
-      @HiveField(4) String type,
-      @HiveField(5) DateTime startDate,
-      @HiveField(6) DateTime endDate,
-      @HiveField(7) bool allDay,
-      @HiveField(8) List<dynamic>? guests,
-      @HiveField(9) String? location,
-      @HiveField(10) List<dynamic>? notifications,
-      @HiveField(11) List<dynamic>? notificationsIDs});
+      {String id,
+      bool allDay,
+      DateTime created,
+      DateTime modified,
+      DateTime startDate,
+      DateTime endDate,
+      String title,
+      String type,
+      List<String>? guests,
+      String? location,
+      List<DateTime>? notifications,
+      List<String>? notificationsIDs});
 }
 
 /// @nodoc
@@ -110,13 +98,13 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? title = freezed,
+    Object? allDay = freezed,
     Object? created = freezed,
     Object? modified = freezed,
-    Object? type = freezed,
     Object? startDate = freezed,
     Object? endDate = freezed,
-    Object? allDay = freezed,
+    Object? title = freezed,
+    Object? type = freezed,
     Object? guests = freezed,
     Object? location = freezed,
     Object? notifications = freezed,
@@ -127,10 +115,10 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
+      allDay: allDay == freezed
+          ? _value.allDay
+          : allDay // ignore: cast_nullable_to_non_nullable
+              as bool,
       created: created == freezed
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
@@ -139,10 +127,6 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
           ? _value.modified
           : modified // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       startDate: startDate == freezed
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -151,14 +135,18 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      allDay: allDay == freezed
-          ? _value.allDay
-          : allDay // ignore: cast_nullable_to_non_nullable
-              as bool,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
       guests: guests == freezed
           ? _value.guests
           : guests // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String>?,
       location: location == freezed
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -166,11 +154,11 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
       notifications: notifications == freezed
           ? _value.notifications
           : notifications // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<DateTime>?,
       notificationsIDs: notificationsIDs == freezed
           ? _value.notificationsIDs
           : notificationsIDs // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String>?,
     ));
   }
 }
@@ -181,18 +169,18 @@ abstract class _$EventCopyWith<$Res> implements $EventCopyWith<$Res> {
       __$EventCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@HiveField(0) String id,
-      @HiveField(1) String title,
-      @HiveField(2) DateTime created,
-      @HiveField(3) DateTime modified,
-      @HiveField(4) String type,
-      @HiveField(5) DateTime startDate,
-      @HiveField(6) DateTime endDate,
-      @HiveField(7) bool allDay,
-      @HiveField(8) List<dynamic>? guests,
-      @HiveField(9) String? location,
-      @HiveField(10) List<dynamic>? notifications,
-      @HiveField(11) List<dynamic>? notificationsIDs});
+      {String id,
+      bool allDay,
+      DateTime created,
+      DateTime modified,
+      DateTime startDate,
+      DateTime endDate,
+      String title,
+      String type,
+      List<String>? guests,
+      String? location,
+      List<DateTime>? notifications,
+      List<String>? notificationsIDs});
 }
 
 /// @nodoc
@@ -207,13 +195,13 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? title = freezed,
+    Object? allDay = freezed,
     Object? created = freezed,
     Object? modified = freezed,
-    Object? type = freezed,
     Object? startDate = freezed,
     Object? endDate = freezed,
-    Object? allDay = freezed,
+    Object? title = freezed,
+    Object? type = freezed,
     Object? guests = freezed,
     Object? location = freezed,
     Object? notifications = freezed,
@@ -224,10 +212,10 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
+      allDay: allDay == freezed
+          ? _value.allDay
+          : allDay // ignore: cast_nullable_to_non_nullable
+              as bool,
       created: created == freezed
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
@@ -236,10 +224,6 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
           ? _value.modified
           : modified // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       startDate: startDate == freezed
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -248,14 +232,18 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      allDay: allDay == freezed
-          ? _value.allDay
-          : allDay // ignore: cast_nullable_to_non_nullable
-              as bool,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
       guests: guests == freezed
           ? _value.guests
           : guests // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String>?,
       location: location == freezed
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -263,74 +251,61 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
       notifications: notifications == freezed
           ? _value.notifications
           : notifications // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<DateTime>?,
       notificationsIDs: notificationsIDs == freezed
           ? _value.notificationsIDs
           : notificationsIDs // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String>?,
     ));
   }
 }
 
 /// @nodoc
 
-@HiveType(typeId: 6)
 class _$_Event extends _Event {
   const _$_Event(
-      {@HiveField(0) required this.id,
-      @HiveField(1) required this.title,
-      @HiveField(2) required this.created,
-      @HiveField(3) required this.modified,
-      @HiveField(4) required this.type,
-      @HiveField(5) required this.startDate,
-      @HiveField(6) required this.endDate,
-      @HiveField(7) required this.allDay,
-      @HiveField(8) this.guests,
-      @HiveField(9) this.location,
-      @HiveField(10) this.notifications,
-      @HiveField(11) this.notificationsIDs})
+      {required this.id,
+      required this.allDay,
+      required this.created,
+      required this.modified,
+      required this.startDate,
+      required this.endDate,
+      required this.title,
+      required this.type,
+      this.guests,
+      this.location,
+      this.notifications,
+      this.notificationsIDs})
       : super._();
 
   @override
-  @HiveField(0)
   final String id;
   @override
-  @HiveField(1)
-  final String title;
-  @override
-  @HiveField(2)
-  final DateTime created;
-  @override
-  @HiveField(3)
-  final DateTime modified;
-  @override
-  @HiveField(4)
-  final String type;
-  @override
-  @HiveField(5)
-  final DateTime startDate;
-  @override
-  @HiveField(6)
-  final DateTime endDate;
-  @override
-  @HiveField(7)
   final bool allDay;
   @override
-  @HiveField(8)
-  final List<dynamic>? guests;
+  final DateTime created;
   @override
-  @HiveField(9)
+  final DateTime modified;
+  @override
+  final DateTime startDate;
+  @override
+  final DateTime endDate;
+  @override
+  final String title;
+  @override
+  final String type;
+  @override
+  final List<String>? guests;
+  @override
   final String? location;
   @override
-  @HiveField(10)
-  final List<dynamic>? notifications;
+  final List<DateTime>? notifications;
   @override
-  @HiveField(11)
-  final List<dynamic>? notificationsIDs;
+  final List<String>? notificationsIDs;
 
   @override
   String toString() {
-    return 'Event(id: $id, title: $title, created: $created, modified: $modified, type: $type, startDate: $startDate, endDate: $endDate, allDay: $allDay, guests: $guests, location: $location, notifications: $notifications, notificationsIDs: $notificationsIDs)';
+    return 'Event(id: $id, allDay: $allDay, created: $created, modified: $modified, startDate: $startDate, endDate: $endDate, title: $title, type: $type, guests: $guests, location: $location, notifications: $notifications, notificationsIDs: $notificationsIDs)';
   }
 
   @override
@@ -339,24 +314,24 @@ class _$_Event extends _Event {
         (other is _Event &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.allDay, allDay) ||
+                const DeepCollectionEquality().equals(other.allDay, allDay)) &&
             (identical(other.created, created) ||
                 const DeepCollectionEquality()
                     .equals(other.created, created)) &&
             (identical(other.modified, modified) ||
                 const DeepCollectionEquality()
                     .equals(other.modified, modified)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.startDate, startDate) ||
                 const DeepCollectionEquality()
                     .equals(other.startDate, startDate)) &&
             (identical(other.endDate, endDate) ||
                 const DeepCollectionEquality()
                     .equals(other.endDate, endDate)) &&
-            (identical(other.allDay, allDay) ||
-                const DeepCollectionEquality().equals(other.allDay, allDay)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.guests, guests) ||
                 const DeepCollectionEquality().equals(other.guests, guests)) &&
             (identical(other.location, location) ||
@@ -374,13 +349,13 @@ class _$_Event extends _Event {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(allDay) ^
       const DeepCollectionEquality().hash(created) ^
       const DeepCollectionEquality().hash(modified) ^
-      const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(startDate) ^
       const DeepCollectionEquality().hash(endDate) ^
-      const DeepCollectionEquality().hash(allDay) ^
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(guests) ^
       const DeepCollectionEquality().hash(location) ^
       const DeepCollectionEquality().hash(notifications) ^
@@ -394,56 +369,44 @@ class _$_Event extends _Event {
 
 abstract class _Event extends Event {
   const factory _Event(
-      {@HiveField(0) required String id,
-      @HiveField(1) required String title,
-      @HiveField(2) required DateTime created,
-      @HiveField(3) required DateTime modified,
-      @HiveField(4) required String type,
-      @HiveField(5) required DateTime startDate,
-      @HiveField(6) required DateTime endDate,
-      @HiveField(7) required bool allDay,
-      @HiveField(8) List<dynamic>? guests,
-      @HiveField(9) String? location,
-      @HiveField(10) List<dynamic>? notifications,
-      @HiveField(11) List<dynamic>? notificationsIDs}) = _$_Event;
+      {required String id,
+      required bool allDay,
+      required DateTime created,
+      required DateTime modified,
+      required DateTime startDate,
+      required DateTime endDate,
+      required String title,
+      required String type,
+      List<String>? guests,
+      String? location,
+      List<DateTime>? notifications,
+      List<String>? notificationsIDs}) = _$_Event;
   const _Event._() : super._();
 
   @override
-  @HiveField(0)
   String get id => throw _privateConstructorUsedError;
   @override
-  @HiveField(1)
-  String get title => throw _privateConstructorUsedError;
-  @override
-  @HiveField(2)
-  DateTime get created => throw _privateConstructorUsedError;
-  @override
-  @HiveField(3)
-  DateTime get modified => throw _privateConstructorUsedError;
-  @override
-  @HiveField(4)
-  String get type => throw _privateConstructorUsedError;
-  @override
-  @HiveField(5)
-  DateTime get startDate => throw _privateConstructorUsedError;
-  @override
-  @HiveField(6)
-  DateTime get endDate => throw _privateConstructorUsedError;
-  @override
-  @HiveField(7)
   bool get allDay => throw _privateConstructorUsedError;
   @override
-  @HiveField(8)
-  List<dynamic>? get guests => throw _privateConstructorUsedError;
+  DateTime get created => throw _privateConstructorUsedError;
   @override
-  @HiveField(9)
+  DateTime get modified => throw _privateConstructorUsedError;
+  @override
+  DateTime get startDate => throw _privateConstructorUsedError;
+  @override
+  DateTime get endDate => throw _privateConstructorUsedError;
+  @override
+  String get title => throw _privateConstructorUsedError;
+  @override
+  String get type => throw _privateConstructorUsedError;
+  @override
+  List<String>? get guests => throw _privateConstructorUsedError;
+  @override
   String? get location => throw _privateConstructorUsedError;
   @override
-  @HiveField(10)
-  List<dynamic>? get notifications => throw _privateConstructorUsedError;
+  List<DateTime>? get notifications => throw _privateConstructorUsedError;
   @override
-  @HiveField(11)
-  List<dynamic>? get notificationsIDs => throw _privateConstructorUsedError;
+  List<String>? get notificationsIDs => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$EventCopyWith<_Event> get copyWith => throw _privateConstructorUsedError;

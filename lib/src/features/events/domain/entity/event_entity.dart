@@ -1,39 +1,36 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hive/hive.dart';
 
 part 'event_entity.freezed.dart';
-part 'event_entity.g.dart';
 
 @freezed
 class Event with _$Event {
-  @HiveType(typeId: 6)
   const factory Event({
-    @HiveField(0) required String id,
-    @HiveField(1) required String title,
-    @HiveField(2) required DateTime created,
-    @HiveField(3) required DateTime modified,
-    @HiveField(4) required String type,
-    @HiveField(5) required DateTime startDate,
-    @HiveField(6) required DateTime endDate,
-    @HiveField(7) required bool allDay,
-    @HiveField(8) List<String>? guests,
-    @HiveField(9) String? location,
-    @HiveField(10) List<DateTime>? notifications,
-    @HiveField(11) List<String>? notificationsIDs,
+    required String id,
+    required bool allDay,
+    required DateTime created,
+    required DateTime modified,
+    required DateTime startDate,
+    required DateTime endDate,
+    required String title,
+    required String type,
+    List<String>? guests,
+    String? location,
+    List<DateTime>? notifications,
+    List<String>? notificationsIDs,
   }) = _Event;
 
   const Event._();
 
   Map<String, dynamic> toMap() {
     final Map<String, dynamic> eventMap = {
+      'id': id,
       'all_day': allDay,
       'created': created,
-      'end_date': endDate,
       'modified': modified,
       'start_date': startDate,
+      'end_date': endDate,
       'title': title,
       'type': type,
-      'id': id,
     };
     if (guests != null && guests!.isNotEmpty) eventMap['guests'] = guests;
     if (location != null && location != '') eventMap['location'] = location;
