@@ -1,4 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/core/user_collections/data/local/hive_user_collection_repository.dart';
+import 'package:prospector/src/core/user_collections/data/remote/firebase_user_collection_repository.dart';
+import 'package:prospector/src/core/user_collections/domain/interfaces/i_user_collection_local_repository.dart';
+import 'package:prospector/src/core/user_collections/domain/interfaces/i_user_collection_remote_repository.dart';
+import 'package:prospector/src/features/interactions/domain/interactions_use_cases.dart';
 
 import '../../../core/database/instances/database_instance_provider.dart';
 import '../data/local/hive_interactions_repository.dart';
@@ -21,6 +26,20 @@ final remoteInteractionsRepository =
 final localInteractionsRepository =
     Provider<IInteractionsLocalRepository>((ref) {
   return HiveInteractionsRepository();
+});
+
+// * New repositories
+//TODO replace the old repositories
+final newRemoteInteractionsRepository =
+    Provider<IUserCollectionRemoteRepository>((ref) {
+  return FirebaseUserCollectionRepository(
+      firestoreInstance: ref.watch(firestoreInstance),
+      collectionName: 'interactions');
+});
+
+final newLocalInteractionsRepository =
+    Provider<IUserCollectionLocalRepository>((ref) {
+  return HiveUserCollectionRepository(collectionName: 'interactions');
 });
 
 // * Use cases
@@ -55,6 +74,19 @@ final getInteractionsList = Provider<GetInteractionsList>((ref) {
   final _localInteractionsRepository = ref.watch(localInteractionsRepository);
   final _remoteInteractionsRepository = ref.watch(remoteInteractionsRepository);
   return GetInteractionsList(
+    localInteractionsRepository: _localInteractionsRepository,
+    remoteInteractionsRepository: _remoteInteractionsRepository,
+  );
+});
+
+// * New use cases
+//TODO replace old use cases
+final interactionsUseCases = Provider<InteractionsUseCases>((ref) {
+  final _localInteractionsRepository =
+      ref.watch(newLocalInteractionsRepository);
+  final _remoteInteractionsRepository =
+      ref.watch(newRemoteInteractionsRepository);
+  return InteractionsUseCases(
     localInteractionsRepository: _localInteractionsRepository,
     remoteInteractionsRepository: _remoteInteractionsRepository,
   );
