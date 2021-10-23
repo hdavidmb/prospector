@@ -17,9 +17,7 @@ class _$TagTearOff {
   const _$TagTearOff();
 
   _Tag call(
-      {@HiveField(0) required String id,
-      @HiveField(1) required String name,
-      @HiveField(2) required DateTime created}) {
+      {required String id, required String name, required DateTime created}) {
     return _Tag(
       id: id,
       name: name,
@@ -33,11 +31,8 @@ const $Tag = _$TagTearOff();
 
 /// @nodoc
 mixin _$Tag {
-  @HiveField(0)
   String get id => throw _privateConstructorUsedError;
-  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
-  @HiveField(2)
   DateTime get created => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -48,10 +43,7 @@ mixin _$Tag {
 abstract class $TagCopyWith<$Res> {
   factory $TagCopyWith(Tag value, $Res Function(Tag) then) =
       _$TagCopyWithImpl<$Res>;
-  $Res call(
-      {@HiveField(0) String id,
-      @HiveField(1) String name,
-      @HiveField(2) DateTime created});
+  $Res call({String id, String name, DateTime created});
 }
 
 /// @nodoc
@@ -90,10 +82,7 @@ abstract class _$TagCopyWith<$Res> implements $TagCopyWith<$Res> {
   factory _$TagCopyWith(_Tag value, $Res Function(_Tag) then) =
       __$TagCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {@HiveField(0) String id,
-      @HiveField(1) String name,
-      @HiveField(2) DateTime created});
+  $Res call({String id, String name, DateTime created});
 }
 
 /// @nodoc
@@ -130,22 +119,15 @@ class __$TagCopyWithImpl<$Res> extends _$TagCopyWithImpl<$Res>
 
 /// @nodoc
 
-@HiveType(typeId: 4)
 class _$_Tag extends _Tag {
-  const _$_Tag(
-      {@HiveField(0) required this.id,
-      @HiveField(1) required this.name,
-      @HiveField(2) required this.created})
+  const _$_Tag({required this.id, required this.name, required this.created})
       : super._();
 
   @override
-  @HiveField(0)
   final String id;
   @override
-  @HiveField(1)
   final String name;
   @override
-  @HiveField(2)
   final DateTime created;
 
   @override
@@ -180,19 +162,16 @@ class _$_Tag extends _Tag {
 
 abstract class _Tag extends Tag {
   const factory _Tag(
-      {@HiveField(0) required String id,
-      @HiveField(1) required String name,
-      @HiveField(2) required DateTime created}) = _$_Tag;
+      {required String id,
+      required String name,
+      required DateTime created}) = _$_Tag;
   const _Tag._() : super._();
 
   @override
-  @HiveField(0)
   String get id => throw _privateConstructorUsedError;
   @override
-  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
   @override
-  @HiveField(2)
   DateTime get created => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
