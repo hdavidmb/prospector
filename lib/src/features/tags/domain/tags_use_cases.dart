@@ -64,14 +64,19 @@ class TagsUseCases {
           return remoteGet.fold(
             (failure) => left(failure),
             (tagsMapsList) async {
-              final List<Tag> tagsList = tagsMapsList.map((tagMap) {
-                final Map<String, dynamic> newTagMap = tagMap;
-                newTagMap['created'] =
-                    tagMap['created']?.toDate() ?? DateTime.now();
-                localTagsRepository.createDocument(
-                    document: newTagMap, uid: uid);
-                return Tag.fromMap(newTagMap);
-              }).toList();
+              final List<Tag> tagsList = tagsMapsList.map(
+                (tagMap) {
+                  final Map<String, dynamic> newTagMap =
+                      tagMap; //TODO remove and work with the original one
+                  newTagMap['created'] =
+                      tagMap['created']?.toDate() ?? DateTime.now();
+
+                  localTagsRepository.createDocument(
+                      document: newTagMap, uid: uid);
+
+                  return Tag.fromMap(newTagMap);
+                },
+              ).toList();
               return right(tagsList);
             },
           );
