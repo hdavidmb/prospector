@@ -1,16 +1,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hive/hive.dart';
 
 part 'tag_entity.freezed.dart';
-part 'tag_entity.g.dart';
 
 @freezed
 class Tag with _$Tag {
-  @HiveType(typeId: 4)
   const factory Tag({
-    @HiveField(0) required String id,
-    @HiveField(1) required String name,
-    @HiveField(2) required DateTime created,
+    required String id,
+    required String name,
+    required DateTime created,
   }) = _Tag;
 
   const Tag._();

@@ -17,12 +17,12 @@ class _$InteractionTearOff {
   const _$InteractionTearOff();
 
   _Interaction call(
-      {@HiveField(0) required String id,
-      @HiveField(1) required String description,
-      @HiveField(2) required String contact,
-      @HiveField(3) required String type,
-      @HiveField(4) required DateTime created,
-      @HiveField(5) String? event}) {
+      {required String id,
+      required String description,
+      required String contact,
+      required String type,
+      required DateTime created,
+      String? event}) {
     return _Interaction(
       id: id,
       description: description,
@@ -39,17 +39,11 @@ const $Interaction = _$InteractionTearOff();
 
 /// @nodoc
 mixin _$Interaction {
-  @HiveField(0)
   String get id => throw _privateConstructorUsedError;
-  @HiveField(1)
   String get description => throw _privateConstructorUsedError;
-  @HiveField(2)
   String get contact => throw _privateConstructorUsedError;
-  @HiveField(3)
   String get type => throw _privateConstructorUsedError;
-  @HiveField(4)
   DateTime get created => throw _privateConstructorUsedError;
-  @HiveField(5)
   String? get event => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -63,12 +57,12 @@ abstract class $InteractionCopyWith<$Res> {
           Interaction value, $Res Function(Interaction) then) =
       _$InteractionCopyWithImpl<$Res>;
   $Res call(
-      {@HiveField(0) String id,
-      @HiveField(1) String description,
-      @HiveField(2) String contact,
-      @HiveField(3) String type,
-      @HiveField(4) DateTime created,
-      @HiveField(5) String? event});
+      {String id,
+      String description,
+      String contact,
+      String type,
+      DateTime created,
+      String? event});
 }
 
 /// @nodoc
@@ -125,12 +119,12 @@ abstract class _$InteractionCopyWith<$Res>
       __$InteractionCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@HiveField(0) String id,
-      @HiveField(1) String description,
-      @HiveField(2) String contact,
-      @HiveField(3) String type,
-      @HiveField(4) DateTime created,
-      @HiveField(5) String? event});
+      {String id,
+      String description,
+      String contact,
+      String type,
+      DateTime created,
+      String? event});
 }
 
 /// @nodoc
@@ -183,34 +177,27 @@ class __$InteractionCopyWithImpl<$Res> extends _$InteractionCopyWithImpl<$Res>
 
 /// @nodoc
 
-@HiveType(typeId: 5)
 class _$_Interaction extends _Interaction {
   const _$_Interaction(
-      {@HiveField(0) required this.id,
-      @HiveField(1) required this.description,
-      @HiveField(2) required this.contact,
-      @HiveField(3) required this.type,
-      @HiveField(4) required this.created,
-      @HiveField(5) this.event})
+      {required this.id,
+      required this.description,
+      required this.contact,
+      required this.type,
+      required this.created,
+      this.event})
       : super._();
 
   @override
-  @HiveField(0)
   final String id;
   @override
-  @HiveField(1)
   final String description;
   @override
-  @HiveField(2)
   final String contact;
   @override
-  @HiveField(3)
   final String type;
   @override
-  @HiveField(4)
   final DateTime created;
   @override
-  @HiveField(5)
   final String? event;
 
   @override
@@ -257,31 +244,25 @@ class _$_Interaction extends _Interaction {
 
 abstract class _Interaction extends Interaction {
   const factory _Interaction(
-      {@HiveField(0) required String id,
-      @HiveField(1) required String description,
-      @HiveField(2) required String contact,
-      @HiveField(3) required String type,
-      @HiveField(4) required DateTime created,
-      @HiveField(5) String? event}) = _$_Interaction;
+      {required String id,
+      required String description,
+      required String contact,
+      required String type,
+      required DateTime created,
+      String? event}) = _$_Interaction;
   const _Interaction._() : super._();
 
   @override
-  @HiveField(0)
   String get id => throw _privateConstructorUsedError;
   @override
-  @HiveField(1)
   String get description => throw _privateConstructorUsedError;
   @override
-  @HiveField(2)
   String get contact => throw _privateConstructorUsedError;
   @override
-  @HiveField(3)
   String get type => throw _privateConstructorUsedError;
   @override
-  @HiveField(4)
   DateTime get created => throw _privateConstructorUsedError;
   @override
-  @HiveField(5)
   String? get event => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
