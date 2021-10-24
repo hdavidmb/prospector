@@ -1,4 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/events/application/events_providers.dart';
+import 'package:prospector/src/features/events/application/events_state.dart';
 
 import '../../../features/admob/application/ads_providers.dart';
 import '../../../features/app_default_data/application/app_default_data_providers.dart';
@@ -21,6 +23,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
   final UserInfoState userInfoState;
   final ContactsState contactsState;
   final InteractionsState interactionsState;
+  final EventsState eventsState;
   final TagsState tagsState;
   final Reader read;
   AppStateNotifier({
@@ -29,6 +32,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
     required this.userInfoState,
     required this.contactsState,
     required this.interactionsState,
+    required this.eventsState,
     required this.tagsState,
     required this.read,
   }) : super(const AppState.initial()) {
@@ -37,6 +41,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
         userInfoState == const UserInfoState.error() ||
         contactsState == const ContactsState.error() ||
         interactionsState == const InteractionsState.error() ||
+        eventsState == const EventsState.error() ||
         tagsState == const TagsState.error()) {
       state = const AppState.error();
     } else if (defaultDataState == const AppDefaultDataState.ready()) {
@@ -51,6 +56,9 @@ class AppStateNotifier extends StateNotifier<AppState> {
           if (tagsState == const TagsState.initial()) {
             read(tagsNotifierProvider).getTags();
           }
+          if (eventsState == const EventsState.initial()) {
+            read(eventsNotifierProvider).getEvents();
+          }
 
           if (read(userInfoNotifierProvider).isPremiumUser) {
             //TODO init premium user configuration (contactsSync, Statistics)
@@ -61,7 +69,8 @@ class AppStateNotifier extends StateNotifier<AppState> {
 
           if (contactsState == const ContactsState.ready() &&
               interactionsState == const InteractionsState.ready() &&
-              tagsState == const TagsState.ready()) {
+              tagsState == const TagsState.ready() &&
+              eventsState == const EventsState.ready()) {
             state = const AppState.authenticatedReady();
           }
         } else if (userInfoState == const UserInfoState.initial()) {
@@ -83,7 +92,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
     read(contactsNotifierProvider).reset();
     read(tagsNotifierProvider).reset();
     read(interactionsNotifierProvider).reset();
-    //TODO read(eventsNotifierProvider).reset();
+    read(eventsNotifierProvider).reset();
     //TODO read(statisticsNotifierProvider).reset();
     state = const AppState.initial();
   }
