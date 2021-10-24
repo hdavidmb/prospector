@@ -96,6 +96,17 @@ class EventsNotifier extends ChangeNotifier {
     }
   }
 
+  Future<Either<DatabaseFailure, Unit>> removeContactFromEvent(
+      {required String contactID, required Event event}) async {
+    if (event.guests != null && event.guests!.contains(contactID)) {
+      final Event newEventInfo = event.copyWith(title: event.title);
+      newEventInfo.guests!.remove(contactID);
+      return updateEvent(newEventInfo);
+    } else {
+      return right(unit);
+    }
+  }
+
   Future<Either<DatabaseFailure, Unit>> deleteEvent(
       {required String eventID}) async {
     // TODO delete interactions from guests ???

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:prospector/src/features/events/application/events_providers.dart';
 import 'package:prospector/src/features/events/domain/entity/event_entity.dart';
 
@@ -31,8 +32,10 @@ class InteractionsListView extends ConsumerWidget {
         _combineLists(interactions: contactInteractions, events: contactEvents);
     return ListView.separated(
       itemCount: combinedList.length,
-      itemBuilder: (context, index) =>
-          InteractionListTile(object: combinedList[index]),
+      itemBuilder: (context, index) => InteractionListTile(
+        object: combinedList[index],
+        contactID: contactID,
+      ),
       separatorBuilder: (context, index) => const Divider(
         height: 0.0,
         indent: 60.0,
@@ -42,7 +45,7 @@ class InteractionsListView extends ConsumerWidget {
 
   List<Object> _combineLists(
       {required List<Interaction> interactions, required List<Event> events}) {
-    List<Object> combinedList = [];
+    final List<Object> combinedList = [];
     combinedList..addAll(interactions)..addAll(events);
     combinedList.sort((a, b) {
       final aDate = a is Interaction ? a.created : (a as Event).startDate;
@@ -54,9 +57,11 @@ class InteractionsListView extends ConsumerWidget {
 }
 
 class InteractionListTile extends StatelessWidget {
+  final String contactID;
   final Object object;
   const InteractionListTile({
     Key? key,
+    required this.contactID,
     required this.object,
   }) : super(key: key);
 
@@ -92,13 +97,17 @@ class InteractionListTile extends StatelessWidget {
         padding: const EdgeInsets.only(right: 20.0),
         child: const Icon(Icons.delete, color: Colors.white),
       ),
-      onDismissed: (direction) => object is Interaction
-          ? context
+      onDismissed: (direction) {
+        if (object is Interaction) {
+          context
               .read(interactionsNotifierProvider)
-              .deleteInteraction(interactionID: objectID)
-          : context
-              .read(eventsNotifierProvider)
-              .deleteEvent(eventID: objectID), // TODO test
+              .deleteInteraction(interactionID: objectID);
+        } else {
+          // TODO remove contact from event
+          context.read(eventsNotifierProvider).removeContactFromEvent(
+              contactID: contactID, event: object as Event);
+        }
+      }, // TODO test
       child: ListTile(
         leading: Icon(icon),
         title: Text(description),
