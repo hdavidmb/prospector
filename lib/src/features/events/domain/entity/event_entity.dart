@@ -16,7 +16,7 @@ class Event with _$Event {
     List<String>? guests,
     String? location,
     List<DateTime>? notifications,
-    List<String>? notificationsIDs,
+    List<int>? notificationsIDs,
   }) = _Event;
 
   const Event._();
@@ -39,7 +39,6 @@ class Event with _$Event {
     }
 
     if (notificationsIDs != null && notificationsIDs!.isNotEmpty) {
-      //TODO check what is this for
       eventMap['notificationsIDs'] = notificationsIDs;
     }
     return eventMap;
@@ -58,7 +57,7 @@ class Event with _$Event {
       guests: map['guests'] as List<String>?,
       location: map['location'] as String?,
       notifications: map['notifications'] as List<DateTime>?,
-      notificationsIDs: map['notificationsIDs'] as List<String>?,
+      notificationsIDs: map['notificationsIDs'] as List<int>?,
     );
   }
 }

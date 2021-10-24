@@ -28,7 +28,7 @@ class _$EventTearOff {
       List<String>? guests,
       String? location,
       List<DateTime>? notifications,
-      List<String>? notificationsIDs}) {
+      List<int>? notificationsIDs}) {
     return _Event(
       id: id,
       allDay: allDay,
@@ -62,7 +62,7 @@ mixin _$Event {
   List<String>? get guests => throw _privateConstructorUsedError;
   String? get location => throw _privateConstructorUsedError;
   List<DateTime>? get notifications => throw _privateConstructorUsedError;
-  List<String>? get notificationsIDs => throw _privateConstructorUsedError;
+  List<int>? get notificationsIDs => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventCopyWith<Event> get copyWith => throw _privateConstructorUsedError;
@@ -84,7 +84,7 @@ abstract class $EventCopyWith<$Res> {
       List<String>? guests,
       String? location,
       List<DateTime>? notifications,
-      List<String>? notificationsIDs});
+      List<int>? notificationsIDs});
 }
 
 /// @nodoc
@@ -158,7 +158,7 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
       notificationsIDs: notificationsIDs == freezed
           ? _value.notificationsIDs
           : notificationsIDs // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<int>?,
     ));
   }
 }
@@ -180,7 +180,7 @@ abstract class _$EventCopyWith<$Res> implements $EventCopyWith<$Res> {
       List<String>? guests,
       String? location,
       List<DateTime>? notifications,
-      List<String>? notificationsIDs});
+      List<int>? notificationsIDs});
 }
 
 /// @nodoc
@@ -255,7 +255,7 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
       notificationsIDs: notificationsIDs == freezed
           ? _value.notificationsIDs
           : notificationsIDs // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<int>?,
     ));
   }
 }
@@ -301,7 +301,7 @@ class _$_Event extends _Event {
   @override
   final List<DateTime>? notifications;
   @override
-  final List<String>? notificationsIDs;
+  final List<int>? notificationsIDs;
 
   @override
   String toString() {
@@ -380,7 +380,7 @@ abstract class _Event extends Event {
       List<String>? guests,
       String? location,
       List<DateTime>? notifications,
-      List<String>? notificationsIDs}) = _$_Event;
+      List<int>? notificationsIDs}) = _$_Event;
   const _Event._() : super._();
 
   @override
@@ -406,7 +406,7 @@ abstract class _Event extends Event {
   @override
   List<DateTime>? get notifications => throw _privateConstructorUsedError;
   @override
-  List<String>? get notificationsIDs => throw _privateConstructorUsedError;
+  List<int>? get notificationsIDs => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$EventCopyWith<_Event> get copyWith => throw _privateConstructorUsedError;

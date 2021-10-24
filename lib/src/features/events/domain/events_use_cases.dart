@@ -69,9 +69,15 @@ class EventsUseCases {
           return localGet.fold(
             (failure) => left(failure),
             (eventsMapsList) => right(
-              eventsMapsList
-                  .map((eventMap) => Event.fromMap(eventMap))
-                  .toList(),
+              eventsMapsList.map(
+                (eventMap) {
+                  if (eventMap['notifications'] != null) {
+                    eventMap['notifications'] = List<DateTime>.from(
+                        eventMap['notifications'] as List<dynamic>);
+                  }
+                  return Event.fromMap(eventMap);
+                },
+              ).toList(),
             ),
           );
         } else {
@@ -95,23 +101,16 @@ class EventsUseCases {
                   if (eventMap['guests'] != null) {
                     eventMap['guests'] =
                         List<String>.from(eventMap['guests'] as List<dynamic>);
-
-                    //TODO test and delete (eventMap['phones']
-                    //         as List<dynamic>)
-                    //     .map((phone) => phone.toString())
-                    //     .toList(); //TODO try List<String>.from(contactMap['phones'])
                   }
                   if (eventMap['notifications'] != null) {
                     //TODO schedule local notifications
-                    eventMap['notifications'] =
-                        (eventMap['notifications'] as List<dynamic>) //TODO test
+                    eventMap['notifications'] = List<DateTime>.from(
+                        (eventMap['notifications'] as List<dynamic>)
                             .map((timestamp) => timestamp.toDate())
-                            .toList();
-                    //TODO test and delete List<String>.from(
-                    //     eventMap['notifications'] as List<dynamic>);
+                            .toList());
                   }
                   if (eventMap['notificationsIDs'] != null) {
-                    eventMap['notificationsIDs'] = List<String>.from(
+                    eventMap['notificationsIDs'] = List<int>.from(
                         eventMap['notificationsIDs'] as List<dynamic>);
                   }
 

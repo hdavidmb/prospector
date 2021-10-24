@@ -1,4 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/events/application/events_providers.dart';
+import 'package:prospector/src/features/events/application/events_state.dart';
 
 import '../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../features/app_default_data/application/app_default_data_state.dart';
@@ -26,6 +28,8 @@ final appStateNotifierProvider =
   final InteractionsState _interactionsState =
       ref.watch(interactionsNotifierProvider).interactionsState;
   final TagsState _tagsState = ref.watch(tagsNotifierProvider).tagsState;
+  final EventsState _eventsState =
+      ref.watch(eventsNotifierProvider).eventsState;
   return AppStateNotifier(
     authState: _authState,
     defaultDataState: _defaultDataState,
@@ -33,6 +37,7 @@ final appStateNotifierProvider =
     contactsState: _contactsState,
     interactionsState: _interactionsState,
     tagsState: _tagsState,
+    eventsState: _eventsState,
     read: ref.read,
   );
 });
