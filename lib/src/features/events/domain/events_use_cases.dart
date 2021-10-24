@@ -102,6 +102,7 @@ class EventsUseCases {
                     //     .toList(); //TODO try List<String>.from(contactMap['phones'])
                   }
                   if (eventMap['notifications'] != null) {
+                    //TODO schedule local notifications
                     eventMap['notifications'] =
                         (eventMap['notifications'] as List<dynamic>) //TODO test
                             .map((timestamp) => timestamp.toDate())
