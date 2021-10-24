@@ -119,7 +119,6 @@ class InteractionsNotifier extends ChangeNotifier {
 
   Future<Either<DatabaseFailure, Unit>> deleteInteraction(
       {required String interactionID}) async {
-    //TODO delete contact from event if it's event interaction
     final uid = read(userInfoNotifierProvider).user?.uid;
 
     if (uid != null) {

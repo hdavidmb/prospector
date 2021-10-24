@@ -37,7 +37,6 @@ class EventsNotifier extends ChangeNotifier {
             ..add(event)
             ..sort((a, b) =>
                 b.startDate.compareTo(a.startDate)); //TODO check sort order
-          // TODO create interactions for guests ???
           // TODO Schedule local notification
           return right(unit);
         },
@@ -70,7 +69,6 @@ class EventsNotifier extends ChangeNotifier {
   }
 
   Future<Either<DatabaseFailure, Unit>> updateEvent(Event event) async {
-    // TODO compare guests and delete interactions for removed guests ???
     // TODO compare, delete and schedule notifications
 
     final uid = read(userInfoNotifierProvider).user?.uid;
@@ -107,9 +105,22 @@ class EventsNotifier extends ChangeNotifier {
     }
   }
 
+  Future<Either<DatabaseFailure, Unit>> removeContactFromAllEvents(
+      {required String contactID}) async {
+    Either<DatabaseFailure, Unit> removeResult = right(unit);
+    final List<Event> contactEvents = _events
+        .where((event) =>
+            event.guests != null && event.guests!.contains(contactID))
+        .toList();
+    for (final Event event in contactEvents) {
+      removeResult =
+          await removeContactFromEvent(contactID: contactID, event: event);
+    }
+    return removeResult;
+  }
+
   Future<Either<DatabaseFailure, Unit>> deleteEvent(
       {required String eventID}) async {
-    // TODO delete interactions from guests ???
     // TODO delete notifications
     final uid = read(userInfoNotifierProvider).user?.uid;
     if (uid != null) {

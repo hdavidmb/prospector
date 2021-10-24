@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/events/application/events_providers.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
 import '../../app_default_data/application/app_default_data_providers.dart';
@@ -107,7 +108,6 @@ class ContactsNotifier extends ChangeNotifier {
 
   Future<Either<DatabaseFailure, Unit>> deleteContact(
       {required String contactID}) async {
-    // TODO delete contact from events
     final uid = read(userInfoNotifierProvider).user?.uid;
     if (uid != null) {
       final deleteResult =
@@ -118,6 +118,8 @@ class ContactsNotifier extends ChangeNotifier {
           read(interactionsNotifierProvider)
               .deleteContactInteractions(contactID: contactID);
           _contacts.removeWhere((listContact) => listContact.id == contactID);
+          read(eventsNotifierProvider)
+              .removeContactFromAllEvents(contactID: contactID);
           notifyListeners();
           return right(unit);
         },

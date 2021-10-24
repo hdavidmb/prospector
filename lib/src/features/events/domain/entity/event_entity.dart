@@ -32,6 +32,7 @@ class Event with _$Event {
       'title': title,
       'type': type,
     };
+    // TODO refactor other entities toMap method to avoid saving empty fields
     if (guests != null && guests!.isNotEmpty) eventMap['guests'] = guests;
     if (location != null && location != '') eventMap['location'] = location;
     if (notifications != null && notifications!.isNotEmpty) {
