@@ -32,6 +32,7 @@ class ContactDetailsPage extends ConsumerWidget {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
+          //TODO extract appbar
           title: KeyboardVisibility(
             keyboardHiddenChild:
                 Text(AppLocalizations.of(context).prospectDetails),
