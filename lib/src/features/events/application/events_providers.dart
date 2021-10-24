@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/src/core/user_collections/data/local/hive_user_collection_repository.dart';
 import 'package:prospector/src/core/user_collections/domain/interfaces/i_user_collection_local_repository.dart';
+import 'package:prospector/src/features/events/application/events_notifier.dart';
 import 'package:prospector/src/features/events/domain/events_use_cases.dart';
 
 import '../../../core/database/instances/database_instance_provider.dart';
@@ -30,3 +31,10 @@ final eventsUseCases = Provider<EventsUseCases>((ref) {
 });
 
 // * Notifier
+final eventsNotifierProvider = ChangeNotifierProvider<EventsNotifier>((ref) {
+  final _eventsUseCases = ref.watch(eventsUseCases);
+  return EventsNotifier(
+    eventsUseCases: _eventsUseCases,
+    read: ref.read,
+  );
+});
