@@ -1,7 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/core/shared_prefs/shared_prefs_provider.dart';
 
 import 'events_view_notifier.dart';
 
 final eventsViewProvider = ChangeNotifierProvider<EventsViewNotifier>((ref) {
-  return EventsViewNotifier();
+  final _prefs = ref.watch(userSharedPrefsProvider);
+  return EventsViewNotifier(prefs: _prefs);
 });

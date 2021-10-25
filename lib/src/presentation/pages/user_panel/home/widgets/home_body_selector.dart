@@ -14,7 +14,7 @@ class HomeBodySelector extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final int index = watch(homeIndexProvider).state;
+    final int index = watch(homeIndexProvider).index;
     switch (index) {
       case 0:
         return Container(); //TODO implement statistics page
