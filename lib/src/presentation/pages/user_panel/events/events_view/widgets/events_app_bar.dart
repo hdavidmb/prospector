@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:prospector/generated/l10n.dart';
-import 'package:prospector/src/presentation/pages/user_panel/events/logic/events_page_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../../../../../generated/l10n.dart';
+import '../logic/events_view_providers.dart';
 
 class EventsAppBar extends StatelessWidget implements PreferredSizeWidget {
   const EventsAppBar({
@@ -15,7 +16,7 @@ class EventsAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: IconButton(
         icon: const Icon(Icons.today),
         onPressed: () =>
-            context.read(eventsPageProvider).selectedDay = DateTime.now(),
+            context.read(eventsViewProvider).selectedDay = DateTime.now(),
       ),
       actions: [
         // TODO implement IconButton(

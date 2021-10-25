@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:prospector/generated/l10n.dart';
-import 'package:prospector/src/presentation/pages/user_panel/events/logic/events_page_providers.dart';
 import 'package:table_calendar/table_calendar.dart';
+
+import '../../../../../../../generated/l10n.dart';
+import '../logic/events_view_providers.dart';
 
 class EventsCalendarView extends StatelessWidget {
   const EventsCalendarView({
@@ -16,7 +17,7 @@ class EventsCalendarView extends StatelessWidget {
     return Column(
       children: [
         Consumer(builder: (context, watch, child) {
-          final provider = watch(eventsPageProvider);
+          final provider = watch(eventsViewProvider);
           return TableCalendar(
             firstDay: DateTime(2015),
             lastDay: DateTime.now().add(const Duration(days: 365 * 2)),
@@ -24,7 +25,7 @@ class EventsCalendarView extends StatelessWidget {
             pageJumpingEnabled: true,
             availableGestures: AvailableGestures.horizontalSwipe,
             startingDayOfWeek: StartingDayOfWeek
-                .monday, //TODO get from prefs and set it on event settings
+                .values[6], //TODO get from prefs and set it on event settings
             locale: Intl.getCurrentLocale(), //TODO test
             daysOfWeekStyle: DaysOfWeekStyle(
                 weekdayStyle: TextStyle(
@@ -62,16 +63,16 @@ class EventsCalendarView extends StatelessWidget {
               CalendarFormat.week: AppLocalizations.of(context).week
             },
             onFormatChanged: (format) {
-              context.read(eventsPageProvider).isMonthFormat =
-                  !context.read(eventsPageProvider).isMonthFormat;
+              context.read(eventsViewProvider).isMonthFormat =
+                  !context.read(eventsViewProvider).isMonthFormat;
             },
             selectedDayPredicate: (day) {
               return isSameDay(provider.selectedDay, day);
             },
             onDaySelected: (selectedDay, focusedDay) =>
-                context.read(eventsPageProvider).selectedDay = focusedDay,
+                context.read(eventsViewProvider).selectedDay = focusedDay,
             onPageChanged: (focusedDay) =>
-                context.read(eventsPageProvider).selectedDay = focusedDay,
+                context.read(eventsViewProvider).selectedDay = focusedDay,
             // events: _events,
           );
         })

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class EventsPageNotifier extends ChangeNotifier {
+class EventsViewNotifier extends ChangeNotifier {
   DateTime _selectedDay = DateTime.now();
   DateTime get selectedDay => _selectedDay;
   set selectedDay(DateTime date) {

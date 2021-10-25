@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/pages/user_panel/events/events_page.dart';
+import 'package:prospector/src/presentation/pages/user_panel/events/events_view/events_view_page.dart';
 
 import '../../contacts/contact_add_edit/contact_add_edit_page.dart';
 import '../../contacts/contacts_list/contacts_list_page.dart';
@@ -23,7 +23,7 @@ class HomeBodySelector extends ConsumerWidget {
       case 2:
         return const ContactAddEditPage();
       case 3:
-        return const EventsPage();
+        return const EventsViewPage();
       case 4:
         return SettingsMenuPage();
       default:
