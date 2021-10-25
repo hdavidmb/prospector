@@ -121,6 +121,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "minutes": MessageLookupByLibrary.simpleMessage("minutes"),
         "modifyCountryCodeMessage": MessageLookupByLibrary.simpleMessage(
             "You can modify your country code on Settings."),
+        "month": MessageLookupByLibrary.simpleMessage("Month"),
         "moreInfo": MessageLookupByLibrary.simpleMessage("More info"),
         "movedToF": MessageLookupByLibrary.simpleMessage("Moved to"),
         "movedToM": MessageLookupByLibrary.simpleMessage("Moved to"),
@@ -228,6 +229,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Watch a short video to get"),
         "weakPassword": MessageLookupByLibrary.simpleMessage(
             "Weak Password. \n It must be at least 8 characters long and contain: \n - 1 uppercase letter \n - 1 lowercase letter \n - 1 number"),
+        "week": MessageLookupByLibrary.simpleMessage("Week"),
         "welcomeTo": MessageLookupByLibrary.simpleMessage("Welcome to"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
         "youMayHaveToRelogin": MessageLookupByLibrary.simpleMessage(

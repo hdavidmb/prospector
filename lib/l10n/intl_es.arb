@@ -152,5 +152,7 @@
     "countryCode": "Código de país",
     "selectYourCountryCode": "Selecciona tu código de país",
     "defaultCountryCodeMessage": "Este código se utilizará de forma predeterminada para sus contactos locales. Para sus contactos internacionales, asegúrese de agregar el símbolo '+' y su código de país. De lo contrario, Whatsapp no ​​podrá identificar correctamente a su contacto.",
-    "modifyCountryCodeMessage": "Puedes modificar tu código de país en Configuración."
+    "modifyCountryCodeMessage": "Puedes modificar tu código de país en Configuración.",
+    "month": "Mes",
+    "week": "Semana"
 }

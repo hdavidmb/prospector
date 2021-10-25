@@ -1589,6 +1589,26 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Month`
+  String get month {
+    return Intl.message(
+      'Month',
+      name: 'month',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Week`
+  String get week {
+    return Intl.message(
+      'Week',
+      name: 'week',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {
