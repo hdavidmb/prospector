@@ -373,6 +373,7 @@ Future<Option<String>> showTextFieldDialog(
         content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.80,
           child: ListView(
+            physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
             children: <Widget>[
               if (content != null) content,
@@ -421,6 +422,7 @@ Future<Option<SourceImage>> showImageSourceDialog(BuildContext context) async {
         content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.80,
           child: ListView(
+            physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
             children: [
               ListTile(
@@ -455,6 +457,7 @@ Future<Option<String>> showAffiliationDialog(
         content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.80,
           child: ListView(
+            physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
             children: [
               ListTile(
@@ -500,6 +503,7 @@ Future<Option<String>> showOptionsSelectionDialog(
         content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.80,
           child: ListView(
+            physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
             children: options
                 .map(

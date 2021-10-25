@@ -31,6 +31,7 @@ class InteractionsListView extends ConsumerWidget {
     final List<Object> combinedList =
         _combineLists(interactions: contactInteractions, events: contactEvents);
     return ListView.separated(
+      physics: const BouncingScrollPhysics(),
       itemCount: combinedList.length,
       itemBuilder: (context, index) => InteractionListTile(
         object: combinedList[index],

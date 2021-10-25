@@ -15,6 +15,7 @@ class SearchContactsList extends ConsumerWidget {
     final searchContacts = watch(contactsNotifierProvider).searchingContacts;
     return searchContacts.isNotEmpty
         ? ListView.separated(
+            physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) => ContactTile(
               contact: searchContacts[index],
               onTap: () => AutoRouter.of(context).push(

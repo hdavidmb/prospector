@@ -100,6 +100,7 @@ class ContactsGroupList extends ConsumerWidget {
     return sections.isNotEmpty
         ? Scrollbar(
             child: CustomScrollView(
+              physics: const BouncingScrollPhysics(),
               slivers: sections,
             ),
           )
