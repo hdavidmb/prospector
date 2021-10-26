@@ -1649,6 +1649,36 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `All day`
+  String get allDay {
+    return Intl.message(
+      'All day',
+      name: 'allDay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Starts at`
+  String get startsAt {
+    return Intl.message(
+      'Starts at',
+      name: 'startsAt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ends at`
+  String get endsAt {
+    return Intl.message(
+      'Ends at',
+      name: 'endsAt',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

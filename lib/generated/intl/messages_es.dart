@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "affiliate": MessageLookupByLibrary.simpleMessage("Afiliar"),
         "affiliateAs": MessageLookupByLibrary.simpleMessage("Afiliar como"),
         "affiliatedP": MessageLookupByLibrary.simpleMessage("Afiliados"),
+        "allDay": MessageLookupByLibrary.simpleMessage("Todo el día"),
         "allowAccess": MessageLookupByLibrary.simpleMessage(
             "Por favor habilitalo en la configuración de tu dispositivo."),
         "appStateError": MessageLookupByLibrary.simpleMessage(
@@ -83,6 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailsDontMatch":
             MessageLookupByLibrary.simpleMessage("Los correos no coinciden"),
         "enable": MessageLookupByLibrary.simpleMessage("Habilitar"),
+        "endsAt": MessageLookupByLibrary.simpleMessage("Termina"),
         "enterAPassword":
             MessageLookupByLibrary.simpleMessage("Ingresa una contraseña"),
         "enterYourName":
@@ -222,6 +224,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "showPasswords":
             MessageLookupByLibrary.simpleMessage("Mostrar contraseñas"),
         "signIn": MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
+        "startsAt": MessageLookupByLibrary.simpleMessage("Inicia"),
         "statistics": MessageLookupByLibrary.simpleMessage("Estadisticas"),
         "syncContacts":
             MessageLookupByLibrary.simpleMessage("Sincronizar contactos"),

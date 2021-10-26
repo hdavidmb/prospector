@@ -158,5 +158,8 @@
     "eventsSettings": "Configuración de eventos",
     "weekStartsOn": "Iniciar semana en",
     "timeFormat": "Formato de horas",
-    "hours": "horas"
+    "hours": "horas",
+    "allDay": "Todo el día",
+    "startsAt": "Inicia",
+    "endsAt": "Termina"
 }

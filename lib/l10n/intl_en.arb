@@ -158,5 +158,8 @@
     "eventsSettings": "Events settings",
     "weekStartsOn": "Week starts on",
     "timeFormat": "Time format",
-    "hours": "hours"
+    "hours": "hours",
+    "allDay": "All day",
+    "startsAt": "Starts at",
+    "endsAt": "Ends at"
 }

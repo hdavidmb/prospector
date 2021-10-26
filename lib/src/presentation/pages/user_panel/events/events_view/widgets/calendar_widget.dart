@@ -3,8 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:prospector/generated/l10n.dart';
 import 'package:prospector/src/features/events/application/events_providers.dart';
+import 'package:prospector/src/presentation/helpers/date_formatters.dart';
 import 'package:prospector/src/presentation/pages/user_panel/events/events_view/logic/events_view_providers.dart';
-import 'package:table_calendar/table_calendar.dart';
+import 'package:table_calendar/table_calendar.dart' hide isSameDay;
 
 class CalendarWidget extends ConsumerWidget {
   const CalendarWidget({
@@ -80,10 +81,8 @@ class CalendarWidget extends ConsumerWidget {
             context.read(eventsViewProvider).selectedDay = focusedDay,
         eventLoader: (day) => eventsProvider
             .events //TODO check for loading new events and try to extract as a method
-            .where((event) =>
-                isSameDay(day, event.startDate) ||
-                isSameDay(day, event.endDate) ||
-                (day.isAfter(event.startDate) && day.isBefore(event.endDate)))
+            .where((event) => isBetweenDays(
+                date: day, startDate: event.startDate, endDate: event.endDate))
             .toList(),
       ),
     );

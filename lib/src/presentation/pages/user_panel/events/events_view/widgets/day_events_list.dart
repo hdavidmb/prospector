@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/theme/theme_providers.dart';
 
 import '../../../../../../features/events/application/events_providers.dart';
 import '../../../../../../features/events/domain/entity/event_entity.dart';
@@ -53,7 +54,12 @@ class EventListTile extends StatelessWidget {
       },
       child: ListTile(
         title: Text(event.title),
-        subtitle: Text('formatted event date'), //TODO implement
+        subtitle: Text(
+          eventTileFormatedDate(
+              selectedDate: context.read(eventsViewProvider).selectedDay,
+              event: event,
+              is24hours: context.read(themeNotifierProvider).is24hours),
+        ),
         leading:
             Icon(event.type == 'event' ? Icons.event : Icons.notifications),
         onTap: () {
