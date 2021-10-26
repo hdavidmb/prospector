@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/core/widgets/dismissible_background.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
@@ -48,12 +49,7 @@ class ImportedContactsPage extends ConsumerWidget {
                 return Dismissible(
                   key: Key(contact.id),
                   direction: DismissDirection.endToStart,
-                  background: Container(
-                    color: Colors.red,
-                    alignment: Alignment.centerRight,
-                    padding: const EdgeInsets.only(right: 20.0),
-                    child: const Icon(Icons.delete, color: Colors.white),
-                  ),
+                  background: const DismissibleBackground(),
                   onDismissed: (direction) {
                     deleteContact(context, contact.id);
                   },

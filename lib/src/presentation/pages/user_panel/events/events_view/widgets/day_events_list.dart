@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/events/application/events_providers.dart';
-import 'package:prospector/src/features/events/domain/entity/event_entity.dart';
-import 'package:prospector/src/presentation/helpers/date_formatters.dart';
-import 'package:prospector/src/presentation/pages/user_panel/events/events_view/logic/events_view_providers.dart';
+
+import '../../../../../../features/events/application/events_providers.dart';
+import '../../../../../../features/events/domain/entity/event_entity.dart';
+import '../../../../../core/widgets/dismissible_background.dart';
+import '../../../../../helpers/date_formatters.dart';
+import '../logic/events_view_providers.dart';
 
 class DayEventsList extends ConsumerWidget {
   const DayEventsList({
@@ -42,9 +44,22 @@ class EventListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(event.title),
-      leading: Icon(event.type == 'event' ? Icons.event : Icons.notifications),
+    return Dismissible(
+      key: Key(event.id),
+      direction: DismissDirection.endToStart,
+      background: const DismissibleBackground(),
+      onDismissed: (direction) {
+        context.read(eventsNotifierProvider).deleteEvent(eventID: event.id);
+      },
+      child: ListTile(
+        title: Text(event.title),
+        subtitle: Text('formatted event date'), //TODO implement
+        leading:
+            Icon(event.type == 'event' ? Icons.event : Icons.notifications),
+        onTap: () {
+          // TODO navigate to event details or edit page
+        },
+      ),
     );
   }
 }

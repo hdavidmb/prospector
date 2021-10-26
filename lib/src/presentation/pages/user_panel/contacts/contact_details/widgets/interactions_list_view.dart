@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:prospector/src/features/events/application/events_providers.dart';
 import 'package:prospector/src/features/events/domain/entity/event_entity.dart';
+import 'package:prospector/src/presentation/core/widgets/dismissible_background.dart';
 
 import '../../../../../../features/interactions/application/interactions_providers.dart';
 import '../../../../../../features/interactions/domain/entity/interaction_entity.dart';
@@ -92,12 +93,7 @@ class InteractionListTile extends StatelessWidget {
     return Dismissible(
       key: Key(objectID),
       direction: DismissDirection.endToStart,
-      background: Container(
-        color: Colors.red,
-        alignment: Alignment.centerRight,
-        padding: const EdgeInsets.only(right: 20.0),
-        child: const Icon(Icons.delete, color: Colors.white),
-      ),
+      background: const DismissibleBackground(),
       onDismissed: (direction) {
         if (object is Interaction) {
           context
