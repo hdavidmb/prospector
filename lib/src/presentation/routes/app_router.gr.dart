@@ -10,7 +10,7 @@ import 'package:flutter/material.dart' as _i2;
 import '../../features/contacts/domain/entity/contact_entity.dart' as _i18;
 import '../pages/auth/register/register_page.dart' as _i6;
 import '../pages/auth/sign_in/sign_in_page.dart' as _i5;
-import '../pages/splash/splash_screen_page.dart' as _i3;
+import '../pages/auth/splash/splash_screen_page.dart' as _i3;
 import '../pages/user_panel/contacts/contact_add_edit/contact_add_edit_page.dart'
     as _i8;
 import '../pages/user_panel/contacts/contact_details/contact_details_page.dart'

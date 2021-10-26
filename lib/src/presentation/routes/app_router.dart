@@ -1,15 +1,15 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:prospector/src/presentation/pages/user_panel/settings/events_settings/events_settings_page.dart';
 
 import '../pages/auth/register/register_page.dart';
 import '../pages/auth/sign_in/sign_in_page.dart';
-import '../pages/splash/splash_screen_page.dart';
+import '../pages/auth/splash/splash_screen_page.dart';
 import '../pages/user_panel/contacts/contact_add_edit/contact_add_edit_page.dart';
 import '../pages/user_panel/contacts/contact_details/contact_details_page.dart';
 import '../pages/user_panel/home/home_page.dart';
 import '../pages/user_panel/settings/change_email/change_email_page.dart';
 import '../pages/user_panel/settings/change_password/change_password_page.dart';
 import '../pages/user_panel/settings/country_code/country_code_page.dart';
+import '../pages/user_panel/settings/events_settings/events_settings_page.dart';
 import '../pages/user_panel/settings/import_contacts/import_contacts/import_contacts_page.dart';
 import '../pages/user_panel/settings/import_contacts/import_contacts_menu/import_contacts_menu_page.dart';
 import '../pages/user_panel/settings/import_contacts/imported_contacts/imported_contacts_page.dart';
