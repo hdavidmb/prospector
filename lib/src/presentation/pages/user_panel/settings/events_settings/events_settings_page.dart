@@ -5,6 +5,7 @@ import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/helpers/date_formatters.dart';
 import 'package:prospector/src/presentation/pages/user_panel/events/events_view/logic/events_view_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/theme/theme_providers.dart';
 
 class EventsSettingsPage extends StatelessWidget {
   const EventsSettingsPage({
@@ -13,13 +14,15 @@ class EventsSettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final divider = const Divider(height: 0.0, indent: 8.0);
+    const divider = Divider(height: 0.0, indent: 8.0);
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context).eventsSettings),
       ),
       body: Consumer(
         builder: (context, watch, child) {
+          final bool is24hours = watch(themeNotifierProvider).is24hours;
+          final int startDayOfWeek = watch(eventsViewProvider).startDayOfWeek;
           return ListView(
             physics: const BouncingScrollPhysics(),
             children: [
@@ -39,14 +42,36 @@ class EventsSettingsPage extends StatelessWidget {
                   children: [
                     Text(AppLocalizations.of(context).weekStartsOn),
                     Text(
-                      localizedWeekday(
-                          watch(eventsViewProvider).startDayOfWeek),
+                      localizedWeekday(startDayOfWeek),
                       style: const TextStyle(color: Colors.grey),
                     )
                   ],
                 ),
               ),
-              divider
+              divider,
+              ListTile(
+                onTap: () async {
+                  final Option selection =
+                      await showTimeFormatDialog(context: context);
+                  selection.fold(
+                    () => null,
+                    (is24hours) => context
+                        .read(themeNotifierProvider)
+                        .is24hours = is24hours as bool,
+                  );
+                }, //TODO select time format
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(AppLocalizations.of(context).timeFormat),
+                    Text(
+                      '${is24hours ? 24 : 12} ${AppLocalizations.current.hours}',
+                      style: const TextStyle(color: Colors.grey),
+                    )
+                  ],
+                ),
+              ),
+              divider,
             ],
           );
         },

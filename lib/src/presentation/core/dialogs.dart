@@ -497,6 +497,14 @@ Future<Option<Object>> showWeekdaySelectionDialog(
         options: [0, 1, 2, 3, 4, 5, 6],
         optionTitleBuilder: (option) => localizedWeekday(option as int));
 
+Future<Option<Object>> showTimeFormatDialog({required BuildContext context}) =>
+    showOptionsSelectionDialog(
+        context: context,
+        title: AppLocalizations.current.timeFormat,
+        options: [false, true],
+        optionTitleBuilder: (option) =>
+            '${(option as bool) ? 24 : 12} ${AppLocalizations.current.hours}');
+
 //TODO use for affiliate and image source dialog
 Future<Option<Object>> showOptionsSelectionDialog(
     {required BuildContext context,

@@ -101,6 +101,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "getRidOfAds": MessageLookupByLibrary.simpleMessage("Get rid of ads"),
         "goToSettings": MessageLookupByLibrary.simpleMessage("Go to Settings"),
         "hidePasswords": MessageLookupByLibrary.simpleMessage("Hide passwords"),
+        "hours": MessageLookupByLibrary.simpleMessage("hours"),
         "import": MessageLookupByLibrary.simpleMessage("Import"),
         "importContacts":
             MessageLookupByLibrary.simpleMessage("Import contacts"),
@@ -217,6 +218,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "takePhoto": MessageLookupByLibrary.simpleMessage("Take photo"),
         "thisAcctionCannotBeUndone": MessageLookupByLibrary.simpleMessage(
             "This action cannot be undone."),
+        "timeFormat": MessageLookupByLibrary.simpleMessage("Time format"),
         "toConfirm": MessageLookupByLibrary.simpleMessage("to confirm."),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
         "typeAnInteraction":

@@ -20,6 +20,9 @@ class UserSharedPreferences {
   int get userThemePrefs => _prefs.getInt('userThemePrefs') ?? 0;
   set userThemePrefs(int value) => _prefs.setInt('userThemePrefs', value);
 
+  bool get is24hours => _prefs.getBool('is24hours') ?? false;
+  set is24hours(bool value) => _prefs.setBool('is24hours', value);
+
   // *************** HOME ****************
 
   int get homeIndex => _prefs.getInt('homeIndex') ?? 1;

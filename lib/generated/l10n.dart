@@ -1629,6 +1629,26 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Time format`
+  String get timeFormat {
+    return Intl.message(
+      'Time format',
+      name: 'timeFormat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `hours`
+  String get hours {
+    return Intl.message(
+      'hours',
+      name: 'hours',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -50,7 +50,9 @@ class EventsCalendarView extends StatelessWidget {
               selectedDecoration: BoxDecoration(
                 color: isSameDay(provider.selectedDay, DateTime.now())
                     ? Theme.of(context).primaryColor
-                    : Colors.black87,
+                    : isDarkTheme
+                        ? Colors.white70
+                        : Colors.black87,
                 shape: BoxShape.circle,
               ),
               //TODO set markers decoration

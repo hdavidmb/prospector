@@ -108,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ir a Configuración"),
         "hidePasswords":
             MessageLookupByLibrary.simpleMessage("Ocultar contraseñas"),
+        "hours": MessageLookupByLibrary.simpleMessage("horas"),
         "import": MessageLookupByLibrary.simpleMessage("Importar"),
         "importContacts":
             MessageLookupByLibrary.simpleMessage("Importar contactos"),
@@ -230,6 +231,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "takePhoto": MessageLookupByLibrary.simpleMessage("Tomar foto"),
         "thisAcctionCannotBeUndone": MessageLookupByLibrary.simpleMessage(
             "Esta acción no se puede deshacer."),
+        "timeFormat": MessageLookupByLibrary.simpleMessage("Formato de horas"),
         "toConfirm": MessageLookupByLibrary.simpleMessage("para confirmar."),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Reintentar"),
         "typeAnInteraction":

@@ -8,6 +8,8 @@ class ThemeNotifier with ChangeNotifier {
   final UserSharedPreferences _prefs;
 
   ThemeNotifier(this._prefs) {
+    _is24hours = _prefs.is24hours;
+
     switch (_prefs.userThemePrefs) {
       case 0: //system
         _lightModeSwitch = false;
@@ -50,4 +52,12 @@ class ThemeNotifier with ChangeNotifier {
 
   ThemeMode _currentThemeMode = ThemeMode.system;
   ThemeMode get currentThemeMode => _currentThemeMode;
+
+  bool _is24hours = false;
+  bool get is24hours => _is24hours;
+  set is24hours(bool value) {
+    _is24hours = value;
+    _prefs.is24hours = value;
+    notifyListeners();
+  }
 }

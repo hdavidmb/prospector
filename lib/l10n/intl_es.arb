@@ -156,5 +156,7 @@
     "month": "Mes",
     "week": "Semana",
     "eventsSettings": "Configuración de eventos",
-    "weekStartsOn": "Iniciar semana en"
+    "weekStartsOn": "Iniciar semana en",
+    "timeFormat": "Formato de horas",
+    "hours": "horas"
 }
