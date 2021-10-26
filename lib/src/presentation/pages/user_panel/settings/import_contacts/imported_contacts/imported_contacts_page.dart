@@ -8,7 +8,7 @@ import '../../../../../../features/contacts/application/contacts_providers.dart'
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
 import '../../../../../../features/import_contacts/application/import_contacts_providers.dart';
 import '../../../../../../features/import_contacts/domain/entity/imported_contact_entity.dart';
-import '../../../../../core/no_contatcs_screen/no_contacts_screen.dart';
+import '../../../../../core/widgets/no_contatcs_screen/no_contacts_screen.dart';
 import '../../../../../routes/app_router.gr.dart';
 import '../../../contacts/contact_add_edit/logic/contact_form_provider.dart';
 import '../../../contacts/contact_add_edit/widgets/contact_image.dart';

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../../../../../features/admob/application/ads_providers.dart';
-import '../../../../../core/keyboard_visibility/keyboard_visibility.dart';
+import '../../../../../core/widgets/keyboard_visibility/keyboard_visibility.dart';
 
 class ContactsAdmobBanner extends ConsumerWidget {
   const ContactsAdmobBanner({
