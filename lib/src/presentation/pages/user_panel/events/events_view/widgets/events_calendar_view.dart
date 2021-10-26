@@ -26,7 +26,7 @@ class EventsCalendarView extends StatelessWidget {
             availableGestures: AvailableGestures.horizontalSwipe,
             startingDayOfWeek:
                 StartingDayOfWeek.values[provider.startDayOfWeek],
-            locale: Intl.getCurrentLocale(), //TODO test
+            locale: Intl.getCurrentLocale(),
             daysOfWeekStyle: DaysOfWeekStyle(
                 weekdayStyle: TextStyle(
                     color: isDarkTheme ? Colors.white70 : Colors.black87),

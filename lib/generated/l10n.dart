@@ -1609,6 +1609,26 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Events settings`
+  String get eventsSettings {
+    return Intl.message(
+      'Events settings',
+      name: 'eventsSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Week starts on`
+  String get weekStartsOn {
+    return Intl.message(
+      'Week starts on',
+      name: 'weekStartsOn',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

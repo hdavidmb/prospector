@@ -154,5 +154,7 @@
     "defaultCountryCodeMessage": "This code will be used as default for your local contacts. For your international contacts please be sure to add the '+' symbol and their country code. Otherwise Whatsapp won't be able to identify your contact properly.",
     "modifyCountryCodeMessage": "You can modify your country code on Settings.",
     "month": "Month",
-    "week": "Week"
+    "week": "Week",
+    "eventsSettings": "Events settings",
+    "weekStartsOn": "Week starts on"
 }

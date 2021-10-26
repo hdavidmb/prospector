@@ -82,7 +82,7 @@ class ContactDetailsNotifier {
         if (contact.phones != null && contact.phones!.isNotEmpty) {
           String? contactNumber = isTexting ? contact.whatsapp : contact.phone;
           if (contactNumber == null || contactNumber.isEmpty) {
-            final Option<String> selection = await showOptionsSelectionDialog(
+            final Option selection = await showOptionsSelectionDialog(
                 context: context,
                 options: contact.phones!,
                 title: AppLocalizations.current.selectANumber,
@@ -91,8 +91,8 @@ class ContactDetailsNotifier {
               () => null,
               (number) async {
                 final Contact newContactInfo = isTexting
-                    ? contact.copyWith(whatsapp: number)
-                    : contact.copyWith(phone: number);
+                    ? contact.copyWith(whatsapp: number as String)
+                    : contact.copyWith(phone: number as String);
                 read(contactsNotifierProvider).updateContact(newContactInfo);
                 contactNumber = number;
               },

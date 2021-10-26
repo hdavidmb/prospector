@@ -90,6 +90,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterYourPasswordToConfirm": MessageLookupByLibrary.simpleMessage(
             "Ingresa tu contraseña para confirmar"),
         "events": MessageLookupByLibrary.simpleMessage("Eventos"),
+        "eventsSettings":
+            MessageLookupByLibrary.simpleMessage("Configuración de eventos"),
         "executive": MessageLookupByLibrary.simpleMessage("Ejecutivo"),
         "executiveF": MessageLookupByLibrary.simpleMessage("Ejecutiva"),
         "executives": MessageLookupByLibrary.simpleMessage("Ejecutivos"),
@@ -245,6 +247,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "weakPassword": MessageLookupByLibrary.simpleMessage(
             "Contraseña débil. \n Debe ser de al menos 8 caracteres y contener: \n - 1 letra mayúscula \n - 1 letra minúscula \n - 1 número"),
         "week": MessageLookupByLibrary.simpleMessage("Semana"),
+        "weekStartsOn":
+            MessageLookupByLibrary.simpleMessage("Iniciar semana en"),
         "welcomeTo": MessageLookupByLibrary.simpleMessage("Bienvenido a"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
         "youMayHaveToRelogin": MessageLookupByLibrary.simpleMessage(

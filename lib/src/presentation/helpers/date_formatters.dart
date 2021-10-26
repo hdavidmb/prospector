@@ -14,3 +14,9 @@ String getTimeagoFormatedDate(BuildContext context, DateTime date) {
     return dateFormat.format(date);
   }
 }
+
+String localizedWeekday(int day) {
+  final DateFormat dateFormatter =
+      DateFormat(DateFormat.WEEKDAY, Intl.getCurrentLocale());
+  return dateFormatter.format(DateTime(2020, 8, 10 + day));
+}
