@@ -7,7 +7,7 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
-import '../../features/contacts/domain/entity/contact_entity.dart' as _i18;
+import '../../features/contacts/domain/entity/contact_entity.dart' as _i19;
 import '../pages/auth/register/register_page.dart' as _i6;
 import '../pages/auth/sign_in/sign_in_page.dart' as _i5;
 import '../pages/auth/splash/splash_screen_page.dart' as _i3;
@@ -15,6 +15,8 @@ import '../pages/user_panel/contacts/contact_add_edit/contact_add_edit_page.dart
     as _i8;
 import '../pages/user_panel/contacts/contact_details/contact_details_page.dart'
     as _i7;
+import '../pages/user_panel/events/event_details/event_details_page.dart'
+    as _i18;
 import '../pages/user_panel/home/home_page.dart' as _i4;
 import '../pages/user_panel/settings/change_email/change_email_page.dart'
     as _i10;
@@ -129,6 +131,12 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (_) {
           return const _i17.EventsSettingsPage();
+        }),
+    EventDetailsRoute.name: (routeData) => _i1.CupertinoPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<EventDetailsRouteArgs>();
+          return _i18.EventDetailsPage(key: args.key, eventID: args.eventID);
         })
   };
 
@@ -154,7 +162,9 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(ImportContactsRoute.name,
             path: '/import-contacts-page'),
         _i1.RouteConfig(CountryCodeRoute.name, path: '/country-code-page'),
-        _i1.RouteConfig(EventsSettingsRoute.name, path: '/events-settings-page')
+        _i1.RouteConfig(EventsSettingsRoute.name,
+            path: '/events-settings-page'),
+        _i1.RouteConfig(EventDetailsRoute.name, path: '/event-details-page')
       ];
 }
 
@@ -200,7 +210,7 @@ class ContactDetailsRouteArgs {
 }
 
 class ContactAddEditRoute extends _i1.PageRouteInfo<ContactAddEditRouteArgs> {
-  ContactAddEditRoute({_i2.Key? key, _i18.Contact? editingContact})
+  ContactAddEditRoute({_i2.Key? key, _i19.Contact? editingContact})
       : super(name,
             path: '/contact-add-edit-page',
             args: ContactAddEditRouteArgs(
@@ -214,7 +224,7 @@ class ContactAddEditRouteArgs {
 
   final _i2.Key? key;
 
-  final _i18.Contact? editingContact;
+  final _i19.Contact? editingContact;
 }
 
 class UserProfileRoute extends _i1.PageRouteInfo {
@@ -270,4 +280,21 @@ class EventsSettingsRoute extends _i1.PageRouteInfo {
   const EventsSettingsRoute() : super(name, path: '/events-settings-page');
 
   static const String name = 'EventsSettingsRoute';
+}
+
+class EventDetailsRoute extends _i1.PageRouteInfo<EventDetailsRouteArgs> {
+  EventDetailsRoute({_i2.Key? key, required String eventID})
+      : super(name,
+            path: '/event-details-page',
+            args: EventDetailsRouteArgs(key: key, eventID: eventID));
+
+  static const String name = 'EventDetailsRoute';
+}
+
+class EventDetailsRouteArgs {
+  const EventDetailsRouteArgs({this.key, required this.eventID});
+
+  final _i2.Key? key;
+
+  final String eventID;
 }

@@ -61,4 +61,15 @@ class Event with _$Event {
       notificationsIDs: map['notificationsIDs'] as List<int>?,
     );
   }
+
+  factory Event.empty() => Event(
+        id: '',
+        allDay: false,
+        created: DateTime.now(),
+        modified: DateTime.now(),
+        startDate: DateTime.now(),
+        endDate: DateTime.now(),
+        title: '',
+        type: 'event',
+      );
 }
