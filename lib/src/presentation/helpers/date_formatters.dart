@@ -61,3 +61,23 @@ String eventTileFormatedDate({
     return AppLocalizations.current.allDay; //TODO test
   }
 }
+
+String eventDetailsFormatedDate({
+  required DateTime startDate,
+  required DateTime endDate,
+  required bool is24hours,
+}) {
+  late DateFormat dateFormat;
+
+  if (isSameDay(startDate, endDate)) {
+    dateFormat = is24hours
+        ? DateFormat('HH:mm', Intl.getCurrentLocale())
+        : DateFormat("hh:mm a", Intl.getCurrentLocale());
+  } else {
+    dateFormat = is24hours
+        ? DateFormat.yMMMMEEEEd(Intl.getCurrentLocale()).add_Hm()
+        : DateFormat.yMMMMEEEEd(Intl.getCurrentLocale()).add_jm(); //TODO test
+  }
+
+  return '${dateFormat.format(startDate)} - ${dateFormat.format(endDate)}';
+}
