@@ -59,7 +59,7 @@ class EventsSettingsPage extends StatelessWidget {
                         .read(themeNotifierProvider)
                         .is24hours = is24hours as bool,
                   );
-                }, //TODO select time format
+                },
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

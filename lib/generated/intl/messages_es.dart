@@ -91,6 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ingresa tu nombre"),
         "enterYourPasswordToConfirm": MessageLookupByLibrary.simpleMessage(
             "Ingresa tu contraseña para confirmar"),
+        "eventDetails":
+            MessageLookupByLibrary.simpleMessage("Detalles de evento"),
         "events": MessageLookupByLibrary.simpleMessage("Eventos"),
         "eventsSettings":
             MessageLookupByLibrary.simpleMessage("Configuración de eventos"),
@@ -108,6 +110,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Elimina la Publicidad"),
         "goToSettings":
             MessageLookupByLibrary.simpleMessage("Ir a Configuración"),
+        "guests": MessageLookupByLibrary.simpleMessage("Invitados"),
         "hidePasswords":
             MessageLookupByLibrary.simpleMessage("Ocultar contraseñas"),
         "hours": MessageLookupByLibrary.simpleMessage("horas"),
@@ -188,7 +191,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Esta es una característica premium.\nAdquiere alguna de nuestras suscripciones premium para acceder a esta función y llevar tu negocio al siguiente nivel."),
         "present": MessageLookupByLibrary.simpleMessage("Presentar"),
         "profile": MessageLookupByLibrary.simpleMessage("Perfil"),
-        "prospectDetails": MessageLookupByLibrary.simpleMessage("Detalles"),
+        "prospectDetails":
+            MessageLookupByLibrary.simpleMessage("Detalles de prospecto"),
         "prospectSavedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Prospecto guardado exitosamente"),
         "prospector": MessageLookupByLibrary.simpleMessage("Prospector"),

@@ -1679,6 +1679,26 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Event details`
+  String get eventDetails {
+    return Intl.message(
+      'Event details',
+      name: 'eventDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Guests`
+  String get guests {
+    return Intl.message(
+      'Guests',
+      name: 'guests',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

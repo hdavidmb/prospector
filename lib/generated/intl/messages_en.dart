@@ -87,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your name"),
         "enterYourPasswordToConfirm": MessageLookupByLibrary.simpleMessage(
             "Enter your password to confirm"),
+        "eventDetails": MessageLookupByLibrary.simpleMessage("Event details"),
         "events": MessageLookupByLibrary.simpleMessage("Events"),
         "eventsSettings":
             MessageLookupByLibrary.simpleMessage("Events settings"),
@@ -102,6 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "general": MessageLookupByLibrary.simpleMessage("General"),
         "getRidOfAds": MessageLookupByLibrary.simpleMessage("Get rid of ads"),
         "goToSettings": MessageLookupByLibrary.simpleMessage("Go to Settings"),
+        "guests": MessageLookupByLibrary.simpleMessage("Guests"),
         "hidePasswords": MessageLookupByLibrary.simpleMessage("Hide passwords"),
         "hours": MessageLookupByLibrary.simpleMessage("hours"),
         "import": MessageLookupByLibrary.simpleMessage("Import"),

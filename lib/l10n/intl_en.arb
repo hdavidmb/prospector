@@ -161,5 +161,7 @@
     "hours": "hours",
     "allDay": "All day",
     "startsAt": "Starts at",
-    "endsAt": "Ends at"
+    "endsAt": "Ends at",
+    "eventDetails": "Event details",
+    "guests": "Guests"
 }

@@ -299,7 +299,7 @@ class ContactsNotifier extends ChangeNotifier {
   List<Contact> get searchingContacts => _contacts
       .where(
         (contact) =>
-            _searchText.isEmpty ||
+            _searchText.isEmpty || //TODO check with .isNotEmpty &&
             contact.name.toLowerCase().contains(_searchText.toLowerCase()),
       )
       .toList();

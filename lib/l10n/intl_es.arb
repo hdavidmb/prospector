@@ -99,7 +99,7 @@
     "delete": "Eliminar",
     "areYouSureDeleteProspect": "Confirma que deseas eliminar este prospecto",
     "edit": "Editar",
-    "prospectDetails": "Detalles",
+    "prospectDetails": "Detalles de prospecto",
     "invite": "Invitar",
     "present": "Presentar",
     "affiliate": "Afiliar",
@@ -161,5 +161,7 @@
     "hours": "horas",
     "allDay": "Todo el día",
     "startsAt": "Inicia",
-    "endsAt": "Termina"
+    "endsAt": "Termina",
+    "eventDetails": "Detalles de evento",
+    "guests": "Invitados"
 }
