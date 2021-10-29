@@ -7,7 +7,8 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
-import '../../features/contacts/domain/entity/contact_entity.dart' as _i19;
+import '../../features/contacts/domain/entity/contact_entity.dart' as _i20;
+import '../../features/events/domain/entity/event_entity.dart' as _i21;
 import '../pages/auth/register/register_page.dart' as _i6;
 import '../pages/auth/sign_in/sign_in_page.dart' as _i5;
 import '../pages/auth/splash/splash_screen_page.dart' as _i3;
@@ -17,6 +18,8 @@ import '../pages/user_panel/contacts/contact_details/contact_details_page.dart'
     as _i7;
 import '../pages/user_panel/events/event_details/event_details_page.dart'
     as _i18;
+import '../pages/user_panel/events/guests_selection/guests_selection_page.dart'
+    as _i19;
 import '../pages/user_panel/home/home_page.dart' as _i4;
 import '../pages/user_panel/settings/change_email/change_email_page.dart'
     as _i10;
@@ -137,6 +140,13 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (data) {
           final args = data.argsAs<EventDetailsRouteArgs>();
           return _i18.EventDetailsPage(key: args.key, eventID: args.eventID);
+        }),
+    GuestsSelectionRoute.name: (routeData) => _i1.CupertinoPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<GuestsSelectionRouteArgs>(
+              orElse: () => const GuestsSelectionRouteArgs());
+          return _i19.GuestsSelectionPage(key: args.key, event: args.event);
         })
   };
 
@@ -164,7 +174,9 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(CountryCodeRoute.name, path: '/country-code-page'),
         _i1.RouteConfig(EventsSettingsRoute.name,
             path: '/events-settings-page'),
-        _i1.RouteConfig(EventDetailsRoute.name, path: '/event-details-page')
+        _i1.RouteConfig(EventDetailsRoute.name, path: '/event-details-page'),
+        _i1.RouteConfig(GuestsSelectionRoute.name,
+            path: '/guests-selection-page')
       ];
 }
 
@@ -210,7 +222,7 @@ class ContactDetailsRouteArgs {
 }
 
 class ContactAddEditRoute extends _i1.PageRouteInfo<ContactAddEditRouteArgs> {
-  ContactAddEditRoute({_i2.Key? key, _i19.Contact? editingContact})
+  ContactAddEditRoute({_i2.Key? key, _i20.Contact? editingContact})
       : super(name,
             path: '/contact-add-edit-page',
             args: ContactAddEditRouteArgs(
@@ -224,7 +236,7 @@ class ContactAddEditRouteArgs {
 
   final _i2.Key? key;
 
-  final _i19.Contact? editingContact;
+  final _i20.Contact? editingContact;
 }
 
 class UserProfileRoute extends _i1.PageRouteInfo {
@@ -297,4 +309,21 @@ class EventDetailsRouteArgs {
   final _i2.Key? key;
 
   final String eventID;
+}
+
+class GuestsSelectionRoute extends _i1.PageRouteInfo<GuestsSelectionRouteArgs> {
+  GuestsSelectionRoute({_i2.Key? key, _i21.Event? event})
+      : super(name,
+            path: '/guests-selection-page',
+            args: GuestsSelectionRouteArgs(key: key, event: event));
+
+  static const String name = 'GuestsSelectionRoute';
+}
+
+class GuestsSelectionRouteArgs {
+  const GuestsSelectionRouteArgs({this.key, this.event});
+
+  final _i2.Key? key;
+
+  final _i21.Event? event;
 }

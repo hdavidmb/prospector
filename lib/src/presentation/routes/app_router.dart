@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:prospector/src/presentation/pages/user_panel/events/guests_selection/guests_selection_page.dart';
 
 import '../pages/auth/register/register_page.dart';
 import '../pages/auth/sign_in/sign_in_page.dart';
@@ -44,6 +45,7 @@ import '../pages/user_panel/settings/user_profile/user_profile_page.dart';
     CupertinoRoute(page: CountryCodePage),
     CupertinoRoute(page: EventsSettingsPage),
     CupertinoRoute(page: EventDetailsPage),
+    CupertinoRoute(page: GuestsSelectionPage),
   ],
   replaceInRouteName: 'Page,Route',
 )

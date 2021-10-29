@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:prospector/generated/l10n.dart';
@@ -13,26 +14,36 @@ class GuestsSelectionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> selectedGuests = event?.guests ?? [];
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Select guests'), // TODO localize
-        actions: [
-          TextButton(
-            onPressed: () {
-              //TODO update event guests
-            },
-            child: Text(
-              AppLocalizations.of(context).save,
-              style: const TextStyle(color: Colors.white),
-            ),
-          )
-        ],
-      ),
-      body: GuestsInput(
-        selectedGuests: selectedGuests,
-        onSelect: (String guest) => selectedGuests.add(guest),
-        onDelete: (String guest) => selectedGuests.remove(guest),
+    final List<String> selectedGuests = [];
+    if (event?.guests != null) {
+      selectedGuests.addAll(event!.guests!);
+    }
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Select guests'), // TODO localize
+          actions: [
+            TextButton(
+              onPressed: () {
+                AutoRouter.of(context).pop(selectedGuests);
+              },
+              child: Text(
+                AppLocalizations.of(context).save,
+                style: const TextStyle(color: Colors.white),
+              ),
+            )
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GuestsInput(
+            selectedGuests: selectedGuests,
+            autoFocus: true,
+            onSelect: (String guest) => selectedGuests.add(guest),
+            onDelete: (String guest) => selectedGuests.remove(guest),
+          ),
+        ),
       ),
     );
   }
