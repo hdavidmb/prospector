@@ -163,5 +163,6 @@
     "startsAt": "Starts at",
     "endsAt": "Ends at",
     "eventDetails": "Event details",
-    "guests": "Guests"
+    "guests": "Guests",
+    "selectGuests": "Select guests"
 }

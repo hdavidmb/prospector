@@ -163,5 +163,6 @@
     "startsAt": "Inicia",
     "endsAt": "Termina",
     "eventDetails": "Detalles de evento",
-    "guests": "Invitados"
+    "guests": "Invitados",
+    "selectGuests": "Seleccionar invitados"
 }

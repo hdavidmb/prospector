@@ -206,6 +206,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectANumber":
             MessageLookupByLibrary.simpleMessage("Select a number"),
         "selectAll": MessageLookupByLibrary.simpleMessage("Select all"),
+        "selectGuests": MessageLookupByLibrary.simpleMessage("Select guests"),
         "selectImage": MessageLookupByLibrary.simpleMessage("Select image"),
         "selectYourCountryCode":
             MessageLookupByLibrary.simpleMessage("Select your country code"),

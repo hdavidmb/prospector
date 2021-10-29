@@ -1699,6 +1699,16 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Select guests`
+  String get selectGuests {
+    return Intl.message(
+      'Select guests',
+      name: 'selectGuests',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

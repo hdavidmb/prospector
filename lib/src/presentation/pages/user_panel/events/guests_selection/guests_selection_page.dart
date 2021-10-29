@@ -22,7 +22,7 @@ class GuestsSelectionPage extends StatelessWidget {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Select guests'), // TODO localize
+          title: Text(AppLocalizations.of(context).selectGuests),
           actions: [
             TextButton(
               onPressed: () {
