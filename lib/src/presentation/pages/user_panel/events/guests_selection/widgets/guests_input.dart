@@ -47,8 +47,7 @@ class GuestsInput extends StatelessWidget {
                       state.deleteChip(contact);
                       onDelete(contact.id);
                     },
-                    materialTapTargetSize:
-                        MaterialTapTargetSize.shrinkWrap, //TODO test
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   )
                 : const SizedBox();
           },
@@ -66,15 +65,7 @@ class GuestsInput extends StatelessWidget {
           findSuggestions: (query) {
             final filteredContacts = context
                 .read(contactsNotifierProvider)
-                .contacts
-                .where(
-                  (listContact) =>
-                      query.isNotEmpty &&
-                      listContact.name
-                          .toLowerCase()
-                          .contains(query.toLowerCase()),
-                )
-                .toList();
+                .searchContactsByName(query: query);
             return filteredContacts;
           },
           onChanged: (data) {},

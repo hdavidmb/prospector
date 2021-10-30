@@ -74,10 +74,38 @@ String eventDetailsFormatedDate({
         ? DateFormat('HH:mm', Intl.getCurrentLocale())
         : DateFormat("hh:mm a", Intl.getCurrentLocale());
   } else {
+    // TODO test
     dateFormat = is24hours
         ? DateFormat.yMMMMEEEEd(Intl.getCurrentLocale()).add_Hm()
         : DateFormat.yMMMMEEEEd(Intl.getCurrentLocale()).add_jm(); //TODO test
   }
 
   return '${dateFormat.format(startDate)} - ${dateFormat.format(endDate)}';
+}
+
+String getAlertText(
+    //TODO test
+    {required DateTime startDate,
+    required DateTime? notification}) {
+  String alertString = AppLocalizations.current.none;
+  if (notification != null) {
+    final Duration duration = startDate.difference(notification);
+    if (duration.inMinutes == 0) {
+      alertString = AppLocalizations.current.atEventTime;
+    } else if (duration.inMinutes <= 30) {
+      alertString =
+          '${duration.inMinutes} ${AppLocalizations.current.minutesBefore}';
+    } else if (duration.inHours == 1) {
+      alertString = '1 ${AppLocalizations.current.hourBefore}';
+    } else if (duration.inHours == 2) {
+      alertString = '2 ${AppLocalizations.current.hoursBefore}';
+    } else if (duration.inDays == 1) {
+      alertString = '1 ${AppLocalizations.current.dayBefore}';
+    } else if (duration.inDays == 2) {
+      alertString = '2 ${AppLocalizations.current.daysBefore}';
+    } else if (duration.inDays == 7) {
+      alertString = '1 ${AppLocalizations.current.weekBefore}';
+    }
+  }
+  return alertString;
 }

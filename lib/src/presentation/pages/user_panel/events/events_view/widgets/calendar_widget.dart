@@ -57,7 +57,7 @@ class CalendarWidget extends ConsumerWidget {
             shape: BoxShape.circle,
           ),
           markerDecoration: const BoxDecoration(
-            color: Colors.grey, //TODO check color on today events
+            color: Colors.grey,
             shape: BoxShape.circle,
           ),
         ),

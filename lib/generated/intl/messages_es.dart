@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "affiliate": MessageLookupByLibrary.simpleMessage("Afiliar"),
         "affiliateAs": MessageLookupByLibrary.simpleMessage("Afiliar como"),
         "affiliatedP": MessageLookupByLibrary.simpleMessage("Afiliados"),
+        "alert": MessageLookupByLibrary.simpleMessage("Alerta"),
         "allDay": MessageLookupByLibrary.simpleMessage("Todo el día"),
         "allowAccess": MessageLookupByLibrary.simpleMessage(
             "Por favor habilitalo en la configuración de tu dispositivo."),
@@ -38,6 +39,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Confirma que deseas eliminar tu cuenta."),
         "areYouSureDeleteProspect": MessageLookupByLibrary.simpleMessage(
             "Confirma que deseas eliminar este prospecto"),
+        "atEventTime":
+            MessageLookupByLibrary.simpleMessage("A la hora del evento"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
         "changeEmail":
             MessageLookupByLibrary.simpleMessage("Cambiar correo electrónico"),
@@ -65,6 +68,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Contraseña actual"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Modo oscuro"),
+        "dayBefore": MessageLookupByLibrary.simpleMessage("día antes"),
+        "daysBefore": MessageLookupByLibrary.simpleMessage("días antes"),
         "defaultCountryCodeMessage": MessageLookupByLibrary.simpleMessage(
             "Este código se utilizará de forma predeterminada para sus contactos locales. Para sus contactos internacionales, asegúrese de agregar el símbolo \'+\' y su código de país. De lo contrario, Whatsapp no ​​podrá identificar correctamente a su contacto."),
         "delete": MessageLookupByLibrary.simpleMessage("Eliminar"),
@@ -113,7 +118,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "guests": MessageLookupByLibrary.simpleMessage("Invitados"),
         "hidePasswords":
             MessageLookupByLibrary.simpleMessage("Ocultar contraseñas"),
+        "hourBefore": MessageLookupByLibrary.simpleMessage("hora antes"),
         "hours": MessageLookupByLibrary.simpleMessage("horas"),
+        "hoursBefore": MessageLookupByLibrary.simpleMessage("horas antes"),
         "import": MessageLookupByLibrary.simpleMessage("Importar"),
         "importContacts":
             MessageLookupByLibrary.simpleMessage("Importar contactos"),
@@ -135,6 +142,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "male": MessageLookupByLibrary.simpleMessage("Masculino"),
         "membership": MessageLookupByLibrary.simpleMessage("Membresía"),
         "minutes": MessageLookupByLibrary.simpleMessage("minutos"),
+        "minutesBefore": MessageLookupByLibrary.simpleMessage("minutos antes"),
         "modifyCountryCodeMessage": MessageLookupByLibrary.simpleMessage(
             "Puedes modificar tu código de país en Configuración."),
         "month": MessageLookupByLibrary.simpleMessage("Mes"),
@@ -168,6 +176,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Aún no tienes prospectos en esta lista.\nIntenta agregar nuevos prospectos o moverlos desde las otras listas."),
         "noSearchProspectsMessage": MessageLookupByLibrary.simpleMessage(
             "No hay ningún prospecto que coincida con la busqueda."),
+        "none": MessageLookupByLibrary.simpleMessage("Ninguna"),
         "notContacted": MessageLookupByLibrary.simpleMessage("No contactado"),
         "notContactedF": MessageLookupByLibrary.simpleMessage("No contactada"),
         "notContactedP": MessageLookupByLibrary.simpleMessage("No contactados"),
@@ -258,6 +267,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "weakPassword": MessageLookupByLibrary.simpleMessage(
             "Contraseña débil. \n Debe ser de al menos 8 caracteres y contener: \n - 1 letra mayúscula \n - 1 letra minúscula \n - 1 número"),
         "week": MessageLookupByLibrary.simpleMessage("Semana"),
+        "weekBefore": MessageLookupByLibrary.simpleMessage("semana antes"),
         "weekStartsOn":
             MessageLookupByLibrary.simpleMessage("Iniciar semana en"),
         "welcomeTo": MessageLookupByLibrary.simpleMessage("Bienvenido a"),

@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "affiliate": MessageLookupByLibrary.simpleMessage("Affiliate"),
         "affiliateAs": MessageLookupByLibrary.simpleMessage("Affiliate as"),
         "affiliatedP": MessageLookupByLibrary.simpleMessage("Affiliated"),
+        "alert": MessageLookupByLibrary.simpleMessage("Alert"),
         "allDay": MessageLookupByLibrary.simpleMessage("All day"),
         "allowAccess": MessageLookupByLibrary.simpleMessage(
             "Please allow it on your device settings."),
@@ -37,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to delete your account?"),
         "areYouSureDeleteProspect": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this Prospect?"),
+        "atEventTime": MessageLookupByLibrary.simpleMessage("At event time"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "changeEmail": MessageLookupByLibrary.simpleMessage("Change email"),
         "changePassword":
@@ -63,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Current password"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark theme"),
+        "dayBefore": MessageLookupByLibrary.simpleMessage("day before"),
+        "daysBefore": MessageLookupByLibrary.simpleMessage("days before"),
         "defaultCountryCodeMessage": MessageLookupByLibrary.simpleMessage(
             "This code will be used as default for your local contacts. For your international contacts please be sure to add the \'+\' symbol and their country code. Otherwise Whatsapp won\'t be able to identify your contact properly."),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
@@ -105,7 +109,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "goToSettings": MessageLookupByLibrary.simpleMessage("Go to Settings"),
         "guests": MessageLookupByLibrary.simpleMessage("Guests"),
         "hidePasswords": MessageLookupByLibrary.simpleMessage("Hide passwords"),
+        "hourBefore": MessageLookupByLibrary.simpleMessage("hour before"),
         "hours": MessageLookupByLibrary.simpleMessage("hours"),
+        "hoursBefore": MessageLookupByLibrary.simpleMessage("hours before"),
         "import": MessageLookupByLibrary.simpleMessage("Import"),
         "importContacts":
             MessageLookupByLibrary.simpleMessage("Import contacts"),
@@ -126,6 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "male": MessageLookupByLibrary.simpleMessage("Male"),
         "membership": MessageLookupByLibrary.simpleMessage("Membership"),
         "minutes": MessageLookupByLibrary.simpleMessage("minutes"),
+        "minutesBefore": MessageLookupByLibrary.simpleMessage("minutes before"),
         "modifyCountryCodeMessage": MessageLookupByLibrary.simpleMessage(
             "You can modify your country code on Settings."),
         "month": MessageLookupByLibrary.simpleMessage("Month"),
@@ -157,6 +164,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "You have no prospects yet on this list.\nTry adding a new prospect or moving one from the other lists."),
         "noSearchProspectsMessage": MessageLookupByLibrary.simpleMessage(
             "There are no prospects matching your search."),
+        "none": MessageLookupByLibrary.simpleMessage("None"),
         "notContacted": MessageLookupByLibrary.simpleMessage("Not contacted"),
         "notContactedF": MessageLookupByLibrary.simpleMessage("Not contacted"),
         "notContactedP": MessageLookupByLibrary.simpleMessage("Not contacted"),
@@ -240,6 +248,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "weakPassword": MessageLookupByLibrary.simpleMessage(
             "Weak Password. \n It must be at least 8 characters long and contain: \n - 1 uppercase letter \n - 1 lowercase letter \n - 1 number"),
         "week": MessageLookupByLibrary.simpleMessage("Week"),
+        "weekBefore": MessageLookupByLibrary.simpleMessage("week before"),
         "weekStartsOn": MessageLookupByLibrary.simpleMessage("Week starts on"),
         "welcomeTo": MessageLookupByLibrary.simpleMessage("Welcome to"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),

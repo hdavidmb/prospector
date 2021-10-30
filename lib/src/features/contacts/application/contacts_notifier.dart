@@ -296,11 +296,22 @@ class ContactsNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<Contact> get searchingContacts => _contacts
-      .where(
-        (contact) =>
-            _searchText.isEmpty || //TODO check with .isNotEmpty &&
-            contact.name.toLowerCase().contains(_searchText.toLowerCase()),
-      )
-      .toList();
+  List<Contact> get searchingContacts =>
+      searchContactsByName(query: _searchText);
+
+  List<Contact> searchContactsByName({required String query}) {
+    final _filteredSearchContacts = _contacts
+        .where(
+          (contact) =>
+              query.isNotEmpty &&
+              contact.name.toLowerCase().trim().split(' ').any(
+                    (word) => word.startsWith(
+                      query.toLowerCase().trim(),
+                    ),
+                  ),
+        )
+        .toList();
+    _filteredSearchContacts.sort((a, b) => a.name.compareTo(b.name));
+    return _filteredSearchContacts;
+  }
 }

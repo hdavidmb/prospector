@@ -1709,6 +1709,96 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Alert`
+  String get alert {
+    return Intl.message(
+      'Alert',
+      name: 'alert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `None`
+  String get none {
+    return Intl.message(
+      'None',
+      name: 'none',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `At event time`
+  String get atEventTime {
+    return Intl.message(
+      'At event time',
+      name: 'atEventTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `minutes before`
+  String get minutesBefore {
+    return Intl.message(
+      'minutes before',
+      name: 'minutesBefore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `hour before`
+  String get hourBefore {
+    return Intl.message(
+      'hour before',
+      name: 'hourBefore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `hours before`
+  String get hoursBefore {
+    return Intl.message(
+      'hours before',
+      name: 'hoursBefore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `day before`
+  String get dayBefore {
+    return Intl.message(
+      'day before',
+      name: 'dayBefore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `days before`
+  String get daysBefore {
+    return Intl.message(
+      'days before',
+      name: 'daysBefore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `week before`
+  String get weekBefore {
+    return Intl.message(
+      'week before',
+      name: 'weekBefore',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

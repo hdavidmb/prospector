@@ -1,8 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:prospector/src/features/events/application/events_providers.dart';
+import 'package:prospector/src/presentation/pages/user_panel/events/event_details/logic/event_details_providers.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
@@ -74,20 +73,12 @@ class EventGuestsListTile extends StatelessWidget {
       onTap: () async {
         final List<String>? selectedGuests = await AutoRouter.of(context)
             .push(GuestsSelectionRoute(event: event)) as List<String>?;
-
-        if (selectedGuests != null) {
-          final bool guestsChanged = event.guests == null ||
-              (event.guests != null && !selectedGuests.equals(event.guests!));
-          if (guestsChanged) {
-            final Event newEventInfo = event.copyWith(guests: selectedGuests);
-            Future.delayed(
-              Duration.zero,
-              () => context
-                  .read(eventsNotifierProvider)
-                  .updateEvent(newEventInfo),
-            );
-          }
-        }
+        Future.delayed(
+          Duration.zero,
+          () => context
+              .read(eventDetailsPageProvider)
+              .guestsTilePressed(event: event, selectedGuests: selectedGuests),
+        );
       },
     );
   }

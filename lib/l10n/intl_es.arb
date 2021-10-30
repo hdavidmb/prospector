@@ -164,5 +164,14 @@
     "endsAt": "Termina",
     "eventDetails": "Detalles de evento",
     "guests": "Invitados",
-    "selectGuests": "Seleccionar invitados"
+    "selectGuests": "Seleccionar invitados",
+    "alert": "Alerta",
+    "none": "Ninguna",
+    "atEventTime": "A la hora del evento",
+    "minutesBefore": "minutos antes",
+    "hourBefore": "hora antes",
+    "hoursBefore": "horas antes",
+    "dayBefore": "día antes",
+    "daysBefore": "días antes",
+    "weekBefore": "semana antes"
 }

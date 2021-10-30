@@ -28,7 +28,6 @@ class EventsViewNotifier extends ChangeNotifier {
   int _startDayOfWeek = 0;
   int get startDayOfWeek => _startDayOfWeek;
   set startDayOfWeek(int value) {
-    // TODO persist on prefs
     _startDayOfWeek = value;
     prefs.startDayOfWeek = value;
     notifyListeners();

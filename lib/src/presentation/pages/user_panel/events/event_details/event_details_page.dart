@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/helpers/date_formatters.dart';
 
 import '../../../../../../generated/l10n.dart';
 import '../../../../../features/events/application/events_providers.dart';
@@ -43,6 +44,25 @@ class EventDetailsPage extends ConsumerWidget {
           EventInfo(event: event, is24hours: is24hours),
           divider,
           EventGuestsListTile(event: event),
+          divider,
+          ListTile(
+            title: Row(
+              children: <Widget>[
+                Text(AppLocalizations.of(context).alert),
+                Expanded(child: Container()),
+                Text(
+                  getAlertText(
+                      startDate: event.startDate,
+                      notification: event.notifications?[0]), //TODO test
+                  style: const TextStyle(fontSize: 16.0, color: Colors.grey),
+                ),
+              ],
+            ),
+            trailing: const Icon(Icons.navigate_next, color: Colors.grey),
+            onTap: () {
+              //TODO select alert and update event notifications
+            },
+          ),
           divider,
         ],
       ),
