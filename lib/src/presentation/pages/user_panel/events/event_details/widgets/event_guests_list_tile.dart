@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/events/domain/entites/event_entity.dart';
 import 'package:prospector/src/presentation/pages/user_panel/events/event_details/logic/event_details_providers.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
-import '../../../../../../features/events/domain/entity/event_entity.dart';
 import '../../../../../routes/app_router.gr.dart';
 import '../../../contacts/contact_add_edit/widgets/contact_image.dart';
 

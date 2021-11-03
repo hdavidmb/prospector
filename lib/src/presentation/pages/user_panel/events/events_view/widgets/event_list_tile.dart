@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/events/domain/entites/event_entity.dart';
 import 'package:prospector/src/presentation/routes/app_router.gr.dart';
 
 import '../../../../../../features/events/application/events_providers.dart';
-import '../../../../../../features/events/domain/entity/event_entity.dart';
 import '../../../../../core/widgets/dismissible_background.dart';
 import '../../../../../helpers/date_formatters.dart';
 import '../../../../../theme/theme_providers.dart';

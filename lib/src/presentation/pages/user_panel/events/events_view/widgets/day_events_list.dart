@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/events/domain/entites/event_entity.dart';
 
 import '../../../../../../features/events/application/events_providers.dart';
-import '../../../../../../features/events/domain/entity/event_entity.dart';
 import '../../../../../helpers/date_formatters.dart';
 import '../logic/events_view_providers.dart';
 import 'event_list_tile.dart';

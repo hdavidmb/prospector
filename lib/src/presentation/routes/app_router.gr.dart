@@ -8,7 +8,7 @@ import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
 import '../../features/contacts/domain/entity/contact_entity.dart' as _i20;
-import '../../features/events/domain/entity/event_entity.dart' as _i21;
+import '../../features/events/domain/entites/event_entity.dart' as _i21;
 import '../pages/auth/register/register_page.dart' as _i6;
 import '../pages/auth/sign_in/sign_in_page.dart' as _i5;
 import '../pages/auth/splash/splash_screen_page.dart' as _i3;

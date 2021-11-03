@@ -23,6 +23,7 @@ class GuestsInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     return Column(
       children: [
         ChipsInput(
@@ -39,6 +40,7 @@ class GuestsInput extends StatelessWidget {
                 ? InputChip(
                     key: ObjectKey(contact.id),
                     label: Text(contact.name),
+                    backgroundColor: isDarkTheme ? Colors.white24 : null,
                     avatar: ContactImage(
                       size: 30.0,
                       contactPhoto: contact.photo,

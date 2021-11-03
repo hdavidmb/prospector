@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:prospector/src/features/events/application/events_providers.dart';
-import 'package:prospector/src/features/events/domain/entity/event_entity.dart';
+import 'package:prospector/src/features/events/domain/entites/event_entity.dart';
 import 'package:prospector/src/presentation/core/widgets/dismissible_background.dart';
 import 'package:prospector/src/presentation/routes/app_router.gr.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:prospector/generated/l10n.dart';
-import 'package:prospector/src/features/events/domain/entity/event_entity.dart';
+import 'package:prospector/src/features/events/domain/entites/event_entity.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 String getTimeagoFormatedDate(BuildContext context, DateTime date) {
@@ -74,7 +74,6 @@ String eventDetailsFormatedDate({
         ? DateFormat('HH:mm', Intl.getCurrentLocale())
         : DateFormat("hh:mm a", Intl.getCurrentLocale());
   } else {
-    // TODO test
     dateFormat = is24hours
         ? DateFormat.yMMMMEEEEd(Intl.getCurrentLocale()).add_Hm()
         : DateFormat.yMMMMEEEEd(Intl.getCurrentLocale()).add_jm(); //TODO test
