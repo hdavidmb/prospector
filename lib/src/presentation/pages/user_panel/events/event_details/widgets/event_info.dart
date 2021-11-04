@@ -41,6 +41,7 @@ class EventInfo extends StatelessWidget {
               event.allDay
                   ? AppLocalizations.of(context).allDay
                   : eventDetailsFormatedDate(
+                      //TODO include date when is same day
                       startDate: event.startDate,
                       endDate: event.endDate,
                       is24hours: is24hours,

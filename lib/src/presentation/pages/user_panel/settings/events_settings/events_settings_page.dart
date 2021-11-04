@@ -28,13 +28,13 @@ class EventsSettingsPage extends StatelessWidget {
             children: [
               ListTile(
                 onTap: () async {
-                  final Option selection =
+                  final Option<int> selection =
                       await showWeekdaySelectionDialog(context: context);
                   selection.fold(
                     () => null,
                     (selectedDay) => context
                         .read(eventsViewProvider)
-                        .startDayOfWeek = selectedDay as int,
+                        .startDayOfWeek = selectedDay,
                   );
                 },
                 title: Row(
@@ -51,13 +51,13 @@ class EventsSettingsPage extends StatelessWidget {
               divider,
               ListTile(
                 onTap: () async {
-                  final Option selection =
+                  final Option<bool> selection =
                       await showTimeFormatDialog(context: context);
                   selection.fold(
                     () => null,
                     (is24hours) => context
                         .read(themeNotifierProvider)
-                        .is24hours = is24hours as bool,
+                        .is24hours = is24hours,
                   );
                 },
                 title: Row(

@@ -490,38 +490,38 @@ Future<Option<String>> showAffiliationDialog(
   return optionOf(newStatusID);
 }
 
-Future<Option<Object>> showWeekdaySelectionDialog(
+Future<Option<int>> showWeekdaySelectionDialog(
         {required BuildContext context}) =>
     showOptionsSelectionDialog(
         context: context,
         title: AppLocalizations.current.weekStartsOn,
         options: [0, 1, 2, 3, 4, 5, 6],
-        optionTitleBuilder: (option) => localizedWeekday(option as int));
+        optionTitleBuilder: (option) => localizedWeekday(option));
 
-Future<Option<Object>> showTimeFormatDialog({required BuildContext context}) =>
+Future<Option<bool>> showTimeFormatDialog({required BuildContext context}) =>
     showOptionsSelectionDialog(
         context: context,
         title: AppLocalizations.current.timeFormat,
         options: [false, true],
         optionTitleBuilder: (option) =>
-            '${(option as bool) ? 24 : 12} ${AppLocalizations.current.hours}');
+            '${option ? 24 : 12} ${AppLocalizations.current.hours}');
 
-Future<Option<Object>> showAlertSelectionDialog(
+Future<Option<EventAlert>> showAlertSelectionDialog(
         {required BuildContext context}) =>
     showOptionsSelectionDialog(
         context: context,
         title: AppLocalizations.current.selectAlert,
         options: EventAlert.values,
-        optionTitleBuilder: (option) => (option as EventAlert).text);
+        optionTitleBuilder: (option) => option.text);
 
 //TODO use for affiliate and image source dialog
-Future<Option<Object>> showOptionsSelectionDialog(
+Future<Option<T>> showOptionsSelectionDialog<T>(
     {required BuildContext context,
-    required List<Object> options,
-    String Function(Object)? optionTitleBuilder,
+    required List<T> options,
+    String Function(T)? optionTitleBuilder,
     bool dismissible = true,
     String? title}) async {
-  final Object? selectedOption = await showDialog(
+  final T? selectedOption = await showDialog(
     context: context,
     barrierDismissible: dismissible,
     builder: (BuildContext context) {

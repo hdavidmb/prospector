@@ -25,11 +25,11 @@ class EventDetailsPageNotifier {
   }
 
   Future<void> alertListTilePressed(
-      {required Option selectedAlert, required Event event}) async {
+      {required Option<EventAlert> selectedAlert, required Event event}) async {
     selectedAlert.fold(
       () => null,
       (alert) {
-        if ((alert as EventAlert) != event.notifications[0]) {
+        if (alert != event.notifications[0]) {
           final Event newEventInfo = event.copyWith(notifications: [alert]);
           read(eventsNotifierProvider).updateEvent(newEventInfo);
         }
