@@ -1799,6 +1799,16 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Select alert`
+  String get selectAlert {
+    return Intl.message(
+      'Select alert',
+      name: 'selectAlert',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

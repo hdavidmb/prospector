@@ -173,5 +173,6 @@
     "hoursBefore": "hours before",
     "dayBefore": "day before",
     "daysBefore": "days before",
-    "weekBefore": "week before"
+    "weekBefore": "week before",
+    "selectAlert": "Select alert"
 }

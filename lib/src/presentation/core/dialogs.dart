@@ -510,6 +510,7 @@ Future<Option<Object>> showAlertSelectionDialog(
         {required BuildContext context}) =>
     showOptionsSelectionDialog(
         context: context,
+        title: AppLocalizations.current.selectAlert,
         options: EventAlert.values,
         optionTitleBuilder: (option) => (option as EventAlert).text);
 
