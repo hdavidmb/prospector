@@ -29,14 +29,10 @@ class EventDetailsPageNotifier {
     selectedAlert.fold(
       () => null,
       (alert) {
-        //TODO move transform logic to Event entity using EventAlert for notifications
-
-        final Duration? alertDuration = (alert as EventAlert).duration;
-        final List<DateTime>? notifications = alertDuration != null
-            ? [event.startDate.subtract(alertDuration)]
-            : null;
-        final Event newEventInfo = event.copyWith(notifications: notifications);
-        read(eventsNotifierProvider).updateEvent(newEventInfo);
+        if ((alert as EventAlert) != event.notifications[0]) {
+          final Event newEventInfo = event.copyWith(notifications: [alert]);
+          read(eventsNotifierProvider).updateEvent(newEventInfo);
+        }
       },
     );
   }

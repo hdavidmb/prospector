@@ -24,9 +24,7 @@ class EventAlertListTile extends StatelessWidget {
           Expanded(child: Container()),
           Text(
             //TODO move transform logic to Event entity using EventAlert for notifications
-            EventAlert.values
-                .firstWhere((alert) => alert.duration == event.alertDuration)
-                .text,
+            event.notifications[0].text,
             style: const TextStyle(fontSize: 16.0, color: Colors.grey),
           ),
         ],

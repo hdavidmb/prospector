@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'event_alert.dart';
+
 part 'event_entity.freezed.dart';
 
 @freezed
@@ -13,9 +15,9 @@ class Event with _$Event {
     required DateTime endDate,
     required String title,
     required String type,
+    required List<EventAlert> notifications,
     List<String>? guests,
     String? location,
-    List<DateTime>? notifications,
     List<int>? notificationsIDs,
   }) = _Event;
 
@@ -32,11 +34,12 @@ class Event with _$Event {
       'title': title,
       'type': type,
     };
-    // TODO refactor other entities toMap method to avoid saving empty fields
     if (guests != null && guests!.isNotEmpty) eventMap['guests'] = guests;
     if (location != null && location != '') eventMap['location'] = location;
-    if (notifications != null && notifications!.isNotEmpty) {
-      eventMap['notifications'] = notifications;
+    if (notifications.isNotEmpty && !notifications.contains(EventAlert.none)) {
+      eventMap['notifications'] = notifications
+          .map((alert) => startDate.subtract(alert.duration!))
+          .toList();
     }
 
     if (notificationsIDs != null && notificationsIDs!.isNotEmpty) {
@@ -46,6 +49,19 @@ class Event with _$Event {
   }
 
   factory Event.fromMap(Map<String, dynamic> map) {
+    List<EventAlert> notifications = [EventAlert.none];
+    final mapNotifications = map['notifications'] as List<DateTime>?;
+    if (mapNotifications != null && mapNotifications.isNotEmpty) {
+      notifications = mapNotifications
+          .map(
+            (mapNotification) => EventAlert.values.firstWhere(
+              (alert) =>
+                  alert.duration ==
+                  (map['start_date'] as DateTime).difference(mapNotification),
+            ),
+          )
+          .toList();
+    }
     return Event(
       allDay: map['all_day'] as bool,
       created: map['created'] as DateTime,
@@ -57,7 +73,7 @@ class Event with _$Event {
       id: map['id'] as String,
       guests: map['guests'] as List<String>?,
       location: map['location'] as String?,
-      notifications: map['notifications'] as List<DateTime>?,
+      notifications: notifications,
       notificationsIDs: map['notificationsIDs'] as List<int>?,
     );
   }
@@ -69,14 +85,8 @@ class Event with _$Event {
         modified: DateTime.now(),
         startDate: DateTime.now(),
         endDate: DateTime.now(),
+        notifications: [EventAlert.none],
         title: '',
         type: 'event',
       );
-}
-
-extension EventX on Event {
-  Duration? get alertDuration =>
-      notifications != null && notifications!.isNotEmpty
-          ? startDate.difference(notifications![0])
-          : null;
 }
