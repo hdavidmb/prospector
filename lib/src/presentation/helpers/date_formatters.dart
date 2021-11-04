@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:prospector/generated/l10n.dart';
-import 'package:prospector/src/features/events/domain/entites/event_entity.dart';
 import 'package:timeago/timeago.dart' as timeago;
+
+import '../../../generated/l10n.dart';
+import '../../features/events/domain/entites/event_entity.dart';
 
 String getTimeagoFormatedDate(BuildContext context, DateTime date) {
   final Duration timeDifference = DateTime.now().difference(date);
@@ -80,31 +81,4 @@ String eventDetailsFormatedDate({
   }
 
   return '${dateFormat.format(startDate)} - ${dateFormat.format(endDate)}';
-}
-
-String getAlertText(
-    //TODO test
-    {required DateTime startDate,
-    required DateTime? notification}) {
-  String alertString = AppLocalizations.current.none;
-  if (notification != null) {
-    final Duration duration = startDate.difference(notification);
-    if (duration.inMinutes == 0) {
-      alertString = AppLocalizations.current.atEventTime;
-    } else if (duration.inMinutes <= 30) {
-      alertString =
-          '${duration.inMinutes} ${AppLocalizations.current.minutesBefore}';
-    } else if (duration.inHours == 1) {
-      alertString = '1 ${AppLocalizations.current.hourBefore}';
-    } else if (duration.inHours == 2) {
-      alertString = '2 ${AppLocalizations.current.hoursBefore}';
-    } else if (duration.inDays == 1) {
-      alertString = '1 ${AppLocalizations.current.dayBefore}';
-    } else if (duration.inDays == 2) {
-      alertString = '2 ${AppLocalizations.current.daysBefore}';
-    } else if (duration.inDays == 7) {
-      alertString = '1 ${AppLocalizations.current.weekBefore}';
-    }
-  }
-  return alertString;
 }

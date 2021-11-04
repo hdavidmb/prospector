@@ -14,6 +14,7 @@ import 'package:prospector/src/core/private/private_keys.dart';
 import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
+import 'package:prospector/src/features/events/domain/entites/event_alert.dart';
 import 'package:prospector/src/features/images/domain/sources/source_image.dart';
 import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
 import 'package:prospector/src/presentation/helpers/date_formatters.dart';
@@ -504,6 +505,13 @@ Future<Option<Object>> showTimeFormatDialog({required BuildContext context}) =>
         options: [false, true],
         optionTitleBuilder: (option) =>
             '${(option as bool) ? 24 : 12} ${AppLocalizations.current.hours}');
+
+Future<Option<Object>> showAlertSelectionDialog(
+        {required BuildContext context}) =>
+    showOptionsSelectionDialog(
+        context: context,
+        options: EventAlert.values,
+        optionTitleBuilder: (option) => (option as EventAlert).text);
 
 //TODO use for affiliate and image source dialog
 Future<Option<Object>> showOptionsSelectionDialog(

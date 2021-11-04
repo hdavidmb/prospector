@@ -73,3 +73,10 @@ class Event with _$Event {
         type: 'event',
       );
 }
+
+extension EventX on Event {
+  Duration? get alertDuration =>
+      notifications != null && notifications!.isNotEmpty
+          ? startDate.difference(notifications![0])
+          : null;
+}
