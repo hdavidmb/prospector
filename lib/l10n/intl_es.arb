@@ -174,5 +174,7 @@
     "dayBefore": "día antes",
     "daysBefore": "días antes",
     "weekBefore": "semana antes",
-    "selectAlert": "Selecionar alerta"
+    "selectAlert": "Selecionar alerta",
+    "editEvent": "Editar evento",
+    "newEvent": "Nuevo evento"
 }

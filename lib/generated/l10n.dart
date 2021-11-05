@@ -1809,6 +1809,26 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Edit event`
+  String get editEvent {
+    return Intl.message(
+      'Edit event',
+      name: 'editEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New event`
+  String get newEvent {
+    return Intl.message(
+      'New event',
+      name: 'newEvent',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

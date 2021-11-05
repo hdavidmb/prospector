@@ -80,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Eliminar prospecto"),
         "disable": MessageLookupByLibrary.simpleMessage("Deshabilitar"),
         "edit": MessageLookupByLibrary.simpleMessage("Editar"),
+        "editEvent": MessageLookupByLibrary.simpleMessage("Editar evento"),
         "editImage": MessageLookupByLibrary.simpleMessage("Editar imagen"),
         "editProspect":
             MessageLookupByLibrary.simpleMessage("Editar prospecto"),
@@ -156,6 +157,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nombre (Requerido)"),
         "newEmail":
             MessageLookupByLibrary.simpleMessage("Nuevo correo electrónico"),
+        "newEvent": MessageLookupByLibrary.simpleMessage("Nuevo evento"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Nueva contraseña"),
         "newPhone": MessageLookupByLibrary.simpleMessage("Nuevo teléfono"),
         "newProspect": MessageLookupByLibrary.simpleMessage("Nuevo prospecto"),

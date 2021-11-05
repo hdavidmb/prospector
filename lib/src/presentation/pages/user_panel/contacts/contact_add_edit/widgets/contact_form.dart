@@ -79,6 +79,7 @@ class ContactForm extends StatelessWidget {
                 Row(
                   children: [
                     if (editingContact != null) ...[
+                      // * Contact image selector
                       GestureDetector(
                         onTap: () => context
                             .read(contactFormProvider.notifier)
@@ -169,7 +170,7 @@ class ContactForm extends StatelessWidget {
                 ),
                 const SizedBox(height: 10.0),
 
-                // * Optional tatus dropdown
+                // * Optional status dropdown
                 if (!isEditing) ...[
                   StatusDropdown(
                     status: formState.status,
