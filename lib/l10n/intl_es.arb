@@ -176,5 +176,9 @@
     "weekBefore": "semana antes",
     "selectAlert": "Selecionar alerta",
     "editEvent": "Editar evento",
-    "newEvent": "Nuevo evento"
+    "newEvent": "Nuevo evento",
+    "event": "Evento",
+    "reminder": "Recordatorio",
+    "titleRequired": "Título (Requerido)",
+    "titleIsRequired": "El título es requerido"
 }

@@ -1829,6 +1829,46 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Event`
+  String get event {
+    return Intl.message(
+      'Event',
+      name: 'event',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reminder`
+  String get reminder {
+    return Intl.message(
+      'Reminder',
+      name: 'reminder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Title (Required)`
+  String get titleRequired {
+    return Intl.message(
+      'Title (Required)',
+      name: 'titleRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Title is required`
+  String get titleIsRequired {
+    return Intl.message(
+      'Title is required',
+      name: 'titleIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

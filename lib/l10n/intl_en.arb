@@ -176,5 +176,9 @@
     "weekBefore": "week before",
     "selectAlert": "Select alert",
     "editEvent": "Edit event",
-    "newEvent": "New event"
+    "newEvent": "New event",
+    "event": "Event",
+    "reminder": "Reminder",
+    "titleRequired": "Title (Required)",
+    "titleIsRequired": "Title is required"
 }

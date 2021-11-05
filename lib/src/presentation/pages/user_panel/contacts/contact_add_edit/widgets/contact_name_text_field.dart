@@ -37,6 +37,7 @@ class _ContactNameTextFieldState extends State<ContactNameTextField> {
     if (widget.name.isEmpty) {
       WidgetsBinding.instance!.addPostFrameCallback((_) => _controller.clear());
     }
+    //TODO: Unify custom TextFormFields
     return TextFormField(
       controller: _controller,
       keyboardType: TextInputType.text,

@@ -10,7 +10,7 @@ class EventFormState with _$EventFormState {
   const factory EventFormState({
     required String title,
     required String location,
-    required bool isReminder,
+    required bool isEvent,
     required bool isSubmitting,
     required bool showErrorMessages,
     required bool deleted,
@@ -22,7 +22,7 @@ class EventFormState with _$EventFormState {
   factory EventFormState.initial() => EventFormState(
         title: '',
         location: '',
-        isReminder: false,
+        isEvent: true,
         isSubmitting: false,
         showErrorMessages: false,
         deleted: false,

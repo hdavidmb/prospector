@@ -19,7 +19,7 @@ class _$EventFormStateTearOff {
   _EventFormState call(
       {required String title,
       required String location,
-      required bool isReminder,
+      required bool isEvent,
       required bool isSubmitting,
       required bool showErrorMessages,
       required bool deleted,
@@ -27,7 +27,7 @@ class _$EventFormStateTearOff {
     return _EventFormState(
       title: title,
       location: location,
-      isReminder: isReminder,
+      isEvent: isEvent,
       isSubmitting: isSubmitting,
       showErrorMessages: showErrorMessages,
       deleted: deleted,
@@ -43,7 +43,7 @@ const $EventFormState = _$EventFormStateTearOff();
 mixin _$EventFormState {
   String get title => throw _privateConstructorUsedError;
   String get location => throw _privateConstructorUsedError;
-  bool get isReminder => throw _privateConstructorUsedError;
+  bool get isEvent => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
@@ -63,7 +63,7 @@ abstract class $EventFormStateCopyWith<$Res> {
   $Res call(
       {String title,
       String location,
-      bool isReminder,
+      bool isEvent,
       bool isSubmitting,
       bool showErrorMessages,
       bool deleted,
@@ -83,7 +83,7 @@ class _$EventFormStateCopyWithImpl<$Res>
   $Res call({
     Object? title = freezed,
     Object? location = freezed,
-    Object? isReminder = freezed,
+    Object? isEvent = freezed,
     Object? isSubmitting = freezed,
     Object? showErrorMessages = freezed,
     Object? deleted = freezed,
@@ -98,9 +98,9 @@ class _$EventFormStateCopyWithImpl<$Res>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
-      isReminder: isReminder == freezed
-          ? _value.isReminder
-          : isReminder // ignore: cast_nullable_to_non_nullable
+      isEvent: isEvent == freezed
+          ? _value.isEvent
+          : isEvent // ignore: cast_nullable_to_non_nullable
               as bool,
       isSubmitting: isSubmitting == freezed
           ? _value.isSubmitting
@@ -132,7 +132,7 @@ abstract class _$EventFormStateCopyWith<$Res>
   $Res call(
       {String title,
       String location,
-      bool isReminder,
+      bool isEvent,
       bool isSubmitting,
       bool showErrorMessages,
       bool deleted,
@@ -154,7 +154,7 @@ class __$EventFormStateCopyWithImpl<$Res>
   $Res call({
     Object? title = freezed,
     Object? location = freezed,
-    Object? isReminder = freezed,
+    Object? isEvent = freezed,
     Object? isSubmitting = freezed,
     Object? showErrorMessages = freezed,
     Object? deleted = freezed,
@@ -169,9 +169,9 @@ class __$EventFormStateCopyWithImpl<$Res>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
-      isReminder: isReminder == freezed
-          ? _value.isReminder
-          : isReminder // ignore: cast_nullable_to_non_nullable
+      isEvent: isEvent == freezed
+          ? _value.isEvent
+          : isEvent // ignore: cast_nullable_to_non_nullable
               as bool,
       isSubmitting: isSubmitting == freezed
           ? _value.isSubmitting
@@ -199,7 +199,7 @@ class _$_EventFormState extends _EventFormState {
   const _$_EventFormState(
       {required this.title,
       required this.location,
-      required this.isReminder,
+      required this.isEvent,
       required this.isSubmitting,
       required this.showErrorMessages,
       required this.deleted,
@@ -211,7 +211,7 @@ class _$_EventFormState extends _EventFormState {
   @override
   final String location;
   @override
-  final bool isReminder;
+  final bool isEvent;
   @override
   final bool isSubmitting;
   @override
@@ -223,7 +223,7 @@ class _$_EventFormState extends _EventFormState {
 
   @override
   String toString() {
-    return 'EventFormState(title: $title, location: $location, isReminder: $isReminder, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, deleted: $deleted, failureOrSuccesOption: $failureOrSuccesOption)';
+    return 'EventFormState(title: $title, location: $location, isEvent: $isEvent, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, deleted: $deleted, failureOrSuccesOption: $failureOrSuccesOption)';
   }
 
   @override
@@ -235,9 +235,9 @@ class _$_EventFormState extends _EventFormState {
             (identical(other.location, location) ||
                 const DeepCollectionEquality()
                     .equals(other.location, location)) &&
-            (identical(other.isReminder, isReminder) ||
+            (identical(other.isEvent, isEvent) ||
                 const DeepCollectionEquality()
-                    .equals(other.isReminder, isReminder)) &&
+                    .equals(other.isEvent, isEvent)) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 const DeepCollectionEquality()
                     .equals(other.isSubmitting, isSubmitting)) &&
@@ -257,7 +257,7 @@ class _$_EventFormState extends _EventFormState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(location) ^
-      const DeepCollectionEquality().hash(isReminder) ^
+      const DeepCollectionEquality().hash(isEvent) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(deleted) ^
@@ -273,7 +273,7 @@ abstract class _EventFormState extends EventFormState {
   const factory _EventFormState(
       {required String title,
       required String location,
-      required bool isReminder,
+      required bool isEvent,
       required bool isSubmitting,
       required bool showErrorMessages,
       required bool deleted,
@@ -286,7 +286,7 @@ abstract class _EventFormState extends EventFormState {
   @override
   String get location => throw _privateConstructorUsedError;
   @override
-  bool get isReminder => throw _privateConstructorUsedError;
+  bool get isEvent => throw _privateConstructorUsedError;
   @override
   bool get isSubmitting => throw _privateConstructorUsedError;
   @override

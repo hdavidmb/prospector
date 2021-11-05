@@ -97,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ingresa tu nombre"),
         "enterYourPasswordToConfirm": MessageLookupByLibrary.simpleMessage(
             "Ingresa tu contraseña para confirmar"),
+        "event": MessageLookupByLibrary.simpleMessage("Evento"),
         "eventDetails":
             MessageLookupByLibrary.simpleMessage("Detalles de evento"),
         "events": MessageLookupByLibrary.simpleMessage("Eventos"),
@@ -217,6 +218,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "reauthenticate": MessageLookupByLibrary.simpleMessage("Reautenticar"),
         "register": MessageLookupByLibrary.simpleMessage("Registro"),
         "registerButton": MessageLookupByLibrary.simpleMessage("Registrarme"),
+        "reminder": MessageLookupByLibrary.simpleMessage("Recordatorio"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("Restablecer contraseña"),
         "resetPasswordDialogMessage": MessageLookupByLibrary.simpleMessage(
@@ -254,6 +256,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "thisAcctionCannotBeUndone": MessageLookupByLibrary.simpleMessage(
             "Esta acción no se puede deshacer."),
         "timeFormat": MessageLookupByLibrary.simpleMessage("Formato de horas"),
+        "titleIsRequired":
+            MessageLookupByLibrary.simpleMessage("El título es requerido"),
+        "titleRequired":
+            MessageLookupByLibrary.simpleMessage("Título (Requerido)"),
         "toConfirm": MessageLookupByLibrary.simpleMessage("para confirmar."),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Reintentar"),
         "typeAnInteraction":

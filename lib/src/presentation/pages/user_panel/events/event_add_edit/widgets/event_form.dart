@@ -1,11 +1,14 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/events/domain/entites/event_entity.dart';
 import '../../../../../core/dialogs.dart';
 import '../logic/event_form_providers.dart';
 import '../logic/event_form_state.dart';
+import 'event_title_text_field.dart';
 
 class EventForm extends StatelessWidget {
   final Event? editingEvent;
@@ -16,6 +19,7 @@ class EventForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double horizontalPadding = 10.0;
     final bool isEditing = editingEvent != null;
 
     return ProviderListener<EventFormState>(
@@ -52,7 +56,31 @@ class EventForm extends StatelessWidget {
                   : AutovalidateMode.disabled,
               child: ListView(
                 physics: const BouncingScrollPhysics(),
-                children: [],
+                children: [
+                  if (!isEditing)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 12.0, horizontal: horizontalPadding),
+                      child: CupertinoSlidingSegmentedControl<bool>(
+                        groupValue: formState.isEvent,
+                        children: {
+                          true: Text(AppLocalizations.of(context).event),
+                          false: Text(AppLocalizations.of(context).reminder)
+                        },
+                        onValueChanged:
+                            context.read(eventFormProvider.notifier).setIsEvent,
+                      ),
+                    ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: horizontalPadding),
+                    child: EventTitleTextField(
+                      title: formState.title,
+                      onTitleChanged:
+                          context.read(eventFormProvider.notifier).titleChanged,
+                    ),
+                  ),
+                ],
               ),
             ),
           );

@@ -92,6 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your name"),
         "enterYourPasswordToConfirm": MessageLookupByLibrary.simpleMessage(
             "Enter your password to confirm"),
+        "event": MessageLookupByLibrary.simpleMessage("Event"),
         "eventDetails": MessageLookupByLibrary.simpleMessage("Event details"),
         "events": MessageLookupByLibrary.simpleMessage("Events"),
         "eventsSettings":
@@ -206,6 +207,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Reauthenticate"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "registerButton": MessageLookupByLibrary.simpleMessage("Register"),
+        "reminder": MessageLookupByLibrary.simpleMessage("Reminder"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
         "resetPasswordDialogMessage": MessageLookupByLibrary.simpleMessage(
             "Enter the email address you used to create your Prospector account"),
@@ -236,6 +238,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "thisAcctionCannotBeUndone": MessageLookupByLibrary.simpleMessage(
             "This action cannot be undone."),
         "timeFormat": MessageLookupByLibrary.simpleMessage("Time format"),
+        "titleIsRequired":
+            MessageLookupByLibrary.simpleMessage("Title is required"),
+        "titleRequired":
+            MessageLookupByLibrary.simpleMessage("Title (Required)"),
         "toConfirm": MessageLookupByLibrary.simpleMessage("to confirm."),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
         "typeAnInteraction":
