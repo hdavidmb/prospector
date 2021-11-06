@@ -18,12 +18,29 @@ class EventFormStateNotifier extends StateNotifier<EventFormState>
     state = EventFormState(
       title: editingEvent.title,
       location: editingEvent.location ?? '',
+      allDay: editingEvent.allDay,
+      startDate: editingEvent.startDate,
+      endDate: editingEvent.endDate,
+      guests: editingEvent.guests ?? [],
+      notifications: editingEvent.notifications,
       isEvent: editingEvent.type == 'event',
       isSubmitting: false,
       showErrorMessages: false,
       deleted: false,
       failureOrSuccesOption: none(),
     );
+  }
+
+  void setInitialDates({required DateTime selectedDay}) {
+    final DateTime startDate = DateTime(
+      selectedDay.year,
+      selectedDay.month,
+      selectedDay.day,
+      DateTime.now().hour + 1,
+    );
+    final DateTime endDate = startDate.add(const Duration(hours: 1));
+
+    state = state.copyWith(startDate: startDate, endDate: endDate);
   }
 
   // ignore: avoid_positional_boolean_parameters
@@ -35,4 +52,8 @@ class EventFormStateNotifier extends StateNotifier<EventFormState>
 
   void locationChanged(String value) =>
       state = state.copyWith(location: value, failureOrSuccesOption: none());
+
+  // ignore: avoid_positional_boolean_parameters
+  void allDayChanged(bool value) =>
+      state = state.copyWith(allDay: value, failureOrSuccesOption: none());
 }

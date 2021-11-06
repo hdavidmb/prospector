@@ -19,6 +19,11 @@ class _$EventFormStateTearOff {
   _EventFormState call(
       {required String title,
       required String location,
+      required bool allDay,
+      required DateTime startDate,
+      required DateTime endDate,
+      required List<String> guests,
+      required List<EventAlert> notifications,
       required bool isEvent,
       required bool isSubmitting,
       required bool showErrorMessages,
@@ -27,6 +32,11 @@ class _$EventFormStateTearOff {
     return _EventFormState(
       title: title,
       location: location,
+      allDay: allDay,
+      startDate: startDate,
+      endDate: endDate,
+      guests: guests,
+      notifications: notifications,
       isEvent: isEvent,
       isSubmitting: isSubmitting,
       showErrorMessages: showErrorMessages,
@@ -43,6 +53,11 @@ const $EventFormState = _$EventFormStateTearOff();
 mixin _$EventFormState {
   String get title => throw _privateConstructorUsedError;
   String get location => throw _privateConstructorUsedError;
+  bool get allDay => throw _privateConstructorUsedError;
+  DateTime get startDate => throw _privateConstructorUsedError;
+  DateTime get endDate => throw _privateConstructorUsedError;
+  List<String> get guests => throw _privateConstructorUsedError;
+  List<EventAlert> get notifications => throw _privateConstructorUsedError;
   bool get isEvent => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
@@ -63,6 +78,11 @@ abstract class $EventFormStateCopyWith<$Res> {
   $Res call(
       {String title,
       String location,
+      bool allDay,
+      DateTime startDate,
+      DateTime endDate,
+      List<String> guests,
+      List<EventAlert> notifications,
       bool isEvent,
       bool isSubmitting,
       bool showErrorMessages,
@@ -83,6 +103,11 @@ class _$EventFormStateCopyWithImpl<$Res>
   $Res call({
     Object? title = freezed,
     Object? location = freezed,
+    Object? allDay = freezed,
+    Object? startDate = freezed,
+    Object? endDate = freezed,
+    Object? guests = freezed,
+    Object? notifications = freezed,
     Object? isEvent = freezed,
     Object? isSubmitting = freezed,
     Object? showErrorMessages = freezed,
@@ -98,6 +123,26 @@ class _$EventFormStateCopyWithImpl<$Res>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
+      allDay: allDay == freezed
+          ? _value.allDay
+          : allDay // ignore: cast_nullable_to_non_nullable
+              as bool,
+      startDate: startDate == freezed
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endDate: endDate == freezed
+          ? _value.endDate
+          : endDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      guests: guests == freezed
+          ? _value.guests
+          : guests // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      notifications: notifications == freezed
+          ? _value.notifications
+          : notifications // ignore: cast_nullable_to_non_nullable
+              as List<EventAlert>,
       isEvent: isEvent == freezed
           ? _value.isEvent
           : isEvent // ignore: cast_nullable_to_non_nullable
@@ -132,6 +177,11 @@ abstract class _$EventFormStateCopyWith<$Res>
   $Res call(
       {String title,
       String location,
+      bool allDay,
+      DateTime startDate,
+      DateTime endDate,
+      List<String> guests,
+      List<EventAlert> notifications,
       bool isEvent,
       bool isSubmitting,
       bool showErrorMessages,
@@ -154,6 +204,11 @@ class __$EventFormStateCopyWithImpl<$Res>
   $Res call({
     Object? title = freezed,
     Object? location = freezed,
+    Object? allDay = freezed,
+    Object? startDate = freezed,
+    Object? endDate = freezed,
+    Object? guests = freezed,
+    Object? notifications = freezed,
     Object? isEvent = freezed,
     Object? isSubmitting = freezed,
     Object? showErrorMessages = freezed,
@@ -169,6 +224,26 @@ class __$EventFormStateCopyWithImpl<$Res>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
+      allDay: allDay == freezed
+          ? _value.allDay
+          : allDay // ignore: cast_nullable_to_non_nullable
+              as bool,
+      startDate: startDate == freezed
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endDate: endDate == freezed
+          ? _value.endDate
+          : endDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      guests: guests == freezed
+          ? _value.guests
+          : guests // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      notifications: notifications == freezed
+          ? _value.notifications
+          : notifications // ignore: cast_nullable_to_non_nullable
+              as List<EventAlert>,
       isEvent: isEvent == freezed
           ? _value.isEvent
           : isEvent // ignore: cast_nullable_to_non_nullable
@@ -199,6 +274,11 @@ class _$_EventFormState extends _EventFormState {
   const _$_EventFormState(
       {required this.title,
       required this.location,
+      required this.allDay,
+      required this.startDate,
+      required this.endDate,
+      required this.guests,
+      required this.notifications,
       required this.isEvent,
       required this.isSubmitting,
       required this.showErrorMessages,
@@ -210,6 +290,16 @@ class _$_EventFormState extends _EventFormState {
   final String title;
   @override
   final String location;
+  @override
+  final bool allDay;
+  @override
+  final DateTime startDate;
+  @override
+  final DateTime endDate;
+  @override
+  final List<String> guests;
+  @override
+  final List<EventAlert> notifications;
   @override
   final bool isEvent;
   @override
@@ -223,7 +313,7 @@ class _$_EventFormState extends _EventFormState {
 
   @override
   String toString() {
-    return 'EventFormState(title: $title, location: $location, isEvent: $isEvent, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, deleted: $deleted, failureOrSuccesOption: $failureOrSuccesOption)';
+    return 'EventFormState(title: $title, location: $location, allDay: $allDay, startDate: $startDate, endDate: $endDate, guests: $guests, notifications: $notifications, isEvent: $isEvent, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, deleted: $deleted, failureOrSuccesOption: $failureOrSuccesOption)';
   }
 
   @override
@@ -235,6 +325,19 @@ class _$_EventFormState extends _EventFormState {
             (identical(other.location, location) ||
                 const DeepCollectionEquality()
                     .equals(other.location, location)) &&
+            (identical(other.allDay, allDay) ||
+                const DeepCollectionEquality().equals(other.allDay, allDay)) &&
+            (identical(other.startDate, startDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.startDate, startDate)) &&
+            (identical(other.endDate, endDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.endDate, endDate)) &&
+            (identical(other.guests, guests) ||
+                const DeepCollectionEquality().equals(other.guests, guests)) &&
+            (identical(other.notifications, notifications) ||
+                const DeepCollectionEquality()
+                    .equals(other.notifications, notifications)) &&
             (identical(other.isEvent, isEvent) ||
                 const DeepCollectionEquality()
                     .equals(other.isEvent, isEvent)) &&
@@ -257,6 +360,11 @@ class _$_EventFormState extends _EventFormState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(location) ^
+      const DeepCollectionEquality().hash(allDay) ^
+      const DeepCollectionEquality().hash(startDate) ^
+      const DeepCollectionEquality().hash(endDate) ^
+      const DeepCollectionEquality().hash(guests) ^
+      const DeepCollectionEquality().hash(notifications) ^
       const DeepCollectionEquality().hash(isEvent) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
@@ -273,6 +381,11 @@ abstract class _EventFormState extends EventFormState {
   const factory _EventFormState(
       {required String title,
       required String location,
+      required bool allDay,
+      required DateTime startDate,
+      required DateTime endDate,
+      required List<String> guests,
+      required List<EventAlert> notifications,
       required bool isEvent,
       required bool isSubmitting,
       required bool showErrorMessages,
@@ -285,6 +398,16 @@ abstract class _EventFormState extends EventFormState {
   String get title => throw _privateConstructorUsedError;
   @override
   String get location => throw _privateConstructorUsedError;
+  @override
+  bool get allDay => throw _privateConstructorUsedError;
+  @override
+  DateTime get startDate => throw _privateConstructorUsedError;
+  @override
+  DateTime get endDate => throw _privateConstructorUsedError;
+  @override
+  List<String> get guests => throw _privateConstructorUsedError;
+  @override
+  List<EventAlert> get notifications => throw _privateConstructorUsedError;
   @override
   bool get isEvent => throw _privateConstructorUsedError;
   @override
