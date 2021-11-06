@@ -1,3 +1,7 @@
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io' show Platform;
+
 import 'package:auto_route/auto_route.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dartz/dartz.dart';
@@ -7,6 +11,7 @@ import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // ignore: implementation_imports
 import 'package:google_maps_webservice/src/places.dart' show Prediction;
+import "package:http/http.dart" as http;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:prospector/generated/l10n.dart';
 import 'package:prospector/src/core/database/database_failures/database_failure.dart';
@@ -570,6 +575,114 @@ Future<String?> showPlacesDialog(BuildContext context) async {
     debugPrint(e.toString());
     return '';
   }
+}
+
+Future<String?> showCustomPlacesDialog(BuildContext context) async {
+  return showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      Timer? _throttle;
+
+      List<String> filteredPlacesList = [];
+      final _formKey = GlobalKey<FormState>();
+      final kGoogleApiKey = PrivateKeys.getGooglePlacesApiKey();
+      const String baseURL =
+          'https://maps.googleapis.com/maps/api/place/autocomplete/json';
+
+      return StatefulBuilder(
+        builder: (context, setState) {
+          return AlertDialog(
+            title: Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    AutoRouter.of(context).pop();
+                  },
+                  icon: Platform.isIOS
+                      ? const Icon(Icons.arrow_back_ios)
+                      : const Icon(Icons.arrow_back),
+                ),
+                Expanded(
+                  child: Form(
+                    key: _formKey,
+                    child: TextFormField(
+                      autofocus: true,
+                      textCapitalization: TextCapitalization.sentences,
+                      decoration: InputDecoration(
+                        hintText: AppLocalizations.current.typeLocation,
+                      ),
+                      onFieldSubmitted: (value) {
+                        if (_throttle?.isActive ?? false) _throttle?.cancel();
+                        AutoRouter.of(context).pop(value);
+                      },
+                      onChanged: (value) {
+                        if (_throttle?.isActive ?? false) _throttle?.cancel();
+                        if (value != '') {
+                          _throttle = Timer(
+                            const Duration(milliseconds: 200),
+                            () async {
+                              final Uri request = Uri.parse(
+                                  '$baseURL?input=$value&key=$kGoogleApiKey');
+                              final http.Response response =
+                                  await http.get(request);
+                              final Map<String, dynamic>? responseJSON =
+                                  json.decode(response.body)
+                                      as Map<String, dynamic>?;
+                              final List? predictions =
+                                  responseJSON?['predictions'] as List?;
+                              setState(() {
+                                filteredPlacesList = predictions != null
+                                    ? predictions
+                                        .map((p) => p['description'] as String)
+                                        .toList()
+                                    : [];
+                              });
+                            },
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            content: (filteredPlacesList.isEmpty)
+                ? Text(
+                    AppLocalizations.current.customPlacesMessage,
+                    textAlign: TextAlign.center,
+                  )
+                : SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.80,
+                    child: ListView.separated(
+                      physics: const BouncingScrollPhysics(),
+                      separatorBuilder: (context, index) {
+                        return const Divider(
+                          height: 0.0,
+                          indent: 8.0,
+                        );
+                      },
+                      shrinkWrap: true,
+                      itemCount: filteredPlacesList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ListTile(
+                          title: Text(filteredPlacesList[index]),
+                          onTap: () {
+                            AutoRouter.of(context)
+                                .pop(filteredPlacesList[index]);
+                          },
+                        );
+                      },
+                    ),
+                  ),
+            titlePadding: EdgeInsets.zero,
+            contentPadding: filteredPlacesList.isEmpty
+                ? const EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0)
+                : EdgeInsets.zero,
+          );
+        },
+      );
+    },
+  );
 }
 
 void showFiltersDialog(BuildContext context) {
