@@ -67,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentEmail": MessageLookupByLibrary.simpleMessage("Correo actual"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Contraseña actual"),
+        "customPlacesMessage": MessageLookupByLibrary.simpleMessage(
+            "Puedes seleccionar una ubicación de la lista o presionar \'Enter\' en tu teclado para usar lo que escribiste como ubicación."),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Modo oscuro"),
         "dayBefore": MessageLookupByLibrary.simpleMessage("día antes"),
         "daysBefore": MessageLookupByLibrary.simpleMessage("días antes"),
@@ -138,6 +140,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "lightTheme": MessageLookupByLibrary.simpleMessage("Modo claro"),
         "loadingContacts":
             MessageLookupByLibrary.simpleMessage("Cargando contactos..."),
+        "location": MessageLookupByLibrary.simpleMessage("Ubicación"),
         "logOut": MessageLookupByLibrary.simpleMessage("Cerrar sesión"),
         "loggedInWith":
             MessageLookupByLibrary.simpleMessage("Iniciaste sesión con"),
@@ -265,6 +268,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "typeAnInteraction":
             MessageLookupByLibrary.simpleMessage("Ingresa una interacción..."),
         "typeHere": MessageLookupByLibrary.simpleMessage("Escribe aqui"),
+        "typeLocation":
+            MessageLookupByLibrary.simpleMessage("Ingresa una ubicación"),
         "typeTheWord":
             MessageLookupByLibrary.simpleMessage("Ingresa la palabra"),
         "unselectAll":

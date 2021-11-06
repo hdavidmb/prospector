@@ -180,5 +180,8 @@
     "event": "Event",
     "reminder": "Reminder",
     "titleRequired": "Title (Required)",
-    "titleIsRequired": "Title is required"
+    "titleIsRequired": "Title is required",
+    "location": "Location",
+    "typeLocation": "Type location",
+    "customPlacesMessage": "You can select a location from the list or tap 'Intro' in your keyboard to use what you typed as location"
 }

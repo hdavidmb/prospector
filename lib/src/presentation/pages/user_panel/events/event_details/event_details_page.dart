@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../generated/l10n.dart';
 import '../../../../../features/events/application/events_providers.dart';
 import '../../../../../features/events/domain/entites/event_entity.dart';
+import '../../../../routes/app_router.gr.dart';
 import '../../../../theme/theme_providers.dart';
 import 'widgets/event_alert_list_tile.dart';
 import 'widgets/event_guests_list_tile.dart';
@@ -29,7 +31,8 @@ class EventDetailsPage extends ConsumerWidget {
         actions: [
           TextButton(
             onPressed: () {
-              //TODO navigate to edit event
+              AutoRouter.of(context)
+                  .push(EventAddEditRoute(editingEvent: event));
             },
             child: Text(
               AppLocalizations.of(context).edit,

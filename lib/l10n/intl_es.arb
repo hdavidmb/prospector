@@ -180,5 +180,8 @@
     "event": "Evento",
     "reminder": "Recordatorio",
     "titleRequired": "Título (Requerido)",
-    "titleIsRequired": "El título es requerido"
+    "titleIsRequired": "El título es requerido",
+    "location": "Ubicación",
+    "typeLocation": "Ingresa una ubicación",
+    "customPlacesMessage": "Puedes seleccionar una ubicación de la lista o presionar 'Enter' en tu teclado para usar lo que escribiste como ubicación."
 }

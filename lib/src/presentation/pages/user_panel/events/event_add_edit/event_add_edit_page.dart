@@ -7,15 +7,7 @@ import 'logic/event_form_providers.dart';
 import 'widgets/event_form.dart';
 
 class EventAddEditPage extends StatelessWidget {
-  /// Pass the event to be edited
-  ///
-  /// ** If editingEvent is set. You must first call setEditingState on eventFormProvider**
   final Event? editingEvent;
-
-  /// ## Page to add or edit events
-  ///
-  /// **WARNING** If editingEvent is set. You must call setEditingState on eventFormProvider before Navigating to this page
-  ///
   const EventAddEditPage({
     Key? key,
     this.editingEvent,
@@ -23,6 +15,14 @@ class EventAddEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //TODO: try this on contactAddEditPage to avoid setting the editing state before navigating
+    if (editingEvent != null) {
+      WidgetsBinding.instance!.addPostFrameCallback(
+        (_) => context
+            .read(eventFormProvider.notifier)
+            .setEditingState(editingEvent: editingEvent!),
+      );
+    }
     return WillPopScope(
       onWillPop: () async {
         // TODO test
@@ -35,7 +35,9 @@ class EventAddEditPage extends StatelessWidget {
               ? AppLocalizations.of(context).editEvent
               : AppLocalizations.of(context).newEvent),
         ),
-        body: const EventForm(),
+        body: EventForm(
+          editingEvent: editingEvent,
+        ),
       ),
     );
   }

@@ -1869,6 +1869,36 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Location`
+  String get location {
+    return Intl.message(
+      'Location',
+      name: 'location',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type location`
+  String get typeLocation {
+    return Intl.message(
+      'Type location',
+      name: 'typeLocation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can select a location from the list or tap 'Intro' in your keyboard to use what you typed as location`
+  String get customPlacesMessage {
+    return Intl.message(
+      'You can select a location from the list or tap \'Intro\' in your keyboard to use what you typed as location',
+      name: 'customPlacesMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

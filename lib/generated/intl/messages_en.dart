@@ -64,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentEmail": MessageLookupByLibrary.simpleMessage("Current email"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Current password"),
+        "customPlacesMessage": MessageLookupByLibrary.simpleMessage(
+            "You can select a location from the list or tap \'Intro\' in your keyboard to use what you typed as location"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark theme"),
         "dayBefore": MessageLookupByLibrary.simpleMessage("day before"),
         "daysBefore": MessageLookupByLibrary.simpleMessage("days before"),
@@ -129,6 +131,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "lightTheme": MessageLookupByLibrary.simpleMessage("Light theme"),
         "loadingContacts":
             MessageLookupByLibrary.simpleMessage("Loading contacts..."),
+        "location": MessageLookupByLibrary.simpleMessage("Location"),
         "logOut": MessageLookupByLibrary.simpleMessage("Log out"),
         "loggedInWith": MessageLookupByLibrary.simpleMessage("Logged in with"),
         "male": MessageLookupByLibrary.simpleMessage("Male"),
@@ -247,6 +250,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "typeAnInteraction":
             MessageLookupByLibrary.simpleMessage("Type an interaction..."),
         "typeHere": MessageLookupByLibrary.simpleMessage("Type here"),
+        "typeLocation": MessageLookupByLibrary.simpleMessage("Type location"),
         "typeTheWord": MessageLookupByLibrary.simpleMessage("Type the word"),
         "unselectAll": MessageLookupByLibrary.simpleMessage("Unselect all"),
         "until": MessageLookupByLibrary.simpleMessage("until"),

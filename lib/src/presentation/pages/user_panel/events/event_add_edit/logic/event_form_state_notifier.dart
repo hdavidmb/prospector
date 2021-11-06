@@ -15,7 +15,15 @@ class EventFormStateNotifier extends StateNotifier<EventFormState>
   void reset() => state = EventFormState.initial();
 
   void setEditingState({required Event editingEvent}) {
-    //TODO: Set editing state
+    state = EventFormState(
+      title: editingEvent.title,
+      location: editingEvent.location ?? '',
+      isEvent: editingEvent.type == 'event',
+      isSubmitting: false,
+      showErrorMessages: false,
+      deleted: false,
+      failureOrSuccesOption: none(),
+    );
   }
 
   // ignore: avoid_positional_boolean_parameters
@@ -23,5 +31,8 @@ class EventFormStateNotifier extends StateNotifier<EventFormState>
       state.copyWith(isEvent: value ?? true, failureOrSuccesOption: none());
 
   void titleChanged(String value) =>
-      state.copyWith(title: value, failureOrSuccesOption: none());
+      state = state.copyWith(title: value, failureOrSuccesOption: none());
+
+  void locationChanged(String value) =>
+      state = state.copyWith(location: value, failureOrSuccesOption: none());
 }
