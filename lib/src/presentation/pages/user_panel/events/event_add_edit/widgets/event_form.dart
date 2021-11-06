@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/events/domain/entites/event_entity.dart';
 import '../../../../../core/dialogs.dart';
+import '../../../contacts/contact_add_edit/widgets/location_text_field.dart';
 import '../logic/event_form_providers.dart';
 import '../logic/event_form_state.dart';
 import 'event_title_text_field.dart';
@@ -14,7 +15,7 @@ class EventForm extends StatelessWidget {
   final Event? editingEvent;
   const EventForm({
     Key? key,
-    this.editingEvent,
+    required this.editingEvent,
   }) : super(key: key);
 
   @override
@@ -57,10 +58,11 @@ class EventForm extends StatelessWidget {
               child: ListView(
                 physics: const BouncingScrollPhysics(),
                 children: [
+                  const SizedBox(height: 6.0),
                   if (!isEditing)
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 12.0, horizontal: horizontalPadding),
+                          vertical: 6.0, horizontal: horizontalPadding),
                       child: CupertinoSlidingSegmentedControl<bool>(
                         groupValue: formState.isEvent,
                         children: {
@@ -73,13 +75,28 @@ class EventForm extends StatelessWidget {
                     ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: horizontalPadding),
+                        vertical: 6.0, horizontal: horizontalPadding),
                     child: EventTitleTextField(
-                      title: formState.title,
+                      title: editingEvent?.title,
                       onTitleChanged:
                           context.read(eventFormProvider.notifier).titleChanged,
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 6.0, horizontal: horizontalPadding),
+                    child: LocationTextField(
+                      isForEvents: true,
+                      location: formState.location,
+                      onLocationChanged: context
+                          .read(eventFormProvider.notifier)
+                          .locationChanged,
+                    ),
+                  ),
+                  //TODO temporal delete
+                  ElevatedButton(
+                      onPressed: () => print(context.read(eventFormProvider)),
+                      child: child)
                 ],
               ),
             ),
