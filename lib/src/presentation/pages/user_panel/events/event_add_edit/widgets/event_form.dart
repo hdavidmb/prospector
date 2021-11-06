@@ -93,6 +93,14 @@ class EventForm extends StatelessWidget {
                           .locationChanged,
                     ),
                   ),
+                  const SizedBox(height: 12.0),
+                  const Divider(height: 0.0, indent: 10.0, endIndent: 10.0),
+                  SwitchListTile.adaptive(
+                    value: formState.allDay,
+                    onChanged:
+                        context.read(eventFormProvider.notifier).allDayChanged,
+                    title: Text(AppLocalizations.of(context).allDay),
+                  ),
                   //TODO temporal delete
                   ElevatedButton(
                       onPressed: () => print(context.read(eventFormProvider)),
