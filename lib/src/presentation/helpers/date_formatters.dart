@@ -63,14 +63,15 @@ String eventTileFormatedDate({
   }
 }
 
-String dateTileFormattedDate(
-    {required bool allDay, required bool is24hours, required DateTime date}) {
-  //TODO test
-  final DateFormat dateFormat = allDay
-      ? DateFormat.yMMMMd(Intl.getCurrentLocale())
-      : is24hours
-          ? DateFormat.yMMMMd(Intl.getCurrentLocale()).add_Hm()
-          : DateFormat.yMMMMd(Intl.getCurrentLocale()).add_jm();
+String dateCellFormattedDate({required DateTime date}) {
+  final DateFormat dateFormat = DateFormat.yMd(Intl.getCurrentLocale());
+  return dateFormat.format(date);
+}
+
+String formattedTime({required bool is24hours, required DateTime date}) {
+  final DateFormat dateFormat = is24hours
+      ? DateFormat('H:mm', Intl.getCurrentLocale())
+      : DateFormat("h:mm a", Intl.getCurrentLocale());
   return dateFormat.format(date);
 }
 
@@ -79,16 +80,11 @@ String eventDetailsFormatedDate({
   required DateTime endDate,
   required bool is24hours,
 }) {
-  late DateFormat dateFormat;
-
   if (isSameDay(startDate, endDate)) {
     final dateFormat = DateFormat.yMMMMd(Intl.getCurrentLocale());
-    final hourFormat = is24hours
-        ? DateFormat('HH:mm', Intl.getCurrentLocale())
-        : DateFormat("hh:mm a", Intl.getCurrentLocale());
-    return '${dateFormat.format(startDate)}\n${hourFormat.format(startDate)} - ${hourFormat.format(endDate)}';
+    return '${dateFormat.format(startDate)}\n${formattedTime(is24hours: is24hours, date: startDate)} - ${formattedTime(is24hours: is24hours, date: endDate)}'; //TODO test
   } else {
-    dateFormat = is24hours
+    final DateFormat dateFormat = is24hours
         ? DateFormat.yMMMMEEEEd(Intl.getCurrentLocale()).add_Hm()
         : DateFormat.yMMMMEEEEd(Intl.getCurrentLocale()).add_jm(); //TODO test
     return '${dateFormat.format(startDate)} - ${dateFormat.format(endDate)}';

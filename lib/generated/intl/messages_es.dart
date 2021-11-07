@@ -92,6 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailsDontMatch":
             MessageLookupByLibrary.simpleMessage("Los correos no coinciden"),
         "enable": MessageLookupByLibrary.simpleMessage("Habilitar"),
+        "end": MessageLookupByLibrary.simpleMessage("Termina"),
         "endsAt": MessageLookupByLibrary.simpleMessage("Termina"),
         "enterAPassword":
             MessageLookupByLibrary.simpleMessage("Ingresa una contraseña"),
@@ -248,6 +249,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "showPasswords":
             MessageLookupByLibrary.simpleMessage("Mostrar contraseñas"),
         "signIn": MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
+        "start": MessageLookupByLibrary.simpleMessage("Inicia"),
         "startsAt": MessageLookupByLibrary.simpleMessage("Inicia"),
         "statistics": MessageLookupByLibrary.simpleMessage("Estadisticas"),
         "syncContacts":
@@ -287,6 +289,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Iniciar semana en"),
         "welcomeTo": MessageLookupByLibrary.simpleMessage("Bienvenido a"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
+        "when": MessageLookupByLibrary.simpleMessage("Cuando"),
         "youMayHaveToRelogin": MessageLookupByLibrary.simpleMessage(
             "Deberás autenticar tu cuenta social de nuevo.")
       };

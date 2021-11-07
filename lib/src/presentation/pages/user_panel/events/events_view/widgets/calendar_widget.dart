@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:prospector/generated/l10n.dart';
-import 'package:prospector/src/features/events/application/events_providers.dart';
-import 'package:prospector/src/presentation/helpers/date_formatters.dart';
-import 'package:prospector/src/presentation/pages/user_panel/events/events_view/logic/events_view_providers.dart';
 import 'package:table_calendar/table_calendar.dart' hide isSameDay;
+
+import '../../../../../../../generated/l10n.dart';
+import '../../../../../../features/events/application/events_providers.dart';
+import '../../../../../helpers/date_formatters.dart';
+import '../../events_constants.dart';
+import '../logic/events_view_providers.dart';
 
 class CalendarWidget extends ConsumerWidget {
   const CalendarWidget({
@@ -20,8 +22,8 @@ class CalendarWidget extends ConsumerWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 8.0),
       child: TableCalendar(
-        firstDay: DateTime(2015),
-        lastDay: DateTime.now().add(const Duration(days: 365 * 2)),
+        firstDay: kFirstDate,
+        lastDay: kLastDate,
         focusedDay: viewProvider.selectedDay,
         pageJumpingEnabled: true,
         availableGestures: AvailableGestures.horizontalSwipe,

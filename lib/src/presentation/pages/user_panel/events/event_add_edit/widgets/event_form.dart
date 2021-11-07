@@ -2,8 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/helpers/date_formatters.dart';
-import 'package:prospector/src/presentation/theme/theme_providers.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/events/domain/entites/event_entity.dart';
@@ -11,6 +9,8 @@ import '../../../../../core/dialogs.dart';
 import '../../../contacts/contact_add_edit/widgets/location_text_field.dart';
 import '../logic/event_form_providers.dart';
 import '../logic/event_form_state.dart';
+import '../logic/event_form_state_notifier.dart';
+import 'event_date_list_tile.dart';
 import 'event_title_text_field.dart';
 
 class EventForm extends StatelessWidget {
@@ -51,8 +51,9 @@ class EventForm extends StatelessWidget {
       child: Consumer(
         builder: (context, watch, child) {
           final EventFormState formState = watch(eventFormProvider);
+          final EventFormStateNotifier notifier =
+              context.read(eventFormProvider.notifier);
           final bool showErrorMessages = formState.showErrorMessages;
-          final bool is24hours = watch(themeNotifierProvider).is24hours;
           return GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
             child: Form(
@@ -73,8 +74,7 @@ class EventForm extends StatelessWidget {
                           true: Text(AppLocalizations.of(context).event),
                           false: Text(AppLocalizations.of(context).reminder)
                         },
-                        onValueChanged:
-                            context.read(eventFormProvider.notifier).setIsEvent,
+                        onValueChanged: notifier.setIsEvent,
                       ),
                     ),
                   Padding(
@@ -82,8 +82,7 @@ class EventForm extends StatelessWidget {
                         vertical: 6.0, horizontal: horizontalPadding),
                     child: EventTitleTextField(
                       title: editingEvent?.title,
-                      onTitleChanged:
-                          context.read(eventFormProvider.notifier).titleChanged,
+                      onTitleChanged: notifier.titleChanged,
                     ),
                   ),
                   if (formState.isEvent)
@@ -102,56 +101,22 @@ class EventForm extends StatelessWidget {
                   divider,
                   SwitchListTile.adaptive(
                     value: formState.allDay,
-                    onChanged:
-                        context.read(eventFormProvider.notifier).allDayChanged,
+                    onChanged: notifier.allDayChanged,
                     title: Text(AppLocalizations.of(context).allDay),
                   ),
-                  ListTile(
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(formState.allDay || !formState.isEvent
-                            ? 'When'
-                            : 'Start'), //TODO localize
-                        Text(
-                          dateTileFormattedDate(
-                            allDay: formState.allDay,
-                            is24hours: is24hours,
-                            date: formState.startDate,
-                          ),
-                          style: const TextStyle(
-                              fontSize: 16.0, color: Colors.grey),
-                        ),
-                      ],
-                    ),
-                    trailing:
-                        const Icon(Icons.navigate_next, color: Colors.grey),
-                    onTap: () {
-                      //TODO set start date changed on notifier
-                    },
+                  EventDateListTile(
+                    title: formState.allDay || !formState.isEvent
+                        ? AppLocalizations.of(context).when
+                        : AppLocalizations.of(context).start,
+                    date: formState.startDate,
+                    onDateSelected: notifier.startDateChanged,
                   ),
                   if (!formState.allDay && formState.isEvent)
-                    ListTile(
-                      title: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('End'), //TODO localize
-                          Text(
-                            dateTileFormattedDate(
-                              allDay: formState.allDay,
-                              is24hours: is24hours,
-                              date: formState.endDate,
-                            ),
-                            style: const TextStyle(
-                                fontSize: 16.0, color: Colors.grey),
-                          ),
-                        ],
-                      ),
-                      trailing:
-                          const Icon(Icons.navigate_next, color: Colors.grey),
-                      onTap: () {
-                        //TODO set end date changed on notifier
-                      },
+                    EventDateListTile(
+                      title: AppLocalizations.of(context).end,
+                      firstDate: formState.startDate,
+                      date: formState.endDate,
+                      onDateSelected: notifier.endDateChanged,
                     ),
                   divider,
                   //TODO temporal delete

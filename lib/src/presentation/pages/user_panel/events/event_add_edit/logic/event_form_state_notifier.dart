@@ -56,4 +56,26 @@ class EventFormStateNotifier extends StateNotifier<EventFormState>
   // ignore: avoid_positional_boolean_parameters
   void allDayChanged(bool value) =>
       state = state.copyWith(allDay: value, failureOrSuccesOption: none());
+
+  void startDateChanged(DateTime value) {
+    if (value.isAfter(state.endDate)) {
+      state = state.copyWith(
+          startDate: value,
+          endDate: value.add(const Duration(hours: 1)),
+          failureOrSuccesOption: none());
+    } else {
+      state = state.copyWith(startDate: value, failureOrSuccesOption: none());
+    }
+  }
+
+  void endDateChanged(DateTime value) {
+    if (value.isBefore(state.startDate)) {
+      state = state.copyWith(
+          startDate: value.subtract(const Duration(hours: 1)),
+          endDate: value,
+          failureOrSuccesOption: none());
+    } else {
+      state = state.copyWith(endDate: value, failureOrSuccesOption: none());
+    }
+  }
 }
