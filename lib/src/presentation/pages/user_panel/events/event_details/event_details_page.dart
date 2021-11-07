@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/pages/user_panel/events/event_details/logic/event_details_providers.dart';
 
 import '../../../../../../generated/l10n.dart';
 import '../../../../../features/events/application/events_providers.dart';
@@ -46,7 +47,13 @@ class EventDetailsPage extends ConsumerWidget {
         children: [
           EventInfo(event: event, is24hours: is24hours),
           divider,
-          EventGuestsListTile(event: event),
+          EventGuestsListTile(
+            event: event,
+            onSelectGuests: (selectedGuests) => context
+                .read(eventDetailsPageProvider)
+                .guestsTilePressed(
+                    event: event, selectedGuests: selectedGuests),
+          ),
           divider,
           EventAlertListTile(event: event),
           divider,
