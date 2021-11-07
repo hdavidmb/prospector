@@ -2,21 +2,20 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:prospector/generated/l10n.dart';
-import 'package:prospector/src/features/events/domain/entites/event_entity.dart';
 import 'package:prospector/src/presentation/pages/user_panel/events/guests_selection/widgets/guests_input.dart';
 
 class GuestsSelectionPage extends StatelessWidget {
-  final Event? event;
+  final List<String>? initialGuests;
   const GuestsSelectionPage({
     Key? key,
-    this.event,
+    this.initialGuests,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final List<String> selectedGuests = [];
-    if (event?.guests != null) {
-      selectedGuests.addAll(event!.guests!);
+    if (initialGuests != null) {
+      selectedGuests.addAll(initialGuests!);
     }
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),

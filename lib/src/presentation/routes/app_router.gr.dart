@@ -148,7 +148,8 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (data) {
           final args = data.argsAs<GuestsSelectionRouteArgs>(
               orElse: () => const GuestsSelectionRouteArgs());
-          return _i19.GuestsSelectionPage(key: args.key, event: args.event);
+          return _i19.GuestsSelectionPage(
+              key: args.key, initialGuests: args.initialGuests);
         }),
     EventAddEditRoute.name: (routeData) => _i1.CupertinoPageX<dynamic>(
         routeData: routeData,
@@ -323,20 +324,21 @@ class EventDetailsRouteArgs {
 }
 
 class GuestsSelectionRoute extends _i1.PageRouteInfo<GuestsSelectionRouteArgs> {
-  GuestsSelectionRoute({_i2.Key? key, _i22.Event? event})
+  GuestsSelectionRoute({_i2.Key? key, List<String>? initialGuests})
       : super(name,
             path: '/guests-selection-page',
-            args: GuestsSelectionRouteArgs(key: key, event: event));
+            args: GuestsSelectionRouteArgs(
+                key: key, initialGuests: initialGuests));
 
   static const String name = 'GuestsSelectionRoute';
 }
 
 class GuestsSelectionRouteArgs {
-  const GuestsSelectionRouteArgs({this.key, this.event});
+  const GuestsSelectionRouteArgs({this.key, this.initialGuests});
 
   final _i2.Key? key;
 
-  final _i22.Event? event;
+  final List<String>? initialGuests;
 }
 
 class EventAddEditRoute extends _i1.PageRouteInfo<EventAddEditRouteArgs> {

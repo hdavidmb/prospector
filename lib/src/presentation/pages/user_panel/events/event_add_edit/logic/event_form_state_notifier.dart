@@ -78,4 +78,10 @@ class EventFormStateNotifier extends StateNotifier<EventFormState>
       state = state.copyWith(endDate: value, failureOrSuccesOption: none());
     }
   }
+
+  void guestsChanged(List<String>? values) {
+    if (values != null) {
+      state = state.copyWith(guests: values, failureOrSuccesOption: none());
+    }
+  }
 }

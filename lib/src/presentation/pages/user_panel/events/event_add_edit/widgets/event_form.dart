@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/pages/user_panel/events/widgets/event_guests_list_tile.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/events/domain/entites/event_entity.dart';
@@ -119,6 +120,11 @@ class EventForm extends StatelessWidget {
                       onDateSelected: notifier.endDateChanged,
                     ),
                   divider,
+                  if (formState.isEvent)
+                    EventGuestsListTile(
+                      guests: formState.guests,
+                      onSelectGuests: notifier.guestsChanged, //TODO test
+                    ),
                   //TODO temporal delete
                   ElevatedButton(
                       onPressed: () => print(context.read(eventFormProvider)),
