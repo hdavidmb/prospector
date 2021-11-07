@@ -1,6 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:random_string/random_string.dart';
 
+import '../../../../../../core/database/database_failures/database_failure.dart';
+import '../../../../../../features/events/application/events_providers.dart';
+import '../../../../../../features/events/domain/entites/event_alert.dart';
 import '../../../../../../features/events/domain/entites/event_entity.dart';
 import '../../../../../helpers/form_validators.dart';
 import 'event_form_state.dart';
@@ -83,5 +87,64 @@ class EventFormStateNotifier extends StateNotifier<EventFormState>
     if (values != null) {
       state = state.copyWith(guests: values, failureOrSuccesOption: none());
     }
+  }
+
+  void notificationChanged(Option<EventAlert> alertOption) {
+    alertOption.fold(
+      () => null,
+      (alert) => state =
+          state.copyWith(notification: alert, failureOrSuccesOption: none()),
+    );
+  }
+
+  Future<void> saveButtonPressed({Event? editingEvent}) async {
+    //Validate title field
+    final bool isTitleValid = validateFieldIsNotEmpty(state.title);
+    Either<DatabaseFailure, Unit>? failureOrSuccess;
+
+    if (isTitleValid) {
+      // Set submitting state
+      state = state.copyWith(isSubmitting: true, failureOrSuccesOption: none());
+
+      // Arrange eventEntity from state values
+      final newEventInfo = Event(
+        id: editingEvent?.id ?? randomAlphaNumeric(20),
+        allDay: state.allDay,
+        created: editingEvent?.created ?? DateTime.now(),
+        modified: editingEvent?.modified ?? DateTime.now(),
+        startDate: state.startDate,
+        endDate: state.endDate,
+        title: state.title,
+        type: state.isEvent ? 'event' : 'reminder',
+        notification: state.notification,
+        guests: state.guests.isNotEmpty ? state.guests : null,
+        location: state.location.isNotEmpty ? state.location : null,
+      );
+
+      // If editing compare event entities
+      if (editingEvent != null) {
+        // Compare
+        if (editingEvent != newEventInfo) {
+          // TODO: investigate about freezed data classes equality when fields are lists
+          // TODO: Check if sending inmuted event counts as write in firebase
+          // Edit
+          failureOrSuccess =
+              await read(eventsNotifierProvider).updateEvent(newEventInfo);
+        } else {
+          failureOrSuccess = right(unit);
+        }
+      } else {
+        // Create event
+        failureOrSuccess =
+            await read(eventsNotifierProvider).createEvent(newEventInfo);
+      }
+    }
+
+    // Set final state (failure or success)
+    state = state.copyWith(
+      isSubmitting: false,
+      showErrorMessages: true,
+      failureOrSuccesOption: optionOf(failureOrSuccess),
+    );
   }
 }

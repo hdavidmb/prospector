@@ -2,12 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/pages/user_panel/events/widgets/event_guests_list_tile.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/events/domain/entites/event_entity.dart';
 import '../../../../../core/dialogs.dart';
 import '../../../contacts/contact_add_edit/widgets/location_text_field.dart';
+import '../../widgets/event_alert_list_tile.dart';
+import '../../widgets/event_guests_list_tile.dart';
 import '../logic/event_form_providers.dart';
 import '../logic/event_form_state.dart';
 import '../logic/event_form_state_notifier.dart';
@@ -65,6 +66,8 @@ class EventForm extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 children: [
                   const SizedBox(height: 6.0),
+
+                  // * Event/Reminder selector
                   if (!isEditing)
                     Padding(
                       padding: const EdgeInsets.symmetric(
@@ -78,6 +81,8 @@ class EventForm extends StatelessWidget {
                         onValueChanged: notifier.setIsEvent,
                       ),
                     ),
+
+                  // * Title TextField
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 6.0, horizontal: horizontalPadding),
@@ -86,6 +91,8 @@ class EventForm extends StatelessWidget {
                       onTitleChanged: notifier.titleChanged,
                     ),
                   ),
+
+                  // * Location TextField
                   if (formState.isEvent)
                     Padding(
                       padding: const EdgeInsets.symmetric(
@@ -100,11 +107,15 @@ class EventForm extends StatelessWidget {
                     ),
                   const SizedBox(height: 12.0),
                   divider,
+
+                  // * AllDay switch
                   SwitchListTile.adaptive(
                     value: formState.allDay,
                     onChanged: notifier.allDayChanged,
                     title: Text(AppLocalizations.of(context).allDay),
                   ),
+
+                  // * StartDate ListTile
                   EventDateListTile(
                     title: formState.allDay || !formState.isEvent
                         ? AppLocalizations.of(context).when
@@ -112,6 +123,8 @@ class EventForm extends StatelessWidget {
                     date: formState.startDate,
                     onDateSelected: notifier.startDateChanged,
                   ),
+
+                  // * EndDate ListTile
                   if (!formState.allDay && formState.isEvent)
                     EventDateListTile(
                       title: AppLocalizations.of(context).end,
@@ -120,15 +133,45 @@ class EventForm extends StatelessWidget {
                       onDateSelected: notifier.endDateChanged,
                     ),
                   divider,
-                  if (formState.isEvent)
+
+                  // * Guests ListTile
+                  if (formState.isEvent) ...[
                     EventGuestsListTile(
                       guests: formState.guests,
-                      onSelectGuests: notifier.guestsChanged, //TODO test
+                      onSelectGuests: notifier.guestsChanged,
                     ),
-                  //TODO temporal delete
-                  ElevatedButton(
-                      onPressed: () => print(context.read(eventFormProvider)),
-                      child: child)
+                    divider,
+                  ],
+
+                  // * Alert ListTile
+                  EventAlertListTile(
+                    eventAlert: formState.notification,
+                    onSelectAlert: notifier.notificationChanged,
+                  ),
+                  divider,
+
+                  // * Save button
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: horizontalPadding, vertical: 8.0),
+                    child: ElevatedButton(
+                      onPressed: formState.isSubmitting
+                          ? null
+                          : () => context
+                              .read(eventFormProvider.notifier)
+                              .saveButtonPressed(editingEvent: editingEvent),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(AppLocalizations.of(context).save),
+                          if (formState.isSubmitting)
+                            const CircularProgressIndicator.adaptive(),
+                        ],
+                      ),
+                    ),
+                  )
+
+                  // TODO * Delete button
                 ],
               ),
             ),

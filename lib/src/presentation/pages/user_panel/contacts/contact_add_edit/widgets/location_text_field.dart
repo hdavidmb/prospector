@@ -40,7 +40,9 @@ class _LocationTextFieldState extends State<LocationTextField> {
       if (widget.location.isEmpty) {
         _controller.clear();
       } else {
-        _controller.text = widget.location;
+        setState(() {
+          _controller.text = widget.location;
+        });
       }
     });
     return TextFormField(

@@ -24,6 +24,8 @@ class DayEventsList extends ConsumerWidget {
             endDate: event.endDate,
           ),
         )
+        .toList()
+        .reversed
         .toList();
     return ListView.separated(
       itemCount: selectedDayEvents.length,

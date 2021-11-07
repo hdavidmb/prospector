@@ -47,14 +47,16 @@ class EventDetailsPage extends ConsumerWidget {
         children: [
           EventInfo(event: event, is24hours: is24hours),
           divider,
-          EventGuestsListTile(
-            guests: event.guests,
-            onSelectGuests: (selectedGuests) => context
-                .read(eventDetailsPageProvider)
-                .guestsTilePressed(
-                    event: event, selectedGuests: selectedGuests),
-          ),
-          divider,
+          if (event.type == 'event') ...[
+            EventGuestsListTile(
+              guests: event.guests,
+              onSelectGuests: (selectedGuests) => context
+                  .read(eventDetailsPageProvider)
+                  .guestsTilePressed(
+                      event: event, selectedGuests: selectedGuests),
+            ),
+            divider,
+          ],
           EventAlertListTile(
             eventAlert: event.notification,
             onSelectAlert: (selectedAlert) => context
