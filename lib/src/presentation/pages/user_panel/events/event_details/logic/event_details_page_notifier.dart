@@ -29,8 +29,8 @@ class EventDetailsPageNotifier {
     selectedAlert.fold(
       () => null,
       (alert) {
-        if (alert != event.notifications[0]) {
-          final Event newEventInfo = event.copyWith(notifications: [alert]);
+        if (alert != event.notification) {
+          final Event newEventInfo = event.copyWith(notification: alert);
           read(eventsNotifierProvider).updateEvent(newEventInfo);
         }
       },

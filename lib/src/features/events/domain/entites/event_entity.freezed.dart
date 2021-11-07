@@ -25,7 +25,7 @@ class _$EventTearOff {
       required DateTime endDate,
       required String title,
       required String type,
-      required List<EventAlert> notifications,
+      required EventAlert notification,
       List<String>? guests,
       String? location,
       List<int>? notificationsIDs}) {
@@ -38,7 +38,7 @@ class _$EventTearOff {
       endDate: endDate,
       title: title,
       type: type,
-      notifications: notifications,
+      notification: notification,
       guests: guests,
       location: location,
       notificationsIDs: notificationsIDs,
@@ -59,7 +59,7 @@ mixin _$Event {
   DateTime get endDate => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
-  List<EventAlert> get notifications => throw _privateConstructorUsedError;
+  EventAlert get notification => throw _privateConstructorUsedError;
   List<String>? get guests => throw _privateConstructorUsedError;
   String? get location => throw _privateConstructorUsedError;
   List<int>? get notificationsIDs => throw _privateConstructorUsedError;
@@ -81,7 +81,7 @@ abstract class $EventCopyWith<$Res> {
       DateTime endDate,
       String title,
       String type,
-      List<EventAlert> notifications,
+      EventAlert notification,
       List<String>? guests,
       String? location,
       List<int>? notificationsIDs});
@@ -105,7 +105,7 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
     Object? endDate = freezed,
     Object? title = freezed,
     Object? type = freezed,
-    Object? notifications = freezed,
+    Object? notification = freezed,
     Object? guests = freezed,
     Object? location = freezed,
     Object? notificationsIDs = freezed,
@@ -143,10 +143,10 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      notifications: notifications == freezed
-          ? _value.notifications
-          : notifications // ignore: cast_nullable_to_non_nullable
-              as List<EventAlert>,
+      notification: notification == freezed
+          ? _value.notification
+          : notification // ignore: cast_nullable_to_non_nullable
+              as EventAlert,
       guests: guests == freezed
           ? _value.guests
           : guests // ignore: cast_nullable_to_non_nullable
@@ -177,7 +177,7 @@ abstract class _$EventCopyWith<$Res> implements $EventCopyWith<$Res> {
       DateTime endDate,
       String title,
       String type,
-      List<EventAlert> notifications,
+      EventAlert notification,
       List<String>? guests,
       String? location,
       List<int>? notificationsIDs});
@@ -202,7 +202,7 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
     Object? endDate = freezed,
     Object? title = freezed,
     Object? type = freezed,
-    Object? notifications = freezed,
+    Object? notification = freezed,
     Object? guests = freezed,
     Object? location = freezed,
     Object? notificationsIDs = freezed,
@@ -240,10 +240,10 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      notifications: notifications == freezed
-          ? _value.notifications
-          : notifications // ignore: cast_nullable_to_non_nullable
-              as List<EventAlert>,
+      notification: notification == freezed
+          ? _value.notification
+          : notification // ignore: cast_nullable_to_non_nullable
+              as EventAlert,
       guests: guests == freezed
           ? _value.guests
           : guests // ignore: cast_nullable_to_non_nullable
@@ -272,7 +272,7 @@ class _$_Event extends _Event {
       required this.endDate,
       required this.title,
       required this.type,
-      required this.notifications,
+      required this.notification,
       this.guests,
       this.location,
       this.notificationsIDs})
@@ -295,7 +295,7 @@ class _$_Event extends _Event {
   @override
   final String type;
   @override
-  final List<EventAlert> notifications;
+  final EventAlert notification;
   @override
   final List<String>? guests;
   @override
@@ -305,7 +305,7 @@ class _$_Event extends _Event {
 
   @override
   String toString() {
-    return 'Event(id: $id, allDay: $allDay, created: $created, modified: $modified, startDate: $startDate, endDate: $endDate, title: $title, type: $type, notifications: $notifications, guests: $guests, location: $location, notificationsIDs: $notificationsIDs)';
+    return 'Event(id: $id, allDay: $allDay, created: $created, modified: $modified, startDate: $startDate, endDate: $endDate, title: $title, type: $type, notification: $notification, guests: $guests, location: $location, notificationsIDs: $notificationsIDs)';
   }
 
   @override
@@ -332,9 +332,9 @@ class _$_Event extends _Event {
                 const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.type, type) ||
                 const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.notifications, notifications) ||
+            (identical(other.notification, notification) ||
                 const DeepCollectionEquality()
-                    .equals(other.notifications, notifications)) &&
+                    .equals(other.notification, notification)) &&
             (identical(other.guests, guests) ||
                 const DeepCollectionEquality().equals(other.guests, guests)) &&
             (identical(other.location, location) ||
@@ -356,7 +356,7 @@ class _$_Event extends _Event {
       const DeepCollectionEquality().hash(endDate) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(notifications) ^
+      const DeepCollectionEquality().hash(notification) ^
       const DeepCollectionEquality().hash(guests) ^
       const DeepCollectionEquality().hash(location) ^
       const DeepCollectionEquality().hash(notificationsIDs);
@@ -377,7 +377,7 @@ abstract class _Event extends Event {
       required DateTime endDate,
       required String title,
       required String type,
-      required List<EventAlert> notifications,
+      required EventAlert notification,
       List<String>? guests,
       String? location,
       List<int>? notificationsIDs}) = _$_Event;
@@ -400,7 +400,7 @@ abstract class _Event extends Event {
   @override
   String get type => throw _privateConstructorUsedError;
   @override
-  List<EventAlert> get notifications => throw _privateConstructorUsedError;
+  EventAlert get notification => throw _privateConstructorUsedError;
   @override
   List<String>? get guests => throw _privateConstructorUsedError;
   @override

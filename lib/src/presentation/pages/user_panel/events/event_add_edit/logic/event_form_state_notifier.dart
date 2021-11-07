@@ -22,7 +22,7 @@ class EventFormStateNotifier extends StateNotifier<EventFormState>
       startDate: editingEvent.startDate,
       endDate: editingEvent.endDate,
       guests: editingEvent.guests ?? [],
-      notifications: editingEvent.notifications,
+      notification: editingEvent.notification,
       isEvent: editingEvent.type == 'event',
       isSubmitting: false,
       showErrorMessages: false,

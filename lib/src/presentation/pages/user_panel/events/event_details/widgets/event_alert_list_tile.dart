@@ -23,7 +23,7 @@ class EventAlertListTile extends StatelessWidget {
           Text(AppLocalizations.of(context).alert),
           Expanded(child: Container()),
           Text(
-            event.notifications[0].text,
+            event.notification.text,
             style: const TextStyle(fontSize: 16.0, color: Colors.grey),
           ),
         ],

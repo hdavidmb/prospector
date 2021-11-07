@@ -71,10 +71,13 @@ class EventsUseCases {
             (eventsMapsList) => right(
               eventsMapsList.map(
                 (eventMap) {
-                  if (eventMap['notifications'] != null) {
-                    eventMap['notifications'] = List<DateTime>.from(
-                        eventMap['notifications'] as List<dynamic>);
+                  if (eventMap['notification'] == null &&
+                      eventMap['notifications'] != null) {
+                    eventMap['notification'] = List<DateTime>.from(
+                            eventMap['notifications'] as List<dynamic>)
+                        .first;
                   }
+                  //TODO include notificationID
                   return Event.fromMap(eventMap);
                 },
               ).toList(),
@@ -102,12 +105,16 @@ class EventsUseCases {
                     eventMap['guests'] =
                         List<String>.from(eventMap['guests'] as List<dynamic>);
                   }
-                  if (eventMap['notifications'] != null) {
+                  if (eventMap['notification'] != null) {
                     //TODO schedule local notifications
-                    eventMap['notifications'] = List<DateTime>.from(
+                    eventMap['notification'] =
+                        eventMap['notification']?.toDate();
+                  } else if (eventMap['notifications'] != null) {
+                    //TODO schedule local notifications
+                    eventMap['notification'] =
                         (eventMap['notifications'] as List<dynamic>)
-                            .map((timestamp) => timestamp.toDate())
-                            .toList());
+                            .first
+                            ?.toDate();
                   }
                   if (eventMap['notificationsIDs'] != null) {
                     eventMap['notificationsIDs'] = List<int>.from(

@@ -23,7 +23,7 @@ class _$EventFormStateTearOff {
       required DateTime startDate,
       required DateTime endDate,
       required List<String> guests,
-      required List<EventAlert> notifications,
+      required EventAlert notification,
       required bool isEvent,
       required bool isSubmitting,
       required bool showErrorMessages,
@@ -36,7 +36,7 @@ class _$EventFormStateTearOff {
       startDate: startDate,
       endDate: endDate,
       guests: guests,
-      notifications: notifications,
+      notification: notification,
       isEvent: isEvent,
       isSubmitting: isSubmitting,
       showErrorMessages: showErrorMessages,
@@ -57,7 +57,7 @@ mixin _$EventFormState {
   DateTime get startDate => throw _privateConstructorUsedError;
   DateTime get endDate => throw _privateConstructorUsedError;
   List<String> get guests => throw _privateConstructorUsedError;
-  List<EventAlert> get notifications => throw _privateConstructorUsedError;
+  EventAlert get notification => throw _privateConstructorUsedError;
   bool get isEvent => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
@@ -82,7 +82,7 @@ abstract class $EventFormStateCopyWith<$Res> {
       DateTime startDate,
       DateTime endDate,
       List<String> guests,
-      List<EventAlert> notifications,
+      EventAlert notification,
       bool isEvent,
       bool isSubmitting,
       bool showErrorMessages,
@@ -107,7 +107,7 @@ class _$EventFormStateCopyWithImpl<$Res>
     Object? startDate = freezed,
     Object? endDate = freezed,
     Object? guests = freezed,
-    Object? notifications = freezed,
+    Object? notification = freezed,
     Object? isEvent = freezed,
     Object? isSubmitting = freezed,
     Object? showErrorMessages = freezed,
@@ -139,10 +139,10 @@ class _$EventFormStateCopyWithImpl<$Res>
           ? _value.guests
           : guests // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      notifications: notifications == freezed
-          ? _value.notifications
-          : notifications // ignore: cast_nullable_to_non_nullable
-              as List<EventAlert>,
+      notification: notification == freezed
+          ? _value.notification
+          : notification // ignore: cast_nullable_to_non_nullable
+              as EventAlert,
       isEvent: isEvent == freezed
           ? _value.isEvent
           : isEvent // ignore: cast_nullable_to_non_nullable
@@ -181,7 +181,7 @@ abstract class _$EventFormStateCopyWith<$Res>
       DateTime startDate,
       DateTime endDate,
       List<String> guests,
-      List<EventAlert> notifications,
+      EventAlert notification,
       bool isEvent,
       bool isSubmitting,
       bool showErrorMessages,
@@ -208,7 +208,7 @@ class __$EventFormStateCopyWithImpl<$Res>
     Object? startDate = freezed,
     Object? endDate = freezed,
     Object? guests = freezed,
-    Object? notifications = freezed,
+    Object? notification = freezed,
     Object? isEvent = freezed,
     Object? isSubmitting = freezed,
     Object? showErrorMessages = freezed,
@@ -240,10 +240,10 @@ class __$EventFormStateCopyWithImpl<$Res>
           ? _value.guests
           : guests // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      notifications: notifications == freezed
-          ? _value.notifications
-          : notifications // ignore: cast_nullable_to_non_nullable
-              as List<EventAlert>,
+      notification: notification == freezed
+          ? _value.notification
+          : notification // ignore: cast_nullable_to_non_nullable
+              as EventAlert,
       isEvent: isEvent == freezed
           ? _value.isEvent
           : isEvent // ignore: cast_nullable_to_non_nullable
@@ -278,7 +278,7 @@ class _$_EventFormState extends _EventFormState {
       required this.startDate,
       required this.endDate,
       required this.guests,
-      required this.notifications,
+      required this.notification,
       required this.isEvent,
       required this.isSubmitting,
       required this.showErrorMessages,
@@ -299,7 +299,7 @@ class _$_EventFormState extends _EventFormState {
   @override
   final List<String> guests;
   @override
-  final List<EventAlert> notifications;
+  final EventAlert notification;
   @override
   final bool isEvent;
   @override
@@ -313,7 +313,7 @@ class _$_EventFormState extends _EventFormState {
 
   @override
   String toString() {
-    return 'EventFormState(title: $title, location: $location, allDay: $allDay, startDate: $startDate, endDate: $endDate, guests: $guests, notifications: $notifications, isEvent: $isEvent, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, deleted: $deleted, failureOrSuccesOption: $failureOrSuccesOption)';
+    return 'EventFormState(title: $title, location: $location, allDay: $allDay, startDate: $startDate, endDate: $endDate, guests: $guests, notification: $notification, isEvent: $isEvent, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, deleted: $deleted, failureOrSuccesOption: $failureOrSuccesOption)';
   }
 
   @override
@@ -335,9 +335,9 @@ class _$_EventFormState extends _EventFormState {
                     .equals(other.endDate, endDate)) &&
             (identical(other.guests, guests) ||
                 const DeepCollectionEquality().equals(other.guests, guests)) &&
-            (identical(other.notifications, notifications) ||
+            (identical(other.notification, notification) ||
                 const DeepCollectionEquality()
-                    .equals(other.notifications, notifications)) &&
+                    .equals(other.notification, notification)) &&
             (identical(other.isEvent, isEvent) ||
                 const DeepCollectionEquality()
                     .equals(other.isEvent, isEvent)) &&
@@ -364,7 +364,7 @@ class _$_EventFormState extends _EventFormState {
       const DeepCollectionEquality().hash(startDate) ^
       const DeepCollectionEquality().hash(endDate) ^
       const DeepCollectionEquality().hash(guests) ^
-      const DeepCollectionEquality().hash(notifications) ^
+      const DeepCollectionEquality().hash(notification) ^
       const DeepCollectionEquality().hash(isEvent) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
@@ -385,7 +385,7 @@ abstract class _EventFormState extends EventFormState {
       required DateTime startDate,
       required DateTime endDate,
       required List<String> guests,
-      required List<EventAlert> notifications,
+      required EventAlert notification,
       required bool isEvent,
       required bool isSubmitting,
       required bool showErrorMessages,
@@ -407,7 +407,7 @@ abstract class _EventFormState extends EventFormState {
   @override
   List<String> get guests => throw _privateConstructorUsedError;
   @override
-  List<EventAlert> get notifications => throw _privateConstructorUsedError;
+  EventAlert get notification => throw _privateConstructorUsedError;
   @override
   bool get isEvent => throw _privateConstructorUsedError;
   @override

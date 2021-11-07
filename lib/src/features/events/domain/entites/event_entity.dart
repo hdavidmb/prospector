@@ -15,7 +15,7 @@ class Event with _$Event {
     required DateTime endDate,
     required String title,
     required String type,
-    required List<EventAlert> notifications,
+    required EventAlert notification,
     List<String>? guests,
     String? location,
     List<int>? notificationsIDs,
@@ -36,12 +36,11 @@ class Event with _$Event {
     };
     if (guests != null && guests!.isNotEmpty) eventMap['guests'] = guests;
     if (location != null && location != '') eventMap['location'] = location;
-    if (notifications.isNotEmpty && !notifications.contains(EventAlert.none)) {
-      eventMap['notifications'] = notifications
-          .map((alert) => startDate.subtract(alert.duration!))
-          .toList();
+    if (notification != EventAlert.none) {
+      eventMap['notification'] = startDate.subtract(notification.duration!);
     }
 
+//TODO: change to individual  notificationID
     if (notificationsIDs != null && notificationsIDs!.isNotEmpty) {
       eventMap['notificationsIDs'] = notificationsIDs;
     }
@@ -49,18 +48,12 @@ class Event with _$Event {
   }
 
   factory Event.fromMap(Map<String, dynamic> map) {
-    List<EventAlert> notifications = [EventAlert.none];
-    final mapNotifications = map['notifications'] as List<DateTime>?;
-    if (mapNotifications != null && mapNotifications.isNotEmpty) {
-      notifications = mapNotifications
-          .map(
-            (mapNotification) => EventAlert.values.firstWhere(
-              (alert) =>
-                  alert.duration ==
-                  (map['start_date'] as DateTime).difference(mapNotification),
-            ),
-          )
-          .toList();
+    EventAlert notification = EventAlert.none;
+    final DateTime? mapNotification = map['notification'] as DateTime?;
+    if (mapNotification != null) {
+      notification = EventAlert.values.firstWhere((alert) =>
+          alert.duration ==
+          (map['start_date'] as DateTime).difference(mapNotification));
     }
     return Event(
       allDay: map['all_day'] as bool,
@@ -73,7 +66,7 @@ class Event with _$Event {
       id: map['id'] as String,
       guests: map['guests'] as List<String>?,
       location: map['location'] as String?,
-      notifications: notifications,
+      notification: notification,
       notificationsIDs: map['notificationsIDs'] as List<int>?,
     );
   }
@@ -85,7 +78,7 @@ class Event with _$Event {
         modified: DateTime.now(),
         startDate: DateTime.now(),
         endDate: DateTime.now(),
-        notifications: [EventAlert.none],
+        notification: EventAlert.none,
         title: '',
         type: 'event',
       );
