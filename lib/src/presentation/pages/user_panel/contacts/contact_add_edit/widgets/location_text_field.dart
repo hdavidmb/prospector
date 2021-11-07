@@ -36,9 +36,13 @@ class _LocationTextFieldState extends State<LocationTextField> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.location.isEmpty) {
-      WidgetsBinding.instance!.addPostFrameCallback((_) => _controller.clear());
-    }
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      if (widget.location.isEmpty) {
+        _controller.clear();
+      } else {
+        _controller.text = widget.location;
+      }
+    });
     return TextFormField(
       readOnly: true,
       controller: _controller,
