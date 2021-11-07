@@ -7,9 +7,9 @@ import '../../../../../features/events/application/events_providers.dart';
 import '../../../../../features/events/domain/entites/event_entity.dart';
 import '../../../../routes/app_router.gr.dart';
 import '../../../../theme/theme_providers.dart';
+import '../widgets/event_alert_list_tile.dart';
 import '../widgets/event_guests_list_tile.dart';
 import 'logic/event_details_providers.dart';
-import 'widgets/event_alert_list_tile.dart';
 import 'widgets/event_info.dart';
 
 class EventDetailsPage extends ConsumerWidget {
@@ -55,7 +55,13 @@ class EventDetailsPage extends ConsumerWidget {
                     event: event, selectedGuests: selectedGuests),
           ),
           divider,
-          EventAlertListTile(event: event),
+          EventAlertListTile(
+            eventAlert: event.notification,
+            onSelectAlert: (selectedAlert) => context
+                .read(eventDetailsPageProvider)
+                .alertListTilePressed(
+                    event: event, selectedAlert: selectedAlert),
+          ),
           divider,
         ],
       ),

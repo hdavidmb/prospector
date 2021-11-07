@@ -1,19 +1,21 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../../../../generated/l10n.dart';
-import '../../../../../../features/events/domain/entites/event_alert.dart';
-import '../../../../../../features/events/domain/entites/event_entity.dart';
-import '../../../../../core/dialogs.dart';
-import '../logic/event_details_providers.dart';
+import '../../../../../../generated/l10n.dart';
+import '../../../../../features/events/domain/entites/event_alert.dart';
+import '../../../../../features/events/domain/entites/event_entity.dart';
+import '../../../../core/dialogs.dart';
+import '../event_details/logic/event_details_providers.dart';
 
 class EventAlertListTile extends StatelessWidget {
+  final EventAlert eventAlert;
+  final void Function(Option<EventAlert>) onSelectAlert;
   const EventAlertListTile({
     Key? key,
-    required this.event,
+    required this.eventAlert,
+    required this.onSelectAlert,
   }) : super(key: key);
-
-  final Event event;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class EventAlertListTile extends StatelessWidget {
         children: <Widget>[
           Text(AppLocalizations.of(context).alert),
           Text(
-            event.notification.text,
+            eventAlert.text,
             style: const TextStyle(fontSize: 16.0, color: Colors.grey),
           ),
         ],
@@ -33,9 +35,11 @@ class EventAlertListTile extends StatelessWidget {
         //TODO check for notifications permissions
         final selectedAlert = await showAlertSelectionDialog(context: context);
         Future.delayed(
-            Duration.zero,
-            () => context.read(eventDetailsPageProvider).alertListTilePressed(
-                event: event, selectedAlert: selectedAlert));
+          Duration.zero,
+          () => onSelectAlert(selectedAlert),
+          // () => context.read(eventDetailsPageProvider).alertListTilePressed(
+          //     event: event, selectedAlert: selectedAlert),
+        );
       },
     );
   }
