@@ -54,7 +54,8 @@ class EventGuestsListTile extends StatelessWidget {
                     final Contact contact = context
                         .read(contactsNotifierProvider)
                         .contacts
-                        .firstWhere((listContact) => listContact.id == guest);
+                        .firstWhere((listContact) => listContact.id == guest,
+                            orElse: () => Contact.empty());
                     return Chip(
                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       labelPadding: const EdgeInsets.symmetric(horizontal: 5.0),

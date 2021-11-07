@@ -115,6 +115,7 @@ class EventsUseCases {
                         (eventMap['notifications'] as List<dynamic>)
                             .first
                             ?.toDate();
+                    eventMap.remove('notifications');
                   }
                   if (eventMap['notificationsIDs'] != null) {
                     eventMap['notificationsIDs'] = List<int>.from(

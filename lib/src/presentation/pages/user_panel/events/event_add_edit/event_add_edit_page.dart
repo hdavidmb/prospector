@@ -7,7 +7,7 @@ import '../../../../../features/events/domain/entites/event_entity.dart';
 import 'logic/event_form_providers.dart';
 import 'widgets/event_form.dart';
 
-class EventAddEditPage extends StatelessWidget {
+class EventAddEditPage extends StatefulWidget {
   final Event? editingEvent;
   const EventAddEditPage({
     Key? key,
@@ -15,14 +15,20 @@ class EventAddEditPage extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  _EventAddEditPageState createState() => _EventAddEditPageState();
+}
+
+class _EventAddEditPageState extends State<EventAddEditPage> {
+  @override
+  void initState() {
+    super.initState();
     //TODO: try this on contactAddEditPage to avoid setting the editing state before navigating
     WidgetsBinding.instance!.addPostFrameCallback(
       (_) {
-        if (editingEvent != null) {
+        if (widget.editingEvent != null) {
           context
               .read(eventFormProvider.notifier)
-              .setEditingState(editingEvent: editingEvent!);
+              .setEditingState(editingEvent: widget.editingEvent!);
         } else {
           final DateTime selectedDay =
               context.read(eventsViewProvider).selectedDay;
@@ -32,20 +38,24 @@ class EventAddEditPage extends StatelessWidget {
         }
       },
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        // TODO test
+        //TODO check if this can go on the dispose method
         context.read(eventFormProvider.notifier).reset();
         return true;
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(editingEvent != null
+          title: Text(widget.editingEvent != null
               ? AppLocalizations.of(context).editEvent
               : AppLocalizations.of(context).newEvent),
         ),
         body: EventForm(
-          editingEvent: editingEvent,
+          editingEvent: widget.editingEvent,
         ),
       ),
     );

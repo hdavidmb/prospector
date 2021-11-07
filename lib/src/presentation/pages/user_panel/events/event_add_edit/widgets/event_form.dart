@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/helpers/date_formatters.dart';
+import 'package:prospector/src/presentation/theme/theme_providers.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/events/domain/entites/event_entity.dart';
@@ -20,6 +22,7 @@ class EventForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const Divider divider = Divider(height: 0.0, indent: 10.0, endIndent: 10.0);
     const double horizontalPadding = 10.0;
     final bool isEditing = editingEvent != null;
 
@@ -49,6 +52,7 @@ class EventForm extends StatelessWidget {
         builder: (context, watch, child) {
           final EventFormState formState = watch(eventFormProvider);
           final bool showErrorMessages = formState.showErrorMessages;
+          final bool is24hours = watch(themeNotifierProvider).is24hours;
           return GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
             child: Form(
@@ -82,25 +86,74 @@ class EventForm extends StatelessWidget {
                           context.read(eventFormProvider.notifier).titleChanged,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 6.0, horizontal: horizontalPadding),
-                    child: LocationTextField(
-                      isForEvents: true,
-                      location: formState.location,
-                      onLocationChanged: context
-                          .read(eventFormProvider.notifier)
-                          .locationChanged,
+                  if (formState.isEvent)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 6.0, horizontal: horizontalPadding),
+                      child: LocationTextField(
+                        isForEvents: true,
+                        location: formState.location,
+                        onLocationChanged: context
+                            .read(eventFormProvider.notifier)
+                            .locationChanged,
+                      ),
                     ),
-                  ),
                   const SizedBox(height: 12.0),
-                  const Divider(height: 0.0, indent: 10.0, endIndent: 10.0),
+                  divider,
                   SwitchListTile.adaptive(
                     value: formState.allDay,
                     onChanged:
                         context.read(eventFormProvider.notifier).allDayChanged,
                     title: Text(AppLocalizations.of(context).allDay),
                   ),
+                  ListTile(
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(formState.allDay || !formState.isEvent
+                            ? 'When'
+                            : 'Start'), //TODO localize
+                        Text(
+                          dateTileFormattedDate(
+                            allDay: formState.allDay,
+                            is24hours: is24hours,
+                            date: formState.startDate,
+                          ),
+                          style: const TextStyle(
+                              fontSize: 16.0, color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                    trailing:
+                        const Icon(Icons.navigate_next, color: Colors.grey),
+                    onTap: () {
+                      //TODO set start date changed on notifier
+                    },
+                  ),
+                  if (!formState.allDay && formState.isEvent)
+                    ListTile(
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('End'), //TODO localize
+                          Text(
+                            dateTileFormattedDate(
+                              allDay: formState.allDay,
+                              is24hours: is24hours,
+                              date: formState.endDate,
+                            ),
+                            style: const TextStyle(
+                                fontSize: 16.0, color: Colors.grey),
+                          ),
+                        ],
+                      ),
+                      trailing:
+                          const Icon(Icons.navigate_next, color: Colors.grey),
+                      onTap: () {
+                        //TODO set end date changed on notifier
+                      },
+                    ),
+                  divider,
                   //TODO temporal delete
                   ElevatedButton(
                       onPressed: () => print(context.read(eventFormProvider)),

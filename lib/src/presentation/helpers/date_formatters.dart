@@ -63,6 +63,17 @@ String eventTileFormatedDate({
   }
 }
 
+String dateTileFormattedDate(
+    {required bool allDay, required bool is24hours, required DateTime date}) {
+  //TODO test
+  final DateFormat dateFormat = allDay
+      ? DateFormat.yMMMMd(Intl.getCurrentLocale())
+      : is24hours
+          ? DateFormat.yMMMMd(Intl.getCurrentLocale()).add_Hm()
+          : DateFormat.yMMMMd(Intl.getCurrentLocale()).add_jm();
+  return dateFormat.format(date);
+}
+
 String eventDetailsFormatedDate({
   required DateTime startDate,
   required DateTime endDate,

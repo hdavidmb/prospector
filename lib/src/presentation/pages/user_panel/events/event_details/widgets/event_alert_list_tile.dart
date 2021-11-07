@@ -19,9 +19,9 @@ class EventAlertListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(AppLocalizations.of(context).alert),
-          Expanded(child: Container()),
           Text(
             event.notification.text,
             style: const TextStyle(fontSize: 16.0, color: Colors.grey),
