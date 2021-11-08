@@ -5,8 +5,9 @@ import 'package:http/http.dart' as http;
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:prospector/generated/l10n.dart';
-import 'package:prospector/src/core/private/private_keys.dart';
+
+import '../../../../generated/l10n.dart';
+import '../../../core/private/private_keys.dart';
 
 class CustomPlacesAlertDialog extends StatefulWidget {
   const CustomPlacesAlertDialog({

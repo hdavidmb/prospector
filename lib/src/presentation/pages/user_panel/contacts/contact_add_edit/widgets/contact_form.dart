@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../../../generated/l10n.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
 import '../../../../../core/dialogs.dart';
 import '../logic/contact_form_provider.dart';

@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:prospector/src/features/events/domain/entites/event_alert.dart';
 
 import '../../../../../../core/database/database_failures/database_failure.dart';
+import '../../../../../../features/events/domain/entites/event_alert.dart';
 
 part 'event_form_state.freezed.dart';
 

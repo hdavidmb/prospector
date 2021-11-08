@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/pages/user_panel/events/events_view/logic/events_view_providers.dart';
 
 import '../../../../../../generated/l10n.dart';
 import '../../../../../features/events/domain/entites/event_entity.dart';
+import '../events_view/logic/events_view_providers.dart';
 import 'logic/event_form_providers.dart';
 import 'widgets/event_form.dart';
 

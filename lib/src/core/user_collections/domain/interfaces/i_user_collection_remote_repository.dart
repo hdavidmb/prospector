@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
+
+import '../../../database/database_failures/database_failure.dart';
 
 abstract class IUserCollectionRemoteRepository {
   // CRUD

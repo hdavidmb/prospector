@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import 'package:prospector/generated/l10n.dart';
-import 'package:prospector/src/presentation/pages/user_panel/events/guests_selection/widgets/guests_input.dart';
+import '../../../../../../generated/l10n.dart';
+import 'widgets/guests_input.dart';
 
 class GuestsSelectionPage extends StatelessWidget {
   final List<String>? initialGuests;

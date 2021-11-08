@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/pages/user_panel/events/events_view/events_view_page.dart';
 
 import '../../contacts/contact_add_edit/contact_add_edit_page.dart';
 import '../../contacts/contacts_list/contacts_list_page.dart';
+import '../../events/events_view/events_view_page.dart';
 import '../../settings/settings_menu/settings_menu_page.dart';
 import '../logic/home_index_provider.dart';
 

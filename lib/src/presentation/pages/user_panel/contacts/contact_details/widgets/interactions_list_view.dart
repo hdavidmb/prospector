@@ -2,14 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:prospector/src/features/events/application/events_providers.dart';
-import 'package:prospector/src/features/events/domain/entites/event_entity.dart';
-import 'package:prospector/src/presentation/core/widgets/dismissible_background.dart';
-import 'package:prospector/src/presentation/routes/app_router.gr.dart';
-
+import '../../../../../../features/events/application/events_providers.dart';
+import '../../../../../../features/events/domain/entites/event_entity.dart';
 import '../../../../../../features/interactions/application/interactions_providers.dart';
 import '../../../../../../features/interactions/domain/entity/interaction_entity.dart';
+import '../../../../../core/widgets/dismissible_background.dart';
 import '../../../../../helpers/date_formatters.dart';
+import '../../../../../routes/app_router.gr.dart';
 
 class InteractionsListView extends ConsumerWidget {
   final String contactID;

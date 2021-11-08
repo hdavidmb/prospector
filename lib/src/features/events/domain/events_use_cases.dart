@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/features/events/domain/entites/event_entity.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
 import '../../../core/user_collections/domain/interfaces/i_user_collection_local_repository.dart';
 import '../../../core/user_collections/domain/interfaces/i_user_collection_remote_repository.dart';
+import 'entites/event_entity.dart';
 
 class EventsUseCases {
   final IUserCollectionLocalRepository localEventsRepository;

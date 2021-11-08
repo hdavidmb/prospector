@@ -1,11 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import 'package:prospector/generated/l10n.dart';
-import 'package:prospector/src/presentation/core/dialogs.dart';
-import 'package:prospector/src/presentation/helpers/date_formatters.dart';
-import 'package:prospector/src/presentation/pages/user_panel/events/events_view/logic/events_view_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/theme/theme_providers.dart';
+
+import '../../../../../../generated/l10n.dart';
+import '../../../../core/dialogs.dart';
+import '../../../../helpers/date_formatters.dart';
+import '../../../../theme/theme_providers.dart';
+import '../../events/events_view/logic/events_view_providers.dart';
 
 class EventsSettingsPage extends StatelessWidget {
   const EventsSettingsPage({

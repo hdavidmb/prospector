@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
-import 'package:prospector/src/features/events/domain/entites/event_entity.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
 
+import '../../../core/database/database_failures/database_failure.dart';
+import '../../user/application/user_info_providers.dart';
+import '../domain/entites/event_entity.dart';
 import '../domain/events_use_cases.dart';
 import 'events_state.dart';
 

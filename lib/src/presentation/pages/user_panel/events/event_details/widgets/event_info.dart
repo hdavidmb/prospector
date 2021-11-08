@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:prospector/src/features/events/domain/entites/event_entity.dart';
 
 import '../../../../../../../generated/l10n.dart';
+import '../../../../../../features/events/domain/entites/event_entity.dart';
 import '../../../../../helpers/date_formatters.dart';
 
 class EventInfo extends StatelessWidget {

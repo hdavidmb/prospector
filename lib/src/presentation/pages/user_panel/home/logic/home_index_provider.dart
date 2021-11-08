@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:prospector/src/core/shared_prefs/shared_prefs.dart';
-import 'package:prospector/src/core/shared_prefs/shared_prefs_provider.dart';
+import '../../../../../core/shared_prefs/shared_prefs.dart';
+import '../../../../../core/shared_prefs/shared_prefs_provider.dart';
 
 final homeIndexProvider = ChangeNotifierProvider<HomeIndexNotifier>((ref) {
   final _prefs = ref.watch(userSharedPrefsProvider);
