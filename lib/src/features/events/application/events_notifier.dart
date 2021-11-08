@@ -38,6 +38,7 @@ class EventsNotifier extends ChangeNotifier {
             ..sort((a, b) =>
                 b.startDate.compareTo(a.startDate)); //TODO check sort order
           // TODO Schedule local notification
+          notifyListeners();
           return right(unit);
         },
       );

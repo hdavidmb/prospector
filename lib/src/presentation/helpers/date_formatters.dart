@@ -29,14 +29,23 @@ String localizedWeekday(int day) {
 bool isSameDay(DateTime a, DateTime b) =>
     a.year == b.year && a.month == b.month && a.day == b.day;
 
+bool isBeforeDay(DateTime a, DateTime b) =>
+    a.year <= b.year && a.month <= b.month && a.day <= b.day;
+
+bool isAfterDay(DateTime a, DateTime b) =>
+    a.year >= b.year && a.month >= b.month && a.day >= b.day;
+
 /// Checks if [date] is the same day as [startDate] or [endDate] or in between.
 bool isBetweenDays(
-        {required DateTime date,
-        required DateTime startDate,
-        required DateTime endDate}) =>
-    isSameDay(date, startDate) ||
-    isSameDay(date, endDate) ||
-    (date.isAfter(startDate) && date.isBefore(endDate));
+    {required DateTime date,
+    required DateTime startDate,
+    required DateTime endDate}) {
+  final isAfter = isAfterDay(date, startDate);
+  final isBefore = isBeforeDay(date, endDate);
+  return isSameDay(date, startDate) ||
+      isSameDay(date, endDate) ||
+      (isAfter && isBefore);
+}
 
 String eventTileFormatedDate({
   required DateTime selectedDate,
