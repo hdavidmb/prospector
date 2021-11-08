@@ -92,6 +92,15 @@ class AppRouter extends _i1.RootStackRouter {
           return _i8.ContactAddEditPage(
               key: args.key, editingContact: args.editingContact);
         }),
+    ContactAddEditMaterialRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<ContactAddEditMaterialRouteArgs>(
+              orElse: () => const ContactAddEditMaterialRouteArgs());
+          return _i8.ContactAddEditPage(
+              key: args.key, editingContact: args.editingContact);
+        },
+        fullscreenDialog: true),
     UserProfileRoute.name: (routeData) => _i1.CupertinoPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
@@ -171,6 +180,8 @@ class AppRouter extends _i1.RootStackRouter {
             path: '/contact-details-page'),
         _i1.RouteConfig(ContactAddEditRoute.name,
             path: '/contact-add-edit-page'),
+        _i1.RouteConfig(ContactAddEditMaterialRoute.name,
+            path: '/contact-add-edit-page'),
         _i1.RouteConfig(UserProfileRoute.name, path: '/user-profile-page'),
         _i1.RouteConfig(ChangeEmailRoute.name, path: '/change-email-page'),
         _i1.RouteConfig(ChangePasswordRoute.name,
@@ -245,6 +256,25 @@ class ContactAddEditRoute extends _i1.PageRouteInfo<ContactAddEditRouteArgs> {
 
 class ContactAddEditRouteArgs {
   const ContactAddEditRouteArgs({this.key, this.editingContact});
+
+  final _i2.Key? key;
+
+  final _i21.Contact? editingContact;
+}
+
+class ContactAddEditMaterialRoute
+    extends _i1.PageRouteInfo<ContactAddEditMaterialRouteArgs> {
+  ContactAddEditMaterialRoute({_i2.Key? key, _i21.Contact? editingContact})
+      : super(name,
+            path: '/contact-add-edit-page',
+            args: ContactAddEditMaterialRouteArgs(
+                key: key, editingContact: editingContact));
+
+  static const String name = 'ContactAddEditMaterialRoute';
+}
+
+class ContactAddEditMaterialRouteArgs {
+  const ContactAddEditMaterialRouteArgs({this.key, this.editingContact});
 
   final _i2.Key? key;
 

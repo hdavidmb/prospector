@@ -36,6 +36,10 @@ import '../pages/user_panel/settings/user_profile/user_profile_page.dart';
         path: '/register'),
     CupertinoRoute(page: ContactDetailsPage),
     CupertinoRoute(page: ContactAddEditPage),
+    MaterialRoute(
+        page: ContactAddEditPage,
+        name: 'ContactAddEditMaterialRoute',
+        fullscreenDialog: true),
     CupertinoRoute(page: UserProfilePage),
     CupertinoRoute(page: ChangeEmailPage),
     CupertinoRoute(page: ChangePasswordPage),
