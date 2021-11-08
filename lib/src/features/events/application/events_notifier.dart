@@ -35,8 +35,7 @@ class EventsNotifier extends ChangeNotifier {
         (unit) {
           _events
             ..add(event)
-            ..sort((a, b) =>
-                b.startDate.compareTo(a.startDate)); //TODO check sort order
+            ..sort((a, b) => b.startDate.compareTo(a.startDate));
           // TODO Schedule local notification
           notifyListeners();
           return right(unit);
@@ -56,8 +55,7 @@ class EventsNotifier extends ChangeNotifier {
         getResult.fold(
           (failure) => _eventsState = const EventsState.error(),
           (eventsList) {
-            eventsList.sort((a, b) =>
-                b.startDate.compareTo(a.startDate)); //TODO check sort order
+            eventsList.sort((a, b) => b.startDate.compareTo(a.startDate));
             _events = eventsList;
             _eventsState = const EventsState.ready();
           },
@@ -84,8 +82,7 @@ class EventsNotifier extends ChangeNotifier {
           final int index = _events
               .indexWhere((listEvent) => listEvent.id == newEventInfo.id);
           _events[index] = newEventInfo;
-          _events.sort((a, b) =>
-              b.startDate.compareTo(a.startDate)); //TODO check sort order
+          _events.sort((a, b) => b.startDate.compareTo(a.startDate));
           notifyListeners();
           return right(unit);
         },

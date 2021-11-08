@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:io' show Platform;
 
 import 'package:auto_route/auto_route.dart';
 import 'package:country_code_picker/country_code_picker.dart';
@@ -11,7 +9,6 @@ import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // ignore: implementation_imports
 import 'package:google_maps_webservice/src/places.dart' show Prediction;
-import "package:http/http.dart" as http;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:prospector/generated/l10n.dart';
 import 'package:prospector/src/core/database/database_failures/database_failure.dart';

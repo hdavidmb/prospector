@@ -1,12 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../generated/l10n.dart';
 import '../../../../../features/events/domain/entites/event_alert.dart';
-import '../../../../../features/events/domain/entites/event_entity.dart';
 import '../../../../core/dialogs.dart';
-import '../event_details/logic/event_details_providers.dart';
 
 class EventAlertListTile extends StatelessWidget {
   final EventAlert eventAlert;
@@ -37,8 +34,6 @@ class EventAlertListTile extends StatelessWidget {
         Future.delayed(
           Duration.zero,
           () => onSelectAlert(selectedAlert),
-          // () => context.read(eventDetailsPageProvider).alertListTilePressed(
-          //     event: event, selectedAlert: selectedAlert),
         );
       },
     );

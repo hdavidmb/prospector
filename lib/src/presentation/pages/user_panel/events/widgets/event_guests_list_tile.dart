@@ -9,7 +9,7 @@ import '../../../../routes/app_router.gr.dart';
 import '../../contacts/contact_add_edit/widgets/contact_image.dart';
 
 class EventGuestsListTile extends StatelessWidget {
-  final List<String>? guests; //TODO change to initialGuests
+  final List<String>? guests;
   final void Function(List<String>? selectedGuests) onSelectGuests;
   const EventGuestsListTile({
     Key? key,

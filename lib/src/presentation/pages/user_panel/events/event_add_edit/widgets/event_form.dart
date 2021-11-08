@@ -171,7 +171,7 @@ class EventForm extends StatelessWidget {
                     ),
                   ),
 
-                  // TODO * Delete button
+                  // * Delete button
                   if (isEditing) ...[
                     const SizedBox(height: 10.0),
                     TextButton(

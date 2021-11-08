@@ -102,11 +102,10 @@ class InteractionListTile extends StatelessWidget {
               .read(interactionsNotifierProvider)
               .deleteInteraction(interactionID: objectID);
         } else {
-          // TODO remove contact from event
           context.read(eventsNotifierProvider).removeContactFromEvent(
               contactID: contactID, event: object as Event);
         }
-      }, // TODO test
+      },
       child: ListTile(
         leading: Icon(icon),
         title: Text(description),

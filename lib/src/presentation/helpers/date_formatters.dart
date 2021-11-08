@@ -60,15 +60,15 @@ String eventTileFormatedDate({
   if (event.type == 'reminder') {
     return formattedStartDate;
   } else if (event.allDay) {
-    return AppLocalizations.current.allDay; //TODO test
+    return AppLocalizations.current.allDay;
   } else if (isSameDay(event.startDate, event.endDate)) {
     return '$formattedStartDate - $formattedEndDate';
   } else if (isSameDay(selectedDate, event.startDate)) {
-    return '${AppLocalizations.current.startsAt} $formattedStartDate'; //TODO test
+    return '${AppLocalizations.current.startsAt} $formattedStartDate';
   } else if (isSameDay(selectedDate, event.endDate)) {
-    return '${AppLocalizations.current.endsAt} $formattedEndDate'; //TODO test
+    return '${AppLocalizations.current.endsAt} $formattedEndDate';
   } else {
-    return AppLocalizations.current.allDay; //TODO test
+    return AppLocalizations.current.allDay;
   }
 }
 
@@ -91,11 +91,11 @@ String eventDetailsFormatedDate({
 }) {
   if (isSameDay(startDate, endDate)) {
     final dateFormat = DateFormat.yMMMMd(Intl.getCurrentLocale());
-    return '${dateFormat.format(startDate)}\n${formattedTime(is24hours: is24hours, date: startDate)} - ${formattedTime(is24hours: is24hours, date: endDate)}'; //TODO test
+    return '${dateFormat.format(startDate)}\n${formattedTime(is24hours: is24hours, date: startDate)} - ${formattedTime(is24hours: is24hours, date: endDate)}';
   } else {
     final DateFormat dateFormat = is24hours
-        ? DateFormat.yMMMMEEEEd(Intl.getCurrentLocale()).add_Hm()
-        : DateFormat.yMMMMEEEEd(Intl.getCurrentLocale()).add_jm(); //TODO test
-    return '${dateFormat.format(startDate)} - ${dateFormat.format(endDate)}';
+        ? DateFormat.yMMMMd(Intl.getCurrentLocale()).add_Hm()
+        : DateFormat.yMMMMd(Intl.getCurrentLocale()).add_jm();
+    return '${dateFormat.format(startDate)} -\n${dateFormat.format(endDate)}';
   }
 }

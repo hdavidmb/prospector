@@ -38,8 +38,6 @@ class EventListTile extends StatelessWidget {
         leading:
             Icon(event.type == 'event' ? Icons.event : Icons.notifications),
         onTap: () {
-          // TODO navigate to event details or edit page
-          // TODO if event is reminder navigate to edit page
           AutoRouter.of(context).push(EventDetailsRoute(eventID: event.id));
         },
       ),
