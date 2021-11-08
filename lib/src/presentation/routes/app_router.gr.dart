@@ -7,14 +7,21 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
-import '../../features/contacts/domain/entity/contact_entity.dart' as _i17;
+import '../../features/contacts/domain/entity/contact_entity.dart' as _i21;
+import '../../features/events/domain/entites/event_entity.dart' as _i22;
 import '../pages/auth/register/register_page.dart' as _i6;
 import '../pages/auth/sign_in/sign_in_page.dart' as _i5;
-import '../pages/splash/splash_screen_page.dart' as _i3;
+import '../pages/auth/splash/splash_screen_page.dart' as _i3;
 import '../pages/user_panel/contacts/contact_add_edit/contact_add_edit_page.dart'
     as _i8;
 import '../pages/user_panel/contacts/contact_details/contact_details_page.dart'
     as _i7;
+import '../pages/user_panel/events/event_add_edit/event_add_edit_page.dart'
+    as _i20;
+import '../pages/user_panel/events/event_details/event_details_page.dart'
+    as _i18;
+import '../pages/user_panel/events/guests_selection/guests_selection_page.dart'
+    as _i19;
 import '../pages/user_panel/home/home_page.dart' as _i4;
 import '../pages/user_panel/settings/change_email/change_email_page.dart'
     as _i10;
@@ -22,6 +29,8 @@ import '../pages/user_panel/settings/change_password/change_password_page.dart'
     as _i11;
 import '../pages/user_panel/settings/country_code/country_code_page.dart'
     as _i16;
+import '../pages/user_panel/settings/events_settings/events_settings_page.dart'
+    as _i17;
 import '../pages/user_panel/settings/import_contacts/import_contacts/import_contacts_page.dart'
     as _i15;
 import '../pages/user_panel/settings/import_contacts/import_contacts_menu/import_contacts_menu_page.dart'
@@ -122,6 +131,33 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (_) {
           return const _i16.CountryCodePage();
+        }),
+    EventsSettingsRoute.name: (routeData) => _i1.CupertinoPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i17.EventsSettingsPage();
+        }),
+    EventDetailsRoute.name: (routeData) => _i1.CupertinoPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<EventDetailsRouteArgs>();
+          return _i18.EventDetailsPage(key: args.key, eventID: args.eventID);
+        }),
+    GuestsSelectionRoute.name: (routeData) => _i1.CupertinoPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<GuestsSelectionRouteArgs>(
+              orElse: () => const GuestsSelectionRouteArgs());
+          return _i19.GuestsSelectionPage(
+              key: args.key, initialGuests: args.initialGuests);
+        }),
+    EventAddEditRoute.name: (routeData) => _i1.CupertinoPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<EventAddEditRouteArgs>(
+              orElse: () => const EventAddEditRouteArgs());
+          return _i20.EventAddEditPage(
+              key: args.key, editingEvent: args.editingEvent);
         })
   };
 
@@ -146,7 +182,13 @@ class AppRouter extends _i1.RootStackRouter {
             path: '/imported-contacts-page'),
         _i1.RouteConfig(ImportContactsRoute.name,
             path: '/import-contacts-page'),
-        _i1.RouteConfig(CountryCodeRoute.name, path: '/country-code-page')
+        _i1.RouteConfig(CountryCodeRoute.name, path: '/country-code-page'),
+        _i1.RouteConfig(EventsSettingsRoute.name,
+            path: '/events-settings-page'),
+        _i1.RouteConfig(EventDetailsRoute.name, path: '/event-details-page'),
+        _i1.RouteConfig(GuestsSelectionRoute.name,
+            path: '/guests-selection-page'),
+        _i1.RouteConfig(EventAddEditRoute.name, path: '/event-add-edit-page')
       ];
 }
 
@@ -192,7 +234,7 @@ class ContactDetailsRouteArgs {
 }
 
 class ContactAddEditRoute extends _i1.PageRouteInfo<ContactAddEditRouteArgs> {
-  ContactAddEditRoute({_i2.Key? key, _i17.Contact? editingContact})
+  ContactAddEditRoute({_i2.Key? key, _i21.Contact? editingContact})
       : super(name,
             path: '/contact-add-edit-page',
             args: ContactAddEditRouteArgs(
@@ -206,7 +248,7 @@ class ContactAddEditRouteArgs {
 
   final _i2.Key? key;
 
-  final _i17.Contact? editingContact;
+  final _i21.Contact? editingContact;
 }
 
 class UserProfileRoute extends _i1.PageRouteInfo {
@@ -256,4 +298,62 @@ class CountryCodeRoute extends _i1.PageRouteInfo {
   const CountryCodeRoute() : super(name, path: '/country-code-page');
 
   static const String name = 'CountryCodeRoute';
+}
+
+class EventsSettingsRoute extends _i1.PageRouteInfo {
+  const EventsSettingsRoute() : super(name, path: '/events-settings-page');
+
+  static const String name = 'EventsSettingsRoute';
+}
+
+class EventDetailsRoute extends _i1.PageRouteInfo<EventDetailsRouteArgs> {
+  EventDetailsRoute({_i2.Key? key, required String eventID})
+      : super(name,
+            path: '/event-details-page',
+            args: EventDetailsRouteArgs(key: key, eventID: eventID));
+
+  static const String name = 'EventDetailsRoute';
+}
+
+class EventDetailsRouteArgs {
+  const EventDetailsRouteArgs({this.key, required this.eventID});
+
+  final _i2.Key? key;
+
+  final String eventID;
+}
+
+class GuestsSelectionRoute extends _i1.PageRouteInfo<GuestsSelectionRouteArgs> {
+  GuestsSelectionRoute({_i2.Key? key, List<String>? initialGuests})
+      : super(name,
+            path: '/guests-selection-page',
+            args: GuestsSelectionRouteArgs(
+                key: key, initialGuests: initialGuests));
+
+  static const String name = 'GuestsSelectionRoute';
+}
+
+class GuestsSelectionRouteArgs {
+  const GuestsSelectionRouteArgs({this.key, this.initialGuests});
+
+  final _i2.Key? key;
+
+  final List<String>? initialGuests;
+}
+
+class EventAddEditRoute extends _i1.PageRouteInfo<EventAddEditRouteArgs> {
+  EventAddEditRoute({_i2.Key? key, _i22.Event? editingEvent})
+      : super(name,
+            path: '/event-add-edit-page',
+            args: EventAddEditRouteArgs(key: key, editingEvent: editingEvent));
+
+  static const String name = 'EventAddEditRoute';
+}
+
+class EventAddEditRouteArgs {
+  const EventAddEditRouteArgs({this.key, this.editingEvent});
+
+  final _i2.Key? key;
+
+  final _i22.Event? editingEvent;
 }

@@ -8,7 +8,8 @@ import '../../../../../../features/contacts/application/contacts_providers.dart'
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
 import '../../../../../../features/import_contacts/application/import_contacts_providers.dart';
 import '../../../../../../features/import_contacts/domain/entity/imported_contact_entity.dart';
-import '../../../../../core/no_contatcs_screen/no_contacts_screen.dart';
+import '../../../../../core/widgets/dismissible_background.dart';
+import '../../../../../core/widgets/no_contatcs_screen/no_contacts_screen.dart';
 import '../../../../../routes/app_router.gr.dart';
 import '../../../contacts/contact_add_edit/logic/contact_form_provider.dart';
 import '../../../contacts/contact_add_edit/widgets/contact_image.dart';
@@ -48,12 +49,7 @@ class ImportedContactsPage extends ConsumerWidget {
                 return Dismissible(
                   key: Key(contact.id),
                   direction: DismissDirection.endToStart,
-                  background: Container(
-                    color: Colors.red,
-                    alignment: Alignment.centerRight,
-                    padding: const EdgeInsets.only(right: 20.0),
-                    child: const Icon(Icons.delete, color: Colors.white),
-                  ),
+                  background: const DismissibleBackground(),
                   onDismissed: (direction) {
                     deleteContact(context, contact.id);
                   },

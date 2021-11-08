@@ -29,14 +29,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "affiliate": MessageLookupByLibrary.simpleMessage("Afiliar"),
         "affiliateAs": MessageLookupByLibrary.simpleMessage("Afiliar como"),
         "affiliatedP": MessageLookupByLibrary.simpleMessage("Afiliados"),
+        "alert": MessageLookupByLibrary.simpleMessage("Alerta"),
+        "allDay": MessageLookupByLibrary.simpleMessage("Todo el día"),
         "allowAccess": MessageLookupByLibrary.simpleMessage(
             "Por favor habilitalo en la configuración de tu dispositivo."),
         "appStateError": MessageLookupByLibrary.simpleMessage(
             "Ha habido un error al iniciar la aplicación. Comprueba tu conexión a internet y vuelve a intentarlo más tarde."),
         "areYouSureDeleteAccount": MessageLookupByLibrary.simpleMessage(
             "Confirma que deseas eliminar tu cuenta."),
+        "areYouSureDeleteEvent": MessageLookupByLibrary.simpleMessage(
+            "Confirma que deseas eliminar este prospecto"),
         "areYouSureDeleteProspect": MessageLookupByLibrary.simpleMessage(
             "Confirma que deseas eliminar este prospecto"),
+        "atEventTime":
+            MessageLookupByLibrary.simpleMessage("A la hora del evento"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
         "changeEmail":
             MessageLookupByLibrary.simpleMessage("Cambiar correo electrónico"),
@@ -63,17 +69,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentEmail": MessageLookupByLibrary.simpleMessage("Correo actual"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Contraseña actual"),
+        "customPlacesMessage": MessageLookupByLibrary.simpleMessage(
+            "Puedes seleccionar una ubicación de la lista o presionar \'Enter\' en tu teclado para usar lo que escribiste como ubicación."),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Modo oscuro"),
+        "dayBefore": MessageLookupByLibrary.simpleMessage("día antes"),
+        "daysBefore": MessageLookupByLibrary.simpleMessage("días antes"),
         "defaultCountryCodeMessage": MessageLookupByLibrary.simpleMessage(
             "Este código se utilizará de forma predeterminada para sus contactos locales. Para sus contactos internacionales, asegúrese de agregar el símbolo \'+\' y su código de país. De lo contrario, Whatsapp no ​​podrá identificar correctamente a su contacto."),
         "delete": MessageLookupByLibrary.simpleMessage("Eliminar"),
         "deleteAccount":
             MessageLookupByLibrary.simpleMessage("Eliminar cuenta"),
         "deleteCap": MessageLookupByLibrary.simpleMessage("ELIMINAR"),
+        "deleteEvent": MessageLookupByLibrary.simpleMessage("Eliminar evento"),
         "deleteProspect":
             MessageLookupByLibrary.simpleMessage("Eliminar prospecto"),
         "disable": MessageLookupByLibrary.simpleMessage("Deshabilitar"),
         "edit": MessageLookupByLibrary.simpleMessage("Editar"),
+        "editEvent": MessageLookupByLibrary.simpleMessage("Editar evento"),
         "editImage": MessageLookupByLibrary.simpleMessage("Editar imagen"),
         "editProspect":
             MessageLookupByLibrary.simpleMessage("Editar prospecto"),
@@ -83,13 +95,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailsDontMatch":
             MessageLookupByLibrary.simpleMessage("Los correos no coinciden"),
         "enable": MessageLookupByLibrary.simpleMessage("Habilitar"),
+        "end": MessageLookupByLibrary.simpleMessage("Termina"),
+        "endsAt": MessageLookupByLibrary.simpleMessage("Termina"),
         "enterAPassword":
             MessageLookupByLibrary.simpleMessage("Ingresa una contraseña"),
         "enterYourName":
             MessageLookupByLibrary.simpleMessage("Ingresa tu nombre"),
         "enterYourPasswordToConfirm": MessageLookupByLibrary.simpleMessage(
             "Ingresa tu contraseña para confirmar"),
+        "event": MessageLookupByLibrary.simpleMessage("Evento"),
+        "eventDetails":
+            MessageLookupByLibrary.simpleMessage("Detalles de evento"),
         "events": MessageLookupByLibrary.simpleMessage("Eventos"),
+        "eventsSettings":
+            MessageLookupByLibrary.simpleMessage("Configuración de eventos"),
         "executive": MessageLookupByLibrary.simpleMessage("Ejecutivo"),
         "executiveF": MessageLookupByLibrary.simpleMessage("Ejecutiva"),
         "executives": MessageLookupByLibrary.simpleMessage("Ejecutivos"),
@@ -104,8 +123,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Elimina la Publicidad"),
         "goToSettings":
             MessageLookupByLibrary.simpleMessage("Ir a Configuración"),
+        "guests": MessageLookupByLibrary.simpleMessage("Invitados"),
         "hidePasswords":
             MessageLookupByLibrary.simpleMessage("Ocultar contraseñas"),
+        "hourBefore": MessageLookupByLibrary.simpleMessage("hora antes"),
+        "hours": MessageLookupByLibrary.simpleMessage("horas"),
+        "hoursBefore": MessageLookupByLibrary.simpleMessage("horas antes"),
         "import": MessageLookupByLibrary.simpleMessage("Importar"),
         "importContacts":
             MessageLookupByLibrary.simpleMessage("Importar contactos"),
@@ -121,14 +144,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "lightTheme": MessageLookupByLibrary.simpleMessage("Modo claro"),
         "loadingContacts":
             MessageLookupByLibrary.simpleMessage("Cargando contactos..."),
+        "location": MessageLookupByLibrary.simpleMessage("Ubicación"),
         "logOut": MessageLookupByLibrary.simpleMessage("Cerrar sesión"),
         "loggedInWith":
             MessageLookupByLibrary.simpleMessage("Iniciaste sesión con"),
         "male": MessageLookupByLibrary.simpleMessage("Masculino"),
         "membership": MessageLookupByLibrary.simpleMessage("Membresía"),
         "minutes": MessageLookupByLibrary.simpleMessage("minutos"),
+        "minutesBefore": MessageLookupByLibrary.simpleMessage("minutos antes"),
         "modifyCountryCodeMessage": MessageLookupByLibrary.simpleMessage(
             "Puedes modificar tu código de país en Configuración."),
+        "month": MessageLookupByLibrary.simpleMessage("Mes"),
         "moreInfo": MessageLookupByLibrary.simpleMessage("Más información"),
         "movedToF": MessageLookupByLibrary.simpleMessage("Movida a"),
         "movedToM": MessageLookupByLibrary.simpleMessage("Movido a"),
@@ -139,6 +165,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nombre (Requerido)"),
         "newEmail":
             MessageLookupByLibrary.simpleMessage("Nuevo correo electrónico"),
+        "newEvent": MessageLookupByLibrary.simpleMessage("Nuevo evento"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Nueva contraseña"),
         "newPhone": MessageLookupByLibrary.simpleMessage("Nuevo teléfono"),
         "newProspect": MessageLookupByLibrary.simpleMessage("Nuevo prospecto"),
@@ -159,6 +186,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Aún no tienes prospectos en esta lista.\nIntenta agregar nuevos prospectos o moverlos desde las otras listas."),
         "noSearchProspectsMessage": MessageLookupByLibrary.simpleMessage(
             "No hay ningún prospecto que coincida con la busqueda."),
+        "none": MessageLookupByLibrary.simpleMessage("Ninguna"),
         "notContacted": MessageLookupByLibrary.simpleMessage("No contactado"),
         "notContactedF": MessageLookupByLibrary.simpleMessage("No contactada"),
         "notContactedP": MessageLookupByLibrary.simpleMessage("No contactados"),
@@ -182,7 +210,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Esta es una característica premium.\nAdquiere alguna de nuestras suscripciones premium para acceder a esta función y llevar tu negocio al siguiente nivel."),
         "present": MessageLookupByLibrary.simpleMessage("Presentar"),
         "profile": MessageLookupByLibrary.simpleMessage("Perfil"),
-        "prospectDetails": MessageLookupByLibrary.simpleMessage("Detalles"),
+        "prospectDetails":
+            MessageLookupByLibrary.simpleMessage("Detalles de prospecto"),
         "prospectSavedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Prospecto guardado exitosamente"),
         "prospector": MessageLookupByLibrary.simpleMessage("Prospector"),
@@ -196,6 +225,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "reauthenticate": MessageLookupByLibrary.simpleMessage("Reautenticar"),
         "register": MessageLookupByLibrary.simpleMessage("Registro"),
         "registerButton": MessageLookupByLibrary.simpleMessage("Registrarme"),
+        "reminder": MessageLookupByLibrary.simpleMessage("Recordatorio"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("Restablecer contraseña"),
         "resetPasswordDialogMessage": MessageLookupByLibrary.simpleMessage(
@@ -206,7 +236,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("Buscar"),
         "selectANumber":
             MessageLookupByLibrary.simpleMessage("Seleciona un número"),
+        "selectAlert":
+            MessageLookupByLibrary.simpleMessage("Selecionar alerta"),
         "selectAll": MessageLookupByLibrary.simpleMessage("Seleccionar todos"),
+        "selectGuests":
+            MessageLookupByLibrary.simpleMessage("Seleccionar invitados"),
         "selectImage":
             MessageLookupByLibrary.simpleMessage("Seleccionar imagen"),
         "selectYourCountryCode": MessageLookupByLibrary.simpleMessage(
@@ -218,6 +252,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "showPasswords":
             MessageLookupByLibrary.simpleMessage("Mostrar contraseñas"),
         "signIn": MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
+        "start": MessageLookupByLibrary.simpleMessage("Inicia"),
+        "startsAt": MessageLookupByLibrary.simpleMessage("Inicia"),
         "statistics": MessageLookupByLibrary.simpleMessage("Estadisticas"),
         "syncContacts":
             MessageLookupByLibrary.simpleMessage("Sincronizar contactos"),
@@ -227,11 +263,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "takePhoto": MessageLookupByLibrary.simpleMessage("Tomar foto"),
         "thisAcctionCannotBeUndone": MessageLookupByLibrary.simpleMessage(
             "Esta acción no se puede deshacer."),
+        "timeFormat": MessageLookupByLibrary.simpleMessage("Formato de horas"),
+        "titleIsRequired":
+            MessageLookupByLibrary.simpleMessage("El título es requerido"),
+        "titleRequired":
+            MessageLookupByLibrary.simpleMessage("Título (Requerido)"),
         "toConfirm": MessageLookupByLibrary.simpleMessage("para confirmar."),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Reintentar"),
         "typeAnInteraction":
             MessageLookupByLibrary.simpleMessage("Ingresa una interacción..."),
         "typeHere": MessageLookupByLibrary.simpleMessage("Escribe aqui"),
+        "typeLocation":
+            MessageLookupByLibrary.simpleMessage("Ingresa una ubicación"),
         "typeTheWord":
             MessageLookupByLibrary.simpleMessage("Ingresa la palabra"),
         "unselectAll":
@@ -243,8 +286,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "Mira un corto video para tener"),
         "weakPassword": MessageLookupByLibrary.simpleMessage(
             "Contraseña débil. \n Debe ser de al menos 8 caracteres y contener: \n - 1 letra mayúscula \n - 1 letra minúscula \n - 1 número"),
+        "week": MessageLookupByLibrary.simpleMessage("Semana"),
+        "weekBefore": MessageLookupByLibrary.simpleMessage("semana antes"),
+        "weekStartsOn":
+            MessageLookupByLibrary.simpleMessage("Iniciar semana en"),
         "welcomeTo": MessageLookupByLibrary.simpleMessage("Bienvenido a"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
+        "when": MessageLookupByLibrary.simpleMessage("Cuando"),
         "youMayHaveToRelogin": MessageLookupByLibrary.simpleMessage(
             "Deberás autenticar tu cuenta social de nuevo.")
       };

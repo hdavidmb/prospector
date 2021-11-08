@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
-import '../../../../../core/contacts_search_field/contacts_search_field.dart';
 import '../../../../../core/dialogs.dart';
+import '../../../../../core/widgets/contacts_search_field/contacts_search_field.dart';
 
 class ContactsAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ContactsAppBar({

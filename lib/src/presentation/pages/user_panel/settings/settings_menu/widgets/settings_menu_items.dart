@@ -16,15 +16,22 @@ class SettingsMenuItems extends StatelessWidget {
     // {'title': AppLocalizations.of(context)!.membership}, //TODO implement
     {
       'title': AppLocalizations.current.importContacts,
+      'icon': Icons.people,
       'route': const ImportContactsMenuRoute(),
     },
-    // {'title': AppLocalizations.of(context)!.events}, //TODO implement
+    {
+      'title': AppLocalizations.current.events,
+      'icon': Icons.event,
+      'route': const EventsSettingsRoute(),
+    },
     {
       'title': AppLocalizations.current.tags,
+      'icon': Icons.local_offer,
       'route': const TagsSettingsRoute(),
     },
     {
       'title': AppLocalizations.current.countryCode,
+      'icon': Icons.dialpad,
       'route': const CountryCodeRoute(),
     },
   ];
@@ -38,6 +45,7 @@ class SettingsMenuItems extends StatelessWidget {
         [
           ListTile(
             title: Text(item['title'] as String),
+            leading: Icon(item['icon'] as IconData),
             trailing: const Icon(Icons.chevron_right),
             onTap: () {
               AutoRouter.of(context).push(item['route'] as PageRouteInfo);

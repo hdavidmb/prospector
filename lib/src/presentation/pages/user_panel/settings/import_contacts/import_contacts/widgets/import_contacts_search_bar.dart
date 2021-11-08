@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../../../generated/l10n.dart';
-import '../../../../../../core/contacts_search_field/contacts_search_field.dart';
+import '../../../../../../core/widgets/contacts_search_field/contacts_search_field.dart';
 import '../logic/impor_contacts_page_providers.dart';
 
 class ImportContactsSearchBar extends StatefulWidget {

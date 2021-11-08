@@ -13,8 +13,13 @@ final ColorScheme kDarkColorScheme = ThemeData.dark()
 const InputDecorationTheme kInputDecorationTheme = InputDecorationTheme(
   filled: true,
   enabledBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: Colors.transparent, width: 0.0)),
-  focusedBorder: UnderlineInputBorder(borderSide: BorderSide(width: 2.0)),
+    borderSide: BorderSide(color: Colors.transparent, width: 0.0),
+    borderRadius: BorderRadius.all(Radius.circular(4.0)),
+  ),
+  focusedBorder: UnderlineInputBorder(
+    borderSide: BorderSide(width: 2.0),
+    borderRadius: BorderRadius.all(Radius.circular(4.0)),
+  ),
 );
 
 final SwitchThemeData kSwitchTheme = SwitchThemeData(

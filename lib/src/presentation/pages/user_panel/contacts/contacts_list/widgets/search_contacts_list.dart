@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
-import '../../../../../core/no_contatcs_screen/no_contacts_screen.dart';
+import '../../../../../core/widgets/no_contatcs_screen/no_contacts_screen.dart';
 import '../../../../../routes/app_router.gr.dart';
 import 'contact_tile.dart';
 
@@ -15,6 +15,7 @@ class SearchContactsList extends ConsumerWidget {
     final searchContacts = watch(contactsNotifierProvider).searchingContacts;
     return searchContacts.isNotEmpty
         ? ListView.separated(
+            physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) => ContactTile(
               contact: searchContacts[index],
               onTap: () => AutoRouter.of(context).push(

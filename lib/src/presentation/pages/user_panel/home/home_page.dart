@@ -34,14 +34,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, watch, child) {
-        final indexProvider = watch(homeIndexProvider);
-        final int currentIndex = indexProvider.state;
+        final int currentIndex = watch(homeIndexProvider).index;
         return Scaffold(
           body: const HomeBodySelector(),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             currentIndex: currentIndex,
-            onTap: (index) => context.read(homeIndexProvider).state = index,
+            onTap: (index) => context.read(homeIndexProvider).index = index,
             items: bottomBarItems
                 .map(
                   (itemMap) => BottomNavigationBarItem(

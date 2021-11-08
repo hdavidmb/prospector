@@ -6,6 +6,8 @@ import '../../../features/app_default_data/application/app_default_data_state.da
 import '../../../features/auth/application/auth_state.dart';
 import '../../../features/contacts/application/contacts_providers.dart';
 import '../../../features/contacts/application/contacts_state.dart';
+import '../../../features/events/application/events_providers.dart';
+import '../../../features/events/application/events_state.dart';
 import '../../../features/import_contacts/application/import_contacts_providers.dart';
 import '../../../features/interactions/application/interactions_providers.dart';
 import '../../../features/interactions/application/interactions_state.dart';
@@ -21,6 +23,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
   final UserInfoState userInfoState;
   final ContactsState contactsState;
   final InteractionsState interactionsState;
+  final EventsState eventsState;
   final TagsState tagsState;
   final Reader read;
   AppStateNotifier({
@@ -29,6 +32,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
     required this.userInfoState,
     required this.contactsState,
     required this.interactionsState,
+    required this.eventsState,
     required this.tagsState,
     required this.read,
   }) : super(const AppState.initial()) {
@@ -37,6 +41,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
         userInfoState == const UserInfoState.error() ||
         contactsState == const ContactsState.error() ||
         interactionsState == const InteractionsState.error() ||
+        eventsState == const EventsState.error() ||
         tagsState == const TagsState.error()) {
       state = const AppState.error();
     } else if (defaultDataState == const AppDefaultDataState.ready()) {
@@ -51,6 +56,9 @@ class AppStateNotifier extends StateNotifier<AppState> {
           if (tagsState == const TagsState.initial()) {
             read(tagsNotifierProvider).getTags();
           }
+          if (eventsState == const EventsState.initial()) {
+            read(eventsNotifierProvider).getEvents();
+          }
 
           if (read(userInfoNotifierProvider).isPremiumUser) {
             //TODO init premium user configuration (contactsSync, Statistics)
@@ -61,7 +69,8 @@ class AppStateNotifier extends StateNotifier<AppState> {
 
           if (contactsState == const ContactsState.ready() &&
               interactionsState == const InteractionsState.ready() &&
-              tagsState == const TagsState.ready()) {
+              tagsState == const TagsState.ready() &&
+              eventsState == const EventsState.ready()) {
             state = const AppState.authenticatedReady();
           }
         } else if (userInfoState == const UserInfoState.initial()) {
@@ -75,7 +84,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
   }
 
   void reset() {
-    //TODO reset all data notifiers (interactions, events, statistics)
+    // * Reset all data notifiers (interactions, events, statistics)
     read(appDefaultDataProvider).reset();
     read(appDefaultDataProvider)
         .getDefaultData(); //TODO: check if needed (Already called in splashscreen)
@@ -83,7 +92,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
     read(contactsNotifierProvider).reset();
     read(tagsNotifierProvider).reset();
     read(interactionsNotifierProvider).reset();
-    //TODO read(eventsNotifierProvider).reset();
+    read(eventsNotifierProvider).reset();
     //TODO read(statisticsNotifierProvider).reset();
     state = const AppState.initial();
   }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dartz/dartz.dart';
@@ -14,8 +16,11 @@ import 'package:prospector/src/core/private/private_keys.dart';
 import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
+import 'package:prospector/src/features/events/domain/entites/event_alert.dart';
 import 'package:prospector/src/features/images/domain/sources/source_image.dart';
 import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
+import 'package:prospector/src/presentation/core/widgets/custom_places_alert_dialog.dart';
+import 'package:prospector/src/presentation/helpers/date_formatters.dart';
 import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/tags_selection_wrap/tags_selection_wrap.dart';
 
@@ -373,6 +378,7 @@ Future<Option<String>> showTextFieldDialog(
         content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.80,
           child: ListView(
+            physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
             children: <Widget>[
               if (content != null) content,
@@ -421,6 +427,7 @@ Future<Option<SourceImage>> showImageSourceDialog(BuildContext context) async {
         content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.80,
           child: ListView(
+            physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
             children: [
               ListTile(
@@ -455,6 +462,7 @@ Future<Option<String>> showAffiliationDialog(
         content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.80,
           child: ListView(
+            physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
             children: [
               ListTile(
@@ -485,13 +493,38 @@ Future<Option<String>> showAffiliationDialog(
   return optionOf(newStatusID);
 }
 
+Future<Option<int>> showWeekdaySelectionDialog(
+        {required BuildContext context}) =>
+    showOptionsSelectionDialog(
+        context: context,
+        title: AppLocalizations.current.weekStartsOn,
+        options: [0, 1, 2, 3, 4, 5, 6],
+        optionTitleBuilder: (option) => localizedWeekday(option));
+
+Future<Option<bool>> showTimeFormatDialog({required BuildContext context}) =>
+    showOptionsSelectionDialog(
+        context: context,
+        title: AppLocalizations.current.timeFormat,
+        options: [false, true],
+        optionTitleBuilder: (option) =>
+            '${option ? 24 : 12} ${AppLocalizations.current.hours}');
+
+Future<Option<EventAlert>> showAlertSelectionDialog(
+        {required BuildContext context}) =>
+    showOptionsSelectionDialog(
+        context: context,
+        title: AppLocalizations.current.selectAlert,
+        options: EventAlert.values,
+        optionTitleBuilder: (option) => option.text);
+
 //TODO use for affiliate and image source dialog
-Future<Option<String>> showOptionsSelectionDialog(
+Future<Option<T>> showOptionsSelectionDialog<T>(
     {required BuildContext context,
-    required List<String> options,
+    required List<T> options,
+    String Function(T)? optionTitleBuilder,
     bool dismissible = true,
     String? title}) async {
-  final String? newStatusID = await showDialog(
+  final T? selectedOption = await showDialog(
     context: context,
     barrierDismissible: dismissible,
     builder: (BuildContext context) {
@@ -500,11 +533,14 @@ Future<Option<String>> showOptionsSelectionDialog(
         content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.80,
           child: ListView(
+            physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
             children: options
                 .map(
                   (option) => ListTile(
-                    title: Text(option),
+                    title: Text(optionTitleBuilder != null
+                        ? optionTitleBuilder(option)
+                        : option.toString()),
                     onTap: () {
                       AutoRouter.of(context).pop(option);
                     },
@@ -516,7 +552,7 @@ Future<Option<String>> showOptionsSelectionDialog(
       );
     },
   );
-  return optionOf(newStatusID);
+  return optionOf(selectedOption);
 }
 
 Future<String?> showPlacesDialog(BuildContext context) async {
@@ -537,6 +573,15 @@ Future<String?> showPlacesDialog(BuildContext context) async {
     debugPrint(e.toString());
     return '';
   }
+}
+
+Future<String?> showCustomPlacesDialog(BuildContext context) async {
+  return showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return const CustomPlacesAlertDialog();
+    },
+  );
 }
 
 void showFiltersDialog(BuildContext context) {

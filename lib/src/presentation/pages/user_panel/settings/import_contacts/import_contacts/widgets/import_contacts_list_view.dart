@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../../../generated/l10n.dart';
 import '../../../../../../../features/import_contacts/domain/entity/imported_contact_entity.dart';
-import '../../../../../../core/no_contatcs_screen/no_contacts_screen.dart';
+import '../../../../../../core/widgets/no_contatcs_screen/no_contacts_screen.dart';
 import '../../widgets/imported_contact_tile.dart';
 import '../logic/impor_contacts_page_providers.dart';
 

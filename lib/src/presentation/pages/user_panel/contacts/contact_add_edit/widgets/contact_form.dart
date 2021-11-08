@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../../../generated/l10n.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
 import '../../../../../core/dialogs.dart';
 import '../logic/contact_form_provider.dart';
@@ -79,6 +79,7 @@ class ContactForm extends StatelessWidget {
                 Row(
                   children: [
                     if (editingContact != null) ...[
+                      // * Contact image selector
                       GestureDetector(
                         onTap: () => context
                             .read(contactFormProvider.notifier)
@@ -169,7 +170,7 @@ class ContactForm extends StatelessWidget {
                 ),
                 const SizedBox(height: 10.0),
 
-                // * Optional tatus dropdown
+                // * Optional status dropdown
                 if (!isEditing) ...[
                   StatusDropdown(
                     status: formState.status,

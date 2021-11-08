@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../features/contacts/domain/entity/contact_entity.dart';
-import '../../../../core/keyboard_visibility/keyboard_visibility.dart';
+import '../../../../core/widgets/keyboard_visibility/keyboard_visibility.dart';
 import '../../../../routes/app_router.gr.dart';
 import '../contact_add_edit/logic/contact_form_provider.dart';
 import '../contact_add_edit/widgets/contact_image.dart';
@@ -32,6 +32,7 @@ class ContactDetailsPage extends ConsumerWidget {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
+          //TODO extract appbar
           title: KeyboardVisibility(
             keyboardHiddenChild:
                 Text(AppLocalizations.of(context).prospectDetails),
@@ -58,7 +59,7 @@ class ContactDetailsPage extends ConsumerWidget {
               onPressed: () {
                 context.read(contactFormProvider.notifier).setEditingState(
                     editingContact:
-                        contact); //TODO check if can be called from ContactAddEditPage constructor
+                        contact); //TODO call from ContactAddEditPage init state and refactor the form fields
                 AutoRouter.of(context)
                     .push(ContactAddEditRoute(editingContact: contact));
               },

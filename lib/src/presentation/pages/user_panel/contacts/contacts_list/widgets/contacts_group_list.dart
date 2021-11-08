@@ -10,7 +10,7 @@ import '../../../../../../features/admob/domain/native_ad_dummy.dart';
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
-import '../../../../../core/no_contatcs_screen/no_contacts_screen.dart';
+import '../../../../../core/widgets/no_contatcs_screen/no_contacts_screen.dart';
 import '../../../../../routes/app_router.gr.dart';
 import 'contact_tile.dart';
 import 'custom_native_ad_widget.dart';
@@ -100,6 +100,7 @@ class ContactsGroupList extends ConsumerWidget {
     return sections.isNotEmpty
         ? Scrollbar(
             child: CustomScrollView(
+              physics: const BouncingScrollPhysics(),
               slivers: sections,
             ),
           )

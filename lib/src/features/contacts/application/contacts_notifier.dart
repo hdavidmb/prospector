@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
 import '../../app_default_data/application/app_default_data_providers.dart';
+import '../../events/application/events_providers.dart';
 import '../../interactions/application/interactions_providers.dart';
 import '../../user/application/user_info_providers.dart';
 import '../domain/contacts_use_cases.dart';
@@ -107,7 +108,6 @@ class ContactsNotifier extends ChangeNotifier {
 
   Future<Either<DatabaseFailure, Unit>> deleteContact(
       {required String contactID}) async {
-    // TODO delete contact from events
     final uid = read(userInfoNotifierProvider).user?.uid;
     if (uid != null) {
       final deleteResult =
@@ -118,6 +118,8 @@ class ContactsNotifier extends ChangeNotifier {
           read(interactionsNotifierProvider)
               .deleteContactInteractions(contactID: contactID);
           _contacts.removeWhere((listContact) => listContact.id == contactID);
+          read(eventsNotifierProvider)
+              .removeContactFromAllEvents(contactID: contactID);
           notifyListeners();
           return right(unit);
         },
@@ -294,11 +296,22 @@ class ContactsNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<Contact> get searchingContacts => _contacts
-      .where(
-        (contact) =>
-            _searchText.isEmpty ||
-            contact.name.toLowerCase().contains(_searchText.toLowerCase()),
-      )
-      .toList();
+  List<Contact> get searchingContacts =>
+      searchContactsByName(query: _searchText);
+
+  List<Contact> searchContactsByName({required String query}) {
+    final _filteredSearchContacts = _contacts
+        .where(
+          (contact) =>
+              query.isNotEmpty &&
+              contact.name.toLowerCase().trim().split(' ').any(
+                    (word) => word.startsWith(
+                      query.toLowerCase().trim(),
+                    ),
+                  ),
+        )
+        .toList();
+    _filteredSearchContacts.sort((a, b) => a.name.compareTo(b.name));
+    return _filteredSearchContacts;
+  }
 }

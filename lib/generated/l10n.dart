@@ -1589,6 +1589,366 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Month`
+  String get month {
+    return Intl.message(
+      'Month',
+      name: 'month',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Week`
+  String get week {
+    return Intl.message(
+      'Week',
+      name: 'week',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Events settings`
+  String get eventsSettings {
+    return Intl.message(
+      'Events settings',
+      name: 'eventsSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Week starts on`
+  String get weekStartsOn {
+    return Intl.message(
+      'Week starts on',
+      name: 'weekStartsOn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time format`
+  String get timeFormat {
+    return Intl.message(
+      'Time format',
+      name: 'timeFormat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `hours`
+  String get hours {
+    return Intl.message(
+      'hours',
+      name: 'hours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All day`
+  String get allDay {
+    return Intl.message(
+      'All day',
+      name: 'allDay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Starts at`
+  String get startsAt {
+    return Intl.message(
+      'Starts at',
+      name: 'startsAt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ends at`
+  String get endsAt {
+    return Intl.message(
+      'Ends at',
+      name: 'endsAt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event details`
+  String get eventDetails {
+    return Intl.message(
+      'Event details',
+      name: 'eventDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Guests`
+  String get guests {
+    return Intl.message(
+      'Guests',
+      name: 'guests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select guests`
+  String get selectGuests {
+    return Intl.message(
+      'Select guests',
+      name: 'selectGuests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Alert`
+  String get alert {
+    return Intl.message(
+      'Alert',
+      name: 'alert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `None`
+  String get none {
+    return Intl.message(
+      'None',
+      name: 'none',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `At event time`
+  String get atEventTime {
+    return Intl.message(
+      'At event time',
+      name: 'atEventTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `minutes before`
+  String get minutesBefore {
+    return Intl.message(
+      'minutes before',
+      name: 'minutesBefore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `hour before`
+  String get hourBefore {
+    return Intl.message(
+      'hour before',
+      name: 'hourBefore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `hours before`
+  String get hoursBefore {
+    return Intl.message(
+      'hours before',
+      name: 'hoursBefore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `day before`
+  String get dayBefore {
+    return Intl.message(
+      'day before',
+      name: 'dayBefore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `days before`
+  String get daysBefore {
+    return Intl.message(
+      'days before',
+      name: 'daysBefore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `week before`
+  String get weekBefore {
+    return Intl.message(
+      'week before',
+      name: 'weekBefore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select alert`
+  String get selectAlert {
+    return Intl.message(
+      'Select alert',
+      name: 'selectAlert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit event`
+  String get editEvent {
+    return Intl.message(
+      'Edit event',
+      name: 'editEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New event`
+  String get newEvent {
+    return Intl.message(
+      'New event',
+      name: 'newEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event`
+  String get event {
+    return Intl.message(
+      'Event',
+      name: 'event',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reminder`
+  String get reminder {
+    return Intl.message(
+      'Reminder',
+      name: 'reminder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Title (Required)`
+  String get titleRequired {
+    return Intl.message(
+      'Title (Required)',
+      name: 'titleRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Title is required`
+  String get titleIsRequired {
+    return Intl.message(
+      'Title is required',
+      name: 'titleIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location`
+  String get location {
+    return Intl.message(
+      'Location',
+      name: 'location',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type location`
+  String get typeLocation {
+    return Intl.message(
+      'Type location',
+      name: 'typeLocation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can select a location from the list or tap 'Intro' in your keyboard to use what you typed as location`
+  String get customPlacesMessage {
+    return Intl.message(
+      'You can select a location from the list or tap \'Intro\' in your keyboard to use what you typed as location',
+      name: 'customPlacesMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start`
+  String get start {
+    return Intl.message(
+      'Start',
+      name: 'start',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End`
+  String get end {
+    return Intl.message(
+      'End',
+      name: 'end',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When`
+  String get when {
+    return Intl.message(
+      'When',
+      name: 'when',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete event`
+  String get deleteEvent {
+    return Intl.message(
+      'Delete event',
+      name: 'deleteEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this Element?`
+  String get areYouSureDeleteEvent {
+    return Intl.message(
+      'Are you sure you want to delete this Element?',
+      name: 'areYouSureDeleteEvent',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

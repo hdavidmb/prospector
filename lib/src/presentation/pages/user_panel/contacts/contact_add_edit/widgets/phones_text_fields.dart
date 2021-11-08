@@ -28,7 +28,7 @@ class _PhonesTextFieldsState extends State<PhonesTextFields> {
   final List<TextEditingController> controllers = [];
   final List<TextEditingController> removedControllers = [];
   //TODO check for whatsapp and phone conflict with duplicate numbers
-
+// TODO check when pone is deleted losses phone and whatsapp selectors. Implement logic to asign lost selector to the first phone left
   @override
   Widget build(BuildContext context) {
     if (widget.phonesList.isEmpty) {
@@ -62,6 +62,20 @@ class _PhonesTextFieldsState extends State<PhonesTextFields> {
                   hintText: index == 0
                       ? AppLocalizations.of(context).phone
                       : AppLocalizations.of(context).newPhone,
+                  enabledBorder: const UnderlineInputBorder(
+                    borderSide:
+                        BorderSide(color: Colors.transparent, width: 0.0),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      bottomLeft: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedBorder: const UnderlineInputBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      bottomLeft: Radius.circular(4.0),
+                    ),
+                  ),
                 ),
                 onChanged: (value) {
                   if (value.isEmpty) {
@@ -114,7 +128,13 @@ class _PhonesTextFieldsState extends State<PhonesTextFields> {
               ),
             ),
             Container(
-              color: Theme.of(context).inputDecorationTheme.fillColor,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  topRight: Radius.circular(4.0),
+                  bottomRight: Radius.circular(4.0),
+                ),
+                color: Theme.of(context).inputDecorationTheme.fillColor,
+              ),
               child: IconButton(
                 icon: FaIcon(
                   FontAwesomeIcons.whatsapp,
