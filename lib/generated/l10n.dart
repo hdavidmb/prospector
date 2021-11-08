@@ -1929,6 +1929,26 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Delete event`
+  String get deleteEvent {
+    return Intl.message(
+      'Delete event',
+      name: 'deleteEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this Element?`
+  String get areYouSureDeleteEvent {
+    return Intl.message(
+      'Are you sure you want to delete this Element?',
+      name: 'areYouSureDeleteEvent',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

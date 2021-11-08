@@ -147,4 +147,17 @@ class EventFormStateNotifier extends StateNotifier<EventFormState>
       failureOrSuccesOption: optionOf(failureOrSuccess),
     );
   }
+
+  Future<void> deleteButtonPressed({required String eventID}) async {
+    state = state.copyWith(
+      isSubmitting: true,
+      failureOrSuccesOption: none(),
+    );
+    final Either<DatabaseFailure, Unit> failureOrSuccess =
+        await read(eventsNotifierProvider).deleteEvent(eventID: eventID);
+    state = state.copyWith(
+        isSubmitting: false,
+        deleted: failureOrSuccess.isRight(),
+        failureOrSuccesOption: optionOf(failureOrSuccess));
+  }
 }

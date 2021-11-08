@@ -186,5 +186,7 @@
     "customPlacesMessage": "You can select a location from the list or tap 'Intro' in your keyboard to use what you typed as location",
     "start": "Start",
     "end": "End",
-    "when": "When"
+    "when": "When",
+    "deleteEvent": "Delete event",
+    "areYouSureDeleteEvent": "Are you sure you want to delete this Element?"
 }

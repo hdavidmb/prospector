@@ -37,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Ha habido un error al iniciar la aplicación. Comprueba tu conexión a internet y vuelve a intentarlo más tarde."),
         "areYouSureDeleteAccount": MessageLookupByLibrary.simpleMessage(
             "Confirma que deseas eliminar tu cuenta."),
+        "areYouSureDeleteEvent": MessageLookupByLibrary.simpleMessage(
+            "Confirma que deseas eliminar este prospecto"),
         "areYouSureDeleteProspect": MessageLookupByLibrary.simpleMessage(
             "Confirma que deseas eliminar este prospecto"),
         "atEventTime":
@@ -78,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteAccount":
             MessageLookupByLibrary.simpleMessage("Eliminar cuenta"),
         "deleteCap": MessageLookupByLibrary.simpleMessage("ELIMINAR"),
+        "deleteEvent": MessageLookupByLibrary.simpleMessage("Eliminar evento"),
         "deleteProspect":
             MessageLookupByLibrary.simpleMessage("Eliminar prospecto"),
         "disable": MessageLookupByLibrary.simpleMessage("Deshabilitar"),

@@ -169,9 +169,35 @@ class EventForm extends StatelessWidget {
                         ],
                       ),
                     ),
-                  )
+                  ),
 
                   // TODO * Delete button
+                  if (isEditing) ...[
+                    const SizedBox(height: 10.0),
+                    TextButton(
+                      onPressed: (formState.isSubmitting)
+                          ? null
+                          : () async {
+                              final confirm = await showConfirmDialog(
+                                context: context,
+                                title: AppLocalizations
+                                    .current.areYouSureDeleteEvent,
+                                message: AppLocalizations
+                                    .current.thisAcctionCannotBeUndone,
+                              );
+                              if (confirm) {
+                                Future.delayed(
+                                    Duration.zero,
+                                    () => context
+                                        .read(eventFormProvider.notifier)
+                                        .deleteButtonPressed(
+                                            eventID: editingEvent!.id));
+                              }
+                            },
+                      child: Text(AppLocalizations.of(context).deleteEvent,
+                          style: const TextStyle(color: Colors.red)),
+                    ),
+                  ],
                 ],
               ),
             ),

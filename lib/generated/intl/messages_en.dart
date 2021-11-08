@@ -36,6 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "There\'s been an error initializing the app. Please check your internet connection and try again later."),
         "areYouSureDeleteAccount": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete your account?"),
+        "areYouSureDeleteEvent": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete this Element?"),
         "areYouSureDeleteProspect": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this Prospect?"),
         "atEventTime": MessageLookupByLibrary.simpleMessage("At event time"),
@@ -74,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete account"),
         "deleteCap": MessageLookupByLibrary.simpleMessage("DELETE"),
+        "deleteEvent": MessageLookupByLibrary.simpleMessage("Delete event"),
         "deleteProspect":
             MessageLookupByLibrary.simpleMessage("Delete prospect"),
         "disable": MessageLookupByLibrary.simpleMessage("Disable"),
