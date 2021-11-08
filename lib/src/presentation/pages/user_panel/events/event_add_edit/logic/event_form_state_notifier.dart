@@ -125,8 +125,6 @@ class EventFormStateNotifier extends StateNotifier<EventFormState>
       if (editingEvent != null) {
         // Compare
         if (editingEvent != newEventInfo) {
-          // TODO: investigate about freezed data classes equality when fields are lists
-          // TODO: Check if sending inmuted event counts as write in firebase
           // Edit
           failureOrSuccess =
               await read(eventsNotifierProvider).updateEvent(newEventInfo);

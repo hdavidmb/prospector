@@ -18,28 +18,33 @@ class ContactTagsWrap extends ConsumerWidget {
     const double fontSize = 14.0;
     const double verticalPadding = 6.0;
     for (final String tag in tags) {
-      final List<String> userTagsIDs = userTags.map((userTag) => userTag.id).toList();
-      if (!userTagsIDs.contains(tag)) break;
-      final tagName = userTags.firstWhere((userTag) => userTag.id == tag).name;
-      tagsList.add(
-        Container(
-          height: fontSize + verticalPadding,
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          decoration: BoxDecoration(
+      final List<String> userTagsIDs =
+          userTags.map((userTag) => userTag.id).toList();
+      if (userTagsIDs.contains(tag)) {
+        final tagName =
+            userTags.firstWhere((userTag) => userTag.id == tag).name;
+        tagsList.add(
+          Container(
+            height: fontSize + verticalPadding,
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            decoration: BoxDecoration(
               color: Theme.of(context).primaryColor,
               borderRadius: const BorderRadius.all(
-                  Radius.circular((fontSize + verticalPadding) / 2)),),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                tagName,
-                style: const TextStyle(color: Colors.white, fontSize: fontSize),
-              ),
-            ],
+                  Radius.circular((fontSize + verticalPadding) / 2)),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  tagName,
+                  style:
+                      const TextStyle(color: Colors.white, fontSize: fontSize),
+                ),
+              ],
+            ),
           ),
-        ),
-      );
+        );
+      }
     }
     return Center(
       child: Wrap(

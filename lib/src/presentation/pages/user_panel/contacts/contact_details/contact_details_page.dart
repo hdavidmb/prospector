@@ -59,7 +59,7 @@ class ContactDetailsPage extends ConsumerWidget {
               onPressed: () {
                 context.read(contactFormProvider.notifier).setEditingState(
                     editingContact:
-                        contact); //TODO check if can be called from ContactAddEditPage constructor
+                        contact); //TODO call from ContactAddEditPage init state and refactor the form fields
                 AutoRouter.of(context)
                     .push(ContactAddEditRoute(editingContact: contact));
               },

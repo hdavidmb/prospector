@@ -84,7 +84,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
   }
 
   void reset() {
-    //TODO reset all data notifiers (interactions, events, statistics)
+    // * Reset all data notifiers (interactions, events, statistics)
     read(appDefaultDataProvider).reset();
     read(appDefaultDataProvider)
         .getDefaultData(); //TODO: check if needed (Already called in splashscreen)

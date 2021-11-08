@@ -18,7 +18,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
         if (isAuthenticated) {
           return const AuthState.authenticated();
         } else {
-          //TODO: Reset all user data providers (Contacts, tags, interactions, events, etc)
+          // * Reset all user data providers (Contacts, tags, interactions, events, etc)
           read(userInfoNotifierProvider).reset();
           read(contactsNotifierProvider).reset();
           read(tagsNotifierProvider).reset();

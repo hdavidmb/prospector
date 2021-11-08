@@ -46,7 +46,9 @@ class ContactAddEditPage extends ConsumerWidget {
                 Expanded(
                   child: ContactForm(editingContact: editingContact),
                 ),
-                if (shouldShowAds && bannerState.isLoaded)
+                if (editingContact == null &&
+                    shouldShowAds &&
+                    bannerState.isLoaded)
                   const ContactsAdmobBanner(),
               ],
             ),

@@ -22,7 +22,7 @@ class _EventAddEditPageState extends State<EventAddEditPage> {
   @override
   void initState() {
     super.initState();
-    //TODO: try this on contactAddEditPage to avoid setting the editing state before navigating
+
     WidgetsBinding.instance!.addPostFrameCallback(
       (_) {
         if (widget.editingEvent != null) {
@@ -44,7 +44,6 @@ class _EventAddEditPageState extends State<EventAddEditPage> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        //TODO check if this can go on the dispose method
         context.read(eventFormProvider.notifier).reset();
         return true;
       },

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../../generated/l10n.dart';
-import '../logic/contact_form_provider.dart';
+import '../../../../../helpers/form_validators.dart';
 
 class ContactNameTextField extends StatefulWidget {
   final String name;
@@ -17,7 +16,8 @@ class ContactNameTextField extends StatefulWidget {
   _ContactNameTextFieldState createState() => _ContactNameTextFieldState();
 }
 
-class _ContactNameTextFieldState extends State<ContactNameTextField> {
+class _ContactNameTextFieldState extends State<ContactNameTextField>
+    with FormValidators {
   late TextEditingController _controller;
 
   @override
@@ -37,7 +37,6 @@ class _ContactNameTextFieldState extends State<ContactNameTextField> {
     if (widget.name.isEmpty) {
       WidgetsBinding.instance!.addPostFrameCallback((_) => _controller.clear());
     }
-    //TODO: Unify custom TextFormFields
     return TextFormField(
       controller: _controller,
       keyboardType: TextInputType.text,
@@ -49,9 +48,7 @@ class _ContactNameTextFieldState extends State<ContactNameTextField> {
       textInputAction: TextInputAction.next,
       onChanged: widget.onNameChanged,
       validator: (value) {
-        final bool isValid = context
-            .read(contactFormProvider.notifier)
-            .validateFieldIsNotEmpty(value!);
+        final bool isValid = value != null && validateFieldIsNotEmpty(value);
         return isValid ? null : AppLocalizations.of(context).nameMustNotBeEmpty;
       },
     );

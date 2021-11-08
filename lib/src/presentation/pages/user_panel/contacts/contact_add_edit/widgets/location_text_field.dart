@@ -40,9 +40,7 @@ class _LocationTextFieldState extends State<LocationTextField> {
       if (widget.location.isEmpty) {
         _controller.clear();
       } else {
-        setState(() {
-          _controller.text = widget.location;
-        });
+        _controller.text = widget.location;
       }
     });
     return TextFormField(
@@ -52,7 +50,7 @@ class _LocationTextFieldState extends State<LocationTextField> {
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         prefixIcon: const Icon(Icons.location_on),
-        suffixIcon: _controller.text.isNotEmpty
+        suffixIcon: _controller.text.isNotEmpty || widget.location.isNotEmpty
             ? IconButton(
                 onPressed: () {
                   // Unfocus all focus nodes

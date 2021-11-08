@@ -137,7 +137,6 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
       if (editingContact != null) {
         // Compare
         if (editingContact != newContactInfo) {
-          // TODO: investigate about freezed data classes equality when fields are lists
           // Edit
           failureOrSuccess = await read(contactsNotifierProvider)
               .updateContact(newContactInfo);

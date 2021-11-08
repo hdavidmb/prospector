@@ -81,8 +81,7 @@ class CalendarWidget extends ConsumerWidget {
             context.read(eventsViewProvider).selectedDay = focusedDay,
         onPageChanged: (focusedDay) =>
             context.read(eventsViewProvider).selectedDay = focusedDay,
-        eventLoader: (day) => eventsProvider
-            .events //TODO check for loading new events and try to extract as a method
+        eventLoader: (day) => eventsProvider.events
             .where((event) => isBetweenDays(
                 date: day, startDate: event.startDate, endDate: event.endDate))
             .toList(),

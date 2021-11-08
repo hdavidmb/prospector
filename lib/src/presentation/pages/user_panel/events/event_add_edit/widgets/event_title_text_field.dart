@@ -25,7 +25,6 @@ class EventTitleTextField extends StatelessWidget with FormValidators {
       textInputAction: TextInputAction.next,
       onChanged: onTitleChanged,
       validator: (value) {
-        //TODO: mix other textfields with fromValidators
         final bool isValid = value != null && validateFieldIsNotEmpty(value);
         return isValid ? null : AppLocalizations.of(context).titleIsRequired;
       },
