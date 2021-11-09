@@ -86,6 +86,7 @@ class EventForm extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 6.0, horizontal: horizontalPadding),
+                    // TODO: Use required textfield
                     child: EventTitleTextField(
                       title: editingEvent?.title,
                       onTitleChanged: notifier.titleChanged,

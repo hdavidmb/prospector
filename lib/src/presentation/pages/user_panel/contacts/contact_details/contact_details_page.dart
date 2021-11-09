@@ -57,9 +57,9 @@ class ContactDetailsPage extends ConsumerWidget {
           actions: [
             TextButton(
               onPressed: () {
-                context.read(contactFormProvider.notifier).setEditingState(
-                    editingContact:
-                        contact); //TODO call from ContactAddEditPage init state and refactor the form fields
+                // TODO: test and delete context.read(contactFormProvider.notifier).setEditingState(
+                //     editingContact:
+                //         contact); //TODO call from ContactAddEditPage init state and refactor the form fields
                 AutoRouter.of(context)
                     .push(ContactAddEditRoute(editingContact: contact));
               },

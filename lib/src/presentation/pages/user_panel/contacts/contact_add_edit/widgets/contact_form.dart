@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/core/widgets/required_text_field/required_text_field.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
@@ -110,12 +111,21 @@ class ContactForm extends StatelessWidget {
                       child: Column(
                         children: [
                           // * Name textfield
-                          ContactNameTextField(
-                            name: formState.name,
-                            onNameChanged: context
+                          RequiredTextField(
+                            initialValue: editingContact?.name,
+                            hintText: AppLocalizations.of(context).nameRequired,
+                            errorMessage:
+                                AppLocalizations.of(context).nameMustNotBeEmpty,
+                            onChanged: context
                                 .read(contactFormProvider.notifier)
                                 .nameChanged,
                           ),
+                          // TODO: test and delete ContactNameTextField(
+                          //   name: editingContact?.name,
+                          //   onNameChanged: context
+                          //       .read(contactFormProvider.notifier)
+                          //       .nameChanged,
+                          // ),
                           const SizedBox(height: 10.0),
 
                           // * Optional tatus dropdown
@@ -137,7 +147,7 @@ class ContactForm extends StatelessWidget {
 
                 // * Phones textfields
                 PhonesTextFields(
-                  phonesList: formState.phones,
+                  phonesList: editingContact?.phones ?? [],
                   phone: formState.phone,
                   whatsapp: formState.whatsapp,
                   onPhonesListChanged: (List<String> phones) => context

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../helpers/form_validators.dart';
 
+// TODO: USE REQUIRED TEXTFIELD AND DELETE THIS WIDGET
 class EventTitleTextField extends StatelessWidget with FormValidators {
   final String? title;
   final void Function(String) onTitleChanged;
