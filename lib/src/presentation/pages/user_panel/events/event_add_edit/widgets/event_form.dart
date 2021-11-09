@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/events/domain/entites/event_entity.dart';
 import '../../../../../core/dialogs.dart';
+import '../../../../../core/widgets/required_text_field/required_text_field.dart';
 import '../../../contacts/contact_add_edit/widgets/location_text_field.dart';
 import '../../widgets/event_alert_list_tile.dart';
 import '../../widgets/event_guests_list_tile.dart';
@@ -13,7 +14,6 @@ import '../logic/event_form_providers.dart';
 import '../logic/event_form_state.dart';
 import '../logic/event_form_state_notifier.dart';
 import 'event_date_list_tile.dart';
-import 'event_title_text_field.dart';
 
 class EventForm extends StatelessWidget {
   final Event? editingEvent;
@@ -86,9 +86,12 @@ class EventForm extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 6.0, horizontal: horizontalPadding),
-                    child: EventTitleTextField(
-                      title: editingEvent?.title,
-                      onTitleChanged: notifier.titleChanged,
+                    child: RequiredTextField(
+                      initialValue: editingEvent?.title,
+                      hintText: AppLocalizations.of(context).titleRequired,
+                      errorMessage:
+                          AppLocalizations.of(context).titleIsRequired,
+                      onChanged: notifier.titleChanged,
                     ),
                   ),
 

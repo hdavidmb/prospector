@@ -22,6 +22,9 @@ const InputDecorationTheme kInputDecorationTheme = InputDecorationTheme(
   ),
 );
 
+FloatingActionButtonThemeData kFloatingActionButtonThemeData =
+    FloatingActionButtonThemeData(backgroundColor: kPrimaryColor);
+
 final SwitchThemeData kSwitchTheme = SwitchThemeData(
   thumbColor: MaterialStateProperty.all(Colors.white),
   trackColor: MaterialStateProperty.resolveWith(
@@ -38,19 +41,19 @@ final SwitchThemeData kSwitchTheme = SwitchThemeData(
 
 // * Themes
 final kLightTheme = ThemeData.light().copyWith(
-  primaryColor: kPrimaryColor,
-  accentColor: kAccentColor,
-  colorScheme: kLightColorScheme,
-  switchTheme: kSwitchTheme,
-  inputDecorationTheme:
-      kInputDecorationTheme.copyWith(fillColor: const Color(0x0A000000)),
-);
+    primaryColor: kPrimaryColor,
+    accentColor: kAccentColor,
+    colorScheme: kLightColorScheme,
+    switchTheme: kSwitchTheme,
+    inputDecorationTheme:
+        kInputDecorationTheme.copyWith(fillColor: const Color(0x0A000000)),
+    floatingActionButtonTheme: kFloatingActionButtonThemeData);
 
 final kDarkTheme = ThemeData.dark().copyWith(
-  primaryColor: kPrimaryColor,
-  accentColor: kAccentColor,
-  colorScheme: kDarkColorScheme,
-  switchTheme: kSwitchTheme,
-  inputDecorationTheme:
-      kInputDecorationTheme.copyWith(fillColor: const Color(0x1AFFFFFF)),
-);
+    primaryColor: kPrimaryColor,
+    accentColor: kAccentColor,
+    colorScheme: kDarkColorScheme,
+    switchTheme: kSwitchTheme,
+    inputDecorationTheme:
+        kInputDecorationTheme.copyWith(fillColor: const Color(0x1AFFFFFF)),
+    floatingActionButtonTheme: kFloatingActionButtonThemeData);

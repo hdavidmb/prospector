@@ -6,10 +6,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
 import '../../../../../core/dialogs.dart';
+import '../../../../../core/widgets/required_text_field/required_text_field.dart';
 import '../logic/contact_form_provider.dart';
 import '../logic/contact_form_state.dart';
 import 'contact_image.dart';
-import 'contact_name_text_field.dart';
 import 'gender_dropdown.dart';
 import 'location_text_field.dart';
 import 'phones_text_fields.dart';
@@ -35,29 +35,17 @@ class ContactForm extends StatelessWidget {
           (result) => result.fold(
             (failure) => showFailureSnackbar(context, failure),
             (_) {
-              if (editingContact == null) {
-                //Show success snackbar
-                FocusScope.of(context).unfocus();
-                showSnackBar(
-                    context: context,
-                    message:
-                        AppLocalizations.of(context).prospectSavedSuccessfully,
-                    type: SnackbarType.success);
-                //Reset form state
-                context.read(contactFormProvider.notifier).reset();
+              // Pop view
+              if (editingContact != null && state.deleted) {
+                //To ensure dialog is fully closed
+                Future.delayed(Duration.zero, () {
+                  AutoRouter.of(context).popUntilRoot();
+                });
               } else {
-                // Pop view
-                if (state.deleted) {
-                  //To ensure dialog is fully closed
-                  Future.delayed(Duration.zero, () {
-                    AutoRouter.of(context).popUntilRoot();
-                  });
-                } else {
-                  AutoRouter.of(context).pop();
-                }
-                Future.delayed(const Duration(milliseconds: 300),
-                    () => context.read(contactFormProvider.notifier).reset());
+                AutoRouter.of(context).pop();
               }
+              Future.delayed(const Duration(milliseconds: 300),
+                  () => context.read(contactFormProvider.notifier).reset());
             },
           ),
         );
@@ -110,9 +98,12 @@ class ContactForm extends StatelessWidget {
                       child: Column(
                         children: [
                           // * Name textfield
-                          ContactNameTextField(
-                            name: formState.name,
-                            onNameChanged: context
+                          RequiredTextField(
+                            initialValue: editingContact?.name,
+                            hintText: AppLocalizations.of(context).nameRequired,
+                            errorMessage:
+                                AppLocalizations.of(context).nameMustNotBeEmpty,
+                            onChanged: context
                                 .read(contactFormProvider.notifier)
                                 .nameChanged,
                           ),
@@ -137,9 +128,9 @@ class ContactForm extends StatelessWidget {
 
                 // * Phones textfields
                 PhonesTextFields(
-                  phonesList: formState.phones,
-                  phone: formState.phone,
-                  whatsapp: formState.whatsapp,
+                  initialPhonesList: editingContact?.phones ?? [],
+                  formPhone: formState.phone,
+                  formWhatsapp: formState.whatsapp,
                   onPhonesListChanged: (List<String> phones) => context
                       .read(contactFormProvider.notifier)
                       .phonesListChanged(phones),
