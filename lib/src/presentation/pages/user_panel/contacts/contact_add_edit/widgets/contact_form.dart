@@ -147,9 +147,9 @@ class ContactForm extends StatelessWidget {
 
                 // * Phones textfields
                 PhonesTextFields(
-                  phonesList: editingContact?.phones ?? [],
-                  phone: formState.phone,
-                  whatsapp: formState.whatsapp,
+                  initialPhonesList: editingContact?.phones ?? [],
+                  formPhone: formState.phone,
+                  formWhatsapp: formState.whatsapp,
                   onPhonesListChanged: (List<String> phones) => context
                       .read(contactFormProvider.notifier)
                       .phonesListChanged(phones),
