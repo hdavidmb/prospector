@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,15 +11,7 @@ import 'widgets/contact_form.dart';
 import 'widgets/contacts_admob_banner.dart';
 
 class ContactAddEditPage extends StatefulWidget {
-  /// Pass the contact to be edited
-  ///
-  /// ** If editingContact is set. You must first call setEditingState on contactFormProvider**
   final Contact? editingContact;
-
-  /// ## Page to add or edit contacts
-  ///
-  /// **WARNING** If editingContact is set. You must call setEditingState on contactFormProvider before Navigating to this page
-  ///
   const ContactAddEditPage({
     Key? key,
     this.editingContact,
@@ -56,11 +49,18 @@ class _ContactAddEditPageState extends State<ContactAddEditPage> {
             return true;
           },
           child: Scaffold(
-            //TODO: add save button on appbar
             appBar: AppBar(
+              automaticallyImplyLeading: widget.editingContact != null,
               title: Text(widget.editingContact != null
                   ? AppLocalizations.of(context).editProspect
                   : AppLocalizations.of(context).newProspect),
+              actions: widget.editingContact == null
+                  ? [
+                      IconButton(
+                          onPressed: () => AutoRouter.of(context).pop(),
+                          icon: const Icon(Icons.close))
+                    ]
+                  : null,
             ),
             body: SafeArea(
               child: Padding(

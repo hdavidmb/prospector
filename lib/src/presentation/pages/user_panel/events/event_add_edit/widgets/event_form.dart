@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/core/widgets/required_text_field/required_text_field.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/events/domain/entites/event_entity.dart';
@@ -13,7 +14,6 @@ import '../logic/event_form_providers.dart';
 import '../logic/event_form_state.dart';
 import '../logic/event_form_state_notifier.dart';
 import 'event_date_list_tile.dart';
-import 'event_title_text_field.dart';
 
 class EventForm extends StatelessWidget {
   final Event? editingEvent;
@@ -87,10 +87,18 @@ class EventForm extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         vertical: 6.0, horizontal: horizontalPadding),
                     // TODO: Use required textfield
-                    child: EventTitleTextField(
-                      title: editingEvent?.title,
-                      onTitleChanged: notifier.titleChanged,
+                    child: RequiredTextField(
+                      initialValue: editingEvent?.title,
+                      hintText: AppLocalizations.of(context).titleRequired,
+                      errorMessage:
+                          AppLocalizations.of(context).titleIsRequired,
+                      onChanged: notifier.titleChanged,
                     ),
+
+                    // EventTitleTextField(
+                    //   title: editingEvent?.title,
+                    //   onTitleChanged: notifier.titleChanged,
+                    // ),
                   ),
 
                   // * Location TextField

@@ -34,7 +34,6 @@ class _PhonesTextFieldsState extends State<PhonesTextFields> {
     String? initialValue,
   }) {
     textFields.add(
-      // TODO extract row as widget taking index as parameter and use it to add new rows
       TextFormField(
         initialValue: initialValue,
         keyboardType: TextInputType.phone,
@@ -127,8 +126,6 @@ class _PhonesTextFieldsState extends State<PhonesTextFields> {
     });
   }
 
-  //TODO check for whatsapp and phone conflict with duplicate numbers
-// TODO check when pone is deleted losses phone and whatsapp selectors. Implement logic to asign lost selector to the first phone left
   @override
   Widget build(BuildContext context) {
     // Arrange textefields and buttons to show on a column

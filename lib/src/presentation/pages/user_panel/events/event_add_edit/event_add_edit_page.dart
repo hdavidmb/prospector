@@ -48,7 +48,6 @@ class _EventAddEditPageState extends State<EventAddEditPage> {
         return true;
       },
       child: Scaffold(
-        //TODO: add save button on appbar
         appBar: AppBar(
           title: Text(widget.editingEvent != null
               ? AppLocalizations.of(context).editEvent

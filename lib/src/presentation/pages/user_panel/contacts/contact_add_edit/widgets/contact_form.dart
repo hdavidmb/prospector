@@ -10,7 +10,6 @@ import '../../../../../core/dialogs.dart';
 import '../logic/contact_form_provider.dart';
 import '../logic/contact_form_state.dart';
 import 'contact_image.dart';
-import 'contact_name_text_field.dart';
 import 'gender_dropdown.dart';
 import 'location_text_field.dart';
 import 'phones_text_fields.dart';
@@ -36,29 +35,17 @@ class ContactForm extends StatelessWidget {
           (result) => result.fold(
             (failure) => showFailureSnackbar(context, failure),
             (_) {
-              if (editingContact == null) {
-                //Show success snackbar
-                FocusScope.of(context).unfocus();
-                showSnackBar(
-                    context: context,
-                    message:
-                        AppLocalizations.of(context).prospectSavedSuccessfully,
-                    type: SnackbarType.success);
-                //Reset form state
-                context.read(contactFormProvider.notifier).reset();
+              // Pop view
+              if (editingContact != null && state.deleted) {
+                //To ensure dialog is fully closed
+                Future.delayed(Duration.zero, () {
+                  AutoRouter.of(context).popUntilRoot();
+                });
               } else {
-                // Pop view
-                if (state.deleted) {
-                  //To ensure dialog is fully closed
-                  Future.delayed(Duration.zero, () {
-                    AutoRouter.of(context).popUntilRoot();
-                  });
-                } else {
-                  AutoRouter.of(context).pop();
-                }
-                Future.delayed(const Duration(milliseconds: 300),
-                    () => context.read(contactFormProvider.notifier).reset());
+                AutoRouter.of(context).pop();
               }
+              Future.delayed(const Duration(milliseconds: 300),
+                  () => context.read(contactFormProvider.notifier).reset());
             },
           ),
         );
@@ -120,12 +107,6 @@ class ContactForm extends StatelessWidget {
                                 .read(contactFormProvider.notifier)
                                 .nameChanged,
                           ),
-                          // TODO: test and delete ContactNameTextField(
-                          //   name: editingContact?.name,
-                          //   onNameChanged: context
-                          //       .read(contactFormProvider.notifier)
-                          //       .nameChanged,
-                          // ),
                           const SizedBox(height: 10.0),
 
                           // * Optional tatus dropdown
