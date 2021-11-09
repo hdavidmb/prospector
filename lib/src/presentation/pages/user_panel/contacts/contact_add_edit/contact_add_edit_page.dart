@@ -9,7 +9,7 @@ import 'logic/contact_form_provider.dart';
 import 'widgets/contact_form.dart';
 import 'widgets/contacts_admob_banner.dart';
 
-class ContactAddEditPage extends ConsumerWidget {
+class ContactAddEditPage extends StatefulWidget {
   /// Pass the contact to be edited
   ///
   /// ** If editingContact is set. You must first call setEditingState on contactFormProvider**
@@ -23,39 +23,64 @@ class ContactAddEditPage extends ConsumerWidget {
     Key? key,
     this.editingContact,
   }) : super(key: key);
+
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final bool shouldShowAds = watch(showAds);
-    final AdState bannerState = watch(adsProvider).contactsBannerState;
-    return WillPopScope(
-      onWillPop: () async {
-        context.read(contactFormProvider.notifier).reset();
-        return true;
+  _ContactAddEditPageState createState() => _ContactAddEditPageState();
+}
+
+class _ContactAddEditPageState extends State<ContactAddEditPage> {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance!.addPostFrameCallback(
+      (_) {
+        if (widget.editingContact != null) {
+          context
+              .read(contactFormProvider.notifier)
+              .setEditingState(editingContact: widget.editingContact!);
+        }
       },
-      child: Scaffold(
-        //TODO: add save button on appbar
-        appBar: AppBar(
-          title: Text(editingContact != null
-              ? AppLocalizations.of(context).editProspect
-              : AppLocalizations.of(context).newProspect),
-        ),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Column(
-              children: [
-                Expanded(
-                  child: ContactForm(editingContact: editingContact),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer(
+      builder: (context, watch, child) {
+        final bool shouldShowAds = watch(showAds);
+        final AdState bannerState = watch(adsProvider).contactsBannerState;
+        return WillPopScope(
+          onWillPop: () async {
+            context.read(contactFormProvider.notifier).reset();
+            return true;
+          },
+          child: Scaffold(
+            //TODO: add save button on appbar
+            appBar: AppBar(
+              title: Text(widget.editingContact != null
+                  ? AppLocalizations.of(context).editProspect
+                  : AppLocalizations.of(context).newProspect),
+            ),
+            body: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: ContactForm(editingContact: widget.editingContact),
+                    ),
+                    if (widget.editingContact == null &&
+                        shouldShowAds &&
+                        bannerState.isLoaded)
+                      const ContactsAdmobBanner(),
+                  ],
                 ),
-                if (editingContact == null &&
-                    shouldShowAds &&
-                    bannerState.isLoaded)
-                  const ContactsAdmobBanner(),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
