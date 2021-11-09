@@ -2,11 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/core/widgets/required_text_field/required_text_field.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
 import '../../../../../core/dialogs.dart';
+import '../../../../../core/widgets/required_text_field/required_text_field.dart';
 import '../logic/contact_form_provider.dart';
 import '../logic/contact_form_state.dart';
 import 'contact_image.dart';

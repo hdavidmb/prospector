@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:prospector/src/presentation/helpers/form_validators.dart';
+import '../../../helpers/form_validators.dart';
 
 class RequiredTextField extends StatelessWidget with FormValidators {
   final String? initialValue;

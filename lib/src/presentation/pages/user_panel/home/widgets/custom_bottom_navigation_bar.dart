@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:prospector/generated/l10n.dart';
-import 'package:prospector/src/presentation/pages/user_panel/home/logic/home_index_provider.dart';
+import '../../../../../../generated/l10n.dart';
+import '../logic/home_index_provider.dart';
 
 class CustomBottomNavigationBar extends ConsumerWidget {
   const CustomBottomNavigationBar({

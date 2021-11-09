@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:prospector/src/presentation/core/widgets/keyboard_visibility/keyboard_visibility.dart';
+import '../../../core/widgets/keyboard_visibility/keyboard_visibility.dart';
 
 import '../../../routes/app_router.gr.dart';
 import 'widgets/custom_bottom_navigation_bar.dart';
