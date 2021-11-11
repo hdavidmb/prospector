@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/local_notifications/application/local_notifications_providers.dart';
 
 import '../../../features/admob/application/ads_providers.dart';
 import '../../../features/app_default_data/application/app_default_data_providers.dart';
@@ -72,6 +73,8 @@ class AppStateNotifier extends StateNotifier<AppState> {
               tagsState == const TagsState.ready() &&
               eventsState == const EventsState.ready()) {
             state = const AppState.authenticatedReady();
+
+            read(localNotificationsProvider).initializeLocalNotifications();
           }
         } else if (userInfoState == const UserInfoState.initial()) {
           Future.delayed(const Duration(milliseconds: 300),

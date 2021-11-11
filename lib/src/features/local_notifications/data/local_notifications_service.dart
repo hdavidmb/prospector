@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:timezone/timezone.dart' as tz;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'package:prospector/src/features/local_notifications/domain/i_local_notifications_service.dart';
@@ -9,49 +9,70 @@ class LocalNotificationsService implements ILocalNotificationsService {
     required this.flutterLocalNotificationsPlugin,
   });
 
+  final String channelID = 'prospector_events';
+  final String channelName = 'Prospector Events';
+
   @override
-  Future<void> initializeLocalNotifications(BuildContext context) async {
-    //TODO check for autorouter without context to avoid material dependency
+  Future<void> initializeLocalNotifications(
+      void Function(String?) onSelectNotification) async {
     // TODO: implement initializeLocalNotifications
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('app_icon');
 
-//TODO: create another method to ask for ios permissions
-    const IOSInitializationSettings iosInitializationSettings =
+    final IOSInitializationSettings iosInitializationSettings =
         IOSInitializationSettings(
-      requestSoundPermission: false,
-      requestBadgePermission: false,
-      requestAlertPermission: false,
-    );
+            onDidReceiveLocalNotification: (id, title, body, payload) =>
+                onSelectNotification(payload));
 
-    const InitializationSettings initializationSettings =
+    final InitializationSettings initializationSettings =
         InitializationSettings(
       android: initializationSettingsAndroid,
       iOS: iosInitializationSettings,
     );
 
     await flutterLocalNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: (payload) {
-      // TODO: select event tab by homeIndex, get event from paylod id, select calendar day, and navigate to event details
-    });
+        onSelectNotification: onSelectNotification);
+
+    // TODO: select event tab by homeIndex, get event from paylod id, select calendar day, and navigate to event details
   }
 
   @override
-  void scheduleNotification(
-      {required int id,
-      required String title,
-      required String body,
-      required DateTime date}) {
+  void scheduleNotification({
+    required int id,
+    required String title,
+    required String body,
+    required DateTime date,
+    required String eventID,
+  }) {
     // TODO: implement scheduleNotification
+    final scheduledDate = tz.TZDateTime.from(date, tz.local);
+
+    final NotificationDetails notificationDetails = NotificationDetails(
+      android: AndroidNotificationDetails(
+        channelID,
+        channelName,
+        importance: Importance.max,
+        priority: Priority.max,
+      ),
+    );
+
+    flutterLocalNotificationsPlugin.zonedSchedule(
+        id, title, body, scheduledDate, notificationDetails,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
+        androidAllowWhileIdle: true,
+        payload: eventID);
   }
 
   @override
   void cancelAllNotifications() {
     // TODO: implement cancelAllNotifications
+    flutterLocalNotificationsPlugin.cancelAll();
   }
 
   @override
   void cancelNotification({required int id}) {
     // TODO: implement cancelNotification
+    flutterLocalNotificationsPlugin.cancel(id);
   }
 }
