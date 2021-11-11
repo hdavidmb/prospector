@@ -28,7 +28,7 @@ class _$EventTearOff {
       required EventAlert notification,
       List<String>? guests,
       String? location,
-      List<int>? notificationsIDs}) {
+      int? notificationID}) {
     return _Event(
       id: id,
       allDay: allDay,
@@ -41,7 +41,7 @@ class _$EventTearOff {
       notification: notification,
       guests: guests,
       location: location,
-      notificationsIDs: notificationsIDs,
+      notificationID: notificationID,
     );
   }
 }
@@ -62,7 +62,7 @@ mixin _$Event {
   EventAlert get notification => throw _privateConstructorUsedError;
   List<String>? get guests => throw _privateConstructorUsedError;
   String? get location => throw _privateConstructorUsedError;
-  List<int>? get notificationsIDs => throw _privateConstructorUsedError;
+  int? get notificationID => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventCopyWith<Event> get copyWith => throw _privateConstructorUsedError;
@@ -84,7 +84,7 @@ abstract class $EventCopyWith<$Res> {
       EventAlert notification,
       List<String>? guests,
       String? location,
-      List<int>? notificationsIDs});
+      int? notificationID});
 }
 
 /// @nodoc
@@ -108,7 +108,7 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
     Object? notification = freezed,
     Object? guests = freezed,
     Object? location = freezed,
-    Object? notificationsIDs = freezed,
+    Object? notificationID = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -155,10 +155,10 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String?,
-      notificationsIDs: notificationsIDs == freezed
-          ? _value.notificationsIDs
-          : notificationsIDs // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
+      notificationID: notificationID == freezed
+          ? _value.notificationID
+          : notificationID // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -180,7 +180,7 @@ abstract class _$EventCopyWith<$Res> implements $EventCopyWith<$Res> {
       EventAlert notification,
       List<String>? guests,
       String? location,
-      List<int>? notificationsIDs});
+      int? notificationID});
 }
 
 /// @nodoc
@@ -205,7 +205,7 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
     Object? notification = freezed,
     Object? guests = freezed,
     Object? location = freezed,
-    Object? notificationsIDs = freezed,
+    Object? notificationID = freezed,
   }) {
     return _then(_Event(
       id: id == freezed
@@ -252,10 +252,10 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String?,
-      notificationsIDs: notificationsIDs == freezed
-          ? _value.notificationsIDs
-          : notificationsIDs // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
+      notificationID: notificationID == freezed
+          ? _value.notificationID
+          : notificationID // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -275,7 +275,7 @@ class _$_Event extends _Event {
       required this.notification,
       this.guests,
       this.location,
-      this.notificationsIDs})
+      this.notificationID})
       : super._();
 
   @override
@@ -301,11 +301,11 @@ class _$_Event extends _Event {
   @override
   final String? location;
   @override
-  final List<int>? notificationsIDs;
+  final int? notificationID;
 
   @override
   String toString() {
-    return 'Event(id: $id, allDay: $allDay, created: $created, modified: $modified, startDate: $startDate, endDate: $endDate, title: $title, type: $type, notification: $notification, guests: $guests, location: $location, notificationsIDs: $notificationsIDs)';
+    return 'Event(id: $id, allDay: $allDay, created: $created, modified: $modified, startDate: $startDate, endDate: $endDate, title: $title, type: $type, notification: $notification, guests: $guests, location: $location, notificationID: $notificationID)';
   }
 
   @override
@@ -340,9 +340,9 @@ class _$_Event extends _Event {
             (identical(other.location, location) ||
                 const DeepCollectionEquality()
                     .equals(other.location, location)) &&
-            (identical(other.notificationsIDs, notificationsIDs) ||
+            (identical(other.notificationID, notificationID) ||
                 const DeepCollectionEquality()
-                    .equals(other.notificationsIDs, notificationsIDs)));
+                    .equals(other.notificationID, notificationID)));
   }
 
   @override
@@ -359,7 +359,7 @@ class _$_Event extends _Event {
       const DeepCollectionEquality().hash(notification) ^
       const DeepCollectionEquality().hash(guests) ^
       const DeepCollectionEquality().hash(location) ^
-      const DeepCollectionEquality().hash(notificationsIDs);
+      const DeepCollectionEquality().hash(notificationID);
 
   @JsonKey(ignore: true)
   @override
@@ -380,7 +380,7 @@ abstract class _Event extends Event {
       required EventAlert notification,
       List<String>? guests,
       String? location,
-      List<int>? notificationsIDs}) = _$_Event;
+      int? notificationID}) = _$_Event;
   const _Event._() : super._();
 
   @override
@@ -406,7 +406,7 @@ abstract class _Event extends Event {
   @override
   String? get location => throw _privateConstructorUsedError;
   @override
-  List<int>? get notificationsIDs => throw _privateConstructorUsedError;
+  int? get notificationID => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$EventCopyWith<_Event> get copyWith => throw _privateConstructorUsedError;

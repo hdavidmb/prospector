@@ -18,7 +18,7 @@ class Event with _$Event {
     required EventAlert notification,
     List<String>? guests,
     String? location,
-    List<int>? notificationsIDs,
+    int? notificationID,
   }) = _Event;
 
   const Event._();
@@ -39,10 +39,8 @@ class Event with _$Event {
     if (notification != EventAlert.none) {
       eventMap['notification'] = startDate.subtract(notification.duration!);
     }
-
-//TODO: change to individual  notificationID
-    if (notificationsIDs != null && notificationsIDs!.isNotEmpty) {
-      eventMap['notificationsIDs'] = notificationsIDs;
+    if (notificationID != null) {
+      eventMap['notificationID'] = notificationID;
     }
     return eventMap;
   }
@@ -67,7 +65,7 @@ class Event with _$Event {
       guests: map['guests'] as List<String>?,
       location: map['location'] as String?,
       notification: notification,
-      notificationsIDs: map['notificationsIDs'] as List<int>?,
+      notificationID: map['notificationID'] as int?,
     );
   }
 

@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/local_notifications/application/local_notifications_providers.dart';
 
 import '../../../../../../generated/l10n.dart';
 import '../../../../../features/events/application/events_providers.dart';
@@ -66,20 +65,6 @@ class EventDetailsPage extends ConsumerWidget {
                     event: event, selectedAlert: selectedAlert),
           ),
           divider,
-
-          //TODO: temporal delete
-          ElevatedButton(
-            onPressed: () {
-              context.read(localNotificationsProvider).scheduleNotification(
-                    id: 0,
-                    title: event.title,
-                    body: 'body',
-                    date: DateTime.now().add(const Duration(seconds: 5)),
-                    eventID: eventID,
-                  );
-            },
-            child: const Text('Show notification'),
-          ),
         ],
       ),
     );

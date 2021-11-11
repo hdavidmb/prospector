@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 abstract class ILocalNotificationsService {
   Future<void> initializeLocalNotifications(
       void Function(String?) onSelectNotification);
@@ -9,7 +7,7 @@ abstract class ILocalNotificationsService {
     required String title,
     required String body,
     required DateTime date,
-    required String eventID,
+    required String payload,
   });
 
   void cancelNotification({required int id});

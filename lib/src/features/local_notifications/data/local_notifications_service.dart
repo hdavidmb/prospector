@@ -1,7 +1,7 @@
 import 'package:timezone/timezone.dart' as tz;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-import 'package:prospector/src/features/local_notifications/domain/i_local_notifications_service.dart';
+import '../domain/i_local_notifications_service.dart';
 
 class LocalNotificationsService implements ILocalNotificationsService {
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
@@ -15,7 +15,6 @@ class LocalNotificationsService implements ILocalNotificationsService {
   @override
   Future<void> initializeLocalNotifications(
       void Function(String?) onSelectNotification) async {
-    // TODO: implement initializeLocalNotifications
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('app_icon');
 
@@ -32,8 +31,6 @@ class LocalNotificationsService implements ILocalNotificationsService {
 
     await flutterLocalNotificationsPlugin.initialize(initializationSettings,
         onSelectNotification: onSelectNotification);
-
-    // TODO: select event tab by homeIndex, get event from paylod id, select calendar day, and navigate to event details
   }
 
   @override
@@ -42,9 +39,8 @@ class LocalNotificationsService implements ILocalNotificationsService {
     required String title,
     required String body,
     required DateTime date,
-    required String eventID,
+    required String payload,
   }) {
-    // TODO: implement scheduleNotification
     final scheduledDate = tz.TZDateTime.from(date, tz.local);
 
     final NotificationDetails notificationDetails = NotificationDetails(
@@ -61,18 +57,16 @@ class LocalNotificationsService implements ILocalNotificationsService {
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         androidAllowWhileIdle: true,
-        payload: eventID);
+        payload: payload);
   }
 
   @override
   void cancelAllNotifications() {
-    // TODO: implement cancelAllNotifications
     flutterLocalNotificationsPlugin.cancelAll();
   }
 
   @override
   void cancelNotification({required int id}) {
-    // TODO: implement cancelNotification
     flutterLocalNotificationsPlugin.cancel(id);
   }
 }

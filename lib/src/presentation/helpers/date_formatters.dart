@@ -99,3 +99,11 @@ String eventDetailsFormatedDate({
     return '${dateFormat.format(startDate)} -\n${dateFormat.format(endDate)}';
   }
 }
+
+String eventNotificationFormattedDate(
+    {required DateTime date, required bool is24hours}) {
+  final DateFormat dateFormat = is24hours
+      ? DateFormat.yMMMMd(Intl.getCurrentLocale()).add_Hm()
+      : DateFormat.yMMMMd(Intl.getCurrentLocale()).add_jm();
+  return dateFormat.format(date);
+}

@@ -1,7 +1,9 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/local_notifications/data/local_notifications_service.dart';
-import 'package:prospector/src/features/local_notifications/domain/local_notifications_use_cases.dart';
+
+import '../data/local_notifications_service.dart';
+import '../domain/local_notifications_use_cases.dart';
+import 'local_notifications_notifier.dart';
 
 // Plugin instance
 final localNotificationsPluginProvider =
@@ -18,10 +20,17 @@ final localNotificationsService = Provider<LocalNotificationsService>((ref) {
 });
 
 // Use cases
-final localNotificationsProvider = Provider<LocalNotificationsUseCases>((ref) {
+final localNotificationsUseCases = Provider<LocalNotificationsUseCases>((ref) {
   final _localNotificationsService = ref.watch(localNotificationsService);
   return LocalNotificationsUseCases(
     localNotificationsService: _localNotificationsService,
     read: ref.read,
   );
+});
+
+final localNotificationsProvider = Provider<LocalNotificationsNotifier>((ref) {
+  final LocalNotificationsUseCases _localNotificationsUseCases =
+      ref.watch(localNotificationsUseCases);
+  return LocalNotificationsNotifier(
+      localNotificationsUseCases: _localNotificationsUseCases, read: ref.read);
 });
