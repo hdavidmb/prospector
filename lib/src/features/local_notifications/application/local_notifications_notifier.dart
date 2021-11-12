@@ -59,7 +59,7 @@ class LocalNotificationsNotifier {
     if (date.isAfter(DateTime.now())) {
       localNotificationsUseCases.scheduleNotification(
         id: id,
-        title: title,
+        title: '🗓 $title',
         body: body,
         date: date,
         payload: payload,
