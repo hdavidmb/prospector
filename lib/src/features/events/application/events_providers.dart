@@ -27,6 +27,7 @@ final eventsUseCases = Provider<EventsUseCases>((ref) {
   return EventsUseCases(
     localEventsRepository: _localEventsRepository,
     remoteEventsRepository: _remoteEventsRepository,
+    read: ref.read,
   );
 });
 

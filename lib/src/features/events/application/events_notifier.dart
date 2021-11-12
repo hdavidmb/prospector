@@ -1,9 +1,14 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:random_string/random_string.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
+import '../../../presentation/helpers/date_formatters.dart';
+import '../../../presentation/theme/theme_providers.dart';
+import '../../local_notifications/application/local_notifications_providers.dart';
 import '../../user/application/user_info_providers.dart';
+import '../domain/entites/event_alert.dart';
 import '../domain/entites/event_entity.dart';
 import '../domain/events_use_cases.dart';
 import 'events_state.dart';
@@ -28,15 +33,17 @@ class EventsNotifier extends ChangeNotifier {
   Future<Either<DatabaseFailure, Unit>> createEvent(Event event) async {
     final uid = read(userInfoNotifierProvider).user?.uid;
     if (uid != null) {
+      final int? notificationID = _setEventNotification(event: event);
+      final newEventInfo = event.copyWith(notificationID: notificationID);
       final createResult =
-          await eventsUseCases.createEvent(event: event, uid: uid);
+          await eventsUseCases.createEvent(event: newEventInfo, uid: uid);
       return createResult.fold(
         (failure) => left(failure),
         (unit) {
           _events
-            ..add(event)
+            ..add(newEventInfo)
             ..sort((a, b) => b.startDate.compareTo(a.startDate));
-          // TODO Schedule local notification
+
           notifyListeners();
           return right(unit);
         },
@@ -68,12 +75,12 @@ class EventsNotifier extends ChangeNotifier {
   }
 
   Future<Either<DatabaseFailure, Unit>> updateEvent(Event event) async {
-    // TODO compare, delete and schedule notifications
-
     final uid = read(userInfoNotifierProvider).user?.uid;
 
     if (uid != null) {
-      final Event newEventInfo = event.copyWith(modified: DateTime.now());
+      final int? notificationID = _setEventNotification(event: event);
+      final Event newEventInfo = event.copyWith(
+          modified: DateTime.now(), notificationID: notificationID);
       final updateResult =
           await eventsUseCases.updateEvent(event: event, uid: uid);
       return updateResult.fold(
@@ -119,7 +126,6 @@ class EventsNotifier extends ChangeNotifier {
 
   Future<Either<DatabaseFailure, Unit>> deleteEvent(
       {required String eventID}) async {
-    // TODO delete notifications
     final uid = read(userInfoNotifierProvider).user?.uid;
     if (uid != null) {
       final deleteResult =
@@ -127,13 +133,43 @@ class EventsNotifier extends ChangeNotifier {
       return deleteResult.fold(
         (failure) => left(failure),
         (unit) {
-          _events.removeWhere((listEvent) => listEvent.id == eventID);
+          final Event event =
+              _events.firstWhere((listEvent) => listEvent.id == eventID);
+          _events.remove(event);
+          _cancelEventNotification(event: event);
           notifyListeners();
           return right(unit);
         },
       );
     } else {
       return left(const DatabaseFailure.noUserAuthenticated());
+    }
+  }
+
+  int? _setEventNotification({required Event event}) {
+    if (event.notification != EventAlert.none) {
+      final int notificationID =
+          event.notificationID ?? int.parse(randomNumeric(9));
+      final bool is24hours = read(themeNotifierProvider).is24hours;
+      read(localNotificationsProvider).scheduleNotification(
+        id: notificationID,
+        title: event.title,
+        body: eventNotificationFormattedDate(
+            date: event.startDate, is24hours: is24hours),
+        date: event.startDate
+            .subtract(event.notification.duration ?? Duration.zero),
+        payload: event.id,
+      );
+      return notificationID;
+    } else {
+      _cancelEventNotification(event: event);
+    }
+  }
+
+  void _cancelEventNotification({required Event event}) {
+    if (event.notificationID != null) {
+      read(localNotificationsProvider)
+          .cancelNotification(id: event.notificationID!);
     }
   }
 }

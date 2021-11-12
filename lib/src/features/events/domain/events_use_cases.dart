@@ -1,16 +1,24 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:random_string/random_string.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
 import '../../../core/user_collections/domain/interfaces/i_user_collection_local_repository.dart';
 import '../../../core/user_collections/domain/interfaces/i_user_collection_remote_repository.dart';
+import '../../../presentation/helpers/date_formatters.dart';
+import '../../../presentation/theme/theme_providers.dart';
+import '../../local_notifications/application/local_notifications_providers.dart';
+import 'entites/event_alert.dart';
 import 'entites/event_entity.dart';
 
 class EventsUseCases {
   final IUserCollectionLocalRepository localEventsRepository;
   final IUserCollectionRemoteRepository remoteEventsRepository;
+  final Reader read;
   EventsUseCases({
     required this.localEventsRepository,
     required this.remoteEventsRepository,
+    required this.read,
   });
 
   Future<Either<DatabaseFailure, Unit>> createEvent(
@@ -21,6 +29,7 @@ class EventsUseCases {
     return localCreate.fold(
       (failure) => left(failure),
       (_) {
+        eventMap.remove('notificationID');
         remoteEventsRepository.createDocument(document: eventMap, uid: uid);
         return right(unit);
       },
@@ -35,6 +44,7 @@ class EventsUseCases {
     return localUpdate.fold(
       (failure) => left(failure),
       (_) {
+        eventMap.remove('notificationID');
         remoteEventsRepository.updateDocument(document: eventMap, uid: uid);
         return right(unit);
       },
@@ -77,7 +87,6 @@ class EventsUseCases {
                             eventMap['notifications'] as List<dynamic>)
                         .first;
                   }
-                  //TODO include notificationID
                   return Event.fromMap(eventMap);
                 },
               ).toList(),
@@ -106,15 +115,18 @@ class EventsUseCases {
                         List<String>.from(eventMap['guests'] as List<dynamic>);
                   }
                   if (eventMap['notification'] != null) {
-                    //TODO schedule local notifications
                     eventMap['notification'] =
                         eventMap['notification']?.toDate();
+                    eventMap['notificationID'] =
+                        _scheduleEventNotification(eventMap: eventMap);
                   } else if (eventMap['notifications'] != null) {
-                    //TODO schedule local notifications
                     eventMap['notification'] =
                         (eventMap['notifications'] as List<dynamic>)
                             .first
                             ?.toDate();
+
+                    eventMap['notificationID'] =
+                        _scheduleEventNotification(eventMap: eventMap);
                     eventMap.remove('notifications');
                   }
                   if (eventMap['notificationsIDs'] != null) {
@@ -134,5 +146,24 @@ class EventsUseCases {
         }
       },
     );
+  }
+
+  int? _scheduleEventNotification({required Map<String, dynamic> eventMap}) {
+    final Event event = Event.fromMap(eventMap);
+    if (event.notification != EventAlert.none) {
+      final int notificationID =
+          event.notificationID ?? int.parse(randomNumeric(9));
+      final bool is24hours = read(themeNotifierProvider).is24hours;
+      read(localNotificationsProvider).scheduleNotification(
+        id: notificationID,
+        title: event.title,
+        body: eventNotificationFormattedDate(
+            date: event.startDate, is24hours: is24hours),
+        date: event.startDate
+            .subtract(event.notification.duration ?? Duration.zero),
+        payload: event.id,
+      );
+      return notificationID;
+    }
   }
 }

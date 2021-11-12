@@ -11,6 +11,7 @@ import '../../../features/events/application/events_state.dart';
 import '../../../features/import_contacts/application/import_contacts_providers.dart';
 import '../../../features/interactions/application/interactions_providers.dart';
 import '../../../features/interactions/application/interactions_state.dart';
+import '../../../features/local_notifications/application/local_notifications_providers.dart';
 import '../../../features/tags/application/tags_provider.dart';
 import '../../../features/tags/application/tags_state.dart';
 import '../../../features/user/application/user_info_providers.dart';
@@ -46,6 +47,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
       state = const AppState.error();
     } else if (defaultDataState == const AppDefaultDataState.ready()) {
       if (authState == const AuthState.authenticated()) {
+        read(localNotificationsProvider).initializeLocalNotifications();
         if (userInfoState == const UserInfoState.ready()) {
           if (contactsState == const ContactsState.initial()) {
             read(contactsNotifierProvider).getContacts();
@@ -72,6 +74,8 @@ class AppStateNotifier extends StateNotifier<AppState> {
               tagsState == const TagsState.ready() &&
               eventsState == const EventsState.ready()) {
             state = const AppState.authenticatedReady();
+            read(localNotificationsProvider)
+                .handleAppLaunchedFromNotification();
           }
         } else if (userInfoState == const UserInfoState.initial()) {
           Future.delayed(const Duration(milliseconds: 300),

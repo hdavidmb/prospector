@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../../../generated/l10n.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
 import '../logic/contact_details_provider.dart';
