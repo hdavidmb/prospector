@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'events_state.freezed.dart';
 
+// TODO: unify all fetchable objects state
 @freezed
 class EventsState with _$EventsState {
   const EventsState._();

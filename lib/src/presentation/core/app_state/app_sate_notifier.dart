@@ -48,6 +48,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
     } else if (defaultDataState == const AppDefaultDataState.ready()) {
       if (authState == const AuthState.authenticated()) {
         read(localNotificationsProvider).initializeLocalNotifications();
+        // TODO check if this post authentication logic can be handled from authStateNotifier
         if (userInfoState == const UserInfoState.ready()) {
           if (contactsState == const ContactsState.initial()) {
             read(contactsNotifierProvider).getContacts();
