@@ -1,12 +1,12 @@
 import 'dart:io' show Platform;
 
+// ignore: avoid_classes_with_only_static_members
 class PrivateKeysExample {
   static const String _developerIdAndroid = 'ANDROID_DEVELOPER_ID';
 
   static String getDeveloperIdAndroid() {
     return _developerIdAndroid;
   }
-
 
   static const String _gPlacesApiKey = 'G_PLACES_API_KEY';
 
@@ -64,4 +64,7 @@ class PrivateKeysExample {
     return _iOSAppSharedSecret;
   }
 
+  static const _revenueCatPublicSDKKey = "REVENUE_CAT_PUBLIC_SDK_KEY";
+
+  static String get revenueCatPublicSDKKey => _revenueCatPublicSDKKey;
 }
