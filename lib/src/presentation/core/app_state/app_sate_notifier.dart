@@ -1,4 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/in_app_purchase/application/fetch_state.dart';
+import 'package:prospector/src/features/in_app_purchase/application/in_app_purchase_providers.dart';
 
 import '../../../features/admob/application/ads_providers.dart';
 import '../../../features/app_default_data/application/app_default_data_providers.dart';
@@ -48,8 +50,10 @@ class AppStateNotifier extends StateNotifier<AppState> {
     } else if (defaultDataState == const AppDefaultDataState.ready()) {
       if (authState == const AuthState.authenticated()) {
         read(localNotificationsProvider).initializeLocalNotifications();
+        read(inAppPurchaseNotifier).getPackages();
         // TODO check if this post authentication logic can be handled from authStateNotifier
         if (userInfoState == const UserInfoState.ready()) {
+          read(inAppPurchaseNotifier).logInPurchaser();
           if (contactsState == const ContactsState.initial()) {
             read(contactsNotifierProvider).getContacts();
           }

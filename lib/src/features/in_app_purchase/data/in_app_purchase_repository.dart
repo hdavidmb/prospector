@@ -19,7 +19,11 @@ class InAppPurchaseRepository implements IInAppPurchaseRepository {
       final Offerings offerings = await Purchases.getOfferings();
       if (offerings.current?.availablePackages.isNotEmpty == true) {
         // Display packages for sale
-        return right(offerings.current!.availablePackages);
+        final List<Package> packages = offerings.current!.availablePackages;
+        //TODO TEST
+        print('************** PURCHASE PACKAGES **************');
+        print(packages);
+        return right(packages);
       } else {
         return left(const IAPFailure.serverError());
       }
@@ -31,7 +35,9 @@ class InAppPurchaseRepository implements IInAppPurchaseRepository {
   @override
   Future<void> logInPurchaser({required String uid}) async {
     try {
-      LogInResult result = await Purchases.logIn(uid);
+      final LogInResult result = await Purchases.logIn(uid);
+      print('************** PURCHASE LOGIN RESULT **************');
+      print(result.purchaserInfo); //TODO: test
     } catch (e) {
       //TODO: handle errors
       print(e);

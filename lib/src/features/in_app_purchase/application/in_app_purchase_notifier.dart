@@ -22,13 +22,15 @@ class InAppPurchaseNotifier extends ChangeNotifier {
   FetchState get loginState => _loginState;
   List<Package> get packages => _packages;
 
-  FetchState get payWallState {
+  FetchState get iapState {
     if (_loginState.isReady && _packagesState.isReady) {
       return const FetchState.ready();
     } else if (_loginState.isError || _packagesState.isError) {
       return const FetchState.error();
-    } else {
+    } else if (_loginState.isFetching || _packagesState.isFetching) {
       return const FetchState.fetching();
+    } else {
+      return const FetchState.initial();
     }
   }
 
@@ -63,9 +65,7 @@ class InAppPurchaseNotifier extends ChangeNotifier {
           _packagesState = const FetchState.ready();
         },
       );
-    } else {
-      _packagesState = const FetchState.error();
+      notifyListeners();
     }
-    notifyListeners();
   }
 }
