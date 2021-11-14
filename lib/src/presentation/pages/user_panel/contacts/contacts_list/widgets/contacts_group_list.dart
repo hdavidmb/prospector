@@ -10,7 +10,7 @@ import '../../../../../../features/admob/domain/native_ad_dummy.dart';
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
-import '../../../../../core/widgets/no_contatcs_screen/no_contacts_screen.dart';
+import '../../../../../core/widgets/no_contatcs_screen/info_message_page.dart';
 import '../../../../../routes/app_router.gr.dart';
 import 'contact_tile.dart';
 import 'custom_native_ad_widget.dart';
@@ -104,7 +104,7 @@ class ContactsGroupList extends ConsumerWidget {
               slivers: sections,
             ),
           )
-        : NoContactsScreen(
+        : InfoMessagePage(
             imagePath: isFiltered
                 ? 'assets/images/no_filtered_prospects.png'
                 : 'assets/images/no_prospects.png',

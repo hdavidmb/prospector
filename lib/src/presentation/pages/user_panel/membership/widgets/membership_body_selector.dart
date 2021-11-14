@@ -21,7 +21,7 @@ class MembershipBodySelector extends StatelessWidget {
         return LoadingPageCover();
       },
       fetching: () => LoadingPageCover(),
-      ready: () => Center(),
+      ready: () => Center(), // TODO: implement paywall page
       error: () => Center(), // TODO: implement error page
     );
   }

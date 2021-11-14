@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../../../generated/l10n.dart';
 import '../../../../../../../features/import_contacts/domain/entity/imported_contact_entity.dart';
-import '../../../../../../core/widgets/no_contatcs_screen/no_contacts_screen.dart';
+import '../../../../../../core/widgets/no_contatcs_screen/info_message_page.dart';
 import '../../widgets/imported_contact_tile.dart';
 import '../logic/impor_contacts_page_providers.dart';
 
@@ -35,7 +35,7 @@ class ImportContactsListView extends ConsumerWidget {
               indent: 10.0,
             ),
           )
-        : NoContactsScreen(
+        : InfoMessagePage(
             imagePath: 'assets/images/no_prospects.png',
             imageHeight: 120.0,
             message: AppLocalizations.of(context).noDeviceContactsMessage,

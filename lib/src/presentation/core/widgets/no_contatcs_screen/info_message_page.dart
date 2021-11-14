@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class NoContactsScreen extends StatelessWidget {
+class InfoMessagePage extends StatelessWidget {
   final String imagePath;
   final double imageHeight;
   final String message;
   final EdgeInsetsGeometry padding;
   final Widget? action;
 
-  const NoContactsScreen({
+  const InfoMessagePage({
     Key? key,
     required this.imagePath,
     required this.imageHeight,
@@ -23,11 +23,10 @@ class NoContactsScreen extends StatelessWidget {
         padding: padding,
         child: Column(
           children: [
-            Image(
-                image: AssetImage(imagePath),
-                height: imageHeight),
+            Image(image: AssetImage(imagePath), height: imageHeight),
             const SizedBox(height: 22.0, width: double.infinity),
-            Text(message,
+            Text(
+              message,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20.0),
