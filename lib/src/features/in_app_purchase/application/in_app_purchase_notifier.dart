@@ -35,7 +35,7 @@ class InAppPurchaseNotifier extends ChangeNotifier {
   }
 
   Future<void> logInPurchaser() async {
-    if (_loginState.isInitial) {
+    if (_loginState.isInitial || _loginState.isError) {
       _loginState = const FetchState.fetching();
       final uid = read(userInfoNotifierProvider).user?.uid;
       if (uid != null) {
@@ -55,7 +55,7 @@ class InAppPurchaseNotifier extends ChangeNotifier {
   }
 
   Future<void> getPackages() async {
-    if (_packagesState.isInitial) {
+    if (_packagesState.isInitial || _packagesState.isError) {
       _packagesState = const FetchState.fetching();
       final getResult = await inAppPurchaseUseCases.getPackages();
       getResult.fold(
