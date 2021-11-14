@@ -23,6 +23,7 @@ class InAppPurchaseRepository implements IInAppPurchaseRepository {
         //TODO TEST
         print('************** PURCHASE PACKAGES **************');
         print(packages);
+        print(packages.first.packageType);
         return right(packages);
       } else {
         return left(const IAPFailure.serverError());
