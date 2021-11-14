@@ -7,8 +7,8 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
-import '../../features/contacts/domain/entity/contact_entity.dart' as _i21;
-import '../../features/events/domain/entites/event_entity.dart' as _i22;
+import '../../features/contacts/domain/entity/contact_entity.dart' as _i22;
+import '../../features/events/domain/entites/event_entity.dart' as _i23;
 import '../pages/auth/register/register_page.dart' as _i6;
 import '../pages/auth/sign_in/sign_in_page.dart' as _i5;
 import '../pages/auth/splash/splash_screen_page.dart' as _i3;
@@ -23,6 +23,7 @@ import '../pages/user_panel/events/event_details/event_details_page.dart'
 import '../pages/user_panel/events/guests_selection/guests_selection_page.dart'
     as _i19;
 import '../pages/user_panel/home/home_page.dart' as _i4;
+import '../pages/user_panel/membership/membership_page.dart' as _i21;
 import '../pages/user_panel/settings/change_email/change_email_page.dart'
     as _i10;
 import '../pages/user_panel/settings/change_password/change_password_page.dart'
@@ -167,7 +168,13 @@ class AppRouter extends _i1.RootStackRouter {
               orElse: () => const EventAddEditRouteArgs());
           return _i20.EventAddEditPage(
               key: args.key, editingEvent: args.editingEvent);
-        })
+        }),
+    MembershipRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i21.MembershipPage();
+        },
+        fullscreenDialog: true)
   };
 
   @override
@@ -199,7 +206,8 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(EventDetailsRoute.name, path: '/event-details-page'),
         _i1.RouteConfig(GuestsSelectionRoute.name,
             path: '/guests-selection-page'),
-        _i1.RouteConfig(EventAddEditRoute.name, path: '/event-add-edit-page')
+        _i1.RouteConfig(EventAddEditRoute.name, path: '/event-add-edit-page'),
+        _i1.RouteConfig(MembershipRoute.name, path: '/membership-page')
       ];
 }
 
@@ -245,7 +253,7 @@ class ContactDetailsRouteArgs {
 }
 
 class ContactAddEditRoute extends _i1.PageRouteInfo<ContactAddEditRouteArgs> {
-  ContactAddEditRoute({_i2.Key? key, _i21.Contact? editingContact})
+  ContactAddEditRoute({_i2.Key? key, _i22.Contact? editingContact})
       : super(name,
             path: '/contact-add-edit-page',
             args: ContactAddEditRouteArgs(
@@ -259,12 +267,12 @@ class ContactAddEditRouteArgs {
 
   final _i2.Key? key;
 
-  final _i21.Contact? editingContact;
+  final _i22.Contact? editingContact;
 }
 
 class ContactAddEditMaterialRoute
     extends _i1.PageRouteInfo<ContactAddEditMaterialRouteArgs> {
-  ContactAddEditMaterialRoute({_i2.Key? key, _i21.Contact? editingContact})
+  ContactAddEditMaterialRoute({_i2.Key? key, _i22.Contact? editingContact})
       : super(name,
             path: '/contact-add-edit-page',
             args: ContactAddEditMaterialRouteArgs(
@@ -278,7 +286,7 @@ class ContactAddEditMaterialRouteArgs {
 
   final _i2.Key? key;
 
-  final _i21.Contact? editingContact;
+  final _i22.Contact? editingContact;
 }
 
 class UserProfileRoute extends _i1.PageRouteInfo {
@@ -372,7 +380,7 @@ class GuestsSelectionRouteArgs {
 }
 
 class EventAddEditRoute extends _i1.PageRouteInfo<EventAddEditRouteArgs> {
-  EventAddEditRoute({_i2.Key? key, _i22.Event? editingEvent})
+  EventAddEditRoute({_i2.Key? key, _i23.Event? editingEvent})
       : super(name,
             path: '/event-add-edit-page',
             args: EventAddEditRouteArgs(key: key, editingEvent: editingEvent));
@@ -385,5 +393,11 @@ class EventAddEditRouteArgs {
 
   final _i2.Key? key;
 
-  final _i22.Event? editingEvent;
+  final _i23.Event? editingEvent;
+}
+
+class MembershipRoute extends _i1.PageRouteInfo {
+  const MembershipRoute() : super(name, path: '/membership-page');
+
+  static const String name = 'MembershipRoute';
 }

@@ -39,7 +39,7 @@ class InAppPurchaseNotifier extends ChangeNotifier {
       _loginState = const FetchState.fetching();
       final uid = read(userInfoNotifierProvider).user?.uid;
       if (uid != null) {
-        // TODO: check for some return to update user info subscription
+        // TODO: return purchaser info to update user info subscription
         await inAppPurchaseUseCases.logInPurchaser(uid: uid);
         _loginState = const FetchState.ready();
       }

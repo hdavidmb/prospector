@@ -9,7 +9,7 @@ import '../../../../core/dialogs.dart';
 import 'logic/user_profile_notifier.dart';
 import 'logic/user_profile_provider.dart';
 import 'logic/user_profile_state.dart';
-import 'widgets/loading_page_cover.dart';
+import '../../../../core/widgets/loading_page_cover.dart';
 import 'widgets/logout_and_delete_buttons.dart';
 import 'widgets/user_auth_provider_items.dart';
 import 'widgets/user_avatar_edit.dart';
