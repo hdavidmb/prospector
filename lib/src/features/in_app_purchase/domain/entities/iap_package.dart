@@ -10,6 +10,7 @@ class IAPPackage with _$IAPPackage {
     required IAPPackageType type,
     required double price,
     required String priceString,
+    required String sku,
     required Package package,
   }) = _IAPPackage;
   const IAPPackage._();
@@ -24,6 +25,7 @@ class IAPPackage with _$IAPPackage {
       type: pType,
       price: platformPackage.product.price,
       priceString: platformPackage.product.priceString,
+      sku: platformPackage.product.identifier,
       package: platformPackage,
     );
   }

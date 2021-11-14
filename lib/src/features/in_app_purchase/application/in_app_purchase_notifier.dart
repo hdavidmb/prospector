@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:purchases_flutter/package_wrapper.dart';
+import 'package:prospector/src/features/in_app_purchase/domain/entities/iap_package.dart';
 
 import '../../user/application/user_info_providers.dart';
 import '../domain/in_app_purchase_use_cases.dart';
@@ -16,11 +16,11 @@ class InAppPurchaseNotifier extends ChangeNotifier {
 
   FetchState _packagesState = const FetchState.initial();
   FetchState _loginState = const FetchState.initial();
-  List<Package> _packages = [];
+  List<IAPPackage> _packages = [];
 
   FetchState get packagesState => _packagesState;
   FetchState get loginState => _loginState;
-  List<Package> get packages => _packages;
+  List<IAPPackage> get packages => _packages;
 
   FetchState get iapState {
     if (_loginState.isReady && _packagesState.isReady) {
@@ -63,6 +63,7 @@ class InAppPurchaseNotifier extends ChangeNotifier {
         (packagesList) {
           _packages = packagesList;
           _packagesState = const FetchState.ready();
+          print(_packages);
         },
       );
       notifyListeners();

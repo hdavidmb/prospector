@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prospector/src/presentation/pages/user_panel/membership/widgets/package_selector.dart';
 
 class MembershipPaywall extends StatelessWidget {
   const MembershipPaywall({
@@ -12,6 +13,7 @@ class MembershipPaywall extends StatelessWidget {
         Expanded(
           child: Container(color: Colors.blue),
         ),
+        const PackageSelector(),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
               shape: const StadiumBorder(), minimumSize: Size(300.0, 40.0)),

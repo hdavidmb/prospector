@@ -78,7 +78,7 @@ class CustomBottomBarButton extends StatelessWidget {
           : () {
               final bool isPremium =
                   context.read(userInfoNotifierProvider).isPremiumUser;
-              if (position == 0 /*TODO && !isPremium */) {
+              if (position == 0 && !isPremium) {
                 AutoRouter.of(context).push(const MembershipRoute());
                 return;
               }
