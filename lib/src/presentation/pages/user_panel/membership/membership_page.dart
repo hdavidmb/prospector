@@ -15,16 +15,17 @@ class MembershipPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
+    final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final FetchState iapState = watch(inAppPurchaseNotifier).iapState;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         elevation: 0,
+        backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            // TODO: set color deppending on themeMode
             onPressed: () => AutoRouter.of(context).pop(),
+            color: isDarkMode ? Colors.white : Colors.black87,
             icon: const Icon(Icons.close),
           ),
         ],

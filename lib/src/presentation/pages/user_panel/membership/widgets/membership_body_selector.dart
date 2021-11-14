@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/src/features/in_app_purchase/application/in_app_purchase_providers.dart';
 import 'package:prospector/src/presentation/core/widgets/loading_page_cover.dart';
 import 'package:prospector/src/presentation/core/widgets/no_contatcs_screen/info_message_page.dart';
+import 'package:prospector/src/presentation/pages/user_panel/membership/widgets/membership_paywall.dart';
 
 class MembershipBodySelector extends StatelessWidget {
   final FetchState iapState;
@@ -23,7 +24,7 @@ class MembershipBodySelector extends StatelessWidget {
         return LoadingPageCover();
       },
       fetching: () => LoadingPageCover(),
-      ready: () => Center(), // TODO: implement paywall page
+      ready: () => const MembershipPaywall(),
       error: () => InfoMessagePage(
         imagePath: 'assets/images/error.png',
         imageHeight: 150.0,
@@ -36,7 +37,7 @@ class MembershipBodySelector extends StatelessWidget {
           },
           child: Text(AppLocalizations.of(context).tryAgain),
         ),
-      ), // TODO: implement error page
+      ),
     );
   }
 }
