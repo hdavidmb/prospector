@@ -146,6 +146,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "logOut": MessageLookupByLibrary.simpleMessage("Log out"),
         "loggedInWith": MessageLookupByLibrary.simpleMessage("Logged in with"),
         "male": MessageLookupByLibrary.simpleMessage("Male"),
+        "measureWhatMatters":
+            MessageLookupByLibrary.simpleMessage("Measure what matters"),
+        "measureWhatMattersMessage": MessageLookupByLibrary.simpleMessage(
+            "Keep track of your actions and effectiveness on the business skills"),
         "membership": MessageLookupByLibrary.simpleMessage("Membership"),
         "minutes": MessageLookupByLibrary.simpleMessage("minutes"),
         "minutesBefore": MessageLookupByLibrary.simpleMessage("minutes before"),
@@ -200,6 +204,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordsDontMatch":
             MessageLookupByLibrary.simpleMessage("Passwords don\'t match"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
+        "planToImprove":
+            MessageLookupByLibrary.simpleMessage("Plan to improve"),
+        "planToImproveMessage": MessageLookupByLibrary.simpleMessage(
+            "Compare your performance every month and plan your strategy for the future"),
         "premiumCap": MessageLookupByLibrary.simpleMessage("PREMIUM"),
         "premiumFeature":
             MessageLookupByLibrary.simpleMessage("Premium feature"),
@@ -228,6 +236,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "registerButton": MessageLookupByLibrary.simpleMessage("Register"),
         "reminder": MessageLookupByLibrary.simpleMessage("Reminder"),
+        "removeAds": MessageLookupByLibrary.simpleMessage("Remove Ads"),
+        "removeAdsMessage": MessageLookupByLibrary.simpleMessage(
+            "Manage your business with Prospector completly free of ads"),
         "renewAutomatically": MessageLookupByLibrary.simpleMessage(
             "Then your membership will renew automatically every"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
@@ -258,6 +269,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "start": MessageLookupByLibrary.simpleMessage("Start"),
         "startsAt": MessageLookupByLibrary.simpleMessage("Starts at"),
         "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
+        "statisticsModule":
+            MessageLookupByLibrary.simpleMessage("Statistics Module"),
+        "statisticsModuleMessage": MessageLookupByLibrary.simpleMessage(
+            "Get full access to the statistics module with usefull charts and insigts about your activity as Networker"),
         "syncContacts": MessageLookupByLibrary.simpleMessage("Sync contacts"),
         "tagName": MessageLookupByLibrary.simpleMessage("Tag name"),
         "tags": MessageLookupByLibrary.simpleMessage("Tags"),

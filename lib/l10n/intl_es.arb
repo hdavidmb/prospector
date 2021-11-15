@@ -202,5 +202,13 @@
     "renewAutomatically": "Despues tu membresía se renovará automáticamente cada",
     "pricesShownIn": "Los precios se muestran en",
     "freeTrialMessage": "Cada membresía incluye 7 días de prueba gratis",
-    "prospectorPremium": "Prospector Premium"
+    "prospectorPremium": "Prospector Premium",
+    "statisticsModule": "Módulo de Estadísticas",
+    "measureWhatMatters": "Mide lo Importante",
+    "planToImprove": "Planea para mejorar",
+    "removeAds": "Elimina la Publicidad",
+    "statisticsModuleMessage": "Obtén acceso completo al módulo de estadisticas con útiles gráficos y datos sobre tu actividad como Networker",
+    "measureWhatMattersMessage": "Haz seguimiento a tus acciones y efectividad en las habilidades del negocio",
+    "planToImproveMessage": "Compara tu desempeño mes a mes y planea tu estrategia para el futuro",
+    "removeAdsMessage": "Administra tu negocio con Prospector completamente libre de anuncios"
 }

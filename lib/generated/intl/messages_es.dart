@@ -156,6 +156,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "loggedInWith":
             MessageLookupByLibrary.simpleMessage("Iniciaste sesión con"),
         "male": MessageLookupByLibrary.simpleMessage("Masculino"),
+        "measureWhatMatters":
+            MessageLookupByLibrary.simpleMessage("Mide lo Importante"),
+        "measureWhatMattersMessage": MessageLookupByLibrary.simpleMessage(
+            "Haz seguimiento a tus acciones y efectividad en las habilidades del negocio"),
         "membership": MessageLookupByLibrary.simpleMessage("Membresía"),
         "minutes": MessageLookupByLibrary.simpleMessage("minutos"),
         "minutesBefore": MessageLookupByLibrary.simpleMessage("minutos antes"),
@@ -212,6 +216,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordsDontMatch": MessageLookupByLibrary.simpleMessage(
             "Las contraseñas no coinciden"),
         "phone": MessageLookupByLibrary.simpleMessage("Teléfono"),
+        "planToImprove":
+            MessageLookupByLibrary.simpleMessage("Planea para mejorar"),
+        "planToImproveMessage": MessageLookupByLibrary.simpleMessage(
+            "Compara tu desempeño mes a mes y planea tu estrategia para el futuro"),
         "premiumCap": MessageLookupByLibrary.simpleMessage("PREMIUM"),
         "premiumFeature":
             MessageLookupByLibrary.simpleMessage("Función Premium"),
@@ -239,6 +247,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "register": MessageLookupByLibrary.simpleMessage("Registro"),
         "registerButton": MessageLookupByLibrary.simpleMessage("Registrarme"),
         "reminder": MessageLookupByLibrary.simpleMessage("Recordatorio"),
+        "removeAds":
+            MessageLookupByLibrary.simpleMessage("Elimina la Publicidad"),
+        "removeAdsMessage": MessageLookupByLibrary.simpleMessage(
+            "Administra tu negocio con Prospector completamente libre de anuncios"),
         "renewAutomatically": MessageLookupByLibrary.simpleMessage(
             "Despues tu membresía se renovará automáticamente cada"),
         "resetPassword":
@@ -274,6 +286,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "start": MessageLookupByLibrary.simpleMessage("Inicia"),
         "startsAt": MessageLookupByLibrary.simpleMessage("Inicia"),
         "statistics": MessageLookupByLibrary.simpleMessage("Estadisticas"),
+        "statisticsModule":
+            MessageLookupByLibrary.simpleMessage("Módulo de Estadísticas"),
+        "statisticsModuleMessage": MessageLookupByLibrary.simpleMessage(
+            "Obtén acceso completo al módulo de estadisticas con útiles gráficos y datos sobre tu actividad como Networker"),
         "syncContacts":
             MessageLookupByLibrary.simpleMessage("Sincronizar contactos"),
         "tagName":

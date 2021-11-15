@@ -8,6 +8,7 @@ import 'package:prospector/src/presentation/helpers/date_formatters.dart';
 import 'package:prospector/src/presentation/pages/user_panel/membership/logic/membership_providers.dart';
 import 'package:prospector/src/presentation/pages/user_panel/membership/widgets/package_selector.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/pages/user_panel/membership/widgets/premium_carousel.dart';
 
 class MembershipPaywall extends StatelessWidget {
   const MembershipPaywall({
@@ -23,9 +24,10 @@ class MembershipPaywall extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
-          Expanded(
-            child: Container(color: Colors.blue),
+          const Expanded(
+            child: PremiumCarousel(),
           ),
+          const SizedBox(height: 25.0),
           const PackageSelector(),
           Padding(
             padding: const EdgeInsets.only(

@@ -2089,6 +2089,86 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Statistics Module`
+  String get statisticsModule {
+    return Intl.message(
+      'Statistics Module',
+      name: 'statisticsModule',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Measure what matters`
+  String get measureWhatMatters {
+    return Intl.message(
+      'Measure what matters',
+      name: 'measureWhatMatters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plan to improve`
+  String get planToImprove {
+    return Intl.message(
+      'Plan to improve',
+      name: 'planToImprove',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove Ads`
+  String get removeAds {
+    return Intl.message(
+      'Remove Ads',
+      name: 'removeAds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get full access to the statistics module with usefull charts and insigts about your activity as Networker`
+  String get statisticsModuleMessage {
+    return Intl.message(
+      'Get full access to the statistics module with usefull charts and insigts about your activity as Networker',
+      name: 'statisticsModuleMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep track of your actions and effectiveness on the business skills`
+  String get measureWhatMattersMessage {
+    return Intl.message(
+      'Keep track of your actions and effectiveness on the business skills',
+      name: 'measureWhatMattersMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Compare your performance every month and plan your strategy for the future`
+  String get planToImproveMessage {
+    return Intl.message(
+      'Compare your performance every month and plan your strategy for the future',
+      name: 'planToImproveMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manage your business with Prospector completly free of ads`
+  String get removeAdsMessage {
+    return Intl.message(
+      'Manage your business with Prospector completly free of ads',
+      name: 'removeAdsMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {
