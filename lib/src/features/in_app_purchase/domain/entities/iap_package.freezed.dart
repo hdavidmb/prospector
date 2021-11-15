@@ -19,14 +19,12 @@ class _$IAPPackageTearOff {
   _IAPPackage call(
       {required IAPPackageType type,
       required double price,
-      required String priceString,
       required String currencyCode,
       required String sku,
       required Package package}) {
     return _IAPPackage(
       type: type,
       price: price,
-      priceString: priceString,
       currencyCode: currencyCode,
       sku: sku,
       package: package,
@@ -41,7 +39,6 @@ const $IAPPackage = _$IAPPackageTearOff();
 mixin _$IAPPackage {
   IAPPackageType get type => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
-  String get priceString => throw _privateConstructorUsedError;
   String get currencyCode => throw _privateConstructorUsedError;
   String get sku => throw _privateConstructorUsedError;
   Package get package => throw _privateConstructorUsedError;
@@ -59,7 +56,6 @@ abstract class $IAPPackageCopyWith<$Res> {
   $Res call(
       {IAPPackageType type,
       double price,
-      String priceString,
       String currencyCode,
       String sku,
       Package package});
@@ -77,7 +73,6 @@ class _$IAPPackageCopyWithImpl<$Res> implements $IAPPackageCopyWith<$Res> {
   $Res call({
     Object? type = freezed,
     Object? price = freezed,
-    Object? priceString = freezed,
     Object? currencyCode = freezed,
     Object? sku = freezed,
     Object? package = freezed,
@@ -91,10 +86,6 @@ class _$IAPPackageCopyWithImpl<$Res> implements $IAPPackageCopyWith<$Res> {
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
-      priceString: priceString == freezed
-          ? _value.priceString
-          : priceString // ignore: cast_nullable_to_non_nullable
-              as String,
       currencyCode: currencyCode == freezed
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
@@ -120,7 +111,6 @@ abstract class _$IAPPackageCopyWith<$Res> implements $IAPPackageCopyWith<$Res> {
   $Res call(
       {IAPPackageType type,
       double price,
-      String priceString,
       String currencyCode,
       String sku,
       Package package});
@@ -140,7 +130,6 @@ class __$IAPPackageCopyWithImpl<$Res> extends _$IAPPackageCopyWithImpl<$Res>
   $Res call({
     Object? type = freezed,
     Object? price = freezed,
-    Object? priceString = freezed,
     Object? currencyCode = freezed,
     Object? sku = freezed,
     Object? package = freezed,
@@ -154,10 +143,6 @@ class __$IAPPackageCopyWithImpl<$Res> extends _$IAPPackageCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
-      priceString: priceString == freezed
-          ? _value.priceString
-          : priceString // ignore: cast_nullable_to_non_nullable
-              as String,
       currencyCode: currencyCode == freezed
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
@@ -180,7 +165,6 @@ class _$_IAPPackage extends _IAPPackage {
   const _$_IAPPackage(
       {required this.type,
       required this.price,
-      required this.priceString,
       required this.currencyCode,
       required this.sku,
       required this.package})
@@ -191,8 +175,6 @@ class _$_IAPPackage extends _IAPPackage {
   @override
   final double price;
   @override
-  final String priceString;
-  @override
   final String currencyCode;
   @override
   final String sku;
@@ -201,7 +183,7 @@ class _$_IAPPackage extends _IAPPackage {
 
   @override
   String toString() {
-    return 'IAPPackage(type: $type, price: $price, priceString: $priceString, currencyCode: $currencyCode, sku: $sku, package: $package)';
+    return 'IAPPackage(type: $type, price: $price, currencyCode: $currencyCode, sku: $sku, package: $package)';
   }
 
   @override
@@ -212,9 +194,6 @@ class _$_IAPPackage extends _IAPPackage {
                 const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.price, price) ||
                 const DeepCollectionEquality().equals(other.price, price)) &&
-            (identical(other.priceString, priceString) ||
-                const DeepCollectionEquality()
-                    .equals(other.priceString, priceString)) &&
             (identical(other.currencyCode, currencyCode) ||
                 const DeepCollectionEquality()
                     .equals(other.currencyCode, currencyCode)) &&
@@ -229,7 +208,6 @@ class _$_IAPPackage extends _IAPPackage {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(price) ^
-      const DeepCollectionEquality().hash(priceString) ^
       const DeepCollectionEquality().hash(currencyCode) ^
       const DeepCollectionEquality().hash(sku) ^
       const DeepCollectionEquality().hash(package);
@@ -244,7 +222,6 @@ abstract class _IAPPackage extends IAPPackage {
   const factory _IAPPackage(
       {required IAPPackageType type,
       required double price,
-      required String priceString,
       required String currencyCode,
       required String sku,
       required Package package}) = _$_IAPPackage;
@@ -254,8 +231,6 @@ abstract class _IAPPackage extends IAPPackage {
   IAPPackageType get type => throw _privateConstructorUsedError;
   @override
   double get price => throw _privateConstructorUsedError;
-  @override
-  String get priceString => throw _privateConstructorUsedError;
   @override
   String get currencyCode => throw _privateConstructorUsedError;
   @override

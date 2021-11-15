@@ -7,6 +7,7 @@ import 'package:prospector/src/features/in_app_purchase/application/in_app_purch
 import 'package:prospector/src/features/in_app_purchase/domain/entities/iap_package.dart';
 import 'package:prospector/src/features/in_app_purchase/domain/entities/iap_package_type.dart';
 import 'package:prospector/src/features/user/application/user_info_providers.dart';
+import 'package:prospector/src/presentation/helpers/number_formatters.dart';
 import 'package:prospector/src/presentation/pages/user_panel/membership/logic/membership_providers.dart';
 
 class PackageSelector extends ConsumerWidget {
@@ -115,11 +116,15 @@ class PackageCell extends StatelessWidget {
                     children: [
                       Center(
                         child: AutoSizeText(
-                          package.priceString,
+                          getFormattedPrice(
+                              price: package.price,
+                              currencyCode: package.currencyCode),
                           maxLines: 1,
                           minFontSize: isSelected ? 15.0 : 12.0,
+                          // maxFontSize: isSelected ? 20.0 : 16.0,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
+                              fontSize: 20.0,
                               color: isSelected
                                   ? Colors.white
                                   : Theme.of(context)
@@ -129,10 +134,10 @@ class PackageCell extends StatelessWidget {
                                       .withAlpha(50)),
                         ),
                       ),
-                      const SizedBox(height: 2.0),
+                      const SizedBox(height: 3.0),
                       Center(
                         child: AutoSizeText(
-                          '${package.priceString[0]}${monthlyPrice.toStringAsFixed(monthlyPrice > 999 ? 0 : 2)} / m',
+                          '${getFormattedPrice(price: monthlyPrice, currencyCode: package.currencyCode)} / m',
                           maxLines: 1,
                           maxFontSize: 12.0,
                           style: TextStyle(

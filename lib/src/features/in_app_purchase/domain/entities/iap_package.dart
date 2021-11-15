@@ -12,7 +12,6 @@ class IAPPackage with _$IAPPackage {
   const factory IAPPackage({
     required IAPPackageType type,
     required double price,
-    required String priceString,
     required String currencyCode,
     required String sku,
     required Package package,
@@ -28,7 +27,6 @@ class IAPPackage with _$IAPPackage {
     return IAPPackage(
       type: pType,
       price: platformPackage.product.price,
-      priceString: platformPackage.product.priceString,
       currencyCode: platformPackage.product.currencyCode,
       sku: platformPackage.product.identifier,
       package: platformPackage,
