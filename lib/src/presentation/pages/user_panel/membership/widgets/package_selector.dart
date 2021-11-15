@@ -1,10 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/generated/l10n.dart';
 
 import 'package:prospector/src/features/in_app_purchase/application/in_app_purchase_providers.dart';
 import 'package:prospector/src/features/in_app_purchase/domain/entities/iap_package.dart';
 import 'package:prospector/src/features/in_app_purchase/domain/entities/iap_package_type.dart';
+import 'package:prospector/src/features/user/application/user_info_providers.dart';
 import 'package:prospector/src/presentation/pages/user_panel/membership/logic/membership_providers.dart';
 
 class PackageSelector extends ConsumerWidget {
@@ -57,92 +59,139 @@ class PackageCell extends StatelessWidget {
     final double width = isSelected ? 100.0 : 95.0;
     final double height = isSelected ? 120.0 : 115.0;
     final double monthlyPrice = package.price / package.type.months;
-    const Radius radius = Radius.circular(10.0);
+    final bool isPremium = context.read(userInfoNotifierProvider).isPremiumUser;
+    final String? userSKU =
+        context.read(userInfoNotifierProvider).user?.subscriptionSKU;
+
     return GestureDetector(
       onTap: () {
-        //TODO: select index
         context.read(membershipNotifierProvider).selectedIndex = position;
       },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Container(
-              width: width,
-              height: height / 2,
-              padding:
-                  const EdgeInsets.symmetric(vertical: 12.0, horizontal: 14.0),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  topLeft: radius,
-                  topRight: radius,
+      child: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          Card(
+            elevation: isSelected ? 10.0 : 2.0,
+            margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 6.0),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            ),
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            child: Column(
+              children: [
+                Container(
+                  width: width,
+                  height: height / 2,
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 12.0, horizontal: 14.0),
+                  color: isSelected
+                      ? Colors.grey[350]
+                      : isDarkMode
+                          ? Colors.white24
+                          : Colors.black.withAlpha(25),
+                  child: Center(
+                    child: Text(
+                      package.type.text,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: isSelected ? Colors.black : Colors.black38,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
-                color: Colors.grey[300]!.withAlpha(isSelected ? 255 : 100),
+                Container(
+                  width: width,
+                  height: height / 2,
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 12.0, horizontal: 14.0),
+                  color: isSelected
+                      ? Theme.of(context).primaryColor
+                      : isDarkMode
+                          ? Colors.white10
+                          : Colors.grey[200],
+                  child: Column(
+                    children: [
+                      Center(
+                        child: AutoSizeText(
+                          package.priceString,
+                          maxLines: 1,
+                          minFontSize: isSelected ? 15.0 : 12.0,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: isSelected
+                                  ? Colors.white
+                                  : Theme.of(context)
+                                      .textTheme
+                                      .bodyText1!
+                                      .color!
+                                      .withAlpha(50)),
+                        ),
+                      ),
+                      const SizedBox(height: 2.0),
+                      Center(
+                        child: AutoSizeText(
+                          '${package.priceString[0]}${monthlyPrice.toStringAsFixed(monthlyPrice > 999 ? 0 : 2)} / m',
+                          maxLines: 1,
+                          maxFontSize: 12.0,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: isSelected
+                                ? Colors.white70
+                                : Theme.of(context)
+                                    .textTheme
+                                    .bodyText1!
+                                    .color!
+                                    .withAlpha(50),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          if (savings > 0)
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                color: Colors.green[300],
               ),
-              child: Center(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
                 child: Text(
-                  package.priceString,
-                  style: TextStyle(
-                    color: isSelected ? Theme.of(context).primaryColor : null,
-                    fontWeight: FontWeight.bold,
+                  '${AppLocalizations.of(context).saveFinancial} $savings%',
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          if (isPremium && userSKU == package.sku)
+            Positioned(
+              bottom: 0.0,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                  color: Colors.amber[400],
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0, vertical: 2.0),
+                  child: Text(
+                    AppLocalizations.of(context).currentText,
+                    style: const TextStyle(
+                        color: Colors.black45,
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
             ),
-            Container(
-              width: width,
-              height: height / 2,
-              padding:
-                  const EdgeInsets.symmetric(vertical: 12.0, horizontal: 14.0),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: radius,
-                  bottomRight: radius,
-                ),
-                color: Theme.of(context)
-                    .primaryColor
-                    .withAlpha(isSelected ? 230 : 30),
-              ),
-              child: Column(
-                children: [
-                  Center(
-                    child: AutoSizeText(
-                      package.priceString,
-                      maxLines: 1,
-                      minFontSize: isSelected ? 15.0 : 12.0,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: isSelected
-                              ? Colors.white
-                              : Theme.of(context)
-                                  .textTheme
-                                  .bodyText1!
-                                  .color!
-                                  .withAlpha(50)),
-                    ),
-                  ),
-                  const SizedBox(height: 2.0),
-                  Center(
-                    child: AutoSizeText(
-                      '${package.priceString[0]}${monthlyPrice.toStringAsFixed(monthlyPrice > 999 ? 0 : 2)} / m',
-                      maxLines: 1,
-                      maxFontSize: 12.0,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: isSelected
-                              ? Colors.white70
-                              : Theme.of(context)
-                                  .textTheme
-                                  .bodyText1!
-                                  .color!
-                                  .withAlpha(50)),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+        ],
       ),
     );
   }

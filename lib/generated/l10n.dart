@@ -1949,6 +1949,86 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Continue`
+  String get continueText {
+    return Intl.message(
+      'Continue',
+      name: 'continueText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restore subscription`
+  String get restoreSubscription {
+    return Intl.message(
+      'Restore subscription',
+      name: 'restoreSubscription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1\nMonth`
+  String get oneMonth {
+    return Intl.message(
+      '1\nMonth',
+      name: 'oneMonth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `3\nMonths`
+  String get threeMonths {
+    return Intl.message(
+      '3\nMonths',
+      name: 'threeMonths',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `6\nMonths`
+  String get sixMonths {
+    return Intl.message(
+      '6\nMonths',
+      name: 'sixMonths',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1\nYear`
+  String get oneYear {
+    return Intl.message(
+      '1\nYear',
+      name: 'oneYear',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get saveFinancial {
+    return Intl.message(
+      'Save',
+      name: 'saveFinancial',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current`
+  String get currentText {
+    return Intl.message(
+      'Current',
+      name: 'currentText',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

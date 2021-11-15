@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prospector/generated/l10n.dart';
 import 'package:prospector/src/presentation/pages/user_panel/membership/widgets/package_selector.dart';
 
 class MembershipPaywall extends StatelessWidget {
@@ -19,7 +20,7 @@ class MembershipPaywall extends StatelessWidget {
               shape: const StadiumBorder(), minimumSize: Size(300.0, 40.0)),
           onPressed: () {},
           child: Text(
-            'SUBSCRIBE', //TODO: localize
+            AppLocalizations.of(context).continueText,
             style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
           ),
         ),
@@ -38,7 +39,7 @@ class MembershipPaywall extends StatelessWidget {
               print('RESTORE');
             },
             child: Text(
-              'Restore subscription',
+              AppLocalizations.of(context).restoreSubscription,
               style: const TextStyle(
                   color: Colors.grey, decoration: TextDecoration.underline),
             ), //TODO: localize

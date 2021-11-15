@@ -63,10 +63,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "contactsAccessMessage": MessageLookupByLibrary.simpleMessage(
             "Contacts access is not allowed for Prospector MLM."),
         "continueString": MessageLookupByLibrary.simpleMessage("Continue"),
+        "continueText": MessageLookupByLibrary.simpleMessage("Continue"),
         "countryCode": MessageLookupByLibrary.simpleMessage("Country code"),
         "currentEmail": MessageLookupByLibrary.simpleMessage("Current email"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Current password"),
+        "currentText": MessageLookupByLibrary.simpleMessage("Current"),
         "customPlacesMessage": MessageLookupByLibrary.simpleMessage(
             "You can select a location from the list or tap \'Intro\' in your keyboard to use what you typed as location"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark theme"),
@@ -186,6 +188,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "ofProspectorWithNoAds":
             MessageLookupByLibrary.simpleMessage("of Prospector with no Ads"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
+        "oneMonth": MessageLookupByLibrary.simpleMessage("1\nMonth"),
+        "oneYear": MessageLookupByLibrary.simpleMessage("1\nYear"),
         "orContinueWith":
             MessageLookupByLibrary.simpleMessage("- or continue with -"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -221,7 +225,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Enter the email address you used to create your Prospector account"),
         "resetPasswordEmailSent": MessageLookupByLibrary.simpleMessage(
             "We have sent you an email with the steps to reset your password. \nPlease check your email inbox"),
+        "restoreSubscription":
+            MessageLookupByLibrary.simpleMessage("Restore subscription"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "saveFinancial": MessageLookupByLibrary.simpleMessage("Save"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "selectANumber":
             MessageLookupByLibrary.simpleMessage("Select a number"),
@@ -237,6 +244,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "showPasswords": MessageLookupByLibrary.simpleMessage("Show passwords"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
+        "sixMonths": MessageLookupByLibrary.simpleMessage("6\nMonths"),
         "start": MessageLookupByLibrary.simpleMessage("Start"),
         "startsAt": MessageLookupByLibrary.simpleMessage("Starts at"),
         "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
@@ -246,6 +254,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "takePhoto": MessageLookupByLibrary.simpleMessage("Take photo"),
         "thisAcctionCannotBeUndone": MessageLookupByLibrary.simpleMessage(
             "This action cannot be undone."),
+        "threeMonths": MessageLookupByLibrary.simpleMessage("3\nMonths"),
         "timeFormat": MessageLookupByLibrary.simpleMessage("Time format"),
         "titleIsRequired":
             MessageLookupByLibrary.simpleMessage("Title is required"),

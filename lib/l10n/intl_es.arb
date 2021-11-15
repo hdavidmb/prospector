@@ -188,5 +188,13 @@
     "end": "Termina",
     "when": "Cuando",
     "deleteEvent": "Eliminar evento",
-    "areYouSureDeleteEvent": "Confirma que deseas eliminar este prospecto"
+    "areYouSureDeleteEvent": "Confirma que deseas eliminar este prospecto",
+    "continueText": "Continuar",
+    "restoreSubscription": "Restaurar suscripción",
+    "oneMonth": "1\nMes",
+    "threeMonths": "3\nMeses",
+    "sixMonths": "6\nMeses",
+    "oneYear": "1\nAño",
+    "saveFinancial": "Ahorra",
+    "currentText": "Actual"
 }
