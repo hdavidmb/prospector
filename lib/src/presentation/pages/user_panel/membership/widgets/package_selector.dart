@@ -57,7 +57,7 @@ class PackageCell extends StatelessWidget {
     final bool isSelected = position == selectedIndex;
     final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final double width = isSelected ? 100.0 : 95.0;
-    final double height = isSelected ? 120.0 : 115.0;
+    final double height = isSelected ? 115.0 : 110.0;
     final double monthlyPrice = package.price / package.type.months;
     final bool isPremium = context.read(userInfoNotifierProvider).isPremiumUser;
     final String? userSKU =
@@ -81,7 +81,7 @@ class PackageCell extends StatelessWidget {
               children: [
                 Container(
                   width: width,
-                  height: height / 2,
+                  height: height * 0.4,
                   padding: const EdgeInsets.symmetric(
                       vertical: 12.0, horizontal: 14.0),
                   color: isSelected
@@ -102,7 +102,7 @@ class PackageCell extends StatelessWidget {
                 ),
                 Container(
                   width: width,
-                  height: height / 2,
+                  height: height * 0.6,
                   padding: const EdgeInsets.symmetric(
                       vertical: 12.0, horizontal: 14.0),
                   color: isSelected
@@ -111,6 +111,7 @@ class PackageCell extends StatelessWidget {
                           ? Colors.white10
                           : Colors.grey[200],
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Center(
                         child: AutoSizeText(

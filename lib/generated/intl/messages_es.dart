@@ -117,9 +117,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "executives": MessageLookupByLibrary.simpleMessage("Ejecutivos"),
         "female": MessageLookupByLibrary.simpleMessage("Femenino"),
         "filterBy": MessageLookupByLibrary.simpleMessage("Filtrar por..."),
+        "firstBill": MessageLookupByLibrary.simpleMessage(
+            "Se te facturará por primera vez el"),
         "followUp": MessageLookupByLibrary.simpleMessage("Seguimiento"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Olvidé mi contraseña"),
+        "freeTrialMessage": MessageLookupByLibrary.simpleMessage(
+            "Cada membresía incluye 7 días de prueba gratis"),
         "gender": MessageLookupByLibrary.simpleMessage("Género"),
         "general": MessageLookupByLibrary.simpleMessage("General"),
         "getRidOfAds":
@@ -200,8 +204,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "ofProspectorWithNoAds": MessageLookupByLibrary.simpleMessage(
             "de Prospector sin publicidad"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
-        "oneMonth": MessageLookupByLibrary.simpleMessage("1\nMes"),
-        "oneYear": MessageLookupByLibrary.simpleMessage("1\nAño"),
+        "oneMonth": MessageLookupByLibrary.simpleMessage("1 Mes"),
+        "oneYear": MessageLookupByLibrary.simpleMessage("1 Año"),
         "orContinueWith":
             MessageLookupByLibrary.simpleMessage("- o continúa con -"),
         "password": MessageLookupByLibrary.simpleMessage("Contraseña"),
@@ -214,12 +218,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "premiumFeatureMessage": MessageLookupByLibrary.simpleMessage(
             "Esta es una característica premium.\nAdquiere alguna de nuestras suscripciones premium para acceder a esta función y llevar tu negocio al siguiente nivel."),
         "present": MessageLookupByLibrary.simpleMessage("Presentar"),
+        "pricesShownIn":
+            MessageLookupByLibrary.simpleMessage("Los precios se muestran en"),
         "profile": MessageLookupByLibrary.simpleMessage("Perfil"),
         "prospectDetails":
             MessageLookupByLibrary.simpleMessage("Detalles de prospecto"),
         "prospectSavedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Prospecto guardado exitosamente"),
         "prospector": MessageLookupByLibrary.simpleMessage("Prospector"),
+        "prospectorPremium":
+            MessageLookupByLibrary.simpleMessage("Prospector Premium"),
         "prospectorWillImportContacts": MessageLookupByLibrary.simpleMessage(
             "Prospector importará automáticamente los contactos nuevos que agregues en tu dispositivo."),
         "prospectorWillStopImporting": MessageLookupByLibrary.simpleMessage(
@@ -231,14 +239,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "register": MessageLookupByLibrary.simpleMessage("Registro"),
         "registerButton": MessageLookupByLibrary.simpleMessage("Registrarme"),
         "reminder": MessageLookupByLibrary.simpleMessage("Recordatorio"),
+        "renewAutomatically": MessageLookupByLibrary.simpleMessage(
+            "Despues tu membresía se renovará automáticamente cada"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("Restablecer contraseña"),
         "resetPasswordDialogMessage": MessageLookupByLibrary.simpleMessage(
             "Ingresa el correo electrónico que usaste para crear tu cuenta en Prospector"),
         "resetPasswordEmailSent": MessageLookupByLibrary.simpleMessage(
             "Te hemos enviado un correo con las instrucciones para restablecer tu contraseña. \nPor favor revisa tu bandeja de entrada."),
-        "restoreSubscription":
-            MessageLookupByLibrary.simpleMessage("Restaurar suscripción"),
+        "restoreMembership":
+            MessageLookupByLibrary.simpleMessage("Restaurar membresía"),
         "save": MessageLookupByLibrary.simpleMessage("Guardar"),
         "saveFinancial": MessageLookupByLibrary.simpleMessage("Ahorra"),
         "search": MessageLookupByLibrary.simpleMessage("Buscar"),
@@ -260,7 +270,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "showPasswords":
             MessageLookupByLibrary.simpleMessage("Mostrar contraseñas"),
         "signIn": MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
-        "sixMonths": MessageLookupByLibrary.simpleMessage("6\nMeses"),
+        "sixMonths": MessageLookupByLibrary.simpleMessage("6 Meses"),
         "start": MessageLookupByLibrary.simpleMessage("Inicia"),
         "startsAt": MessageLookupByLibrary.simpleMessage("Inicia"),
         "statistics": MessageLookupByLibrary.simpleMessage("Estadisticas"),
@@ -272,7 +282,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "takePhoto": MessageLookupByLibrary.simpleMessage("Tomar foto"),
         "thisAcctionCannotBeUndone": MessageLookupByLibrary.simpleMessage(
             "Esta acción no se puede deshacer."),
-        "threeMonths": MessageLookupByLibrary.simpleMessage("3\nMeses"),
+        "threeMonths": MessageLookupByLibrary.simpleMessage("3 Meses"),
         "timeFormat": MessageLookupByLibrary.simpleMessage("Formato de horas"),
         "titleIsRequired":
             MessageLookupByLibrary.simpleMessage("El título es requerido"),
@@ -303,6 +313,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcomeTo": MessageLookupByLibrary.simpleMessage("Bienvenido a"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
         "when": MessageLookupByLibrary.simpleMessage("Cuando"),
+        "year": MessageLookupByLibrary.simpleMessage("Año"),
         "youMayHaveToRelogin": MessageLookupByLibrary.simpleMessage(
             "Deberás autenticar tu cuenta social de nuevo.")
       };

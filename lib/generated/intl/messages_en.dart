@@ -111,9 +111,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "executives": MessageLookupByLibrary.simpleMessage("Executives"),
         "female": MessageLookupByLibrary.simpleMessage("Female"),
         "filterBy": MessageLookupByLibrary.simpleMessage("Filter by..."),
+        "firstBill": MessageLookupByLibrary.simpleMessage(
+            "You will be billed for the firs time on"),
         "followUp": MessageLookupByLibrary.simpleMessage("Follow up"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot my password"),
+        "freeTrialMessage": MessageLookupByLibrary.simpleMessage(
+            "Every membership includes a 7 days free trial"),
         "gender": MessageLookupByLibrary.simpleMessage("Gender"),
         "general": MessageLookupByLibrary.simpleMessage("General"),
         "getRidOfAds": MessageLookupByLibrary.simpleMessage("Get rid of ads"),
@@ -188,8 +192,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "ofProspectorWithNoAds":
             MessageLookupByLibrary.simpleMessage("of Prospector with no Ads"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
-        "oneMonth": MessageLookupByLibrary.simpleMessage("1\nMonth"),
-        "oneYear": MessageLookupByLibrary.simpleMessage("1\nYear"),
+        "oneMonth": MessageLookupByLibrary.simpleMessage("1 Month"),
+        "oneYear": MessageLookupByLibrary.simpleMessage("1 Year"),
         "orContinueWith":
             MessageLookupByLibrary.simpleMessage("- or continue with -"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -202,12 +206,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "premiumFeatureMessage": MessageLookupByLibrary.simpleMessage(
             "This is a premium feature.\nUpgrade to one of our premium subscriptions to access this feature and take your business to the next level."),
         "present": MessageLookupByLibrary.simpleMessage("Present"),
+        "pricesShownIn":
+            MessageLookupByLibrary.simpleMessage("Prices shown in"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "prospectDetails":
             MessageLookupByLibrary.simpleMessage("Prospect Details"),
         "prospectSavedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Contact saved successfully"),
         "prospector": MessageLookupByLibrary.simpleMessage("Prospector"),
+        "prospectorPremium":
+            MessageLookupByLibrary.simpleMessage("Prospector Premium"),
         "prospectorWillImportContacts": MessageLookupByLibrary.simpleMessage(
             "Prospector will automatically import the new contacts you add on your device."),
         "prospectorWillStopImporting": MessageLookupByLibrary.simpleMessage(
@@ -220,13 +228,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "registerButton": MessageLookupByLibrary.simpleMessage("Register"),
         "reminder": MessageLookupByLibrary.simpleMessage("Reminder"),
+        "renewAutomatically": MessageLookupByLibrary.simpleMessage(
+            "Then your membership will renew automatically every"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
         "resetPasswordDialogMessage": MessageLookupByLibrary.simpleMessage(
             "Enter the email address you used to create your Prospector account"),
         "resetPasswordEmailSent": MessageLookupByLibrary.simpleMessage(
             "We have sent you an email with the steps to reset your password. \nPlease check your email inbox"),
-        "restoreSubscription":
-            MessageLookupByLibrary.simpleMessage("Restore subscription"),
+        "restoreMembership":
+            MessageLookupByLibrary.simpleMessage("Restore membership"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "saveFinancial": MessageLookupByLibrary.simpleMessage("Save"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
@@ -244,7 +254,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "showPasswords": MessageLookupByLibrary.simpleMessage("Show passwords"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
-        "sixMonths": MessageLookupByLibrary.simpleMessage("6\nMonths"),
+        "sixMonths": MessageLookupByLibrary.simpleMessage("6 Months"),
         "start": MessageLookupByLibrary.simpleMessage("Start"),
         "startsAt": MessageLookupByLibrary.simpleMessage("Starts at"),
         "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
@@ -254,7 +264,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "takePhoto": MessageLookupByLibrary.simpleMessage("Take photo"),
         "thisAcctionCannotBeUndone": MessageLookupByLibrary.simpleMessage(
             "This action cannot be undone."),
-        "threeMonths": MessageLookupByLibrary.simpleMessage("3\nMonths"),
+        "threeMonths": MessageLookupByLibrary.simpleMessage("3 Months"),
         "timeFormat": MessageLookupByLibrary.simpleMessage("Time format"),
         "titleIsRequired":
             MessageLookupByLibrary.simpleMessage("Title is required"),
@@ -281,6 +291,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcomeTo": MessageLookupByLibrary.simpleMessage("Welcome to"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
         "when": MessageLookupByLibrary.simpleMessage("When"),
+        "year": MessageLookupByLibrary.simpleMessage("Year"),
         "youMayHaveToRelogin": MessageLookupByLibrary.simpleMessage(
             "You may have to authenticate with your social account again.")
       };

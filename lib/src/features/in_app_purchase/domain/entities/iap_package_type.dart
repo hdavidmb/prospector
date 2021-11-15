@@ -33,4 +33,17 @@ extension IAPPackageTypeX on IAPPackageType {
         return AppLocalizations.current.oneYear;
     }
   }
+
+  String get everyText {
+    switch (this) {
+      case IAPPackageType.monthly:
+        return AppLocalizations.current.month.toLowerCase();
+      case IAPPackageType.threeMonth:
+        return AppLocalizations.current.threeMonths.toLowerCase();
+      case IAPPackageType.sixMonth:
+        return AppLocalizations.current.sixMonths.toLowerCase();
+      case IAPPackageType.annual:
+        return AppLocalizations.current.year.toLowerCase();
+    }
+  }
 }

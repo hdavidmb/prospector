@@ -1,6 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:prospector/src/features/in_app_purchase/domain/entities/iap_package_type.dart';
 import 'package:purchases_flutter/package_wrapper.dart';
+
+import 'iap_package_type.dart';
+
+export 'iap_package_type.dart';
 
 part 'iap_package.freezed.dart';
 
@@ -10,6 +13,7 @@ class IAPPackage with _$IAPPackage {
     required IAPPackageType type,
     required double price,
     required String priceString,
+    required String currencyCode,
     required String sku,
     required Package package,
   }) = _IAPPackage;
@@ -25,6 +29,7 @@ class IAPPackage with _$IAPPackage {
       type: pType,
       price: platformPackage.product.price,
       priceString: platformPackage.product.priceString,
+      currencyCode: platformPackage.product.currencyCode,
       sku: platformPackage.product.identifier,
       package: platformPackage,
     );

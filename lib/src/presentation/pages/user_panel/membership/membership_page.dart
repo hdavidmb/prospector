@@ -1,12 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/generated/l10n.dart';
-import 'package:prospector/src/features/in_app_purchase/application/fetch_state.dart';
-import 'package:prospector/src/features/in_app_purchase/application/in_app_purchase_providers.dart';
-import 'package:prospector/src/presentation/core/widgets/no_contatcs_screen/info_message_page.dart';
-import 'package:prospector/src/presentation/pages/user_panel/membership/widgets/membership_body_selector.dart';
-import 'package:prospector/src/presentation/core/widgets/loading_page_cover.dart';
+
+import '../../../../../generated/l10n.dart';
+import '../../../../features/in_app_purchase/application/fetch_state.dart';
+import '../../../../features/in_app_purchase/application/in_app_purchase_providers.dart';
+import 'widgets/membership_body_selector.dart';
 
 class MembershipPage extends ConsumerWidget {
   const MembershipPage({
@@ -20,12 +19,20 @@ class MembershipPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        title: iapState.isReady
+            ? Text(
+                AppLocalizations.of(context).prospectorPremium,
+                style: TextStyle(
+                  color: isDarkMode ? Colors.white70 : Colors.black87,
+                ),
+              )
+            : null,
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
             onPressed: () => AutoRouter.of(context).pop(),
-            color: isDarkMode ? Colors.white : Colors.black87,
+            color: isDarkMode ? Colors.white70 : Colors.black87,
             icon: const Icon(Icons.close),
           ),
         ],

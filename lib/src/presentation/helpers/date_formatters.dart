@@ -24,6 +24,11 @@ String localizedWeekday(int day) {
   return dateFormatter.format(DateTime(2020, 8, 10 + day));
 }
 
+String localizedMonthDay(DateTime date) {
+  final DateFormat dateFormat = DateFormat.MMMMd(Intl.getCurrentLocale());
+  return dateFormat.format(date);
+}
+
 /// Checks if two DateTime objects are the same day.
 /// Returns `false` if either of them is null.
 bool isSameDay(DateTime a, DateTime b) =>

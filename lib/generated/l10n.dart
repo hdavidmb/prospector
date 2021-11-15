@@ -1590,6 +1590,16 @@ class AppLocalizations {
     );
   }
 
+  /// `Year`
+  String get year {
+    return Intl.message(
+      'Year',
+      name: 'year',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Month`
   String get month {
     return Intl.message(
@@ -1960,50 +1970,50 @@ class AppLocalizations {
     );
   }
 
-  /// `Restore subscription`
-  String get restoreSubscription {
+  /// `Restore membership`
+  String get restoreMembership {
     return Intl.message(
-      'Restore subscription',
-      name: 'restoreSubscription',
+      'Restore membership',
+      name: 'restoreMembership',
       desc: '',
       args: [],
     );
   }
 
-  /// `1\nMonth`
+  /// `1 Month`
   String get oneMonth {
     return Intl.message(
-      '1\nMonth',
+      '1 Month',
       name: 'oneMonth',
       desc: '',
       args: [],
     );
   }
 
-  /// `3\nMonths`
+  /// `3 Months`
   String get threeMonths {
     return Intl.message(
-      '3\nMonths',
+      '3 Months',
       name: 'threeMonths',
       desc: '',
       args: [],
     );
   }
 
-  /// `6\nMonths`
+  /// `6 Months`
   String get sixMonths {
     return Intl.message(
-      '6\nMonths',
+      '6 Months',
       name: 'sixMonths',
       desc: '',
       args: [],
     );
   }
 
-  /// `1\nYear`
+  /// `1 Year`
   String get oneYear {
     return Intl.message(
-      '1\nYear',
+      '1 Year',
       name: 'oneYear',
       desc: '',
       args: [],
@@ -2025,6 +2035,56 @@ class AppLocalizations {
     return Intl.message(
       'Current',
       name: 'currentText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You will be billed for the firs time on`
+  String get firstBill {
+    return Intl.message(
+      'You will be billed for the firs time on',
+      name: 'firstBill',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Then your membership will renew automatically every`
+  String get renewAutomatically {
+    return Intl.message(
+      'Then your membership will renew automatically every',
+      name: 'renewAutomatically',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Prices shown in`
+  String get pricesShownIn {
+    return Intl.message(
+      'Prices shown in',
+      name: 'pricesShownIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Every membership includes a 7 days free trial`
+  String get freeTrialMessage {
+    return Intl.message(
+      'Every membership includes a 7 days free trial',
+      name: 'freeTrialMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Prospector Premium`
+  String get prospectorPremium {
+    return Intl.message(
+      'Prospector Premium',
+      name: 'prospectorPremium',
       desc: '',
       args: [],
     );
