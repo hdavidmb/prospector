@@ -28,6 +28,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
           read(eventsNotifierProvider).reset();
           //TODO read(statisticsNotifierProvider).reset();
           read(localNotificationsProvider).cancelAllNotifications();
+          read(inAppPurchaseNotifier).reset();
           read(inAppPurchaseNotifier).logOutPurchaser();
           return const AuthState.unauthenticated();
         }

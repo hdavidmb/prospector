@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/services.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 
 import '../../../core/connection/connection_checker.dart';
@@ -18,12 +19,7 @@ class InAppPurchaseRepository implements IInAppPurchaseRepository {
     try {
       final Offerings offerings = await Purchases.getOfferings();
       if (offerings.current?.availablePackages.isNotEmpty == true) {
-        // Display packages for sale
         final List<Package> packages = offerings.current!.availablePackages;
-        //TODO TEST
-        print('************** PURCHASE PACKAGES **************');
-        print(packages);
-        print(packages.first.packageType);
         return right(packages);
       } else {
         return left(const IAPFailure.serverError());
@@ -34,14 +30,15 @@ class InAppPurchaseRepository implements IInAppPurchaseRepository {
   }
 
   @override
-  Future<void> logInPurchaser({required String uid}) async {
+  Future<Either<IAPFailure, EntitlementInfo?>> logInPurchaser(
+      {required String uid}) async {
     try {
       final LogInResult result = await Purchases.logIn(uid);
       print('************** PURCHASE LOGIN RESULT **************');
-      print(result.purchaserInfo); //TODO: test
+      print(result.purchaserInfo);
+      return right(result.purchaserInfo.entitlements.all['premium']);
     } catch (e) {
-      //TODO: handle errors
-      print(e);
+      return left(const IAPFailure.serverError());
     }
   }
 
@@ -52,6 +49,28 @@ class InAppPurchaseRepository implements IInAppPurchaseRepository {
     } catch (e) {
       //TODO: handle errors
       print(e);
+    }
+  }
+
+  @override
+  Future<Either<IAPFailure, EntitlementInfo?>> purchasePackage(Package package,
+      {String? oldSKU}) async {
+    final bool isConnected = await checkConnection();
+    if (!isConnected) return left(const IAPFailure.noConnection());
+    try {
+      final UpgradeInfo? upgradeInfo =
+          oldSKU != null ? UpgradeInfo(oldSKU) : null;
+      final PurchaserInfo purchaserInfo =
+          await Purchases.purchasePackage(package, upgradeInfo: upgradeInfo);
+
+      return right(purchaserInfo.entitlements.all['premium']);
+    } on PlatformException catch (e) {
+      final errorCode = PurchasesErrorHelper.getErrorCode(e);
+      if (errorCode != PurchasesErrorCode.purchaseCancelledError) {
+        return left(const IAPFailure.serverError());
+      } else {
+        return left(const IAPFailure.cancelledByUser());
+      }
     }
   }
 }

@@ -102,6 +102,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
     read(interactionsNotifierProvider).reset();
     read(eventsNotifierProvider).reset();
     //TODO read(statisticsNotifierProvider).reset();
+    read(inAppPurchaseNotifier).reset(); //TODO test
     read(inAppPurchaseNotifier).logOutPurchaser(); //TODO test
     state = const AppState.initial();
   }

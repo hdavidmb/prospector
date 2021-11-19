@@ -16,9 +16,9 @@ class SettingsAdmobBanner extends ConsumerWidget {
     final AdState bannerState = watch(adsProvider).settingsBannerState;
     return shouldShowAds && bannerState.isLoaded
         ? Container(
-            padding: const EdgeInsets.only(bottom: 12.0),
+            padding: const EdgeInsets.only(bottom: 20.0),
             width: 320.0,
-            height: 112.0,
+            height: 80.0,
             child: AdWidget(ad: context.read(adsProvider).settingsBanner),
           )
         : const SizedBox();

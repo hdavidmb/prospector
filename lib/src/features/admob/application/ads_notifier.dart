@@ -34,7 +34,7 @@ class AdsNotifier extends ChangeNotifier {
 
     settingsBanner = BannerAd(
       adUnitId: _adUnitId,
-      size: AdSize.largeBanner,
+      size: AdSize.banner,
       request: const AdRequest(),
       listener: BannerAdListener(
         onAdLoaded: (Ad ad) {

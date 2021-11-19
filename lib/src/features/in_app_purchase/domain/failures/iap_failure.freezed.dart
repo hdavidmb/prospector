@@ -16,6 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$IAPFailureTearOff {
   const _$IAPFailureTearOff();
 
+  CancelledByUser cancelledByUser() {
+    return const CancelledByUser();
+  }
+
   ServerError serverError() {
     return const ServerError();
   }
@@ -32,12 +36,14 @@ const $IAPFailure = _$IAPFailureTearOff();
 mixin _$IAPFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
     required TResult Function() serverError,
     required TResult Function() noConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
     TResult Function()? serverError,
     TResult Function()? noConnection,
     required TResult orElse(),
@@ -45,12 +51,14 @@ mixin _$IAPFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
     required TResult Function(NoConnection value) noConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
     TResult Function(ServerError value)? serverError,
     TResult Function(NoConnection value)? noConnection,
     required TResult orElse(),
@@ -72,6 +80,96 @@ class _$IAPFailureCopyWithImpl<$Res> implements $IAPFailureCopyWith<$Res> {
   final IAPFailure _value;
   // ignore: unused_field
   final $Res Function(IAPFailure) _then;
+}
+
+/// @nodoc
+abstract class $CancelledByUserCopyWith<$Res> {
+  factory $CancelledByUserCopyWith(
+          CancelledByUser value, $Res Function(CancelledByUser) then) =
+      _$CancelledByUserCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$CancelledByUserCopyWithImpl<$Res> extends _$IAPFailureCopyWithImpl<$Res>
+    implements $CancelledByUserCopyWith<$Res> {
+  _$CancelledByUserCopyWithImpl(
+      CancelledByUser _value, $Res Function(CancelledByUser) _then)
+      : super(_value, (v) => _then(v as CancelledByUser));
+
+  @override
+  CancelledByUser get _value => super._value as CancelledByUser;
+}
+
+/// @nodoc
+
+class _$CancelledByUser extends CancelledByUser {
+  const _$CancelledByUser() : super._();
+
+  @override
+  String toString() {
+    return 'IAPFailure.cancelledByUser()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is CancelledByUser);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function() serverError,
+    required TResult Function() noConnection,
+  }) {
+    return cancelledByUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? noConnection,
+    required TResult orElse(),
+  }) {
+    if (cancelledByUser != null) {
+      return cancelledByUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(NoConnection value) noConnection,
+  }) {
+    return cancelledByUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
+    required TResult orElse(),
+  }) {
+    if (cancelledByUser != null) {
+      return cancelledByUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CancelledByUser extends IAPFailure {
+  const factory CancelledByUser() = _$CancelledByUser;
+  const CancelledByUser._() : super._();
 }
 
 /// @nodoc
@@ -113,6 +211,7 @@ class _$ServerError extends ServerError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
     required TResult Function() serverError,
     required TResult Function() noConnection,
   }) {
@@ -122,6 +221,7 @@ class _$ServerError extends ServerError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
     TResult Function()? serverError,
     TResult Function()? noConnection,
     required TResult orElse(),
@@ -135,6 +235,7 @@ class _$ServerError extends ServerError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
     required TResult Function(NoConnection value) noConnection,
   }) {
@@ -144,6 +245,7 @@ class _$ServerError extends ServerError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
     TResult Function(ServerError value)? serverError,
     TResult Function(NoConnection value)? noConnection,
     required TResult orElse(),
@@ -199,6 +301,7 @@ class _$NoConnection extends NoConnection {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
     required TResult Function() serverError,
     required TResult Function() noConnection,
   }) {
@@ -208,6 +311,7 @@ class _$NoConnection extends NoConnection {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
     TResult Function()? serverError,
     TResult Function()? noConnection,
     required TResult orElse(),
@@ -221,6 +325,7 @@ class _$NoConnection extends NoConnection {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
     required TResult Function(NoConnection value) noConnection,
   }) {
@@ -230,6 +335,7 @@ class _$NoConnection extends NoConnection {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
     TResult Function(ServerError value)? serverError,
     TResult Function(NoConnection value)? noConnection,
     required TResult orElse(),

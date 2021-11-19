@@ -252,7 +252,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "removeAdsMessage": MessageLookupByLibrary.simpleMessage(
             "Administra tu negocio con Prospector completamente libre de anuncios"),
         "renewAutomatically": MessageLookupByLibrary.simpleMessage(
-            "Despues tu membresía se renovará automáticamente cada"),
+            "Tu membresía se renovará automáticamente cada"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("Restablecer contraseña"),
         "resetPasswordDialogMessage": MessageLookupByLibrary.simpleMessage(

@@ -2050,10 +2050,10 @@ class AppLocalizations {
     );
   }
 
-  /// `Then your membership will renew automatically every`
+  /// `Your membership will renew automatically every`
   String get renewAutomatically {
     return Intl.message(
-      'Then your membership will renew automatically every',
+      'Your membership will renew automatically every',
       name: 'renewAutomatically',
       desc: '',
       args: [],

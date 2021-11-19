@@ -74,21 +74,32 @@ class UserProfilePage extends ConsumerWidget {
                     style: TextButton.styleFrom(
                         primary: Colors.yellow, backgroundColor: Colors.blue),
                     onPressed: () {
-                      final premiumSubID =
-                          context.read(appDefaultDataProvider).premiumSubID;
-                      final freeSubID =
-                          context.read(appDefaultDataProvider).freeSubID;
-                      final user = context.read(userInfoNotifierProvider).user;
+                      // TODO: delete final premiumSubID =
+                      //     context.read(appDefaultDataProvider).premiumSubID;
+                      // final freeSubID =
+                      //     context.read(appDefaultDataProvider).freeSubID;
+                      // final user = context.read(userInfoNotifierProvider).user;
                       final isPremiumUser =
                           context.read(userInfoNotifierProvider).isPremiumUser;
-                      final newUserInfo = user?.copyWith(
-                          subscription:
-                              isPremiumUser ? freeSubID : premiumSubID);
-                      if (newUserInfo != null) {
-                        context
-                            .read(userInfoNotifierProvider)
-                            .updateUserInfo(newUserInfo);
-                      }
+                      // final newUserInfo = user?.copyWith(
+                      //     subscription:
+                      //         isPremiumUser ? freeSubID : premiumSubID);
+                      // if (newUserInfo != null) {
+                      //   context
+                      //       .read(userInfoNotifierProvider)
+                      //       .updateUserInfo(newUserInfo);
+                      // }
+                      context
+                          .read(userInfoNotifierProvider)
+                          .updateUserSubscription(
+                            isPremium: !isPremiumUser,
+                            subscriptionSKU:
+                                isPremiumUser ? null : 'premium_1m',
+                            expiryDate: isPremiumUser
+                                ? DateTime.now()
+                                    .subtract(const Duration(days: 5))
+                                : DateTime.now().add(const Duration(days: 5)),
+                          );
                     },
                     child: const Text('Change subscription'),
                   )

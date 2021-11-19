@@ -1,11 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/in_app_purchase/application/in_app_purchase_providers.dart';
+import 'package:prospector/src/features/user/application/user_info_providers.dart';
 
 class MembershipNotifier extends ChangeNotifier {
   final Reader read;
   MembershipNotifier({
     required this.read,
-  });
+  }) {
+    final String? userSKU =
+        read(userInfoNotifierProvider).user?.subscriptionSKU;
+    final String packageSKU = read(inAppPurchaseNotifier).packages[1].sku;
+    if (userSKU == packageSKU) _selectedIndex = 2;
+  }
 
   int _selectedIndex = 1;
   int get selectedIndex => _selectedIndex;

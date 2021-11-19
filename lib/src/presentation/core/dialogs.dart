@@ -18,6 +18,7 @@ import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
 import 'package:prospector/src/features/events/domain/entites/event_alert.dart';
 import 'package:prospector/src/features/images/domain/sources/source_image.dart';
+import 'package:prospector/src/features/in_app_purchase/domain/failures/iap_failure.dart';
 import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
 import 'package:prospector/src/presentation/core/widgets/custom_places_alert_dialog.dart';
 import 'package:prospector/src/presentation/helpers/date_formatters.dart';
@@ -76,7 +77,8 @@ void showSnackBar({
 void showFailureSnackbar(BuildContext context, dynamic failure) {
   if (failure == const AuthFailure.serverError() ||
       failure == const DatabaseFailure.serverError() ||
-      failure == const UserInfoFailure.serverError()) {
+      failure == const UserInfoFailure.serverError() ||
+      failure == const IAPFailure.serverError()) {
     showSnackBar(
         context: context,
         message: AppLocalizations.current.serverError,
@@ -107,7 +109,8 @@ void showFailureSnackbar(BuildContext context, dynamic failure) {
         type: SnackbarType.failure);
   } else if (failure == const AuthFailure.noConnection() ||
       failure == const DatabaseFailure.noConnection() ||
-      failure == const UserInfoFailure.noConnection()) {
+      failure == const UserInfoFailure.noConnection() ||
+      failure == const IAPFailure.noConnection()) {
     showSnackBar(
         context: context,
         message: AppLocalizations.current.noConnectionMessage,
@@ -198,7 +201,9 @@ Future<void> showMessageDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: (title != null && title.isNotEmpty) ? Text(title) : null,
+        title: (title != null && title.isNotEmpty)
+            ? Text(title, textAlign: TextAlign.center)
+            : null,
         content: Text(message),
         actions: [
           TextButton(

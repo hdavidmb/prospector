@@ -1,8 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/generated/l10n.dart';
 
+import 'package:prospector/generated/l10n.dart';
+import 'package:prospector/src/features/in_app_purchase/application/fetch_state.dart';
 import 'package:prospector/src/features/in_app_purchase/application/in_app_purchase_providers.dart';
 import 'package:prospector/src/features/in_app_purchase/domain/entities/iap_package.dart';
 import 'package:prospector/src/features/in_app_purchase/domain/entities/iap_package_type.dart';
@@ -19,6 +20,7 @@ class PackageSelector extends ConsumerWidget {
   Widget build(BuildContext context, ScopedReader watch) {
     final List<IAPPackage> packages = watch(inAppPurchaseNotifier).packages;
     final int selectedIndex = watch(membershipNotifierProvider).selectedIndex;
+    final FetchState purchaseState = watch(inAppPurchaseNotifier).purchaseState;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -34,6 +36,12 @@ class PackageSelector extends ConsumerWidget {
                 basePrice: packages.first.price,
                 baseMonths: packages.first.type.months,
               ),
+          onTap: purchaseState.isFetching
+              ? null
+              : () {
+                  context.read(membershipNotifierProvider).selectedIndex =
+                      position;
+                },
         );
       }).toList(),
     );
@@ -45,12 +53,14 @@ class PackageCell extends StatelessWidget {
   final int selectedIndex;
   final int position;
   final int savings;
+  final void Function()? onTap;
   const PackageCell({
     Key? key,
     required this.package,
     required this.selectedIndex,
     required this.position,
     required this.savings,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -65,9 +75,7 @@ class PackageCell extends StatelessWidget {
         context.read(userInfoNotifierProvider).user?.subscriptionSKU;
 
     return GestureDetector(
-      onTap: () {
-        context.read(membershipNotifierProvider).selectedIndex = position;
-      },
+      onTap: (isPremium && userSKU == package.sku) ? null : onTap,
       child: Stack(
         alignment: Alignment.topCenter,
         children: [
