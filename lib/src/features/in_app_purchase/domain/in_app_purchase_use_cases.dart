@@ -46,4 +46,13 @@ class InAppPurchaseUseCases {
           right(IAPPurchaserInfo.fromPurchaserInfo(entitlementInfo)),
     );
   }
+
+  Future<Either<IAPFailure, IAPPurchaserInfo>> restorePurchase() async {
+    final result = await inAppPurchaseRepository.restorePurchase();
+    return result.fold(
+      (failure) => left(failure),
+      (entitlementInfo) =>
+          right(IAPPurchaserInfo.fromPurchaserInfo(entitlementInfo)),
+    );
+  }
 }

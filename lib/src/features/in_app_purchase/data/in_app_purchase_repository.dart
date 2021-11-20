@@ -34,8 +34,6 @@ class InAppPurchaseRepository implements IInAppPurchaseRepository {
       {required String uid}) async {
     try {
       final LogInResult result = await Purchases.logIn(uid);
-      print('************** PURCHASE LOGIN RESULT **************');
-      print(result.purchaserInfo);
       return right(result.purchaserInfo.entitlements.all['premium']);
     } catch (e) {
       return left(const IAPFailure.serverError());
@@ -47,8 +45,7 @@ class InAppPurchaseRepository implements IInAppPurchaseRepository {
     try {
       await Purchases.logOut();
     } catch (e) {
-      //TODO: handle errors
-      print(e);
+      throw const IAPFailure.serverError();
     }
   }
 
@@ -71,6 +68,16 @@ class InAppPurchaseRepository implements IInAppPurchaseRepository {
       } else {
         return left(const IAPFailure.cancelledByUser());
       }
+    }
+  }
+
+  @override
+  Future<Either<IAPFailure, EntitlementInfo?>> restorePurchase() async {
+    try {
+      final PurchaserInfo restoredInfo = await Purchases.restoreTransactions();
+      return right(restoredInfo.entitlements.all['premium']);
+    } on PlatformException catch (_) {
+      return left(const IAPFailure.serverError());
     }
   }
 }

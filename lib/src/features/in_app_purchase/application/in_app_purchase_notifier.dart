@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/src/features/in_app_purchase/domain/entities/iap_package.dart';
+import 'package:prospector/src/features/in_app_purchase/domain/entities/iap_purchaser_info.dart';
 import 'package:prospector/src/features/in_app_purchase/domain/failures/iap_failure.dart';
 import 'package:prospector/src/presentation/pages/user_panel/membership/logic/membership_providers.dart';
 
@@ -20,21 +21,26 @@ class InAppPurchaseNotifier extends ChangeNotifier {
   FetchState _packagesState = const FetchState.initial();
   FetchState _loginState = const FetchState.initial();
   FetchState _purchaseState = const FetchState.initial();
+  FetchState _restoreState = const FetchState.initial();
   Option<IAPFailure> _purchaseFailure = none();
   bool _hasPurchasedBefore = false;
+  bool _packageRestored = false;
   List<IAPPackage> _packages = [];
 
   FetchState get packagesState => _packagesState;
   FetchState get loginState => _loginState;
   FetchState get purchaseState => _purchaseState;
+  FetchState get restoreState => _restoreState;
   Option<IAPFailure> get purchaseFailure => _purchaseFailure;
   bool get hasPurchasedBefore => _hasPurchasedBefore;
+  bool get packageRestored => _packageRestored;
   List<IAPPackage> get packages => _packages;
 
   void reset() {
     _packagesState = const FetchState.initial();
     _loginState = const FetchState.initial();
     _purchaseState = const FetchState.initial();
+    _restoreState = const FetchState.initial();
     _hasPurchasedBefore = false;
     _purchaseFailure = none();
   }
@@ -62,17 +68,8 @@ class InAppPurchaseNotifier extends ChangeNotifier {
           (iapPurchaserInfo) {
             _loginState = const FetchState.ready();
             _hasPurchasedBefore = iapPurchaserInfo.packageSKU != null;
-            final bool isPremium = read(userInfoNotifierProvider).isPremiumUser;
-            if (!isPremium && !iapPurchaserInfo.isActive) return;
-            if (isPremium && iapPurchaserInfo.isActive) {
-              final userInfo = read(userInfoNotifierProvider).user;
-              if (userInfo?.expiryDate.isAfter(DateTime.now()) ?? false) return;
-            }
-            read(userInfoNotifierProvider).updateUserSubscription(
-              isPremium: iapPurchaserInfo.isActive,
-              subscriptionSKU: iapPurchaserInfo.packageSKU,
-              expiryDate: iapPurchaserInfo.expiryDate,
-            );
+            _compareAndUpdateUserSubscription(
+                iapPurchaserInfo: iapPurchaserInfo);
           },
         );
       }
@@ -133,5 +130,42 @@ class InAppPurchaseNotifier extends ChangeNotifier {
       );
       notifyListeners();
     }
+  }
+
+  Future<void> restorePurchase() async {
+    if (!_restoreState.isFetching) {
+      _restoreState = const FetchState.fetching();
+      notifyListeners();
+      final result = await inAppPurchaseUseCases.restorePurchase();
+      result.fold(
+        (failure) {
+          _purchaseFailure = some(failure);
+          _restoreState = const FetchState.error();
+        },
+        (iapPurchaserInfo) {
+          _purchaseFailure = none();
+          _restoreState = const FetchState.ready();
+          _packageRestored = _compareAndUpdateUserSubscription(
+              iapPurchaserInfo: iapPurchaserInfo);
+        },
+      );
+      notifyListeners();
+    }
+  }
+
+  bool _compareAndUpdateUserSubscription(
+      {required IAPPurchaserInfo iapPurchaserInfo}) {
+    final bool isPremium = read(userInfoNotifierProvider).isPremiumUser;
+    if (!isPremium && !iapPurchaserInfo.isActive) return false;
+    if (isPremium && iapPurchaserInfo.isActive) {
+      final userInfo = read(userInfoNotifierProvider).user;
+      if (userInfo?.expiryDate.isAfter(DateTime.now()) ?? false) return false;
+    }
+    read(userInfoNotifierProvider).updateUserSubscription(
+      isPremium: iapPurchaserInfo.isActive,
+      subscriptionSKU: iapPurchaserInfo.packageSKU,
+      expiryDate: iapPurchaserInfo.expiryDate,
+    );
+    return true;
   }
 }

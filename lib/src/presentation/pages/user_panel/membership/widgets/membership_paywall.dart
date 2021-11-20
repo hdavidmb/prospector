@@ -1,11 +1,12 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:prospector/generated/l10n.dart';
 import 'package:prospector/src/features/in_app_purchase/application/fetch_state.dart';
 import 'package:prospector/src/features/in_app_purchase/application/in_app_purchase_notifier.dart';
 import 'package:prospector/src/features/in_app_purchase/application/in_app_purchase_providers.dart';
 import 'package:prospector/src/features/in_app_purchase/domain/entities/iap_package.dart';
+import 'package:prospector/src/features/in_app_purchase/domain/failures/iap_failure.dart';
+import 'package:prospector/src/features/user/application/user_info_providers.dart';
 import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/helpers/date_formatters.dart';
 
@@ -22,9 +23,9 @@ class MembershipPaywall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
-
     final String firstBillDate =
         localizedMonthDay(DateTime.now().add(const Duration(days: 7)));
+    final bool isPremium = context.read(userInfoNotifierProvider).isPremiumUser;
     return ProviderListener<InAppPurchaseNotifier>(
       provider: inAppPurchaseNotifier,
       onChange: (context, provider) {
@@ -35,17 +36,37 @@ class MembershipPaywall extends StatelessWidget {
             orElse: () => showFailureSnackbar(context, failure),
           ),
         );
+        provider.restoreState.maybeWhen(
+          error: () =>
+              showFailureSnackbar(context, const IAPFailure.serverError()),
+          ready: () {
+            if (provider.packageRestored) {
+              //TODO show restore message
+              showMessageDialog(
+                  context: context,
+                  title: 'Membership restored',
+                  message: 'Your membership has been restored successfuly.');
+            } else {
+              // TODO show nothing to restore message
+              showMessageDialog(
+                  context: context,
+                  message:
+                      "We couldn't find any membership active to restore. Please check your subscription status in the" +
+                          " " +
+                          "AppStore");
+            }
+          },
+          orElse: () {},
+        );
         provider.purchaseState.maybeWhen(
           ready: () async {
-            // TODO: show thanks message
             await showMessageDialog(
               context: context,
-              title: '🎊 CONGRATS 🎊', // TODO: localize
+              title: '🎊 ${AppLocalizations.of(context).congrats} 🎊',
               message:
-                  "You are now a Prospector Premium user and now you have unlimited access to all the usefull features Prospector has to grow your bussiness.\nThanks for trusting us to help you in your journey. Let's take your bussiness to the next level 🚀",
+                  "${AppLocalizations.of(context).purchaseThankMessage} 🚀",
             );
             Future.delayed(Duration.zero, () => AutoRouter.of(context).pop());
-            // TODO: pop view
           },
           orElse: () {},
         );
@@ -58,13 +79,16 @@ class MembershipPaywall extends StatelessWidget {
             ),
             const SizedBox(height: 25.0),
             const PackageSelector(),
-            if (!context.read(inAppPurchaseNotifier).hasPurchasedBefore)
+            if (isPremium ||
+                !context.read(inAppPurchaseNotifier).hasPurchasedBefore)
               Padding(
                 padding:
                     const EdgeInsets.only(left: 40.0, right: 40.0, top: 4.0),
                 child: Text(
-                  //TODO: hide free trial message if user had purchased before
-                  AppLocalizations.of(context).freeTrialMessage,
+                  isPremium
+                      ? AppLocalizations.of(context)
+                          .yourNewSubscriptionWillStart
+                      : AppLocalizations.of(context).freeTrialMessage,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 16.0),
@@ -72,13 +96,15 @@ class MembershipPaywall extends StatelessWidget {
               ),
             const SizedBox(height: 18.0),
             Consumer(builder: (context, watch, child) {
-              final FetchState purchaseState =
-                  watch(inAppPurchaseNotifier).purchaseState;
+              final InAppPurchaseNotifier notifier =
+                  watch(inAppPurchaseNotifier);
+              final FetchState purchaseState = notifier.purchaseState;
+              final FetchState restoreState = notifier.restoreState;
               return ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     shape: const StadiumBorder(),
                     minimumSize: Size(screenSize.width * 0.8, 40.0)),
-                onPressed: purchaseState.isFetching
+                onPressed: purchaseState.isFetching || restoreState.isFetching
                     ? null
                     : () {
                         final int selectedIndex =
@@ -96,7 +122,8 @@ class MembershipPaywall extends StatelessWidget {
                       style: const TextStyle(
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
-                    if (purchaseState.isFetching) ...[
+                    if (purchaseState.isFetching ||
+                        restoreState.isFetching) ...[
                       const SizedBox(width: 8.0),
                       const CircularProgressIndicator.adaptive(),
                     ]
@@ -104,7 +131,6 @@ class MembershipPaywall extends StatelessWidget {
                 ),
               );
             }),
-            //TODO: add message for when user is changeing subscription telling that the new sub starts when the current ends
             Consumer(builder: (context, watch, child) {
               final String currencyCode = context
                   .read(inAppPurchaseNotifier)
@@ -146,6 +172,7 @@ class MembershipPaywall extends StatelessWidget {
               onPressed: () {
                 //TODO: implement
                 print('RESTORE');
+                context.read(inAppPurchaseNotifier).restorePurchase();
               },
               child: Text(
                 AppLocalizations.of(context).restoreMembership,

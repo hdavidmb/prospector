@@ -13,4 +13,6 @@ abstract class IInAppPurchaseRepository {
   Future<Either<IAPFailure, List<Package>>> getPackages();
   Future<Either<IAPFailure, EntitlementInfo?>> purchasePackage(Package package,
       {String? oldSKU});
+
+  Future<Either<IAPFailure, EntitlementInfo?>> restorePurchase();
 }

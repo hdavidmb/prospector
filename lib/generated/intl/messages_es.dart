@@ -61,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirmar nueva contraseña"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirmar contraseña"),
+        "congrats": MessageLookupByLibrary.simpleMessage("Felicidades"),
         "contactsAccess":
             MessageLookupByLibrary.simpleMessage("Acceso a contactos"),
         "contactsAccessMessage": MessageLookupByLibrary.simpleMessage(
@@ -241,6 +242,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "prospectorWillStopImporting": MessageLookupByLibrary.simpleMessage(
             "Prospector dejará de importar automáticamente los nuevos contactos de tu dispositivo."),
         "prospects": MessageLookupByLibrary.simpleMessage("Prospectos"),
+        "purchaseThankMessage": MessageLookupByLibrary.simpleMessage(
+            "Ahora eres un usuario Premium de Prospector y tienes acceso ilimitado a útiles funciones para hacer crecer tu negocio.\n\nGracias por confiar en Prospector para acompañarte en tu camino como networker. Llevemos tu negocio al siguiente nivel."),
         "reauthMessage": MessageLookupByLibrary.simpleMessage(
             "Debes autenticarte de nuevo. Ingresa tu contraseña para continuar."),
         "reauthenticate": MessageLookupByLibrary.simpleMessage("Reautenticar"),
@@ -331,6 +334,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "when": MessageLookupByLibrary.simpleMessage("Cuando"),
         "year": MessageLookupByLibrary.simpleMessage("Año"),
         "youMayHaveToRelogin": MessageLookupByLibrary.simpleMessage(
-            "Deberás autenticar tu cuenta social de nuevo.")
+            "Deberás autenticar tu cuenta social de nuevo."),
+        "yourNewSubscriptionWillStart": MessageLookupByLibrary.simpleMessage(
+            "Tu nueva subscripción comenzará cuando termine la actual")
       };
 }

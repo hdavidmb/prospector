@@ -210,5 +210,8 @@
     "statisticsModuleMessage": "Get full access to the statistics module with usefull charts and insigts about your activity as Networker",
     "measureWhatMattersMessage": "Keep track of your actions and effectiveness on the business skills",
     "planToImproveMessage": "Compare your performance every month and plan your strategy for the future",
-    "removeAdsMessage": "Manage your business with Prospector completly free of ads"
+    "removeAdsMessage": "Manage your business with Prospector completly free of ads",
+    "congrats": "Congrats",
+    "purchaseThankMessage": "You are now a Prospector Premium user and now you have unlimited access to a lot of usefull features Prospector has to grow your bussiness.\n\nThanks for trusting us to help you in your journey. Let's take your bussiness to the next level.",
+    "yourNewSubscriptionWillStart": "Your new subscription will start when the current one ends"
 }

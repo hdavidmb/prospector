@@ -58,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "congrats": MessageLookupByLibrary.simpleMessage("Congrats"),
         "contactsAccess":
             MessageLookupByLibrary.simpleMessage("Contacts access"),
         "contactsAccessMessage": MessageLookupByLibrary.simpleMessage(
@@ -229,6 +230,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "prospectorWillStopImporting": MessageLookupByLibrary.simpleMessage(
             "Prospector will stop automatically importing your device new contacts."),
         "prospects": MessageLookupByLibrary.simpleMessage("Prospects"),
+        "purchaseThankMessage": MessageLookupByLibrary.simpleMessage(
+            "You are now a Prospector Premium user and now you have unlimited access to a lot of usefull features Prospector has to grow your bussiness.\n\nThanks for trusting us to help you in your journey. Let\'s take your bussiness to the next level."),
         "reauthMessage": MessageLookupByLibrary.simpleMessage(
             "You need to reauthenticate. Enter your password to continue."),
         "reauthenticate":
@@ -308,6 +311,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "when": MessageLookupByLibrary.simpleMessage("When"),
         "year": MessageLookupByLibrary.simpleMessage("Year"),
         "youMayHaveToRelogin": MessageLookupByLibrary.simpleMessage(
-            "You may have to authenticate with your social account again.")
+            "You may have to authenticate with your social account again."),
+        "yourNewSubscriptionWillStart": MessageLookupByLibrary.simpleMessage(
+            "Your new subscription will start when the current one ends")
       };
 }

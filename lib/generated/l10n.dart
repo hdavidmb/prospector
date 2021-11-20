@@ -2169,6 +2169,36 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Congrats`
+  String get congrats {
+    return Intl.message(
+      'Congrats',
+      name: 'congrats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are now a Prospector Premium user and now you have unlimited access to a lot of usefull features Prospector has to grow your bussiness.\n\nThanks for trusting us to help you in your journey. Let's take your bussiness to the next level.`
+  String get purchaseThankMessage {
+    return Intl.message(
+      'You are now a Prospector Premium user and now you have unlimited access to a lot of usefull features Prospector has to grow your bussiness.\n\nThanks for trusting us to help you in your journey. Let\'s take your bussiness to the next level.',
+      name: 'purchaseThankMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your new subscription will start when the current one ends`
+  String get yourNewSubscriptionWillStart {
+    return Intl.message(
+      'Your new subscription will start when the current one ends',
+      name: 'yourNewSubscriptionWillStart',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

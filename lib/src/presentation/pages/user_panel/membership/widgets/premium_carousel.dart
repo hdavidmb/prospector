@@ -13,29 +13,27 @@ class PremiumCarousel extends StatefulWidget {
 }
 
 class _PremiumCarouselState extends State<PremiumCarousel> {
+  //TODO: add item for call and text feature
   final List<Map<String, String>> items = [
     {
       'image_path': 'assets/images/report_mobile.png',
-      'title': AppLocalizations.current.statisticsModule, // TODO: localize
-      'message':
-          AppLocalizations.current.statisticsModuleMessage, // TODO: localize
+      'title': AppLocalizations.current.statisticsModule,
+      'message': AppLocalizations.current.statisticsModuleMessage,
     },
     {
       'image_path': 'assets/images/all_the_data.png',
-      'title': AppLocalizations.current.measureWhatMatters, // TODO: localize
-      'message':
-          AppLocalizations.current.measureWhatMattersMessage, // TODO: localize
+      'title': AppLocalizations.current.measureWhatMatters,
+      'message': AppLocalizations.current.measureWhatMattersMessage,
     },
     {
       'image_path': 'assets/images/projections.png',
-      'title': AppLocalizations.current.planToImprove, // TODO: localize
-      'message':
-          AppLocalizations.current.planToImproveMessage, // TODO: localize
+      'title': AppLocalizations.current.planToImprove,
+      'message': AppLocalizations.current.planToImproveMessage,
     },
     {
       'image_path': 'assets/images/remove_ads.png',
-      'title': AppLocalizations.current.removeAds, // TODO: localize
-      'message': AppLocalizations.current.removeAdsMessage, // TODO: localize
+      'title': AppLocalizations.current.removeAds,
+      'message': AppLocalizations.current.removeAdsMessage,
     },
   ];
   int _currentPage = 100 * 4;

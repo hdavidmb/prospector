@@ -13,7 +13,6 @@ class SettingsMenuItems extends StatelessWidget {
   }) : super(key: key);
 
   final List<Map<String, dynamic>> items = [
-    // {'title': AppLocalizations.of(context)!.membership}, //TODO implement
     {
       'title': AppLocalizations.current.importContacts,
       'icon': Icons.people,

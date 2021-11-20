@@ -26,7 +26,7 @@ class SettingsMenuPage extends StatelessWidget {
                 UserProfileListTile(),
                 divider,
                 ListTile(
-                  title: Text('Membership'), //TODO: localize
+                  title: Text(AppLocalizations.of(context).membership),
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () =>
                       AutoRouter.of(context).push(const MembershipRoute()),

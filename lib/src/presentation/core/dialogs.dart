@@ -24,6 +24,7 @@ import 'package:prospector/src/presentation/core/widgets/custom_places_alert_dia
 import 'package:prospector/src/presentation/helpers/date_formatters.dart';
 import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/tags_selection_wrap/tags_selection_wrap.dart';
+import 'package:prospector/src/presentation/routes/app_router.gr.dart';
 
 enum SnackbarType { failure, success, warning }
 
@@ -307,7 +308,8 @@ void showPremiumDialog({required BuildContext context}) {
             ),
             onPressed: () async {
               AutoRouter.of(context).pop();
-              //TODO navigate to membership
+              Future.delayed(Duration.zero,
+                  () => AutoRouter.of(context).push(const MembershipRoute()));
             },
             child: Text(
               AppLocalizations.current.moreInfo,
