@@ -26,6 +26,11 @@ class _PremiumCarouselState extends State<PremiumCarousel> {
       'message': AppLocalizations.current.measureWhatMattersMessage,
     },
     {
+      'image_path': 'assets/images/direct_contact.png',
+      'title': AppLocalizations.current.directContact, //TODO change
+      'message': AppLocalizations.current.directContactMessage,
+    },
+    {
       'image_path': 'assets/images/projections.png',
       'title': AppLocalizations.current.planToImprove,
       'message': AppLocalizations.current.planToImproveMessage,

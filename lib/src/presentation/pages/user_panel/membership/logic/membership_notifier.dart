@@ -10,8 +10,9 @@ class MembershipNotifier extends ChangeNotifier {
   }) {
     final String? userSKU =
         read(userInfoNotifierProvider).user?.subscriptionSKU;
+    final bool isPremium = read(userInfoNotifierProvider).isPremiumUser;
     final String packageSKU = read(inAppPurchaseNotifier).packages[1].sku;
-    if (userSKU == packageSKU) _selectedIndex = 2;
+    if (isPremium && userSKU == packageSKU) _selectedIndex = 2;
   }
 
   int _selectedIndex = 1;

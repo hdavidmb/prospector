@@ -84,6 +84,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteEvent": MessageLookupByLibrary.simpleMessage("Delete event"),
         "deleteProspect":
             MessageLookupByLibrary.simpleMessage("Delete prospect"),
+        "directContact": MessageLookupByLibrary.simpleMessage("Direct contact"),
+        "directContactMessage": MessageLookupByLibrary.simpleMessage(
+            "Call or text your prospects directly from within Prospector, so you can contact them just when you need it"),
         "disable": MessageLookupByLibrary.simpleMessage("Disable"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "editEvent": MessageLookupByLibrary.simpleMessage("Edit event"),

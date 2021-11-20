@@ -2120,6 +2120,16 @@ class AppLocalizations {
     );
   }
 
+  /// `Direct contact`
+  String get directContact {
+    return Intl.message(
+      'Direct contact',
+      name: 'directContact',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Remove Ads`
   String get removeAds {
     return Intl.message(
@@ -2155,6 +2165,16 @@ class AppLocalizations {
     return Intl.message(
       'Compare your performance every month and plan your strategy for the future',
       name: 'planToImproveMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Call or text your prospects directly from within Prospector, so you can contact them just when you need it`
+  String get directContactMessage {
+    return Intl.message(
+      'Call or text your prospects directly from within Prospector, so you can contact them just when you need it',
+      name: 'directContactMessage',
       desc: '',
       args: [],
     );
