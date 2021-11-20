@@ -213,5 +213,10 @@
     "removeAdsMessage": "Administra tu negocio con Prospector completamente libre de anuncios",
     "congrats": "Felicidades",
     "purchaseThankMessage": "Ahora eres un usuario Premium de Prospector y tienes acceso ilimitado a útiles funciones para hacer crecer tu negocio.\n\nGracias por confiar en Prospector para acompañarte en tu camino como networker. Llevemos tu negocio al siguiente nivel.",
-    "yourNewSubscriptionWillStart": "Tu nueva subscripción comenzará cuando termine la actual"
+    "yourNewSubscriptionWillStart": "Tu nueva subscripción comenzará cuando termine la actual",
+    "membershipRestored": "Membersía restaurada",
+    "yourMembershipHasBeenRestored": "Tu membresía fue restaurada exitosamente.",
+    "weCoulntFindMembership": "No pudimos encontrar ninguna membresía activa para restaurar. Por favor revisa el estado de tu suscripción en la",
+    "appStore": "App Store",
+    "playStore": "Play Store"
 }

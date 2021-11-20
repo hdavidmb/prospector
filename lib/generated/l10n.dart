@@ -2199,6 +2199,56 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Membership restored`
+  String get membershipRestored {
+    return Intl.message(
+      'Membership restored',
+      name: 'membershipRestored',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your membership has been restored successfully.`
+  String get yourMembershipHasBeenRestored {
+    return Intl.message(
+      'Your membership has been restored successfully.',
+      name: 'yourMembershipHasBeenRestored',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We couldn't find any membership active to restore. Please check your subscription status in the`
+  String get weCoulntFindMembership {
+    return Intl.message(
+      'We couldn\'t find any membership active to restore. Please check your subscription status in the',
+      name: 'weCoulntFindMembership',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `App Store`
+  String get appStore {
+    return Intl.message(
+      'App Store',
+      name: 'appStore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Play Store`
+  String get playStore {
+    return Intl.message(
+      'Play Store',
+      name: 'playStore',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

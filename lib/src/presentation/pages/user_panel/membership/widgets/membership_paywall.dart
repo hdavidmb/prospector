@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:prospector/generated/l10n.dart';
@@ -44,16 +46,15 @@ class MembershipPaywall extends StatelessWidget {
               //TODO show restore message
               showMessageDialog(
                   context: context,
-                  title: 'Membership restored',
-                  message: 'Your membership has been restored successfuly.');
+                  title: AppLocalizations.of(context).membershipRestored,
+                  message: AppLocalizations.of(context)
+                      .yourMembershipHasBeenRestored);
             } else {
               // TODO show nothing to restore message
               showMessageDialog(
                   context: context,
                   message:
-                      "We couldn't find any membership active to restore. Please check your subscription status in the" +
-                          " " +
-                          "AppStore");
+                      "${AppLocalizations.of(context).weCoulntFindMembership} ${Platform.isIOS ? AppLocalizations.of(context).appStore : AppLocalizations.of(context).playStore}");
             }
           },
           orElse: () {},

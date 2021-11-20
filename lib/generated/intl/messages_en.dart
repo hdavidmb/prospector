@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please allow it on your device settings."),
         "appStateError": MessageLookupByLibrary.simpleMessage(
             "There\'s been an error initializing the app. Please check your internet connection and try again later."),
+        "appStore": MessageLookupByLibrary.simpleMessage("App Store"),
         "areYouSureDeleteAccount": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete your account?"),
         "areYouSureDeleteEvent": MessageLookupByLibrary.simpleMessage(
@@ -152,6 +153,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "measureWhatMattersMessage": MessageLookupByLibrary.simpleMessage(
             "Keep track of your actions and effectiveness on the business skills"),
         "membership": MessageLookupByLibrary.simpleMessage("Membership"),
+        "membershipRestored":
+            MessageLookupByLibrary.simpleMessage("Membership restored"),
         "minutes": MessageLookupByLibrary.simpleMessage("minutes"),
         "minutesBefore": MessageLookupByLibrary.simpleMessage("minutes before"),
         "modifyCountryCodeMessage": MessageLookupByLibrary.simpleMessage(
@@ -209,6 +212,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Plan to improve"),
         "planToImproveMessage": MessageLookupByLibrary.simpleMessage(
             "Compare your performance every month and plan your strategy for the future"),
+        "playStore": MessageLookupByLibrary.simpleMessage("Play Store"),
         "premiumCap": MessageLookupByLibrary.simpleMessage("PREMIUM"),
         "premiumFeature":
             MessageLookupByLibrary.simpleMessage("Premium feature"),
@@ -301,6 +305,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "We haven\'t found any account associated with this email address. Please confirm your email."),
         "watchAShortVideo":
             MessageLookupByLibrary.simpleMessage("Watch a short video to get"),
+        "weCoulntFindMembership": MessageLookupByLibrary.simpleMessage(
+            "We couldn\'t find any membership active to restore. Please check your subscription status in the"),
         "weakPassword": MessageLookupByLibrary.simpleMessage(
             "Weak Password. \n It must be at least 8 characters long and contain: \n - 1 uppercase letter \n - 1 lowercase letter \n - 1 number"),
         "week": MessageLookupByLibrary.simpleMessage("Week"),
@@ -312,6 +318,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "year": MessageLookupByLibrary.simpleMessage("Year"),
         "youMayHaveToRelogin": MessageLookupByLibrary.simpleMessage(
             "You may have to authenticate with your social account again."),
+        "yourMembershipHasBeenRestored": MessageLookupByLibrary.simpleMessage(
+            "Your membership has been restored successfully."),
         "yourNewSubscriptionWillStart": MessageLookupByLibrary.simpleMessage(
             "Your new subscription will start when the current one ends")
       };

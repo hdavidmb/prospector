@@ -213,5 +213,10 @@
     "removeAdsMessage": "Manage your business with Prospector completly free of ads",
     "congrats": "Congrats",
     "purchaseThankMessage": "You are now a Prospector Premium user and now you have unlimited access to a lot of usefull features Prospector has to grow your bussiness.\n\nThanks for trusting us to help you in your journey. Let's take your bussiness to the next level.",
-    "yourNewSubscriptionWillStart": "Your new subscription will start when the current one ends"
+    "yourNewSubscriptionWillStart": "Your new subscription will start when the current one ends",
+    "membershipRestored": "Membership restored",
+    "yourMembershipHasBeenRestored": "Your membership has been restored successfully.",
+    "weCoulntFindMembership": "We couldn't find any membership active to restore. Please check your subscription status in the",
+    "appStore": "App Store",
+    "playStore": "Play Store"
 }
