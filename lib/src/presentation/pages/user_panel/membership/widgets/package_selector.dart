@@ -2,14 +2,14 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:prospector/generated/l10n.dart';
-import 'package:prospector/src/features/in_app_purchase/application/fetch_state.dart';
-import 'package:prospector/src/features/in_app_purchase/application/in_app_purchase_providers.dart';
-import 'package:prospector/src/features/in_app_purchase/domain/entities/iap_package.dart';
-import 'package:prospector/src/features/in_app_purchase/domain/entities/iap_package_type.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
-import 'package:prospector/src/presentation/helpers/number_formatters.dart';
-import 'package:prospector/src/presentation/pages/user_panel/membership/logic/membership_providers.dart';
+import '../../../../../../generated/l10n.dart';
+import '../../../../../features/in_app_purchase/application/fetch_state.dart';
+import '../../../../../features/in_app_purchase/application/in_app_purchase_providers.dart';
+import '../../../../../features/in_app_purchase/domain/entities/iap_package.dart';
+import '../../../../../features/in_app_purchase/domain/entities/iap_package_type.dart';
+import '../../../../../features/user/application/user_info_providers.dart';
+import '../../../../helpers/number_formatters.dart';
+import '../logic/membership_providers.dart';
 
 class PackageSelector extends ConsumerWidget {
   const PackageSelector({

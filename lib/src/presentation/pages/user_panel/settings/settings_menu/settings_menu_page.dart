@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:prospector/src/presentation/routes/app_router.gr.dart';
 
 import '../../../../../../generated/l10n.dart';
+import '../../../../routes/app_router.gr.dart';
 import 'widgets/settings_admob_banner.dart';
 import 'widgets/settings_menu_items.dart';
 import 'widgets/theme_switch.dart';

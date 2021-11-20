@@ -2,20 +2,20 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:prospector/generated/l10n.dart';
-import 'package:prospector/src/features/in_app_purchase/application/fetch_state.dart';
-import 'package:prospector/src/features/in_app_purchase/application/in_app_purchase_notifier.dart';
-import 'package:prospector/src/features/in_app_purchase/application/in_app_purchase_providers.dart';
-import 'package:prospector/src/features/in_app_purchase/domain/entities/iap_package.dart';
-import 'package:prospector/src/features/in_app_purchase/domain/failures/iap_failure.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
-import 'package:prospector/src/presentation/core/dialogs.dart';
-import 'package:prospector/src/presentation/helpers/date_formatters.dart';
-
-import 'package:prospector/src/presentation/pages/user_panel/membership/logic/membership_providers.dart';
-import 'package:prospector/src/presentation/pages/user_panel/membership/widgets/package_selector.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/presentation/pages/user_panel/membership/widgets/premium_carousel.dart';
+
+import '../../../../../../generated/l10n.dart';
+import '../../../../../features/in_app_purchase/application/fetch_state.dart';
+import '../../../../../features/in_app_purchase/application/in_app_purchase_notifier.dart';
+import '../../../../../features/in_app_purchase/application/in_app_purchase_providers.dart';
+import '../../../../../features/in_app_purchase/domain/entities/iap_package.dart';
+import '../../../../../features/in_app_purchase/domain/failures/iap_failure.dart';
+import '../../../../../features/user/application/user_info_providers.dart';
+import '../../../../core/dialogs.dart';
+import '../../../../helpers/date_formatters.dart';
+import '../logic/membership_providers.dart';
+import 'package_selector.dart';
+import 'premium_carousel.dart';
 
 class MembershipPaywall extends StatelessWidget {
   const MembershipPaywall({
@@ -43,14 +43,12 @@ class MembershipPaywall extends StatelessWidget {
               showFailureSnackbar(context, const IAPFailure.serverError()),
           ready: () {
             if (provider.packageRestored) {
-              //TODO show restore message
               showMessageDialog(
                   context: context,
                   title: AppLocalizations.of(context).membershipRestored,
                   message: AppLocalizations.of(context)
                       .yourMembershipHasBeenRestored);
             } else {
-              // TODO show nothing to restore message
               showMessageDialog(
                   context: context,
                   message:
@@ -171,8 +169,6 @@ class MembershipPaywall extends StatelessWidget {
                     (states) => Colors.transparent),
               ),
               onPressed: () {
-                //TODO: implement
-                print('RESTORE');
                 context.read(inAppPurchaseNotifier).restorePurchase();
               },
               child: Text(

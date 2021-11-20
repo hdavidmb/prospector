@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/in_app_purchase/domain/entities/iap_package.dart';
-import 'package:prospector/src/features/in_app_purchase/domain/entities/iap_purchaser_info.dart';
-import 'package:prospector/src/features/in_app_purchase/domain/failures/iap_failure.dart';
-import 'package:prospector/src/presentation/pages/user_panel/membership/logic/membership_providers.dart';
 
+import '../../../presentation/pages/user_panel/membership/logic/membership_providers.dart';
 import '../../user/application/user_info_providers.dart';
+import '../domain/entities/iap_package.dart';
+import '../domain/entities/iap_purchaser_info.dart';
+import '../domain/failures/iap_failure.dart';
 import '../domain/in_app_purchase_use_cases.dart';
 import 'fetch_state.dart';
 

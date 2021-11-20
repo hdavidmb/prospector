@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:prospector/generated/l10n.dart';
+import '../../../../../../generated/l10n.dart';
 
 class PremiumCarousel extends StatefulWidget {
   const PremiumCarousel({
@@ -13,7 +13,6 @@ class PremiumCarousel extends StatefulWidget {
 }
 
 class _PremiumCarouselState extends State<PremiumCarousel> {
-  //TODO: add item for call and text feature
   final List<Map<String, String>> items = [
     {
       'image_path': 'assets/images/report_mobile.png',
@@ -27,7 +26,7 @@ class _PremiumCarouselState extends State<PremiumCarousel> {
     },
     {
       'image_path': 'assets/images/direct_contact.png',
-      'title': AppLocalizations.current.directContact, //TODO change
+      'title': AppLocalizations.current.directContact,
       'message': AppLocalizations.current.directContactMessage,
     },
     {

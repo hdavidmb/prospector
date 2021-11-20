@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/in_app_purchase/application/in_app_purchase_providers.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
+import '../../../../../features/in_app_purchase/application/in_app_purchase_providers.dart';
+import '../../../../../features/user/application/user_info_providers.dart';
 
 class MembershipNotifier extends ChangeNotifier {
   final Reader read;

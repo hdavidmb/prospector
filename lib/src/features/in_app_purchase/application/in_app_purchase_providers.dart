@@ -1,8 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/in_app_purchase/application/in_app_purchase_notifier.dart';
-import 'package:prospector/src/features/in_app_purchase/data/in_app_purchase_repository.dart';
-import 'package:prospector/src/features/in_app_purchase/domain/in_app_purchase_use_cases.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
+
+import '../data/in_app_purchase_repository.dart';
+import '../domain/in_app_purchase_use_cases.dart';
+import 'in_app_purchase_notifier.dart';
 
 final purchasesInstance = Provider<Purchases>((ref) {
   return Purchases();

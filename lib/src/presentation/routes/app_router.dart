@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:prospector/src/presentation/pages/user_panel/membership/membership_page.dart';
 
 import '../pages/auth/register/register_page.dart';
 import '../pages/auth/sign_in/sign_in_page.dart';
@@ -10,6 +9,7 @@ import '../pages/user_panel/events/event_add_edit/event_add_edit_page.dart';
 import '../pages/user_panel/events/event_details/event_details_page.dart';
 import '../pages/user_panel/events/guests_selection/guests_selection_page.dart';
 import '../pages/user_panel/home/home_page.dart';
+import '../pages/user_panel/membership/membership_page.dart';
 import '../pages/user_panel/settings/change_email/change_email_page.dart';
 import '../pages/user_panel/settings/change_password/change_password_page.dart';
 import '../pages/user_panel/settings/country_code/country_code_page.dart';
