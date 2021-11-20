@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../generated/l10n.dart';
-import '../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../features/user/application/user_info_providers.dart';
 import '../../../../core/dialogs.dart';
+import '../../../../core/widgets/loading_page_cover.dart';
 import 'logic/user_profile_notifier.dart';
 import 'logic/user_profile_provider.dart';
 import 'logic/user_profile_state.dart';
-import 'widgets/loading_page_cover.dart';
 import 'widgets/logout_and_delete_buttons.dart';
 import 'widgets/user_auth_provider_items.dart';
 import 'widgets/user_avatar_edit.dart';
@@ -74,21 +73,19 @@ class UserProfilePage extends ConsumerWidget {
                     style: TextButton.styleFrom(
                         primary: Colors.yellow, backgroundColor: Colors.blue),
                     onPressed: () {
-                      final premiumSubID =
-                          context.read(appDefaultDataProvider).premiumSubID;
-                      final freeSubID =
-                          context.read(appDefaultDataProvider).freeSubID;
-                      final user = context.read(userInfoNotifierProvider).user;
                       final isPremiumUser =
                           context.read(userInfoNotifierProvider).isPremiumUser;
-                      final newUserInfo = user?.copyWith(
-                          subscription:
-                              isPremiumUser ? freeSubID : premiumSubID);
-                      if (newUserInfo != null) {
-                        context
-                            .read(userInfoNotifierProvider)
-                            .updateUserInfo(newUserInfo);
-                      }
+                      context
+                          .read(userInfoNotifierProvider)
+                          .updateUserSubscription(
+                            isPremium: !isPremiumUser,
+                            subscriptionSKU:
+                                isPremiumUser ? null : 'premium_1m',
+                            expiryDate: isPremiumUser
+                                ? DateTime.now()
+                                    .subtract(const Duration(days: 5))
+                                : DateTime.now().add(const Duration(days: 5)),
+                          );
                     },
                     child: const Text('Change subscription'),
                   )

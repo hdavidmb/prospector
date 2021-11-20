@@ -18,11 +18,13 @@ import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
 import 'package:prospector/src/features/events/domain/entites/event_alert.dart';
 import 'package:prospector/src/features/images/domain/sources/source_image.dart';
+import 'package:prospector/src/features/in_app_purchase/domain/failures/iap_failure.dart';
 import 'package:prospector/src/features/user/domain/failures/user_info_failure.dart';
 import 'package:prospector/src/presentation/core/widgets/custom_places_alert_dialog.dart';
 import 'package:prospector/src/presentation/helpers/date_formatters.dart';
 import 'package:prospector/src/presentation/pages/auth/sign_in/logic/sign_in_form_provider.dart';
 import 'package:prospector/src/presentation/pages/user_panel/contacts/contact_add_edit/widgets/tags_selection_wrap/tags_selection_wrap.dart';
+import 'package:prospector/src/presentation/routes/app_router.gr.dart';
 
 enum SnackbarType { failure, success, warning }
 
@@ -76,7 +78,8 @@ void showSnackBar({
 void showFailureSnackbar(BuildContext context, dynamic failure) {
   if (failure == const AuthFailure.serverError() ||
       failure == const DatabaseFailure.serverError() ||
-      failure == const UserInfoFailure.serverError()) {
+      failure == const UserInfoFailure.serverError() ||
+      failure == const IAPFailure.serverError()) {
     showSnackBar(
         context: context,
         message: AppLocalizations.current.serverError,
@@ -107,7 +110,8 @@ void showFailureSnackbar(BuildContext context, dynamic failure) {
         type: SnackbarType.failure);
   } else if (failure == const AuthFailure.noConnection() ||
       failure == const DatabaseFailure.noConnection() ||
-      failure == const UserInfoFailure.noConnection()) {
+      failure == const UserInfoFailure.noConnection() ||
+      failure == const IAPFailure.noConnection()) {
     showSnackBar(
         context: context,
         message: AppLocalizations.current.noConnectionMessage,
@@ -198,7 +202,9 @@ Future<void> showMessageDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: (title != null && title.isNotEmpty) ? Text(title) : null,
+        title: (title != null && title.isNotEmpty)
+            ? Text(title, textAlign: TextAlign.center)
+            : null,
         content: Text(message),
         actions: [
           TextButton(
@@ -302,7 +308,8 @@ void showPremiumDialog({required BuildContext context}) {
             ),
             onPressed: () async {
               AutoRouter.of(context).pop();
-              //TODO navigate to membership
+              Future.delayed(Duration.zero,
+                  () => AutoRouter.of(context).push(const MembershipRoute()));
             },
             child: Text(
               AppLocalizations.current.moreInfo,

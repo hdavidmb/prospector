@@ -1590,6 +1590,16 @@ class AppLocalizations {
     );
   }
 
+  /// `Year`
+  String get year {
+    return Intl.message(
+      'Year',
+      name: 'year',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Month`
   String get month {
     return Intl.message(
@@ -1945,6 +1955,316 @@ class AppLocalizations {
     return Intl.message(
       'Are you sure you want to delete this Element?',
       name: 'areYouSureDeleteEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue`
+  String get continueText {
+    return Intl.message(
+      'Continue',
+      name: 'continueText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restore membership`
+  String get restoreMembership {
+    return Intl.message(
+      'Restore membership',
+      name: 'restoreMembership',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1 Month`
+  String get oneMonth {
+    return Intl.message(
+      '1 Month',
+      name: 'oneMonth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `3 Months`
+  String get threeMonths {
+    return Intl.message(
+      '3 Months',
+      name: 'threeMonths',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `6 Months`
+  String get sixMonths {
+    return Intl.message(
+      '6 Months',
+      name: 'sixMonths',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1 Year`
+  String get oneYear {
+    return Intl.message(
+      '1 Year',
+      name: 'oneYear',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get saveFinancial {
+    return Intl.message(
+      'Save',
+      name: 'saveFinancial',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current`
+  String get currentText {
+    return Intl.message(
+      'Current',
+      name: 'currentText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You will be billed for the firs time on`
+  String get firstBill {
+    return Intl.message(
+      'You will be billed for the firs time on',
+      name: 'firstBill',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your membership will renew automatically every`
+  String get renewAutomatically {
+    return Intl.message(
+      'Your membership will renew automatically every',
+      name: 'renewAutomatically',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Prices shown in`
+  String get pricesShownIn {
+    return Intl.message(
+      'Prices shown in',
+      name: 'pricesShownIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Every membership includes a 7 days free trial`
+  String get freeTrialMessage {
+    return Intl.message(
+      'Every membership includes a 7 days free trial',
+      name: 'freeTrialMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Prospector Premium`
+  String get prospectorPremium {
+    return Intl.message(
+      'Prospector Premium',
+      name: 'prospectorPremium',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Statistics Module`
+  String get statisticsModule {
+    return Intl.message(
+      'Statistics Module',
+      name: 'statisticsModule',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Measure what matters`
+  String get measureWhatMatters {
+    return Intl.message(
+      'Measure what matters',
+      name: 'measureWhatMatters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plan to improve`
+  String get planToImprove {
+    return Intl.message(
+      'Plan to improve',
+      name: 'planToImprove',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Direct contact`
+  String get directContact {
+    return Intl.message(
+      'Direct contact',
+      name: 'directContact',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove Ads`
+  String get removeAds {
+    return Intl.message(
+      'Remove Ads',
+      name: 'removeAds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get full access to the statistics module with usefull charts and insigts about your activity as Networker`
+  String get statisticsModuleMessage {
+    return Intl.message(
+      'Get full access to the statistics module with usefull charts and insigts about your activity as Networker',
+      name: 'statisticsModuleMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep track of your actions and effectiveness on the business skills`
+  String get measureWhatMattersMessage {
+    return Intl.message(
+      'Keep track of your actions and effectiveness on the business skills',
+      name: 'measureWhatMattersMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Compare your performance every month and plan your strategy for the future`
+  String get planToImproveMessage {
+    return Intl.message(
+      'Compare your performance every month and plan your strategy for the future',
+      name: 'planToImproveMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Call or text your prospects directly from within Prospector, so you can contact them just when you need it`
+  String get directContactMessage {
+    return Intl.message(
+      'Call or text your prospects directly from within Prospector, so you can contact them just when you need it',
+      name: 'directContactMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manage your business with Prospector completly free of ads`
+  String get removeAdsMessage {
+    return Intl.message(
+      'Manage your business with Prospector completly free of ads',
+      name: 'removeAdsMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Congrats`
+  String get congrats {
+    return Intl.message(
+      'Congrats',
+      name: 'congrats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are now a Prospector Premium user and now you have unlimited access to a lot of usefull features Prospector has to grow your bussiness.\n\nThanks for trusting us to help you in your journey. Let's take your bussiness to the next level.`
+  String get purchaseThankMessage {
+    return Intl.message(
+      'You are now a Prospector Premium user and now you have unlimited access to a lot of usefull features Prospector has to grow your bussiness.\n\nThanks for trusting us to help you in your journey. Let\'s take your bussiness to the next level.',
+      name: 'purchaseThankMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your new subscription will start when the current one ends`
+  String get yourNewSubscriptionWillStart {
+    return Intl.message(
+      'Your new subscription will start when the current one ends',
+      name: 'yourNewSubscriptionWillStart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Membership restored`
+  String get membershipRestored {
+    return Intl.message(
+      'Membership restored',
+      name: 'membershipRestored',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your membership has been restored successfully.`
+  String get yourMembershipHasBeenRestored {
+    return Intl.message(
+      'Your membership has been restored successfully.',
+      name: 'yourMembershipHasBeenRestored',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We couldn't find any membership active to restore. Please check your subscription status in the`
+  String get weCoulntFindMembership {
+    return Intl.message(
+      'We couldn\'t find any membership active to restore. Please check your subscription status in the',
+      name: 'weCoulntFindMembership',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `App Store`
+  String get appStore {
+    return Intl.message(
+      'App Store',
+      name: 'appStore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Play Store`
+  String get playStore {
+    return Intl.message(
+      'Play Store',
+      name: 'playStore',
       desc: '',
       args: [],
     );

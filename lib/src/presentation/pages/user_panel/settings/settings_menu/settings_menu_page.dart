@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../generated/l10n.dart';
+import '../../../../routes/app_router.gr.dart';
 import 'widgets/settings_admob_banner.dart';
 import 'widgets/settings_menu_items.dart';
 import 'widgets/theme_switch.dart';
@@ -23,6 +25,13 @@ class SettingsMenuPage extends StatelessWidget {
               children: [
                 UserProfileListTile(),
                 divider,
+                ListTile(
+                  title: Text(AppLocalizations.of(context).membership),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () =>
+                      AutoRouter.of(context).push(const MembershipRoute()),
+                ),
+                divider,
                 const SizedBox(height: 30.0),
                 divider,
                 SettingsMenuItems(divider: divider),
@@ -33,7 +42,7 @@ class SettingsMenuPage extends StatelessWidget {
               ],
             ),
           ),
-          const SettingsAdmobBanner()
+          const SettingsAdmobBanner() //TODO: remove if blocking content
         ],
       ),
     );

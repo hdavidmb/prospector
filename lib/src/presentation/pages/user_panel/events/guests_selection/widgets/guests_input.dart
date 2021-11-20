@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chips_input/flutter_chips_input.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../../../generated/l10n.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
 import '../../../contacts/contact_add_edit/widgets/contact_image.dart';

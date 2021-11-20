@@ -9,6 +9,7 @@ import '../pages/user_panel/events/event_add_edit/event_add_edit_page.dart';
 import '../pages/user_panel/events/event_details/event_details_page.dart';
 import '../pages/user_panel/events/guests_selection/guests_selection_page.dart';
 import '../pages/user_panel/home/home_page.dart';
+import '../pages/user_panel/membership/membership_page.dart';
 import '../pages/user_panel/settings/change_email/change_email_page.dart';
 import '../pages/user_panel/settings/change_password/change_password_page.dart';
 import '../pages/user_panel/settings/country_code/country_code_page.dart';
@@ -52,6 +53,10 @@ import '../pages/user_panel/settings/user_profile/user_profile_page.dart';
     CupertinoRoute(page: EventDetailsPage),
     CupertinoRoute(page: GuestsSelectionPage),
     CupertinoRoute(page: EventAddEditPage),
+    MaterialRoute(
+      page: MembershipPage,
+      fullscreenDialog: true,
+    )
   ],
   replaceInRouteName: 'Page,Route',
 )

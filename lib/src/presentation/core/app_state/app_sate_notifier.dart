@@ -9,6 +9,7 @@ import '../../../features/contacts/application/contacts_state.dart';
 import '../../../features/events/application/events_providers.dart';
 import '../../../features/events/application/events_state.dart';
 import '../../../features/import_contacts/application/import_contacts_providers.dart';
+import '../../../features/in_app_purchase/application/in_app_purchase_providers.dart';
 import '../../../features/interactions/application/interactions_providers.dart';
 import '../../../features/interactions/application/interactions_state.dart';
 import '../../../features/local_notifications/application/local_notifications_providers.dart';
@@ -48,7 +49,10 @@ class AppStateNotifier extends StateNotifier<AppState> {
     } else if (defaultDataState == const AppDefaultDataState.ready()) {
       if (authState == const AuthState.authenticated()) {
         read(localNotificationsProvider).initializeLocalNotifications();
+        read(inAppPurchaseNotifier).getPackages();
+        // TODO check if this post authentication logic can be handled from authStateNotifier
         if (userInfoState == const UserInfoState.ready()) {
+          read(inAppPurchaseNotifier).logInPurchaser();
           if (contactsState == const ContactsState.initial()) {
             read(contactsNotifierProvider).getContacts();
           }
@@ -98,6 +102,8 @@ class AppStateNotifier extends StateNotifier<AppState> {
     read(interactionsNotifierProvider).reset();
     read(eventsNotifierProvider).reset();
     //TODO read(statisticsNotifierProvider).reset();
+    read(inAppPurchaseNotifier).reset();
+    read(inAppPurchaseNotifier).logOutPurchaser();
     state = const AppState.initial();
   }
 }

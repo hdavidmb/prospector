@@ -13,10 +13,10 @@ class ContactsAdmobBanner extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     return KeyboardVisibility(
-      keyboardHiddenChild: Positioned.fill(
-        bottom: 20.0,
-        child: Align(
-          alignment: Alignment.bottomCenter,
+      keyboardHiddenChild: Align(
+        alignment: Alignment.bottomCenter,
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
           child: SizedBox(
             height: 60.0,
             width: MediaQuery.of(context).size.width,

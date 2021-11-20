@@ -109,4 +109,21 @@ class UserInfoNotifier extends ChangeNotifier {
       },
     );
   }
+
+  Future<Either<UserInfoFailure, Unit>> updateUserSubscription(
+      {required bool isPremium,
+      String? subscriptionSKU,
+      required DateTime expiryDate}) async {
+    final premiumSubID = read(appDefaultDataProvider).premiumSubID;
+    final freeSubID = read(appDefaultDataProvider).freeSubID;
+    final newUserInfo = _user?.copyWith(
+        subscription: isPremium ? premiumSubID : freeSubID,
+        subscriptionSKU: subscriptionSKU,
+        expiryDate: expiryDate);
+    if (newUserInfo != null) {
+      return updateUserInfo(newUserInfo);
+    } else {
+      return left(const UserInfoFailure.noUser());
+    }
+  }
 }

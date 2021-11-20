@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Por favor habilitalo en la configuración de tu dispositivo."),
         "appStateError": MessageLookupByLibrary.simpleMessage(
             "Ha habido un error al iniciar la aplicación. Comprueba tu conexión a internet y vuelve a intentarlo más tarde."),
+        "appStore": MessageLookupByLibrary.simpleMessage("App Store"),
         "areYouSureDeleteAccount": MessageLookupByLibrary.simpleMessage(
             "Confirma que deseas eliminar tu cuenta."),
         "areYouSureDeleteEvent": MessageLookupByLibrary.simpleMessage(
@@ -61,15 +62,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirmar nueva contraseña"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirmar contraseña"),
+        "congrats": MessageLookupByLibrary.simpleMessage("Felicidades"),
         "contactsAccess":
             MessageLookupByLibrary.simpleMessage("Acceso a contactos"),
         "contactsAccessMessage": MessageLookupByLibrary.simpleMessage(
             "El acceso a los contactos esta deshabilitado para Prospector MLM."),
         "continueString": MessageLookupByLibrary.simpleMessage("Continuar"),
+        "continueText": MessageLookupByLibrary.simpleMessage("Continuar"),
         "countryCode": MessageLookupByLibrary.simpleMessage("Código de país"),
         "currentEmail": MessageLookupByLibrary.simpleMessage("Correo actual"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Contraseña actual"),
+        "currentText": MessageLookupByLibrary.simpleMessage("Actual"),
         "customPlacesMessage": MessageLookupByLibrary.simpleMessage(
             "Puedes seleccionar una ubicación de la lista o presionar \'Enter\' en tu teclado para usar lo que escribiste como ubicación."),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Modo oscuro"),
@@ -84,6 +88,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteEvent": MessageLookupByLibrary.simpleMessage("Eliminar evento"),
         "deleteProspect":
             MessageLookupByLibrary.simpleMessage("Eliminar prospecto"),
+        "directContact":
+            MessageLookupByLibrary.simpleMessage("Contacto directo"),
+        "directContactMessage": MessageLookupByLibrary.simpleMessage(
+            "Llama o escribe a tus prospectos desde Prospector, así podras contactarlos justo cuando lo necesitas"),
         "disable": MessageLookupByLibrary.simpleMessage("Deshabilitar"),
         "edit": MessageLookupByLibrary.simpleMessage("Editar"),
         "editEvent": MessageLookupByLibrary.simpleMessage("Editar evento"),
@@ -115,9 +123,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "executives": MessageLookupByLibrary.simpleMessage("Ejecutivos"),
         "female": MessageLookupByLibrary.simpleMessage("Femenino"),
         "filterBy": MessageLookupByLibrary.simpleMessage("Filtrar por..."),
+        "firstBill": MessageLookupByLibrary.simpleMessage(
+            "Se te facturará por primera vez el"),
         "followUp": MessageLookupByLibrary.simpleMessage("Seguimiento"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Olvidé mi contraseña"),
+        "freeTrialMessage": MessageLookupByLibrary.simpleMessage(
+            "Cada membresía incluye 7 días de prueba gratis"),
         "gender": MessageLookupByLibrary.simpleMessage("Género"),
         "general": MessageLookupByLibrary.simpleMessage("General"),
         "getRidOfAds":
@@ -150,7 +162,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "loggedInWith":
             MessageLookupByLibrary.simpleMessage("Iniciaste sesión con"),
         "male": MessageLookupByLibrary.simpleMessage("Masculino"),
+        "measureWhatMatters":
+            MessageLookupByLibrary.simpleMessage("Mide lo Importante"),
+        "measureWhatMattersMessage": MessageLookupByLibrary.simpleMessage(
+            "Haz seguimiento a tus acciones y efectividad en las habilidades del negocio"),
         "membership": MessageLookupByLibrary.simpleMessage("Membresía"),
+        "membershipRestored":
+            MessageLookupByLibrary.simpleMessage("Membersía restaurada"),
         "minutes": MessageLookupByLibrary.simpleMessage("minutos"),
         "minutesBefore": MessageLookupByLibrary.simpleMessage("minutos antes"),
         "modifyCountryCodeMessage": MessageLookupByLibrary.simpleMessage(
@@ -198,42 +216,64 @@ class MessageLookup extends MessageLookupByLibrary {
         "ofProspectorWithNoAds": MessageLookupByLibrary.simpleMessage(
             "de Prospector sin publicidad"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
+        "oneMonth": MessageLookupByLibrary.simpleMessage("1 Mes"),
+        "oneYear": MessageLookupByLibrary.simpleMessage("1 Año"),
         "orContinueWith":
             MessageLookupByLibrary.simpleMessage("- o continúa con -"),
         "password": MessageLookupByLibrary.simpleMessage("Contraseña"),
         "passwordsDontMatch": MessageLookupByLibrary.simpleMessage(
             "Las contraseñas no coinciden"),
         "phone": MessageLookupByLibrary.simpleMessage("Teléfono"),
+        "planToImprove":
+            MessageLookupByLibrary.simpleMessage("Planea para mejorar"),
+        "planToImproveMessage": MessageLookupByLibrary.simpleMessage(
+            "Compara tu desempeño mes a mes y planea tu estrategia para el futuro"),
+        "playStore": MessageLookupByLibrary.simpleMessage("Play Store"),
         "premiumCap": MessageLookupByLibrary.simpleMessage("PREMIUM"),
         "premiumFeature":
             MessageLookupByLibrary.simpleMessage("Función Premium"),
         "premiumFeatureMessage": MessageLookupByLibrary.simpleMessage(
             "Esta es una característica premium.\nAdquiere alguna de nuestras suscripciones premium para acceder a esta función y llevar tu negocio al siguiente nivel."),
         "present": MessageLookupByLibrary.simpleMessage("Presentar"),
+        "pricesShownIn":
+            MessageLookupByLibrary.simpleMessage("Los precios se muestran en"),
         "profile": MessageLookupByLibrary.simpleMessage("Perfil"),
         "prospectDetails":
             MessageLookupByLibrary.simpleMessage("Detalles de prospecto"),
         "prospectSavedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Prospecto guardado exitosamente"),
         "prospector": MessageLookupByLibrary.simpleMessage("Prospector"),
+        "prospectorPremium":
+            MessageLookupByLibrary.simpleMessage("Prospector Premium"),
         "prospectorWillImportContacts": MessageLookupByLibrary.simpleMessage(
             "Prospector importará automáticamente los contactos nuevos que agregues en tu dispositivo."),
         "prospectorWillStopImporting": MessageLookupByLibrary.simpleMessage(
             "Prospector dejará de importar automáticamente los nuevos contactos de tu dispositivo."),
         "prospects": MessageLookupByLibrary.simpleMessage("Prospectos"),
+        "purchaseThankMessage": MessageLookupByLibrary.simpleMessage(
+            "Ahora eres un usuario Premium de Prospector y tienes acceso ilimitado a útiles funciones para hacer crecer tu negocio.\n\nGracias por confiar en Prospector para acompañarte en tu camino como networker. Llevemos tu negocio al siguiente nivel."),
         "reauthMessage": MessageLookupByLibrary.simpleMessage(
             "Debes autenticarte de nuevo. Ingresa tu contraseña para continuar."),
         "reauthenticate": MessageLookupByLibrary.simpleMessage("Reautenticar"),
         "register": MessageLookupByLibrary.simpleMessage("Registro"),
         "registerButton": MessageLookupByLibrary.simpleMessage("Registrarme"),
         "reminder": MessageLookupByLibrary.simpleMessage("Recordatorio"),
+        "removeAds":
+            MessageLookupByLibrary.simpleMessage("Elimina la Publicidad"),
+        "removeAdsMessage": MessageLookupByLibrary.simpleMessage(
+            "Administra tu negocio con Prospector completamente libre de anuncios"),
+        "renewAutomatically": MessageLookupByLibrary.simpleMessage(
+            "Tu membresía se renovará automáticamente cada"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("Restablecer contraseña"),
         "resetPasswordDialogMessage": MessageLookupByLibrary.simpleMessage(
             "Ingresa el correo electrónico que usaste para crear tu cuenta en Prospector"),
         "resetPasswordEmailSent": MessageLookupByLibrary.simpleMessage(
             "Te hemos enviado un correo con las instrucciones para restablecer tu contraseña. \nPor favor revisa tu bandeja de entrada."),
+        "restoreMembership":
+            MessageLookupByLibrary.simpleMessage("Restaurar membresía"),
         "save": MessageLookupByLibrary.simpleMessage("Guardar"),
+        "saveFinancial": MessageLookupByLibrary.simpleMessage("Ahorra"),
         "search": MessageLookupByLibrary.simpleMessage("Buscar"),
         "selectANumber":
             MessageLookupByLibrary.simpleMessage("Seleciona un número"),
@@ -253,9 +293,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "showPasswords":
             MessageLookupByLibrary.simpleMessage("Mostrar contraseñas"),
         "signIn": MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
+        "sixMonths": MessageLookupByLibrary.simpleMessage("6 Meses"),
         "start": MessageLookupByLibrary.simpleMessage("Inicia"),
         "startsAt": MessageLookupByLibrary.simpleMessage("Inicia"),
         "statistics": MessageLookupByLibrary.simpleMessage("Estadisticas"),
+        "statisticsModule":
+            MessageLookupByLibrary.simpleMessage("Módulo de Estadísticas"),
+        "statisticsModuleMessage": MessageLookupByLibrary.simpleMessage(
+            "Obtén acceso completo al módulo de estadisticas con útiles gráficos y datos sobre tu actividad como Networker"),
         "syncContacts":
             MessageLookupByLibrary.simpleMessage("Sincronizar contactos"),
         "tagName":
@@ -264,6 +309,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "takePhoto": MessageLookupByLibrary.simpleMessage("Tomar foto"),
         "thisAcctionCannotBeUndone": MessageLookupByLibrary.simpleMessage(
             "Esta acción no se puede deshacer."),
+        "threeMonths": MessageLookupByLibrary.simpleMessage("3 Meses"),
         "timeFormat": MessageLookupByLibrary.simpleMessage("Formato de horas"),
         "titleIsRequired":
             MessageLookupByLibrary.simpleMessage("El título es requerido"),
@@ -285,6 +331,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "No hemos encontrado ninguna cuenta asociada a este correo. Por favor verifica tus datos."),
         "watchAShortVideo": MessageLookupByLibrary.simpleMessage(
             "Mira un corto video para tener"),
+        "weCoulntFindMembership": MessageLookupByLibrary.simpleMessage(
+            "No pudimos encontrar ninguna membresía activa para restaurar. Por favor revisa el estado de tu suscripción en la"),
         "weakPassword": MessageLookupByLibrary.simpleMessage(
             "Contraseña débil. \n Debe ser de al menos 8 caracteres y contener: \n - 1 letra mayúscula \n - 1 letra minúscula \n - 1 número"),
         "week": MessageLookupByLibrary.simpleMessage("Semana"),
@@ -294,7 +342,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcomeTo": MessageLookupByLibrary.simpleMessage("Bienvenido a"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
         "when": MessageLookupByLibrary.simpleMessage("Cuando"),
+        "year": MessageLookupByLibrary.simpleMessage("Año"),
         "youMayHaveToRelogin": MessageLookupByLibrary.simpleMessage(
-            "Deberás autenticar tu cuenta social de nuevo.")
+            "Deberás autenticar tu cuenta social de nuevo."),
+        "yourMembershipHasBeenRestored": MessageLookupByLibrary.simpleMessage(
+            "Tu membresía fue restaurada exitosamente."),
+        "yourNewSubscriptionWillStart": MessageLookupByLibrary.simpleMessage(
+            "Tu nueva subscripción comenzará cuando termine la actual")
       };
 }

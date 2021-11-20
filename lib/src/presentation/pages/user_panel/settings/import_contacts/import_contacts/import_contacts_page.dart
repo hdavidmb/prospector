@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/import_contacts/application/import_contacts_providers.dart';
 import '../../../../../../features/import_contacts/application/import_contacts_state.dart';
-import '../../../../../core/widgets/no_contatcs_screen/no_contacts_screen.dart';
-import '../../user_profile/widgets/loading_page_cover.dart';
+import '../../../../../core/widgets/loading_page_cover.dart';
+import '../../../../../core/widgets/no_contatcs_screen/info_message_page.dart';
 import 'logic/impor_contacts_page_providers.dart';
 import 'widgets/import_contacts_list_view.dart';
 import 'widgets/import_contacts_search_bar.dart';
@@ -54,7 +54,7 @@ class ImportContactsPage extends ConsumerWidget {
                 if (importing) LoadingPageCover(),
               ],
             )
-          : NoContactsScreen(
+          : InfoMessagePage(
               imagePath: 'assets/images/loading_device_contacts.png',
               padding: const EdgeInsets.symmetric(vertical: 80.0),
               imageHeight: 150.0,

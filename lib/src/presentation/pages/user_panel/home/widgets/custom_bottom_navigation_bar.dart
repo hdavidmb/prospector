@@ -1,7 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../generated/l10n.dart';
+import '../../../../../features/user/application/user_info_providers.dart';
+import '../../../../routes/app_router.gr.dart';
 import '../logic/home_index_provider.dart';
 
 class CustomBottomNavigationBar extends ConsumerWidget {
@@ -72,9 +75,17 @@ class CustomBottomBarButton extends StatelessWidget {
     return GestureDetector(
       onTap: isSelected
           ? null
-          : () => context.read(homeIndexProvider).index = position,
+          : () {
+              final bool isPremium =
+                  context.read(userInfoNotifierProvider).isPremiumUser;
+              if (position == 0 && !isPremium) {
+                AutoRouter.of(context).push(const MembershipRoute());
+                return;
+              }
+              context.read(homeIndexProvider).index = position;
+            },
       child: Container(
-        // * To ensure gesture detector acts on the entire container
+        // Transparent color is to ensure the gesture detector acts on the entire container
         color: Colors.transparent,
         height: 56.0,
         width: screenSize.width / 5,

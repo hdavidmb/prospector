@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
-import '../../../../../core/widgets/no_contatcs_screen/no_contacts_screen.dart';
+import '../../../../../core/widgets/no_contatcs_screen/info_message_page.dart';
 import '../../../../../routes/app_router.gr.dart';
 import 'contact_tile.dart';
 
@@ -25,7 +25,7 @@ class SearchContactsList extends ConsumerWidget {
                 const Divider(height: 0.0, indent: 75.0),
             itemCount: searchContacts.length,
           )
-        : NoContactsScreen(
+        : InfoMessagePage(
             imagePath: 'assets/images/no_search_prospects.png',
             imageHeight: 140.0,
             padding:
