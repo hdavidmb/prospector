@@ -36,4 +36,18 @@ class Statistic with _$Statistic {
     if (company != null) statisticMap['company'] = company;
     return statisticMap;
   }
+
+  factory Statistic.fromMap(Map<String, dynamic> map) {
+    return Statistic(
+      id: map['id'] as String,
+      contactID: map['contact_id'] as String,
+      userID: map['user_id'] as String,
+      created: map['created'] as DateTime,
+      newStatus: map['new_status'] as String?,
+      newListCount: map['new_list_count'] as int?,
+      oldStatus: map['old_status'] as String?,
+      oldListCount: map['old_list_count'] as int?,
+      company: map['company'] as String?,
+    );
+  }
 }
