@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/presentation/pages/user_panel/statistics/statistics_page.dart';
 
 import '../../contacts/contacts_list/contacts_list_page.dart';
 import '../../events/events_view/events_view_page.dart';
@@ -16,13 +17,13 @@ class HomeBodySelector extends ConsumerWidget {
     final int index = watch(homeIndexProvider).index;
     switch (index) {
       case 0:
-        return Container(); //TODO implement statistics page
+        return const StatisticsPage();
       case 1:
         return const ContactsListPage();
       case 2:
         return const EventsViewPage();
       case 3:
-        return SettingsMenuPage();
+        return const SettingsMenuPage();
       default:
         return const ContactsListPage();
     }

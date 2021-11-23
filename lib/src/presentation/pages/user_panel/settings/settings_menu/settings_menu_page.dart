@@ -9,6 +9,10 @@ import 'widgets/theme_switch.dart';
 import 'widgets/user_profile_list_tile.dart';
 
 class SettingsMenuPage extends StatelessWidget {
+  const SettingsMenuPage({
+    Key? key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     const divider = Divider(
