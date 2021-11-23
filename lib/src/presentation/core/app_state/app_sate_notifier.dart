@@ -1,4 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/in_app_purchase/application/fetch_state.dart';
+import 'package:prospector/src/features/statistics/application/statistics_providers.dart';
 
 import '../../../features/admob/application/ads_providers.dart';
 import '../../../features/app_default_data/application/app_default_data_providers.dart';
@@ -27,6 +29,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
   final InteractionsState interactionsState;
   final EventsState eventsState;
   final TagsState tagsState;
+  final FetchState statisticsState;
   final Reader read;
   AppStateNotifier({
     required this.authState,
@@ -36,6 +39,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
     required this.interactionsState,
     required this.eventsState,
     required this.tagsState,
+    required this.statisticsState,
     required this.read,
   }) : super(const AppState.initial()) {
     if (authState == const AuthState.error() ||
@@ -44,7 +48,8 @@ class AppStateNotifier extends StateNotifier<AppState> {
         contactsState == const ContactsState.error() ||
         interactionsState == const InteractionsState.error() ||
         eventsState == const EventsState.error() ||
-        tagsState == const TagsState.error()) {
+        tagsState == const TagsState.error() ||
+        statisticsState.isError) {
       state = const AppState.error();
     } else if (defaultDataState == const AppDefaultDataState.ready()) {
       if (authState == const AuthState.authenticated()) {
@@ -66,17 +71,24 @@ class AppStateNotifier extends StateNotifier<AppState> {
             read(eventsNotifierProvider).getEvents();
           }
 
-          if (read(userInfoNotifierProvider).isPremiumUser) {
+          final bool isPremiumUser =
+              read(userInfoNotifierProvider).isPremiumUser;
+          if (isPremiumUser) {
             //TODO init premium user configuration (contactsSync, Statistics)
+            read(statisticsNotifierProvider).getStatistics();
             read(importContactsProvider).addContactsListener();
           } else {
             read(adsProvider).loadAds();
           }
 
+          final bool statisticsReady =
+              (isPremiumUser && statisticsState.isReady) || !isPremiumUser;
+
           if (contactsState == const ContactsState.ready() &&
               interactionsState == const InteractionsState.ready() &&
               tagsState == const TagsState.ready() &&
-              eventsState == const EventsState.ready()) {
+              eventsState == const EventsState.ready() &&
+              statisticsReady) {
             state = const AppState.authenticatedReady();
             read(localNotificationsProvider)
                 .handleAppLaunchedFromNotification();
@@ -101,7 +113,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
     read(tagsNotifierProvider).reset();
     read(interactionsNotifierProvider).reset();
     read(eventsNotifierProvider).reset();
-    //TODO read(statisticsNotifierProvider).reset();
+    read(statisticsNotifierProvider).reset();
     read(inAppPurchaseNotifier).reset();
     read(inAppPurchaseNotifier).logOutPurchaser();
     state = const AppState.initial();
