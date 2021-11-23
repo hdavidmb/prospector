@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prospector/generated/l10n.dart';
 
 class StatisticsPage extends StatelessWidget {
   const StatisticsPage({
@@ -8,8 +9,12 @@ class StatisticsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('StatisticsPage'),
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context).statistics),
+      ),
+      body: ListView(
+        physics: const BouncingScrollPhysics(),
+        children: [],
       ),
     );
   }
