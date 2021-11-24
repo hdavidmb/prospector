@@ -2269,6 +2269,46 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Prospects per list`
+  String get prospectsPerList {
+    return Intl.message(
+      'Prospects per list',
+      name: 'prospectsPerList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Include 'Not Interested'`
+  String get includeNotInterested {
+    return Intl.message(
+      'Include \'Not Interested\'',
+      name: 'includeNotInterested',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You haven't added any prospect yet`
+  String get youHaveNoProspects {
+    return Intl.message(
+      'You haven\'t added any prospect yet',
+      name: 'youHaveNoProspects',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total`
+  String get total {
+    return Intl.message(
+      'Total',
+      name: 'total',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

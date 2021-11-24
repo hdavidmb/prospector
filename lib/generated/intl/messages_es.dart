@@ -147,6 +147,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Importar contactos"),
         "importedContacts":
             MessageLookupByLibrary.simpleMessage("Contactos importados"),
+        "includeNotInterested":
+            MessageLookupByLibrary.simpleMessage("Incluir \'No Interesados\'"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage("Correo inválido"),
         "invalidEmailAndPassword": MessageLookupByLibrary.simpleMessage(
             "Correo electrónico o contraseña invalidos"),
@@ -250,6 +252,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "prospectorWillStopImporting": MessageLookupByLibrary.simpleMessage(
             "Prospector dejará de importar automáticamente los nuevos contactos de tu dispositivo."),
         "prospects": MessageLookupByLibrary.simpleMessage("Prospectos"),
+        "prospectsPerList":
+            MessageLookupByLibrary.simpleMessage("Prospectos por lista"),
         "purchaseThankMessage": MessageLookupByLibrary.simpleMessage(
             "Ahora eres un usuario Premium de Prospector y tienes acceso ilimitado a útiles funciones para hacer crecer tu negocio.\n\nGracias por confiar en Prospector para acompañarte en tu camino como networker. Llevemos tu negocio al siguiente nivel."),
         "reauthMessage": MessageLookupByLibrary.simpleMessage(
@@ -316,6 +320,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "titleRequired":
             MessageLookupByLibrary.simpleMessage("Título (Requerido)"),
         "toConfirm": MessageLookupByLibrary.simpleMessage("para confirmar."),
+        "total": MessageLookupByLibrary.simpleMessage("Total"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Reintentar"),
         "typeAnInteraction":
             MessageLookupByLibrary.simpleMessage("Ingresa una interacción..."),
@@ -343,6 +348,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
         "when": MessageLookupByLibrary.simpleMessage("Cuando"),
         "year": MessageLookupByLibrary.simpleMessage("Año"),
+        "youHaveNoProspects": MessageLookupByLibrary.simpleMessage(
+            "No has agregado prospectos todavía"),
         "youMayHaveToRelogin": MessageLookupByLibrary.simpleMessage(
             "Deberás autenticar tu cuenta social de nuevo."),
         "yourMembershipHasBeenRestored": MessageLookupByLibrary.simpleMessage(

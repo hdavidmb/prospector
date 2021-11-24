@@ -12,6 +12,7 @@ class StatisticsPage extends StatelessWidget {
   EdgeInsets get cardMargins => const EdgeInsets.fromLTRB(6.0, 6.0, 6.0, 0.0);
   RoundedRectangleBorder get cardShape => const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(10.0)));
+  Duration get animationDuration => const Duration(milliseconds: 400);
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,7 @@ class StatisticsPage extends StatelessWidget {
             cardElevation: cardElevation,
             cardMargins: cardMargins,
             cardShape: cardShape,
+            animationDuration: animationDuration,
           )
         ],
       ),

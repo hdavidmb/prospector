@@ -1,19 +1,68 @@
+import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProspectsPerListChartCard extends StatelessWidget {
+import 'package:prospector/generated/l10n.dart';
+import 'package:prospector/src/features/contacts/application/contacts_notifier.dart';
+import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
+import 'package:prospector/src/features/statistics/domain/chart_data_entity.dart';
+import 'package:prospector/src/presentation/pages/user_panel/statistics/logic/statistics_page_providers.dart';
+
+class ProspectsPerListChartCard extends ConsumerWidget {
+  final double cardElevation;
+  final EdgeInsets cardMargins;
+  final RoundedRectangleBorder cardShape;
+  final Duration animationDuration;
+
   const ProspectsPerListChartCard({
     Key? key,
     required this.cardElevation,
     required this.cardMargins,
     required this.cardShape,
+    required this.animationDuration,
   }) : super(key: key);
 
-  final double cardElevation;
-  final EdgeInsets cardMargins;
-  final RoundedRectangleBorder cardShape;
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ScopedReader watch) {
+    final bool includeNotInterested =
+        watch(statisticsPageNotifierProvider).includeNotInterested;
+    final bool contactsEmpty = watch(contactsNotifierProvider).contacts.isEmpty;
+    final ContactsNotifier contactsProvider = watch(contactsNotifierProvider);
+
+    final List<ChartData> chartData = [
+      ChartData(
+        label: AppLocalizations.of(context).executives,
+        value: contactsProvider.executiveContacts.length,
+        color: Colors.teal,
+      ),
+      ChartData(
+        label: AppLocalizations.of(context).clients,
+        value: contactsProvider.clientContacts.length,
+        color: Colors.lime,
+      ),
+      ChartData(
+        label: AppLocalizations.of(context).followUp,
+        value: contactsProvider.followUpContacts.length,
+        color: Colors.indigo,
+      ),
+      ChartData(
+        label: AppLocalizations.of(context).invitedP,
+        value: contactsProvider.invitedContacts.length,
+        color: Colors.blue,
+      ),
+      ChartData(
+        label: AppLocalizations.of(context).notContactedP,
+        value: contactsProvider.notContactedContacts.length,
+        color: Colors.amber,
+      ),
+      if (includeNotInterested)
+        ChartData(
+          label: AppLocalizations.of(context).notInterestedP,
+          value: contactsProvider.notInterestedContacts.length,
+          color: Colors.red,
+        ),
+    ];
+
     return Card(
       elevation: cardElevation,
       margin: cardMargins,
@@ -27,8 +76,8 @@ class ProspectsPerListChartCard extends StatelessWidget {
                 Expanded(
                   child: Center(
                     child: Text(
-                      'Prospects per list', // TODO: localize
-                      style: TextStyle(
+                      AppLocalizations.of(context).prospectsPerList,
+                      style: const TextStyle(
                           fontSize: 18.0, fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -47,17 +96,107 @@ class ProspectsPerListChartCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  "Include 'Not Interested'", //TODO: localize
+                  AppLocalizations.of(context).includeNotInterested,
                   textAlign: TextAlign.end,
                 ),
                 Switch.adaptive(
-                    value: false, //TODO: implement riverpod notifier
-                    // activeTrackColor: Colors.green,
-                    onChanged: (value) {
-                      //TODO: implement with riverpod notifier
-                    }),
+                  value: includeNotInterested,
+                  onChanged: (value) {
+                    context
+                        .read(statisticsPageNotifierProvider)
+                        .includeNotInterested = value;
+                  },
+                ),
               ],
             ),
+            if (contactsEmpty)
+              Container(
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
+                decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: const BorderRadius.all(Radius.circular(5))),
+                height: 210.0,
+                child: Center(
+                  child: Text(AppLocalizations.of(context).youHaveNoProspects),
+                ),
+              ),
+            if (!contactsEmpty)
+              SizedBox(
+                height: 230.0,
+                child: charts.PieChart<Object>(
+                  [
+                    charts.Series(
+                      data: chartData,
+                      domainFn: (data, _) => (data as ChartData).label,
+                      measureFn: (data, _) => (data as ChartData).value,
+                      colorFn: (data, _) => charts.ColorUtil.fromDartColor(
+                          (data as ChartData).color),
+                      labelAccessorFn: (data, _) => '${data.value}',
+                      id: 'prospects_per_list',
+                    ),
+                  ],
+                  animate: true,
+                  animationDuration: animationDuration,
+                  defaultRenderer: charts.ArcRendererConfig<Object>(
+                    arcRatio: 0.5,
+                    arcRendererDecorators: [
+                      charts.ArcLabelDecorator(
+                        labelPosition: charts.ArcLabelPosition.inside,
+                      )
+                    ],
+                  ),
+                  behaviors: [
+                    charts.DatumLegend(
+                      position: charts.BehaviorPosition.end,
+                      outsideJustification:
+                          charts.OutsideJustification.endDrawArea,
+                      horizontalFirst: false,
+                      desiredMaxRows: 6,
+                      cellPadding:
+                          const EdgeInsets.only(right: 4.0, bottom: 4.0),
+                    )
+                  ],
+                ),
+              ),
+            IntrinsicHeight(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Column(children: [
+                    Text(
+                      '${contactsProvider.contacts.length}',
+                      style: TextStyle(
+                          fontSize: 40.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey[800]),
+                    ),
+                    Text(AppLocalizations.of(context).total)
+                  ]),
+                  if (!includeNotInterested) ...[
+                    const VerticalDivider(
+                      width: 0.0,
+                      thickness: 1.0,
+                      endIndent: 5.0,
+                      indent: 5.0,
+                    ),
+                    Column(children: [
+                      Text(
+                        '${contactsProvider.notInterestedContacts.length}',
+                        style: TextStyle(
+                            fontSize: 40.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey[800]),
+                      ),
+                      Text(
+                        AppLocalizations.of(context).notInterestedP,
+                      )
+                    ]),
+                  ]
+                ],
+              ),
+            ),
+            const SizedBox(height: 10.0),
           ],
         ),
       ),
