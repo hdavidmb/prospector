@@ -46,23 +46,20 @@ class StatisticsNotifier extends ChangeNotifier {
   }
 
   // * Getters and filters
-  List<int> get statisticsMonthsMillisList {
-    final List<int> monthsMillisList = [];
+  List<DateTime> get statisticsMonthsList {
+    final List<DateTime> monthsList = [];
     for (final Statistic statistic in statistics) {
       final DateTime created = statistic.created;
-      final int statisticMonthMillis =
-          DateTime(created.year, created.month).millisecondsSinceEpoch;
-      if (!monthsMillisList.contains(statisticMonthMillis)) {
-        monthsMillisList.add(statisticMonthMillis);
+      final DateTime statisticMonth = DateTime(created.year, created.month);
+      if (!monthsList.contains(statisticMonth)) {
+        monthsList.add(statisticMonth);
       }
     }
-    final currentMonthMillis =
-        DateTime(DateTime.now().year, DateTime.now().month)
-            .millisecondsSinceEpoch;
-    if (!monthsMillisList.contains(currentMonthMillis)) {
-      monthsMillisList.add(currentMonthMillis);
+    final currentMonth = DateTime(DateTime.now().year, DateTime.now().month);
+    if (!monthsList.contains(currentMonth)) {
+      monthsList.add(currentMonth);
     }
-    monthsMillisList.sort();
-    return monthsMillisList;
+    monthsList.sort();
+    return monthsList;
   }
 }

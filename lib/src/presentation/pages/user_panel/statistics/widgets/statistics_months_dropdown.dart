@@ -11,24 +11,22 @@ class StatisticsMonthsDropdown extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final List<int> statisticsMonthsMillisList =
-        watch(statisticsNotifierProvider).statisticsMonthsMillisList;
-    final int selectedMonthMillis = watch(selectedMonthMillisProvider).state;
+    final List<DateTime> statisticsMonthsList =
+        watch(statisticsNotifierProvider).statisticsMonthsList;
+    final DateTime selectedMonth = watch(selectedMonthProvider).state;
 
-    return DropdownButtonFormField<int>(
+    return DropdownButtonFormField<DateTime>(
       decoration: const InputDecoration(
           isDense: false,
           contentPadding: EdgeInsets.symmetric(horizontal: 10.0)),
-      value: selectedMonthMillis,
-      items: statisticsMonthsMillisList
-          .map((monthMillis) => DropdownMenuItem<int>(
-              value: monthMillis,
-              child: Text(localizedMonthYear(
-                  DateTime.fromMillisecondsSinceEpoch(monthMillis)))))
+      value: selectedMonth,
+      items: statisticsMonthsList
+          .map((month) => DropdownMenuItem<DateTime>(
+              value: month, child: Text(localizedMonthYear(month))))
           .toList(),
       onChanged: (value) {
         if (value != null) {
-          context.read(selectedMonthMillisProvider).state = value;
+          context.read(selectedMonthProvider).state = value;
         }
       },
     );

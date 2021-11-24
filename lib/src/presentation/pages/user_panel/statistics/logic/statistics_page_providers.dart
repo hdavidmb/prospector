@@ -9,9 +9,8 @@ final historicProvider = StateProvider<bool>((ref) {
   return false;
 });
 
-final selectedMonthMillisProvider = StateProvider<int>((ref) {
-  return DateTime(DateTime.now().year, DateTime.now().month)
-      .millisecondsSinceEpoch;
+final selectedMonthProvider = StateProvider<DateTime>((ref) {
+  return DateTime(DateTime.now().year, DateTime.now().month);
 });
 
 final statisticsPageNotifierProvider =
