@@ -16,9 +16,6 @@ class StatisticsMonthsDropdown extends ConsumerWidget {
     final DateTime selectedMonth = watch(selectedMonthProvider).state;
 
     return DropdownButtonFormField<DateTime>(
-      decoration: const InputDecoration(
-          isDense: false,
-          contentPadding: EdgeInsets.symmetric(horizontal: 10.0)),
       value: selectedMonth,
       items: statisticsMonthsList
           .map((month) => DropdownMenuItem<DateTime>(

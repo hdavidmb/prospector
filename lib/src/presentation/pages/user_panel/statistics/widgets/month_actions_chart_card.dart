@@ -5,7 +5,7 @@ import 'package:prospector/src/features/statistics/application/statistics_notifi
 import 'package:prospector/src/features/statistics/application/statistics_providers.dart';
 import 'package:prospector/src/presentation/pages/user_panel/statistics/logic/statistics_page_notifier.dart';
 import 'package:prospector/src/presentation/pages/user_panel/statistics/logic/statistics_page_providers.dart';
-import 'package:prospector/src/presentation/pages/user_panel/statistics/widgets/statistics_months_dropdown.dart';
+import 'package:prospector/src/presentation/pages/user_panel/statistics/widgets/month_range_dropdown_selector.dart';
 
 class MonthActionsChartCard extends ConsumerWidget {
   const MonthActionsChartCard({
@@ -21,11 +21,6 @@ class MonthActionsChartCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final bool historic = watch(historicProvider).state;
-    final StatisticsNotifier statisticsProvider =
-        watch(statisticsNotifierProvider);
-    final StatisticsPageNotifier pageNotifier =
-        watch(statisticsPageNotifierProvider);
     return Card(
       elevation: cardElevation,
       margin: cardMargins,
@@ -52,11 +47,7 @@ class MonthActionsChartCard extends ConsumerWidget {
               ],
             ),
             const SizedBox(height: 10.0),
-            if (!historic)
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15.0),
-                child: StatisticsMonthsDropdown(),
-              ),
+            const MonthRangeDropdownSelector(),
           ],
         ),
       ),
