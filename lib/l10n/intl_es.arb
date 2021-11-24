@@ -229,5 +229,7 @@
     "monthActions": "Acciones del mes",
     "thisText": "Este",
     "last": "Últimos",
-    "lifetime": "Desde siempre"
+    "lifetime": "Desde siempre",
+    "historic": "Histórico",
+    "extraActions": "Acciones extra"
 }

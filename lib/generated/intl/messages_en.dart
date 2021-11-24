@@ -114,6 +114,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "executive": MessageLookupByLibrary.simpleMessage("Executive"),
         "executiveF": MessageLookupByLibrary.simpleMessage("Executive"),
         "executives": MessageLookupByLibrary.simpleMessage("Executives"),
+        "extraActions": MessageLookupByLibrary.simpleMessage("Extra actions"),
         "female": MessageLookupByLibrary.simpleMessage("Female"),
         "filterBy": MessageLookupByLibrary.simpleMessage("Filter by..."),
         "firstBill": MessageLookupByLibrary.simpleMessage(
@@ -129,6 +130,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "goToSettings": MessageLookupByLibrary.simpleMessage("Go to Settings"),
         "guests": MessageLookupByLibrary.simpleMessage("Guests"),
         "hidePasswords": MessageLookupByLibrary.simpleMessage("Hide passwords"),
+        "historic": MessageLookupByLibrary.simpleMessage("Historic"),
         "hourBefore": MessageLookupByLibrary.simpleMessage("hour before"),
         "hours": MessageLookupByLibrary.simpleMessage("hours"),
         "hoursBefore": MessageLookupByLibrary.simpleMessage("hours before"),

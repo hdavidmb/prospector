@@ -28,39 +28,8 @@ class ProspectsPerListChartCard extends ConsumerWidget {
     final bool contactsEmpty = watch(contactsNotifierProvider).contacts.isEmpty;
     final ContactsNotifier contactsProvider = watch(contactsNotifierProvider);
 
-    final List<ChartData> chartData = [
-      ChartData(
-        label: AppLocalizations.of(context).executives,
-        value: contactsProvider.executiveContacts.length,
-        color: Colors.teal,
-      ),
-      ChartData(
-        label: AppLocalizations.of(context).clients,
-        value: contactsProvider.clientContacts.length,
-        color: Colors.lime,
-      ),
-      ChartData(
-        label: AppLocalizations.of(context).followUp,
-        value: contactsProvider.followUpContacts.length,
-        color: Colors.indigo,
-      ),
-      ChartData(
-        label: AppLocalizations.of(context).invitedP,
-        value: contactsProvider.invitedContacts.length,
-        color: Colors.blue,
-      ),
-      ChartData(
-        label: AppLocalizations.of(context).notContactedP,
-        value: contactsProvider.notContactedContacts.length,
-        color: Colors.amber,
-      ),
-      if (includeNotInterested)
-        ChartData(
-          label: AppLocalizations.of(context).notInterestedP,
-          value: contactsProvider.notInterestedContacts.length,
-          color: Colors.red,
-        ),
-    ];
+    final List<ChartData> chartData =
+        watch(prospectsPerMonthDataProvider).state;
 
     return Card(
       elevation: cardElevation,

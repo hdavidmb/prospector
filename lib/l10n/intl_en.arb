@@ -229,5 +229,7 @@
     "monthActions": "Month actions",
     "thisText": "This",
     "last": "Last",
-    "lifetime": "Lifetime"
+    "lifetime": "Lifetime",
+    "historic": "Historic",
+    "extraActions": "Extra actions"
 }

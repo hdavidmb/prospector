@@ -31,9 +31,11 @@ class StatisticsPage extends StatelessWidget {
             animationDuration: animationDuration,
           ),
           MonthActionsChartCard(
-              cardElevation: cardElevation,
-              cardMargins: cardMargins,
-              cardShape: cardShape)
+            cardElevation: cardElevation,
+            cardMargins: cardMargins,
+            cardShape: cardShape,
+            animationDuration: animationDuration,
+          )
         ],
       ),
     );

@@ -26,4 +26,11 @@ extension StatisticsRangeX on StatisticsRange {
         return AppLocalizations.current.lifetime;
     }
   }
+
+  bool get isThisMonth => this == StatisticsRange.thisMonth;
+  bool get isThreeMonths => this == StatisticsRange.threeMonths;
+  bool get isSixMonths => this == StatisticsRange.sixMonths;
+  bool get isTwelveMonths => this == StatisticsRange.twelveMonths;
+  bool get isThisYear => this == StatisticsRange.thisYear;
+  bool get isLifetime => this == StatisticsRange.lifetime;
 }

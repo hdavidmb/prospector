@@ -2359,6 +2359,26 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Historic`
+  String get historic {
+    return Intl.message(
+      'Historic',
+      name: 'historic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extra actions`
+  String get extraActions {
+    return Intl.message(
+      'Extra actions',
+      name: 'extraActions',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {
