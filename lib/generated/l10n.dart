@@ -2010,6 +2010,16 @@ class AppLocalizations {
     );
   }
 
+  /// `12 Months`
+  String get twelveMonths {
+    return Intl.message(
+      '12 Months',
+      name: 'twelveMonths',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `1 Year`
   String get oneYear {
     return Intl.message(
@@ -2315,6 +2325,36 @@ class AppLocalizations {
     return Intl.message(
       'Month actions',
       name: 'monthActions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This`
+  String get thisText {
+    return Intl.message(
+      'This',
+      name: 'thisText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last`
+  String get last {
+    return Intl.message(
+      'Last',
+      name: 'last',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lifetime`
+  String get lifetime {
+    return Intl.message(
+      'Lifetime',
+      name: 'lifetime',
       desc: '',
       args: [],
     );

@@ -195,6 +195,7 @@
     "oneMonth": "1 Month",
     "threeMonths": "3 Months",
     "sixMonths": "6 Months",
+    "twelveMonths": "12 Months",
     "oneYear": "1 Year",
     "saveFinancial": "Save",
     "currentText": "Current",
@@ -225,5 +226,8 @@
     "includeNotInterested": "Include 'Not Interested'",
     "youHaveNoProspects": "You haven't added any prospect yet",
     "total": "Total",
-    "monthActions": "Month actions"
+    "monthActions": "Month actions",
+    "thisText": "This",
+    "last": "Last",
+    "lifetime": "Lifetime"
 }

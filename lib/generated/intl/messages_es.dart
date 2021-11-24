@@ -156,6 +156,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "invited": MessageLookupByLibrary.simpleMessage("Invitado"),
         "invitedF": MessageLookupByLibrary.simpleMessage("Invitada"),
         "invitedP": MessageLookupByLibrary.simpleMessage("Invitados"),
+        "last": MessageLookupByLibrary.simpleMessage("Últimos"),
+        "lifetime": MessageLookupByLibrary.simpleMessage("Desde siempre"),
         "lightTheme": MessageLookupByLibrary.simpleMessage("Modo claro"),
         "loadingContacts":
             MessageLookupByLibrary.simpleMessage("Cargando contactos..."),
@@ -315,6 +317,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "takePhoto": MessageLookupByLibrary.simpleMessage("Tomar foto"),
         "thisAcctionCannotBeUndone": MessageLookupByLibrary.simpleMessage(
             "Esta acción no se puede deshacer."),
+        "thisText": MessageLookupByLibrary.simpleMessage("Este"),
         "threeMonths": MessageLookupByLibrary.simpleMessage("3 Meses"),
         "timeFormat": MessageLookupByLibrary.simpleMessage("Formato de horas"),
         "titleIsRequired":
@@ -324,6 +327,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "toConfirm": MessageLookupByLibrary.simpleMessage("para confirmar."),
         "total": MessageLookupByLibrary.simpleMessage("Total"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Reintentar"),
+        "twelveMonths": MessageLookupByLibrary.simpleMessage("12 Months"),
         "typeAnInteraction":
             MessageLookupByLibrary.simpleMessage("Ingresa una interacción..."),
         "typeHere": MessageLookupByLibrary.simpleMessage("Escribe aqui"),
