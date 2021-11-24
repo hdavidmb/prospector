@@ -24,8 +24,7 @@ class ProspectsPerListChartCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final bool includeNotInterested =
-        watch(statisticsPageNotifierProvider).includeNotInterested;
+    final bool includeNotInterested = watch(includeNotInterestedProvider).state;
     final bool contactsEmpty = watch(contactsNotifierProvider).contacts.isEmpty;
     final ContactsNotifier contactsProvider = watch(contactsNotifierProvider);
 
@@ -102,9 +101,7 @@ class ProspectsPerListChartCard extends ConsumerWidget {
                 Switch.adaptive(
                   value: includeNotInterested,
                   onChanged: (value) {
-                    context
-                        .read(statisticsPageNotifierProvider)
-                        .includeNotInterested = value;
+                    context.read(includeNotInterestedProvider).state = value;
                   },
                 ),
               ],

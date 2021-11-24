@@ -224,5 +224,6 @@
     "prospectsPerList": "Prospectos por lista",
     "includeNotInterested": "Incluir 'No Interesados'",
     "youHaveNoProspects": "No has agregado prospectos todavía",
-    "total": "Total"
+    "total": "Total",
+    "monthActions": "Acciones del mes"
 }

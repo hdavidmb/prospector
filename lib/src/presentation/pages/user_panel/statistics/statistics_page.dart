@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prospector/generated/l10n.dart';
+import 'package:prospector/src/presentation/pages/user_panel/statistics/widgets/month_actions_chart_card.dart';
 
 import 'widgets/prospects_per_list_chart_card.dart';
 
@@ -20,7 +21,6 @@ class StatisticsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(AppLocalizations.of(context).statistics),
       ),
-      // backgroundColor: Colors.grey[200],
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
@@ -29,7 +29,11 @@ class StatisticsPage extends StatelessWidget {
             cardMargins: cardMargins,
             cardShape: cardShape,
             animationDuration: animationDuration,
-          )
+          ),
+          MonthActionsChartCard(
+              cardElevation: cardElevation,
+              cardMargins: cardMargins,
+              cardShape: cardShape)
         ],
       ),
     );

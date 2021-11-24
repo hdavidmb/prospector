@@ -44,4 +44,25 @@ class StatisticsNotifier extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  // * Getters and filters
+  List<int> get statisticsMonthsMillisList {
+    final List<int> monthsMillisList = [];
+    for (final Statistic statistic in statistics) {
+      final DateTime created = statistic.created;
+      final int statisticMonthMillis =
+          DateTime(created.year, created.month).millisecondsSinceEpoch;
+      if (!monthsMillisList.contains(statisticMonthMillis)) {
+        monthsMillisList.add(statisticMonthMillis);
+      }
+    }
+    final currentMonthMillis =
+        DateTime(DateTime.now().year, DateTime.now().month)
+            .millisecondsSinceEpoch;
+    if (!monthsMillisList.contains(currentMonthMillis)) {
+      monthsMillisList.add(currentMonthMillis);
+    }
+    monthsMillisList.sort();
+    return monthsMillisList;
+  }
 }

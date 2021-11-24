@@ -42,7 +42,7 @@ final SwitchThemeData kSwitchTheme = SwitchThemeData(
 // * Themes
 final kLightTheme = ThemeData.light().copyWith(
     primaryColor: kPrimaryColor,
-    accentColor: kAccentColor,
+    //TODO: delete accentColor: kAccentColor,
     colorScheme: kLightColorScheme,
     switchTheme: kSwitchTheme,
     inputDecorationTheme:
@@ -51,7 +51,7 @@ final kLightTheme = ThemeData.light().copyWith(
 
 final kDarkTheme = ThemeData.dark().copyWith(
     primaryColor: kPrimaryColor,
-    accentColor: kAccentColor,
+    // TODO: delete accentColor: kAccentColor,
     colorScheme: kDarkColorScheme,
     switchTheme: kSwitchTheme,
     inputDecorationTheme:

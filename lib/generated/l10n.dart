@@ -2309,6 +2309,16 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Month actions`
+  String get monthActions {
+    return Intl.message(
+      'Month actions',
+      name: 'monthActions',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

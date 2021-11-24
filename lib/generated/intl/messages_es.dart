@@ -176,6 +176,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "modifyCountryCodeMessage": MessageLookupByLibrary.simpleMessage(
             "Puedes modificar tu código de país en Configuración."),
         "month": MessageLookupByLibrary.simpleMessage("Mes"),
+        "monthActions":
+            MessageLookupByLibrary.simpleMessage("Acciones del mes"),
         "moreInfo": MessageLookupByLibrary.simpleMessage("Más información"),
         "movedToF": MessageLookupByLibrary.simpleMessage("Movida a"),
         "movedToM": MessageLookupByLibrary.simpleMessage("Movido a"),

@@ -29,6 +29,11 @@ String localizedMonthDay(DateTime date) {
   return dateFormat.format(date);
 }
 
+String localizedMonthYear(DateTime date) {
+  final DateFormat dateFormat = DateFormat.yMMMM(Intl.getCurrentLocale());
+  return dateFormat.format(date);
+}
+
 /// Checks if two DateTime objects are the same day.
 /// Returns `false` if either of them is null.
 bool isSameDay(DateTime a, DateTime b) =>
