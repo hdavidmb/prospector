@@ -69,6 +69,110 @@ final prospectsPerMonthDataProvider = StateProvider<List<ChartData>>((ref) {
   return _chartData;
 });
 
+//TODO: try to generally optimize actionsPerMonth providers
+// * ACTIONS PER MONTH
+final actionsPerMonth = Provider<List<charts.Series<ChartData, String>>>((ref) {
+  final List<Statistic> _monthActions = ref
+      .watch(statisticsNotifierProvider)
+      .statistics
+      .where((statistic) => isSameMonth(
+          ref.watch(selectedMonthProvider).state, statistic.created))
+      .toList();
+  final AppDefaultDataNotifier defaultData = ref.watch(appDefaultDataProvider);
+  final bool _extraActions = ref.watch(extraActionsProvider).state;
+
+  final addActions =
+      _monthActions.where((statistic) => statistic.oldStatus == null);
+  final inviteActions = _monthActions.where((statistic) =>
+      statistic.oldStatus == defaultData.notContactedID &&
+      statistic.newStatus == defaultData.invitedID);
+  final presentActions = _monthActions.where((statistic) =>
+      statistic.oldStatus == defaultData.invitedID &&
+      statistic.newStatus == defaultData.followUpID);
+  final signUpClientActions = _monthActions.where((statistic) =>
+      statistic.oldStatus == defaultData.followUpID &&
+      statistic.newStatus == defaultData.clientID);
+  final signUpExecutiveActions = _monthActions.where((statistic) =>
+      statistic.oldStatus == defaultData.followUpID &&
+      statistic.newStatus == defaultData.executiveID);
+
+  final List<ChartData> chartData = [
+    ChartData(
+        label: AppLocalizations.current.addProspect,
+        value: addActions.length,
+        color: Colors.amber),
+    ChartData(
+        label: AppLocalizations.current.invite,
+        value: inviteActions.length,
+        color: Colors.blue),
+    ChartData(
+        label: AppLocalizations.current.present,
+        value: presentActions.length,
+        color: Colors.indigo),
+    ChartData(
+        label: AppLocalizations.current.newClient,
+        value: signUpClientActions.length,
+        color: Colors.lime),
+    ChartData(
+        label: AppLocalizations.current.newExecutive,
+        value: signUpExecutiveActions.length,
+        color: Colors.teal),
+  ];
+
+  if (_extraActions) {
+    final reactivateActions = _monthActions.where((statistic) =>
+        statistic.oldStatus == defaultData.notInterestedID &&
+        statistic.newStatus == defaultData.notContactedID);
+    final upgradeActions = _monthActions.where((statistic) =>
+        statistic.oldStatus == defaultData.clientID &&
+        statistic.newStatus == defaultData.executiveID);
+    final downgradeActions = _monthActions.where((statistic) =>
+        statistic.oldStatus == defaultData.executiveID &&
+        statistic.newStatus == defaultData.clientID);
+    final turnDownActions = _monthActions.where(
+        (statistic) => statistic.newStatus == defaultData.notInterestedID);
+    final deleteActions =
+        _monthActions.where((statistic) => statistic.newStatus == null);
+
+    chartData.addAll([
+      ChartData(
+          label: AppLocalizations.current.reactivate,
+          value: reactivateActions.length,
+          color: Colors.amberAccent),
+      ChartData(
+          label: AppLocalizations.current.clientToExecutive,
+          value: upgradeActions.length,
+          color: Colors.lightBlueAccent),
+      ChartData(
+          label: AppLocalizations.current.executiveToClient,
+          value: downgradeActions.length,
+          color: Colors.deepPurple[200]!),
+      ChartData(
+          label: AppLocalizations.current.turnDown,
+          value: turnDownActions.length,
+          color: Colors.red),
+      ChartData(
+          label: AppLocalizations.current.delete,
+          value: deleteActions.length,
+          color: Colors.brown),
+    ]);
+  }
+
+  final List<charts.Series<ChartData, String>> chartSeries = [
+    charts.Series(
+        data: chartData,
+        domainFn: (ChartData data, _) => data.label as String,
+        measureFn: (ChartData data, _) => data.value,
+        colorFn: (ChartData data, _) =>
+            charts.ColorUtil.fromDartColor(data.color),
+        labelAccessorFn: (ChartData data, _) =>
+            '${data.label as String}: ${data.value}',
+        id: 'actions_per_month')
+  ];
+
+  return chartSeries;
+});
+
 final historicActionsPerMonthProvider =
     Provider<List<charts.Series<ChartData, DateTime>>>((ref) {
   final bool _extraActions = ref.watch(extraActionsProvider).state;

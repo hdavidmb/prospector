@@ -106,7 +106,7 @@ class MonthActionsChartCard extends ConsumerWidget {
             if (historic) ...[
               Container(
                 padding: const EdgeInsets.only(left: 10.0),
-                height: extraActions ? 204.0 : 252.0,
+                height: extraActions ? 204.0 : 228.0,
                 child: charts.TimeSeriesChart(
                   watch(historicActionsPerMonthProvider),
                   animate: true,
@@ -129,7 +129,20 @@ class MonthActionsChartCard extends ConsumerWidget {
                     spacing: 10.0,
                     children: watch(historicActionsLeyendsProvider)),
               )
-            ]
+            ],
+            if (!historic)
+              SizedBox(
+                height: 300.0,
+                child: charts.BarChart(
+                  watch(actionsPerMonth),
+                  animate: true,
+                  animationDuration: animationDuration,
+                  vertical: false,
+                  barRendererDecorator: charts.BarLabelDecorator(),
+                  domainAxis: charts.OrdinalAxisSpec(
+                      renderSpec: charts.NoneRenderSpec()),
+                ),
+              ),
           ],
         ),
       ),
