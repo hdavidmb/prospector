@@ -2379,6 +2379,76 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Add Prospect`
+  String get addProspect {
+    return Intl.message(
+      'Add Prospect',
+      name: 'addProspect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Client`
+  String get newClient {
+    return Intl.message(
+      'New Client',
+      name: 'newClient',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Executive`
+  String get newExecutive {
+    return Intl.message(
+      'New Executive',
+      name: 'newExecutive',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reactivate`
+  String get reactivate {
+    return Intl.message(
+      'Reactivate',
+      name: 'reactivate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Client to Executive`
+  String get clientToExecutive {
+    return Intl.message(
+      'Client to Executive',
+      name: 'clientToExecutive',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Executive to Client`
+  String get executiveToClient {
+    return Intl.message(
+      'Executive to Client',
+      name: 'executiveToClient',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Turn Down`
+  String get turnDown {
+    return Intl.message(
+      'Turn Down',
+      name: 'turnDown',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

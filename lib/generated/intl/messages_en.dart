@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "accountWithDifferentCredentials": MessageLookupByLibrary.simpleMessage(
             "Your account is not associated with this profile. Try the other sign in methods."),
         "addANewTag": MessageLookupByLibrary.simpleMessage("Add a new tag:"),
+        "addProspect": MessageLookupByLibrary.simpleMessage("Add Prospect"),
         "addTag": MessageLookupByLibrary.simpleMessage("Add tag"),
         "affiliate": MessageLookupByLibrary.simpleMessage("Affiliate"),
         "affiliateAs": MessageLookupByLibrary.simpleMessage("Affiliate as"),
@@ -51,6 +52,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "clearFilters": MessageLookupByLibrary.simpleMessage("Clear filters"),
         "client": MessageLookupByLibrary.simpleMessage("Client"),
         "clientF": MessageLookupByLibrary.simpleMessage("Client"),
+        "clientToExecutive":
+            MessageLookupByLibrary.simpleMessage("Client to Executive"),
         "clients": MessageLookupByLibrary.simpleMessage("Clients"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "confirmNewEmail":
@@ -113,6 +116,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Events settings"),
         "executive": MessageLookupByLibrary.simpleMessage("Executive"),
         "executiveF": MessageLookupByLibrary.simpleMessage("Executive"),
+        "executiveToClient":
+            MessageLookupByLibrary.simpleMessage("Executive to Client"),
         "executives": MessageLookupByLibrary.simpleMessage("Executives"),
         "extraActions": MessageLookupByLibrary.simpleMessage("Extra actions"),
         "female": MessageLookupByLibrary.simpleMessage("Female"),
@@ -177,8 +182,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "nameMustNotBeEmpty":
             MessageLookupByLibrary.simpleMessage("Name must not be empty"),
         "nameRequired": MessageLookupByLibrary.simpleMessage("Name (Required)"),
+        "newClient": MessageLookupByLibrary.simpleMessage("New Client"),
         "newEmail": MessageLookupByLibrary.simpleMessage("New email"),
         "newEvent": MessageLookupByLibrary.simpleMessage("New event"),
+        "newExecutive": MessageLookupByLibrary.simpleMessage("New Executive"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
         "newPhone": MessageLookupByLibrary.simpleMessage("New phone"),
         "newProspect": MessageLookupByLibrary.simpleMessage("New prospect"),
@@ -248,6 +255,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Prospects per list"),
         "purchaseThankMessage": MessageLookupByLibrary.simpleMessage(
             "You are now a Prospector Premium user and now you have unlimited access to a lot of usefull features Prospector has to grow your bussiness.\n\nThanks for trusting us to help you in your journey. Let\'s take your bussiness to the next level."),
+        "reactivate": MessageLookupByLibrary.simpleMessage("Reactivate"),
         "reauthMessage": MessageLookupByLibrary.simpleMessage(
             "You need to reauthenticate. Enter your password to continue."),
         "reauthenticate":
@@ -308,6 +316,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "toConfirm": MessageLookupByLibrary.simpleMessage("to confirm."),
         "total": MessageLookupByLibrary.simpleMessage("Total"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+        "turnDown": MessageLookupByLibrary.simpleMessage("Turn Down"),
         "twelveMonths": MessageLookupByLibrary.simpleMessage("12 Months"),
         "typeAnInteraction":
             MessageLookupByLibrary.simpleMessage("Type an interaction..."),

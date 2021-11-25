@@ -26,6 +26,7 @@ class MonthActionsChartCard extends ConsumerWidget {
   Widget build(BuildContext context, ScopedReader watch) {
     final bool historic = watch(historicProvider).state;
     final bool extraActions = watch(extraActionsProvider).state;
+
     return Card(
       elevation: cardElevation,
       margin: cardMargins,
@@ -92,6 +93,7 @@ class MonthActionsChartCard extends ConsumerWidget {
                           value: extraActions,
                           activeTrackColor: Colors.green,
                           onChanged: (value) {
+                            context.read(selectedDatumProvider).state = [];
                             context.read(extraActionsProvider).state = value;
                           },
                         ),
@@ -101,27 +103,33 @@ class MonthActionsChartCard extends ConsumerWidget {
                 ],
               ),
             ),
-            // if (historic)
-            //   Container(
-            //     padding: const EdgeInsets.only(left: 10.0),
-            //     height: extraActions ? 204.0 : 252.0,
-            //     child: charts.TimeSeriesChart(
-            //       chartsService.getActionsPerMonthHistoricSeries(
-            //           context, selectedRange, extraActions),
-            //       animate: true,
-            //       animationDuration: animationDuration,
-            //       //TODO: behaviors: [
-            //       //   charts.InitialSelection(
-            //       //       selectedDataConfig: initialSelection)
-            //       // ],
-            //       //TODO: selectionModels: [
-            //       //   charts.SelectionModelConfig(
-            //       //     type: charts.SelectionModelType.info,
-            //       //     changedListener: _onSelectionChanged,
-            //       //   )
-            //       // ],
-            //     ),
-            //   )
+            if (historic) ...[
+              Container(
+                padding: const EdgeInsets.only(left: 10.0),
+                height: extraActions ? 204.0 : 252.0,
+                child: charts.TimeSeriesChart(
+                  watch(historicActionsPerMonthProvider),
+                  animate: true,
+                  animationDuration: animationDuration,
+                  selectionModels: [
+                    charts.SelectionModelConfig(
+                      type: charts.SelectionModelType.info,
+                      changedListener: (value) => context
+                          .read(selectedDatumProvider)
+                          .state = value.selectedDatum,
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Wrap(
+                    alignment: WrapAlignment.center,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    spacing: 10.0,
+                    children: watch(historicActionsLeyendsProvider)),
+              )
+            ]
           ],
         ),
       ),

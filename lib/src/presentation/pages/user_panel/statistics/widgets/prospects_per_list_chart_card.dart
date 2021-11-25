@@ -92,12 +92,12 @@ class ProspectsPerListChartCard extends ConsumerWidget {
                 height: 230.0,
                 child: charts.PieChart<Object>(
                   [
-                    charts.Series(
+                    charts.Series<ChartData, Object>(
                       data: chartData,
-                      domainFn: (data, _) => (data as ChartData).label,
-                      measureFn: (data, _) => (data as ChartData).value,
-                      colorFn: (data, _) => charts.ColorUtil.fromDartColor(
-                          (data as ChartData).color),
+                      domainFn: (data, _) => data.label as String,
+                      measureFn: (data, _) => data.value,
+                      colorFn: (data, _) =>
+                          charts.ColorUtil.fromDartColor(data.color),
                       labelAccessorFn: (data, _) => '${data.value}',
                       id: 'prospects_per_list',
                     ),

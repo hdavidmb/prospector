@@ -14,7 +14,6 @@ class StatisticsNotifier extends ChangeNotifier {
     required this.read,
   });
 
-  //TODO:
   FetchState _statisticsState = const FetchState.initial();
   List<Statistic> _statistics = [];
 
@@ -33,7 +32,7 @@ class StatisticsNotifier extends ChangeNotifier {
           (failure) => _statisticsState = const FetchState.error(),
           (statisticsList) {
             statisticsList.sort((a, b) =>
-                b.created.compareTo(a.created)); // TODO check if needed
+                a.created.compareTo(b.created)); // TODO check if needed
             _statistics = statisticsList;
             _statisticsState = const FetchState.ready();
           },
@@ -62,4 +61,8 @@ class StatisticsNotifier extends ChangeNotifier {
     monthsList.sort();
     return monthsList;
   }
+
+  DateTime get statisticsFirstMonth => statisticsMonthsList.isNotEmpty
+      ? statisticsMonthsList.first
+      : DateTime(DateTime.now().year, DateTime.now().month);
 }

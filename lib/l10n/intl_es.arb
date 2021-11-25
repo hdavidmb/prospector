@@ -231,5 +231,12 @@
     "last": "Últimos",
     "lifetime": "Desde siempre",
     "historic": "Histórico",
-    "extraActions": "Acciones extra"
+    "extraActions": "Acciones extra",
+    "addProspect": "Agregar Prospecto",
+    "newClient": "Nuevo Cliente",
+    "newExecutive": "Nuevo Ejecutivo",
+    "reactivate": "Reactivar",
+    "clientToExecutive": "Cliente a Ejecutivo",
+    "executiveToClient": "Ejecutivo a Cliente",
+    "turnDown": "Rechazo"
 }

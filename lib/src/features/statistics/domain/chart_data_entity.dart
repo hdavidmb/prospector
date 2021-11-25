@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class ChartData {
-  final String label;
-  final int value;
-  final Color color;
-  ChartData({
-    required this.label,
-    required this.value,
-    required this.color,
-  });
+part 'chart_data_entity.freezed.dart';
+
+@freezed
+class ChartData with _$ChartData {
+  const ChartData._();
+  const factory ChartData({
+    required dynamic label,
+    required int value,
+    required Color color,
+  }) = _ChartData;
 }

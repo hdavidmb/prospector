@@ -24,6 +24,7 @@ String localizedWeekday(int day) {
   return dateFormatter.format(DateTime(2020, 8, 10 + day));
 }
 
+//TODO: try implementing this functions as DateTime extension methods
 String localizedMonthDay(DateTime date) {
   final DateFormat dateFormat = DateFormat.MMMMd(Intl.getCurrentLocale());
   return dateFormat.format(date);
@@ -34,10 +35,16 @@ String localizedMonthYear(DateTime date) {
   return dateFormat.format(date);
 }
 
+int differenceInMonths(DateTime a, DateTime b) =>
+    a.year * 12 + a.month - b.year * 12 - b.month;
+
 /// Checks if two DateTime objects are the same day.
 /// Returns `false` if either of them is null.
 bool isSameDay(DateTime a, DateTime b) =>
     a.year == b.year && a.month == b.month && a.day == b.day;
+
+bool isSameMonth(DateTime a, DateTime b) =>
+    a.year == b.year && a.month == b.month;
 
 bool isBeforeDay(DateTime a, DateTime b) =>
     a.year <= b.year && a.month <= b.month && a.day <= b.day;

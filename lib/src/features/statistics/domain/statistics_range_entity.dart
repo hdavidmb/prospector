@@ -33,4 +33,21 @@ extension StatisticsRangeX on StatisticsRange {
   bool get isTwelveMonths => this == StatisticsRange.twelveMonths;
   bool get isThisYear => this == StatisticsRange.thisYear;
   bool get isLifetime => this == StatisticsRange.lifetime;
+
+  int? get months {
+    switch (this) {
+      case StatisticsRange.thisMonth:
+        return 1;
+      case StatisticsRange.threeMonths:
+        return 3;
+      case StatisticsRange.sixMonths:
+        return 6;
+      case StatisticsRange.twelveMonths:
+        return 12;
+      case StatisticsRange.thisYear:
+        return DateTime.now().month;
+      case StatisticsRange.lifetime:
+        return null;
+    }
+  }
 }
