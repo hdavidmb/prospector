@@ -2779,6 +2779,36 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `This chart measures the effectiveness of your abilities stepping your prospects forward in the prospecting process.`
+  String get thisChartMeasuresEffectiveness {
+    return Intl.message(
+      'This chart measures the effectiveness of your abilities stepping your prospects forward in the prospecting process.',
+      name: 'thisChartMeasuresEffectiveness',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The left side of the chart shows the number of prospects who have moved forward in the prospecting process from the selected step. The middle section shows the number of prospects that are still in the selected step and the right side shows the number of prospects who said 'No' while staying in the selected step.`
+  String get theLeftSideShowsForward {
+    return Intl.message(
+      'The left side of the chart shows the number of prospects who have moved forward in the prospecting process from the selected step. The middle section shows the number of prospects that are still in the selected step and the right side shows the number of prospects who said \'No\' while staying in the selected step.',
+      name: 'theLeftSideShowsForward',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The example image shows that during this month you have invited 12 prospects. The left side shows that you actually presented to 5 of them (42% of the total 12), so they where moved to 'Follow Up'. The middle secction shows that you haven't presented to 3 of them (25%), so they are still in the 'Invited' category. And finally, the right side shows that 4 of them have said 'No'.`
+  String get theExampleImageShowsEffectiveness {
+    return Intl.message(
+      'The example image shows that during this month you have invited 12 prospects. The left side shows that you actually presented to 5 of them (42% of the total 12), so they where moved to \'Follow Up\'. The middle secction shows that you haven\'t presented to 3 of them (25%), so they are still in the \'Invited\' category. And finally, the right side shows that 4 of them have said \'No\'.',
+      name: 'theExampleImageShowsEffectiveness',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -8,6 +8,7 @@ import 'package:prospector/src/features/app_default_data/application/app_default
 import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 import 'package:prospector/src/features/statistics/domain/chart_data_entity.dart';
 import 'package:prospector/src/features/statistics/domain/statistics_range_entity.dart';
+import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/pages/user_panel/statistics/logic/statistics_page_providers.dart';
 import 'package:prospector/src/presentation/pages/user_panel/statistics/widgets/effectiveness_status_dropdown.dart';
 import 'package:prospector/src/presentation/pages/user_panel/statistics/widgets/statistics_range_dropdown.dart';
@@ -77,7 +78,7 @@ class EffectivenessChartCard extends ConsumerWidget {
                 GestureDetector(
                   child: const Icon(Icons.info_outline),
                   onTap: () {
-                    // TODO: chartsService.showEffectivenessChartDescription(context);
+                    showEffectivenessChartDescriptionDialog(context);
                   },
                 )
               ],

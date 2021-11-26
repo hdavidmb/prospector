@@ -1000,3 +1000,40 @@ void showActionsChartDescriptionDialog(BuildContext context) {
         );
       });
 }
+
+void showEffectivenessChartDescriptionDialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context).effectiveness),
+          content: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.90,
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                Text(
+                  AppLocalizations.of(context).thisChartMeasuresEffectiveness,
+                  textAlign: TextAlign.justify,
+                ),
+                const SizedBox(height: 8.0),
+                Text(
+                  AppLocalizations.of(context).theLeftSideShowsForward,
+                  textAlign: TextAlign.justify,
+                ),
+                const SizedBox(height: 8.0),
+                Image(
+                    image: AssetImage(
+                        'assets/images/${AppLocalizations.of(context).effectivenessImg1}')),
+                const SizedBox(height: 8.0),
+                Text(
+                  AppLocalizations.of(context)
+                      .theExampleImageShowsEffectiveness,
+                  textAlign: TextAlign.justify,
+                ),
+              ],
+            ),
+          ),
+        );
+      });
+}
