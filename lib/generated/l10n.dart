@@ -2809,6 +2809,36 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `This chart shows you in wich category were your prospects when they said 'No' to your oportunity. That way you can analyze wich steps of your prospecting process is generating more turn downs than others.`
+  String get thisChartShowsInWichCategory {
+    return Intl.message(
+      'This chart shows you in wich category were your prospects when they said \'No\' to your oportunity. That way you can analyze wich steps of your prospecting process is generating more turn downs than others.',
+      name: 'thisChartShowsInWichCategory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The left side of the chart shows the total number of prospects who have said 'No' during the selected time range (Red bar). The right side show how many of them come from each category.`
+  String get theLeftSideShowsTurnDown {
+    return Intl.message(
+      'The left side of the chart shows the total number of prospects who have said \'No\' during the selected time range (Red bar). The right side show how many of them come from each category.',
+      name: 'theLeftSideShowsTurnDown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The example image shows that a total of 9 prospects have said 'No' in the selected time range, of which 1 came from 'Not Contacted', 3 came from 'Invited' and 5 came from 'Follow Up'.`
+  String get theExampleImageShowsTurnDown {
+    return Intl.message(
+      'The example image shows that a total of 9 prospects have said \'No\' in the selected time range, of which 1 came from \'Not Contacted\', 3 came from \'Invited\' and 5 came from \'Follow Up\'.',
+      name: 'theExampleImageShowsTurnDown',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

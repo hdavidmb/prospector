@@ -1037,3 +1037,39 @@ void showEffectivenessChartDescriptionDialog(BuildContext context) {
         );
       });
 }
+
+void showNoAnalysisChartDescriptionDialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context).turnDownAnalysis),
+          content: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.90,
+            child: ListView(
+              shrinkWrap: true,
+              children: <Widget>[
+                Text(
+                  AppLocalizations.of(context).thisChartShowsInWichCategory,
+                  textAlign: TextAlign.justify,
+                ),
+                const SizedBox(height: 8.0),
+                Image(
+                    image: AssetImage(
+                        'assets/images/${AppLocalizations.of(context).turnDownImg1}')),
+                const SizedBox(height: 8.0),
+                Text(
+                  AppLocalizations.of(context).theLeftSideShowsTurnDown,
+                  textAlign: TextAlign.justify,
+                ),
+                const SizedBox(height: 8.0),
+                Text(
+                  AppLocalizations.of(context).theExampleImageShowsTurnDown,
+                  textAlign: TextAlign.justify,
+                ),
+              ],
+            ),
+          ),
+        );
+      });
+}

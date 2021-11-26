@@ -360,14 +360,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "takePhoto": MessageLookupByLibrary.simpleMessage("Tomar foto"),
         "theExampleImageShowsEffectiveness": MessageLookupByLibrary.simpleMessage(
             "La imagen de ejemplo muestra que durante este mes has invitado a 12 prospectos. El lado izquierdo del grafico dice que le has presentado realmente a 5 de ellos (42% del total de 12), por lo que se han movido a \'Seguimiento\'. La sección central muestra que no le has presentado a 3 de ellos (25%), por lo que siguen aún en la categoría \'Invitados\'. Y finalmente, el lado derecho muestra que 4 de ellos han dicho \'No\'."),
+        "theExampleImageShowsTurnDown": MessageLookupByLibrary.simpleMessage(
+            "La imagen de ejemplo muestra que un total de 9 prospectos dijeron \'No\' en el rango de tiempo seleccionado, de los cuales 1 provino de \'No contactados\', 3 de \'Invitados\' y 5 de \'Seguimiento\'."),
         "theLeftSideShowsForward": MessageLookupByLibrary.simpleMessage(
             "El lado izquierdo muestra la cantidad de prospectos que han avanzado en el proceso de prospección desde el paso seleccionado, la sección del centro muestra la cantidad de prospectos que aún están en el paso seleccionado y el lado derecho muestra la cantidad de prospectos que han dicho \'No\' mientras estaban en el paso seleccionado."),
+        "theLeftSideShowsTurnDown": MessageLookupByLibrary.simpleMessage(
+            "El lado izquierdo del gráfico muestra el total de prospectos que dijeron \'No\' en el intervalo de tiempo seleccionado (Barra roja). El lado derecho muestra cuántos de ellos vienen de cada categoría."),
         "thisAcctionCannotBeUndone": MessageLookupByLibrary.simpleMessage(
             "Esta acción no se puede deshacer."),
         "thisChartIsSummaryOfYourList": MessageLookupByLibrary.simpleMessage(
             "Este gráfico te muestra un resumen de tu lista completa y cuantos prospectos tienes en cada categoría."),
         "thisChartMeasuresEffectiveness": MessageLookupByLibrary.simpleMessage(
             "Este grafico mide la efectividad de tus habilidades para hacer avanzar a tus prospectos en el proceso de prospección."),
+        "thisChartShowsInWichCategory": MessageLookupByLibrary.simpleMessage(
+            "Este gráfico te muestra en que categoría estaban tus prospectos cuando dijeron \'No\' a tu oportunidad. Así podrás analizar cuales pasos de tu proceso de prospección están generando más rechazo que otros."),
         "thisChartShowsYourActions": MessageLookupByLibrary.simpleMessage(
             "Este gráfico te muestra cuantas veces has realizado cada acción en el mes seleccionado."),
         "thisText": MessageLookupByLibrary.simpleMessage("Este"),
