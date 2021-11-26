@@ -794,3 +794,209 @@ void showProspectsChartDescriptionDialog(BuildContext context) {
         );
       });
 }
+
+void showActionsChartDescriptionDialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(AppLocalizations.current.monthActions),
+          content: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.90,
+            child: ListView(
+              shrinkWrap: true,
+              children: <Widget>[
+                Text(
+                  AppLocalizations.of(context).asYouManageYourList,
+                  textAlign: TextAlign.justify,
+                  style: const TextStyle(fontSize: 14.0),
+                ),
+                const SizedBox(height: 8.0),
+                RichText(
+                  textAlign: TextAlign.justify,
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: '${AppLocalizations.of(context).addProspect}: ',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      TextSpan(
+                        text:
+                            AppLocalizations.of(context).whenYouCreateAProspect,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 4.0),
+                RichText(
+                  textAlign: TextAlign.justify,
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: '${AppLocalizations.of(context).invite}: ',
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(
+                        text:
+                            "${AppLocalizations.of(context).whenYouMoveAProspectFrom} '${AppLocalizations.of(context).notContacted}' ${AppLocalizations.of(context).to} '${AppLocalizations.of(context).invited}'.",
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 4.0),
+                RichText(
+                  textAlign: TextAlign.justify,
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: '${AppLocalizations.of(context).present}: ',
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(
+                        text:
+                            "${AppLocalizations.of(context).whenYouMoveAProspectFrom} '${AppLocalizations.of(context).invited}' ${AppLocalizations.of(context).to} '${AppLocalizations.of(context).followUp}'.",
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 4.0),
+                RichText(
+                  textAlign: TextAlign.justify,
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: '${AppLocalizations.of(context).newClient}: ',
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(
+                        text:
+                            "${AppLocalizations.of(context).whenYouMoveAProspectFrom} '${AppLocalizations.of(context).followUp}' ${AppLocalizations.of(context).to} '${AppLocalizations.of(context).client}'.",
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 4.0),
+                RichText(
+                  textAlign: TextAlign.justify,
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                          text:
+                              '${AppLocalizations.of(context).newExecutive}: ',
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(
+                        text:
+                            "${AppLocalizations.of(context).whenYouMoveAProspectFrom} '${AppLocalizations.of(context).followUp}' ${AppLocalizations.of(context).to} '${AppLocalizations.of(context).executive}'.",
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 8.0),
+                Text(
+                  AppLocalizations.of(context).thisChartShowsYourActions,
+                  textAlign: TextAlign.justify,
+                  style: const TextStyle(fontSize: 14.0),
+                ),
+                Image(
+                    image: AssetImage(
+                        'assets/images/${AppLocalizations.of(context).actionsPerMotnhImg1}')),
+                const SizedBox(height: 8.0),
+                Text(
+                  AppLocalizations.of(context).youCanTurnOnExtraActions,
+                  textAlign: TextAlign.justify,
+                  style: const TextStyle(fontSize: 14.0),
+                ),
+                const SizedBox(height: 8.0),
+                RichText(
+                  textAlign: TextAlign.justify,
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: '${AppLocalizations.of(context).reactivate}: ',
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(
+                        text:
+                            "${AppLocalizations.of(context).whenYouMoveAProspectFrom} '${AppLocalizations.of(context).notInterested}' ${AppLocalizations.of(context).to} '${AppLocalizations.of(context).notContacted}'.",
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 4.0),
+                RichText(
+                  textAlign: TextAlign.justify,
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                          text:
+                              '${AppLocalizations.of(context).clientToExecutive}: ',
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(
+                        text:
+                            "${AppLocalizations.of(context).whenYouMoveAProspectFrom} '${AppLocalizations.of(context).client}' ${AppLocalizations.of(context).to} '${AppLocalizations.of(context).executive}'.",
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 4.0),
+                RichText(
+                  textAlign: TextAlign.justify,
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                          text:
+                              '${AppLocalizations.of(context).executiveToClient}: ',
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(
+                        text:
+                            "${AppLocalizations.of(context).whenYouMoveAProspectFrom} '${AppLocalizations.of(context).executive}' ${AppLocalizations.of(context).to} '${AppLocalizations.of(context).client}'.",
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 4.0),
+                RichText(
+                  textAlign: TextAlign.justify,
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: '${AppLocalizations.of(context).turnDown}: ',
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(
+                        text:
+                            "${AppLocalizations.of(context).whenYouMoveAProspectFrom} '${AppLocalizations.of(context).anyCategory}' ${AppLocalizations.of(context).to} '${AppLocalizations.of(context).notInterested}'.",
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 4.0),
+                RichText(
+                  textAlign: TextAlign.justify,
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: '${AppLocalizations.of(context).delete}: ',
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(
+                        text:
+                            AppLocalizations.of(context).whenYouDeleteAProspect,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 8.0),
+                Image(
+                    image: AssetImage(
+                        'assets/images/${AppLocalizations.of(context).actionsPerMotnhImg2}')),
+                const SizedBox(height: 8.0),
+                Text(
+                  AppLocalizations.of(context).ifYouTurnOnHistoric,
+                  textAlign: TextAlign.justify,
+                  style: const TextStyle(fontSize: 14.0),
+                ),
+                const SizedBox(height: 8.0),
+                Image(
+                    image: AssetImage(
+                        'assets/images/${AppLocalizations.of(context).actionsPerMotnhImg3}')),
+              ],
+            ),
+          ),
+        );
+      });
+}

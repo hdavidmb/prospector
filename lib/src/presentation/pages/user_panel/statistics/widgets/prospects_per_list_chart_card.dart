@@ -128,18 +128,21 @@ class ProspectsPerListChartCard extends ConsumerWidget {
               ),
             IntrinsicHeight(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  Column(children: [
-                    Text(
-                      '${contactsProvider.contacts.length}',
-                      style: const TextStyle(
-                        fontSize: 40.0,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                          '${contactsProvider.contacts.length}',
+                          style: const TextStyle(
+                            fontSize: 40.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(AppLocalizations.of(context).total)
+                      ],
                     ),
-                    Text(AppLocalizations.of(context).total)
-                  ]),
+                  ),
                   if (!includeNotInterested) ...[
                     const VerticalDivider(
                       width: 0.0,
@@ -147,18 +150,22 @@ class ProspectsPerListChartCard extends ConsumerWidget {
                       endIndent: 5.0,
                       indent: 5.0,
                     ),
-                    Column(children: [
-                      Text(
-                        '${contactsProvider.notInterestedContacts.length}',
-                        style: const TextStyle(
-                          fontSize: 40.0,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text(
+                            '${contactsProvider.notInterestedContacts.length}',
+                            style: const TextStyle(
+                              fontSize: 40.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            AppLocalizations.of(context).notInterestedP,
+                          )
+                        ],
                       ),
-                      Text(
-                        AppLocalizations.of(context).notInterestedP,
-                      )
-                    ]),
+                    ),
                   ]
                 ],
               ),

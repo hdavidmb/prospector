@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:prospector/generated/l10n.dart';
 import 'package:prospector/src/features/statistics/domain/statistics_range_entity.dart';
+import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/pages/user_panel/statistics/logic/statistics_page_providers.dart';
 import 'package:prospector/src/presentation/pages/user_panel/statistics/widgets/statistics_months_dropdown.dart';
 import 'package:prospector/src/presentation/pages/user_panel/statistics/widgets/statistics_range_dropdown.dart';
@@ -48,7 +49,7 @@ class MonthActionsChartCard extends ConsumerWidget {
                 GestureDetector(
                   child: const Icon(Icons.info_outline),
                   onTap: () {
-                    //TODO: showActionsChartDescription(context);
+                    showActionsChartDescriptionDialog(context);
                   },
                 )
               ],

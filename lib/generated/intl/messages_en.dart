@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "allDay": MessageLookupByLibrary.simpleMessage("All day"),
         "allowAccess": MessageLookupByLibrary.simpleMessage(
             "Please allow it on your device settings."),
+        "anyCategory": MessageLookupByLibrary.simpleMessage("any category"),
         "appStateError": MessageLookupByLibrary.simpleMessage(
             "There\'s been an error initializing the app. Please check your internet connection and try again later."),
         "appStore": MessageLookupByLibrary.simpleMessage("App Store"),
@@ -50,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to delete this Element?"),
         "areYouSureDeleteProspect": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this Prospect?"),
+        "asYouManageYourList": MessageLookupByLibrary.simpleMessage(
+            "As you manage your list and move your prospects between categories, Prospector automatically records the following actions:"),
         "atEventTime": MessageLookupByLibrary.simpleMessage("At event time"),
         "cameFrom": MessageLookupByLibrary.simpleMessage("Came from"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -152,6 +155,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "hourBefore": MessageLookupByLibrary.simpleMessage("hour before"),
         "hours": MessageLookupByLibrary.simpleMessage("hours"),
         "hoursBefore": MessageLookupByLibrary.simpleMessage("hours before"),
+        "ifYouTurnOnHistoric": MessageLookupByLibrary.simpleMessage(
+            "If you turn on the \'Historic\' switch the chart will show the actions made every month on the selected time range."),
         "import": MessageLookupByLibrary.simpleMessage("Import"),
         "importContacts":
             MessageLookupByLibrary.simpleMessage("Import contacts"),
@@ -333,6 +338,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "This action cannot be undone."),
         "thisChartIsSummaryOfYourList": MessageLookupByLibrary.simpleMessage(
             "This chart shows you a summary of your entire list and how many prospects you have in each category."),
+        "thisChartShowsYourActions": MessageLookupByLibrary.simpleMessage(
+            "This chart shows you how many times you have done each action on the selected month."),
         "thisText": MessageLookupByLibrary.simpleMessage("This"),
         "threeMonths": MessageLookupByLibrary.simpleMessage("3 Months"),
         "timeFormat": MessageLookupByLibrary.simpleMessage("Time format"),
@@ -374,9 +381,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "wereMovedTo": MessageLookupByLibrary.simpleMessage("were moved to"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
         "when": MessageLookupByLibrary.simpleMessage("When"),
+        "whenYouCreateAProspect": MessageLookupByLibrary.simpleMessage(
+            "When you create a new prospect or import a phone contact."),
+        "whenYouDeleteAProspect": MessageLookupByLibrary.simpleMessage(
+            "When you delete a prospect from your list."),
+        "whenYouMoveAProspectFrom": MessageLookupByLibrary.simpleMessage(
+            "When you move a prospect from"),
         "wichListCome": MessageLookupByLibrary.simpleMessage(
             "Which list do those who said no come from?"),
         "year": MessageLookupByLibrary.simpleMessage("Year"),
+        "youCanTurnOnExtraActions": MessageLookupByLibrary.simpleMessage(
+            "You can turn on the \'Extra Actions\' switch to include the folloing actions in the chart:"),
         "youCanTurnOnNotInterested": MessageLookupByLibrary.simpleMessage(
             "You can turn on the \'Not Interested\' switch to display that category in the chart."),
         "youHaveNoProspects": MessageLookupByLibrary.simpleMessage(

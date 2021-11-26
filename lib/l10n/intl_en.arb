@@ -263,5 +263,13 @@
     "actionsPerMotnhImg3": "actions_3_en.jpg",
     "inProspectorYouHave6Categories": "In Prospector you can classify your prospects in 6 different categories, depending on wich step of the prospecting process they are:",
     "thisChartIsSummaryOfYourList": "This chart shows you a summary of your entire list and how many prospects you have in each category.",
-    "youCanTurnOnNotInterested": "You can turn on the 'Not Interested' switch to display that category in the chart."
+    "youCanTurnOnNotInterested": "You can turn on the 'Not Interested' switch to display that category in the chart.",
+    "asYouManageYourList": "As you manage your list and move your prospects between categories, Prospector automatically records the following actions:",
+    "whenYouCreateAProspect": "When you create a new prospect or import a phone contact.",
+    "whenYouMoveAProspectFrom": "When you move a prospect from",
+    "thisChartShowsYourActions": "This chart shows you how many times you have done each action on the selected month.",
+    "youCanTurnOnExtraActions": "You can turn on the 'Extra Actions' switch to include the folloing actions in the chart:",
+    "anyCategory": "any category",
+    "whenYouDeleteAProspect": "When you delete a prospect from your list.",
+    "ifYouTurnOnHistoric": "If you turn on the 'Historic' switch the chart will show the actions made every month on the selected time range."
 }

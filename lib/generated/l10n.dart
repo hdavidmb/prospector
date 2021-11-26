@@ -2699,6 +2699,86 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `As you manage your list and move your prospects between categories, Prospector automatically records the following actions:`
+  String get asYouManageYourList {
+    return Intl.message(
+      'As you manage your list and move your prospects between categories, Prospector automatically records the following actions:',
+      name: 'asYouManageYourList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When you create a new prospect or import a phone contact.`
+  String get whenYouCreateAProspect {
+    return Intl.message(
+      'When you create a new prospect or import a phone contact.',
+      name: 'whenYouCreateAProspect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When you move a prospect from`
+  String get whenYouMoveAProspectFrom {
+    return Intl.message(
+      'When you move a prospect from',
+      name: 'whenYouMoveAProspectFrom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This chart shows you how many times you have done each action on the selected month.`
+  String get thisChartShowsYourActions {
+    return Intl.message(
+      'This chart shows you how many times you have done each action on the selected month.',
+      name: 'thisChartShowsYourActions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can turn on the 'Extra Actions' switch to include the folloing actions in the chart:`
+  String get youCanTurnOnExtraActions {
+    return Intl.message(
+      'You can turn on the \'Extra Actions\' switch to include the folloing actions in the chart:',
+      name: 'youCanTurnOnExtraActions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `any category`
+  String get anyCategory {
+    return Intl.message(
+      'any category',
+      name: 'anyCategory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When you delete a prospect from your list.`
+  String get whenYouDeleteAProspect {
+    return Intl.message(
+      'When you delete a prospect from your list.',
+      name: 'whenYouDeleteAProspect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you turn on the 'Historic' switch the chart will show the actions made every month on the selected time range.`
+  String get ifYouTurnOnHistoric {
+    return Intl.message(
+      'If you turn on the \'Historic\' switch the chart will show the actions made every month on the selected time range.',
+      name: 'ifYouTurnOnHistoric',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

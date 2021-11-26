@@ -42,6 +42,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "allDay": MessageLookupByLibrary.simpleMessage("Todo el día"),
         "allowAccess": MessageLookupByLibrary.simpleMessage(
             "Por favor habilitalo en la configuración de tu dispositivo."),
+        "anyCategory":
+            MessageLookupByLibrary.simpleMessage("cualquier categoría"),
         "appStateError": MessageLookupByLibrary.simpleMessage(
             "Ha habido un error al iniciar la aplicación. Comprueba tu conexión a internet y vuelve a intentarlo más tarde."),
         "appStore": MessageLookupByLibrary.simpleMessage("App Store"),
@@ -52,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Confirma que deseas eliminar este prospecto"),
         "areYouSureDeleteProspect": MessageLookupByLibrary.simpleMessage(
             "Confirma que deseas eliminar este prospecto"),
+        "asYouManageYourList": MessageLookupByLibrary.simpleMessage(
+            "Mientras administras tu lista y mueves a tus propectos entre categorias, Prospector registra automaticamente las siguientes acciones:"),
         "atEventTime":
             MessageLookupByLibrary.simpleMessage("A la hora del evento"),
         "cameFrom": MessageLookupByLibrary.simpleMessage("De donde vinieron"),
@@ -163,6 +167,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "hourBefore": MessageLookupByLibrary.simpleMessage("hora antes"),
         "hours": MessageLookupByLibrary.simpleMessage("horas"),
         "hoursBefore": MessageLookupByLibrary.simpleMessage("horas antes"),
+        "ifYouTurnOnHistoric": MessageLookupByLibrary.simpleMessage(
+            "Si activas la opción \'Histórico\' el gráfico mostrará las acciones realizadas cada mes en el rango de tiempo seleccionado."),
         "import": MessageLookupByLibrary.simpleMessage("Importar"),
         "importContacts":
             MessageLookupByLibrary.simpleMessage("Importar contactos"),
@@ -356,6 +362,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Esta acción no se puede deshacer."),
         "thisChartIsSummaryOfYourList": MessageLookupByLibrary.simpleMessage(
             "Este gráfico te muestra un resumen de tu lista completa y cuantos prospectos tienes en cada categoría."),
+        "thisChartShowsYourActions": MessageLookupByLibrary.simpleMessage(
+            "Este gráfico te muestra cuantas veces has realizado cada acción en el mes seleccionado."),
         "thisText": MessageLookupByLibrary.simpleMessage("Este"),
         "threeMonths": MessageLookupByLibrary.simpleMessage("3 Meses"),
         "timeFormat": MessageLookupByLibrary.simpleMessage("Formato de horas"),
@@ -401,9 +409,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "wereMovedTo": MessageLookupByLibrary.simpleMessage("fueron movidos a"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
         "when": MessageLookupByLibrary.simpleMessage("Cuando"),
+        "whenYouCreateAProspect": MessageLookupByLibrary.simpleMessage(
+            "Cuando creas un nuevo prospecto o importas un contacto de tu celular."),
+        "whenYouDeleteAProspect": MessageLookupByLibrary.simpleMessage(
+            "Cuando eliminas a un prospecto de tu lista."),
+        "whenYouMoveAProspectFrom": MessageLookupByLibrary.simpleMessage(
+            "Cuando mueves un prospecto de"),
         "wichListCome": MessageLookupByLibrary.simpleMessage(
             "¿De qué lista vienen los que dijeron que no?"),
         "year": MessageLookupByLibrary.simpleMessage("Año"),
+        "youCanTurnOnExtraActions": MessageLookupByLibrary.simpleMessage(
+            "Puedes activar la opción de \'Acciones Extra\' para incluir las siguientes acciones en el gráfico:"),
         "youCanTurnOnNotInterested": MessageLookupByLibrary.simpleMessage(
             "Puedes activar la opción de \'No Interesados\' para mostrar esta categoría en el gráfico."),
         "youHaveNoProspects": MessageLookupByLibrary.simpleMessage(
