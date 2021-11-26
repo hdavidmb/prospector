@@ -24,6 +24,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+      //TODO: extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: const CustomBottomNavigationBar(),
     );

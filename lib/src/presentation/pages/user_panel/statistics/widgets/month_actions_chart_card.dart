@@ -24,6 +24,7 @@ class MonthActionsChartCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
+    final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final bool historic = watch(historicProvider).state;
     final bool extraActions = watch(extraActionsProvider).state;
 
@@ -47,7 +48,7 @@ class MonthActionsChartCard extends ConsumerWidget {
                 GestureDetector(
                   child: const Icon(Icons.info_outline),
                   onTap: () {
-                    //TODO: chartsService.showActionsChartDescription(context);
+                    //TODO: showActionsChartDescription(context);
                   },
                 )
               ],
@@ -91,7 +92,6 @@ class MonthActionsChartCard extends ConsumerWidget {
                         Text(AppLocalizations.of(context).extraActions),
                         Switch.adaptive(
                           value: extraActions,
-                          activeTrackColor: Colors.green,
                           onChanged: (value) {
                             context.read(selectedDatumProvider).state = [];
                             context.read(extraActionsProvider).state = value;
@@ -119,6 +119,27 @@ class MonthActionsChartCard extends ConsumerWidget {
                           .state = value.selectedDatum,
                     )
                   ],
+                  domainAxis: charts.DateTimeAxisSpec(
+                    renderSpec: charts.SmallTickRendererSpec(
+                      labelStyle: charts.TextStyleSpec(
+                        color: isDarkMode
+                            ? charts.MaterialPalette.white
+                            : charts.MaterialPalette.black,
+                      ),
+                    ),
+                  ),
+                  primaryMeasureAxis: charts.NumericAxisSpec(
+                    showAxisLine: false,
+                    renderSpec: charts.GridlineRendererSpec(
+                      labelStyle: charts.TextStyleSpec(
+                        color: isDarkMode
+                            ? charts.MaterialPalette.white
+                            : charts.MaterialPalette.black,
+                      ),
+                      lineStyle: charts.LineStyleSpec(
+                          color: charts.MaterialPalette.gray.shade300),
+                    ),
+                  ),
                 ),
               ),
               Padding(
@@ -139,8 +160,20 @@ class MonthActionsChartCard extends ConsumerWidget {
                   animationDuration: animationDuration,
                   vertical: false,
                   barRendererDecorator: charts.BarLabelDecorator(),
-                  domainAxis: charts.OrdinalAxisSpec(
+                  domainAxis: const charts.OrdinalAxisSpec(
                       renderSpec: charts.NoneRenderSpec()),
+                  primaryMeasureAxis: charts.NumericAxisSpec(
+                    showAxisLine: false,
+                    renderSpec: charts.GridlineRendererSpec(
+                      labelStyle: charts.TextStyleSpec(
+                        color: isDarkMode
+                            ? charts.MaterialPalette.white
+                            : charts.MaterialPalette.black,
+                      ),
+                      lineStyle: charts.LineStyleSpec(
+                          color: charts.MaterialPalette.gray.shade300),
+                    ),
+                  ),
                 ),
               ),
           ],

@@ -1,5 +1,6 @@
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/generated/l10n.dart';
 import 'package:prospector/src/features/app_default_data/application/app_default_data_notifier.dart';
@@ -11,6 +12,8 @@ import 'package:prospector/src/features/statistics/domain/chart_data_entity.dart
 import 'package:prospector/src/features/statistics/domain/statistic_entity.dart';
 import 'package:prospector/src/features/statistics/domain/statistics_range_entity.dart';
 import 'package:prospector/src/presentation/helpers/date_formatters.dart';
+import 'package:prospector/src/presentation/theme/theme_notifier.dart';
+import 'package:prospector/src/presentation/theme/theme_providers.dart';
 
 final includeNotInterestedProvider = StateProvider<bool>((ref) => false);
 
@@ -89,6 +92,12 @@ final prospectsPerMonthDataProvider = StateProvider<List<ChartData>>((ref) {
 //TODO: try to generally optimize actionsPerMonth providers
 // * ACTIONS PER MONTH
 final actionsPerMonth = Provider<List<charts.Series<ChartData, String>>>((ref) {
+  final ThemeNotifier theme = ref.watch(themeNotifierProvider);
+
+  final bool isDarkMode = theme.currentThemeMode == ThemeMode.dark ||
+      (theme.currentThemeMode == ThemeMode.system &&
+          SchedulerBinding.instance!.window.platformBrightness ==
+              Brightness.dark);
   final List<Statistic> _monthActions = ref
       .watch(statisticsNotifierProvider)
       .statistics
@@ -184,6 +193,12 @@ final actionsPerMonth = Provider<List<charts.Series<ChartData, String>>>((ref) {
             charts.ColorUtil.fromDartColor(data.color),
         labelAccessorFn: (ChartData data, _) =>
             '${data.label as String}: ${data.value}',
+        outsideLabelStyleAccessorFn: (ChartData data, _) =>
+            charts.TextStyleSpec(
+              color: isDarkMode
+                  ? charts.MaterialPalette.white
+                  : charts.MaterialPalette.black,
+            ),
         id: 'actions_per_month')
   ];
 
@@ -549,6 +564,7 @@ final effectinesChartsData = Provider<Map<String, dynamic>>((ref) {
   return data;
 });
 
+// * TURN DOWN CHART DATA
 final turnDownAnalysisChartData =
     Provider<List<charts.Series<ChartData, String>>>((ref) {
   final DateTime _rangeStartMonth = ref.watch(rangeStartMonthProvider);

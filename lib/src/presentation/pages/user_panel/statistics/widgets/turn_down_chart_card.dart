@@ -20,6 +20,7 @@ class TurnDownChartCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
+    final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Card(
       elevation: cardElevation,
       margin: cardMargins,
@@ -56,7 +57,7 @@ class TurnDownChartCard extends ConsumerWidget {
               child: Text(
                 AppLocalizations.of(context).wichListCome,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18.0, color: Colors.grey[800]),
+                style: const TextStyle(fontSize: 18.0),
               ),
             ),
             SizedBox(
@@ -74,9 +75,25 @@ class TurnDownChartCard extends ConsumerWidget {
                         color: charts.ColorUtil.fromDartColor(Colors.white))),
                 domainAxis: const charts.OrdinalAxisSpec(
                     renderSpec: charts.NoneRenderSpec()),
+                primaryMeasureAxis: charts.NumericAxisSpec(
+                  showAxisLine: false,
+                  renderSpec: charts.GridlineRendererSpec(
+                    labelStyle: charts.TextStyleSpec(
+                      color: isDarkMode
+                          ? charts.MaterialPalette.white
+                          : charts.MaterialPalette.black,
+                    ),
+                    lineStyle: charts.LineStyleSpec(
+                        color: charts.MaterialPalette.gray.shade300),
+                  ),
+                ),
                 behaviors: [
                   charts.ChartTitle(
                     AppLocalizations.of(context).totalTurnDowns,
+                    titleStyleSpec: charts.TextStyleSpec(
+                        color: isDarkMode
+                            ? charts.MaterialPalette.white
+                            : charts.MaterialPalette.black),
                     behaviorPosition: charts.BehaviorPosition.start,
                     titleOutsideJustification:
                         charts.OutsideJustification.middle,
@@ -84,6 +101,10 @@ class TurnDownChartCard extends ConsumerWidget {
                   ),
                   charts.ChartTitle(
                     AppLocalizations.of(context).cameFrom,
+                    titleStyleSpec: charts.TextStyleSpec(
+                        color: isDarkMode
+                            ? charts.MaterialPalette.white
+                            : charts.MaterialPalette.black),
                     behaviorPosition: charts.BehaviorPosition.end,
                     titleOutsideJustification:
                         charts.OutsideJustification.middleDrawArea,

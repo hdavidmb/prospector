@@ -75,7 +75,7 @@ class EffectivenessChartCard extends ConsumerWidget {
                   ),
                 ),
                 GestureDetector(
-                  child: Icon(Icons.info_outline),
+                  child: const Icon(Icons.info_outline),
                   onTap: () {
                     // TODO: chartsService.showEffectivenessChartDescription(context);
                   },
@@ -98,10 +98,10 @@ class EffectivenessChartCard extends ConsumerWidget {
             ),
             Text(
               "${effectivenessData['status_actions']}",
-              style: TextStyle(
-                  fontSize: 35.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey[800]),
+              style: const TextStyle(
+                fontSize: 35.0,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -159,10 +159,10 @@ class EffectivenessChartCard extends ConsumerWidget {
                         effectivenessData['forward_percentage'] != null
                             ? ' ${effectivenessData['forward_percentage'].round()} %'
                             : '-',
-                        style: TextStyle(
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey[800]),
+                        style: const TextStyle(
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       Expanded(
                         child: Container(
@@ -188,7 +188,7 @@ class EffectivenessChartCard extends ConsumerWidget {
                                       fontWeight: FontWeight.bold,
                                       color: forwardStatus.length > 1
                                           ? Colors.green
-                                          : Colors.black),
+                                          : null),
                                 ),
                                 if (forwardStatus.length > 1) ...[
                                   TextSpan(
@@ -230,10 +230,10 @@ class EffectivenessChartCard extends ConsumerWidget {
                         effectivenessData['stay_percentage'] != null
                             ? ' ${effectivenessData['stay_percentage'].round()} %'
                             : '-',
-                        style: TextStyle(
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey[800]),
+                        style: const TextStyle(
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       Expanded(
                         child: Container(
@@ -283,10 +283,9 @@ class EffectivenessChartCard extends ConsumerWidget {
                         effectivenessData['turn_down_percentage'] != null
                             ? ' ${effectivenessData['turn_down_percentage'].round()} %'
                             : '-',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 25.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey[800],
                         ),
                       ),
                       Expanded(

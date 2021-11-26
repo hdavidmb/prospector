@@ -25,6 +25,7 @@ class ProspectsPerListChartCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
+    final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final bool includeNotInterested = watch(includeNotInterestedProvider).state;
     final bool contactsEmpty = watch(contactsNotifierProvider).contacts.isEmpty;
     final ContactsNotifier contactsProvider = watch(contactsNotifierProvider);
@@ -80,7 +81,7 @@ class ProspectsPerListChartCard extends ConsumerWidget {
                 margin:
                     const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
                 decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: isDarkMode ? Colors.white10 : Colors.grey[200],
                     borderRadius: const BorderRadius.all(Radius.circular(5))),
                 height: 210.0,
                 child: Center(
@@ -132,10 +133,10 @@ class ProspectsPerListChartCard extends ConsumerWidget {
                   Column(children: [
                     Text(
                       '${contactsProvider.contacts.length}',
-                      style: TextStyle(
-                          fontSize: 40.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey[800]),
+                      style: const TextStyle(
+                        fontSize: 40.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     Text(AppLocalizations.of(context).total)
                   ]),
@@ -149,10 +150,10 @@ class ProspectsPerListChartCard extends ConsumerWidget {
                     Column(children: [
                       Text(
                         '${contactsProvider.notInterestedContacts.length}',
-                        style: TextStyle(
-                            fontSize: 40.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey[800]),
+                        style: const TextStyle(
+                          fontSize: 40.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       Text(
                         AppLocalizations.of(context).notInterestedP,
