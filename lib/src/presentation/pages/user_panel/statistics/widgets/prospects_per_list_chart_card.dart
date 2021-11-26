@@ -6,6 +6,7 @@ import 'package:prospector/generated/l10n.dart';
 import 'package:prospector/src/features/contacts/application/contacts_notifier.dart';
 import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
 import 'package:prospector/src/features/statistics/domain/chart_data_entity.dart';
+import 'package:prospector/src/presentation/core/dialogs.dart';
 import 'package:prospector/src/presentation/pages/user_panel/statistics/logic/statistics_page_providers.dart';
 
 class ProspectsPerListChartCard extends ConsumerWidget {
@@ -53,8 +54,7 @@ class ProspectsPerListChartCard extends ConsumerWidget {
                 GestureDetector(
                   child: const Icon(Icons.info_outline),
                   onTap: () {
-                    // TODO: chartsService
-                    //     .showProspectsChartDescription(context);
+                    showProspectsChartDescriptionDialog(context);
                   },
                 ),
               ],

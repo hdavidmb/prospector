@@ -2599,6 +2599,106 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `prospects_per_list_1_en.jpg`
+  String get prospectsPerListImg1 {
+    return Intl.message(
+      'prospects_per_list_1_en.jpg',
+      name: 'prospectsPerListImg1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `prospects_per_list_2_en.jpg`
+  String get prospectsPerListImg2 {
+    return Intl.message(
+      'prospects_per_list_2_en.jpg',
+      name: 'prospectsPerListImg2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `no_chart_1_en.jpg`
+  String get turnDownImg1 {
+    return Intl.message(
+      'no_chart_1_en.jpg',
+      name: 'turnDownImg1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `effectiveness_1_en.jpg`
+  String get effectivenessImg1 {
+    return Intl.message(
+      'effectiveness_1_en.jpg',
+      name: 'effectivenessImg1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `actions_1_en.jpg`
+  String get actionsPerMotnhImg1 {
+    return Intl.message(
+      'actions_1_en.jpg',
+      name: 'actionsPerMotnhImg1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `actions_2_en.jpg`
+  String get actionsPerMotnhImg2 {
+    return Intl.message(
+      'actions_2_en.jpg',
+      name: 'actionsPerMotnhImg2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `actions_3_en.jpg`
+  String get actionsPerMotnhImg3 {
+    return Intl.message(
+      'actions_3_en.jpg',
+      name: 'actionsPerMotnhImg3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In Prospector you can classify your prospects in 6 different categories, depending on wich step of the prospecting process they are:`
+  String get inProspectorYouHave6Categories {
+    return Intl.message(
+      'In Prospector you can classify your prospects in 6 different categories, depending on wich step of the prospecting process they are:',
+      name: 'inProspectorYouHave6Categories',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This chart shows you a summary of your entire list and how many prospects you have in each category.`
+  String get thisChartIsSummaryOfYourList {
+    return Intl.message(
+      'This chart shows you a summary of your entire list and how many prospects you have in each category.',
+      name: 'thisChartIsSummaryOfYourList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can turn on the 'Not Interested' switch to display that category in the chart.`
+  String get youCanTurnOnNotInterested {
+    return Intl.message(
+      'You can turn on the \'Not Interested\' switch to display that category in the chart.',
+      name: 'youCanTurnOnNotInterested',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

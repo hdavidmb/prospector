@@ -749,3 +749,48 @@ Future<Map<String, String>?> showCountryCodeDialog(
     },
   );
 }
+
+// * Statistics description dialogs
+
+void showProspectsChartDescriptionDialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(AppLocalizations.current.prospectsPerList),
+          content: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.90,
+            child: ListView(
+              physics: const BouncingScrollPhysics(),
+              shrinkWrap: true,
+              children: <Widget>[
+                Text(
+                  AppLocalizations.current.inProspectorYouHave6Categories,
+                  textAlign: TextAlign.justify,
+                ),
+                const SizedBox(height: 8.0),
+                Text('· ${AppLocalizations.current.notContactedP}'),
+                Text('· ${AppLocalizations.current.invitedP}'),
+                Text('· ${AppLocalizations.current.followUp}'),
+                Text('· ${AppLocalizations.current.clients}'),
+                Text('· ${AppLocalizations.current.executives}'),
+                Text('· ${AppLocalizations.current.notInterestedP}'),
+                const SizedBox(height: 8.0),
+                Image(
+                  image: AssetImage(
+                      'assets/images/${AppLocalizations.current.prospectsPerListImg1}'),
+                ),
+                const SizedBox(height: 8.0),
+                Text(AppLocalizations.current.thisChartIsSummaryOfYourList),
+                const SizedBox(height: 8.0),
+                Text(AppLocalizations.current.youCanTurnOnNotInterested),
+                Image(
+                  image: AssetImage(
+                      'assets/images/${AppLocalizations.current.prospectsPerListImg2}'),
+                ),
+              ],
+            ),
+          ),
+        );
+      });
+}

@@ -253,5 +253,15 @@
     "turnDownAnalysis": "Análisis de rechazos",
     "wichListCome": "¿De qué lista vienen los que dijeron que no?",
     "totalTurnDowns": "Rechazos totales",
-    "cameFrom": "De donde vinieron"
+    "cameFrom": "De donde vinieron",
+    "prospectsPerListImg1": "prospects_per_list_1_es.jpg",
+    "prospectsPerListImg2": "prospects_per_list_2_es.jpg",
+    "turnDownImg1": "no_chart_1_es.jpg",
+    "effectivenessImg1": "effectiveness_1_es.jpg",
+    "actionsPerMotnhImg1": "actions_1_es.jpg",
+    "actionsPerMotnhImg2": "actions_2_es.jpg",
+    "actionsPerMotnhImg3": "actions_3_es.jpg",
+    "inProspectorYouHave6Categories": "En Prospector puedes clasificar a tus prospectos en 6 categorias diferentes, según la etapa del proceso de prospección en la que se encuentren:",
+    "thisChartIsSummaryOfYourList": "Este gráfico te muestra un resumen de tu lista completa y cuantos prospectos tienes en cada categoría.",
+    "youCanTurnOnNotInterested": "Puedes activar la opción de 'No Interesados' para mostrar esta categoría en el gráfico."
 }

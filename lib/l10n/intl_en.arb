@@ -253,5 +253,15 @@
     "turnDownAnalysis": "Turn down analysis",
     "wichListCome": "Which list do those who said no come from?",
     "totalTurnDowns": "Total turn downs",
-    "cameFrom": "Came from"
+    "cameFrom": "Came from",
+    "prospectsPerListImg1": "prospects_per_list_1_en.jpg",
+    "prospectsPerListImg2": "prospects_per_list_2_en.jpg",
+    "turnDownImg1": "no_chart_1_en.jpg",
+    "effectivenessImg1": "effectiveness_1_en.jpg",
+    "actionsPerMotnhImg1": "actions_1_en.jpg",
+    "actionsPerMotnhImg2": "actions_2_en.jpg",
+    "actionsPerMotnhImg3": "actions_3_en.jpg",
+    "inProspectorYouHave6Categories": "In Prospector you can classify your prospects in 6 different categories, depending on wich step of the prospecting process they are:",
+    "thisChartIsSummaryOfYourList": "This chart shows you a summary of your entire list and how many prospects you have in each category.",
+    "youCanTurnOnNotInterested": "You can turn on the 'Not Interested' switch to display that category in the chart."
 }

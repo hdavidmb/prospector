@@ -24,6 +24,12 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "accountWithDifferentCredentials": MessageLookupByLibrary.simpleMessage(
             "Your account is not associated with this profile. Try the other sign in methods."),
+        "actionsPerMotnhImg1":
+            MessageLookupByLibrary.simpleMessage("actions_1_en.jpg"),
+        "actionsPerMotnhImg2":
+            MessageLookupByLibrary.simpleMessage("actions_2_en.jpg"),
+        "actionsPerMotnhImg3":
+            MessageLookupByLibrary.simpleMessage("actions_3_en.jpg"),
         "addANewTag": MessageLookupByLibrary.simpleMessage("Add a new tag:"),
         "addProspect": MessageLookupByLibrary.simpleMessage("Add Prospect"),
         "addTag": MessageLookupByLibrary.simpleMessage("Add tag"),
@@ -100,6 +106,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "editImage": MessageLookupByLibrary.simpleMessage("Edit image"),
         "editProspect": MessageLookupByLibrary.simpleMessage("Edit prospect"),
         "effectiveness": MessageLookupByLibrary.simpleMessage("Effectiveness"),
+        "effectivenessImg1":
+            MessageLookupByLibrary.simpleMessage("effectiveness_1_en.jpg"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
             "This email address is already in use."),
@@ -149,6 +157,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Import contacts"),
         "importedContacts":
             MessageLookupByLibrary.simpleMessage("Imported contacts"),
+        "inProspectorYouHave6Categories": MessageLookupByLibrary.simpleMessage(
+            "In Prospector you can classify your prospects in 6 different categories, depending on wich step of the prospecting process they are:"),
         "inThe": MessageLookupByLibrary.simpleMessage("in the"),
         "includeNotInterested":
             MessageLookupByLibrary.simpleMessage("Include \'Not Interested\'"),
@@ -264,6 +274,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("prospects added"),
         "prospectsPerList":
             MessageLookupByLibrary.simpleMessage("Prospects per list"),
+        "prospectsPerListImg1":
+            MessageLookupByLibrary.simpleMessage("prospects_per_list_1_en.jpg"),
+        "prospectsPerListImg2":
+            MessageLookupByLibrary.simpleMessage("prospects_per_list_2_en.jpg"),
         "purchaseThankMessage": MessageLookupByLibrary.simpleMessage(
             "You are now a Prospector Premium user and now you have unlimited access to a lot of usefull features Prospector has to grow your bussiness.\n\nThanks for trusting us to help you in your journey. Let\'s take your bussiness to the next level."),
         "reactivate": MessageLookupByLibrary.simpleMessage("Reactivate"),
@@ -317,6 +331,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "takePhoto": MessageLookupByLibrary.simpleMessage("Take photo"),
         "thisAcctionCannotBeUndone": MessageLookupByLibrary.simpleMessage(
             "This action cannot be undone."),
+        "thisChartIsSummaryOfYourList": MessageLookupByLibrary.simpleMessage(
+            "This chart shows you a summary of your entire list and how many prospects you have in each category."),
         "thisText": MessageLookupByLibrary.simpleMessage("This"),
         "threeMonths": MessageLookupByLibrary.simpleMessage("3 Months"),
         "timeFormat": MessageLookupByLibrary.simpleMessage("Time format"),
@@ -333,6 +349,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "turnDown": MessageLookupByLibrary.simpleMessage("Turn Down"),
         "turnDownAnalysis":
             MessageLookupByLibrary.simpleMessage("Turn down analysis"),
+        "turnDownImg1":
+            MessageLookupByLibrary.simpleMessage("no_chart_1_en.jpg"),
         "twelveMonths": MessageLookupByLibrary.simpleMessage("12 Months"),
         "typeAnInteraction":
             MessageLookupByLibrary.simpleMessage("Type an interaction..."),
@@ -359,6 +377,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "wichListCome": MessageLookupByLibrary.simpleMessage(
             "Which list do those who said no come from?"),
         "year": MessageLookupByLibrary.simpleMessage("Year"),
+        "youCanTurnOnNotInterested": MessageLookupByLibrary.simpleMessage(
+            "You can turn on the \'Not Interested\' switch to display that category in the chart."),
         "youHaveNoProspects": MessageLookupByLibrary.simpleMessage(
             "You haven\'t added any prospect yet"),
         "youMayHaveToRelogin": MessageLookupByLibrary.simpleMessage(
