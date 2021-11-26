@@ -249,5 +249,9 @@
     "or": "or",
     "areStillIn": "are still in",
     "deleted": "Deleted",
-    "deletedP": "Deleted"
+    "deletedP": "Deleted",
+    "turnDownAnalysis": "Turn down analysis",
+    "wichListCome": "Which list do those who said no come from?",
+    "totalTurnDowns": "Total turn downs",
+    "cameFrom": "Came from"
 }

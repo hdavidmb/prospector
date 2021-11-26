@@ -45,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "areYouSureDeleteProspect": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this Prospect?"),
         "atEventTime": MessageLookupByLibrary.simpleMessage("At event time"),
+        "cameFrom": MessageLookupByLibrary.simpleMessage("Came from"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "changeEmail": MessageLookupByLibrary.simpleMessage("Change email"),
         "changePassword":
@@ -326,8 +327,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "to": MessageLookupByLibrary.simpleMessage("to"),
         "toConfirm": MessageLookupByLibrary.simpleMessage("to confirm."),
         "total": MessageLookupByLibrary.simpleMessage("Total"),
+        "totalTurnDowns":
+            MessageLookupByLibrary.simpleMessage("Total turn downs"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
         "turnDown": MessageLookupByLibrary.simpleMessage("Turn Down"),
+        "turnDownAnalysis":
+            MessageLookupByLibrary.simpleMessage("Turn down analysis"),
         "twelveMonths": MessageLookupByLibrary.simpleMessage("12 Months"),
         "typeAnInteraction":
             MessageLookupByLibrary.simpleMessage("Type an interaction..."),
@@ -351,6 +356,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "wereMovedTo": MessageLookupByLibrary.simpleMessage("were moved to"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
         "when": MessageLookupByLibrary.simpleMessage("When"),
+        "wichListCome": MessageLookupByLibrary.simpleMessage(
+            "Which list do those who said no come from?"),
         "year": MessageLookupByLibrary.simpleMessage("Year"),
         "youHaveNoProspects": MessageLookupByLibrary.simpleMessage(
             "You haven\'t added any prospect yet"),

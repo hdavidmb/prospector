@@ -2559,6 +2559,46 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Turn down analysis`
+  String get turnDownAnalysis {
+    return Intl.message(
+      'Turn down analysis',
+      name: 'turnDownAnalysis',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Which list do those who said no come from?`
+  String get wichListCome {
+    return Intl.message(
+      'Which list do those who said no come from?',
+      name: 'wichListCome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total turn downs`
+  String get totalTurnDowns {
+    return Intl.message(
+      'Total turn downs',
+      name: 'totalTurnDowns',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Came from`
+  String get cameFrom {
+    return Intl.message(
+      'Came from',
+      name: 'cameFrom',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

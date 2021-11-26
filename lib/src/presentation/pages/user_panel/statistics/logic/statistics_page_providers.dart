@@ -32,6 +32,18 @@ final effectivenessSelectedStatusProvider = StateProvider<String>((ref) {
   return notContactedID;
 });
 
+final rangeStartMonthProvider = Provider<DateTime>((ref) {
+  final int _months = ref.watch(selectedRangeProvider).state.months ??
+      differenceInMonths(DateTime.now(),
+          ref.read(statisticsNotifierProvider).statisticsFirstMonth);
+
+  final DateTime _now = DateTime.now();
+  final DateTime _rangeStartMonth =
+      DateTime(_now.year, _now.month - (_months - 1));
+  return _rangeStartMonth;
+});
+
+// * PROSPECTS PER LIST
 final prospectsPerMonthDataProvider = StateProvider<List<ChartData>>((ref) {
   final ContactsNotifier _contactsProvider =
       ref.watch(contactsNotifierProvider);
@@ -194,14 +206,11 @@ final historicActionsPerMonthProvider =
   final List<ChartData> turnDownLists = [];
   final List<ChartData> deleteLists = [];
 
-//TODO: extract as independent provider to use in multiple places (until _rangeStartMonth)
   final int _months = ref.watch(selectedRangeProvider).state.months ??
       differenceInMonths(DateTime.now(),
           ref.read(statisticsNotifierProvider).statisticsFirstMonth);
 
-  final DateTime _now = DateTime.now();
-  final DateTime _rangeStartMonth =
-      DateTime(_now.year, _now.month - (_months - 1));
+  final DateTime _rangeStartMonth = ref.watch(rangeStartMonthProvider);
 
   for (int i = 0; i < _months; i++) {
     final DateTime _iterationMonth =
@@ -359,14 +368,7 @@ final forwardStatusProvider = Provider<List<String>>((ref) {
 final effectinesChartsData = Provider<Map<String, dynamic>>((ref) {
   final AppDefaultDataNotifier defaultData = ref.watch(appDefaultDataProvider);
 
-  //TODO: extract as independent provider to use in multiple places (until _rangeStartMonth)
-  final int _months = ref.watch(selectedRangeProvider).state.months ??
-      differenceInMonths(DateTime.now(),
-          ref.read(statisticsNotifierProvider).statisticsFirstMonth);
-
-  final DateTime _now = DateTime.now();
-  final DateTime _rangeStartMonth =
-      DateTime(_now.year, _now.month - (_months - 1));
+  final DateTime _rangeStartMonth = ref.watch(rangeStartMonthProvider);
 
   final List<Statistic> _rangeActions = ref
       .watch(statisticsNotifierProvider)
@@ -545,4 +547,92 @@ final effectinesChartsData = Provider<Map<String, dynamic>>((ref) {
   };
 
   return data;
+});
+
+final turnDownAnalysisChartData =
+    Provider<List<charts.Series<ChartData, String>>>((ref) {
+  final DateTime _rangeStartMonth = ref.watch(rangeStartMonthProvider);
+  final AppDefaultDataNotifier defaultData = ref.watch(appDefaultDataProvider);
+
+  final List<Statistic> rangeTurnDownActions = ref
+      .watch(statisticsNotifierProvider)
+      .statistics
+      .where((statistic) =>
+          statistic.created.isAfter(_rangeStartMonth) &&
+          statistic.newStatus == defaultData.notInterestedID)
+      .toList();
+
+  final List<List<ChartData>> dataList = [
+    [
+      ChartData(
+        label: AppLocalizations.current.notInterestedP,
+        value: rangeTurnDownActions.length,
+        color: Colors.red,
+      ),
+    ],
+    [
+      ChartData(
+        label: AppLocalizations.current.notContactedP,
+        value: rangeTurnDownActions
+            .where((statistic) =>
+                statistic.oldStatus == defaultData.notContactedID)
+            .length,
+        color: Colors.amber,
+      ),
+    ],
+    [
+      ChartData(
+          label: AppLocalizations.current.invitedP,
+          value: rangeTurnDownActions
+              .where(
+                  (statistic) => statistic.oldStatus == defaultData.invitedID)
+              .length,
+          color: Colors.blue),
+    ],
+    [
+      ChartData(
+          label: AppLocalizations.current.followUp,
+          value: rangeTurnDownActions
+              .where(
+                  (statistic) => statistic.oldStatus == defaultData.followUpID)
+              .length,
+          color: Colors.indigo),
+    ],
+    [
+      ChartData(
+          label: AppLocalizations.current.clients,
+          value: rangeTurnDownActions
+              .where((statistic) => statistic.oldStatus == defaultData.clientID)
+              .length,
+          color: Colors.lime),
+    ],
+    [
+      ChartData(
+          label: AppLocalizations.current.executives,
+          value: rangeTurnDownActions
+              .where(
+                  (statistic) => statistic.oldStatus == defaultData.executiveID)
+              .length,
+          color: Colors.teal),
+    ],
+  ];
+
+  return dataList
+      .map(
+        (data) => charts.Series<ChartData, String>(
+          id: data.first.label as String,
+          seriesCategory: data.first.label as String ==
+                  AppLocalizations.current.notInterestedP
+              ? 'A'
+              : 'B',
+          domainFn: (ChartData data, _) => AppLocalizations.current.turnDown,
+          measureFn: (ChartData data, _) => data.value,
+          colorFn: (ChartData data, _) =>
+              charts.ColorUtil.fromDartColor(data.color),
+          labelAccessorFn: (ChartData data, _) =>
+              data.value == 0 ? '' : '${data.label}: ${data.value}',
+          data: data,
+        ),
+      )
+      .toList();
 });

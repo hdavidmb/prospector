@@ -249,5 +249,9 @@
     "or": "o",
     "areStillIn": "siguen en",
     "deleted": "Eliminado",
-    "deletedP": "Eliminados"
+    "deletedP": "Eliminados",
+    "turnDownAnalysis": "Análisis de rechazos",
+    "wichListCome": "¿De qué lista vienen los que dijeron que no?",
+    "totalTurnDowns": "Rechazos totales",
+    "cameFrom": "De donde vinieron"
 }
