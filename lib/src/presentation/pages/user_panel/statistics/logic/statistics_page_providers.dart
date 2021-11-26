@@ -27,6 +27,11 @@ final selectedRangeProvider =
 final selectedDatumProvider =
     StateProvider<List<charts.SeriesDatum<DateTime>>>((ref) => []);
 
+final effectivenessSelectedStatusProvider = StateProvider<String>((ref) {
+  final notContactedID = ref.watch(appDefaultDataProvider).notContactedID;
+  return notContactedID;
+});
+
 final prospectsPerMonthDataProvider = StateProvider<List<ChartData>>((ref) {
   final ContactsNotifier _contactsProvider =
       ref.watch(contactsNotifierProvider);
@@ -189,6 +194,7 @@ final historicActionsPerMonthProvider =
   final List<ChartData> turnDownLists = [];
   final List<ChartData> deleteLists = [];
 
+//TODO: extract as independent provider to use in multiple places (until _rangeStartMonth)
   final int _months = ref.watch(selectedRangeProvider).state.months ??
       differenceInMonths(DateTime.now(),
           ref.read(statisticsNotifierProvider).statisticsFirstMonth);
@@ -333,4 +339,210 @@ final historicActionsLeyendsProvider = Provider<List<Widget>>((ref) {
       )
       .toList();
   return leyends;
+});
+
+final forwardStatusProvider = Provider<List<String>>((ref) {
+  final AppDefaultDataNotifier _defaultData = ref.watch(appDefaultDataProvider);
+  final String _selectedStatus =
+      ref.watch(effectivenessSelectedStatusProvider).state;
+
+  final List<String> forwardStatus = _selectedStatus == _defaultData.followUpID
+      ? [_defaultData.executiveID, _defaultData.clientID]
+      : _selectedStatus == _defaultData.invitedID
+          ? [_defaultData.followUpID]
+          : [_defaultData.invitedID];
+
+  return forwardStatus;
+});
+
+// * EFFECTIVENESS CHART
+final effectinesChartsData = Provider<Map<String, dynamic>>((ref) {
+  final AppDefaultDataNotifier defaultData = ref.watch(appDefaultDataProvider);
+
+  //TODO: extract as independent provider to use in multiple places (until _rangeStartMonth)
+  final int _months = ref.watch(selectedRangeProvider).state.months ??
+      differenceInMonths(DateTime.now(),
+          ref.read(statisticsNotifierProvider).statisticsFirstMonth);
+
+  final DateTime _now = DateTime.now();
+  final DateTime _rangeStartMonth =
+      DateTime(_now.year, _now.month - (_months - 1));
+
+  final List<Statistic> _rangeActions = ref
+      .watch(statisticsNotifierProvider)
+      .statistics
+      .where((statistic) => statistic.created.isAfter(_rangeStartMonth))
+      .toList();
+
+  final String _selectedStatus =
+      ref.watch(effectivenessSelectedStatusProvider).state;
+
+  final List<Statistic> _statusActions = _rangeActions
+      .where((action) => action.newStatus == _selectedStatus)
+      .toList();
+  final List<Statistic> _noStatusActions = _rangeActions
+      .where((action) => action.newStatus != _selectedStatus)
+      .toList();
+
+  final List<String> forwardStatus = ref.watch(forwardStatusProvider);
+
+  final List<List<Statistic>> forwardActions =
+      forwardStatus.length == 1 ? [[]] : [[], []];
+  final List turnDownActions = [];
+  final List deleteActions = [];
+
+  for (final Statistic statusAction in _statusActions) {
+    final String contactID = statusAction.contactID;
+    final Statistic contactMovedAction = _noStatusActions.firstWhere(
+      (action) =>
+          action.contactID == contactID && action.oldStatus == _selectedStatus,
+      orElse: () => Statistic.empty(),
+    );
+    if (!contactMovedAction.isEmpty) {
+      if (contactMovedAction.newStatus == defaultData.notInterestedID) {
+        turnDownActions.add(contactMovedAction);
+      } else if (contactMovedAction.newStatus == null) {
+        deleteActions.add(contactMovedAction);
+      } else if (contactMovedAction.newStatus == forwardStatus[0]) {
+        forwardActions[0].add(contactMovedAction);
+      } else if (forwardStatus.length == 2 &&
+          contactMovedAction.newStatus == forwardStatus[1]) {
+        forwardActions[1].add(contactMovedAction);
+      }
+    }
+  }
+
+  // FORWARD CHART DATA
+  final forwardLength = forwardStatus.length == 1
+      ? forwardActions[0].length
+      : forwardActions[0].length + forwardActions[1].length;
+  final List<ChartData> forwardChartData = [
+    ChartData(
+        label: 'forward', value: forwardActions[0].length, color: Colors.green),
+    ChartData(
+      label: 'empty',
+      value: _statusActions.isEmpty ? 1 : _statusActions.length - forwardLength,
+      color: Colors.grey[200]!,
+    )
+  ];
+  if (forwardStatus.length == 2) {
+    forwardChartData.insert(
+      1,
+      ChartData(
+        label: 'forward-2',
+        value: forwardActions[1].length,
+        color: Colors.lime,
+      ),
+    );
+  }
+
+  final List<charts.Series<ChartData, String>> forwardChartSeries = [
+    charts.Series(
+        data: forwardChartData,
+        domainFn: (ChartData data, _) => data.label as String,
+        measureFn: (ChartData data, _) => data.value,
+        colorFn: (ChartData data, _) =>
+            charts.ColorUtil.fromDartColor(data.color),
+        labelAccessorFn: (ChartData data, _) {
+          if (data.label == 'empty' || data.value == 0) {
+            return '';
+          } else {
+            return '${data.value}';
+          }
+        },
+        id: 'effectiveness-forward'),
+  ];
+
+  // STAY CHART DATA
+  final List<ChartData> stayChartData = [
+    ChartData(
+      label: 'stay',
+      value: _statusActions.length -
+          forwardLength -
+          turnDownActions.length -
+          deleteActions.length,
+      color: Colors.amber,
+    ),
+    ChartData(
+      label: 'empty',
+      value: _statusActions.isEmpty
+          ? 1
+          : forwardLength + turnDownActions.length + deleteActions.length,
+      color: Colors.grey[200]!,
+    ),
+  ];
+
+  final List<charts.Series<ChartData, String>> stayChartSeries = [
+    charts.Series(
+        data: stayChartData,
+        domainFn: (ChartData data, _) => data.label as String,
+        measureFn: (ChartData data, _) => data.value,
+        colorFn: (ChartData data, _) =>
+            charts.ColorUtil.fromDartColor(data.color),
+        labelAccessorFn: (ChartData data, _) {
+          if (data.label == 'empty' || data.value == 0) {
+            return '';
+          } else {
+            return '${data.value}';
+          }
+        },
+        id: 'effectiveness-stay'),
+  ];
+
+  // TURN DOWN CHART DATA
+  final List<ChartData> turnDownChartData = [
+    ChartData(
+      label: 'turn-down',
+      value: turnDownActions.length,
+      color: Colors.red,
+    ),
+    ChartData(
+      label: 'empty',
+      value: _statusActions.isEmpty
+          ? 1
+          : _statusActions.length - turnDownActions.length,
+      color: Colors.grey[200]!,
+    )
+  ];
+
+  final List<charts.Series<ChartData, String>> turnDownChartSeries = [
+    charts.Series(
+        data: turnDownChartData,
+        domainFn: (ChartData data, _) => data.label as String,
+        measureFn: (ChartData data, _) => data.value,
+        colorFn: (ChartData data, _) =>
+            charts.ColorUtil.fromDartColor(data.color),
+        labelAccessorFn: (ChartData data, _) {
+          if (data.label == 'empty' || data.value == 0) {
+            return '';
+          } else {
+            return '${data.value}';
+          }
+        },
+        id: 'effectiveness-turn-down'),
+  ];
+
+  final Map<String, dynamic> data = {
+    'status_actions': _statusActions.length,
+    'forward_data': forwardChartSeries,
+    'forward_percentage': _statusActions.isNotEmpty
+        ? forwardLength / _statusActions.length * 100
+        : null,
+    'stay_data': stayChartSeries,
+    'stay_percentage': _statusActions.isNotEmpty
+        ? (_statusActions.length -
+                forwardLength -
+                turnDownActions.length -
+                deleteActions.length) /
+            _statusActions.length *
+            100
+        : null,
+    'turn_down_data': turnDownChartSeries,
+    'turn_down_percentage': _statusActions.isNotEmpty
+        ? turnDownActions.length / _statusActions.length * 100
+        : null,
+    'delete_actions': deleteActions.length,
+  };
+
+  return data;
 });

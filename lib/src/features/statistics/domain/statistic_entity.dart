@@ -50,4 +50,16 @@ class Statistic with _$Statistic {
       company: map['company'] as String?,
     );
   }
+
+  factory Statistic.empty() => Statistic(
+      id: '',
+      contactID: '',
+      userID: '',
+      created: DateTime.now(),
+      newListCount: 0,
+      newStatus: '');
+}
+
+extension StatisticX on Statistic {
+  bool get isEmpty => id == '';
 }

@@ -238,5 +238,16 @@
     "reactivate": "Reactivar",
     "clientToExecutive": "Cliente a Ejecutivo",
     "executiveToClient": "Ejecutivo a Cliente",
-    "turnDown": "Rechazo"
+    "turnDown": "Rechazo",
+    "effectiveness": "Efectividad",
+    "outOf": "De",
+    "prospectAdded": "prospecto agregado",
+    "prospectsAdded": "prospectos agregados",
+    "inThe": "en los",
+    "to": "a",
+    "wereMovedTo": "fueron movidos a",
+    "or": "o",
+    "areStillIn": "siguen en",
+    "deleted": "Eliminado",
+    "deletedP": "Eliminados"
 }

@@ -37,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appStateError": MessageLookupByLibrary.simpleMessage(
             "There\'s been an error initializing the app. Please check your internet connection and try again later."),
         "appStore": MessageLookupByLibrary.simpleMessage("App Store"),
+        "areStillIn": MessageLookupByLibrary.simpleMessage("are still in"),
         "areYouSureDeleteAccount": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete your account?"),
         "areYouSureDeleteEvent": MessageLookupByLibrary.simpleMessage(
@@ -87,6 +88,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteEvent": MessageLookupByLibrary.simpleMessage("Delete event"),
         "deleteProspect":
             MessageLookupByLibrary.simpleMessage("Delete prospect"),
+        "deleted": MessageLookupByLibrary.simpleMessage("Deleted"),
+        "deletedP": MessageLookupByLibrary.simpleMessage("Deleted"),
         "directContact": MessageLookupByLibrary.simpleMessage("Direct contact"),
         "directContactMessage": MessageLookupByLibrary.simpleMessage(
             "Call or text your prospects directly from within Prospector, so you can contact them just when you need it"),
@@ -95,6 +98,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "editEvent": MessageLookupByLibrary.simpleMessage("Edit event"),
         "editImage": MessageLookupByLibrary.simpleMessage("Edit image"),
         "editProspect": MessageLookupByLibrary.simpleMessage("Edit prospect"),
+        "effectiveness": MessageLookupByLibrary.simpleMessage("Effectiveness"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
             "This email address is already in use."),
@@ -144,6 +148,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Import contacts"),
         "importedContacts":
             MessageLookupByLibrary.simpleMessage("Imported contacts"),
+        "inThe": MessageLookupByLibrary.simpleMessage("in the"),
         "includeNotInterested":
             MessageLookupByLibrary.simpleMessage("Include \'Not Interested\'"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage("Invalid email"),
@@ -219,8 +224,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "oneMonth": MessageLookupByLibrary.simpleMessage("1 Month"),
         "oneYear": MessageLookupByLibrary.simpleMessage("1 Year"),
+        "or": MessageLookupByLibrary.simpleMessage("or"),
         "orContinueWith":
             MessageLookupByLibrary.simpleMessage("- or continue with -"),
+        "outOf": MessageLookupByLibrary.simpleMessage("Out of"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordsDontMatch":
             MessageLookupByLibrary.simpleMessage("Passwords don\'t match"),
@@ -239,6 +246,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pricesShownIn":
             MessageLookupByLibrary.simpleMessage("Prices shown in"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "prospectAdded": MessageLookupByLibrary.simpleMessage("prospect added"),
         "prospectDetails":
             MessageLookupByLibrary.simpleMessage("Prospect Details"),
         "prospectSavedSuccessfully":
@@ -251,6 +259,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "prospectorWillStopImporting": MessageLookupByLibrary.simpleMessage(
             "Prospector will stop automatically importing your device new contacts."),
         "prospects": MessageLookupByLibrary.simpleMessage("Prospects"),
+        "prospectsAdded":
+            MessageLookupByLibrary.simpleMessage("prospects added"),
         "prospectsPerList":
             MessageLookupByLibrary.simpleMessage("Prospects per list"),
         "purchaseThankMessage": MessageLookupByLibrary.simpleMessage(
@@ -313,6 +323,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Title is required"),
         "titleRequired":
             MessageLookupByLibrary.simpleMessage("Title (Required)"),
+        "to": MessageLookupByLibrary.simpleMessage("to"),
         "toConfirm": MessageLookupByLibrary.simpleMessage("to confirm."),
         "total": MessageLookupByLibrary.simpleMessage("Total"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
@@ -337,6 +348,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "weekBefore": MessageLookupByLibrary.simpleMessage("week before"),
         "weekStartsOn": MessageLookupByLibrary.simpleMessage("Week starts on"),
         "welcomeTo": MessageLookupByLibrary.simpleMessage("Welcome to"),
+        "wereMovedTo": MessageLookupByLibrary.simpleMessage("were moved to"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
         "when": MessageLookupByLibrary.simpleMessage("When"),
         "year": MessageLookupByLibrary.simpleMessage("Year"),

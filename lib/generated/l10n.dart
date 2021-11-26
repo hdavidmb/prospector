@@ -2449,6 +2449,116 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Effectiveness`
+  String get effectiveness {
+    return Intl.message(
+      'Effectiveness',
+      name: 'effectiveness',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Out of`
+  String get outOf {
+    return Intl.message(
+      'Out of',
+      name: 'outOf',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `prospect added`
+  String get prospectAdded {
+    return Intl.message(
+      'prospect added',
+      name: 'prospectAdded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `prospects added`
+  String get prospectsAdded {
+    return Intl.message(
+      'prospects added',
+      name: 'prospectsAdded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `in the`
+  String get inThe {
+    return Intl.message(
+      'in the',
+      name: 'inThe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `to`
+  String get to {
+    return Intl.message(
+      'to',
+      name: 'to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `were moved to`
+  String get wereMovedTo {
+    return Intl.message(
+      'were moved to',
+      name: 'wereMovedTo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `or`
+  String get or {
+    return Intl.message(
+      'or',
+      name: 'or',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `are still in`
+  String get areStillIn {
+    return Intl.message(
+      'are still in',
+      name: 'areStillIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deleted`
+  String get deleted {
+    return Intl.message(
+      'Deleted',
+      name: 'deleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deleted`
+  String get deletedP {
+    return Intl.message(
+      'Deleted',
+      name: 'deletedP',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {
