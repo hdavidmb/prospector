@@ -1,5 +1,6 @@
 import UIKit
 import Flutter
+import Firebase
 
 import google_mobile_ads
 
@@ -12,6 +13,8 @@ import google_mobile_ads
     if #available(iOS 10.0, *) {
       UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
     }
+      
+    FirebaseApp.configure()
 
     GeneratedPluginRegistrant.register(with: self)
         let listTileFactory = ListTileNativeAdFactory()
