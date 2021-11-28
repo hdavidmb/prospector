@@ -5,9 +5,10 @@ const Color kPremiumColor = Color(0xffD4AF37);
 
 final ColorScheme kLightColorScheme =
     ThemeData.light().colorScheme.copyWith(primary: kPrimaryColor);
-final ColorScheme kDarkColorScheme = ThemeData.dark()
-    .colorScheme
-    .copyWith(primary: kPrimaryColor, secondary: kPrimaryColor);
+final ColorScheme kDarkColorScheme = ThemeData.dark().colorScheme.copyWith(
+      primary: kPrimaryColor,
+      secondary: kPrimaryColor,
+    );
 
 const InputDecorationTheme kInputDecorationTheme = InputDecorationTheme(
   filled: true,
@@ -50,6 +51,7 @@ final kLightTheme = ThemeData.light().copyWith(
 final kDarkTheme = ThemeData.dark().copyWith(
     primaryColor: kPrimaryColor,
     colorScheme: kDarkColorScheme,
+    appBarTheme: AppBarTheme(color: kPrimaryColor),
     switchTheme: kSwitchTheme,
     inputDecorationTheme:
         kInputDecorationTheme.copyWith(fillColor: const Color(0x1AFFFFFF)),
