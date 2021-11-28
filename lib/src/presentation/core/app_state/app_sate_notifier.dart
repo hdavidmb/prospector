@@ -1,6 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/in_app_purchase/application/fetch_state.dart';
-import 'package:prospector/src/features/statistics/application/statistics_providers.dart';
 
 import '../../../features/admob/application/ads_providers.dart';
 import '../../../features/app_default_data/application/app_default_data_providers.dart';
@@ -11,10 +9,12 @@ import '../../../features/contacts/application/contacts_state.dart';
 import '../../../features/events/application/events_providers.dart';
 import '../../../features/events/application/events_state.dart';
 import '../../../features/import_contacts/application/import_contacts_providers.dart';
+import '../../../features/in_app_purchase/application/fetch_state.dart';
 import '../../../features/in_app_purchase/application/in_app_purchase_providers.dart';
 import '../../../features/interactions/application/interactions_providers.dart';
 import '../../../features/interactions/application/interactions_state.dart';
 import '../../../features/local_notifications/application/local_notifications_providers.dart';
+import '../../../features/statistics/application/statistics_providers.dart';
 import '../../../features/tags/application/tags_provider.dart';
 import '../../../features/tags/application/tags_state.dart';
 import '../../../features/user/application/user_info_providers.dart';

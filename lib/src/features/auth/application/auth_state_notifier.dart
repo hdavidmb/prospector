@@ -1,11 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/statistics/application/statistics_providers.dart';
 
 import '../../contacts/application/contacts_providers.dart';
 import '../../events/application/events_providers.dart';
 import '../../in_app_purchase/application/in_app_purchase_providers.dart';
 import '../../interactions/application/interactions_providers.dart';
 import '../../local_notifications/application/local_notifications_providers.dart';
+import '../../statistics/application/statistics_providers.dart';
 import '../../tags/application/tags_provider.dart';
 import '../../user/application/user_info_providers.dart';
 import 'auth_state.dart';

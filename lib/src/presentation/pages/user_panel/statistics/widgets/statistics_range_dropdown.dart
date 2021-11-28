@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/statistics/domain/statistics_range_entity.dart';
-import 'package:prospector/src/presentation/pages/user_panel/statistics/logic/statistics_page_providers.dart';
+import '../../../../../features/statistics/domain/statistics_range_entity.dart';
+import '../logic/statistics_page_providers.dart';
 
 class StatisticsRangeDropdown extends ConsumerWidget {
   const StatisticsRangeDropdown({

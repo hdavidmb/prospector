@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/generated/l10n.dart';
-import 'package:prospector/src/features/app_default_data/application/app_default_data_notifier.dart';
-import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
-import 'package:prospector/src/presentation/pages/user_panel/statistics/logic/statistics_page_providers.dart';
+import '../../../../../../generated/l10n.dart';
+import '../../../../../features/app_default_data/application/app_default_data_notifier.dart';
+import '../../../../../features/app_default_data/application/app_default_data_providers.dart';
+import '../logic/statistics_page_providers.dart';
 
 class EffectivenessStatusDropdown extends ConsumerWidget {
   const EffectivenessStatusDropdown({

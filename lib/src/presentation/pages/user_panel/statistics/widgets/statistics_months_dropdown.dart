@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/statistics/application/statistics_providers.dart';
-import 'package:prospector/src/presentation/helpers/date_formatters.dart';
-import 'package:prospector/src/presentation/pages/user_panel/statistics/logic/statistics_page_providers.dart';
+import '../../../../../features/statistics/application/statistics_providers.dart';
+import '../../../../helpers/date_formatters.dart';
+import '../logic/statistics_page_providers.dart';
 
 class StatisticsMonthsDropdown extends ConsumerWidget {
   const StatisticsMonthsDropdown({

@@ -1,11 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/core/database/instances/database_instance_provider.dart';
-import 'package:prospector/src/core/user_collections/data/local/hive_user_collection_repository.dart';
-import 'package:prospector/src/core/user_collections/domain/interfaces/i_user_collection_local_repository.dart';
-import 'package:prospector/src/core/user_collections/domain/interfaces/i_user_collection_remote_repository.dart';
-import 'package:prospector/src/features/statistics/application/statistics_notifier.dart';
-import 'package:prospector/src/features/statistics/data/firebase_statistics_repository.dart';
-import 'package:prospector/src/features/statistics/domain/statistics_use_cases.dart';
+
+import '../../../core/database/instances/database_instance_provider.dart';
+import '../../../core/user_collections/data/local/hive_user_collection_repository.dart';
+import '../../../core/user_collections/domain/interfaces/i_user_collection_local_repository.dart';
+import '../../../core/user_collections/domain/interfaces/i_user_collection_remote_repository.dart';
+import '../data/firebase_statistics_repository.dart';
+import '../domain/statistics_use_cases.dart';
+import 'statistics_notifier.dart';
 
 // * Repositories
 final remoteStatisticsRepository =

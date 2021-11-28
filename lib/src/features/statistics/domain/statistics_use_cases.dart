@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
-import 'package:prospector/src/core/user_collections/domain/interfaces/i_user_collection_local_repository.dart';
-import 'package:prospector/src/core/user_collections/domain/interfaces/i_user_collection_remote_repository.dart';
-import 'package:prospector/src/features/statistics/domain/statistic_entity.dart';
+import '../../../core/database/database_failures/database_failure.dart';
+import '../../../core/user_collections/domain/interfaces/i_user_collection_local_repository.dart';
+import '../../../core/user_collections/domain/interfaces/i_user_collection_remote_repository.dart';
+import 'statistic_entity.dart';
 
 class StatisticsUseCases {
   final IUserCollectionLocalRepository localStatisticsRepository;

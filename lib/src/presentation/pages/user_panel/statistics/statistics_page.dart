@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:prospector/generated/l10n.dart';
-import 'package:prospector/src/presentation/pages/user_panel/statistics/widgets/effectiveness_chart_card.dart';
-import 'package:prospector/src/presentation/pages/user_panel/statistics/widgets/month_actions_chart_card.dart';
-import 'package:prospector/src/presentation/pages/user_panel/statistics/widgets/turn_down_chart_card.dart';
-
+import '../../../../../generated/l10n.dart';
+import 'widgets/effectiveness_chart_card.dart';
+import 'widgets/month_actions_chart_card.dart';
 import 'widgets/prospects_per_list_chart_card.dart';
+import 'widgets/turn_down_chart_card.dart';
 
 class StatisticsPage extends StatelessWidget {
   const StatisticsPage({

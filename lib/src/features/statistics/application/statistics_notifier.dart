@@ -1,16 +1,16 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/core/database/database_failures/database_failure.dart';
-import 'package:prospector/src/features/app_default_data/application/app_default_data_notifier.dart';
-import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
-import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
-import 'package:prospector/src/features/in_app_purchase/application/fetch_state.dart';
-import 'package:prospector/src/features/statistics/domain/statistic_entity.dart';
-
-import 'package:prospector/src/features/statistics/domain/statistics_use_cases.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
 import 'package:random_string/random_string.dart';
+
+import '../../../core/database/database_failures/database_failure.dart';
+import '../../app_default_data/application/app_default_data_notifier.dart';
+import '../../app_default_data/application/app_default_data_providers.dart';
+import '../../contacts/application/contacts_providers.dart';
+import '../../in_app_purchase/application/fetch_state.dart';
+import '../../user/application/user_info_providers.dart';
+import '../domain/statistic_entity.dart';
+import '../domain/statistics_use_cases.dart';
 
 class StatisticsNotifier extends ChangeNotifier {
   final StatisticsUseCases statisticsUseCases;

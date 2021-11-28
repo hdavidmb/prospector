@@ -1,4 +1,4 @@
-import 'package:prospector/generated/l10n.dart';
+import '../../../../generated/l10n.dart';
 
 enum StatisticsRange {
   thisMonth,
