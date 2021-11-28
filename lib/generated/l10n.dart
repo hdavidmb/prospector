@@ -2010,6 +2010,16 @@ class AppLocalizations {
     );
   }
 
+  /// `12 Months`
+  String get twelveMonths {
+    return Intl.message(
+      '12 Months',
+      name: 'twelveMonths',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `1 Year`
   String get oneYear {
     return Intl.message(
@@ -2265,6 +2275,566 @@ class AppLocalizations {
     return Intl.message(
       'Play Store',
       name: 'playStore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Prospects per list`
+  String get prospectsPerList {
+    return Intl.message(
+      'Prospects per list',
+      name: 'prospectsPerList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Include 'Not Interested'`
+  String get includeNotInterested {
+    return Intl.message(
+      'Include \'Not Interested\'',
+      name: 'includeNotInterested',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You haven't added any prospect yet`
+  String get youHaveNoProspects {
+    return Intl.message(
+      'You haven\'t added any prospect yet',
+      name: 'youHaveNoProspects',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total`
+  String get total {
+    return Intl.message(
+      'Total',
+      name: 'total',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Month actions`
+  String get monthActions {
+    return Intl.message(
+      'Month actions',
+      name: 'monthActions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This`
+  String get thisText {
+    return Intl.message(
+      'This',
+      name: 'thisText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last`
+  String get last {
+    return Intl.message(
+      'Last',
+      name: 'last',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lifetime`
+  String get lifetime {
+    return Intl.message(
+      'Lifetime',
+      name: 'lifetime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Historic`
+  String get historic {
+    return Intl.message(
+      'Historic',
+      name: 'historic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extra actions`
+  String get extraActions {
+    return Intl.message(
+      'Extra actions',
+      name: 'extraActions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Prospect`
+  String get addProspect {
+    return Intl.message(
+      'Add Prospect',
+      name: 'addProspect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Client`
+  String get newClient {
+    return Intl.message(
+      'New Client',
+      name: 'newClient',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Executive`
+  String get newExecutive {
+    return Intl.message(
+      'New Executive',
+      name: 'newExecutive',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reactivate`
+  String get reactivate {
+    return Intl.message(
+      'Reactivate',
+      name: 'reactivate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Client to Executive`
+  String get clientToExecutive {
+    return Intl.message(
+      'Client to Executive',
+      name: 'clientToExecutive',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Executive to Client`
+  String get executiveToClient {
+    return Intl.message(
+      'Executive to Client',
+      name: 'executiveToClient',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Turn Down`
+  String get turnDown {
+    return Intl.message(
+      'Turn Down',
+      name: 'turnDown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Effectiveness`
+  String get effectiveness {
+    return Intl.message(
+      'Effectiveness',
+      name: 'effectiveness',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Out of`
+  String get outOf {
+    return Intl.message(
+      'Out of',
+      name: 'outOf',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `prospect added`
+  String get prospectAdded {
+    return Intl.message(
+      'prospect added',
+      name: 'prospectAdded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `prospects added`
+  String get prospectsAdded {
+    return Intl.message(
+      'prospects added',
+      name: 'prospectsAdded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `in the`
+  String get inThe {
+    return Intl.message(
+      'in the',
+      name: 'inThe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `to`
+  String get to {
+    return Intl.message(
+      'to',
+      name: 'to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `were moved to`
+  String get wereMovedTo {
+    return Intl.message(
+      'were moved to',
+      name: 'wereMovedTo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `or`
+  String get or {
+    return Intl.message(
+      'or',
+      name: 'or',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `are still in`
+  String get areStillIn {
+    return Intl.message(
+      'are still in',
+      name: 'areStillIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deleted`
+  String get deleted {
+    return Intl.message(
+      'Deleted',
+      name: 'deleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deleted`
+  String get deletedP {
+    return Intl.message(
+      'Deleted',
+      name: 'deletedP',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Turn down analysis`
+  String get turnDownAnalysis {
+    return Intl.message(
+      'Turn down analysis',
+      name: 'turnDownAnalysis',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Which list do those who said no come from?`
+  String get wichListCome {
+    return Intl.message(
+      'Which list do those who said no come from?',
+      name: 'wichListCome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total turn downs`
+  String get totalTurnDowns {
+    return Intl.message(
+      'Total turn downs',
+      name: 'totalTurnDowns',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Came from`
+  String get cameFrom {
+    return Intl.message(
+      'Came from',
+      name: 'cameFrom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `prospects_per_list_1_en.jpg`
+  String get prospectsPerListImg1 {
+    return Intl.message(
+      'prospects_per_list_1_en.jpg',
+      name: 'prospectsPerListImg1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `prospects_per_list_2_en.jpg`
+  String get prospectsPerListImg2 {
+    return Intl.message(
+      'prospects_per_list_2_en.jpg',
+      name: 'prospectsPerListImg2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `no_chart_1_en.jpg`
+  String get turnDownImg1 {
+    return Intl.message(
+      'no_chart_1_en.jpg',
+      name: 'turnDownImg1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `effectiveness_1_en.jpg`
+  String get effectivenessImg1 {
+    return Intl.message(
+      'effectiveness_1_en.jpg',
+      name: 'effectivenessImg1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `actions_1_en.jpg`
+  String get actionsPerMotnhImg1 {
+    return Intl.message(
+      'actions_1_en.jpg',
+      name: 'actionsPerMotnhImg1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `actions_2_en.jpg`
+  String get actionsPerMotnhImg2 {
+    return Intl.message(
+      'actions_2_en.jpg',
+      name: 'actionsPerMotnhImg2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `actions_3_en.jpg`
+  String get actionsPerMotnhImg3 {
+    return Intl.message(
+      'actions_3_en.jpg',
+      name: 'actionsPerMotnhImg3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In Prospector you can classify your prospects in 6 different categories, depending on wich step of the prospecting process they are:`
+  String get inProspectorYouHave6Categories {
+    return Intl.message(
+      'In Prospector you can classify your prospects in 6 different categories, depending on wich step of the prospecting process they are:',
+      name: 'inProspectorYouHave6Categories',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This chart shows you a summary of your entire list and how many prospects you have in each category.`
+  String get thisChartIsSummaryOfYourList {
+    return Intl.message(
+      'This chart shows you a summary of your entire list and how many prospects you have in each category.',
+      name: 'thisChartIsSummaryOfYourList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can turn on the 'Not Interested' switch to display that category in the chart.`
+  String get youCanTurnOnNotInterested {
+    return Intl.message(
+      'You can turn on the \'Not Interested\' switch to display that category in the chart.',
+      name: 'youCanTurnOnNotInterested',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `As you manage your list and move your prospects between categories, Prospector automatically records the following actions:`
+  String get asYouManageYourList {
+    return Intl.message(
+      'As you manage your list and move your prospects between categories, Prospector automatically records the following actions:',
+      name: 'asYouManageYourList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When you create a new prospect or import a phone contact.`
+  String get whenYouCreateAProspect {
+    return Intl.message(
+      'When you create a new prospect or import a phone contact.',
+      name: 'whenYouCreateAProspect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When you move a prospect from`
+  String get whenYouMoveAProspectFrom {
+    return Intl.message(
+      'When you move a prospect from',
+      name: 'whenYouMoveAProspectFrom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This chart shows you how many times you have done each action on the selected month.`
+  String get thisChartShowsYourActions {
+    return Intl.message(
+      'This chart shows you how many times you have done each action on the selected month.',
+      name: 'thisChartShowsYourActions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can turn on the 'Extra Actions' switch to include the folloing actions in the chart:`
+  String get youCanTurnOnExtraActions {
+    return Intl.message(
+      'You can turn on the \'Extra Actions\' switch to include the folloing actions in the chart:',
+      name: 'youCanTurnOnExtraActions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `any category`
+  String get anyCategory {
+    return Intl.message(
+      'any category',
+      name: 'anyCategory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When you delete a prospect from your list.`
+  String get whenYouDeleteAProspect {
+    return Intl.message(
+      'When you delete a prospect from your list.',
+      name: 'whenYouDeleteAProspect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you turn on the 'Historic' switch the chart will show the actions made every month on the selected time range.`
+  String get ifYouTurnOnHistoric {
+    return Intl.message(
+      'If you turn on the \'Historic\' switch the chart will show the actions made every month on the selected time range.',
+      name: 'ifYouTurnOnHistoric',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This chart measures the effectiveness of your abilities stepping your prospects forward in the prospecting process.`
+  String get thisChartMeasuresEffectiveness {
+    return Intl.message(
+      'This chart measures the effectiveness of your abilities stepping your prospects forward in the prospecting process.',
+      name: 'thisChartMeasuresEffectiveness',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The left side of the chart shows the number of prospects who have moved forward in the prospecting process from the selected step. The middle section shows the number of prospects that are still in the selected step and the right side shows the number of prospects who said 'No' while staying in the selected step.`
+  String get theLeftSideShowsForward {
+    return Intl.message(
+      'The left side of the chart shows the number of prospects who have moved forward in the prospecting process from the selected step. The middle section shows the number of prospects that are still in the selected step and the right side shows the number of prospects who said \'No\' while staying in the selected step.',
+      name: 'theLeftSideShowsForward',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The example image shows that during this month you have invited 12 prospects. The left side shows that you actually presented to 5 of them (42% of the total 12), so they where moved to 'Follow Up'. The middle secction shows that you haven't presented to 3 of them (25%), so they are still in the 'Invited' category. And finally, the right side shows that 4 of them have said 'No'.`
+  String get theExampleImageShowsEffectiveness {
+    return Intl.message(
+      'The example image shows that during this month you have invited 12 prospects. The left side shows that you actually presented to 5 of them (42% of the total 12), so they where moved to \'Follow Up\'. The middle secction shows that you haven\'t presented to 3 of them (25%), so they are still in the \'Invited\' category. And finally, the right side shows that 4 of them have said \'No\'.',
+      name: 'theExampleImageShowsEffectiveness',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This chart shows you in wich category were your prospects when they said 'No' to your oportunity. That way you can analyze wich steps of your prospecting process is generating more turn downs than others.`
+  String get thisChartShowsInWichCategory {
+    return Intl.message(
+      'This chart shows you in wich category were your prospects when they said \'No\' to your oportunity. That way you can analyze wich steps of your prospecting process is generating more turn downs than others.',
+      name: 'thisChartShowsInWichCategory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The left side of the chart shows the total number of prospects who have said 'No' during the selected time range (Red bar). The right side show how many of them come from each category.`
+  String get theLeftSideShowsTurnDown {
+    return Intl.message(
+      'The left side of the chart shows the total number of prospects who have said \'No\' during the selected time range (Red bar). The right side show how many of them come from each category.',
+      name: 'theLeftSideShowsTurnDown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The example image shows that a total of 9 prospects have said 'No' in the selected time range, of which 1 came from 'Not Contacted', 3 came from 'Invited' and 5 came from 'Follow Up'.`
+  String get theExampleImageShowsTurnDown {
+    return Intl.message(
+      'The example image shows that a total of 9 prospects have said \'No\' in the selected time range, of which 1 came from \'Not Contacted\', 3 came from \'Invited\' and 5 came from \'Follow Up\'.',
+      name: 'theExampleImageShowsTurnDown',
       desc: '',
       args: [],
     );

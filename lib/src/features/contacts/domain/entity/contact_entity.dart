@@ -20,7 +20,6 @@ class Contact with _$Contact {
     String? importedId,
   }) = _Contact;
 
-  // ignore: unused_element
   const Contact._();
 
   Map<String, dynamic> toMap() {

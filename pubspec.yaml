@@ -24,6 +24,7 @@ dependencies:
   auto_route: ^2.3.0
   auto_size_text: ^3.0.0-nullsafety.0
   cached_network_image: ^3.0.0-nullsafety
+  charts_flutter: ^0.12.0
   cloud_firestore: ^2.4.0
   country_code_picker: ^2.0.2
   cupertino_icons: ^1.0.3

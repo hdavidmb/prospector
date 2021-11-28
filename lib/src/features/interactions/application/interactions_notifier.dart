@@ -45,6 +45,7 @@ class InteractionsNotifier extends ChangeNotifier {
             ..sort((a, b) => b.created.compareTo(a.created));
           notifyListeners();
           if (interaction.type != 'status') {
+            //TODO: check if can delete this because it will never be status from where the method is being called
             read(contactsNotifierProvider).updateContact(contact);
           }
           return right(unit);

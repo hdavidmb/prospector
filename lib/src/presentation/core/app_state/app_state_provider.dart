@@ -7,8 +7,10 @@ import '../../../features/contacts/application/contacts_providers.dart';
 import '../../../features/contacts/application/contacts_state.dart';
 import '../../../features/events/application/events_providers.dart';
 import '../../../features/events/application/events_state.dart';
+import '../../../features/in_app_purchase/application/fetch_state.dart';
 import '../../../features/interactions/application/interactions_providers.dart';
 import '../../../features/interactions/application/interactions_state.dart';
+import '../../../features/statistics/application/statistics_providers.dart';
 import '../../../features/tags/application/tags_provider.dart';
 import '../../../features/tags/application/tags_state.dart';
 import '../../../features/user/application/user_info_providers.dart';
@@ -30,6 +32,8 @@ final appStateNotifierProvider =
   final TagsState _tagsState = ref.watch(tagsNotifierProvider).tagsState;
   final EventsState _eventsState =
       ref.watch(eventsNotifierProvider).eventsState;
+  final FetchState _statisticsState =
+      ref.watch(statisticsNotifierProvider).statisticsState;
   return AppStateNotifier(
     authState: _authState,
     defaultDataState: _defaultDataState,
@@ -38,6 +42,7 @@ final appStateNotifierProvider =
     interactionsState: _interactionsState,
     tagsState: _tagsState,
     eventsState: _eventsState,
+    statisticsState: _statisticsState,
     read: ref.read,
   );
 });

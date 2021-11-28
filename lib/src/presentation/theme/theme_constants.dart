@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 final Color? kPrimaryColor = Colors.red[600];
-final Color? kAccentColor = kPrimaryColor;
 const Color kPremiumColor = Color(0xffD4AF37);
 
 final ColorScheme kLightColorScheme =
@@ -42,7 +41,6 @@ final SwitchThemeData kSwitchTheme = SwitchThemeData(
 // * Themes
 final kLightTheme = ThemeData.light().copyWith(
     primaryColor: kPrimaryColor,
-    accentColor: kAccentColor,
     colorScheme: kLightColorScheme,
     switchTheme: kSwitchTheme,
     inputDecorationTheme:
@@ -51,7 +49,6 @@ final kLightTheme = ThemeData.light().copyWith(
 
 final kDarkTheme = ThemeData.dark().copyWith(
     primaryColor: kPrimaryColor,
-    accentColor: kAccentColor,
     colorScheme: kDarkColorScheme,
     switchTheme: kSwitchTheme,
     inputDecorationTheme:

@@ -5,6 +5,7 @@ import '../../events/application/events_providers.dart';
 import '../../in_app_purchase/application/in_app_purchase_providers.dart';
 import '../../interactions/application/interactions_providers.dart';
 import '../../local_notifications/application/local_notifications_providers.dart';
+import '../../statistics/application/statistics_providers.dart';
 import '../../tags/application/tags_provider.dart';
 import '../../user/application/user_info_providers.dart';
 import 'auth_state.dart';
@@ -26,7 +27,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
           read(tagsNotifierProvider).reset();
           read(interactionsNotifierProvider).reset();
           read(eventsNotifierProvider).reset();
-          //TODO read(statisticsNotifierProvider).reset();
+          read(statisticsNotifierProvider).reset();
           read(localNotificationsProvider).cancelAllNotifications();
           read(inAppPurchaseNotifier).reset();
           read(inAppPurchaseNotifier).logOutPurchaser();

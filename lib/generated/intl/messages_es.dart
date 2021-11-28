@@ -24,8 +24,16 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "accountWithDifferentCredentials": MessageLookupByLibrary.simpleMessage(
             "Tu cuenta no está asociada a este perfil. Intenta con los demás metodos de inicio de sesión."),
+        "actionsPerMotnhImg1":
+            MessageLookupByLibrary.simpleMessage("actions_1_es.jpg"),
+        "actionsPerMotnhImg2":
+            MessageLookupByLibrary.simpleMessage("actions_2_es.jpg"),
+        "actionsPerMotnhImg3":
+            MessageLookupByLibrary.simpleMessage("actions_3_es.jpg"),
         "addANewTag":
             MessageLookupByLibrary.simpleMessage("Agregar nueva etiqueta:"),
+        "addProspect":
+            MessageLookupByLibrary.simpleMessage("Agregar Prospecto"),
         "addTag": MessageLookupByLibrary.simpleMessage("Agregar etiqueta"),
         "affiliate": MessageLookupByLibrary.simpleMessage("Afiliar"),
         "affiliateAs": MessageLookupByLibrary.simpleMessage("Afiliar como"),
@@ -34,17 +42,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "allDay": MessageLookupByLibrary.simpleMessage("Todo el día"),
         "allowAccess": MessageLookupByLibrary.simpleMessage(
             "Por favor habilitalo en la configuración de tu dispositivo."),
+        "anyCategory":
+            MessageLookupByLibrary.simpleMessage("cualquier categoría"),
         "appStateError": MessageLookupByLibrary.simpleMessage(
             "Ha habido un error al iniciar la aplicación. Comprueba tu conexión a internet y vuelve a intentarlo más tarde."),
         "appStore": MessageLookupByLibrary.simpleMessage("App Store"),
+        "areStillIn": MessageLookupByLibrary.simpleMessage("siguen en"),
         "areYouSureDeleteAccount": MessageLookupByLibrary.simpleMessage(
             "Confirma que deseas eliminar tu cuenta."),
         "areYouSureDeleteEvent": MessageLookupByLibrary.simpleMessage(
             "Confirma que deseas eliminar este prospecto"),
         "areYouSureDeleteProspect": MessageLookupByLibrary.simpleMessage(
             "Confirma que deseas eliminar este prospecto"),
+        "asYouManageYourList": MessageLookupByLibrary.simpleMessage(
+            "Mientras administras tu lista y mueves a tus propectos entre categorias, Prospector registra automaticamente las siguientes acciones:"),
         "atEventTime":
             MessageLookupByLibrary.simpleMessage("A la hora del evento"),
+        "cameFrom": MessageLookupByLibrary.simpleMessage("De donde vinieron"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
         "changeEmail":
             MessageLookupByLibrary.simpleMessage("Cambiar correo electrónico"),
@@ -54,6 +68,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "clearFilters": MessageLookupByLibrary.simpleMessage("Limpiar filtros"),
         "client": MessageLookupByLibrary.simpleMessage("Cliente"),
         "clientF": MessageLookupByLibrary.simpleMessage("Clienta"),
+        "clientToExecutive":
+            MessageLookupByLibrary.simpleMessage("Cliente a Ejecutivo"),
         "clients": MessageLookupByLibrary.simpleMessage("Clientes"),
         "close": MessageLookupByLibrary.simpleMessage("Cerrar"),
         "confirmNewEmail":
@@ -88,6 +104,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteEvent": MessageLookupByLibrary.simpleMessage("Eliminar evento"),
         "deleteProspect":
             MessageLookupByLibrary.simpleMessage("Eliminar prospecto"),
+        "deleted": MessageLookupByLibrary.simpleMessage("Eliminado"),
+        "deletedP": MessageLookupByLibrary.simpleMessage("Eliminados"),
         "directContact":
             MessageLookupByLibrary.simpleMessage("Contacto directo"),
         "directContactMessage": MessageLookupByLibrary.simpleMessage(
@@ -98,6 +116,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "editImage": MessageLookupByLibrary.simpleMessage("Editar imagen"),
         "editProspect":
             MessageLookupByLibrary.simpleMessage("Editar prospecto"),
+        "effectiveness": MessageLookupByLibrary.simpleMessage("Efectividad"),
+        "effectivenessImg1":
+            MessageLookupByLibrary.simpleMessage("effectiveness_1_es.jpg"),
         "email": MessageLookupByLibrary.simpleMessage("Correo electrónico"),
         "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
             "Ya existe una cuenta con este correo."),
@@ -120,7 +141,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Configuración de eventos"),
         "executive": MessageLookupByLibrary.simpleMessage("Ejecutivo"),
         "executiveF": MessageLookupByLibrary.simpleMessage("Ejecutiva"),
+        "executiveToClient":
+            MessageLookupByLibrary.simpleMessage("Ejecutivo a Cliente"),
         "executives": MessageLookupByLibrary.simpleMessage("Ejecutivos"),
+        "extraActions": MessageLookupByLibrary.simpleMessage("Acciones extra"),
         "female": MessageLookupByLibrary.simpleMessage("Femenino"),
         "filterBy": MessageLookupByLibrary.simpleMessage("Filtrar por..."),
         "firstBill": MessageLookupByLibrary.simpleMessage(
@@ -139,14 +163,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "guests": MessageLookupByLibrary.simpleMessage("Invitados"),
         "hidePasswords":
             MessageLookupByLibrary.simpleMessage("Ocultar contraseñas"),
+        "historic": MessageLookupByLibrary.simpleMessage("Histórico"),
         "hourBefore": MessageLookupByLibrary.simpleMessage("hora antes"),
         "hours": MessageLookupByLibrary.simpleMessage("horas"),
         "hoursBefore": MessageLookupByLibrary.simpleMessage("horas antes"),
+        "ifYouTurnOnHistoric": MessageLookupByLibrary.simpleMessage(
+            "Si activas la opción \'Histórico\' el gráfico mostrará las acciones realizadas cada mes en el rango de tiempo seleccionado."),
         "import": MessageLookupByLibrary.simpleMessage("Importar"),
         "importContacts":
             MessageLookupByLibrary.simpleMessage("Importar contactos"),
         "importedContacts":
             MessageLookupByLibrary.simpleMessage("Contactos importados"),
+        "inProspectorYouHave6Categories": MessageLookupByLibrary.simpleMessage(
+            "En Prospector puedes clasificar a tus prospectos en 6 categorias diferentes, según la etapa del proceso de prospección en la que se encuentren:"),
+        "inThe": MessageLookupByLibrary.simpleMessage("en los"),
+        "includeNotInterested":
+            MessageLookupByLibrary.simpleMessage("Incluir \'No Interesados\'"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage("Correo inválido"),
         "invalidEmailAndPassword": MessageLookupByLibrary.simpleMessage(
             "Correo electrónico o contraseña invalidos"),
@@ -154,6 +186,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "invited": MessageLookupByLibrary.simpleMessage("Invitado"),
         "invitedF": MessageLookupByLibrary.simpleMessage("Invitada"),
         "invitedP": MessageLookupByLibrary.simpleMessage("Invitados"),
+        "last": MessageLookupByLibrary.simpleMessage("Últimos"),
+        "lifetime": MessageLookupByLibrary.simpleMessage("Desde siempre"),
         "lightTheme": MessageLookupByLibrary.simpleMessage("Modo claro"),
         "loadingContacts":
             MessageLookupByLibrary.simpleMessage("Cargando contactos..."),
@@ -174,6 +208,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "modifyCountryCodeMessage": MessageLookupByLibrary.simpleMessage(
             "Puedes modificar tu código de país en Configuración."),
         "month": MessageLookupByLibrary.simpleMessage("Mes"),
+        "monthActions":
+            MessageLookupByLibrary.simpleMessage("Acciones del mes"),
         "moreInfo": MessageLookupByLibrary.simpleMessage("Más información"),
         "movedToF": MessageLookupByLibrary.simpleMessage("Movida a"),
         "movedToM": MessageLookupByLibrary.simpleMessage("Movido a"),
@@ -182,9 +218,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "El nombre no puede estar vacío"),
         "nameRequired":
             MessageLookupByLibrary.simpleMessage("Nombre (Requerido)"),
+        "newClient": MessageLookupByLibrary.simpleMessage("Nuevo Cliente"),
         "newEmail":
             MessageLookupByLibrary.simpleMessage("Nuevo correo electrónico"),
         "newEvent": MessageLookupByLibrary.simpleMessage("Nuevo evento"),
+        "newExecutive": MessageLookupByLibrary.simpleMessage("Nuevo Ejecutivo"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Nueva contraseña"),
         "newPhone": MessageLookupByLibrary.simpleMessage("Nuevo teléfono"),
         "newProspect": MessageLookupByLibrary.simpleMessage("Nuevo prospecto"),
@@ -218,8 +256,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "oneMonth": MessageLookupByLibrary.simpleMessage("1 Mes"),
         "oneYear": MessageLookupByLibrary.simpleMessage("1 Año"),
+        "or": MessageLookupByLibrary.simpleMessage("o"),
         "orContinueWith":
             MessageLookupByLibrary.simpleMessage("- o continúa con -"),
+        "outOf": MessageLookupByLibrary.simpleMessage("De"),
         "password": MessageLookupByLibrary.simpleMessage("Contraseña"),
         "passwordsDontMatch": MessageLookupByLibrary.simpleMessage(
             "Las contraseñas no coinciden"),
@@ -238,6 +278,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pricesShownIn":
             MessageLookupByLibrary.simpleMessage("Los precios se muestran en"),
         "profile": MessageLookupByLibrary.simpleMessage("Perfil"),
+        "prospectAdded":
+            MessageLookupByLibrary.simpleMessage("prospecto agregado"),
         "prospectDetails":
             MessageLookupByLibrary.simpleMessage("Detalles de prospecto"),
         "prospectSavedSuccessfully": MessageLookupByLibrary.simpleMessage(
@@ -250,8 +292,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "prospectorWillStopImporting": MessageLookupByLibrary.simpleMessage(
             "Prospector dejará de importar automáticamente los nuevos contactos de tu dispositivo."),
         "prospects": MessageLookupByLibrary.simpleMessage("Prospectos"),
+        "prospectsAdded":
+            MessageLookupByLibrary.simpleMessage("prospectos agregados"),
+        "prospectsPerList":
+            MessageLookupByLibrary.simpleMessage("Prospectos por lista"),
+        "prospectsPerListImg1":
+            MessageLookupByLibrary.simpleMessage("prospects_per_list_1_es.jpg"),
+        "prospectsPerListImg2":
+            MessageLookupByLibrary.simpleMessage("prospects_per_list_2_es.jpg"),
         "purchaseThankMessage": MessageLookupByLibrary.simpleMessage(
             "Ahora eres un usuario Premium de Prospector y tienes acceso ilimitado a útiles funciones para hacer crecer tu negocio.\n\nGracias por confiar en Prospector para acompañarte en tu camino como networker. Llevemos tu negocio al siguiente nivel."),
+        "reactivate": MessageLookupByLibrary.simpleMessage("Reactivar"),
         "reauthMessage": MessageLookupByLibrary.simpleMessage(
             "Debes autenticarte de nuevo. Ingresa tu contraseña para continuar."),
         "reauthenticate": MessageLookupByLibrary.simpleMessage("Reautenticar"),
@@ -307,16 +358,43 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nombre de la etiqueta"),
         "tags": MessageLookupByLibrary.simpleMessage("Etiquetas"),
         "takePhoto": MessageLookupByLibrary.simpleMessage("Tomar foto"),
+        "theExampleImageShowsEffectiveness": MessageLookupByLibrary.simpleMessage(
+            "La imagen de ejemplo muestra que durante este mes has invitado a 12 prospectos. El lado izquierdo del grafico dice que le has presentado realmente a 5 de ellos (42% del total de 12), por lo que se han movido a \'Seguimiento\'. La sección central muestra que no le has presentado a 3 de ellos (25%), por lo que siguen aún en la categoría \'Invitados\'. Y finalmente, el lado derecho muestra que 4 de ellos han dicho \'No\'."),
+        "theExampleImageShowsTurnDown": MessageLookupByLibrary.simpleMessage(
+            "La imagen de ejemplo muestra que un total de 9 prospectos dijeron \'No\' en el rango de tiempo seleccionado, de los cuales 1 provino de \'No contactados\', 3 de \'Invitados\' y 5 de \'Seguimiento\'."),
+        "theLeftSideShowsForward": MessageLookupByLibrary.simpleMessage(
+            "El lado izquierdo muestra la cantidad de prospectos que han avanzado en el proceso de prospección desde el paso seleccionado, la sección del centro muestra la cantidad de prospectos que aún están en el paso seleccionado y el lado derecho muestra la cantidad de prospectos que han dicho \'No\' mientras estaban en el paso seleccionado."),
+        "theLeftSideShowsTurnDown": MessageLookupByLibrary.simpleMessage(
+            "El lado izquierdo del gráfico muestra el total de prospectos que dijeron \'No\' en el intervalo de tiempo seleccionado (Barra roja). El lado derecho muestra cuántos de ellos vienen de cada categoría."),
         "thisAcctionCannotBeUndone": MessageLookupByLibrary.simpleMessage(
             "Esta acción no se puede deshacer."),
+        "thisChartIsSummaryOfYourList": MessageLookupByLibrary.simpleMessage(
+            "Este gráfico te muestra un resumen de tu lista completa y cuantos prospectos tienes en cada categoría."),
+        "thisChartMeasuresEffectiveness": MessageLookupByLibrary.simpleMessage(
+            "Este grafico mide la efectividad de tus habilidades para hacer avanzar a tus prospectos en el proceso de prospección."),
+        "thisChartShowsInWichCategory": MessageLookupByLibrary.simpleMessage(
+            "Este gráfico te muestra en que categoría estaban tus prospectos cuando dijeron \'No\' a tu oportunidad. Así podrás analizar cuales pasos de tu proceso de prospección están generando más rechazo que otros."),
+        "thisChartShowsYourActions": MessageLookupByLibrary.simpleMessage(
+            "Este gráfico te muestra cuantas veces has realizado cada acción en el mes seleccionado."),
+        "thisText": MessageLookupByLibrary.simpleMessage("Este"),
         "threeMonths": MessageLookupByLibrary.simpleMessage("3 Meses"),
         "timeFormat": MessageLookupByLibrary.simpleMessage("Formato de horas"),
         "titleIsRequired":
             MessageLookupByLibrary.simpleMessage("El título es requerido"),
         "titleRequired":
             MessageLookupByLibrary.simpleMessage("Título (Requerido)"),
+        "to": MessageLookupByLibrary.simpleMessage("a"),
         "toConfirm": MessageLookupByLibrary.simpleMessage("para confirmar."),
+        "total": MessageLookupByLibrary.simpleMessage("Total"),
+        "totalTurnDowns":
+            MessageLookupByLibrary.simpleMessage("Rechazos totales"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Reintentar"),
+        "turnDown": MessageLookupByLibrary.simpleMessage("Rechazo"),
+        "turnDownAnalysis":
+            MessageLookupByLibrary.simpleMessage("Análisis de rechazos"),
+        "turnDownImg1":
+            MessageLookupByLibrary.simpleMessage("no_chart_1_es.jpg"),
+        "twelveMonths": MessageLookupByLibrary.simpleMessage("12 Months"),
         "typeAnInteraction":
             MessageLookupByLibrary.simpleMessage("Ingresa una interacción..."),
         "typeHere": MessageLookupByLibrary.simpleMessage("Escribe aqui"),
@@ -340,9 +418,24 @@ class MessageLookup extends MessageLookupByLibrary {
         "weekStartsOn":
             MessageLookupByLibrary.simpleMessage("Iniciar semana en"),
         "welcomeTo": MessageLookupByLibrary.simpleMessage("Bienvenido a"),
+        "wereMovedTo": MessageLookupByLibrary.simpleMessage("fueron movidos a"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
         "when": MessageLookupByLibrary.simpleMessage("Cuando"),
+        "whenYouCreateAProspect": MessageLookupByLibrary.simpleMessage(
+            "Cuando creas un nuevo prospecto o importas un contacto de tu celular."),
+        "whenYouDeleteAProspect": MessageLookupByLibrary.simpleMessage(
+            "Cuando eliminas a un prospecto de tu lista."),
+        "whenYouMoveAProspectFrom": MessageLookupByLibrary.simpleMessage(
+            "Cuando mueves un prospecto de"),
+        "wichListCome": MessageLookupByLibrary.simpleMessage(
+            "¿De qué lista vienen los que dijeron que no?"),
         "year": MessageLookupByLibrary.simpleMessage("Año"),
+        "youCanTurnOnExtraActions": MessageLookupByLibrary.simpleMessage(
+            "Puedes activar la opción de \'Acciones Extra\' para incluir las siguientes acciones en el gráfico:"),
+        "youCanTurnOnNotInterested": MessageLookupByLibrary.simpleMessage(
+            "Puedes activar la opción de \'No Interesados\' para mostrar esta categoría en el gráfico."),
+        "youHaveNoProspects": MessageLookupByLibrary.simpleMessage(
+            "No has agregado prospectos todavía"),
         "youMayHaveToRelogin": MessageLookupByLibrary.simpleMessage(
             "Deberás autenticar tu cuenta social de nuevo."),
         "yourMembershipHasBeenRestored": MessageLookupByLibrary.simpleMessage(
