@@ -1,8 +1,10 @@
 import 'package:country_code_picker/country_localizations.dart';
+import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
+import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
 
 import '../generated/l10n.dart';
 import 'features/app_default_data/application/app_default_data_providers.dart';
@@ -73,6 +75,8 @@ class _AppState extends State<App> {
         builder: (context, watch, child) {
           final currentThemeMode =
               watch(themeNotifierProvider).currentThemeMode;
+          final FirebaseAnalyticsObserver navigatorObserver =
+              context.read(firebaseAnalyticsObserver);
           return MaterialApp.router(
             title: 'Prospector',
             debugShowCheckedModeBanner: false,
@@ -88,7 +92,8 @@ class _AppState extends State<App> {
             themeMode: currentThemeMode,
             theme: kLightTheme,
             darkTheme: kDarkTheme,
-            routerDelegate: appRouter.delegate(),
+            routerDelegate: appRouter.delegate(
+                navigatorObservers: () => [navigatorObserver]),
             routeInformationParser: appRouter.defaultRouteParser(),
           );
         },
