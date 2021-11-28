@@ -30,9 +30,9 @@ class Statistic with _$Statistic {
       'created': created,
     };
     if (newStatus != null) statisticMap['new_status'] = newStatus;
-    if (newListCount != null) statisticMap['newListCount'] = newListCount;
-    if (oldStatus != null) statisticMap['oldStatus'] = oldStatus;
-    if (oldListCount != null) statisticMap['oldListCount'] = oldListCount;
+    if (newListCount != null) statisticMap['new_list_count'] = newListCount;
+    if (oldStatus != null) statisticMap['old_status'] = oldStatus;
+    if (oldListCount != null) statisticMap['old_list_count'] = oldListCount;
     if (company != null) statisticMap['company'] = company;
     return statisticMap;
   }
@@ -62,4 +62,5 @@ class Statistic with _$Statistic {
 
 extension StatisticX on Statistic {
   bool get isEmpty => id == '';
+  bool get isNotEmpty => id != '';
 }

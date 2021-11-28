@@ -62,7 +62,7 @@ class UserProfileListTile extends ConsumerWidget {
                                 color: kPremiumColor,
                                 fontWeight: FontWeight.bold)),
                         Text(
-                            '${AppLocalizations.of(context).until} ${dateFormat.format(user?.expiryDate.toLocal() ?? DateTime.now())}', //TODO: test .toLocal()
+                            '${AppLocalizations.of(context).until} ${dateFormat.format(user?.expiryDate.toLocal() ?? DateTime.now())}',
                             style: Theme.of(context).textTheme.caption)
                       ],
                     )

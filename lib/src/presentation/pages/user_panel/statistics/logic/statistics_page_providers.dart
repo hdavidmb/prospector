@@ -415,7 +415,7 @@ final effectinesChartsData = Provider<Map<String, dynamic>>((ref) {
           action.contactID == contactID && action.oldStatus == _selectedStatus,
       orElse: () => Statistic.empty(),
     );
-    if (!contactMovedAction.isEmpty) {
+    if (contactMovedAction.isNotEmpty) {
       if (contactMovedAction.newStatus == defaultData.notInterestedID) {
         turnDownActions.add(contactMovedAction);
       } else if (contactMovedAction.newStatus == null) {

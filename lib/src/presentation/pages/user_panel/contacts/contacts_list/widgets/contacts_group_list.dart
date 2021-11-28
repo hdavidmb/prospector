@@ -16,6 +16,7 @@ import 'contact_tile.dart';
 import 'custom_native_ad_widget.dart';
 
 class ContactsGroupList extends ConsumerWidget {
+  //TODO: Transform to statefullWidget to use scrollController on ScrollBar and the listView, and dispose the scrollController
   final List<String> statuses;
   const ContactsGroupList({
     required this.statuses,
@@ -99,6 +100,7 @@ class ContactsGroupList extends ConsumerWidget {
 
     return sections.isNotEmpty
         ? Scrollbar(
+            //TODO: check for PrimarycrollController attached to more than one scroll position error
             child: CustomScrollView(
               physics: const BouncingScrollPhysics(),
               slivers: sections,

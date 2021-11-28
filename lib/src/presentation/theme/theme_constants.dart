@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 final Color? kPrimaryColor = Colors.red[600];
-//TODO: final Color? kAccentColor = kPrimaryColor;
 const Color kPremiumColor = Color(0xffD4AF37);
 
 final ColorScheme kLightColorScheme =

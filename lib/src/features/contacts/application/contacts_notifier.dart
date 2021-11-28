@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/statistics/application/statistics_providers.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
 import '../../app_default_data/application/app_default_data_providers.dart';
@@ -36,6 +37,10 @@ class ContactsNotifier extends ChangeNotifier {
         (failure) => left(failure),
         (unit) {
           _contacts.insert(0, contact);
+          read(statisticsNotifierProvider).manageStatisticActionData(
+              contactID: contact.id,
+              oldStatusID: null,
+              newStatusID: contact.status);
           notifyListeners();
           return right(unit);
         },
@@ -81,12 +86,17 @@ class ContactsNotifier extends ChangeNotifier {
         (unit) async {
           final int index = _contacts
               .indexWhere((listContact) => listContact.id == newContactInfo.id);
-          if (_contacts[index].status != newContactInfo.status) {
-            await read(interactionsNotifierProvider)
-                .createStatusInteraction(contact: newContactInfo);
-          }
+          final String oldStatusID = _contacts[index].status;
           _contacts[index] = newContactInfo;
           _contacts.sort((a, b) => b.modified.compareTo(a.modified));
+          if (oldStatusID != newContactInfo.status) {
+            await read(interactionsNotifierProvider)
+                .createStatusInteraction(contact: newContactInfo);
+            await read(statisticsNotifierProvider).manageStatisticActionData(
+                contactID: newContactInfo.id,
+                oldStatusID: oldStatusID,
+                newStatusID: newContactInfo.status);
+          }
           notifyListeners();
           return right(unit);
         },
@@ -117,7 +127,14 @@ class ContactsNotifier extends ChangeNotifier {
         (unit) {
           read(interactionsNotifierProvider)
               .deleteContactInteractions(contactID: contactID);
+          final String oldStatusID = _contacts
+              .firstWhere((listContact) => listContact.id == contactID)
+              .status;
           _contacts.removeWhere((listContact) => listContact.id == contactID);
+          read(statisticsNotifierProvider).manageStatisticActionData(
+              contactID: contactID,
+              oldStatusID: oldStatusID,
+              newStatusID: null);
           read(eventsNotifierProvider)
               .removeContactFromAllEvents(contactID: contactID);
           notifyListeners();
