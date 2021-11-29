@@ -98,6 +98,13 @@ class ContactsGroupList extends ConsumerWidget {
       }
     }
 
+    if (sections.isNotEmpty) {
+      final bottomPadding = MediaQuery.of(context).padding.bottom;
+      sections.add(SliverToBoxAdapter(
+        child: SizedBox(height: bottomPadding),
+      ));
+    }
+
     return sections.isNotEmpty
         ? Scrollbar(
             //TODO: check for PrimarycrollController attached to more than one scroll position error

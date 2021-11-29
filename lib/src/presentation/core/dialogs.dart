@@ -13,6 +13,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:prospector/generated/l10n.dart';
 import 'package:prospector/src/core/database/database_failures/database_failure.dart';
 import 'package:prospector/src/core/private/private_keys.dart';
+import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
 import 'package:prospector/src/features/app_default_data/application/app_default_data_providers.dart';
 import 'package:prospector/src/features/auth/domain/auth_failure.dart';
 import 'package:prospector/src/features/contacts/application/contacts_providers.dart';
@@ -308,8 +309,12 @@ void showPremiumDialog({required BuildContext context}) {
             ),
             onPressed: () async {
               AutoRouter.of(context).pop();
-              Future.delayed(Duration.zero,
-                  () => AutoRouter.of(context).push(const MembershipRoute()));
+              Future.delayed(Duration.zero, () {
+                AutoRouter.of(context).push(const MembershipRoute());
+                context
+                    .read(firebaseAnalyticsServiceProvider)
+                    .logPromptMembershipPage(fromPage: 'premium_dialog');
+              });
             },
             child: Text(
               AppLocalizations.current.moreInfo,

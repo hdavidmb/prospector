@@ -7,6 +7,7 @@ import 'package:random_string/random_string.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../../../generated/l10n.dart';
+import '../../../../../../features/analytics/firebase_analytics_providers.dart';
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
@@ -150,6 +151,11 @@ class ContactDetailsNotifier {
     if (await canLaunch(url)) {
       try {
         launch(url);
+        if (isTexting) {
+          read(firebaseAnalyticsServiceProvider).logOpenWhatsapp();
+        } else {
+          read(firebaseAnalyticsServiceProvider).logCallContact();
+        }
         return true;
       } catch (error) {
         return false;

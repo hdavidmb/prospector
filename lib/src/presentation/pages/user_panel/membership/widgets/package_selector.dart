@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../generated/l10n.dart';
+import '../../../../../features/analytics/firebase_analytics_providers.dart';
 import '../../../../../features/in_app_purchase/application/fetch_state.dart';
 import '../../../../../features/in_app_purchase/application/in_app_purchase_providers.dart';
 import '../../../../../features/in_app_purchase/domain/entities/iap_package.dart';
@@ -41,6 +42,9 @@ class PackageSelector extends ConsumerWidget {
               : () {
                   context.read(membershipNotifierProvider).selectedIndex =
                       position;
+                  context
+                      .read(firebaseAnalyticsServiceProvider)
+                      .logSelectMembershipPackage(packageSKU: package.sku);
                 },
         );
       }).toList(),

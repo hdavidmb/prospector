@@ -7,6 +7,7 @@ import 'package:random_string/random_string.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../core/database/database_failures/database_failure.dart';
+import '../../../../../../features/analytics/firebase_analytics_providers.dart';
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
@@ -147,6 +148,9 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
         // Create contact
         failureOrSuccess =
             await read(contactsNotifierProvider).createContact(newContactInfo);
+        if (failureOrSuccess?.isRight() == true) {
+          read(firebaseAnalyticsServiceProvider).logAddProspectManually();
+        }
       }
     }
     // Set final state (failure or success)

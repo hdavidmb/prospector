@@ -18,22 +18,23 @@ class ContactsListPage extends ConsumerWidget {
     final bool isSearchTextEmpty =
         watch(contactsNotifierProvider).isSearchTextEmpty;
     return Scaffold(
-        appBar: ContactsAppBar(
-            isSearchBarShowing: isSearchBarShowing, isFiltered: _isFiltered),
-        body: isSearchTextEmpty
-            ? Stack(
-                children: [
-                  ContactsTabBar(),
-                  if (isSearchBarShowing)
-                    GestureDetector(
-                      onTap: () =>
-                          context.read(contactsNotifierProvider).cancelSearch(),
-                      child: Container(
-                        color: Colors.grey.withOpacity(0.4),
-                      ),
-                    )
-                ],
-              )
-            : SearchContactsList());
+      appBar: ContactsAppBar(
+          isSearchBarShowing: isSearchBarShowing, isFiltered: _isFiltered),
+      body: isSearchTextEmpty
+          ? Stack(
+              children: [
+                ContactsTabBar(),
+                if (isSearchBarShowing)
+                  GestureDetector(
+                    onTap: () =>
+                        context.read(contactsNotifierProvider).cancelSearch(),
+                    child: Container(
+                      color: Colors.grey.withOpacity(0.4),
+                    ),
+                  )
+              ],
+            )
+          : SearchContactsList(),
+    );
   }
 }

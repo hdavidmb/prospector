@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../generated/l10n.dart';
+import '../../../../../features/analytics/firebase_analytics_providers.dart';
 import '../../../../../features/user/application/user_info_providers.dart';
 import '../../../../routes/app_router.gr.dart';
 import '../logic/home_index_provider.dart';
@@ -80,6 +81,11 @@ class CustomBottomBarButton extends StatelessWidget {
                   context.read(userInfoNotifierProvider).isPremiumUser;
               if (position == 0 && !isPremium) {
                 AutoRouter.of(context).push(const MembershipRoute());
+
+                context
+                    .read(firebaseAnalyticsServiceProvider)
+                    .logPromptMembershipPage(fromPage: 'statistics_page');
+
                 return;
               }
               context.read(homeIndexProvider).index = position;

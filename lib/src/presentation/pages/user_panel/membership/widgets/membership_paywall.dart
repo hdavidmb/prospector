@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../generated/l10n.dart';
+import '../../../../../features/analytics/firebase_analytics_providers.dart';
 import '../../../../../features/in_app_purchase/application/fetch_state.dart';
 import '../../../../../features/in_app_purchase/application/in_app_purchase_notifier.dart';
 import '../../../../../features/in_app_purchase/application/in_app_purchase_providers.dart';
@@ -24,6 +25,7 @@ class MembershipPaywall extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read(firebaseAnalyticsServiceProvider).logViewMembershipPaywall();
     final Size screenSize = MediaQuery.of(context).size;
     final String firstBillDate =
         localizedMonthDay(DateTime.now().add(const Duration(days: 7)));
@@ -106,8 +108,13 @@ class MembershipPaywall extends StatelessWidget {
                 onPressed: purchaseState.isFetching || restoreState.isFetching
                     ? null
                     : () {
-                        final int selectedIndex =
-                            watch(membershipNotifierProvider).selectedIndex;
+                        final int selectedIndex = context
+                            .read(membershipNotifierProvider)
+                            .selectedIndex;
+                        context
+                            .read(firebaseAnalyticsServiceProvider)
+                            .logTapSubscribeButton(
+                                selectedIndex: selectedIndex);
                         context
                             .read(inAppPurchaseNotifier)
                             .purchasePackage(selectedIndex: selectedIndex);

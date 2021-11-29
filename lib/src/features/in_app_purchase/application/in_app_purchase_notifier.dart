@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../presentation/pages/user_panel/membership/logic/membership_providers.dart';
+import '../../analytics/firebase_analytics_providers.dart';
 import '../../user/application/user_info_providers.dart';
 import '../domain/entities/iap_package.dart';
 import '../domain/entities/iap_purchaser_info.dart';
@@ -112,6 +113,9 @@ class InAppPurchaseNotifier extends ChangeNotifier {
           .purchasePackage(_packages[selectedIndex], oldSKU: oldSKU);
       result.fold(
         (failure) {
+          read(firebaseAnalyticsServiceProvider).logPurchaseFailed(
+              failureString: failure.toString(),
+              packageSKU: _packages[selectedIndex].sku);
           _purchaseFailure = some(failure);
           _purchaseState = const FetchState.error();
         },
@@ -119,6 +123,8 @@ class InAppPurchaseNotifier extends ChangeNotifier {
           _purchaseFailure = none();
           _purchaseState = const FetchState.ready();
 
+          read(firebaseAnalyticsServiceProvider)
+              .logPurchaseSuccessful(packageSKU: _packages[selectedIndex].sku);
           read(membershipNotifierProvider).selectedIndex =
               selectedIndex == _packages.length - 1 ? 1 : selectedIndex + 1;
           read(userInfoNotifierProvider).updateUserSubscription(
