@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
 
 import '../../../features/admob/application/ads_providers.dart';
 import '../../../features/app_default_data/application/app_default_data_providers.dart';
@@ -58,6 +59,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
         // TODO check if this post authentication logic can be handled from authStateNotifier
         if (userInfoState == const UserInfoState.ready()) {
           read(inAppPurchaseNotifier).logInPurchaser();
+          read(firebaseAnalyticsServiceProvider).setUserProperties();
           if (contactsState == const ContactsState.initial()) {
             read(contactsNotifierProvider).getContacts();
           }
@@ -116,6 +118,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
     read(statisticsNotifierProvider).reset();
     read(inAppPurchaseNotifier).reset();
     read(inAppPurchaseNotifier).logOutPurchaser();
+    read(firebaseAnalyticsServiceProvider).resetUserProperties();
     state = const AppState.initial();
   }
 }

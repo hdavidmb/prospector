@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
 
 import '../../contacts/application/contacts_providers.dart';
 import '../../events/application/events_providers.dart';
@@ -31,6 +32,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
           read(localNotificationsProvider).cancelAllNotifications();
           read(inAppPurchaseNotifier).reset();
           read(inAppPurchaseNotifier).logOutPurchaser();
+          read(firebaseAnalyticsServiceProvider).resetUserProperties();
           return const AuthState.unauthenticated();
         }
       },

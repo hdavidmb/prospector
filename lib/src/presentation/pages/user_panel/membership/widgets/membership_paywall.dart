@@ -110,12 +110,13 @@ class MembershipPaywall extends StatelessWidget {
                 onPressed: purchaseState.isFetching || restoreState.isFetching
                     ? null
                     : () {
-                        context
-                            .read(firebaseAnalyticsServiceProvider)
-                            .logTapSubscribeButton(); //TODO: test
                         final int selectedIndex = context
                             .read(membershipNotifierProvider)
                             .selectedIndex;
+                        context
+                            .read(firebaseAnalyticsServiceProvider)
+                            .logTapSubscribeButton(
+                                selectedIndex: selectedIndex);
                         context
                             .read(inAppPurchaseNotifier)
                             .purchasePackage(selectedIndex: selectedIndex);
