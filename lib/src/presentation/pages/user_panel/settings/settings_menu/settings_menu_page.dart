@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
+import 'package:prospector/src/features/user/application/user_info_providers.dart';
 
 import '../../../../../../generated/l10n.dart';
 import '../../../../routes/app_router.gr.dart';
@@ -23,38 +24,49 @@ class SettingsMenuPage extends StatelessWidget {
     );
     return Scaffold(
       appBar: AppBar(title: Text(AppLocalizations.of(context).settings)),
-      body: Column(
+      body: Stack(
+        alignment: Alignment.topCenter,
         children: [
-          Expanded(
-            child: ListView(
-              physics: const BouncingScrollPhysics(),
-              children: [
-                UserProfileListTile(),
-                divider,
-                ListTile(
-                  title: Text(AppLocalizations.of(context).membership),
-                  trailing: const Icon(Icons.chevron_right),
-                  onTap: () {
-                    AutoRouter.of(context).push(const MembershipRoute());
+          Scrollbar(
+            child: Consumer(
+              builder: (context, watch, child) {
+                final bool isPremium =
+                    watch(userInfoNotifierProvider).isPremiumUser;
+                return ListView(
+                  physics: const BouncingScrollPhysics(),
+                  children: [
+                    UserProfileListTile(),
+                    divider,
+                    ListTile(
+                      title: Text(AppLocalizations.of(context).membership),
+                      trailing: const Icon(Icons.chevron_right),
+                      onTap: () {
+                        AutoRouter.of(context).push(const MembershipRoute());
 
-                    context
-                        .read(firebaseAnalyticsServiceProvider)
-                        .logPromptMembershipPage(
-                            fromPage: 'premium_dialog'); //TODO: test
-                  },
-                ),
-                divider,
-                const SizedBox(height: 30.0),
-                divider,
-                SettingsMenuItems(divider: divider),
-                const SizedBox(height: 30.0),
-                divider,
-                ThemeSwitch(),
-                divider,
-              ],
+                        context
+                            .read(firebaseAnalyticsServiceProvider)
+                            .logPromptMembershipPage(
+                                fromPage: 'premium_dialog'); //TODO: test
+                      },
+                    ),
+                    divider,
+                    const SizedBox(height: 30.0),
+                    divider,
+                    SettingsMenuItems(divider: divider),
+                    const SizedBox(height: 30.0),
+                    divider,
+                    ThemeSwitch(),
+                    divider,
+                    if (!isPremium) const SizedBox(height: 100.0)
+                  ],
+                );
+              },
             ),
           ),
-          const SettingsAdmobBanner() //TODO: remove if blocking content
+          const Positioned(
+            bottom: 10.0,
+            child: SafeArea(child: SettingsAdmobBanner()),
+          ) //TODO: remove if blocking content
         ],
       ),
     );

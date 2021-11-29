@@ -24,7 +24,8 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      // extendBody: true, //TODO: implement and fix bottom space in contacts page and check baner position on settings
+      extendBody:
+          true, //TODO: implement and fix bottom space in contacts page and check baner position on settings
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: const CustomBottomNavigationBar(),
     );
