@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
 import 'package:random_string/random_string.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -150,6 +151,11 @@ class ContactDetailsNotifier {
     if (await canLaunch(url)) {
       try {
         launch(url);
+        if (isTexting) {
+          read(firebaseAnalyticsServiceProvider).logOpenWhatsapp(); //TODO: test
+        } else {
+          read(firebaseAnalyticsServiceProvider).logCallContact(); //TODO: test
+        }
         return true;
       } catch (error) {
         return false;

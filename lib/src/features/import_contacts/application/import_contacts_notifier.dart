@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
 import 'package:random_string/random_string.dart';
 
 import '../../../../generated/l10n.dart';
@@ -174,6 +175,8 @@ class ImportContactsNotifier extends ChangeNotifier {
                     saveSingleIdentifier(
                         identifier: contact.importedID, uid: uid);
                     _lastImportIdentifiers!.add(contact.importedID);
+                    read(firebaseAnalyticsServiceProvider)
+                        .logImportContactAutomatically(); //TODO: test
                   }
                 }
               },

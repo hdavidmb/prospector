@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
 
 import '../../../../../../generated/l10n.dart';
 import '../../../../../features/in_app_purchase/application/fetch_state.dart';
@@ -41,6 +42,10 @@ class PackageSelector extends ConsumerWidget {
               : () {
                   context.read(membershipNotifierProvider).selectedIndex =
                       position;
+                  context
+                      .read(firebaseAnalyticsServiceProvider)
+                      .logSelectMembershipPackage(
+                          packageSKU: package.sku); //TODO: test
                 },
         );
       }).toList(),

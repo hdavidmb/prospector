@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
 
 import '../../../../../../generated/l10n.dart';
 import '../../../../routes/app_router.gr.dart';
@@ -32,8 +34,14 @@ class SettingsMenuPage extends StatelessWidget {
                 ListTile(
                   title: Text(AppLocalizations.of(context).membership),
                   trailing: const Icon(Icons.chevron_right),
-                  onTap: () =>
-                      AutoRouter.of(context).push(const MembershipRoute()),
+                  onTap: () {
+                    AutoRouter.of(context).push(const MembershipRoute());
+
+                    context
+                        .read(firebaseAnalyticsServiceProvider)
+                        .logPromptMembershipPage(
+                            fromPage: 'premium_dialog'); //TODO: test
+                  },
                 ),
                 divider,
                 const SizedBox(height: 30.0),

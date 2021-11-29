@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
 
 import '../../../../../../../../generated/l10n.dart';
 import '../../../../../../../core/shared_prefs/shared_prefs.dart';
@@ -39,6 +40,13 @@ class ImportContactsMenuNotifier extends ChangeNotifier {
       });
 
       _syncContactsEnabled = value;
+      if (value) {
+        read(firebaseAnalyticsServiceProvider)
+            .logEnableSyncContacts(); //TODO: test
+      } else {
+        read(firebaseAnalyticsServiceProvider)
+            .logDisableSyncContacts(); //TODO: test
+      }
       notifyListeners();
     } else {
       showPremiumDialog(context: context);

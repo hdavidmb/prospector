@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
 import 'package:random_string/random_string.dart';
 
 import '../../../../../../../generated/l10n.dart';
@@ -147,6 +148,10 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
         // Create contact
         failureOrSuccess =
             await read(contactsNotifierProvider).createContact(newContactInfo);
+        if (failureOrSuccess?.isRight() == true) {
+          read(firebaseAnalyticsServiceProvider)
+              .logAddProspectManually(); //TODO: test
+        }
       }
     }
     // Set final state (failure or success)
