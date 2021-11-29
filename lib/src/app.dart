@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
-import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
 
 import '../generated/l10n.dart';
+import 'features/analytics/firebase_analytics_providers.dart';
 import 'features/app_default_data/application/app_default_data_providers.dart';
 import 'presentation/core/app_state/app_state.dart';
 import 'presentation/core/app_state/app_state_provider.dart';

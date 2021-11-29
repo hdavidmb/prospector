@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../generated/l10n.dart';
-import '../../../../../features/user/application/user_info_providers.dart';
 import '../../../../core/dialogs.dart';
 import '../../../../core/widgets/loading_page_cover.dart';
 import 'logic/user_profile_notifier.dart';
@@ -67,29 +66,6 @@ class UserProfilePage extends ConsumerWidget {
                   UserAuthProviderItems(),
                   const SizedBox(height: 15.0),
                   LogoutAndDeleteButtons(),
-                  //TODO temporal delete
-                  const SizedBox(height: 15.0),
-                  TextButton(
-                    style: TextButton.styleFrom(
-                        primary: Colors.yellow, backgroundColor: Colors.blue),
-                    onPressed: () {
-                      final isPremiumUser =
-                          context.read(userInfoNotifierProvider).isPremiumUser;
-                      context
-                          .read(userInfoNotifierProvider)
-                          .updateUserSubscription(
-                            isPremium: !isPremiumUser,
-                            subscriptionSKU:
-                                isPremiumUser ? null : 'premium_1m',
-                            expiryDate: isPremiumUser
-                                ? DateTime.now()
-                                    .subtract(const Duration(days: 5))
-                                : DateTime.now().add(const Duration(days: 5)),
-                          );
-                    },
-                    child: const Text('Change subscription'),
-                  )
-                  //TODO temporal delete
                 ],
               ),
               if (isSubmitting) LoadingPageCover(),

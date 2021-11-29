@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
 import 'package:random_string/random_string.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../core/database/database_failures/database_failure.dart';
+import '../../../../../../features/analytics/firebase_analytics_providers.dart';
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
@@ -149,8 +149,7 @@ class ContactFormStateNotifier extends StateNotifier<ContactFormState>
         failureOrSuccess =
             await read(contactsNotifierProvider).createContact(newContactInfo);
         if (failureOrSuccess?.isRight() == true) {
-          read(firebaseAnalyticsServiceProvider)
-              .logAddProspectManually(); //TODO: test
+          read(firebaseAnalyticsServiceProvider).logAddProspectManually();
         }
       }
     }

@@ -313,8 +313,7 @@ void showPremiumDialog({required BuildContext context}) {
                 AutoRouter.of(context).push(const MembershipRoute());
                 context
                     .read(firebaseAnalyticsServiceProvider)
-                    .logPromptMembershipPage(
-                        fromPage: 'premium_dialog'); //TODO: test
+                    .logPromptMembershipPage(fromPage: 'premium_dialog');
               });
             },
             child: Text(

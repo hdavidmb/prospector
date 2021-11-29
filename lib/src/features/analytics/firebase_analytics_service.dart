@@ -1,9 +1,8 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/in_app_purchase/application/fetch_state.dart';
-import 'package:prospector/src/features/in_app_purchase/application/in_app_purchase_providers.dart';
-import 'package:prospector/src/features/statistics/application/statistics_providers.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
+import '../in_app_purchase/application/fetch_state.dart';
+import '../in_app_purchase/application/in_app_purchase_providers.dart';
+import '../user/application/user_info_providers.dart';
 
 class FirebaseAnalyticsService {
   final FirebaseAnalytics analytics;

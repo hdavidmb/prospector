@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
-import 'package:prospector/src/features/user/application/user_info_providers.dart';
 
 import '../../../../../../generated/l10n.dart';
+import '../../../../../features/analytics/firebase_analytics_providers.dart';
+import '../../../../../features/user/application/user_info_providers.dart';
 import '../../../../routes/app_router.gr.dart';
 import 'widgets/settings_admob_banner.dart';
 import 'widgets/settings_menu_items.dart';
@@ -46,7 +46,7 @@ class SettingsMenuPage extends StatelessWidget {
                         context
                             .read(firebaseAnalyticsServiceProvider)
                             .logPromptMembershipPage(
-                                fromPage: 'premium_dialog'); //TODO: test
+                                fromPage: 'premium_dialog');
                       },
                     ),
                     divider,
@@ -66,7 +66,7 @@ class SettingsMenuPage extends StatelessWidget {
           const Positioned(
             bottom: 10.0,
             child: SafeArea(child: SettingsAdmobBanner()),
-          ) //TODO: remove if blocking content
+          )
         ],
       ),
     );

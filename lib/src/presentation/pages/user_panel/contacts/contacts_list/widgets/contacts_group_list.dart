@@ -102,7 +102,7 @@ class ContactsGroupList extends ConsumerWidget {
       final bottomPadding = MediaQuery.of(context).padding.bottom;
       sections.add(SliverToBoxAdapter(
         child: SizedBox(height: bottomPadding),
-      )); //TODO test
+      ));
     }
 
     return sections.isNotEmpty

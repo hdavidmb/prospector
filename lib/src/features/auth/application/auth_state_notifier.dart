@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
+import '../../analytics/firebase_analytics_providers.dart';
 
 import '../../contacts/application/contacts_providers.dart';
 import '../../events/application/events_providers.dart';

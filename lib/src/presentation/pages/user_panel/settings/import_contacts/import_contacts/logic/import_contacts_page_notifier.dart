@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
+import '../../../../../../../features/analytics/firebase_analytics_providers.dart';
 
 import '../../../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../../../features/import_contacts/application/import_contacts_providers.dart';
@@ -68,8 +68,7 @@ class ImportContactsPageNotifier extends ChangeNotifier {
     for (final ImportedContact contact in deviceContacts) {
       if (contact.selected) {
         read(importContactsProvider).importContact(contact);
-        read(firebaseAnalyticsServiceProvider)
-            .logImportContactManually(); //TODO: test
+        read(firebaseAnalyticsServiceProvider).logImportContactManually();
       }
     }
     deviceContacts

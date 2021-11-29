@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
 
 import '../../../presentation/pages/user_panel/membership/logic/membership_providers.dart';
+import '../../analytics/firebase_analytics_providers.dart';
 import '../../user/application/user_info_providers.dart';
 import '../domain/entities/iap_package.dart';
 import '../domain/entities/iap_purchaser_info.dart';

@@ -1,7 +1,7 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/analytics/firebase_analytics_service.dart';
+import 'firebase_analytics_service.dart';
 
 final firebaseAnalyticsInstance = Provider<FirebaseAnalytics>((ref) {
   return FirebaseAnalytics();

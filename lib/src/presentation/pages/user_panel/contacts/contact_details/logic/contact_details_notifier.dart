@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/features/analytics/firebase_analytics_providers.dart';
 import 'package:random_string/random_string.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../../../generated/l10n.dart';
+import '../../../../../../features/analytics/firebase_analytics_providers.dart';
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
@@ -152,9 +152,9 @@ class ContactDetailsNotifier {
       try {
         launch(url);
         if (isTexting) {
-          read(firebaseAnalyticsServiceProvider).logOpenWhatsapp(); //TODO: test
+          read(firebaseAnalyticsServiceProvider).logOpenWhatsapp();
         } else {
-          read(firebaseAnalyticsServiceProvider).logCallContact(); //TODO: test
+          read(firebaseAnalyticsServiceProvider).logCallContact();
         }
         return true;
       } catch (error) {
