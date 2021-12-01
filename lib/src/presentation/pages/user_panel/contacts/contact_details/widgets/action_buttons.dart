@@ -1,9 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../features/app_default_data/application/app_default_data_providers.dart';
 import '../../../../../../features/contacts/domain/entity/contact_entity.dart';
+import '../../../../../routes/app_router.gr.dart';
+import '../../../events/event_add_edit/logic/event_form_providers.dart';
 import '../logic/contact_details_provider.dart';
 
 class ActionButtons extends StatelessWidget {
@@ -58,7 +61,12 @@ class ActionButtons extends StatelessWidget {
             width: screenSize.width / 3,
             child: TextButton.icon(
               style: TextButton.styleFrom(primary: Colors.transparent),
-              onPressed: () {},
+              onPressed: () {
+                context
+                    .read(eventFormProvider.notifier)
+                    .guestsChanged([contact.id]);
+                AutoRouter.of(context).push(EventAddEditRoute());
+              },
               icon: Icon(Icons.add,
                   size: 20.0,
                   color: isDarkTheme ? Colors.white70 : Colors.black87),
