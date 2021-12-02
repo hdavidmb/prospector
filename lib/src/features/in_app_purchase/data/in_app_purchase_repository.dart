@@ -7,7 +7,8 @@ import '../domain/failures/iap_failure.dart';
 import '../domain/i_in_app_purchase_repository.dart';
 
 class InAppPurchaseRepository implements IInAppPurchaseRepository {
-  final Purchases purchases;
+  final Purchases
+      purchases; // TODO: create helper to be able to call static members with an instance of the helper
   InAppPurchaseRepository({
     required this.purchases,
   });
@@ -42,10 +43,13 @@ class InAppPurchaseRepository implements IInAppPurchaseRepository {
 
   @override
   Future<void> logOutPurchaser() async {
-    try {
-      await Purchases.logOut();
-    } catch (e) {
-      throw const IAPFailure.serverError();
+    final isAnonymus = await Purchases.isAnonymous;
+    if (!isAnonymus) {
+      try {
+        await Purchases.logOut();
+      } catch (e) {
+        rethrow;
+      }
     }
   }
 
