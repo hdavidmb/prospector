@@ -57,7 +57,7 @@ dependencies:
   permission_handler: ^8.1.2
   purchases_flutter: ^3.6.0
   random_string: ^2.2.0-nullsafety
-  shared_preferences: ^2.0.6
+  shared_preferences: ^2.0.9
   shimmer: ^2.0.0
   sign_in_with_apple: ^3.2.0
   table_calendar: ^3.0.3
