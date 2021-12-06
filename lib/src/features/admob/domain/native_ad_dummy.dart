@@ -1,0 +1,3 @@
+class NativeAdDummy {
+  const NativeAdDummy();
+}

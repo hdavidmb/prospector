@@ -1,5 +1,8 @@
 import UIKit
 import Flutter
+import Firebase
+
+import google_mobile_ads
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
@@ -7,7 +10,16 @@ import Flutter
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
+    if #available(iOS 10.0, *) {
+      UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+    }
+      
+    FirebaseApp.configure()
+
     GeneratedPluginRegistrant.register(with: self)
+        let listTileFactory = ListTileNativeAdFactory()
+        FLTGoogleMobileAdsPlugin.registerNativeAdFactory(
+            self, factoryId: "listTile", nativeAdFactory: listTileFactory)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }
