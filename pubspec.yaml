@@ -37,7 +37,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_chips_input: ^1.10.0
-  flutter_contacts: ^1.1.0+3
+  flutter_contacts: ^1.1.1+2
   flutter_facebook_auth: ^3.5.0
   flutter_google_places: ^0.3.0
   flutter_local_notifications: ^9.1.4
