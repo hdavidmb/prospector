@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/core/fetch_state/fetch_state.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
 import '../../app_default_data/application/app_default_data_providers.dart';
@@ -10,7 +11,6 @@ import '../../statistics/application/statistics_providers.dart';
 import '../../user/application/user_info_providers.dart';
 import '../domain/contacts_use_cases.dart';
 import '../domain/entity/contact_entity.dart';
-import 'contacts_state.dart';
 
 class ContactsNotifier extends ChangeNotifier {
   final ContactsUseCases contactsUseCases;
@@ -20,13 +20,13 @@ class ContactsNotifier extends ChangeNotifier {
     required this.read,
   });
 
-  ContactsState _contactsState = const ContactsState.initial();
+  FetchState _contactsState = const FetchState.initial();
   late List<Contact> _contacts;
 
-  ContactsState get contactsState => _contactsState;
+  FetchState get contactsState => _contactsState;
   List<Contact> get contacts => _contacts;
 
-  void reset() => _contactsState = const ContactsState.initial();
+  void reset() => _contactsState = const FetchState.initial();
 
   Future<Either<DatabaseFailure, Unit>> createContact(Contact contact) async {
     final uid = read(userInfoNotifierProvider).user?.uid;
@@ -51,21 +51,21 @@ class ContactsNotifier extends ChangeNotifier {
   }
 
   Future<void> getContacts() async {
-    if (_contactsState == const ContactsState.initial()) {
-      _contactsState = const ContactsState.fetching();
+    if (_contactsState.isInitial) {
+      _contactsState = const FetchState.fetching();
       final uid = read(userInfoNotifierProvider).user?.uid;
       if (uid != null) {
         final getResult = await contactsUseCases.getContactsList(uid: uid);
         getResult.fold(
-          (failure) => _contactsState = const ContactsState.error(),
+          (failure) => _contactsState = const FetchState.error(),
           (contactsList) {
             contactsList.sort((a, b) => b.modified.compareTo(a.modified));
             _contacts = contactsList;
-            _contactsState = const ContactsState.ready();
+            _contactsState = const FetchState.ready();
           },
         );
       } else {
-        _contactsState = const ContactsState.error();
+        _contactsState = const FetchState.error();
       }
       notifyListeners();
     }

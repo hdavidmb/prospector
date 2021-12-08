@@ -7,7 +7,6 @@ import '../../../features/app_default_data/application/app_default_data_provider
 import '../../../features/app_default_data/application/app_default_data_state.dart';
 import '../../../features/auth/application/auth_state.dart';
 import '../../../features/contacts/application/contacts_providers.dart';
-import '../../../features/contacts/application/contacts_state.dart';
 import '../../../features/events/application/events_providers.dart';
 import '../../../features/events/application/events_state.dart';
 import '../../../features/import_contacts/application/import_contacts_providers.dart';
@@ -26,7 +25,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
   final AuthState authState;
   final AppDefaultDataState defaultDataState;
   final UserInfoState userInfoState;
-  final ContactsState contactsState;
+  final FetchState contactsState;
   final InteractionsState interactionsState;
   final EventsState eventsState;
   final TagsState tagsState;
@@ -46,7 +45,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
     if (authState == const AuthState.error() ||
         defaultDataState == const AppDefaultDataState.error() ||
         userInfoState == const UserInfoState.error() ||
-        contactsState == const ContactsState.error() ||
+        contactsState.isError ||
         interactionsState == const InteractionsState.error() ||
         eventsState == const EventsState.error() ||
         tagsState == const TagsState.error() ||
@@ -60,7 +59,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
         if (userInfoState == const UserInfoState.ready()) {
           read(inAppPurchaseNotifier).logInPurchaser();
           read(firebaseAnalyticsServiceProvider).setUserProperties();
-          if (contactsState == const ContactsState.initial()) {
+          if (contactsState.isInitial) {
             read(contactsNotifierProvider).getContacts();
           }
           if (interactionsState == const InteractionsState.initial()) {
@@ -86,7 +85,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
           final bool statisticsReady =
               (isPremiumUser && statisticsState.isReady) || !isPremiumUser;
 
-          if (contactsState == const ContactsState.ready() &&
+          if (contactsState.isReady &&
               interactionsState == const InteractionsState.ready() &&
               tagsState == const TagsState.ready() &&
               eventsState == const EventsState.ready() &&
