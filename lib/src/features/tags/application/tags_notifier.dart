@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/core/fetch_state/fetch_state.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
 import '../../contacts/application/contacts_providers.dart';
 import '../../user/application/user_info_providers.dart';
 import '../domain/entity/tag_entity.dart';
 import '../domain/tags_use_cases.dart';
-import 'tags_state.dart';
 
 class TagsNotifier extends ChangeNotifier {
   final TagsUseCases tagsUseCases;
@@ -17,13 +17,13 @@ class TagsNotifier extends ChangeNotifier {
     required this.read,
   });
 
-  TagsState _tagsState = const TagsState.initial();
+  FetchState _tagsState = const FetchState.initial();
   late List<Tag> _tags;
 
-  TagsState get tagsState => _tagsState;
+  FetchState get tagsState => _tagsState;
   List<Tag> get tags => _tags;
 
-  void reset() => _tagsState = const TagsState.initial();
+  void reset() => _tagsState = const FetchState.initial();
 
   Future<Either<DatabaseFailure, Unit>> createTag(Tag tag) async {
     final uid = read(userInfoNotifierProvider).user?.uid;
@@ -43,20 +43,20 @@ class TagsNotifier extends ChangeNotifier {
   }
 
   Future<void> getTags() async {
-    if (_tagsState != const TagsState.fetching()) {
-      _tagsState = const TagsState.fetching();
+    if (!_tagsState.isFetching) {
+      _tagsState = const FetchState.fetching();
       final uid = read(userInfoNotifierProvider).user?.uid;
       if (uid != null) {
         final getResult = await tagsUseCases.getTagsList(uid: uid);
         getResult.fold(
-          (failure) => _tagsState = const TagsState.error(),
+          (failure) => _tagsState = const FetchState.error(),
           (tagsList) {
             _tags = tagsList;
-            _tagsState = const TagsState.ready();
+            _tagsState = const FetchState.ready();
           },
         );
       } else {
-        _tagsState = const TagsState.error();
+        _tagsState = const FetchState.error();
       }
       notifyListeners();
     }

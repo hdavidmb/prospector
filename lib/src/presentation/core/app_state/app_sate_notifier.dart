@@ -14,7 +14,6 @@ import '../../../features/interactions/application/interactions_providers.dart';
 import '../../../features/local_notifications/application/local_notifications_providers.dart';
 import '../../../features/statistics/application/statistics_providers.dart';
 import '../../../features/tags/application/tags_provider.dart';
-import '../../../features/tags/application/tags_state.dart';
 import '../../../features/user/application/user_info_providers.dart';
 import '../../../features/user/application/user_info_state.dart';
 import 'app_state.dart';
@@ -26,7 +25,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
   final FetchState contactsState;
   final FetchState interactionsState;
   final FetchState eventsState;
-  final TagsState tagsState;
+  final FetchState tagsState;
   final FetchState statisticsState;
   final Reader read;
   AppStateNotifier({
@@ -46,7 +45,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
         contactsState.isError ||
         interactionsState.isError ||
         eventsState.isError ||
-        tagsState == const TagsState.error() ||
+        tagsState.isError ||
         statisticsState.isError) {
       state = const AppState.error();
     } else if (defaultDataState == const AppDefaultDataState.ready()) {
@@ -63,7 +62,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
           if (interactionsState.isInitial) {
             read(interactionsNotifierProvider).getInteractions();
           }
-          if (tagsState == const TagsState.initial()) {
+          if (tagsState.isInitial) {
             read(tagsNotifierProvider).getTags();
           }
           if (eventsState.isInitial) {
@@ -85,7 +84,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
 
           if (contactsState.isReady &&
               interactionsState.isReady &&
-              tagsState == const TagsState.ready() &&
+              tagsState.isReady &&
               eventsState.isReady &&
               statisticsReady) {
             state = const AppState.authenticatedReady();
