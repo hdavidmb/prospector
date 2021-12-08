@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'source_image.dart';
 
@@ -37,6 +38,12 @@ mixin _$SourceImage {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? gallery,
+    TResult Function()? camera,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? gallery,
     TResult Function()? camera,
@@ -47,6 +54,12 @@ mixin _$SourceImage {
   TResult map<TResult extends Object?>({
     required TResult Function(Gallery value) gallery,
     required TResult Function(Camera value) camera,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Gallery value)? gallery,
+    TResult Function(Camera value)? camera,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -119,6 +132,15 @@ class _$Gallery implements Gallery {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? gallery,
+    TResult Function()? camera,
+  }) {
+    return gallery?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? gallery,
     TResult Function()? camera,
@@ -137,6 +159,15 @@ class _$Gallery implements Gallery {
     required TResult Function(Camera value) camera,
   }) {
     return gallery(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Gallery value)? gallery,
+    TResult Function(Camera value)? camera,
+  }) {
+    return gallery?.call(this);
   }
 
   @override
@@ -202,6 +233,15 @@ class _$Camera implements Camera {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? gallery,
+    TResult Function()? camera,
+  }) {
+    return camera?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? gallery,
     TResult Function()? camera,
@@ -220,6 +260,15 @@ class _$Camera implements Camera {
     required TResult Function(Camera value) camera,
   }) {
     return camera(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Gallery value)? gallery,
+    TResult Function(Camera value)? camera,
+  }) {
+    return camera?.call(this);
   }
 
   @override

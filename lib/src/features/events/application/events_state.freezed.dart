@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'events_state.dart';
 
@@ -47,6 +48,14 @@ mixin _$EventsState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetching,
+    TResult Function()? ready,
+    TResult Function()? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetching,
@@ -61,6 +70,14 @@ mixin _$EventsState {
     required TResult Function(Fetching value) fetching,
     required TResult Function(Ready value) ready,
     required TResult Function(Error value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Fetching value)? fetching,
+    TResult Function(Ready value)? ready,
+    TResult Function(Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -137,6 +154,17 @@ class _$Initial extends Initial {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetching,
+    TResult Function()? ready,
+    TResult Function()? error,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetching,
@@ -159,6 +187,17 @@ class _$Initial extends Initial {
     required TResult Function(Error value) error,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Fetching value)? fetching,
+    TResult Function(Ready value)? ready,
+    TResult Function(Error value)? error,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -229,6 +268,17 @@ class _$Fetching extends Fetching {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetching,
+    TResult Function()? ready,
+    TResult Function()? error,
+  }) {
+    return fetching?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetching,
@@ -251,6 +301,17 @@ class _$Fetching extends Fetching {
     required TResult Function(Error value) error,
   }) {
     return fetching(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Fetching value)? fetching,
+    TResult Function(Ready value)? ready,
+    TResult Function(Error value)? error,
+  }) {
+    return fetching?.call(this);
   }
 
   @override
@@ -321,6 +382,17 @@ class _$Ready extends Ready {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetching,
+    TResult Function()? ready,
+    TResult Function()? error,
+  }) {
+    return ready?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetching,
@@ -343,6 +415,17 @@ class _$Ready extends Ready {
     required TResult Function(Error value) error,
   }) {
     return ready(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Fetching value)? fetching,
+    TResult Function(Ready value)? ready,
+    TResult Function(Error value)? error,
+  }) {
+    return ready?.call(this);
   }
 
   @override
@@ -413,6 +496,17 @@ class _$Error extends Error {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetching,
+    TResult Function()? ready,
+    TResult Function()? error,
+  }) {
+    return error?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetching,
@@ -435,6 +529,17 @@ class _$Error extends Error {
     required TResult Function(Error value) error,
   }) {
     return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Fetching value)? fetching,
+    TResult Function(Ready value)? ready,
+    TResult Function(Error value)? error,
+  }) {
+    return error?.call(this);
   }
 
   @override
