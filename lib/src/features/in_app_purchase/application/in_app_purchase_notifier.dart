@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/fetch_state/fetch_state.dart';
 import '../../../presentation/pages/user_panel/membership/logic/membership_providers.dart';
 import '../../analytics/firebase_analytics_providers.dart';
 import '../../user/application/user_info_providers.dart';
@@ -9,7 +10,6 @@ import '../domain/entities/iap_package.dart';
 import '../domain/entities/iap_purchaser_info.dart';
 import '../domain/failures/iap_failure.dart';
 import '../domain/in_app_purchase_use_cases.dart';
-import 'fetch_state.dart';
 
 class InAppPurchaseNotifier extends ChangeNotifier {
   final InAppPurchaseUseCases inAppPurchaseUseCases;
