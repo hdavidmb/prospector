@@ -8,7 +8,6 @@ import '../../../features/app_default_data/application/app_default_data_state.da
 import '../../../features/auth/application/auth_state.dart';
 import '../../../features/contacts/application/contacts_providers.dart';
 import '../../../features/events/application/events_providers.dart';
-import '../../../features/events/application/events_state.dart';
 import '../../../features/import_contacts/application/import_contacts_providers.dart';
 import '../../../features/in_app_purchase/application/in_app_purchase_providers.dart';
 import '../../../features/interactions/application/interactions_providers.dart';
@@ -27,7 +26,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
   final UserInfoState userInfoState;
   final FetchState contactsState;
   final InteractionsState interactionsState;
-  final EventsState eventsState;
+  final FetchState eventsState;
   final TagsState tagsState;
   final FetchState statisticsState;
   final Reader read;
@@ -47,7 +46,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
         userInfoState == const UserInfoState.error() ||
         contactsState.isError ||
         interactionsState == const InteractionsState.error() ||
-        eventsState == const EventsState.error() ||
+        eventsState.isError ||
         tagsState == const TagsState.error() ||
         statisticsState.isError) {
       state = const AppState.error();
@@ -68,7 +67,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
           if (tagsState == const TagsState.initial()) {
             read(tagsNotifierProvider).getTags();
           }
-          if (eventsState == const EventsState.initial()) {
+          if (eventsState.isInitial) {
             read(eventsNotifierProvider).getEvents();
           }
 
@@ -88,7 +87,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
           if (contactsState.isReady &&
               interactionsState == const InteractionsState.ready() &&
               tagsState == const TagsState.ready() &&
-              eventsState == const EventsState.ready() &&
+              eventsState.isReady &&
               statisticsReady) {
             state = const AppState.authenticatedReady();
             read(localNotificationsProvider)

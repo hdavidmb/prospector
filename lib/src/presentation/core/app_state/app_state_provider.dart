@@ -6,7 +6,6 @@ import '../../../features/app_default_data/application/app_default_data_state.da
 import '../../../features/auth/application/auth_providers.dart';
 import '../../../features/contacts/application/contacts_providers.dart';
 import '../../../features/events/application/events_providers.dart';
-import '../../../features/events/application/events_state.dart';
 import '../../../features/interactions/application/interactions_providers.dart';
 import '../../../features/interactions/application/interactions_state.dart';
 import '../../../features/statistics/application/statistics_providers.dart';
@@ -29,8 +28,7 @@ final appStateNotifierProvider =
   final InteractionsState _interactionsState =
       ref.watch(interactionsNotifierProvider).interactionsState;
   final TagsState _tagsState = ref.watch(tagsNotifierProvider).tagsState;
-  final EventsState _eventsState =
-      ref.watch(eventsNotifierProvider).eventsState;
+  final FetchState _eventsState = ref.watch(eventsNotifierProvider).eventsState;
   final FetchState _statisticsState =
       ref.watch(statisticsNotifierProvider).statisticsState;
   return AppStateNotifier(
