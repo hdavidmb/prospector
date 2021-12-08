@@ -2,7 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/fetch_state/fetch_state.dart';
 import '../../../features/app_default_data/application/app_default_data_providers.dart';
-import '../../../features/app_default_data/application/app_default_data_state.dart';
 import '../../../features/auth/application/auth_providers.dart';
 import '../../../features/contacts/application/contacts_providers.dart';
 import '../../../features/events/application/events_providers.dart';
@@ -16,7 +15,7 @@ import 'app_state.dart';
 final appStateNotifierProvider =
     StateNotifierProvider<AppStateNotifier, AppState>((ref) {
   final AuthState _authState = ref.watch(authStateNotifierProvider);
-  final AppDefaultDataState _defaultDataState =
+  final FetchState _defaultDataState =
       ref.watch(appDefaultDataProvider).defaultDataState;
   final FetchState _userInfoState =
       ref.watch(userInfoNotifierProvider).userInfoState;

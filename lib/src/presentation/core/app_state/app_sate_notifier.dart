@@ -4,7 +4,6 @@ import '../../../core/fetch_state/fetch_state.dart';
 import '../../../features/admob/application/ads_providers.dart';
 import '../../../features/analytics/firebase_analytics_providers.dart';
 import '../../../features/app_default_data/application/app_default_data_providers.dart';
-import '../../../features/app_default_data/application/app_default_data_state.dart';
 import '../../../features/auth/application/auth_state.dart';
 import '../../../features/contacts/application/contacts_providers.dart';
 import '../../../features/events/application/events_providers.dart';
@@ -19,7 +18,7 @@ import 'app_state.dart';
 
 class AppStateNotifier extends StateNotifier<AppState> {
   final AuthState authState;
-  final AppDefaultDataState defaultDataState;
+  final FetchState defaultDataState;
   final FetchState userInfoState;
   final FetchState contactsState;
   final FetchState interactionsState;
@@ -39,7 +38,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
     required this.read,
   }) : super(const AppState.initial()) {
     if (authState == const AuthState.error() ||
-        defaultDataState == const AppDefaultDataState.error() ||
+        defaultDataState.isError ||
         userInfoState.isError ||
         contactsState.isError ||
         interactionsState.isError ||
@@ -47,7 +46,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
         tagsState.isError ||
         statisticsState.isError) {
       state = const AppState.error();
-    } else if (defaultDataState == const AppDefaultDataState.ready()) {
+    } else if (defaultDataState.isReady) {
       if (authState == const AuthState.authenticated()) {
         read(localNotificationsProvider).initializeLocalNotifications();
         read(inAppPurchaseNotifier).getPackages();

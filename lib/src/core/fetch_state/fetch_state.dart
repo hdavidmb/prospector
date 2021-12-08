@@ -2,7 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'fetch_state.freezed.dart';
 
-// TODO: unify all fetchable objects state
 @freezed
 class FetchState with _$FetchState {
   const FetchState._();

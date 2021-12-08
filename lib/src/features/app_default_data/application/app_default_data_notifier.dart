@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:prospector/src/core/fetch_state/fetch_state.dart';
 
 import '../../../../generated/l10n.dart';
 import '../domain/entities/status_entity.dart';
 import '../domain/entities/subscription_entity.dart';
 import '../domain/use_cases/get_statuses.dart';
 import '../domain/use_cases/get_subscriptions.dart';
-import 'app_default_data_state.dart';
 
 class AppDefaultDataNotifier extends ChangeNotifier {
   final GetStatuses getStatuses;
@@ -16,8 +16,8 @@ class AppDefaultDataNotifier extends ChangeNotifier {
     required this.getSubscriptions,
   });
 
-  AppDefaultDataState _defaultDataState = const AppDefaultDataState.initial();
-  void reset() => _defaultDataState = const AppDefaultDataState.initial();
+  FetchState _defaultDataState = const FetchState.initial();
+  void reset() => _defaultDataState = const FetchState.initial();
 
   late List<Status> _statuses;
   late String _notInterestedID;
@@ -30,7 +30,7 @@ class AppDefaultDataNotifier extends ChangeNotifier {
 
   List<Status> get statuses => _statuses;
   List<Subscription> get subscriptions => _subscriptions;
-  AppDefaultDataState get defaultDataState => _defaultDataState;
+  FetchState get defaultDataState => _defaultDataState;
 
   String get notInterestedID => _notInterestedID;
   String get notContactedID => _notContactedID;
@@ -50,7 +50,7 @@ class AppDefaultDataNotifier extends ChangeNotifier {
 
     final statusesResult = await getStatuses();
     statusesResult.fold(
-      (_) => _defaultDataState = const AppDefaultDataState.error(),
+      (_) => _defaultDataState = const FetchState.error(),
       (statuses) {
         _statuses = statuses;
         _notInterestedID =
@@ -70,7 +70,7 @@ class AppDefaultDataNotifier extends ChangeNotifier {
 
     final subscriptionsResult = await getSubscriptions();
     subscriptionsResult.fold(
-      (_) => _defaultDataState = const AppDefaultDataState.error(),
+      (_) => _defaultDataState = const FetchState.error(),
       (subscriptions) {
         _subscriptions = subscriptions;
         subscriptionsReady = true;
@@ -78,7 +78,7 @@ class AppDefaultDataNotifier extends ChangeNotifier {
     );
 
     if (statusesReady && subscriptionsReady) {
-      _defaultDataState = const AppDefaultDataState.ready();
+      _defaultDataState = const FetchState.ready();
     }
     notifyListeners();
   }
