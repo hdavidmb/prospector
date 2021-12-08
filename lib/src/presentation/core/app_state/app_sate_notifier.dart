@@ -11,7 +11,6 @@ import '../../../features/events/application/events_providers.dart';
 import '../../../features/import_contacts/application/import_contacts_providers.dart';
 import '../../../features/in_app_purchase/application/in_app_purchase_providers.dart';
 import '../../../features/interactions/application/interactions_providers.dart';
-import '../../../features/interactions/application/interactions_state.dart';
 import '../../../features/local_notifications/application/local_notifications_providers.dart';
 import '../../../features/statistics/application/statistics_providers.dart';
 import '../../../features/tags/application/tags_provider.dart';
@@ -25,7 +24,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
   final AppDefaultDataState defaultDataState;
   final UserInfoState userInfoState;
   final FetchState contactsState;
-  final InteractionsState interactionsState;
+  final FetchState interactionsState;
   final FetchState eventsState;
   final TagsState tagsState;
   final FetchState statisticsState;
@@ -45,7 +44,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
         defaultDataState == const AppDefaultDataState.error() ||
         userInfoState == const UserInfoState.error() ||
         contactsState.isError ||
-        interactionsState == const InteractionsState.error() ||
+        interactionsState.isError ||
         eventsState.isError ||
         tagsState == const TagsState.error() ||
         statisticsState.isError) {
@@ -61,7 +60,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
           if (contactsState.isInitial) {
             read(contactsNotifierProvider).getContacts();
           }
-          if (interactionsState == const InteractionsState.initial()) {
+          if (interactionsState.isInitial) {
             read(interactionsNotifierProvider).getInteractions();
           }
           if (tagsState == const TagsState.initial()) {
@@ -85,7 +84,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
               (isPremiumUser && statisticsState.isReady) || !isPremiumUser;
 
           if (contactsState.isReady &&
-              interactionsState == const InteractionsState.ready() &&
+              interactionsState.isReady &&
               tagsState == const TagsState.ready() &&
               eventsState.isReady &&
               statisticsReady) {
