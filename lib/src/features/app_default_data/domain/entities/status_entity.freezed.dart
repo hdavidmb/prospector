@@ -17,9 +17,7 @@ class _$StatusTearOff {
   const _$StatusTearOff();
 
   _Status call(
-      {@HiveField(0) required String id,
-      @HiveField(1) required String key,
-      @HiveField(2) required DateTime created}) {
+      {required String id, required String key, required DateTime created}) {
     return _Status(
       id: id,
       key: key,
@@ -33,11 +31,8 @@ const $Status = _$StatusTearOff();
 
 /// @nodoc
 mixin _$Status {
-  @HiveField(0)
   String get id => throw _privateConstructorUsedError;
-  @HiveField(1)
   String get key => throw _privateConstructorUsedError;
-  @HiveField(2)
   DateTime get created => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -48,10 +43,7 @@ mixin _$Status {
 abstract class $StatusCopyWith<$Res> {
   factory $StatusCopyWith(Status value, $Res Function(Status) then) =
       _$StatusCopyWithImpl<$Res>;
-  $Res call(
-      {@HiveField(0) String id,
-      @HiveField(1) String key,
-      @HiveField(2) DateTime created});
+  $Res call({String id, String key, DateTime created});
 }
 
 /// @nodoc
@@ -90,10 +82,7 @@ abstract class _$StatusCopyWith<$Res> implements $StatusCopyWith<$Res> {
   factory _$StatusCopyWith(_Status value, $Res Function(_Status) then) =
       __$StatusCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {@HiveField(0) String id,
-      @HiveField(1) String key,
-      @HiveField(2) DateTime created});
+  $Res call({String id, String key, DateTime created});
 }
 
 /// @nodoc
@@ -130,22 +119,15 @@ class __$StatusCopyWithImpl<$Res> extends _$StatusCopyWithImpl<$Res>
 
 /// @nodoc
 
-@HiveType(typeId: 0)
 class _$_Status extends _Status {
-  const _$_Status(
-      {@HiveField(0) required this.id,
-      @HiveField(1) required this.key,
-      @HiveField(2) required this.created})
+  const _$_Status({required this.id, required this.key, required this.created})
       : super._();
 
   @override
-  @HiveField(0)
   final String id;
   @override
-  @HiveField(1)
   final String key;
   @override
-  @HiveField(2)
   final DateTime created;
 
   @override
@@ -180,19 +162,16 @@ class _$_Status extends _Status {
 
 abstract class _Status extends Status {
   const factory _Status(
-      {@HiveField(0) required String id,
-      @HiveField(1) required String key,
-      @HiveField(2) required DateTime created}) = _$_Status;
+      {required String id,
+      required String key,
+      required DateTime created}) = _$_Status;
   const _Status._() : super._();
 
   @override
-  @HiveField(0)
   String get id => throw _privateConstructorUsedError;
   @override
-  @HiveField(1)
   String get key => throw _privateConstructorUsedError;
   @override
-  @HiveField(2)
   DateTime get created => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

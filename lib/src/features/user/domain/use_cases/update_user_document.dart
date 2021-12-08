@@ -14,13 +14,14 @@ class UpdateUserDocument {
 
   Future<Either<UserInfoFailure, UserEntity>> call(UserEntity user) async {
     final newUserInfo = user.copyWith(modified: DateTime.now());
-    final localUpdate = await localUserInfoRepository.updateUserDocument(newUserInfo);
+    final localUpdate =
+        await localUserInfoRepository.updateUserDocument(newUserInfo.toMap());
     final remoteUpdate =
-        await remoteUserInfoRepository.updateUserDocument(newUserInfo);
+        await remoteUserInfoRepository.updateUserDocument(newUserInfo.toMap());
     if (localUpdate.isLeft() || remoteUpdate.isLeft()) {
       return left(const UserInfoFailure.serverError());
     } else {
-      return right(newUserInfo); 
+      return right(newUserInfo);
     }
   }
 }

@@ -17,17 +17,17 @@ class _$UserEntityTearOff {
   const _$UserEntityTearOff();
 
   _UserEntity call(
-      {@HiveField(0) required String uid,
-      @HiveField(1) required String name,
-      @HiveField(2) required String subscription,
-      @HiveField(3) required DateTime expiryDate,
-      @HiveField(4) required DateTime created,
-      @HiveField(5) required DateTime modified,
-      @HiveField(6) String? email,
-      @HiveField(7) String? photoURL,
-      @HiveField(8) String? subscriptionSKU,
-      @HiveField(9) String? countryCode,
-      @HiveField(10) String? dialCode}) {
+      {required String uid,
+      required String name,
+      required String subscription,
+      required DateTime expiryDate,
+      required DateTime created,
+      required DateTime modified,
+      String? email,
+      String? photoURL,
+      String? subscriptionSKU,
+      String? countryCode,
+      String? dialCode}) {
     return _UserEntity(
       uid: uid,
       name: name,
@@ -49,27 +49,16 @@ const $UserEntity = _$UserEntityTearOff();
 
 /// @nodoc
 mixin _$UserEntity {
-  @HiveField(0)
   String get uid => throw _privateConstructorUsedError;
-  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
-  @HiveField(2)
   String get subscription => throw _privateConstructorUsedError;
-  @HiveField(3)
   DateTime get expiryDate => throw _privateConstructorUsedError;
-  @HiveField(4)
   DateTime get created => throw _privateConstructorUsedError;
-  @HiveField(5)
   DateTime get modified => throw _privateConstructorUsedError;
-  @HiveField(6)
   String? get email => throw _privateConstructorUsedError;
-  @HiveField(7)
   String? get photoURL => throw _privateConstructorUsedError;
-  @HiveField(8)
   String? get subscriptionSKU => throw _privateConstructorUsedError;
-  @HiveField(9)
   String? get countryCode => throw _privateConstructorUsedError;
-  @HiveField(10)
   String? get dialCode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -83,17 +72,17 @@ abstract class $UserEntityCopyWith<$Res> {
           UserEntity value, $Res Function(UserEntity) then) =
       _$UserEntityCopyWithImpl<$Res>;
   $Res call(
-      {@HiveField(0) String uid,
-      @HiveField(1) String name,
-      @HiveField(2) String subscription,
-      @HiveField(3) DateTime expiryDate,
-      @HiveField(4) DateTime created,
-      @HiveField(5) DateTime modified,
-      @HiveField(6) String? email,
-      @HiveField(7) String? photoURL,
-      @HiveField(8) String? subscriptionSKU,
-      @HiveField(9) String? countryCode,
-      @HiveField(10) String? dialCode});
+      {String uid,
+      String name,
+      String subscription,
+      DateTime expiryDate,
+      DateTime created,
+      DateTime modified,
+      String? email,
+      String? photoURL,
+      String? subscriptionSKU,
+      String? countryCode,
+      String? dialCode});
 }
 
 /// @nodoc
@@ -174,17 +163,17 @@ abstract class _$UserEntityCopyWith<$Res> implements $UserEntityCopyWith<$Res> {
       __$UserEntityCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@HiveField(0) String uid,
-      @HiveField(1) String name,
-      @HiveField(2) String subscription,
-      @HiveField(3) DateTime expiryDate,
-      @HiveField(4) DateTime created,
-      @HiveField(5) DateTime modified,
-      @HiveField(6) String? email,
-      @HiveField(7) String? photoURL,
-      @HiveField(8) String? subscriptionSKU,
-      @HiveField(9) String? countryCode,
-      @HiveField(10) String? dialCode});
+      {String uid,
+      String name,
+      String subscription,
+      DateTime expiryDate,
+      DateTime created,
+      DateTime modified,
+      String? email,
+      String? photoURL,
+      String? subscriptionSKU,
+      String? countryCode,
+      String? dialCode});
 }
 
 /// @nodoc
@@ -262,54 +251,42 @@ class __$UserEntityCopyWithImpl<$Res> extends _$UserEntityCopyWithImpl<$Res>
 
 /// @nodoc
 
-@HiveType(typeId: 2)
 class _$_UserEntity extends _UserEntity {
   const _$_UserEntity(
-      {@HiveField(0) required this.uid,
-      @HiveField(1) required this.name,
-      @HiveField(2) required this.subscription,
-      @HiveField(3) required this.expiryDate,
-      @HiveField(4) required this.created,
-      @HiveField(5) required this.modified,
-      @HiveField(6) this.email,
-      @HiveField(7) this.photoURL,
-      @HiveField(8) this.subscriptionSKU,
-      @HiveField(9) this.countryCode,
-      @HiveField(10) this.dialCode})
+      {required this.uid,
+      required this.name,
+      required this.subscription,
+      required this.expiryDate,
+      required this.created,
+      required this.modified,
+      this.email,
+      this.photoURL,
+      this.subscriptionSKU,
+      this.countryCode,
+      this.dialCode})
       : super._();
 
   @override
-  @HiveField(0)
   final String uid;
   @override
-  @HiveField(1)
   final String name;
   @override
-  @HiveField(2)
   final String subscription;
   @override
-  @HiveField(3)
   final DateTime expiryDate;
   @override
-  @HiveField(4)
   final DateTime created;
   @override
-  @HiveField(5)
   final DateTime modified;
   @override
-  @HiveField(6)
   final String? email;
   @override
-  @HiveField(7)
   final String? photoURL;
   @override
-  @HiveField(8)
   final String? subscriptionSKU;
   @override
-  @HiveField(9)
   final String? countryCode;
   @override
-  @HiveField(10)
   final String? dialCode;
 
   @override
@@ -376,51 +353,40 @@ class _$_UserEntity extends _UserEntity {
 
 abstract class _UserEntity extends UserEntity {
   const factory _UserEntity(
-      {@HiveField(0) required String uid,
-      @HiveField(1) required String name,
-      @HiveField(2) required String subscription,
-      @HiveField(3) required DateTime expiryDate,
-      @HiveField(4) required DateTime created,
-      @HiveField(5) required DateTime modified,
-      @HiveField(6) String? email,
-      @HiveField(7) String? photoURL,
-      @HiveField(8) String? subscriptionSKU,
-      @HiveField(9) String? countryCode,
-      @HiveField(10) String? dialCode}) = _$_UserEntity;
+      {required String uid,
+      required String name,
+      required String subscription,
+      required DateTime expiryDate,
+      required DateTime created,
+      required DateTime modified,
+      String? email,
+      String? photoURL,
+      String? subscriptionSKU,
+      String? countryCode,
+      String? dialCode}) = _$_UserEntity;
   const _UserEntity._() : super._();
 
   @override
-  @HiveField(0)
   String get uid => throw _privateConstructorUsedError;
   @override
-  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
   @override
-  @HiveField(2)
   String get subscription => throw _privateConstructorUsedError;
   @override
-  @HiveField(3)
   DateTime get expiryDate => throw _privateConstructorUsedError;
   @override
-  @HiveField(4)
   DateTime get created => throw _privateConstructorUsedError;
   @override
-  @HiveField(5)
   DateTime get modified => throw _privateConstructorUsedError;
   @override
-  @HiveField(6)
   String? get email => throw _privateConstructorUsedError;
   @override
-  @HiveField(7)
   String? get photoURL => throw _privateConstructorUsedError;
   @override
-  @HiveField(8)
   String? get subscriptionSKU => throw _privateConstructorUsedError;
   @override
-  @HiveField(9)
   String? get countryCode => throw _privateConstructorUsedError;
   @override
-  @HiveField(10)
   String? get dialCode => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

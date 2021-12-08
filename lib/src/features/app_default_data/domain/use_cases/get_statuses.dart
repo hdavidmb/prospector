@@ -22,12 +22,17 @@ class GetStatuses {
           return left(failure);
         },
         (statuses) {
-          localRepository.saveStatuses(statuses: statuses);
+          final List<Map<String, dynamic>> statusesMapsList =
+              statuses.map((status) => status.toMap()).toList();
+          localRepository.saveStatuses(statuses: statusesMapsList);
           return right(statuses);
         },
       );
     }
-    final statuses = await localRepository.getStatuses();
+    final List<Map<String, dynamic>> statusesMapsList =
+        await localRepository.getStatuses();
+    final List<Status> statuses =
+        statusesMapsList.map((statusMap) => Status.fromMap(statusMap)).toList();
     return right(statuses);
   }
 }
