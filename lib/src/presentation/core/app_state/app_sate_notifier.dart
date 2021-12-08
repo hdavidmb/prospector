@@ -15,13 +15,12 @@ import '../../../features/local_notifications/application/local_notifications_pr
 import '../../../features/statistics/application/statistics_providers.dart';
 import '../../../features/tags/application/tags_provider.dart';
 import '../../../features/user/application/user_info_providers.dart';
-import '../../../features/user/application/user_info_state.dart';
 import 'app_state.dart';
 
 class AppStateNotifier extends StateNotifier<AppState> {
   final AuthState authState;
   final AppDefaultDataState defaultDataState;
-  final UserInfoState userInfoState;
+  final FetchState userInfoState;
   final FetchState contactsState;
   final FetchState interactionsState;
   final FetchState eventsState;
@@ -41,7 +40,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
   }) : super(const AppState.initial()) {
     if (authState == const AuthState.error() ||
         defaultDataState == const AppDefaultDataState.error() ||
-        userInfoState == const UserInfoState.error() ||
+        userInfoState.isError ||
         contactsState.isError ||
         interactionsState.isError ||
         eventsState.isError ||
@@ -53,7 +52,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
         read(localNotificationsProvider).initializeLocalNotifications();
         read(inAppPurchaseNotifier).getPackages();
         // TODO check if this post authentication logic can be handled from authStateNotifier
-        if (userInfoState == const UserInfoState.ready()) {
+        if (userInfoState.isReady) {
           read(inAppPurchaseNotifier).logInPurchaser();
           read(firebaseAnalyticsServiceProvider).setUserProperties();
           if (contactsState.isInitial) {
@@ -91,7 +90,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
             read(localNotificationsProvider)
                 .handleAppLaunchedFromNotification();
           }
-        } else if (userInfoState == const UserInfoState.initial()) {
+        } else if (userInfoState.isInitial) {
           Future.delayed(const Duration(milliseconds: 300),
               () => read(userInfoNotifierProvider).getOrCreateUser());
         }
