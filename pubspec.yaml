@@ -30,7 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.3
   dartz: ^0.10.1
   firebase_analytics: ^8.3.4
-  firebase_auth: ^3.0.1
+  firebase_auth: ^3.3.4
   firebase_core: ^1.10.5
   firebase_storage: ^10.2.3
   flash: ^2.0.3
