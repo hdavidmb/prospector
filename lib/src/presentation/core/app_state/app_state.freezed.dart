@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'app_state.dart';
 
@@ -47,6 +48,14 @@ mixin _$AppState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? unauthenticatedReady,
+    TResult Function()? authenticatedReady,
+    TResult Function()? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? unauthenticatedReady,
@@ -61,6 +70,14 @@ mixin _$AppState {
     required TResult Function(UnathenticatedReady value) unauthenticatedReady,
     required TResult Function(AthenticatedReady value) authenticatedReady,
     required TResult Function(Error value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(UnathenticatedReady value)? unauthenticatedReady,
+    TResult Function(AthenticatedReady value)? authenticatedReady,
+    TResult Function(Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -136,6 +153,17 @@ class _$Initial implements Initial {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? unauthenticatedReady,
+    TResult Function()? authenticatedReady,
+    TResult Function()? error,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? unauthenticatedReady,
@@ -158,6 +186,17 @@ class _$Initial implements Initial {
     required TResult Function(Error value) error,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(UnathenticatedReady value)? unauthenticatedReady,
+    TResult Function(AthenticatedReady value)? authenticatedReady,
+    TResult Function(Error value)? error,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -230,6 +269,17 @@ class _$UnathenticatedReady implements UnathenticatedReady {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? unauthenticatedReady,
+    TResult Function()? authenticatedReady,
+    TResult Function()? error,
+  }) {
+    return unauthenticatedReady?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? unauthenticatedReady,
@@ -252,6 +302,17 @@ class _$UnathenticatedReady implements UnathenticatedReady {
     required TResult Function(Error value) error,
   }) {
     return unauthenticatedReady(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(UnathenticatedReady value)? unauthenticatedReady,
+    TResult Function(AthenticatedReady value)? authenticatedReady,
+    TResult Function(Error value)? error,
+  }) {
+    return unauthenticatedReady?.call(this);
   }
 
   @override
@@ -323,6 +384,17 @@ class _$AthenticatedReady implements AthenticatedReady {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? unauthenticatedReady,
+    TResult Function()? authenticatedReady,
+    TResult Function()? error,
+  }) {
+    return authenticatedReady?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? unauthenticatedReady,
@@ -345,6 +417,17 @@ class _$AthenticatedReady implements AthenticatedReady {
     required TResult Function(Error value) error,
   }) {
     return authenticatedReady(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(UnathenticatedReady value)? unauthenticatedReady,
+    TResult Function(AthenticatedReady value)? authenticatedReady,
+    TResult Function(Error value)? error,
+  }) {
+    return authenticatedReady?.call(this);
   }
 
   @override
@@ -414,6 +497,17 @@ class _$Error implements Error {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? unauthenticatedReady,
+    TResult Function()? authenticatedReady,
+    TResult Function()? error,
+  }) {
+    return error?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? unauthenticatedReady,
@@ -436,6 +530,17 @@ class _$Error implements Error {
     required TResult Function(Error value) error,
   }) {
     return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(UnathenticatedReady value)? unauthenticatedReady,
+    TResult Function(AthenticatedReady value)? authenticatedReady,
+    TResult Function(Error value)? error,
+  }) {
+    return error?.call(this);
   }
 
   @override

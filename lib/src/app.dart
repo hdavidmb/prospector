@@ -61,6 +61,7 @@ class _AppState extends State<App> {
           },
           error: (_) async {
             if (!showingDialog) {
+              //TODO: use postframe
               showingDialog = true;
               await showMessageDialog(
                   context: context,

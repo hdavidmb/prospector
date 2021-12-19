@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'import_contacts_state.dart';
 
@@ -49,6 +50,14 @@ mixin _$ImportContactsState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetching,
+    TResult Function(ImportContactsFailure failure)? error,
+    TResult Function()? ready,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetching,
@@ -63,6 +72,14 @@ mixin _$ImportContactsState {
     required TResult Function(Fetching value) fetching,
     required TResult Function(Error value) error,
     required TResult Function(Ready value) ready,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Fetching value)? fetching,
+    TResult Function(Error value)? error,
+    TResult Function(Ready value)? ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -141,6 +158,17 @@ class _$Initial implements Initial {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetching,
+    TResult Function(ImportContactsFailure failure)? error,
+    TResult Function()? ready,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetching,
@@ -163,6 +191,17 @@ class _$Initial implements Initial {
     required TResult Function(Ready value) ready,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Fetching value)? fetching,
+    TResult Function(Error value)? error,
+    TResult Function(Ready value)? ready,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -233,6 +272,17 @@ class _$Fetching implements Fetching {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetching,
+    TResult Function(ImportContactsFailure failure)? error,
+    TResult Function()? ready,
+  }) {
+    return fetching?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetching,
@@ -255,6 +305,17 @@ class _$Fetching implements Fetching {
     required TResult Function(Ready value) ready,
   }) {
     return fetching(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Fetching value)? fetching,
+    TResult Function(Error value)? error,
+    TResult Function(Ready value)? ready,
+  }) {
+    return fetching?.call(this);
   }
 
   @override
@@ -358,6 +419,17 @@ class _$Error implements Error {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetching,
+    TResult Function(ImportContactsFailure failure)? error,
+    TResult Function()? ready,
+  }) {
+    return error?.call(failure);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetching,
@@ -380,6 +452,17 @@ class _$Error implements Error {
     required TResult Function(Ready value) ready,
   }) {
     return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Fetching value)? fetching,
+    TResult Function(Error value)? error,
+    TResult Function(Ready value)? ready,
+  }) {
+    return error?.call(this);
   }
 
   @override
@@ -453,6 +536,17 @@ class _$Ready implements Ready {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetching,
+    TResult Function(ImportContactsFailure failure)? error,
+    TResult Function()? ready,
+  }) {
+    return ready?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetching,
@@ -475,6 +569,17 @@ class _$Ready implements Ready {
     required TResult Function(Ready value) ready,
   }) {
     return ready(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Fetching value)? fetching,
+    TResult Function(Error value)? error,
+    TResult Function(Ready value)? ready,
+  }) {
+    return ready?.call(this);
   }
 
   @override

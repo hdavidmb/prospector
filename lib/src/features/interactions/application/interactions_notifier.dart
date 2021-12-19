@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/core/fetch_state/fetch_state.dart';
 import 'package:random_string/random_string.dart';
 
 import '../../../../generated/l10n.dart';
@@ -11,7 +12,6 @@ import '../../contacts/domain/entity/contact_entity.dart';
 import '../../user/application/user_info_providers.dart';
 import '../domain/entity/interaction_entity.dart';
 import '../domain/interactions_use_cases.dart';
-import 'interactions_state.dart';
 
 class InteractionsNotifier extends ChangeNotifier {
   final InteractionsUseCases interactionsUseCases;
@@ -21,13 +21,13 @@ class InteractionsNotifier extends ChangeNotifier {
     required this.read,
   });
 
-  InteractionsState _interactionsState = const InteractionsState.initial();
+  FetchState _interactionsState = const FetchState.initial();
   late List<Interaction> _interactions;
 
-  InteractionsState get interactionsState => _interactionsState;
+  FetchState get interactionsState => _interactionsState;
   List<Interaction> get interactions => _interactions;
 
-  void reset() => _interactionsState = const InteractionsState.initial();
+  void reset() => _interactionsState = const FetchState.initial();
 
   Future<Either<DatabaseFailure, Unit>> createInteraction(
       Interaction interaction,
@@ -74,22 +74,22 @@ class InteractionsNotifier extends ChangeNotifier {
   }
 
   Future<void> getInteractions() async {
-    if (_interactionsState == const InteractionsState.initial()) {
-      _interactionsState = const InteractionsState.fetching();
+    if (_interactionsState.isInitial) {
+      _interactionsState = const FetchState.fetching();
       final uid = read(userInfoNotifierProvider).user?.uid;
       if (uid != null) {
         final getResult =
             await interactionsUseCases.getInteractionsList(uid: uid);
         getResult.fold(
-          (failure) => _interactionsState = const InteractionsState.error(),
+          (failure) => _interactionsState = const FetchState.error(),
           (interactionsList) {
             interactionsList.sort((a, b) => b.created.compareTo(a.created));
             _interactions = interactionsList;
-            _interactionsState = const InteractionsState.ready();
+            _interactionsState = const FetchState.ready();
           },
         );
       } else {
-        _interactionsState = const InteractionsState.error();
+        _interactionsState = const FetchState.error();
       }
       notifyListeners();
     }

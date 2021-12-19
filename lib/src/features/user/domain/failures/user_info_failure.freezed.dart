@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'user_info_failure.dart';
 
@@ -52,6 +53,15 @@ mixin _$UserInfoFailure {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? noConnection,
+    TResult Function()? noUser,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? serverError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noConnection,
     TResult Function()? noUser,
@@ -69,6 +79,16 @@ mixin _$UserInfoFailure {
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
     required TResult Function(ServerError value) serverError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(NoUser value)? noUser,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(ServerError value)? serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -152,6 +172,18 @@ class _$NoConnection implements NoConnection {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? noConnection,
+    TResult Function()? noUser,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? serverError,
+  }) {
+    return noConnection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noConnection,
     TResult Function()? noUser,
@@ -177,6 +209,19 @@ class _$NoConnection implements NoConnection {
     required TResult Function(ServerError value) serverError,
   }) {
     return noConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(NoUser value)? noUser,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(ServerError value)? serverError,
+  }) {
+    return noConnection?.call(this);
   }
 
   @override
@@ -249,6 +294,18 @@ class _$NoUser implements NoUser {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? noConnection,
+    TResult Function()? noUser,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? serverError,
+  }) {
+    return noUser?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noConnection,
     TResult Function()? noUser,
@@ -274,6 +331,19 @@ class _$NoUser implements NoUser {
     required TResult Function(ServerError value) serverError,
   }) {
     return noUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(NoUser value)? noUser,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(ServerError value)? serverError,
+  }) {
+    return noUser?.call(this);
   }
 
   @override
@@ -349,6 +419,18 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? noConnection,
+    TResult Function()? noUser,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? serverError,
+  }) {
+    return emailAlreadyInUse?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noConnection,
     TResult Function()? noUser,
@@ -374,6 +456,19 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     required TResult Function(ServerError value) serverError,
   }) {
     return emailAlreadyInUse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(NoUser value)? noUser,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(ServerError value)? serverError,
+  }) {
+    return emailAlreadyInUse?.call(this);
   }
 
   @override
@@ -454,6 +549,18 @@ class _$InvalidEmailAndPasswordCombination
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? noConnection,
+    TResult Function()? noUser,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? serverError,
+  }) {
+    return invalidEmailAndPasswordCombination?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noConnection,
     TResult Function()? noUser,
@@ -479,6 +586,19 @@ class _$InvalidEmailAndPasswordCombination
     required TResult Function(ServerError value) serverError,
   }) {
     return invalidEmailAndPasswordCombination(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(NoUser value)? noUser,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(ServerError value)? serverError,
+  }) {
+    return invalidEmailAndPasswordCombination?.call(this);
   }
 
   @override
@@ -555,6 +675,18 @@ class _$ServerError implements ServerError {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? noConnection,
+    TResult Function()? noUser,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? serverError,
+  }) {
+    return serverError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noConnection,
     TResult Function()? noUser,
@@ -580,6 +712,19 @@ class _$ServerError implements ServerError {
     required TResult Function(ServerError value) serverError,
   }) {
     return serverError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(NoUser value)? noUser,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(ServerError value)? serverError,
+  }) {
+    return serverError?.call(this);
   }
 
   @override

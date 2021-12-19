@@ -1,24 +1,21 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hive/hive.dart';
 
 part 'user_entity.freezed.dart';
-part 'user_entity.g.dart';
 
 @freezed
 class UserEntity with _$UserEntity {
-  @HiveType(typeId: 2)
   const factory UserEntity({
-    @HiveField(0) required String uid,
-    @HiveField(1) required String name,
-    @HiveField(2) required String subscription,
-    @HiveField(3) required DateTime expiryDate,
-    @HiveField(4) required DateTime created,
-    @HiveField(5) required DateTime modified,
-    @HiveField(6) String? email,
-    @HiveField(7) String? photoURL,
-    @HiveField(8) String? subscriptionSKU,
-    @HiveField(9) String? countryCode,
-    @HiveField(10) String? dialCode,
+    required String uid,
+    required String name,
+    required String subscription,
+    required DateTime expiryDate,
+    required DateTime created,
+    required DateTime modified,
+    String? email,
+    String? photoURL,
+    String? subscriptionSKU,
+    String? countryCode,
+    String? dialCode,
   }) = _UserEntity;
 
   const UserEntity._();

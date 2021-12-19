@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'import_contacts_failure.dart';
 
@@ -42,6 +43,13 @@ mixin _$ImportContactsFailure {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? accessDenied,
+    TResult Function()? serverError,
+    TResult Function()? noUserAuthenticated,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? accessDenied,
     TResult Function()? serverError,
@@ -54,6 +62,13 @@ mixin _$ImportContactsFailure {
     required TResult Function(AccessDenied value) accessDenied,
     required TResult Function(ServerError value) serverError,
     required TResult Function(NoUserAuthenticated value) noUserAuthenticated,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AccessDenied value)? accessDenied,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoUserAuthenticated value)? noUserAuthenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -132,6 +147,16 @@ class _$AccessDenied implements AccessDenied {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? accessDenied,
+    TResult Function()? serverError,
+    TResult Function()? noUserAuthenticated,
+  }) {
+    return accessDenied?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? accessDenied,
     TResult Function()? serverError,
@@ -152,6 +177,16 @@ class _$AccessDenied implements AccessDenied {
     required TResult Function(NoUserAuthenticated value) noUserAuthenticated,
   }) {
     return accessDenied(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AccessDenied value)? accessDenied,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoUserAuthenticated value)? noUserAuthenticated,
+  }) {
+    return accessDenied?.call(this);
   }
 
   @override
@@ -222,6 +257,16 @@ class _$ServerError implements ServerError {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? accessDenied,
+    TResult Function()? serverError,
+    TResult Function()? noUserAuthenticated,
+  }) {
+    return serverError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? accessDenied,
     TResult Function()? serverError,
@@ -242,6 +287,16 @@ class _$ServerError implements ServerError {
     required TResult Function(NoUserAuthenticated value) noUserAuthenticated,
   }) {
     return serverError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AccessDenied value)? accessDenied,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoUserAuthenticated value)? noUserAuthenticated,
+  }) {
+    return serverError?.call(this);
   }
 
   @override
@@ -312,6 +367,16 @@ class _$NoUserAuthenticated implements NoUserAuthenticated {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? accessDenied,
+    TResult Function()? serverError,
+    TResult Function()? noUserAuthenticated,
+  }) {
+    return noUserAuthenticated?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? accessDenied,
     TResult Function()? serverError,
@@ -332,6 +397,16 @@ class _$NoUserAuthenticated implements NoUserAuthenticated {
     required TResult Function(NoUserAuthenticated value) noUserAuthenticated,
   }) {
     return noUserAuthenticated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AccessDenied value)? accessDenied,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoUserAuthenticated value)? noUserAuthenticated,
+  }) {
+    return noUserAuthenticated?.call(this);
   }
 
   @override

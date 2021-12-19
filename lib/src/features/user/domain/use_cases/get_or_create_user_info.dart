@@ -78,7 +78,7 @@ class GetOrCreateUserInfo {
         await localUserInfoRepository.readUserDocument(uid: currentUserID);
     return localGetResult.fold(
       (failure) => left(failure),
-      (user) => right(user),
+      (user) => right(UserEntity.fromMap(user)),
     );
   }
 
@@ -90,7 +90,7 @@ class GetOrCreateUserInfo {
       (failure) => left(failure),
       (user) async {
         await localUserInfoRepository.createUserDocument(user);
-        return right(user);
+        return right(UserEntity.fromMap(user));
       },
     );
   }
@@ -110,8 +110,8 @@ class GetOrCreateUserInfo {
       email: (email.isNotEmpty) ? email : null,
       photoURL: (photoURL.isNotEmpty) ? photoURL : null,
     );
-    await localUserInfoRepository.createUserDocument(user);
-    await remoteUserInfoRepository.createUserDocument(user);
+    await localUserInfoRepository.createUserDocument(user.toMap());
+    await remoteUserInfoRepository.createUserDocument(user.toMap());
     return right(user);
   }
 }

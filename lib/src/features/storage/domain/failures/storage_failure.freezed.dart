@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'storage_failure.dart';
 
@@ -42,6 +43,13 @@ mixin _$StorageFailure {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? noConnection,
+    TResult Function()? invalidFormat,
+    TResult Function()? serverError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noConnection,
     TResult Function()? invalidFormat,
@@ -54,6 +62,13 @@ mixin _$StorageFailure {
     required TResult Function(NoConnection value) noConnection,
     required TResult Function(InvalidFormat value) invalidFormat,
     required TResult Function(ServerError value) serverError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(InvalidFormat value)? invalidFormat,
+    TResult Function(ServerError value)? serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -132,6 +147,16 @@ class _$NoConnection implements NoConnection {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? noConnection,
+    TResult Function()? invalidFormat,
+    TResult Function()? serverError,
+  }) {
+    return noConnection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noConnection,
     TResult Function()? invalidFormat,
@@ -152,6 +177,16 @@ class _$NoConnection implements NoConnection {
     required TResult Function(ServerError value) serverError,
   }) {
     return noConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(InvalidFormat value)? invalidFormat,
+    TResult Function(ServerError value)? serverError,
+  }) {
+    return noConnection?.call(this);
   }
 
   @override
@@ -222,6 +257,16 @@ class _$InvalidFormat implements InvalidFormat {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? noConnection,
+    TResult Function()? invalidFormat,
+    TResult Function()? serverError,
+  }) {
+    return invalidFormat?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noConnection,
     TResult Function()? invalidFormat,
@@ -242,6 +287,16 @@ class _$InvalidFormat implements InvalidFormat {
     required TResult Function(ServerError value) serverError,
   }) {
     return invalidFormat(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(InvalidFormat value)? invalidFormat,
+    TResult Function(ServerError value)? serverError,
+  }) {
+    return invalidFormat?.call(this);
   }
 
   @override
@@ -311,6 +366,16 @@ class _$ServerError implements ServerError {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? noConnection,
+    TResult Function()? invalidFormat,
+    TResult Function()? serverError,
+  }) {
+    return serverError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noConnection,
     TResult Function()? invalidFormat,
@@ -331,6 +396,16 @@ class _$ServerError implements ServerError {
     required TResult Function(ServerError value) serverError,
   }) {
     return serverError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(InvalidFormat value)? invalidFormat,
+    TResult Function(ServerError value)? serverError,
+  }) {
+    return serverError?.call(this);
   }
 
   @override

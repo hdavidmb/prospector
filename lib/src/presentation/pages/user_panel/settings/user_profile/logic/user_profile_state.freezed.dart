@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'user_profile_state.dart';
 
@@ -51,6 +52,14 @@ mixin _$UserProfileState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? submitting,
+    TResult Function(UserInfoFailure failure)? error,
+    TResult Function(AuthFailure failure)? reloginError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? submitting,
@@ -65,6 +74,14 @@ mixin _$UserProfileState {
     required TResult Function(Submitting value) submitting,
     required TResult Function(Error value) error,
     required TResult Function(ReloginError value) reloginError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Submitting value)? submitting,
+    TResult Function(Error value)? error,
+    TResult Function(ReloginError value)? reloginError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -142,6 +159,17 @@ class _$Initial implements Initial {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? submitting,
+    TResult Function(UserInfoFailure failure)? error,
+    TResult Function(AuthFailure failure)? reloginError,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? submitting,
@@ -164,6 +192,17 @@ class _$Initial implements Initial {
     required TResult Function(ReloginError value) reloginError,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Submitting value)? submitting,
+    TResult Function(Error value)? error,
+    TResult Function(ReloginError value)? reloginError,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -235,6 +274,17 @@ class _$Submitting implements Submitting {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? submitting,
+    TResult Function(UserInfoFailure failure)? error,
+    TResult Function(AuthFailure failure)? reloginError,
+  }) {
+    return submitting?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? submitting,
@@ -257,6 +307,17 @@ class _$Submitting implements Submitting {
     required TResult Function(ReloginError value) reloginError,
   }) {
     return submitting(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Submitting value)? submitting,
+    TResult Function(Error value)? error,
+    TResult Function(ReloginError value)? reloginError,
+  }) {
+    return submitting?.call(this);
   }
 
   @override
@@ -360,6 +421,17 @@ class _$Error implements Error {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? submitting,
+    TResult Function(UserInfoFailure failure)? error,
+    TResult Function(AuthFailure failure)? reloginError,
+  }) {
+    return error?.call(failure);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? submitting,
@@ -382,6 +454,17 @@ class _$Error implements Error {
     required TResult Function(ReloginError value) reloginError,
   }) {
     return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Submitting value)? submitting,
+    TResult Function(Error value)? error,
+    TResult Function(ReloginError value)? reloginError,
+  }) {
+    return error?.call(this);
   }
 
   @override
@@ -492,6 +575,17 @@ class _$ReloginError implements ReloginError {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? submitting,
+    TResult Function(UserInfoFailure failure)? error,
+    TResult Function(AuthFailure failure)? reloginError,
+  }) {
+    return reloginError?.call(failure);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? submitting,
@@ -514,6 +608,17 @@ class _$ReloginError implements ReloginError {
     required TResult Function(ReloginError value) reloginError,
   }) {
     return reloginError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Submitting value)? submitting,
+    TResult Function(Error value)? error,
+    TResult Function(ReloginError value)? reloginError,
+  }) {
+    return reloginError?.call(this);
   }
 
   @override

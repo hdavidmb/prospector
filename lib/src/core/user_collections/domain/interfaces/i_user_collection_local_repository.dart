@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 
 import '../../../database/database_failures/database_failure.dart';
 
-//TODO: proposal - unify local and remote repositories interface. The only difference is the collection exists method and can be ingnored in the remote implementation
 abstract class IUserCollectionLocalRepository {
   // Check existance
   Future<Either<DatabaseFailure, bool>> collectionExists({required String uid});

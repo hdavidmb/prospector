@@ -4,10 +4,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:random_string/random_string.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
+import '../../../core/fetch_state/fetch_state.dart';
 import '../../app_default_data/application/app_default_data_notifier.dart';
 import '../../app_default_data/application/app_default_data_providers.dart';
 import '../../contacts/application/contacts_providers.dart';
-import '../../in_app_purchase/application/fetch_state.dart';
 import '../../user/application/user_info_providers.dart';
 import '../domain/statistic_entity.dart';
 import '../domain/statistics_use_cases.dart';

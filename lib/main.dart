@@ -12,9 +12,6 @@ import 'package:timezone/timezone.dart' as tz;
 import 'src/app.dart';
 import 'src/core/private/private_keys.dart';
 import 'src/core/shared_prefs/shared_prefs.dart';
-import 'src/features/app_default_data/domain/entities/status_entity.dart';
-import 'src/features/app_default_data/domain/entities/subscription_entity.dart';
-import 'src/features/user/domain/entity/user_entity.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,9 +24,6 @@ Future<void> main() async {
   final String timeZoneName = await FlutterNativeTimezone.getLocalTimezone();
   tz.setLocalLocation(tz.getLocation(timeZoneName));
   await Hive.initFlutter();
-  Hive.registerAdapter(StatusAdapter());
-  Hive.registerAdapter(SubscriptionAdapter());
-  Hive.registerAdapter(UserEntityAdapter());
 
   await Purchases.setDebugLogsEnabled(true);
   await Purchases.setup(PrivateKeys.revenueCatPublicSDKKey);

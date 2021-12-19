@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'subscription_entity.dart';
 
@@ -17,9 +18,7 @@ class _$SubscriptionTearOff {
   const _$SubscriptionTearOff();
 
   _Subscription call(
-      {@HiveField(0) required String key,
-      @HiveField(1) required String id,
-      @HiveField(2) required DateTime created}) {
+      {required String key, required String id, required DateTime created}) {
     return _Subscription(
       key: key,
       id: id,
@@ -33,11 +32,8 @@ const $Subscription = _$SubscriptionTearOff();
 
 /// @nodoc
 mixin _$Subscription {
-  @HiveField(0)
   String get key => throw _privateConstructorUsedError;
-  @HiveField(1)
   String get id => throw _privateConstructorUsedError;
-  @HiveField(2)
   DateTime get created => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -50,10 +46,7 @@ abstract class $SubscriptionCopyWith<$Res> {
   factory $SubscriptionCopyWith(
           Subscription value, $Res Function(Subscription) then) =
       _$SubscriptionCopyWithImpl<$Res>;
-  $Res call(
-      {@HiveField(0) String key,
-      @HiveField(1) String id,
-      @HiveField(2) DateTime created});
+  $Res call({String key, String id, DateTime created});
 }
 
 /// @nodoc
@@ -94,10 +87,7 @@ abstract class _$SubscriptionCopyWith<$Res>
           _Subscription value, $Res Function(_Subscription) then) =
       __$SubscriptionCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {@HiveField(0) String key,
-      @HiveField(1) String id,
-      @HiveField(2) DateTime created});
+  $Res call({String key, String id, DateTime created});
 }
 
 /// @nodoc
@@ -135,22 +125,16 @@ class __$SubscriptionCopyWithImpl<$Res> extends _$SubscriptionCopyWithImpl<$Res>
 
 /// @nodoc
 
-@HiveType(typeId: 1)
 class _$_Subscription extends _Subscription {
   const _$_Subscription(
-      {@HiveField(0) required this.key,
-      @HiveField(1) required this.id,
-      @HiveField(2) required this.created})
+      {required this.key, required this.id, required this.created})
       : super._();
 
   @override
-  @HiveField(0)
   final String key;
   @override
-  @HiveField(1)
   final String id;
   @override
-  @HiveField(2)
   final DateTime created;
 
   @override
@@ -185,19 +169,16 @@ class _$_Subscription extends _Subscription {
 
 abstract class _Subscription extends Subscription {
   const factory _Subscription(
-      {@HiveField(0) required String key,
-      @HiveField(1) required String id,
-      @HiveField(2) required DateTime created}) = _$_Subscription;
+      {required String key,
+      required String id,
+      required DateTime created}) = _$_Subscription;
   const _Subscription._() : super._();
 
   @override
-  @HiveField(0)
   String get key => throw _privateConstructorUsedError;
   @override
-  @HiveField(1)
   String get id => throw _privateConstructorUsedError;
   @override
-  @HiveField(2)
   DateTime get created => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

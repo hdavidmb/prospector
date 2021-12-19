@@ -22,12 +22,20 @@ class GetSubscriptions {
           return left(failure);
         },
         (subscriptions) {
-          localRepository.saveSubscriptions(subscriptions: subscriptions);
+          final List<Map<String, dynamic>> subscriptionsMapsList = subscriptions
+              .map((subscription) => subscription.toMap())
+              .toList();
+          localRepository.saveSubscriptions(
+              subscriptions: subscriptionsMapsList);
           return right(subscriptions);
         },
       );
     }
-    final subscriptions = await localRepository.getSubscriptions();
+    final List<Map<String, dynamic>> subscriptionsMapsList =
+        await localRepository.getSubscriptions();
+    final List<Subscription> subscriptions = subscriptionsMapsList
+        .map((subMap) => Subscription.fromMap(subMap))
+        .toList();
     return right(subscriptions);
   }
 }

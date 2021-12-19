@@ -1,7 +1,8 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'contacts_state.dart';
+part of 'fetch_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,8 +14,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$ContactsStateTearOff {
-  const _$ContactsStateTearOff();
+class _$FetchStateTearOff {
+  const _$FetchStateTearOff();
 
   Initial initial() {
     return const Initial();
@@ -34,16 +35,24 @@ class _$ContactsStateTearOff {
 }
 
 /// @nodoc
-const $ContactsState = _$ContactsStateTearOff();
+const $FetchState = _$FetchStateTearOff();
 
 /// @nodoc
-mixin _$ContactsState {
+mixin _$FetchState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() fetching,
     required TResult Function() ready,
     required TResult Function() error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetching,
+    TResult Function()? ready,
+    TResult Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +73,14 @@ mixin _$ContactsState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Fetching value)? fetching,
+    TResult Function(Ready value)? ready,
+    TResult Function(Error value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Fetching value)? fetching,
@@ -75,20 +92,19 @@ mixin _$ContactsState {
 }
 
 /// @nodoc
-abstract class $ContactsStateCopyWith<$Res> {
-  factory $ContactsStateCopyWith(
-          ContactsState value, $Res Function(ContactsState) then) =
-      _$ContactsStateCopyWithImpl<$Res>;
+abstract class $FetchStateCopyWith<$Res> {
+  factory $FetchStateCopyWith(
+          FetchState value, $Res Function(FetchState) then) =
+      _$FetchStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ContactsStateCopyWithImpl<$Res>
-    implements $ContactsStateCopyWith<$Res> {
-  _$ContactsStateCopyWithImpl(this._value, this._then);
+class _$FetchStateCopyWithImpl<$Res> implements $FetchStateCopyWith<$Res> {
+  _$FetchStateCopyWithImpl(this._value, this._then);
 
-  final ContactsState _value;
+  final FetchState _value;
   // ignore: unused_field
-  final $Res Function(ContactsState) _then;
+  final $Res Function(FetchState) _then;
 }
 
 /// @nodoc
@@ -98,7 +114,7 @@ abstract class $InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$InitialCopyWithImpl<$Res> extends _$ContactsStateCopyWithImpl<$Res>
+class _$InitialCopyWithImpl<$Res> extends _$FetchStateCopyWithImpl<$Res>
     implements $InitialCopyWith<$Res> {
   _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
       : super(_value, (v) => _then(v as Initial));
@@ -109,12 +125,12 @@ class _$InitialCopyWithImpl<$Res> extends _$ContactsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Initial implements Initial {
-  const _$Initial();
+class _$Initial extends Initial {
+  const _$Initial() : super._();
 
   @override
   String toString() {
-    return 'ContactsState.initial()';
+    return 'FetchState.initial()';
   }
 
   @override
@@ -134,6 +150,17 @@ class _$Initial implements Initial {
     required TResult Function() error,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetching,
+    TResult Function()? ready,
+    TResult Function()? error,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -164,6 +191,17 @@ class _$Initial implements Initial {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Fetching value)? fetching,
+    TResult Function(Ready value)? ready,
+    TResult Function(Error value)? error,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Fetching value)? fetching,
@@ -178,8 +216,9 @@ class _$Initial implements Initial {
   }
 }
 
-abstract class Initial implements ContactsState {
+abstract class Initial extends FetchState {
   const factory Initial() = _$Initial;
+  const Initial._() : super._();
 }
 
 /// @nodoc
@@ -189,7 +228,7 @@ abstract class $FetchingCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FetchingCopyWithImpl<$Res> extends _$ContactsStateCopyWithImpl<$Res>
+class _$FetchingCopyWithImpl<$Res> extends _$FetchStateCopyWithImpl<$Res>
     implements $FetchingCopyWith<$Res> {
   _$FetchingCopyWithImpl(Fetching _value, $Res Function(Fetching) _then)
       : super(_value, (v) => _then(v as Fetching));
@@ -200,12 +239,12 @@ class _$FetchingCopyWithImpl<$Res> extends _$ContactsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Fetching implements Fetching {
-  const _$Fetching();
+class _$Fetching extends Fetching {
+  const _$Fetching() : super._();
 
   @override
   String toString() {
-    return 'ContactsState.fetching()';
+    return 'FetchState.fetching()';
   }
 
   @override
@@ -225,6 +264,17 @@ class _$Fetching implements Fetching {
     required TResult Function() error,
   }) {
     return fetching();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetching,
+    TResult Function()? ready,
+    TResult Function()? error,
+  }) {
+    return fetching?.call();
   }
 
   @override
@@ -255,6 +305,17 @@ class _$Fetching implements Fetching {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Fetching value)? fetching,
+    TResult Function(Ready value)? ready,
+    TResult Function(Error value)? error,
+  }) {
+    return fetching?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Fetching value)? fetching,
@@ -269,8 +330,9 @@ class _$Fetching implements Fetching {
   }
 }
 
-abstract class Fetching implements ContactsState {
+abstract class Fetching extends FetchState {
   const factory Fetching() = _$Fetching;
+  const Fetching._() : super._();
 }
 
 /// @nodoc
@@ -280,7 +342,7 @@ abstract class $ReadyCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ReadyCopyWithImpl<$Res> extends _$ContactsStateCopyWithImpl<$Res>
+class _$ReadyCopyWithImpl<$Res> extends _$FetchStateCopyWithImpl<$Res>
     implements $ReadyCopyWith<$Res> {
   _$ReadyCopyWithImpl(Ready _value, $Res Function(Ready) _then)
       : super(_value, (v) => _then(v as Ready));
@@ -291,12 +353,12 @@ class _$ReadyCopyWithImpl<$Res> extends _$ContactsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Ready implements Ready {
-  const _$Ready();
+class _$Ready extends Ready {
+  const _$Ready() : super._();
 
   @override
   String toString() {
-    return 'ContactsState.ready()';
+    return 'FetchState.ready()';
   }
 
   @override
@@ -316,6 +378,17 @@ class _$Ready implements Ready {
     required TResult Function() error,
   }) {
     return ready();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetching,
+    TResult Function()? ready,
+    TResult Function()? error,
+  }) {
+    return ready?.call();
   }
 
   @override
@@ -346,6 +419,17 @@ class _$Ready implements Ready {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Fetching value)? fetching,
+    TResult Function(Ready value)? ready,
+    TResult Function(Error value)? error,
+  }) {
+    return ready?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Fetching value)? fetching,
@@ -360,8 +444,9 @@ class _$Ready implements Ready {
   }
 }
 
-abstract class Ready implements ContactsState {
+abstract class Ready extends FetchState {
   const factory Ready() = _$Ready;
+  const Ready._() : super._();
 }
 
 /// @nodoc
@@ -371,7 +456,7 @@ abstract class $ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ErrorCopyWithImpl<$Res> extends _$ContactsStateCopyWithImpl<$Res>
+class _$ErrorCopyWithImpl<$Res> extends _$FetchStateCopyWithImpl<$Res>
     implements $ErrorCopyWith<$Res> {
   _$ErrorCopyWithImpl(Error _value, $Res Function(Error) _then)
       : super(_value, (v) => _then(v as Error));
@@ -382,12 +467,12 @@ class _$ErrorCopyWithImpl<$Res> extends _$ContactsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Error implements Error {
-  const _$Error();
+class _$Error extends Error {
+  const _$Error() : super._();
 
   @override
   String toString() {
-    return 'ContactsState.error()';
+    return 'FetchState.error()';
   }
 
   @override
@@ -407,6 +492,17 @@ class _$Error implements Error {
     required TResult Function() error,
   }) {
     return error();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetching,
+    TResult Function()? ready,
+    TResult Function()? error,
+  }) {
+    return error?.call();
   }
 
   @override
@@ -437,6 +533,17 @@ class _$Error implements Error {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Fetching value)? fetching,
+    TResult Function(Ready value)? ready,
+    TResult Function(Error value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Fetching value)? fetching,
@@ -451,6 +558,7 @@ class _$Error implements Error {
   }
 }
 
-abstract class Error implements ContactsState {
+abstract class Error extends FetchState {
   const factory Error() = _$Error;
+  const Error._() : super._();
 }

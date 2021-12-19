@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'iap_failure.dart';
 
@@ -42,6 +43,13 @@ mixin _$IAPFailure {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? noConnection,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
@@ -54,6 +62,13 @@ mixin _$IAPFailure {
     required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
     required TResult Function(NoConnection value) noConnection,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -130,6 +145,16 @@ class _$CancelledByUser extends CancelledByUser {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? noConnection,
+  }) {
+    return cancelledByUser?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
@@ -150,6 +175,16 @@ class _$CancelledByUser extends CancelledByUser {
     required TResult Function(NoConnection value) noConnection,
   }) {
     return cancelledByUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
+  }) {
+    return cancelledByUser?.call(this);
   }
 
   @override
@@ -220,6 +255,16 @@ class _$ServerError extends ServerError {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? noConnection,
+  }) {
+    return serverError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
@@ -240,6 +285,16 @@ class _$ServerError extends ServerError {
     required TResult Function(NoConnection value) noConnection,
   }) {
     return serverError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
+  }) {
+    return serverError?.call(this);
   }
 
   @override
@@ -310,6 +365,16 @@ class _$NoConnection extends NoConnection {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? noConnection,
+  }) {
+    return noConnection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
@@ -330,6 +395,16 @@ class _$NoConnection extends NoConnection {
     required TResult Function(NoConnection value) noConnection,
   }) {
     return noConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
+  }) {
+    return noConnection?.call(this);
   }
 
   @override

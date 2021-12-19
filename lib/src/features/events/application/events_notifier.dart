@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/core/fetch_state/fetch_state.dart';
 import 'package:random_string/random_string.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
@@ -11,7 +12,6 @@ import '../../user/application/user_info_providers.dart';
 import '../domain/entites/event_alert.dart';
 import '../domain/entites/event_entity.dart';
 import '../domain/events_use_cases.dart';
-import 'events_state.dart';
 
 class EventsNotifier extends ChangeNotifier {
   final EventsUseCases eventsUseCases;
@@ -21,13 +21,13 @@ class EventsNotifier extends ChangeNotifier {
     required this.read,
   });
 
-  EventsState _eventsState = const EventsState.initial();
+  FetchState _eventsState = const FetchState.initial();
   late List<Event> _events;
 
-  EventsState get eventsState => _eventsState;
+  FetchState get eventsState => _eventsState;
   List<Event> get events => _events;
 
-  void reset() => _eventsState = const EventsState.initial();
+  void reset() => _eventsState = const FetchState.initial();
 
   // *************** CRUD ****************
   Future<Either<DatabaseFailure, Unit>> createEvent(Event event) async {
@@ -54,21 +54,21 @@ class EventsNotifier extends ChangeNotifier {
   }
 
   Future<void> getEvents() async {
-    if (_eventsState == const EventsState.initial()) {
-      _eventsState = const EventsState.fetching();
+    if (_eventsState.isInitial) {
+      _eventsState = const FetchState.fetching();
       final uid = read(userInfoNotifierProvider).user?.uid;
       if (uid != null) {
         final getResult = await eventsUseCases.getEventsList(uid: uid);
         getResult.fold(
-          (failure) => _eventsState = const EventsState.error(),
+          (failure) => _eventsState = const FetchState.error(),
           (eventsList) {
             eventsList.sort((a, b) => b.startDate.compareTo(a.startDate));
             _events = eventsList;
-            _eventsState = const EventsState.ready();
+            _eventsState = const FetchState.ready();
           },
         );
       } else {
-        _eventsState = const EventsState.error();
+        _eventsState = const FetchState.error();
       }
       notifyListeners();
     }

@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'auth_failure.dart';
 
@@ -62,6 +63,17 @@ mixin _$AuthFailure {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? noConnection,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? userNotFoundResetPassword,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? accountExistsWithDifferentCredential,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
@@ -84,6 +96,20 @@ mixin _$AuthFailure {
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
     required TResult Function(AccountExistsWithDifferentCredential value)
+        accountExistsWithDifferentCredential,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(UserNotFoundResetPassword value)?
+        userNotFoundResetPassword,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(AccountExistsWithDifferentCredential value)?
         accountExistsWithDifferentCredential,
   }) =>
       throw _privateConstructorUsedError;
@@ -173,6 +199,20 @@ class _$CancelledByUser implements CancelledByUser {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? noConnection,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? userNotFoundResetPassword,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? accountExistsWithDifferentCredential,
+  }) {
+    return cancelledByUser?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
@@ -204,6 +244,23 @@ class _$CancelledByUser implements CancelledByUser {
         accountExistsWithDifferentCredential,
   }) {
     return cancelledByUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(UserNotFoundResetPassword value)?
+        userNotFoundResetPassword,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(AccountExistsWithDifferentCredential value)?
+        accountExistsWithDifferentCredential,
+  }) {
+    return cancelledByUser?.call(this);
   }
 
   @override
@@ -284,6 +341,20 @@ class _$ServerError implements ServerError {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? noConnection,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? userNotFoundResetPassword,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? accountExistsWithDifferentCredential,
+  }) {
+    return serverError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
@@ -315,6 +386,23 @@ class _$ServerError implements ServerError {
         accountExistsWithDifferentCredential,
   }) {
     return serverError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(UserNotFoundResetPassword value)?
+        userNotFoundResetPassword,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(AccountExistsWithDifferentCredential value)?
+        accountExistsWithDifferentCredential,
+  }) {
+    return serverError?.call(this);
   }
 
   @override
@@ -395,6 +483,20 @@ class _$NoConnection implements NoConnection {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? noConnection,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? userNotFoundResetPassword,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? accountExistsWithDifferentCredential,
+  }) {
+    return noConnection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
@@ -426,6 +528,23 @@ class _$NoConnection implements NoConnection {
         accountExistsWithDifferentCredential,
   }) {
     return noConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(UserNotFoundResetPassword value)?
+        userNotFoundResetPassword,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(AccountExistsWithDifferentCredential value)?
+        accountExistsWithDifferentCredential,
+  }) {
+    return noConnection?.call(this);
   }
 
   @override
@@ -507,6 +626,20 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? noConnection,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? userNotFoundResetPassword,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? accountExistsWithDifferentCredential,
+  }) {
+    return emailAlreadyInUse?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
@@ -538,6 +671,23 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
         accountExistsWithDifferentCredential,
   }) {
     return emailAlreadyInUse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(UserNotFoundResetPassword value)?
+        userNotFoundResetPassword,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(AccountExistsWithDifferentCredential value)?
+        accountExistsWithDifferentCredential,
+  }) {
+    return emailAlreadyInUse?.call(this);
   }
 
   @override
@@ -620,6 +770,20 @@ class _$UserNotFoundResetPassword implements UserNotFoundResetPassword {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? noConnection,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? userNotFoundResetPassword,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? accountExistsWithDifferentCredential,
+  }) {
+    return userNotFoundResetPassword?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
@@ -651,6 +815,23 @@ class _$UserNotFoundResetPassword implements UserNotFoundResetPassword {
         accountExistsWithDifferentCredential,
   }) {
     return userNotFoundResetPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(UserNotFoundResetPassword value)?
+        userNotFoundResetPassword,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(AccountExistsWithDifferentCredential value)?
+        accountExistsWithDifferentCredential,
+  }) {
+    return userNotFoundResetPassword?.call(this);
   }
 
   @override
@@ -737,6 +918,20 @@ class _$InvalidEmailAndPasswordCombination
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? noConnection,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? userNotFoundResetPassword,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? accountExistsWithDifferentCredential,
+  }) {
+    return invalidEmailAndPasswordCombination?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
@@ -768,6 +963,23 @@ class _$InvalidEmailAndPasswordCombination
         accountExistsWithDifferentCredential,
   }) {
     return invalidEmailAndPasswordCombination(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(UserNotFoundResetPassword value)?
+        userNotFoundResetPassword,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(AccountExistsWithDifferentCredential value)?
+        accountExistsWithDifferentCredential,
+  }) {
+    return invalidEmailAndPasswordCombination?.call(this);
   }
 
   @override
@@ -855,6 +1067,20 @@ class _$AccountExistsWithDifferentCredential
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? noConnection,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? userNotFoundResetPassword,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? accountExistsWithDifferentCredential,
+  }) {
+    return accountExistsWithDifferentCredential?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledByUser,
     TResult Function()? serverError,
@@ -886,6 +1112,23 @@ class _$AccountExistsWithDifferentCredential
         accountExistsWithDifferentCredential,
   }) {
     return accountExistsWithDifferentCredential(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(UserNotFoundResetPassword value)?
+        userNotFoundResetPassword,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(AccountExistsWithDifferentCredential value)?
+        accountExistsWithDifferentCredential,
+  }) {
+    return accountExistsWithDifferentCredential?.call(this);
   }
 
   @override

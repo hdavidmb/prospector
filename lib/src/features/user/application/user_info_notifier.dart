@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prospector/src/core/fetch_state/fetch_state.dart';
 
 import '../../app_default_data/application/app_default_data_providers.dart';
 import '../domain/entity/user_entity.dart';
@@ -10,7 +11,6 @@ import '../domain/use_cases/get_or_create_user_info.dart';
 import '../domain/use_cases/get_user_auth_provider.dart';
 import '../domain/use_cases/update_user_document.dart';
 import '../domain/use_cases/update_user_profile.dart';
-import 'user_info_state.dart';
 
 class UserInfoNotifier extends ChangeNotifier {
   final GetOrCreateUserInfo getOrCreateUserInfo;
@@ -28,10 +28,10 @@ class UserInfoNotifier extends ChangeNotifier {
     required this.read,
   });
 
-  UserInfoState _userInfoState = const UserInfoState.initial();
+  FetchState _userInfoState = const FetchState.initial();
   UserEntity? _user;
 
-  UserInfoState get userInfoState => _userInfoState;
+  FetchState get userInfoState => _userInfoState;
   UserEntity? get user => _user;
 
   bool get isPremiumUser {
@@ -42,19 +42,19 @@ class UserInfoNotifier extends ChangeNotifier {
   String getUserProvider() => getUserAuthProvider();
 
   void reset() {
-    _userInfoState = const UserInfoState.initial();
+    _userInfoState = const FetchState.initial();
     _user = null;
   }
 
   Future<void> getOrCreateUser() async {
-    if (_userInfoState != const UserInfoState.fetching()) {
-      _userInfoState = const UserInfoState.fetching();
+    if (!_userInfoState.isFetching) {
+      _userInfoState = const FetchState.fetching();
       final result = await getOrCreateUserInfo();
       result.fold(
-        (failure) => _userInfoState = const UserInfoState.error(),
+        (failure) => _userInfoState = const FetchState.error(),
         (user) {
           _user = user;
-          _userInfoState = const UserInfoState.ready();
+          _userInfoState = const FetchState.ready();
         },
       );
       notifyListeners();

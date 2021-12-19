@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../generated/l10n.dart';
-import '../../../../../features/in_app_purchase/application/fetch_state.dart';
+import '../../../../../core/fetch_state/fetch_state.dart';
 import '../../../../../features/in_app_purchase/application/in_app_purchase_providers.dart';
 import '../../../../core/widgets/loading_page_cover.dart';
 import '../../../../core/widgets/no_contatcs_screen/info_message_page.dart';

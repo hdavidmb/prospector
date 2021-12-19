@@ -1,35 +1,29 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/fetch_state/fetch_state.dart';
 import '../../../features/admob/application/ads_providers.dart';
 import '../../../features/analytics/firebase_analytics_providers.dart';
 import '../../../features/app_default_data/application/app_default_data_providers.dart';
-import '../../../features/app_default_data/application/app_default_data_state.dart';
 import '../../../features/auth/application/auth_state.dart';
 import '../../../features/contacts/application/contacts_providers.dart';
-import '../../../features/contacts/application/contacts_state.dart';
 import '../../../features/events/application/events_providers.dart';
-import '../../../features/events/application/events_state.dart';
 import '../../../features/import_contacts/application/import_contacts_providers.dart';
-import '../../../features/in_app_purchase/application/fetch_state.dart';
 import '../../../features/in_app_purchase/application/in_app_purchase_providers.dart';
 import '../../../features/interactions/application/interactions_providers.dart';
-import '../../../features/interactions/application/interactions_state.dart';
 import '../../../features/local_notifications/application/local_notifications_providers.dart';
 import '../../../features/statistics/application/statistics_providers.dart';
 import '../../../features/tags/application/tags_provider.dart';
-import '../../../features/tags/application/tags_state.dart';
 import '../../../features/user/application/user_info_providers.dart';
-import '../../../features/user/application/user_info_state.dart';
 import 'app_state.dart';
 
 class AppStateNotifier extends StateNotifier<AppState> {
   final AuthState authState;
-  final AppDefaultDataState defaultDataState;
-  final UserInfoState userInfoState;
-  final ContactsState contactsState;
-  final InteractionsState interactionsState;
-  final EventsState eventsState;
-  final TagsState tagsState;
+  final FetchState defaultDataState;
+  final FetchState userInfoState;
+  final FetchState contactsState;
+  final FetchState interactionsState;
+  final FetchState eventsState;
+  final FetchState tagsState;
   final FetchState statisticsState;
   final Reader read;
   AppStateNotifier({
@@ -44,32 +38,32 @@ class AppStateNotifier extends StateNotifier<AppState> {
     required this.read,
   }) : super(const AppState.initial()) {
     if (authState == const AuthState.error() ||
-        defaultDataState == const AppDefaultDataState.error() ||
-        userInfoState == const UserInfoState.error() ||
-        contactsState == const ContactsState.error() ||
-        interactionsState == const InteractionsState.error() ||
-        eventsState == const EventsState.error() ||
-        tagsState == const TagsState.error() ||
+        defaultDataState.isError ||
+        userInfoState.isError ||
+        contactsState.isError ||
+        interactionsState.isError ||
+        eventsState.isError ||
+        tagsState.isError ||
         statisticsState.isError) {
       state = const AppState.error();
-    } else if (defaultDataState == const AppDefaultDataState.ready()) {
+    } else if (defaultDataState.isReady) {
       if (authState == const AuthState.authenticated()) {
         read(localNotificationsProvider).initializeLocalNotifications();
         read(inAppPurchaseNotifier).getPackages();
         // TODO check if this post authentication logic can be handled from authStateNotifier
-        if (userInfoState == const UserInfoState.ready()) {
+        if (userInfoState.isReady) {
           read(inAppPurchaseNotifier).logInPurchaser();
           read(firebaseAnalyticsServiceProvider).setUserProperties();
-          if (contactsState == const ContactsState.initial()) {
+          if (contactsState.isInitial) {
             read(contactsNotifierProvider).getContacts();
           }
-          if (interactionsState == const InteractionsState.initial()) {
+          if (interactionsState.isInitial) {
             read(interactionsNotifierProvider).getInteractions();
           }
-          if (tagsState == const TagsState.initial()) {
+          if (tagsState.isInitial) {
             read(tagsNotifierProvider).getTags();
           }
-          if (eventsState == const EventsState.initial()) {
+          if (eventsState.isInitial) {
             read(eventsNotifierProvider).getEvents();
           }
 
@@ -86,16 +80,16 @@ class AppStateNotifier extends StateNotifier<AppState> {
           final bool statisticsReady =
               (isPremiumUser && statisticsState.isReady) || !isPremiumUser;
 
-          if (contactsState == const ContactsState.ready() &&
-              interactionsState == const InteractionsState.ready() &&
-              tagsState == const TagsState.ready() &&
-              eventsState == const EventsState.ready() &&
+          if (contactsState.isReady &&
+              interactionsState.isReady &&
+              tagsState.isReady &&
+              eventsState.isReady &&
               statisticsReady) {
             state = const AppState.authenticatedReady();
             read(localNotificationsProvider)
                 .handleAppLaunchedFromNotification();
           }
-        } else if (userInfoState == const UserInfoState.initial()) {
+        } else if (userInfoState.isInitial) {
           Future.delayed(const Duration(milliseconds: 300),
               () => read(userInfoNotifierProvider).getOrCreateUser());
         }
