@@ -155,7 +155,7 @@
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				123ECA22EEA569C166AD56D2 /* [CP] Embed Pods Frameworks */,
 				625332842550B02C29D8403F /* [CP] Copy Pods Resources */,
-				382157E22770129400E73E42 /* ShellScript */,
+				3859262B27714E98008AAFCE /* Run Script Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -233,7 +233,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		382157E22770129400E73E42 /* ShellScript */ = {
+		3859262B27714E98008AAFCE /* Run Script Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -242,13 +242,14 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Script Crashlytics";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$PODS_ROOT/FirebaseCrashlytics/upload-symbols --build-phase --validate -ai 1:110299102218:ios:2aed513eee94d248\n$PODS_ROOT/FirebaseCrashlytics/upload-symbols --build-phase -ai 1:110299102218:ios:2aed513eee94d248\n";
+			shellScript = "${PODS_ROOT}/FirebaseCrashlytics/run\n";
 		};
 		3B06AD1E1E4923F5004D2608 /* Thin Binary */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -315,7 +316,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -541,6 +542,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = N8942Q7G88;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
