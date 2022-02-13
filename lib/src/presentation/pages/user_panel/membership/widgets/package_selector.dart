@@ -7,7 +7,6 @@ import '../../../../../core/fetch_state/fetch_state.dart';
 import '../../../../../features/analytics/firebase_analytics_providers.dart';
 import '../../../../../features/in_app_purchase/application/in_app_purchase_providers.dart';
 import '../../../../../features/in_app_purchase/domain/entities/iap_package.dart';
-import '../../../../../features/in_app_purchase/domain/entities/iap_package_type.dart';
 import '../../../../../features/user/application/user_info_providers.dart';
 import '../../../../helpers/number_formatters.dart';
 import '../logic/membership_providers.dart';

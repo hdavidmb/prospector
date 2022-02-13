@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/core/fetch_state/fetch_state.dart';
 import 'package:random_string/random_string.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
+import '../../../core/fetch_state/fetch_state.dart';
 import '../../../presentation/helpers/date_formatters.dart';
 import '../../../presentation/theme/theme_providers.dart';
 import '../../local_notifications/application/local_notifications_providers.dart';

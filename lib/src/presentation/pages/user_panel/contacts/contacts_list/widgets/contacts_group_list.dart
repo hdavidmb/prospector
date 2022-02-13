@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
@@ -107,7 +106,7 @@ class ContactsGroupList extends ConsumerWidget {
 
     return sections.isNotEmpty
         ? Scrollbar(
-            //TODO: check for PrimarycrollController attached to more than one scroll position error
+            //TODO: check for PrimaryscrollController attached to more than one scroll position error
             child: CustomScrollView(
               physics: const BouncingScrollPhysics(),
               slivers: sections,

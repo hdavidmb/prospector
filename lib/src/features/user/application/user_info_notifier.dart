@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/core/fetch_state/fetch_state.dart';
+import '../../../core/fetch_state/fetch_state.dart';
 
 import '../../app_default_data/application/app_default_data_providers.dart';
 import '../domain/entity/user_entity.dart';

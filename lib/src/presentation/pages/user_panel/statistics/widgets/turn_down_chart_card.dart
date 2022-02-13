@@ -1,6 +1,7 @@
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../../../../generated/l10n.dart';
 import '../../../../core/dialogs.dart';
 import '../logic/statistics_page_providers.dart';

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+
 import '../../../../../../generated/l10n.dart';
 
 class PremiumCarousel extends StatefulWidget {

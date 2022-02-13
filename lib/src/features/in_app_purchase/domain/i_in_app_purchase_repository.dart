@@ -1,6 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:purchases_flutter/entitlement_info_wrapper.dart';
-import 'package:purchases_flutter/package_wrapper.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 
 import 'failures/iap_failure.dart';

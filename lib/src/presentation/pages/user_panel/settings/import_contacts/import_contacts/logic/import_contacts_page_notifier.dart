@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../../../features/analytics/firebase_analytics_providers.dart';
 
+import '../../../../../../../features/analytics/firebase_analytics_providers.dart';
 import '../../../../../../../features/contacts/application/contacts_providers.dart';
 import '../../../../../../../features/import_contacts/application/import_contacts_providers.dart';
 import '../../../../../../../features/import_contacts/domain/entity/imported_contact_entity.dart';

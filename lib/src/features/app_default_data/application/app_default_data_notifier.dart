@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:prospector/src/core/fetch_state/fetch_state.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../core/fetch_state/fetch_state.dart';
 import '../domain/entities/status_entity.dart';
 import '../domain/entities/subscription_entity.dart';
 import '../domain/use_cases/get_statuses.dart';
