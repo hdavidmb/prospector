@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../../core/shared_prefs/shared_prefs.dart';
 
 class EventsViewNotifier extends ChangeNotifier {

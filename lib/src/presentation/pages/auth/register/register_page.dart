@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../../../../generated/l10n.dart';
 
+import '../../../../../generated/l10n.dart';
 import 'widgets/register_form.dart';
 
 class RegisterPage extends StatelessWidget {

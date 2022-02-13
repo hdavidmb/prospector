@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/core/fetch_state/fetch_state.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
+import '../../../core/fetch_state/fetch_state.dart';
 import '../../contacts/application/contacts_providers.dart';
 import '../../user/application/user_info_providers.dart';
 import '../domain/entity/tag_entity.dart';

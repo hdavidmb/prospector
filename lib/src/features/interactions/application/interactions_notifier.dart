@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prospector/src/core/fetch_state/fetch_state.dart';
 import 'package:random_string/random_string.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/database/database_failures/database_failure.dart';
+import '../../../core/fetch_state/fetch_state.dart';
 import '../../app_default_data/application/app_default_data_providers.dart';
 import '../../contacts/application/contacts_providers.dart';
 import '../../contacts/domain/entity/contact_entity.dart';

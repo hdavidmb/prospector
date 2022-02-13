@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../analytics/firebase_analytics_providers.dart';
 
+import '../../analytics/firebase_analytics_providers.dart';
 import '../../contacts/application/contacts_providers.dart';
 import '../../events/application/events_providers.dart';
 import '../../in_app_purchase/application/in_app_purchase_providers.dart';
