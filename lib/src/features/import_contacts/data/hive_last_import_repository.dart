@@ -9,7 +9,9 @@ class HiveLastImportRepository implements ILastImportIdentifiersRepository {
   Future<Either<DatabaseFailure, List<String>>> getLastImportIdentifiers(
       {required String uid}) async {
     try {
-      if (!Hive.isBoxOpen('$uid-last_import')) await Hive.openBox<String>('$uid-last_import');
+      if (!Hive.isBoxOpen('$uid-last_import')) {
+        await Hive.openBox<String>('$uid-last_import');
+      }
       final identifiers = Hive.box<String>('$uid-last_import').values.toList();
       return right(identifiers);
     } catch (e) {
@@ -21,7 +23,9 @@ class HiveLastImportRepository implements ILastImportIdentifiersRepository {
   Future<Either<DatabaseFailure, Unit>> saveIdentifiersList(
       {required List<String> identifiers, required String uid}) async {
     try {
-      if (!Hive.isBoxOpen('$uid-last_import')) await Hive.openBox<String>('$uid-last_import');
+      if (!Hive.isBoxOpen('$uid-last_import')) {
+        await Hive.openBox<String>('$uid-last_import');
+      }
       await Hive.box<String>('$uid-last_import').addAll(identifiers);
       return right(unit);
     } catch (e) {
@@ -33,7 +37,9 @@ class HiveLastImportRepository implements ILastImportIdentifiersRepository {
   Future<Either<DatabaseFailure, Unit>> saveSingleIdentifier(
       {required String identifier, required String uid}) async {
     try {
-      if (!Hive.isBoxOpen('$uid-last_import')) await Hive.openBox<String>('$uid-last_import');
+      if (!Hive.isBoxOpen('$uid-last_import')) {
+        await Hive.openBox<String>('$uid-last_import');
+      }
       await Hive.box<String>('$uid-last_import').add(identifier);
       return right(unit);
     } catch (e) {

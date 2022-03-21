@@ -179,7 +179,7 @@ class AdsNotifier extends ChangeNotifier {
         ),
       );
       nativeAdsMap[status]![indexString]!['ad'] = nativeAd;
-      nativeAdsMap[status]![indexString]!['ad'].load();
+      (nativeAdsMap[status]![indexString]!['ad'] as NativeAd).load();
       return nativeAdsMap[status]![indexString]!['ad'] as NativeAd;
     } else {
       return adStateMap['ad'] as NativeAd;

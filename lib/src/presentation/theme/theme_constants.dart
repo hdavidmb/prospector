@@ -35,6 +35,7 @@ final SwitchThemeData kSwitchTheme = SwitchThemeData(
       if (states.any(interactiveStates.contains)) {
         return Colors.green;
       }
+      return null;
     },
   ),
 );

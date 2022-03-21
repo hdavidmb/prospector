@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
@@ -72,8 +73,10 @@ class StatisticsUseCases {
             (statisticsMapsList) async {
               final List<Statistic> statisticsList = statisticsMapsList.map(
                 (statisticMap) {
+                  // TODO transform timestamps on repository
                   statisticMap['created'] =
-                      statisticMap['created']?.toDate() ?? DateTime.now();
+                      (statisticMap['created'] as Timestamp?)?.toDate() ??
+                          DateTime.now();
 
                   localStatisticsRepository.createDocument(
                       document: statisticMap, uid: uid);

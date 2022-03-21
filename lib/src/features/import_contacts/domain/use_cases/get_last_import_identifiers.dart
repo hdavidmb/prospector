@@ -9,5 +9,6 @@ class GetLastImportIdentifiers {
     required this.lastImportIdentifiersRepository,
   });
 
-  Future<Either<DatabaseFailure, List<String>>> call({required String uid}) => lastImportIdentifiersRepository.getLastImportIdentifiers(uid: uid);
+  Future<Either<DatabaseFailure, List<String>>> call({required String uid}) =>
+      lastImportIdentifiersRepository.getLastImportIdentifiers(uid: uid);
 }

@@ -11,5 +11,6 @@ class GetImage {
     required this.imagesPickerRepository,
   });
 
-  Future<Option<File>> call({required SourceImage source}) => imagesPickerRepository.getImage(source: source);
+  Future<Option<File>> call({required SourceImage source}) =>
+      imagesPickerRepository.getImage(source: source);
 }

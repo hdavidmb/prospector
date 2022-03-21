@@ -20,5 +20,5 @@ final uploadUserAvatar = Provider<UploadUserAvatar>((ref) {
 
 final uploadContactImage = Provider<UploadContactImage>((ref) {
   final _storageRepository = ref.watch(storageRepository);
-    return UploadContactImage(storageRepository: _storageRepository);
+  return UploadContactImage(storageRepository: _storageRepository);
 });

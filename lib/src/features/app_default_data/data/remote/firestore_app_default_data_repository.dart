@@ -13,8 +13,6 @@ class FirestoreAppDefaultDataRepository
 
   FirestoreAppDefaultDataRepository({required this.firestoreInstance});
 
-  
-
   @override
   Future<Either<DatabaseFailure, List<Status>>> getStatusList() async {
     final bool isConnected = await checkConnection();

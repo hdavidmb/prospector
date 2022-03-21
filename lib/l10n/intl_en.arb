@@ -1,4 +1,5 @@
 {
+    "@@locale": "en",
     "welcomeTo": "Welcome to",
     "prospector": "Prospector",
     "serverError": "Something went wrong. Please try again later.",

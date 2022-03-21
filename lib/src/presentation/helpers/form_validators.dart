@@ -11,13 +11,12 @@ class FormValidators {
   }
 
   bool validatePasswordStrength(String password) {
-    const Pattern pattern =
-        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
+    const Pattern pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
     final RegExp regExp = RegExp(pattern.toString());
     return regExp.hasMatch(password);
   }
 
-  bool validateFieldsMatch(String field, String?/*!*/ confirmField) {
+  bool validateFieldsMatch(String field, String? /*!*/ confirmField) {
     return field == confirmField;
   }
 }

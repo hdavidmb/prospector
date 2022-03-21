@@ -6,7 +6,7 @@ import '../../../../../features/auth/domain/auth_failure.dart';
 part 'register_form_state.freezed.dart';
 
 @freezed
-class RegisterFormState with _$RegisterFormState{
+class RegisterFormState with _$RegisterFormState {
   const factory RegisterFormState({
     required String name,
     required String email,

@@ -9,6 +9,7 @@ class GetDeviceContacts {
   GetDeviceContacts({
     required this.importContactsRepository,
   });
-  
-  Future<Either<ImportContactsFailure, List<ImportedContact>>> call() => importContactsRepository.getDeviceContacts();
+
+  Future<Either<ImportContactsFailure, List<ImportedContact>>> call() =>
+      importContactsRepository.getDeviceContacts();
 }

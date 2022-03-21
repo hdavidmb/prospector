@@ -8,7 +8,9 @@ class SaveSingleIdentifier {
   SaveSingleIdentifier({
     required this.lastImportIdentifiersRepository,
   });
-  
-  Future<Either<DatabaseFailure, Unit>> call({required String identifier, required String uid}) => lastImportIdentifiersRepository.saveSingleIdentifier(identifier: identifier, uid: uid);
 
+  Future<Either<DatabaseFailure, Unit>> call(
+          {required String identifier, required String uid}) =>
+      lastImportIdentifiersRepository.saveSingleIdentifier(
+          identifier: identifier, uid: uid);
 }

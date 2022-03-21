@@ -8,6 +8,6 @@ class SignInWithFacebook {
 
   SignInWithFacebook({required this.authRepository});
 
-  Future<Either<AuthFailure, Unit>> call() => authRepository.signInWithFacebook();
-
+  Future<Either<AuthFailure, Unit>> call() =>
+      authRepository.signInWithFacebook();
 }

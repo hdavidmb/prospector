@@ -163,6 +163,7 @@ class EventsNotifier extends ChangeNotifier {
       return notificationID;
     } else {
       _cancelEventNotification(event: event);
+      return null;
     }
   }
 

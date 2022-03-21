@@ -20,9 +20,8 @@ class ImportedContact with _$ImportedContact {
 
   factory ImportedContact.fromContact(Contact contact) {
     return ImportedContact(
-      importedID: contact.importedId ?? '',
-      name: contact.name,
-      phones: contact.phones
-    );
+        importedID: contact.importedId ?? '',
+        name: contact.name,
+        phones: contact.phones);
   }
 }

@@ -1,4 +1,5 @@
 {
+    "@@locale": "es",
     "welcomeTo": "Bienvenido a",
     "prospector": "Prospector",
     "serverError": "Algo salió mal. Por favor intenta de nuevo más tarde.",

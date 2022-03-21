@@ -6,5 +6,6 @@ class AddContactsListener {
     required this.importContactsRepository,
   });
 
-  void call(void Function() callback) => importContactsRepository.addContactsListener(callback);
+  void call(void Function() callback) =>
+      importContactsRepository.addContactsListener(callback);
 }

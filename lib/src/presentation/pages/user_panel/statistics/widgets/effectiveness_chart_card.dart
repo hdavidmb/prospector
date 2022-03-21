@@ -159,7 +159,7 @@ class EffectivenessChartCard extends ConsumerWidget {
                       ),
                       Text(
                         effectivenessData['forward_percentage'] != null
-                            ? ' ${effectivenessData['forward_percentage'].round()} %'
+                            ? ' ${(effectivenessData['forward_percentage'] as double).round()} %'
                             : '-',
                         style: const TextStyle(
                           fontSize: 25.0,
@@ -230,7 +230,7 @@ class EffectivenessChartCard extends ConsumerWidget {
                       ),
                       Text(
                         effectivenessData['stay_percentage'] != null
-                            ? ' ${effectivenessData['stay_percentage'].round()} %'
+                            ? ' ${(effectivenessData['stay_percentage'] as double).round()} %'
                             : '-',
                         style: const TextStyle(
                           fontSize: 25.0,
@@ -283,7 +283,7 @@ class EffectivenessChartCard extends ConsumerWidget {
                       ),
                       Text(
                         effectivenessData['turn_down_percentage'] != null
-                            ? ' ${effectivenessData['turn_down_percentage'].round()} %'
+                            ? ' ${(effectivenessData['turn_down_percentage'] as double).round()} %'
                             : '-',
                         style: const TextStyle(
                           fontSize: 25.0,

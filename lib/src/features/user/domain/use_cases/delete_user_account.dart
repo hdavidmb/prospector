@@ -18,7 +18,7 @@ class DeleteUserAccount {
 
   Future<Either<UserInfoFailure, Unit>> call() async {
     final bool isConnected = await checkConnection();
-    if (!isConnected) return left(const UserInfoFailure.noConnection()); 
+    if (!isConnected) return left(const UserInfoFailure.noConnection());
     final String uid = userAuthProfileRepository.currentUserID();
     final deleteResult = await userAuthProfileRepository.deleteAccount();
     return deleteResult.fold(

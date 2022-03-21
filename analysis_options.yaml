@@ -5,6 +5,9 @@ analyzer:
     missing_required_param: error
     missing_return: error
     sort_pub_dependencies: ignore
+    always_use_package_imports: ignore
+    avoid_dynamic_calls: ignore # TODO enable and transform timestamps to dates on repositories
+    require_trailing_commas: ignore
     todo: info
 
   exclude:

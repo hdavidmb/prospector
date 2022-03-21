@@ -7,6 +7,8 @@
 // **************************************************************************
 // AutoRouteGenerator
 // **************************************************************************
+//
+// ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i20;
 import 'package:flutter/material.dart' as _i21;
@@ -205,38 +207,43 @@ class AppRouter extends _i20.RootStackRouter {
       ];
 }
 
-/// generated route for [_i1.SplashScreenPage]
+/// generated route for
+/// [_i1.SplashScreenPage]
 class SplashScreenRoute extends _i20.PageRouteInfo<void> {
-  const SplashScreenRoute() : super(name, path: '/');
+  const SplashScreenRoute() : super(SplashScreenRoute.name, path: '/');
 
   static const String name = 'SplashScreenRoute';
 }
 
-/// generated route for [_i2.HomePage]
+/// generated route for
+/// [_i2.HomePage]
 class HomeRoute extends _i20.PageRouteInfo<void> {
-  const HomeRoute() : super(name, path: '/home');
+  const HomeRoute() : super(HomeRoute.name, path: '/home');
 
   static const String name = 'HomeRoute';
 }
 
-/// generated route for [_i3.SignInPage]
+/// generated route for
+/// [_i3.SignInPage]
 class SignInRoute extends _i20.PageRouteInfo<void> {
-  const SignInRoute() : super(name, path: '/sign-in');
+  const SignInRoute() : super(SignInRoute.name, path: '/sign-in');
 
   static const String name = 'SignInRoute';
 }
 
-/// generated route for [_i4.RegisterPage]
+/// generated route for
+/// [_i4.RegisterPage]
 class RegisterRoute extends _i20.PageRouteInfo<void> {
-  const RegisterRoute() : super(name, path: '/register');
+  const RegisterRoute() : super(RegisterRoute.name, path: '/register');
 
   static const String name = 'RegisterRoute';
 }
 
-/// generated route for [_i5.ContactDetailsPage]
+/// generated route for
+/// [_i5.ContactDetailsPage]
 class ContactDetailsRoute extends _i20.PageRouteInfo<ContactDetailsRouteArgs> {
   ContactDetailsRoute({_i21.Key? key, required String? contactID})
-      : super(name,
+      : super(ContactDetailsRoute.name,
             path: '/contact-details-page',
             args: ContactDetailsRouteArgs(key: key, contactID: contactID));
 
@@ -256,10 +263,11 @@ class ContactDetailsRouteArgs {
   }
 }
 
-/// generated route for [_i6.ContactAddEditPage]
+/// generated route for
+/// [_i6.ContactAddEditPage]
 class ContactAddEditRoute extends _i20.PageRouteInfo<ContactAddEditRouteArgs> {
   ContactAddEditRoute({_i21.Key? key, _i22.Contact? editingContact})
-      : super(name,
+      : super(ContactAddEditRoute.name,
             path: '/contact-add-edit-page',
             args: ContactAddEditRouteArgs(
                 key: key, editingContact: editingContact));
@@ -280,11 +288,12 @@ class ContactAddEditRouteArgs {
   }
 }
 
-/// generated route for [_i6.ContactAddEditPage]
+/// generated route for
+/// [_i6.ContactAddEditPage]
 class ContactAddEditMaterialRoute
     extends _i20.PageRouteInfo<ContactAddEditMaterialRouteArgs> {
   ContactAddEditMaterialRoute({_i21.Key? key, _i22.Contact? editingContact})
-      : super(name,
+      : super(ContactAddEditMaterialRoute.name,
             path: '/contact-add-edit-page',
             args: ContactAddEditMaterialRouteArgs(
                 key: key, editingContact: editingContact));
@@ -305,74 +314,92 @@ class ContactAddEditMaterialRouteArgs {
   }
 }
 
-/// generated route for [_i7.UserProfilePage]
+/// generated route for
+/// [_i7.UserProfilePage]
 class UserProfileRoute extends _i20.PageRouteInfo<void> {
-  const UserProfileRoute() : super(name, path: '/user-profile-page');
+  const UserProfileRoute()
+      : super(UserProfileRoute.name, path: '/user-profile-page');
 
   static const String name = 'UserProfileRoute';
 }
 
-/// generated route for [_i8.ChangeEmailPage]
+/// generated route for
+/// [_i8.ChangeEmailPage]
 class ChangeEmailRoute extends _i20.PageRouteInfo<void> {
-  const ChangeEmailRoute() : super(name, path: '/change-email-page');
+  const ChangeEmailRoute()
+      : super(ChangeEmailRoute.name, path: '/change-email-page');
 
   static const String name = 'ChangeEmailRoute';
 }
 
-/// generated route for [_i9.ChangePasswordPage]
+/// generated route for
+/// [_i9.ChangePasswordPage]
 class ChangePasswordRoute extends _i20.PageRouteInfo<void> {
-  const ChangePasswordRoute() : super(name, path: '/change-password-page');
+  const ChangePasswordRoute()
+      : super(ChangePasswordRoute.name, path: '/change-password-page');
 
   static const String name = 'ChangePasswordRoute';
 }
 
-/// generated route for [_i10.ImportContactsMenuPage]
+/// generated route for
+/// [_i10.ImportContactsMenuPage]
 class ImportContactsMenuRoute extends _i20.PageRouteInfo<void> {
   const ImportContactsMenuRoute()
-      : super(name, path: '/import-contacts-menu-page');
+      : super(ImportContactsMenuRoute.name, path: '/import-contacts-menu-page');
 
   static const String name = 'ImportContactsMenuRoute';
 }
 
-/// generated route for [_i11.TagsSettingsPage]
+/// generated route for
+/// [_i11.TagsSettingsPage]
 class TagsSettingsRoute extends _i20.PageRouteInfo<void> {
-  const TagsSettingsRoute() : super(name, path: '/tags-settings-page');
+  const TagsSettingsRoute()
+      : super(TagsSettingsRoute.name, path: '/tags-settings-page');
 
   static const String name = 'TagsSettingsRoute';
 }
 
-/// generated route for [_i12.ImportedContactsPage]
+/// generated route for
+/// [_i12.ImportedContactsPage]
 class ImportedContactsRoute extends _i20.PageRouteInfo<void> {
-  const ImportedContactsRoute() : super(name, path: '/imported-contacts-page');
+  const ImportedContactsRoute()
+      : super(ImportedContactsRoute.name, path: '/imported-contacts-page');
 
   static const String name = 'ImportedContactsRoute';
 }
 
-/// generated route for [_i13.ImportContactsPage]
+/// generated route for
+/// [_i13.ImportContactsPage]
 class ImportContactsRoute extends _i20.PageRouteInfo<void> {
-  const ImportContactsRoute() : super(name, path: '/import-contacts-page');
+  const ImportContactsRoute()
+      : super(ImportContactsRoute.name, path: '/import-contacts-page');
 
   static const String name = 'ImportContactsRoute';
 }
 
-/// generated route for [_i14.CountryCodePage]
+/// generated route for
+/// [_i14.CountryCodePage]
 class CountryCodeRoute extends _i20.PageRouteInfo<void> {
-  const CountryCodeRoute() : super(name, path: '/country-code-page');
+  const CountryCodeRoute()
+      : super(CountryCodeRoute.name, path: '/country-code-page');
 
   static const String name = 'CountryCodeRoute';
 }
 
-/// generated route for [_i15.EventsSettingsPage]
+/// generated route for
+/// [_i15.EventsSettingsPage]
 class EventsSettingsRoute extends _i20.PageRouteInfo<void> {
-  const EventsSettingsRoute() : super(name, path: '/events-settings-page');
+  const EventsSettingsRoute()
+      : super(EventsSettingsRoute.name, path: '/events-settings-page');
 
   static const String name = 'EventsSettingsRoute';
 }
 
-/// generated route for [_i16.EventDetailsPage]
+/// generated route for
+/// [_i16.EventDetailsPage]
 class EventDetailsRoute extends _i20.PageRouteInfo<EventDetailsRouteArgs> {
   EventDetailsRoute({_i21.Key? key, required String eventID})
-      : super(name,
+      : super(EventDetailsRoute.name,
             path: '/event-details-page',
             args: EventDetailsRouteArgs(key: key, eventID: eventID));
 
@@ -392,11 +419,12 @@ class EventDetailsRouteArgs {
   }
 }
 
-/// generated route for [_i17.GuestsSelectionPage]
+/// generated route for
+/// [_i17.GuestsSelectionPage]
 class GuestsSelectionRoute
     extends _i20.PageRouteInfo<GuestsSelectionRouteArgs> {
   GuestsSelectionRoute({_i21.Key? key, List<String>? initialGuests})
-      : super(name,
+      : super(GuestsSelectionRoute.name,
             path: '/guests-selection-page',
             args: GuestsSelectionRouteArgs(
                 key: key, initialGuests: initialGuests));
@@ -417,10 +445,11 @@ class GuestsSelectionRouteArgs {
   }
 }
 
-/// generated route for [_i18.EventAddEditPage]
+/// generated route for
+/// [_i18.EventAddEditPage]
 class EventAddEditRoute extends _i20.PageRouteInfo<EventAddEditRouteArgs> {
   EventAddEditRoute({_i21.Key? key, _i23.Event? editingEvent})
-      : super(name,
+      : super(EventAddEditRoute.name,
             path: '/event-add-edit-page',
             args: EventAddEditRouteArgs(key: key, editingEvent: editingEvent));
 
@@ -440,9 +469,11 @@ class EventAddEditRouteArgs {
   }
 }
 
-/// generated route for [_i19.MembershipPage]
+/// generated route for
+/// [_i19.MembershipPage]
 class MembershipRoute extends _i20.PageRouteInfo<void> {
-  const MembershipRoute() : super(name, path: '/membership-page');
+  const MembershipRoute()
+      : super(MembershipRoute.name, path: '/membership-page');
 
   static const String name = 'MembershipRoute';
 }

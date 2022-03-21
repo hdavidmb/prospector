@@ -11,5 +11,7 @@ class UploadUserAvatar {
     required this.storageRepository,
   });
 
-  Future<Either<StorageFailure, String>> call({required String uid, required File image}) => storageRepository.uploadUserAvatar(uid: uid, image: image);
+  Future<Either<StorageFailure, String>> call(
+          {required String uid, required File image}) =>
+      storageRepository.uploadUserAvatar(uid: uid, image: image);
 }

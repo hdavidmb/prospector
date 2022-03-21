@@ -9,5 +9,4 @@ class AppleSignIn {
   AppleSignIn({required this.authRepository});
 
   Future<Either<AuthFailure, Unit>> call() => authRepository.appleSignIn();
-
 }

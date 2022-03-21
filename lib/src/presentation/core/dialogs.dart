@@ -7,7 +7,7 @@ import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// ignore: implementation_imports
+// ignore: depend_on_referenced_packages, implementation_imports
 import 'package:google_maps_webservice/src/places.dart' show Prediction;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:prospector/generated/l10n.dart';

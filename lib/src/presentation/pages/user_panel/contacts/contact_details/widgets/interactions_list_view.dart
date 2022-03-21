@@ -49,7 +49,9 @@ class InteractionsListView extends ConsumerWidget {
   List<Object> _combineLists(
       {required List<Interaction> interactions, required List<Event> events}) {
     final List<Object> combinedList = [];
-    combinedList..addAll(interactions)..addAll(events);
+    combinedList
+      ..addAll(interactions)
+      ..addAll(events);
     combinedList.sort((a, b) {
       final aDate = a is Interaction ? a.created : (a as Event).startDate;
       final bDate = b is Interaction ? b.created : (b as Event).startDate;

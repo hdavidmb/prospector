@@ -19,9 +19,15 @@ class TagChip extends ConsumerWidget {
   Widget build(BuildContext context, ScopedReader watch) {
     return !isEditing
         ? ChoiceChip(
-            label: Text(tag.name, style: TextStyle(color: selected ? Theme.of(context).primaryTextTheme.button!.color : Theme.of(context).textTheme.button!.color),),
+            label: Text(
+              tag.name,
+              style: TextStyle(
+                  color: selected
+                      ? Theme.of(context).primaryTextTheme.button!.color
+                      : Theme.of(context).textTheme.button!.color),
+            ),
             selected: selected,
-                  selectedColor: Theme.of(context).primaryColor,
+            selectedColor: Theme.of(context).primaryColor,
             onSelected: onSelected,
           )
         : Chip(

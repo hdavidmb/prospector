@@ -88,6 +88,7 @@ class ContactsGroupList extends ConsumerWidget {
                   } else if (contact is NativeAdDummy) {
                     return CustomNativeAdWidget(status: status, index: index);
                   }
+                  return null;
                 },
                 childCount: contacts.length,
               ),

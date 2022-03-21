@@ -16,7 +16,9 @@ class FirebaseStorageRepository implements IStorageRepository {
 
   @override
   Future<Either<StorageFailure, String>> uploadContactImage(
-      {required String uid, required String contactID, required dynamic image}) async {
+      {required String uid,
+      required String contactID,
+      required dynamic image}) async {
     final String storageImagePath = (image is File)
         ? 'images/contacts_images/$uid/$contactID.jpg'
         : 'images/contacts_images/$uid/$contactID.png';

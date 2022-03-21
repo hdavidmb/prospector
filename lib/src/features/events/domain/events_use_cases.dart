@@ -149,10 +149,10 @@ class EventsUseCases {
   }
 
   int? _scheduleEventNotification({required Map<String, dynamic> eventMap}) {
+    int? notificationID;
     final Event event = Event.fromMap(eventMap);
     if (event.notification != EventAlert.none) {
-      final int notificationID =
-          event.notificationID ?? int.parse(randomNumeric(9));
+      notificationID = event.notificationID ?? int.parse(randomNumeric(9));
       final bool is24hours = read(themeNotifierProvider).is24hours;
       read(localNotificationsProvider).scheduleNotification(
         id: notificationID,
@@ -163,7 +163,7 @@ class EventsUseCases {
             .subtract(event.notification.duration ?? Duration.zero),
         payload: event.id,
       );
-      return notificationID;
     }
+    return notificationID;
   }
 }

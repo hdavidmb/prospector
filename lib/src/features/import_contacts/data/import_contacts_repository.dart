@@ -18,8 +18,8 @@ class ImportContactsRepository implements IImportContactsRepository {
     try {
       final accessGranted = await flutterContacts.requestPermission();
       if (accessGranted) {
-        final List<Contact> deviceContacts =
-            await flutterContacts.getContacts(withProperties: true, withPhoto: true);
+        final List<Contact> deviceContacts = await flutterContacts.getContacts(
+            withProperties: true, withPhoto: true);
         final List<ImportedContact> importedContacts = deviceContacts
             .map(
               (contact) => ImportedContact(
@@ -39,8 +39,10 @@ class ImportContactsRepository implements IImportContactsRepository {
   }
 
   @override
-  void addContactsListener(Function() callback) => flutterContacts.addListener(callback);
+  void addContactsListener(Function() callback) =>
+      flutterContacts.addListener(callback);
 
   @override
-  void removeContactsListener(Function() callback) => flutterContacts.removeListener(callback);
+  void removeContactsListener(Function() callback) =>
+      flutterContacts.removeListener(callback);
 }

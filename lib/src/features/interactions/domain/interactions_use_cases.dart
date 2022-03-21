@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../core/database/database_failures/database_failure.dart';
@@ -87,8 +88,10 @@ class InteractionsUseCases {
               final List<Interaction> interactionsList =
                   interactionsMapsList.map(
                 (interactionMap) {
+                  // TODO transform timestamps on repository
                   interactionMap['created'] =
-                      interactionMap['created']?.toDate() ?? DateTime.now();
+                      (interactionMap['created'] as Timestamp?)?.toDate() ??
+                          DateTime.now();
 
                   localInteractionsRepository.createDocument(
                       document: interactionMap, uid: uid);

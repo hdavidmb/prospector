@@ -6,5 +6,6 @@ class RemoveContactsListener {
     required this.importContactsRepository,
   });
 
-  void call(void Function() callback) => importContactsRepository.removeContactsListener(callback);
+  void call(void Function() callback) =>
+      importContactsRepository.removeContactsListener(callback);
 }

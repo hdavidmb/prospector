@@ -8,11 +8,11 @@ import '../domain/use_cases/get_image.dart';
 // * Repository
 final imagePrickerRepository = Provider<IImagesPicker>((ref) {
   final ImagePicker imagePickerInstance = ImagePicker();
-    return ImagePickerRepository(picker: imagePickerInstance);
+  return ImagePickerRepository(picker: imagePickerInstance);
 });
 
 // * Use cases
 final getImage = Provider<GetImage>((ref) {
   final _imagesPickerRepository = ref.watch(imagePrickerRepository);
-    return GetImage(imagesPickerRepository: _imagesPickerRepository);
+  return GetImage(imagesPickerRepository: _imagesPickerRepository);
 });

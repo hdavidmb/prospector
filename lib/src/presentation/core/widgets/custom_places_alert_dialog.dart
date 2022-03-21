@@ -70,7 +70,8 @@ class _CustomPlacesAlertDialogState extends State<CustomPlacesAlertDialog> {
                           setState(() {
                             filteredPlacesList = predictions != null
                                 ? predictions
-                                    .map((p) => p['description'] as String)
+                                    .map((p) => (p
+                                        as Map<String, String>)['description']!)
                                     .toList()
                                 : [];
                           });

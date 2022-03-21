@@ -8,5 +8,8 @@ class SignInWithEmailAndPassword {
 
   SignInWithEmailAndPassword({required this.authRepository});
 
-  Future<Either<AuthFailure, Unit>> call({required String email, required String password}) => authRepository.signInWithEmailAndPassword(email: email, password: password);
+  Future<Either<AuthFailure, Unit>> call(
+          {required String email, required String password}) =>
+      authRepository.signInWithEmailAndPassword(
+          email: email, password: password);
 }

@@ -51,7 +51,6 @@ class ChangePasswordFormStateNotifier
     if (isCurrentPasswordValid &&
         isNewPasswordValid &&
         isConfirmNewPasswordValid) {
-
       // Change to submitting state
       state = state.copyWith(
         isSubmitting: true,
